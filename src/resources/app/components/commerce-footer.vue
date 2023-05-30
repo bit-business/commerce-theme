@@ -31,9 +31,9 @@
     </div>
     <div class="w-full h-px container bg-gray-300 my-8"></div>
     <div class="container flex text-gray-500 text-sm">
-      &copy; {{ title }} 2021. Hak Cipta Dilindungi
+      &copy; {{ title }} 2023. Skijasi
       <div class="flex-grow" />
-      Negara: Indonesia
+      Država: Hrvatska
     </div>
   </div>
 </template>
