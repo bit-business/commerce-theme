@@ -15,7 +15,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                 </svg>
-                Ubah Profil
+               Izmijeni Profil
               </Link>
             </div>
           </div>
@@ -24,21 +24,28 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
-              <span class="text-gray-700 font-semibold group-hover:text-primary transition-colors text-sm pl-2">Akun Saya</span>
+              <span class="text-gray-700 font-semibold group-hover:text-primary transition-colors text-sm pl-2">Moj Profil</span>
             </Link>
             <Link :href="route('skijasi.commerce-theme.order')" class="w-full inline-flex items-center group text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
               </svg>
-              <span class="font-semibold cursor-pointer transition-colors text-sm pl-2">Pesanan Saya</span>
+              <span class="font-semibold cursor-pointer transition-colors text-sm pl-2">Moja plaćanja</span>
             </Link>
             <Link :href="route('skijasi.commerce-theme.notification')" class="w-full inline-flex items-center group">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Notifikasi</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Obavijesti</span>
             </Link>
+            <div class="w-full inline-flex items-center group">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+              <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Odjavi se</span>
+            </div>
           </div>
+          
         </div>
         <div class="px-6">
           <div class="grid grid-cols-6 bg-white rounded-xl mb-3">
@@ -46,7 +53,7 @@
           </div>
           <div class="flex items-center mb-3">
             <div class="relative w-full">
-              <input type="text" placeholder="Cari berdasarkan Nama Penjual, No. Pesanan atau Nama Produk dalam semua pesanan" class="w-full py-2 text-sm focus:outline-none rounded-xl pl-12 bg-gray-200 pr-1">
+              <input type="text" placeholder="Pretraživanje po nazivu" class="w-full py-2 text-sm focus:outline-none rounded-xl pl-12 bg-gray-200 pr-1">
               <div class="absolute left-3 h-5 w-5 top-1/2 -translate-y-1/2 transform">
                 <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -64,9 +71,9 @@
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                     </svg>
                     <Link :href="route('skijasi.commerce-theme.order-detail', order.id)" class="text-sm text-gray-500">
-                      <template v-if="order.status == 'process'">Paket sedang diproses</template>
-                      <template v-if="order.status == 'delivering'">Paket sedang dalam perjalanan</template>
-                      <template v-if="order.status == 'done'">Paket telah diterima</template>
+                      <template v-if="order.status == 'process'">Procesuira se</template>
+                      <template v-if="order.status == 'delivering'">U procesu dostave</template>
+                      <template v-if="order.status == 'done'">Završena kupnja</template>
                     </Link>
                   </div>
                   <div class="text-sm text-gray-500 border-r pr-2 cursor-default select-none" v-else-if="order.status == 'cancel' && order.cancelMessage">{{ order.cancelMessage }}</div>
@@ -108,7 +115,7 @@
               </div>
               <div class="bg-white border-t border-dotted p-6 rounded-xl shadow-sm flex flex-nowrap justify-between">
                 <div class="flex self-end">
-                  <div class="text-xs text-gray-500">Tidak ada penilaian diterima</div>
+                  <div class="text-xs text-gray-500">Nema primljenih ocjena</div>
                 </div>
                 <div class="flex flex-col space-y-4 items-end">
                   <div class="flex space-x-3 items-center">
@@ -116,15 +123,15 @@
                     <div class="text-2xl text-primary">{{ $currency(parseInt(order.payed)) }}</div>
                   </div>
                   <div class="flex items-center space-x-2">
-                    <button @click="review(order.id)" class="text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Nilai</button>
+                    <button @click="review(order.id)" class="text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Ocjena</button>
                     <!-- <button class="text-sm bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border">Hubungi Penjual</button> -->
-                    <Link class="text-sm block text-center bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border" :href="route('skijasi.commerce-theme.detail', order.orderDetails[0].productDetail.product.slug)">Beli Lagi</Link>
+                    <Link class="text-sm block text-center bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border" :href="route('skijasi.commerce-theme.detail', order.orderDetails[0].productDetail.product.slug)">Kupi ponovo</Link>
                     <button class="text-sm bg-primary hover:bg-opacity-90 text-white py-2 rounded-md w-40 border" v-if="order.status === 'waitingBuyerPayment'">
                       <component
                         :is="`${order.orderPayment.paymentType}-pay`"
                         :order="order"
                         @click="pay"
-                      >Bayar</component>
+                      >Plati</component>
                     </button>
                   </div>
                 </div>
@@ -166,7 +173,7 @@
 
                   <div class="flex justify-between text-gray-500">
                     <div class="text-left text-sm">
-                      Variasi: {{ order.orderDetails[0].productDetail.name }}
+                      Varijacija: {{ order.orderDetails[0].productDetail.name }}
                     </div>
                     <div class="flex-grow" />
                     <div class="text-right text-sm">
@@ -186,29 +193,29 @@
             </Link>
 
             <Link :href="route('skijasi.commerce-theme.order-detail', order.id)" class="border-t w-full flex justify-center py-2 text-sm text-gray-500" v-if="order.orderDetails.length > 1">
-              View {{ order.orderDetails.length - 1 }} More Product
+              Pogledaj {{ order.orderDetails.length - 1 }} Više proizvoda
             </Link>
 
             <div class="w-full flex flex-row justify-between items-center border-t py-2 text-sm">
               {{ order.orderDetails.length }} items
               <div>
-                Total Payment: <span class="text-primary font-medium">{{ $currency(order.payed) }}</span>
+                Ukupno za platiti: <span class="text-primary font-medium">{{ $currency(order.payed) }}</span>
               </div>
             </div>
 
             <div class="bg-white border-t flex flex-nowrap justify-between w-full pt-2 pb-1">
               <div class="flex self-end">
-                <div class="text-xs text-gray-500">Tidak ada penilaian diterima</div>
+                <div class="text-xs text-gray-500">Nema primljenih ocjena</div>
               </div>
               <div class="flex flex-col items-end" v-if="['done', 'waitingBuyerPayment'].includes(order.status)">
                 <div class="flex items-center space-x-2">
-                  <button @click="review(order.id)" class="text-sm bg-white text-primary border border-primary py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Nilai</button>
+                  <button @click="review(order.id)" class="text-sm bg-white text-primary border border-primary py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Ocjena</button>
                   <button class="text-sm bg-primary hover:bg-opacity-90 text-white font-medium py-2 rounded-md w-40" v-if="order.status === 'waitingBuyerPayment'">
                     <component
                       :is="`${order.orderPayment.paymentType}-pay`"
                       :order="order"
                       @click="pay"
-                    >Bayar</component>
+                    >Plati</component>
                   </button>
                 </div>
               </div>
@@ -241,12 +248,12 @@ export default {
     return {
       isActive: 0,
       tabs: [
-        'Semua',
-        'Belum Bayar',
-        'Diproses',
-        'Dikirim',
-        'Selesai',
-        'Dibatalkan'
+         'Svi',
+         'Još nije plaćeno',
+         'Obrađeno',
+         'Poslano',
+         'Gotovo',
+         'Otkazano'
       ],
       orders: [],
       search: 'ab',
@@ -291,17 +298,17 @@ export default {
     formatStatus(status, expiredAt) {
       switch (status) {
         case 'cancel':
-          return 'Gagal'
+          return 'Odustani'
         case 'waitingBuyerPayment':
-          return 'Menunggu Pembayaran'
+          return 'Čeka se Vaša potvrda'
         case 'waitingSellerConfirmation':
-          return 'Menunggu Konfirmasi Penjual'
+          return 'Čeka se potvrda HZUTS-a'
         case 'process':
-          return 'Sedang Diproses'
+          return 'U procesu'
         case 'delivering':
-          return 'Sedang Dikirim'
+          return 'U odobravanju'
         case 'done':
-          return 'Selesai'
+          return 'Gotovo'
         default:
           break;
       }
@@ -322,7 +329,39 @@ export default {
       this.$inertia.visit(this.route('skijasi.commerce-theme.review', id))
     },
     pay() {
-      this.$helper.alert('Transaksi sedang diproses, mohon tetap dihalaman ini.')
+      this.$helper.alert('Transakcija se obrađuje, ostanite na ovoj stranici.')
+    },
+
+    logout() {
+      this.$api.skijasiAuth
+        .logout()
+        .then(res => {
+        })
+        .catch(err => {
+        })
+        .finally(() => {
+          this.$store.dispatch("SET_IS_AUTHENTICATED", false);
+          this.$store.dispatch("SET_NOTIFICATIONS", {
+            data: [],
+            total: null,
+            currentPage: 1,
+            perPage: 10
+          });
+          this.$store.dispatch("SET_USER", {
+            name: null,
+            email: null,
+            additionalInfo: null,
+            avatar: null,
+            emailVerifiedAt: null,
+            password: null,
+            rememberToken: null,
+            createdAt: null,
+            updatedAt: null,
+
+   
+          });
+          this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+        })
     }
   }
 }

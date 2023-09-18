@@ -10,13 +10,13 @@
                 <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
               </svg>
             </Link>
-            Reset Password
+            Resetiraj Lozinku
           </div>
           <password v-model="password" placeholder="Password" class="mt-4" />
           <password v-model="passwordConfirmation" placeholder="Password Confirmation" class="mt-4" />
           <button :class="buttonClasses" @click="reset">
             <commerce-loading v-if="loading" />
-            <span v-else>RESET</span>
+            <span v-else>RESETIRAJ</span>
           </button>
         </div>
       </div>

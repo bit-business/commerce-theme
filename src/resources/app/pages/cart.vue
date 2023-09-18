@@ -4,11 +4,11 @@
 
     <div class="container pt-8 hidden gap-4 auto-rows-min sm:grid">
       <div class="bg-white px-8 py-4 grid grid-cols-6 gap-4 shadow-sm rounded-xl">
-        <div class="col-span-2 text-sm text-gray-700 font-medium">Produk</div>
-        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Harga Satuan</div>
-        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Kuantitas</div>
-        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Total Harga</div>
-        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Aksi</div>
+        <div class="col-span-2 text-sm text-gray-700 font-medium">Događaj</div>
+        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Jedinična cijena</div>
+        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Broj ljudi</div>
+        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Ukupna cijena</div>
+        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Odustani</div>
       </div>
       <div class="bg-white px-8 py-8 flex shadow-sm rounded-xl flex-wrap gap-4">
         <template v-if="carts.length > 0">
@@ -20,7 +20,7 @@
               </div>
               <div class=" flex-1 text-sm">
                 <Link :to="{ name: 'DetailProduct', params: { slug: cart.productDetail.product.slug } }" class="line-clamp-2">{{ cart.productDetail.product.name }}</Link>
-                <div class="text-sm mt-2">Variasi:
+                <div class="text-sm mt-2">Član:
                   <span class="border border-gray-300 px-1.5 py-1 cursor-pointer ml-2 rounded-md text-gray-500 text-xs">{{ $voca.titleCase(cart.productDetail.name) }}</span>
                 </div>
               </div>
@@ -61,7 +61,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
-            <span class="text-sm">Belum Ada Produk</span>
+            <span class="text-sm">Niste dodali nijedan događaj</span>
           </div>
         </template>
       </div>
@@ -69,24 +69,24 @@
       <div class="bg-white px-8 py-4 flex gap-4 shadow-sm rounded-xl justify-end">
         <div class="flex flex-wrap items-center float-right gap-1">
           <div class="flex items-center gap-4 w-full float-right justify-end">
-            Total ({{ checkboxModel.length }} produk):
+           Ukupno ({{ checkboxModel.length }} odabrano):
             <span class="text-2xl text-primary">{{ $currency(getTotal) }}</span>
           </div>
           <div class="flex items-center gap-4 text-sm w-full float-right justify-end">
-            Hemat
+           Popust
             <span class="text-primary">{{ $currency(getSaving) }}RB</span>
           </div>
         </div>
         <div class="flex items-center w-48">
           <button @click="checkout" class="font-medium bg-primary text-white p-2 font-sm w-full rounded-md">
-            CHECKOUT
+           NA PLAĆANJE
           </button>
         </div>
       </div>
 
       <div class="flex gap-2 w-full mt-8 flex-wrap">
         <div class="text-gray-400 font-medium w-full">
-          KAMU MUNGKIN JUGA SUKA
+          MOŽDA TI SE TAKOĐER SVIDI
         </div>
         <carousel class="container hidden lg:flex" show="6">
           <carousel-item v-for="product, index in similarProducts.data" :key="index">
@@ -112,10 +112,10 @@
       >
         <div class="fixed transform top-1/2 -translate-y-1/2 z-60 px-4" v-if="deleteDialog">
           <div class="bg-white flex justify-center items-center flex-col rounded-md">
-            <div class="text-sm text-gray-400 p-4">Yakin untuk menghapus produk dari keranjang?</div>
+            <div class="text-sm text-gray-400 p-4">Jeste li sigurni da želite ukloniti?</div>
             <div class="flex flex-row flex-nowrap w-full border-t">
-              <div class="w-1/2 py-2.5 text-primary border-r flex justify-center items-center" @click="closeDeleteDialog">Nanti Saja</div>
-              <div class="w-1/2 py-2.5 text-primary flex justify-center items-center" @click="deleteCartUsingState">Hapus</div>
+              <div class="w-1/2 py-2.5 text-primary border-r flex justify-center items-center" @click="closeDeleteDialog">Odustani</div>
+              <div class="w-1/2 py-2.5 text-primary flex justify-center items-center" @click="deleteCartUsingState">Obriši</div>
             </div>
           </div>
         </div>
@@ -196,7 +196,7 @@
             </div>
 
             <div class="w-full flex gap-2 justify-between items-center">
-              <div class="text-sm">Jumlah</div>
+              <div class="text-sm">Količina</div>
               <counter v-model="variationQuantity" :min="1" :max="product.productDetails[productDetailSelectedIndex].quantity" />
             </div>
 
@@ -248,12 +248,12 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
-          <span class="text-sm">Belum Ada Produk</span>
+          <span class="text-sm">Još nema proizvoda</span>
         </div>
       </template>
 
       <div class="relative flex justify-center items-center py-4 text-sm text-gray-400">
-        <div class="z-10 bg-gray-100 px-4">Kamu Mungkin Juga Suka</div>
+        <div class="z-10 bg-gray-100 px-4">Možda ti se također svidi</div>
         <div class="h-px w-full bg-gray-400 absolute z-0" />
       </div>
 
@@ -266,21 +266,21 @@
       <div class="fixed bottom-0 left-0 right-0 bg-white grid grid-cols-12 gap-4 items-center px-3 h-12">
         <div class="col-span-3 inline-flex flex-row gap-2 text-xs">
           <input type="checkbox" @input="checkAll" :checked="checkboxModel.length === this.carts.length" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm text-primary form-checkbox">
-          <div class="line-clamp-1">Pilih Semua</div>
+          <div class="line-clamp-1">Izaberi sve</div>
         </div>
         <div class="col-span-5 text-sm">
           <div class="flex items-center gap-4 w-full float-right justify-end">
-            Total:
+            Ukupno:
             <span class=" text-primary">{{ $currency(getTotal) }}</span>
           </div>
           <div class="flex items-center gap-2 w-full float-right justify-end" v-if="checkboxModel.length > 0">
-            Hemat
+            Popust
             <span class="text-primary">{{ $currency(getSaving) }}RB</span>
           </div>
         </div>
         <div class="col-span-4">
           <button @click="checkout" class="font-medium bg-primary text-white p-2 text-sm w-full rounded-md">
-            CHECKOUT
+            NA PLAĆANJE
           </button>
         </div>
       </div>
@@ -384,7 +384,7 @@ export default {
   methods: {
     checkout() {
       if (this.checkboxModel.length <= 0) {
-        this.$helper.alert('Pilih salah satu item terlebih dahulu!')
+        this.$helper.alert('Molimo odaberite barem jedan od artikala!')
         return
       }
 
@@ -405,6 +405,8 @@ export default {
         .browse()
         .then(res => {
           this.carts = res.data.carts
+          this.checkboxModel = this.carts.map(cart => cart.id);
+
           if (this.carts.length > 0) {
             this.fetchSimilar(this.$_.take(res.data.carts)[0])
           }

@@ -18,6 +18,12 @@ Route::prefix($commerce_route_prefix)
         Route::get('/cart', HelpersRoute::getController('InertiaController@cart'))->name('cart');
         Route::get('/checkout', HelpersRoute::getController('InertiaController@checkout'))->name('checkout');
         Route::get('/detail/{slug}', HelpersRoute::getController('InertiaController@detail'))->name('detail');
+        Route::get('/dogadaji/{slug}', HelpersRoute::getController('InertiaController@dogadaji'))->name('dogadaji');
+        Route::get('/galerija', HelpersRoute::getController('InertiaController@galerija'))->name('galerija');
+        Route::get('/kontakt', HelpersRoute::getController('InertiaController@kontakt'))->name('kontakt');
+        Route::get('/uclanise', HelpersRoute::getController('InertiaController@uclanise'))->name('uclanise');
+        Route::get('/podrucnizborovi', HelpersRoute::getController('InertiaController@podrucnizborovi'))->name('podrucnizborovi');
+        Route::get('/interskikongres', HelpersRoute::getController('InertiaController@interskikongres'))->name('interskikongres');
         Route::get('/list', HelpersRoute::getController('InertiaController@productList'))->name('product-list');
         Route::get('/search', HelpersRoute::getController('InertiaController@search'))->name('search');
 
@@ -29,6 +35,9 @@ Route::prefix($commerce_route_prefix)
         Route::get('/auth/reset-password/{email}/{token}', HelpersRoute::getController('InertiaController@authResetPassword'))->name('reset-password');
         Route::get('/auth/forgot-password/{email?}', HelpersRoute::getController('InertiaController@authForgotPassword'))->name('forgot-password');
         Route::get('/auth/verify/{email}', HelpersRoute::getController('InertiaController@authVerify'))->name('verification');
+
+        //obrisat ovo ispod mozda? provjerit da li radi bez za forme
+           Route::get('/auth/send-contact-form/{email?}', HelpersRoute::getController('InertiaController@authSendContactForm'))->name('send-contact-form');
 
         /**
          * My profile route.

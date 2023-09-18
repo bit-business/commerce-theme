@@ -1,11 +1,19 @@
 <template>
   <div>
-    <commerce-top-bar class="hidden sm:flex" />
-    <commerce-navbar class="hidden sm:flex" />
-    <commerce-mobile-navbar class="flex sm:hidden" />
+    <template v-if="!route('skijasi.commerce-theme.home')">
+      <commerce-top-bar class="" />
+     <!--<commerce-top-bar class="hidden sm:flex" />--> 
+    </template>
+   <!-- <commerce-navbar class="hidden sm:flex" />
+    <commerce-mobile-navbar class="flex sm:hidden" />-->
     <slot />
-    <commerce-footer class="hidden sm:block" />
-    <commerce-mobile-footer class="block sm:hidden" />
+    <commerce-footer class=""/>
+   <!--
+   <template v-if="route('skijasi.commerce-theme.home') || route('skijasi.commerce-theme.uclanise') || route('skijasi.commerce-theme.kontakt') || route('skijasi.commerce-theme.galerija')">
+
+    <commerce-mobile-footer class="block sm:hidden" /> -->
+  
+
     <transition
       enter-active-class="transition-all duration-75 ease transform"
       leave-active-class="transition-all duration-75 ease transform"
@@ -24,6 +32,7 @@
 </template>
 
 <script>
+
 import CommerceTopBar from '../components/commerce-top-bar.vue'
 import CommerceNavbar from '../components/commerce-navbar.vue'
 import CommerceMobileNavbar from '../components/commerce-mobile-navbar.vue'
@@ -33,11 +42,24 @@ export default {
   name: "default-layout",
   components: {
     CommerceTopBar,
-    CommerceNavbar,
-    CommerceMobileNavbar,
+   /* CommerceNavbar,
+    CommerceMobileNavbar, */
     CommerceFooter,
-    CommerceMobileFooter,
   },
+
+
+  watch: {
+    '$route'() {
+    this.$forceUpdate(); 
+  },
+    '$route': {
+      handler() {
+      
+      }
+    },
+  },
+
+  
   data() {
     return {
       isHide: false,

@@ -13,7 +13,7 @@ class InertiaController extends Controller
     public function home()
     {
         return Inertia::render('home', [
-            'name' => 'Home',
+            'name' => 'Početna',
         ], 'commerce-theme:app');
     }
 
@@ -21,7 +21,7 @@ class InertiaController extends Controller
     {
         return Inertia::render('category', [
             'slug'     => request('slug'),
-            'name'     => 'Category',
+            'name'     => 'Događanja',
             'sort'     => request('sort'),
             'search'   => request('search'),
             'rating'   => request('rating'),
@@ -34,14 +34,14 @@ class InertiaController extends Controller
     public function cart()
     {
         return Inertia::render('cart', [
-            'name' => 'Cart',
+            'name' => 'Plaćanje',
         ], 'commerce-theme:app');
     }
 
     public function checkout()
     {
         return Inertia::render('checkout', [
-            'name' => 'Checkout',
+            'name' => 'Plaćanje',
         ], 'commerce-theme:app');
     }
 
@@ -49,14 +49,61 @@ class InertiaController extends Controller
     {
         return Inertia::render('detail', [
             'slug' => $slug,
-            'name' => 'Detail',
+            'name' => 'Detalji',
         ], 'commerce-theme:app');
     }
+
+    public function dogadaji($slug)
+    {
+        return Inertia::render('dogadaji', [
+            'slug' => $slug,
+            'name' => 'Događaji',
+        ], 'commerce-theme:app');
+    }
+
+    public function galerija()
+    {
+        return Inertia::render('galerija', [
+     
+            'name' => 'Galerija',
+        ], 'commerce-theme:app');
+    }
+
+    public function kontakt()
+    {
+        return Inertia::render('kontakt', [
+     
+            'name' => 'Kontakt',
+        ], 'commerce-theme:app');
+    }
+
+    public function uclanise()
+    {
+        return Inertia::render('uclanise', [
+     
+            'name' => 'Učlani se',
+        ], 'commerce-theme:app');
+    }
+
+    public function interskikongres()
+    {
+        return Inertia::render('interskikongres', [
+            'name' => 'Interski Kongresi',
+        ], 'commerce-theme:app');
+    }
+
+    public function podrucnizborovi()
+    {
+        return Inertia::render('podrucnizborovi', [
+            'name' => 'Područni zborovi',
+        ], 'commerce-theme:app');
+    }
+
 
     public function productList()
     {
         return Inertia::render('product-list', [
-            'name' => 'Product List',
+            'name' => 'Lista',
         ], 'commerce-theme:app');
     }
 
@@ -64,7 +111,7 @@ class InertiaController extends Controller
     {
         return Inertia::render('search', [
             'keyword'  => request('keyword'),
-            'name'     => 'Search',
+            'name'     => 'Pretraživanje',
             'sort'     => request('sort'),
             'search'   => request('search'),
             'rating'   => request('rating'),
@@ -80,21 +127,28 @@ class InertiaController extends Controller
     public function authForgotPassword()
     {
         return Inertia::render('auth/forgot-password', [
-            'name' => 'Forgot Password',
+            'name' => 'Zaboravljena lozinka',
+        ], 'commerce-theme:app');
+    }
+
+    public function authSendContactForm()
+    {
+        return Inertia::render('auth/send-contact-form', [
+            'name' => 'Kontakt',
         ], 'commerce-theme:app');
     }
 
     public function authLogin()
     {
         return Inertia::render('auth/login', [
-            'name' => 'Login',
+            'name' => 'Prijava',
         ], 'commerce-theme:app');
     }
 
     public function authRegister()
     {
         return Inertia::render('auth/register', [
-            'name' => 'Register',
+            'name' => 'Registracija',
         ], 'commerce-theme:app');
     }
 
@@ -103,7 +157,7 @@ class InertiaController extends Controller
         return Inertia::render('auth/reset-password', [
             'email' => $email,
             'token' => $token,
-            'name'  => 'Reset Password',
+            'name'  => 'Resetiranje lozinke',
         ], 'commerce-theme:app');
     }
 
@@ -111,7 +165,7 @@ class InertiaController extends Controller
     {
         return Inertia::render('auth/verify', [
             'email' => $email,
-            'name'  => 'Verify',
+            'name'  => 'Provjera',
         ], 'commerce-theme:app');
     }
 
@@ -121,21 +175,21 @@ class InertiaController extends Controller
     public function userProfile()
     {
         return Inertia::render('user/profile', [
-            'name' => 'Profile',
+            'name' => 'Profil',
         ], 'commerce-theme:app');
     }
 
     public function userAddress()
     {
         return Inertia::render('user/address', [
-            'name' => 'Address',
+            'name' => 'Adresa',
         ], 'commerce-theme:app');
     }
 
     public function userAddressAdd()
     {
         return Inertia::render('user/address-add', [
-            'name' => 'Add Address',
+            'name' => 'Dodaj adresu',
         ], 'commerce-theme:app');
     }
 
@@ -143,14 +197,14 @@ class InertiaController extends Controller
     {
         return Inertia::render('user/address-edit', [
             'id'   => $id,
-            'name' => 'Edit Address',
+            'name' => 'Izmijeni Adresu',
         ], 'commerce-theme:app');
     }
 
     public function userNotification()
     {
         return Inertia::render('user/notification', [
-            'name' => 'Notification',
+            'name' => 'Obavijesti',
         ], 'commerce-theme:app');
     }
 
@@ -158,21 +212,21 @@ class InertiaController extends Controller
     {
         return Inertia::render('user/order-detail', [
             'id'   => $id,
-            'name' => 'Order Detail',
+            'name' => 'Detalji plaćanja',
         ], 'commerce-theme:app');
     }
 
     public function userChangePassword()
     {
         return Inertia::render('user/change-password', [
-            'name' => 'Change Password',
+            'name' => 'Promijeni lozinku',
         ], 'commerce-theme:app');
     }
 
     public function userOrder()
     {
         return Inertia::render('user/order', [
-            'name' => 'Order',
+            'name' => 'Narudžba',
         ], 'commerce-theme:app');
     }
 
@@ -182,14 +236,14 @@ class InertiaController extends Controller
     public function legalPrivacy()
     {
         return Inertia::render('legal/privacy', [
-            'name' => 'Privacy',
+            'name' => 'Politika privatnosti',
         ], 'commerce-theme:app');
     }
 
     public function legalTos()
     {
         return Inertia::render('legal/tos', [
-            'name' => 'Term of Service',
+            'name' => 'Uvjeti korištenja',
         ], 'commerce-theme:app');
     }
 
@@ -199,7 +253,7 @@ class InertiaController extends Controller
     public function paymentInfo($id)
     {
         return Inertia::render('payment/info', [
-            'name' => 'Payment Info',
+            'name' => 'Detalji plaćanja',
             'id'   => $id,
         ], 'commerce-theme:app');
     }
@@ -207,7 +261,7 @@ class InertiaController extends Controller
     public function paymentConfirm($id)
     {
         return Inertia::render('payment/confirm', [
-            'name' => 'Payment Confirmation',
+            'name' => 'Potvrda plaćanja',
             'id'   => $id,
         ], 'commerce-theme:app');
     }
@@ -215,7 +269,7 @@ class InertiaController extends Controller
     public function review($id)
     {
         return Inertia::render('user/review', [
-            'name' => 'Review',
+            'name' => 'Ocijene',
             'id'   => $id,
         ], 'commerce-theme:app');
     }
@@ -223,7 +277,7 @@ class InertiaController extends Controller
     public function HTTP404()
     {
         return Inertia::render('404', [
-            'name' => '404',
+            'name' => 'Neispravna stranica 404',
         ], 'commerce-theme:app');
     }
 }

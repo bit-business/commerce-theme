@@ -1,9 +1,9 @@
 <template>
   <div>
     <commerce-top-bar class="hidden sm:flex" />
-
+    <commerce-navbar class="hidden sm:flex" />
     <slot />
-    <commerce-footer class="" />
+    <commerce-footer class="hidden sm:block" />
     <transition
       enter-active-class="transition-all duration-75 ease transform"
       leave-active-class="transition-all duration-75 ease transform"
@@ -23,11 +23,13 @@
 
 <script>
 import CommerceTopBar from '../components/commerce-top-bar.vue'
+import CommerceNavbar from '../components/commerce-navbar.vue'
 import CommerceFooter from '../components/commerce-footer.vue'
 export default {
   name: "default-layout",
   components: {
     CommerceTopBar,
+    CommerceNavbar,
     CommerceFooter,
   },
   data() {

@@ -20,9 +20,9 @@
           <p>Total Pembayaran:</p>
           <p class="text-4xl text-primary">{{ first }}{{ separator }}<span class="border border-red-600 font-medium">{{ last }}</span></p>
           <div class="mt-4 text-sm text-white p-1 px-2 bg-primary bg-opacity-80 border-l border-r border-dotted">
-            Bayar pesanan sesuai jumlah di atas.
+            Platite narudžbu prema gore navedenom iznosu.
           </div>
-          <div class="text-sm mt-2 text-gray-500">Dicek dalam 24 jam setelah bukti transfer diupload. Khusus untuk Beli Barang, diwajibkan untuk membayar sesuai total pembayaran (termasuk kode unik) sebelum batas waktu berakhir.</div>
+          <div class="text-sm mt-2 text-gray-500">Provjerava se unutar 24 sata nakon učitavanja dokaza o prijenosu. Posebno za kupnju robe, morate platiti u skladu s ukupnom uplatom (uključujući jedinstveni kod) prije isteka roka.</div>
         </div>
         <div class="w-full flex flex-nowrap gap-2 p-2">
           <div class="w-6 h-6">
@@ -31,7 +31,7 @@
               </path>
             </svg>
           </div>
-          <div class="text-sm text-gray-500">Gunakan ATM / iBanking / mBanking / setor tunai untuk transfer ke rekening berikut ini:</div>
+          <div class="text-sm text-gray-500">Koristite ATM / iBanking / mBanking / gotovinski depozit za prijenos na sljedeće račune:</div>
         </div>
         <div class="w-full gap-2 flex bg-white border-t border-b p-4 border-gray-300">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -41,8 +41,8 @@
             <div class="w-full">{{ bank.displayName }}</div>
             <div class="flex w-full mt-2 text-gray-500 text-sm">
               <div class="flex-grow">
-                No. Rekening: {{ bank.accountNumber }} <br />
-                Nama Rekening: {{ bank.accountName }}
+                Broj računa: {{ bank.accountNumber }} <br />
+                Ime računa: {{ bank.accountName }}
               </div>
               <div class="cursor-pointer self-baseline text-gray-400">SALIN</div>
             </div>
@@ -59,7 +59,7 @@
                 </path>
               </svg>
             </div>
-            <div class="text-sm text-gray-500">Silakan upload bukti transfer <span v-if="order.expiredAt">sebelum {{ $moment(order.expiredAt).format('DD-MM-YYYY H:mm:ss') }}</span></div>
+            <div class="text-sm text-gray-500">Učitajte dokaz o prijenosu <span v-if="order.expiredAt">prije {{ $moment(order.expiredAt).format('DD-MM-YYYY H:mm:ss') }}</span></div>
           </div>
           <div class="flex flex-nowrap gap-2">
             <div class="w-6 h-6">
@@ -67,18 +67,18 @@
                 <path id="path0" d="M137.778 49.836 C 33.422 89.851,5.497 232.941,86.278 313.722 C 188.849 416.294,360.000 345.186,360.000 200.000 C 360.000 84.104,247.198 7.880,137.778 49.836 M231.453 146.325 C 247.767 162.639,247.801 171.076,231.611 186.200 L 218.777 198.189 231.688 205.599 C 254.954 218.951,254.119 243.121,229.881 257.899 C 203.731 273.843,160.506 263.854,154.386 240.453 C 151.135 228.019,165.519 227.741,177.778 240.000 C 196.968 259.190,233.725 243.471,223.278 220.542 C 220.055 213.469,213.254 209.030,202.573 207.026 C 185.400 203.804,180.036 191.111,195.848 191.111 C 218.121 191.111,230.750 170.305,216.889 156.444 C 208.585 148.140,187.424 150.125,178.969 160.000 C 164.554 176.835,147.817 168.133,161.252 150.788 C 177.986 129.187,212.144 127.016,231.453 146.325 " stroke="none" fill="currentColor" fill-rule="evenodd"></path>
               </svg>
             </div>
-            <div class="text-sm text-gray-500">Demi kenyamanan transaksi, mohon untuk tidak membagikan bukti atau konfirmasi pembayaran pesanan kepada siapapun, selain mengunggahnya via web {{ title }}.</div>
+            <div class="text-sm text-gray-500">Radi praktičnosti transakcija, molimo da dokaz ili potvrdu plaćanja narudžbe ne dijelite ni s kim, osim ako ih učitate putem weba{{ title }}.</div>
           </div>
         </div>
         <div class="w-full flex flex-wrap gap-2 my-2 px-3 sm:px-0">
           <Link class="w-full p-2 bg-primary text-white rounded text-center text-sm" :href="route('skijasi.commerce-theme.payment-confirm', $page.props.id)">
-            Upload bukti transfer sekarang
+            Učitajte dokaz plaćanja
           </Link>
           <Link 
             class="w-full p-2 bg-transparent  text-primary border border-primary rounded text-center text-sm" 
             :href="route('skijasi.commerce-theme.order')"
           >
-            Upload bukti transfer nanti
+          Prenesite dokaz o plaćanju kasnije
           </Link>
         </div>
       </div>

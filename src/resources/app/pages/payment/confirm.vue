@@ -17,14 +17,14 @@
     <div class="lg:max-w-xl w-full">
       <div class="flex w-full flex-wrap justify-center select-none">
         <div class="w-full flex text-sm bg-white p-3 border-b border-gray-300 justify-between">
-          <p>Total Pembayaran</p>
+          <p>Ukupno Plaćanje</p>
           <span class="text-primary font-medium">{{ $currency(total) }}</span>
         </div>
         <div 
           class="w-full flex text-sm bg-white p-3 border-b border-gray-300 justify-between cursor-pointer items-center" 
           @click="openAccordion = !openAccordion"
         >
-          <p>Informasi Bank</p>
+          <p>Bankovni podaci</p>
           <div class="w-6 h-6 transform transition-transform duration-300 ease-in-out" :class="openAccordion ? '-rotate-180' : ''">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -42,18 +42,18 @@
             <div class="w-full text-sm sm:text-base">{{ bank.displayName }}</div>
             <div class="flex w-full mt-2 text-gray-500 text-xs sm:text-sm">
               <div class="flex-grow">
-                No. Rekening: {{ bank.accountNumber }} <br />
-                Nama Rekening: {{ bank.accountName }}
+                Broj računa: {{ bank.accountNumber }} <br />
+                Ime računa: {{ bank.accountName }}
               </div>
-              <div class="cursor-pointer self-baseline text-gray-400">SALIN</div>
+              <div class="cursor-pointer self-baseline text-gray-400">PRIJEVOD</div>
             </div>
           </div>
         </div>
         <div class="w-full flex flex-nowrap gap-2 p-2">
-          <div class="text-xs text-gray-500">Pastikan Anda telah melengkapi seluruh informasi sebelum upload bukti transfer. {{ title }} akan memeriksa bukti Anda dalam 24 jam.</div>
+          <div class="text-xs text-gray-500">Provjerite jeste li ispunili sve podatke prije učitavanja dokaza o prijenosu. {{ title }} ispitat će vaše dokaze u roku od 24 sata.</div>
         </div>
         <div class="w-full flex text-sm flex-col bg-white p-3 border-t border-b border-gray-300 justify-between">
-          <p>Info Rek Bank:</p>
+          <p>Podaci o bankovnom računu:</p>
           <label class="block text-center select-none max-w-full" for="receipt_file">
             <div class="inline-block mx-3 mt-3.5 w-24 h-24 border-2 border-gray-700 text-gray-700 border-dashed cursor-pointer">
               <template v-if="selected.proofOfTransaction === null">
@@ -61,7 +61,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
-                  <div class="text-center">Sentuh untuk Upload</div>
+                  <div class="text-center">Dodirnite za prijenos</div>
                 </div>
               </template>
               <template v-else>
@@ -75,7 +75,7 @@
         </div>
         <div class="w-full flex text-sm bg-white p-2 border-b border-gray-300 items-center gap-2">
           <img :src="sampleProofOfTransaction" @click="openDialog = true" alt="Sample proof of transaction" class="w-8 h-8 rounded cursor-pointer border border-gray-300">
-          <span class="text-xs text-gray-500">Contoh Foto untuk Transfer ATM</span>
+          <span class="text-xs text-gray-500">Primjer plaćanja</span>
         </div>
 
         <!-- Modal Dialog -->
@@ -101,7 +101,7 @@
                 @click="openDialog = false"
                 class="py-2 bg-white border border-primary hover:bg-primary hover:bg-opacity-10 text-primary w-full rounded text-sm"
               >
-                OK
+                Potvrdi
               </button>
             </div>
           </div>
@@ -109,11 +109,11 @@
 
         <div class="w-full flex flex-wrap text-sm bg-white border-b border-gray-300 items-center divide-y mt-2 mb-15">
           <div class="flex justify-between items-center w-full h-12 px-3">
-            <div class="sm:text-sm text-xs">Nama pengirim di Rekening Bank</div>
+            <div class="sm:text-sm text-xs">Ime pošiljatelja na bankovnom računu</div>
             <input type="text" v-model="selected.name" placeholder="Nama Lengkap" class="max-h-20 outline-none p-1 border border-gray-300 text-right">
           </div>
           <div class="flex justify-between items-center w-full h-12 px-3">
-            <div class="sm:text-sm text-xs">Transfer dari Bank</div>
+            <div class="sm:text-sm text-xs">Transferi iz banaka</div>
             <bottom-sheet v-model="bankSourceSheet" full-screen>
               <template v-slot:activator="{ on, attrs }">
                 <div 
@@ -122,7 +122,7 @@
                   v-on="on"
                   v-if="!selected.sourceBank.key"
                 >
-                  Pilih Bank
+                Odaberite Banku
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
@@ -155,13 +155,13 @@
           </div>
           <div class="flex justify-between items-center w-full h-14 px-3">
             <div class="sm:text-sm text-xs flex flex-col">
-              Masukknan No. Rekening Anda
-              <small class="hidden sm:block">Pembayaran melalui teller, isi dengan 9999.</small>
+              Unesite broj vašeg računa banke
+              <small class="hidden sm:block">Plaćanje putem šaltera, ispunite 9999.</small>
             </div>
             <input type="text" v-model="selected.accountNumber" placeholder="1234567890" class="max-h-20 outline-none p-1 border border-gray-300 text-right">
           </div>
           <div class="flex justify-between items-center w-full h-12 px-3">
-            <div class="sm:text-sm text-xs">Transfer ke Bank</div>
+            <div class="sm:text-sm text-xs">Virmansko plaćanje</div>
             <bottom-sheet v-model="bankDestinationSheet" full-screen>
               <template v-slot:activator="{ on, attrs }">
                 <div 
@@ -170,7 +170,7 @@
                   v-on="on"
                   v-if="!selected.destinationBank.name"
                 >
-                  Pilih Bank
+                Odaberite Banku
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                   </svg>
@@ -212,7 +212,7 @@
 
         <div class="w-full flex flex-wrap gap-2 p-2 border-t border-gray-300 fixed bottom-0 max-w-xl bg-white">
           <button @click="send" class="w-full p-2 bg-primary text-white rounded text-center text-sm" :to="{ name: 'PaymentConfirm' }">
-            Kirimkan
+           Plati
           </button>
         </div>
       </div>
@@ -324,7 +324,7 @@ export default {
       const files = e.target.files;
       if (files[0] !== undefined) {
         if (files[0].size > 512000) {
-          this.$helper.alert("Out of limit size")
+          this.$helper.alert("Prevelika datoteka!")
           return;
         }
 
@@ -358,7 +358,7 @@ export default {
             this.$closeLoading()
           })
       } else {
-        this.$helper.displayErrors("Please check the input that you provide again.")
+        this.$helper.displayErrors("Ponovno provjerite unos koji ste unijeli.")
       }
     },
     fetchOrder() {

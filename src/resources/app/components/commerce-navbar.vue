@@ -1,9 +1,11 @@
-<template>
+<!--<template>
   <nav class="relative select-none bg-primary flex items-stretch w-full h-20">
     <div class="container flex items-center gap-16 justify-between">
       <Link class="flex flex-shrink-0 items-center" :href="route('skijasi.commerce-theme.home')">
         <commerce-logo />
       </Link>
+
+    
       <div class="items-stretch flex-shrink-0 flex-1 flex-grow;">
         <keep-alive>
           <commerce-search-input />
@@ -35,7 +37,7 @@
                 <div class="border shadow-xl border-gray-300 bg-white rounded-sm navigation-arrow-top">
                   <template v-if="isAuthenticated && carts.length > 0">
                     <div class="p-2">
-                      <div class="text-gray-300 text-sm mb-2">Baru ditambahkan</div>
+                      <div class="text-gray-300 text-sm mb-2">Upravo dodano</div>
                       <Link :href="route('skijasi.commerce-theme.detail', cart.productDetail.product.slug)" class="flex items-start px-2 py-4 hover:bg-gray-100 -mx-2" v-for="cart, index in carts" :key="index">
                         <img class="h-10 w-10 object-cover" :src="cart.productDetail.productImage">
                         <p class="text-gray-700 font-medium text-sm mx-2 line-clamp-1 uppercase">{{ cart.productDetail.product.name }}</p>
@@ -43,7 +45,7 @@
                       </Link>
                     </div>
                     <div class="flex justify-end m-2">
-                      <Link :href="route('skijasi.commerce-theme.cart')" class="flex px-6 bg-primary text-white text-center text-sm h-8 items-center rounded-md shadow-md -mt-2 filter hover:brightness-110">Tampilkan Keranjang Belanja</Link>
+                      <Link :href="route('skijasi.commerce-theme.cart')" class="flex px-6 bg-primary text-white text-center text-sm h-8 items-center rounded-md shadow-md -mt-2 filter hover:brightness-110">Prikaži košaricu</Link>
                     </div>
                   </template>
                   <template v-else>
@@ -51,7 +53,7 @@
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
                       </svg>
-                      <span class="text-sm">Belum Ada Produk</span>
+                      <span class="text-sm">Još nema proizvoda</span>
                     </div>
                   </template>
                 </div>
@@ -91,3 +93,4 @@ export default {
   },
 }
 </script>
+-->

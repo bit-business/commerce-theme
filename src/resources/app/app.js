@@ -104,7 +104,7 @@ Inertia.on("navigate", (event) => {
 
 const appName =
   window.document.getElementsByTagName("title")[0]?.innerText ||
-  "Skijasi Commerce Theme";
+  "Hzuts.hr";
 
 createInertiaApp({
   title: (title) => `${title} - ${appName}`,

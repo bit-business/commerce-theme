@@ -15,7 +15,7 @@
                     <div class="w-full h-px bg-gray-300" />
                     <div class="flex w-full flex-wrap gap-3">
                         <div href="#" class="text-gray-600 w-full font-semibold text-sm flex items-center relative">
-                            Batas Harga
+                            Ograničenje cijene
                         </div>
                         <div class="flex items-center gap-2 w-full max-w-full">
                             <input type="text" placeholder="RP MIN" v-model="minPrice" class="ring-1 w-full ring-gray-300 text-xs rounded-sm focus:outline-none p-2" />
@@ -26,7 +26,7 @@
                     <div class="w-full h-px bg-gray-300" />
                     <div class="flex w-full flex-wrap gap-3 select-none cursor-default">
                         <div class="text-gray-600 w-full font-semibold text-sm flex items-center relative">
-                            Penilaian
+                            Procjena
                         </div>
                         <div class="flex gap-2 flex-wrap">
                             <div class="w-full flex gap-1 items-center cursor-pointer p-1 px-1.5" :class="[rating === 5 ? 'bg-gray-200 rounded-full font-bold' : '']" @click="setRatingOption(5)">
@@ -179,11 +179,11 @@
 
                     <div class="flex flex-col gap-3 w-full">
                         <button class="w-full bg-primary text-white p-1 text-sm uppercase rounded-sm" @click="applyFilterQueryString">
-                            Terapkan
+                          Potvrdi
                         </button>
 
                         <button class="w-full bg-transparent text-primary border border-primary uppercase text-sm p-1 rounded-sm" @click="resetProducts">
-                            Hapus Semua
+                            Ukloniti sve
                         </button>
                     </div>
                 </div>
@@ -199,17 +199,17 @@
                                 d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z"
                             />
                         </svg>
-                        Hasil pencarian untuk&nbsp;<span class="text-primary font-medium">"{{ keyword }}"</span>
+                        Rezultati pretrage za&nbsp;<span class="text-primary font-medium">"{{ keyword }}"</span>
                     </div>
                     <div class="flex bg-gray-200 h-12 items-center px-4 gap-4 rounded-xl w-full">
-                        <div class="text-gray-500 text-sm">Urutkan</div>
+                        <div class="text-gray-500 text-sm">Poruka</div>
                         <button :class="[sort === 'latest' ? 'bg-primary text-white' : 'bg-white hover:bg-gray-100 text-gray-600']" class="h-8 px-6 rounded-md text-sm" @click="applyFilterSort('latest')">Terbaru</button>
 
                         <button :class="[sort === 'most-selling' ? 'bg-primary text-white' : 'bg-white hover:bg-gray-100 text-gray-600']" class="h-8 px-6 rounded-md text-sm" @click="applyFilterSort('most-selling')">Terlaris</button>
 
                         <div class="relative md:max-w-52 max-w-32 w-full">
                             <button class="w-full h-8 bg-white text-gray-600 rounded-md text-sm flex items-center justify-between px-3" @click="priceFilter = !priceFilter" :class="[sort === 'price' ? 'text-primary' : '']">
-                                <span>Harga</span>
+                                <span>Cijena</span>
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                                     <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
                                 </svg>
@@ -222,7 +222,7 @@
                                         class="p-2 flex items-center justify-between text-sm hover:bg-black hover:bg-opacity-5 rounded-t-md cursor-pointer"
                                         @click="applyFilterSortPrice('asc')"
                                     >
-                                        Harga: Rendah ke Tinggi
+                                    Cijena: od niske do visoke
                                         <template v-if="sort === 'price' && type === 'asc'">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -234,7 +234,7 @@
                                         class="p-2 flex items-center justify-between text-sm hover:bg-black hover:bg-opacity-5 rounded-b-md cursor-pointer"
                                         @click="applyFilterSortPrice('desc')"
                                     >
-                                        Harga: Tinggi ke Rendah
+                                    Cijena: visoka prema niskoj
                                         <template v-if="sort === 'price' && type === 'desc'">
                                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -323,7 +323,7 @@
             </div>
 
             <div class="p-3 w-full flex flex-col gap-2">
-              <div class="text-sm">Batas Harga (Rp)</div>
+              <div class="text-sm">Ograničenje cijene (EUR)</div>
               <div class="p-2 bg-gray-100 flex gap-1 items-center">
                 <input type="text" placeholder="MIN" v-model="minPrice" class="ring-1 w-full ring-gray-300 text-xs rounded-sm focus:outline-none p-2">
                 <div class="h-px w-6 bg-gray-300" />
@@ -332,7 +332,7 @@
             </div>
 
             <div class="p-3 w-full flex flex-col gap-2">
-              <div class="text-sm">Penilaian</div>
+              <div class="text-sm">Procjena</div>
               <div class="grid grid-cols-2 gap-2 w-full items-center justify-center">
                 <div @click="rating = 5" :class="[rating === 5 ? 'border border-primary' : '']" class="bg-gray-100 p-2 text-xs flex justify-center rounded-md text-center">Bintang 5</div>
                 <div @click="rating = 4" :class="[rating === 4 ? 'border border-primary' : '']" class="bg-gray-100 p-2 text-xs flex justify-center rounded-md text-center">Bintang 4 ke atas</div>
@@ -361,7 +361,7 @@
                         <div @click="applyFilterSort('latest')" class="py-3 text-center w-1/4" :class="[sort === 'latest' ? 'text-primary border-b-2 border-primary' : '']">Terbaru</div>
                         <div @click="applyFilterSort('most-selling')" class="py-3 text-center w-1/4" :class="[sort === 'most-selling' ? 'text-primary border-b-2 border-primary' : '']">Terlaris</div>
                         <div @click="applyFilterSortPrice(type === 'desc' ? 'asc' : 'desc')" class="py-3 text-center w-1/4 flex items-center justify-center gap-2" :class="[sort === 'price' ? 'text-primary border-b-2 border-primary' : '']">
-                            Harga
+                            Cijena
                             <template v-if="sort !== 'price'">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4" />
@@ -506,7 +506,7 @@
         },
         beforeRouteEnter(to, from, next) {
             next((vm) => {
-                document.title = `Pencarian ${vm.$voca.titleCase(vm.$page.props.keyword, true)} - Skijasi Commerce Theme`;
+                document.title = `Web ${vm.$voca.titleCase(vm.$page.props.keyword, true)} - Hzuts.hr`;
             });
         },
         mounted() {

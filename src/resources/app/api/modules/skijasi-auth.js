@@ -31,6 +31,12 @@ export default {
     return resource.post(ep, data);
   },
 
+  sendContactForm(data) {
+    const ep = apiPrefix + "/v1/auth/send-contact-form";
+    return resource.post(ep, data);
+  },
+  
+
   forgotPasswordVerifyToken(data) {
     let ep = apiPrefix + "/v1/auth/forgot-password-verify";
     return resource.post(ep, data);

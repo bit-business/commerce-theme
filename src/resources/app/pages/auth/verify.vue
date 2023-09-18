@@ -17,7 +17,7 @@
         </div>
         <div class="col-span-1 md:px-0 lg:px-20">
           <div class="bg-white rounded-xl p-8 flex flex-wrap gap-2 shadow-md">
-            <div class="text-xl w-full">Verification</div>
+            <div class="text-xl w-full">Verifikacija</div>
             <input
               type="email"
               class="
@@ -42,11 +42,11 @@
             />
             <button :class="buttonClasses" @click="verify">
               <commerce-loading v-if="loading" />
-              <span v-else>VERIFIY</span>
+              <span v-else>POTVRDI</span>
             </button>
             <div class="flex w-full flex-wrap">
               <Link :href="route('skijasi.commerce-theme.forgot-password', $page.props.email)" class="text-xs text-primary font-medium">
-                Lupa Password
+                Zaboravili ste lozinku?
               </Link>
               <div class="w-full flex items-center gap-4 my-2">
                 <div class="h-px w-full bg-gray-300" />
@@ -66,7 +66,7 @@
     </div>
     <div class="flex flex-col sm:hidden bg-gray-50 h-auth relative z-0 justify-start pt-4 items-center transform px-4">
       <div class="relative mt-8 w-full">
-        <div class="text-xs text-gray-400">Mohon verifikasi email anda dengan memasukkan token yang telah dikirimkan ke email anda.</div>
+        <div class="text-xs text-gray-400">Potvrdite svoju e-poštu unosom tokena koji je poslan na vašu e-poštu.</div>
       </div>
       <div class="relative mt-6 w-full">
         <input type="text" class="border-none outline-none w-full py-2 pl-8 pr-24 focus:outline-none text-sm rounded-md rounded-b-none bg-transparent" placeholder="Kode Verifikasi" v-model="mobileToken" maxlength="6" max="999999">
@@ -78,12 +78,12 @@
         </div>
         <div class="absolute right-1 top-1/2 transform -translate-y-1/2">
           <div :class="['inline-block text-xs border py-1.5 text-center w-24 rounded-md', getCountdown === 0 ? 'bg-primary text-white border-transparent' : 'border-gray-200 text-gray-400 bg-transparent']" @click="sendVerify">
-            Kirim Ulang ({{ getCountdown }})
+            Ponovno pošalji({{ getCountdown }})
           </div>
         </div>
       </div>
       <div :class="['h-10 w-full mt-6 flex items-center justify-center rounded-md', $v.mobileToken.$invalid ? 'cursor-none text-gray-500 bg-gray-200 pointer-events-none' : 'bg-primary text-white']" @click="mobileVerify">
-        Verifikasi
+        Verifikacija
       </div>
     </div>
   </div>
@@ -197,12 +197,12 @@ export default {
         })
         .then((response) => {
           this.$inertia.visit(this.route("skijasi.commerce-theme.login"));
-          this.$helper.alert("Verifed success")
+          this.$helper.alert("Verifikacija uspješna")
         })
         .catch((error) => {
           if (error.message && error.message === "EXPIRED") {
             this.expired = true;
-            this.$helper.displayErrors("Verification token expired")
+            this.$helper.displayErrors("Verifikacijski token je istekao")
           } else {
             this.$helper.displayErrors(error)
           }
@@ -220,12 +220,12 @@ export default {
         })
         .then((response) => {
           this.$inertia.visit(this.route("skijasi.commerce-theme.login"));
-          this.$helper.alert("Verifed success")
+          this.$helper.alert("Verifikacija uspješna")
         })
         .catch((error) => {
           if (error.message && error.message === "EXPIRED") {
             this.expired = true;
-            this.$helper.displayErrors("Verification token expired")
+            this.$helper.displayErrors("Verifikacijski token je istekao")
           } else {
             this.$helper.displayErrors(error)
           }
@@ -242,7 +242,7 @@ export default {
             email: this.email,
           })
           .then((response) => {
-            this.$helper.alert("Verificaiton token has been sent")
+            this.$helper.alert("Token za verifikaciju je poslan")
           })
           .catch((error) => {
             this.$helper.displayErrors(error)

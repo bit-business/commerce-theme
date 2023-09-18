@@ -2,7 +2,7 @@
   <div>
     <Head :title="$page.props.name" />
 
-    <div class="hidden sm:block">
+    <div class="navbar hidden sm:block">
       <div class="pt-8 container grid grid-cols-profile">
         <div class="pr-8">
           <div class="h-22 flex items-center border-b">
@@ -15,7 +15,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                 </svg>
-                Ubah Profil
+                Izmijeni Profil
               </Link>
             </div>
           </div>
@@ -24,54 +24,109 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
-              <span class="text-gray-700 font-semibold group-hover:text-primary transition-colors text-sm pl-2">Akun Saya</span>
+              <span class="text-gray-700 font-semibold group-hover:text-primary transition-colors text-sm pl-2">Moj profil</span>
             </Link>
             <Link :href="route('skijasi.commerce-theme.profile')" class="w-full inline-flex items-center ml-10 group">
               <div class="col-start-2 col-end-3 text-primary cursor-pointer text-sm">Profil</div>
             </Link>
             <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center ml-10 group">
-              <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Alamat</div>
+              <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Adresa</div>
             </Link>
             <Link :href="route('skijasi.commerce-theme.change-password')" class="w-full inline-flex items-center ml-10 group">
-              <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Ubah Password</div>
+              <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Promjena lozinke</div>
             </Link>
             <Link :href="route('skijasi.commerce-theme.order')" class="w-full inline-flex items-center group">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
               </svg>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Pesanan Saya</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Moja plaćanja</span>
             </Link>
             <Link :href="route('skijasi.commerce-theme.notification')" class="w-full inline-flex items-center group">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Notifikasi</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Obavijesti</span>
             </Link>
+
+            <div class="w-full inline-flex items-center group">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+              </svg>
+              <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Odjavi se</span>
+            </div>
           </div>
         </div>
         <div class="bg-white shadow-sm px-6 rounded-xl">
           <div class="h-22 flex flex-col py-4 justify-center border-b">
-            <span class="text-lg font-medium text-gray-700">Profil Saya</span>
-            <span class="text-sm text-gray-500">Kelola informasi profil Anda untuk mengontrol, melindungi dan mengamankan akun</span>
+            <span class="text-lg font-medium text-gray-700">Moj Profil</span>
+            <span class="text-sm text-gray-500">Napravite izmjene vašeg profila</span>
           </div>
           <div class="grid grid-cols-3 p-6 mb-4 items-start">
             <div class="col-span-2 grid md:grid-cols-3 lg:grid-cols-profile-content gap-x-6 pr-4 content-center items-center">
-              <div class="text-sm text-right text-gray-500 mb-4">Nama</div>
+              <div class="text-sm text-right text-gray-500 mb-4">Ime</div>
               <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="name" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+                <input v-model="name" disabled type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary disabled:bg-gray-100 disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
               </div>
+
+              <div class="text-sm text-right text-gray-500 mb-4">Prezime</div>
+              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
+                <input v-model="username" disabled type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary disabled:bg-gray-100 disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
+              </div>
+              <div class="text-sm text-right text-gray-500 mb-4">Datum rođenja</div>
+              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
+                <input v-model="datumrodjenja" disabled type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary disabled:bg-gray-100 disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
+              </div>
+              <div class="text-sm text-right text-gray-500 mb-4">OIB</div>
+              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
+                <input v-model="oib" disabled type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary disabled:bg-gray-100 disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
+              </div>
+              <div class="text-sm text-right text-gray-500 mb-4">Spol</div>
+              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
+                <input v-model="spol" disabled type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary disabled:bg-gray-100 disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
+              </div>
+
+              <div class="text-sm text-right text-gray-500 mb-4">Broj mobitela</div>
+              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
+                <input v-model="brojmobitela" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+              </div>
+              <div class="text-sm text-right text-gray-500 mb-4">Podijeli Facebook</div>
+              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
+                <input v-model="urlfacebook" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+              </div>
+              <div class="text-sm text-right text-gray-500 mb-4">Podijeli Instagram</div>
+              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
+                <input v-model="urlinstagram" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+              </div>
+              <div class="text-sm text-right text-gray-500 mb-4">Podijeli Twitter</div>
+              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
+                <input v-model="urltwitter" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+              </div>
+              <div class="text-sm text-right text-gray-500 mb-4">Podijeli LinkedIn</div>
+              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
+                <input v-model="urllinkedin" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+              </div>
+    
+
+
+
+
               <div class="text-sm text-right text-gray-500 mb-4">Email</div>
               <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="email" disabled type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary disabled:bg-gray-100 disabled:text-gray-300 disabled:shadow-none disabled:cursor-not-allowed">
+                <input v-model="email" disabled type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary disabled:bg-gray-100 disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
               </div>
               <div class="col-start-2 col-end-3 mt-2">
-                <button class="bg-primary font-medium px-6 py-2 rounded-md text-white text-sm filter hover:brightness-110" @click="save">Simpan</button>
+                <button class="bg-primary font-medium px-6 py-2 rounded-md text-white text-sm filter hover:brightness-110" @click="save">Spremi</button>
               </div>
             </div>
             <div class="flex flex-col justify-start col-span-1 p-8 items-center border-l ml-4">
-              <div class="h-24 w-24 bg-gray-300 flex rounded-full items-center justify-center clip-circle">
+           
+                <div class="h-24 w-24 bg-gray-300 flex rounded-full items-center justify-center clip-circle relative"> 
                 <template v-if="user.avatar">
                   <img :src="avatar ? avatar : user.avatar" alt="User's avatar" class="object-cover h-24 w-24">
+        <!-- Conditional overlay based on avatar approval status -->
+        <div v-if="avatar_approved" class="absolute bottom-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
+            <span class="text-white items-center justify-center flex text-center">Čeka se odobrenje</span>
+        </div>
                 </template>
                 <template v-else>
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full text-white" viewBox="0 0 20 20" fill="currentColor">
@@ -81,16 +136,17 @@
               </div>
               <input type="file" @change="filesChange" accept="image/png, image/jpeg" ref="file" class="hidden">
               <button @click="$refs.file.click()" class="px-6 py-2 text-sm bg-white border mt-4 mb-2 rounded-md hover:bg-gray-50">
-                Pilih Gambar
+                Odaberite Sliku
               </button>
-              <span class="text-sm text-gray-400">Ukuran gambar: maks. 2 MB</span>
-              <span class="text-sm text-gray-400">Format gambar: .JPEG, .PNG</span>
+              <span class="text-sm text-gray-400">Veličina slike: maks. 4 MB</span>
+              <span class="text-sm text-gray-400">Formati slike: .JPEG, .PNG</span>
             </div>
           </div>
         </div>
       </div>
     </div>
 
+<!-- BLOCK ZA MOBITELE OBRISATI?-->
     <div class="block sm:hidden">
       <div class="h-36 flex flex-col p-4 bg-primary">
         <Link :href="route('skijasi.commerce-theme.cart')" class="w-full flex justify-end text-white flex-shrink">
@@ -109,16 +165,18 @@
           </div>
         </div>
       </div>
+<!-- BLOCK ZA MOBITELE OBRISATI?-->
+
 
       <div class="mt-2 bg-white flex flex-col">
         <Link :href="route('skijasi.commerce-theme.order')" class="h-10 px-4 flex items-center border-b border-gray-200 gap-2 text-sm">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
           </svg>
-          Pesanan Saya
+          Moja plaćanja
           <div class="flex-grow" />
           <div class="flex items-center justify-center gap-1">
-            <span class="text-xs">Lihat riwayat pesanan</span>
+            <span class="text-xs">Pregledajte povijest plaćanja</span>
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
             </svg>
@@ -131,7 +189,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
           </svg>
-          Alamat
+          Adresa
           <div class="flex-grow" />
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
@@ -141,27 +199,30 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z" />
           </svg>
-          Change Password
+          Promijeni lozinku
           <div class="flex-grow" />
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
         </Link>
-        <Link :href="route('skijasi.commerce-theme.notification')" class="h-10 px-4 flex items-center gap-2 text-sm border-b">
+        <div class="h-10 px-4 flex items-center gap-2 text-sm border-b">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
           </svg>
-          Notification
+          Obavijesti
           <div class="flex-grow" />
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-600" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
           </svg>
-        </Link>
+        </div>
+   
+
+      
       </div>
 
       <div class="px-2 mt-4">
         <div @click="() => logout()" class="h-8 rounded-md uppercase text-sm font-medium flex items-center justify-center text-center w-full bg-primary text-white">
-          Logout
+          Odjavi se
         </div>
       </div>
     </div>
@@ -182,12 +243,30 @@ export default {
   },
   data() {
     return {
+      avatar_approved: null,
+
       name: null,
+
+      username: null,
+      datumrodjenja: null,
+      brojmobitela: null,
+      drzava: null,
+      grad: null,
+      postanskibroj: null,
+      adresa: null,
+      oib: null,
+      spol: null,
+      urlfacebook: null,
+      urltwitter: null,
+      urlinstagram: null,
+      urllinkedin: null,
+
       email: null,
       avatar: null,
     }
   },
   computed: {
+  
     ...mapState({
       isAuthenticated(state) {
         return state.isAuthenticated
@@ -205,15 +284,36 @@ export default {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     }
 
-    this.name = this.user.name
-    this.email = this.user.email
+    this.name = this.user.name;
+    this.email = this.user.email;
+    this.avatar = this.user.avatar;
+
+    this.username = this.user.username;
+    this.datumrodjenja = this.user.datumrodjenja;
+    this.brojmobitela = this.user.brojmobitela;
+    this.drzava = this.user.drzava;
+    this.grad = this.user.grad;
+    this.postanskibroj = this.user.postanskibroj;
+    this.adresa = this.user.adresa;
+    this.oib = this.user.oib;
+    this.spol = this.user.spol;
+    this.urlfacebook = this.user.urlfacebook;
+    this.urltwitter = this.user.urltwitter;
+    this.urlinstagram = this.user.urlinstagram;
+    this.urllinkedin = this.user.urllinkedin;
+
+    this.avatar_approved = this.user.avatar_approved;
+    console.log("User object:", this.user);
+    console.log("avatar_approved:", this.avatar_approved);
+
   },
+
   methods: {
     filesChange(e) {
       const file = e.target.files[0]
       const fileSize = Math.round((file.size / 1024))
-      if (fileSize > 2048) {
-        this.$alert('Maksimal ukuran gambar adalah 2MB!')
+      if (fileSize > 4048) {
+        this.$alert('Maksimalna veličina slike je 4MB!')
         return
       }
       const fileReader = new FileReader()
@@ -225,14 +325,30 @@ export default {
         this.$alert(error)
       };
     },
+
     save() {
       this.$api.skijasiUser
         .edit({
-          name: this.name,
-          avatar: this.avatar
+   
+        name: this.name,
+        email: this.email,
+        brojmobitela: this.brojmobitela,
+        urlfacebook: this.urlfacebook,
+        urltwitter: this.urltwitter,
+        urlinstagram: this.urlinstagram,
+        urllinkedin: this.urllinkedin,
+
+        //spremanje u new_avatar 
+        avatar: this.avatar
+
         })
         .then(res => {
+          console.log("API response:", res.data);
           this.$store.dispatch('SET_USER', res.data.user)
+          this.$alert('Uspješno pohranjeno!')
+        })
+        .catch(err => {
+          this.$alert('Neuspješno! Provjerite da li ste unijeli sve dobro')
         })
     },
     logout() {
@@ -260,6 +376,8 @@ export default {
             rememberToken: null,
             createdAt: null,
             updatedAt: null,
+
+   
           });
           this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
         })
@@ -267,3 +385,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .navbar {
+    padding-top: 0.15rem; 
+    padding-bottom: 3.15rem; 
+  }
+  </style>

@@ -9,14 +9,14 @@
     <!-- Carousel Navigation Button -->
     <template>
       <div class="absolute top-1/2 transform -translate-y-1/2 left-0 z-10 invisible group-hover:visible">
-        <button @click="prev" class="py-2 bg-primary bg-opacity-40 hover:bg-opacity-75 rounded-r-xl">
+        <button @click="prev" class="py-2 bg-primary bg-opacity-10 hover:bg-opacity-75 rounded-r-xl">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
           </svg>
         </button>
       </div>
       <div class="absolute top-1/2 transform -translate-y-1/2 right-0 z-10 invisible group-hover:visible">
-        <button @click="next" class="py-2 bg-primary bg-opacity-40 hover:bg-opacity-75 rounded-l-xl">
+        <button @click="next" class="py-2 bg-primary bg-opacity-10 hover:bg-opacity-75 rounded-l-xl">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-12 w-12 text-white" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
           </svg>
@@ -27,7 +27,7 @@
     <!-- Carousel Pagination -->
     <template>
       <div class="w-full justify-center absolute bottom-2 flex gap-2">
-        <div :class="['w-3 h-3 rounded-full border border-gray-400 bg-primary', currentActiveIndex === index ? 'bg-opacity-100' : 'bg-opacity-30']" v-for="index in getTotalPage" :key="index" />
+        <div :class="['w-3 h-3 rounded-full border border-primary bg-white', currentActiveIndex === index ? 'bg-opacity-70' : 'bg-opacity-20']" v-for="index in getTotalPage" :key="index" />
       </div>
     </template>
   </div>

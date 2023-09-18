@@ -1,5 +1,5 @@
 <template>
-  <nav class="absolute z-30 pl-8 pr-8 top-2 select-none block w-full">
+  <!--<nav class="absolute z-30 pl-8 pr-8 top-2 select-none block w-full">
     <div class="h-10 w-full relative flex items-center gap-3">
       <div class="relative flex items-center h-10 flex-grow">
         <div class="absolute left-2 text-primary">
@@ -12,7 +12,7 @@
           v-model="keyword"
           @keypress.enter="searchProduct"
           class="block w-full h-full focus:outline-none pr-3 pl-9 py-4 rounded-sm"
-          placeholder="Search anything here"
+          placeholder="Pretraživanje"
         />
       </div>
       <div class="gap-3 flex">
@@ -28,7 +28,7 @@
         </Link>
       </div>
     </div>
-  </nav>
+  </nav>  -->
 </template>
 
 <script>
@@ -61,7 +61,7 @@ export default {
   },
     beforeRouteEnter(to, from, next) {
             next((vm) => {
-                document.title = `Pencarian ${vm.$voca.titleCase(vm.$page.props.keyword, true)} - Skijasi Commerce Theme`;
+                document.title = `Web ${vm.$voca.titleCase(vm.$page.props.keyword, true)} - Hzuts.hr`;
             });
         },
          mounted(){

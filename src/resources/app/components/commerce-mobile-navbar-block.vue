@@ -17,7 +17,7 @@
           v-model="search"
           @keypress.enter="searchProduct"
           class="block w-full h-full focus:outline-none pr-3 pl-9 py-4 rounded-sm bg-gray-100 text-sm"
-          placeholder="Search anything here"
+          placeholder="Pretraživanje"
         />
       </div>
       <div class="text-primary flex flex-row items-end">

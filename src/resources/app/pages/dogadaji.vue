@@ -1,7 +1,10 @@
+
+
+
 <template>
   <div>
-    <div class="container mt-8 hidden sm:block navbarpraznina">
-      <div class="bg-white grid grid-cols-5 gap-8 p-4 shadow-sm rounded-xl">
+    <div class="hidden sm:block navbarpraznina">
+      <div class="bg-white object-cover grid-cols-5 gap-8 shadow-sm ">
         <div class="col-start-1 col-end-3 w-full">
           <div class="aspect-w-1 aspect-h-1">
             <img :src="activeImageSource" alt="" class="w-full h-full object-center object-cover cursor-pointer rounded-xl">
@@ -27,13 +30,7 @@
         </div>
         <div class="w-full col-start-3 col-end-6">
           <div class="uppercase text-lg font-semibold text-gray-700">{{ product.name }}</div>
-          <div class="flex items-center mt-4 flex-nowrap gap-2 text-sm divide-x">
-
-      
-            <div class="pl-2">
-              {{ getProductSold }} <span class="text-gray-500">Prodano</span>
-            </div>
-          </div>
+       
           <div class="mt-4 flex items-center bg-gray-100 gap-2 rounded-xl" v-if="hasActiveDiscount">
             <div class="text-normal text-gray-400 pl-5 py-3 line-through">
               {{ $currency(activePrice) }}
@@ -42,7 +39,7 @@
               {{ getDiscountedPrice(activePrice, activeDiscount) }}
             </div>
             <div class="flex items-center gap-2 text-white text-xs bg-primary rounded-sm px-1.5 py-0.5 font-bold">
-             - {{ getDiscount }} Popust
+              {{ getDiscount }} POPUST
             </div>
           </div>
           <div class="mt-4 flex items-center bg-gray-100 gap-2 rounded-xl" v-else>
@@ -52,7 +49,7 @@
           </div>
           <div class="p-4 flex flex-wrap text-sm text-gray-500 gap-4">
             <div class="grid grid-cols-6 gap-y-4 items-center w-full">
-              <div class="col-span-1">Član:</div>
+              <div class="col-span-1">Varijacije</div>
               <div class="col-span-5 flex gap-2">
                 <div class="px-2.5 py-1.5 text-sm border rounded-md hover:border-primary hover:text-primary cursor-pointer"
                   :class="productDetail.id == selectedProduct.id ? 'text-primary border-primary' : 'text-gray-500 border-gray-300'"
@@ -68,20 +65,18 @@
               <div class="col-span-1">Količina</div>
               <div class="col-span-5 flex items-center gap-4">
                 <counter v-model="quantity" :min="1" :max="product.productDetails[active].quantity" />
-                Preostalo {{ activeStock }} ulaznica
+                Preostalo {{ activeStock }} komada
               </div>
             </div>
             <div class="w-full flex gap-4 items-center">
               <button class="p-3 flex items-center gap-2 border border-primary bg-primary bg-opacity-10 text-primary rounded-md" @click="addToCart">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
                 </svg>
-                Prijevoz
+                Dodaj u košaricu
               </button>
               <button class="py-3 px-12 flex items-center bg-primary text-white rounded-md hover:brightness-110 filter" @click="buyNow">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10" viewBox="0 0 20 20" fill="currentColor">
-                  <path d="M3 1a1 1 0 000 2h1.22l.305 1.222a.997.997 0 00.01.042l1.358 5.43-.893.892C3.74 11.846 4.632 14 6.414 14H15a1 1 0 000-2H6.414l1-1H14a1 1 0 00.894-.553l3-6A1 1 0 0017 3H6.28l-.31-1.243A1 1 0 005 1H3zM16 16.5a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0zM6.5 18a1.5 1.5 0 100-3 1.5 1.5 0 000 3z" />
-                </svg> Prijava i plaćanje
+                Kupi sada
               </button>
             </div>
           </div>
@@ -105,55 +100,14 @@
 
             <div class="w-full bg-gray-100 text-gray-700 font-medium text-lg py-2 px-4 rounded-xl">Opis</div>
             <div class="mt-2 p-4 text-sm flex-wrap text-justify">
-              <div v-html="product.desc"></div>
-
+              {{ product.desc }}
             </div>
           </div>
 
-          <!--
-          <div class="bg-white p-6 mt-8 rounded-xl">
-            <div class="text-lg text-gray-700 font-medium w-full">Ocjene</div>
-            <div class="grid grid-cols-6 bg-gray-100 border border-gray-200 w-full p-6 gap-8 mt-4 rounded-xl">
-              <div class="col-span-1 text-primary flex justify-center flex-wrap gap-2">
-                <div class="font-medium flex-1 text-center"><span class="text-2xl">{{ parseFloat(product.reviewAvgRating || 0).toFixed(2) }}</span> dari 5</div>
-                <rating class="flex-1 justify-center" stroke v-model="product.reviewAvgRating" :star-width="20" :star-height="20" star-active-color="rgba(6, 187, 211, 1)" star-empty-color="transparent" />
-              </div>
-              <div class="col-span-5 flex items-center flex-wrap gap-2">
-                <button @click="reviewActive = 0" :class="getReviewButtonClasses(0)" class="py-1 px-4 text-sm border rounded-md">Semua</button>
-                <button @click="reviewActive = 5" :class="getReviewButtonClasses(5)" class="py-1 px-4 text-sm border rounded-md">5 Bintang ({{ rating[5] }})</button>
-                <button @click="reviewActive = 4" :class="getReviewButtonClasses(4)" class="py-1 px-4 text-sm border rounded-md">4 Bintang ({{ rating[4] }})</button>
-                <button @click="reviewActive = 3" :class="getReviewButtonClasses(3)" class="py-1 px-4 text-sm border rounded-md">3 Bintang ({{ rating[3] }})</button>
-                <button @click="reviewActive = 2" :class="getReviewButtonClasses(2)" class="py-1 px-4 text-sm border rounded-md">2 Bintang ({{ rating[2] }})</button>
-                <button @click="reviewActive = 1" :class="getReviewButtonClasses(1)" class="py-1 px-4 text-sm border rounded-md">1 Bintang ({{ rating[1] }})</button>
-              </div>
-            </div>
-            <div class="flex w-full flex-wrap">
-              <div class="flex items-start w-full pl-4 border-b border-gray-300 pb-4 last:border-b-0 gap-4 flex-wrap mt-4" v-for="review, index in getFilteredReviews" :key="index">
-                <img :src="review.user.avatar" class="object-center object-cover w-12 h-12 rounded-full">
-                <div class="flex-1 flex flex-wrap gap-1 text-sm">
-                  <div class="text-xs w-full">{{ review.user.name }}</div>
-                  <rating stroke v-model="review.rating" :star-width="12" :star-height="12" star-active-color="rgba(6, 187, 211, 1)" star-empty-color="transparent" />
-                  <div class="w-full text-gray-400 capitalize">Varijanta: {{ review.orderDetail.productDetail.name }}</div>
-                  <div class="text-gray-700 my-2 w-full" v-if="review.review">{{ review.review }}</div>
-                  <div class="w-full flex flex-wrap gap-2">
-                    <template v-for="media, index in review.media">
-                      <img v-if="isImage(media)" :src="media" class="w-20 h-20 object-cover" :key="`image-${index}`">
-                      <video v-if="isVideo(media)" :key="`video-${index}`" class="w-20 h-20">
-                        <source :src="media">
-                      </video>
-                    </template>
-                  </div>
-                  <div class="text-gray-400 text-xs">{{ $moment(review.createdAt).format('DD-MM-YYYY HH:mm:ss') }}</div>
-                </div>
-              </div>
-            </div>
-            <pagination v-if="review.data.length > 0" :total="review.total" :per-page="10" v-model="currentPage" />
-          </div>
-        -->
-
+         
         </div>
         <div class="flex flex-wrap col-start-5 col-end-auto row-span-2 mb-auto bg-white shadow-sm pt-4 rounded-xl">
-          <div class="text-gray-400 text-sm pl-4">Drugi Događaji</div>
+          <div class="text-gray-400 text-sm pl-4">Drugi događaji</div>
           <div class="flex flex-col w-full">
             <Link :href="route('skijasi.commerce-theme.detail', similarProduct.slug)" v-for="similarProduct, index in similarProducts" :key="index">
               <div class="flex flex-col p-4">
@@ -167,6 +121,7 @@
             </Link>
           </div>
         </div>
+        
       </div>
     </div>
 
@@ -253,13 +208,13 @@
                   {{ $currency(activePrice) }}
                 </div>
                 <div class="text-sm text-gray-400">
-                  Stok: {{ activeStock }}
+                  Preostalo: {{ activeStock }}
                 </div>
               </div>
             </div>
 
             <div class="w-full flex gap-2 flex-col border-b pb-3">
-              <div class="text-sm">Član</div>
+              <div class="text-sm">Član popust</div>
 
               <div class="w-full flex flex-row flex-wrap gap-4">
                 <div v-for="productDetail, index in product.productDetails" :key="index" class="py-1.5 gap-2 rounded-md bg-gray-100 flex items-center px-3" @click="clickProductDetail(productDetail, index)" :class="[index == active ? 'border-primary border' : '']">
@@ -270,7 +225,7 @@
             </div>
 
             <div class="w-full flex gap-2 justify-between items-center">
-              <div class="text-sm">Preostalo</div>
+              <div class="text-sm">Iznos</div>
               <counter v-model="quantity" :min="1" :max="product.productDetails[active].quantity" />
             </div>
 
@@ -289,10 +244,10 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
-          Prijevoz
+          Dodaj u košaricu
         </div>
         <div class="w-3/5 h-12 bg-primary flex items-center justify-center text-sm text-white border-l border-white" @click="buyNow">
-          Na plaćanje
+          Kupi sada
         </div>
       </div>
 
@@ -391,11 +346,11 @@
 
       <div class="flex flex-col bg-white p-3 pb-0" :class="!openDesc ? 'max-h-80' : ''">
         <div class="relative overflow-hidden overflow-clip" :class="!openDesc ? 'max-h-64' : ''">
-          <div v-html="product.desc"></div>
+          {{ product.desc }}
           <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent" v-if="!openDesc" />
         </div>
         <div class="max-h-16 h-16 inline-flex justify-center items-center w-full gap-2 text-sm text-primary" @click="toggleDescButton">
-          Vidi više
+          Lihat Lainnya
           <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 duration-200 transition-all ease-in-out transform" :class="!openDesc ? '' : 'rotate-180'" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
           </svg>
@@ -403,7 +358,16 @@
       </div>
 
       <div class="bg-white mt-3 flex flex-col border-b">
-
+        <div class="flex gap-2 flex-row flex-nowrap p-3 border-b">
+          <div class="flex-grow flex flex-col">
+            Ocjena proizvoda
+            <div class="flex gap-2 text-xs">
+              <rating stroke v-model="product.reviewAvgRating" :star-width="16" :star-height="16" star-active-color="rgba(6, 187, 211, 1)" star-empty-color="transparent" />
+              <div class="text-primary">{{ product.reviewAvgRating }}/5</div>
+              <div class="text-gray-500">({{ product.reviewCount }} Ulasan)</div>
+            </div>
+          </div>
+        </div>
 
         <div class="flex w-full flex-wrap">
           <div class="flex items-start w-full pl-4 border-b border-gray-300 pb-4 last:border-b-0 gap-4 flex-wrap mt-4" v-for="review, index in getFilteredReviews" :key="index">
@@ -467,7 +431,7 @@ import Pagination from './../components/pagination/pagination.vue'
 
 import { Link } from '@inertiajs/inertia-vue'
 import appLayout from '../layouts/app.vue'
-import detailLayout from '../layouts/detail.vue'
+import detailLayout from '../layouts/dogadaji.vue'
 
 import CarouselSingle from '../components/carousel-single/carousel.vue'
 import CarouselItemSingle from '../components/carousel-single/carousel-item.vue'
@@ -618,7 +582,7 @@ export default {
   methods: {
     openVariationDialog() {
       if (!this.isAuthenticated) {
-        this.$helper.alert("Morate se prijaviti prvo!")
+        this.$helper.alert("Molimo prvo se prijavite!")
         this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
         return
       }
@@ -745,7 +709,7 @@ export default {
       }
 
       if (!this.isAuthenticated) {
-        this.$helper.alert("You must login first!")
+        this.$helper.alert("Molimo prvo se prijavite. Niste prijavljeni.")
         this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
         return
       }
@@ -827,8 +791,13 @@ export default {
   }
 }
 </script>
+
+
 <style scoped>
   .navbarpraznina {
-    padding-top: 0.00rem; 
+    padding-top: 3.75rem; 
   }
+
+
+
   </style>

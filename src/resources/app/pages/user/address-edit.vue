@@ -14,7 +14,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                 <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
               </svg>
-              Ubah Profil
+              Izmijeni Profil
             </Link>
           </div>
         </div>
@@ -23,28 +23,28 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
-            <span class="text-gray-700 font-semibold group-hover:text-primary transition-colors text-sm pl-2">Akun Saya</span>
+            <span class="text-gray-700 font-semibold group-hover:text-primary transition-colors text-sm pl-2">Moj Profil</span>
           </Link>
           <Link :href="route('skijasi.commerce-theme.profile')" class="w-full inline-flex items-center ml-10 group">
             <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Profil</div>
           </Link>
           <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center ml-10 group">
-            <div class="col-start-2 col-end-3 text-primary cursor-pointer text-sm">Alamat</div>
+            <div class="col-start-2 col-end-3 text-primary cursor-pointer text-sm">Adresa</div>
           </Link>
           <Link :href="route('skijasi.commerce-theme.change-password')" class="w-full inline-flex items-center ml-10 group">
-            <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Ubah Password</div>
+            <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Promijeni Lozinku</div>
           </Link>
           <Link :href="route('skijasi.commerce-theme.order')" class="w-full inline-flex items-center group">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
             </svg>
-            <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Pesanan Saya</span>
+            <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Moja Plaćanja</span>
           </Link>
           <Link :href="route('skijasi.commerce-theme.notification')" class="w-full inline-flex items-center group">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
             </svg>
-            <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Notifikasi</span>
+            <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Obavijesti</span>
           </Link>
         </div>
       </div>
@@ -55,40 +55,40 @@
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
-          <span class="text-lg font-medium text-gray-700">Ubah Alamat</span>
+          <span class="text-lg font-medium text-gray-700">Promijeni adresu</span>
         </div>
         <div class="flex py-6 mb-4 flex-wrap gap-y-4">
           <div class="flex w-full flex-nowrap gap-4">
-            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Nama Penerima*</label>
-            <input v-model="address.recipientName" placeholder="Nama Penerima" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Ime i Prezime*</label>
+            <input v-model="address.recipientName" placeholder="Ime i prezime" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
           </div>
           <div class="flex w-full flex-nowrap gap-4">
-            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Alamat 1*</label>
-            <textarea rows="3" v-model="address.addressLine1" placeholder="Alamat 1" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary"></textarea>
+            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Adresa 1*</label>
+            <textarea rows="3" v-model="address.addressLine1" placeholder="Adresa 1" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary"></textarea>
           </div>
           <div class="flex w-full flex-nowrap gap-4">
-            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Alamat 2</label>
-            <textarea rows="3" v-model="address.addressLine2" placeholder="Alamat 2" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary"></textarea>
+            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Adresa 2</label>
+            <textarea rows="3" v-model="address.addressLine2" placeholder="Adresa 2" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary"></textarea>
           </div>
           <div class="flex w-full flex-nowrap gap-4">
-            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Negara*</label>
+            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Država*</label>
             <vt-select placeholder="Negara" :items="countries" v-model="address.country"></vt-select>
           </div>
           <div class="flex w-full flex-nowrap gap-4">
-            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Kota*</label>
-            <input rows="3" v-model="address.city" placeholder="Kota" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Grad*</label>
+            <input rows="3" v-model="address.city" placeholder="Grad" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
           </div>
           <div class="flex w-full flex-nowrap gap-4">
-            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Kode Pos*</label>
-            <input rows="3" v-model="address.postalCode" placeholder="Kode Pos" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Poštanski broj*</label>
+            <input rows="3" v-model="address.postalCode" placeholder="Poštanski broj" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
           </div>
           <div class="flex w-full flex-nowrap gap-4">
-            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Nomor Handphone*</label>
-            <input rows="3" v-model="address.phoneNumber" placeholder="Nomor Handphone" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
+            <label class="w-1/6 py-2 text-sm text-right text-gray-500">Broj mobitela*</label>
+            <input rows="3" v-model="address.phoneNumber" placeholder="Broj mobitela" type="text" class="w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-gray-200 rounded-md focus:ring-0 focus:border-primary">
           </div>
           <div class="flex w-full flex-nowrap mt-2">
             <div class="w-1/6"></div>
-            <button class="bg-primary font-medium -m-2 px-6 py-2 rounded-md text-white text-sm filter hover:brightness-110" @click="save">Simpan</button>
+            <button class="bg-primary font-medium -m-2 px-6 py-2 rounded-md text-white text-sm filter hover:brightness-110" @click="save">Spremi</button>
           </div>
         </div>
       </div>
@@ -136,7 +136,7 @@
         </div>
 
         <div class="border-b pb-1 pt-3">
-          <div class="text-xs text-gray-500 font-medium px-3 mb-2">Alamat</div>
+          <div class="text-xs text-gray-500 font-medium px-3 mb-2">Adresa</div>
           <label class="text-sm px-3 flex justify-between py-2" @click="openCountryDialog" :class="[address.country ? '' : 'text-gray-400']">
             {{ address.country ? showCountryText(address.country) : 'Negara' }}
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -146,31 +146,31 @@
         </div>
 
         <div class="py-1 border-b">
-          <input type="text" class="py-2 outline-none text-sm px-3 w-full" placeholder="Alamat 1" v-model="address.addressLine1">
+          <input type="text" class="py-2 outline-none text-sm px-3 w-full" placeholder="Adresa 1" v-model="address.addressLine1">
         </div>
 
         <div class="py-1 border-b">
-          <input type="text" class="py-2 outline-none text-sm px-3 w-full" placeholder="Alamat 2" v-model="address.addressLine2">
+          <input type="text" class="py-2 outline-none text-sm px-3 w-full" placeholder="Adresa 2" v-model="address.addressLine2">
         </div>
 
         <div class="py-1 border-b">
-          <input type="text" class="py-2 outline-none text-sm px-3 w-full" placeholder="Kota" v-model="address.city">
+          <input type="text" class="py-2 outline-none text-sm px-3 w-full" placeholder="Grad" v-model="address.city">
         </div>
 
         <div class="pt-1">
-          <input type="text" class="py-2 outline-none text-sm px-3 w-full" placeholder="Kode Pos" v-model="address.postalCode">
+          <input type="text" class="py-2 outline-none text-sm px-3 w-full" placeholder="Poštanski broj" v-model="address.postalCode">
         </div>
 
         <div class="border-b pb-1 pt-3">
-          <div class="text-xs text-gray-500 font-medium px-3 mb-2">Pengaturan</div>
+          <div class="text-xs text-gray-500 font-medium px-3 mb-2">Izmijeni</div>
           <div class="flex justify-between w-full px-3">
-            <label class="text-sm text-gray-600">Atur sebagai Alamat Utama</label>
-            <vt-switch type="text" class="py-2 outline-none text-sm" placeholder="Nama Lengkap" v-model="address.isMain" />
+            <label class="text-sm text-gray-600">Postavi kao glavnu adresu</label>
+            <vt-switch type="text" class="py-2 outline-none text-sm" placeholder="Glavna" v-model="address.isMain" />
           </div>
         </div>
 
         <div class="p-3 pb-1">
-          <div class="bg-primary w-full text-white text-center py-2 text-sm rounded-md" @click="saveMobile">Kirim</div>
+          <div class="bg-primary w-full text-white text-center py-2 text-sm rounded-md" @click="saveMobile">Spremi</div>
         </div>
       </div>
     </div>

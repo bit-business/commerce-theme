@@ -1,4 +1,6 @@
 @import '~vue-resize/dist/vue-resize.css';
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap");
+
 
 @tailwind base;
 @tailwind components;
@@ -6,11 +8,21 @@
 
 body {
   @apply w-screen max-w-full antialiased bg-gray-100;
+<<<<<<< Updated upstream
+=======
+ // padding-top: 3.75rem; 
+  // overscroll-behavior: none;
+  line-height: normal;
+}
+*,
+::before,
+::after {
+  border-width: 0;
+>>>>>>> Stashed changes
 }
 
-.before\:top-arrow-center {}
 
-.after\:top-arrow-center {}
+
 
 @layer utilities {
   .clip-circle {

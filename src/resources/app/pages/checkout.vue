@@ -3,7 +3,7 @@
     <Head :title="$page.props.name" />
 
     <div class="mt-4 container hidden sm:block">
-      <!-- kelola alamat desktop -->
+      <!-- upravljanje adresom desktop-->
       <div class="bg-white rounded-xl shadow-md">
         <div class="p-6">
           <div class="flex text-primary items-center text-lg justify-between">
@@ -20,13 +20,13 @@
                   clip-rule="evenodd"
                 />
               </svg>
-              Alamat Pengiriman
+              Adresa
             </span>
             <template v-if="isAddState">
               <Link
                 :href="route('skijasi.commerce-theme.address')"
                 class="text-sm text-gray-500 px-2 py-1 border rounded"
-                >Kelola Alamat</Link
+                >Izmjena adrese</Link
               >
             </template>
           </div>
@@ -61,7 +61,7 @@
                     <span
                       v-if="address.isMain == 1"
                       class="text-sm text-gray-500"
-                      >Utama</span
+                      >Glavna</span
                     >
                   </div>
                 </div>
@@ -70,7 +70,7 @@
                     class="bg-primary px-3 py-1 w-24 text-white rounded"
                     @click="isAddState = false"
                   >
-                    OK
+                    Potvrdi
                   </button>
                 </div>
               </div>
@@ -94,13 +94,13 @@
                   v-if="addressSelected.isMain == 1"
                   class="text-sm font-medium text-gray-400"
                 >
-                  Utama
+                Glavna
                 </div>
                 <div
                   class="text-sm font-medium text-primary cursor-pointer"
                   @click="isAddState = true"
                 >
-                  UBAH
+                PROMIJENI
                 </div>
               </div>
             </template>
@@ -131,12 +131,12 @@
                 />
               </svg>
               <span class="text-gray-700 text-center text-sm mt-2"
-                >No user addresses was found.</span
+                >Nije pronađena nijedna adresa korisnika.</span
               >
               <Link
                 :href="route('skijasi.commerce-theme.address')"
                 class="bg-primary text-white px-3 text-sm py-1 rounded"
-                >Kelola Alamat</Link
+                >Izmjena adrese</Link
               >
             </div>
           </template>
@@ -146,11 +146,11 @@
       <div class="bg-white rounded-xl shadow-md mt-4">
         <div class="p-6 grid">
           <div class="gap-2 grid grid-cols-6">
-            <div class="col-span-2 text-lg font-medium">Produk Dipesan</div>
+            <div class="col-span-2 text-lg font-medium">Naručene usluge</div>
             <div></div>
-            <div class="text-gray-300 text-sm">Harga Satuan</div>
-            <div class="text-gray-300 text-sm">Jumlah</div>
-            <div class="text-gray-300 text-sm text-right">Subtotal Produk</div>
+            <div class="text-gray-300 text-sm">Jedinična cijena</div>
+            <div class="text-gray-300 text-sm">Iznos</div>
+            <div class="text-gray-300 text-sm text-right">Međuzbroj usluga</div>
           </div>
           <div class="divide-y divide-dashed border-b border-dashed mt-4">
             <div
@@ -165,7 +165,7 @@
                 </div>
               </div>
               <div class="text-sm text-gray-400 pl-4">
-                Variasi: {{ item.productDetail.name }}
+                Varijanta: {{ item.productDetail.name }}
               </div>
               <div
                 class="text-sm"
@@ -226,7 +226,7 @@
                 text-sm
               "
             >
-              Pesan:
+              Napomena:
               <textarea
                 v-model="message"
                 class="
@@ -239,7 +239,7 @@
                   border-gray-300
                 "
                 rows="1"
-                placeholder="(Optional) Tinggalkan pesan ke penjual"
+                placeholder="(Neobavezno) Ostavite nam poruku ukoliko imate"
               ></textarea>
             </div>
             <div
@@ -253,13 +253,13 @@
                 py-4
               "
             >
-              <div class="text-sm text-gray-400">Ongkos Kirim</div>
+              <div class="text-sm text-gray-400">Trošak dostave</div>
               <div class="text-sm">{{ $currency(shippingCost) }}</div>
             </div>
           </div>
           <div class="flex pt-6 justify-end gap-4 items-center">
             <div class="text-sm text-gray-400">
-              Total Pesanan ({{ items.length }} Produk):
+              Ukupni iznos (Odabrano {{ items.length }}):
             </div>
             <div class="text-xl text-primary">
               {{ $currency(getTotalCost + parseInt(shippingCost)) }}
@@ -281,7 +281,7 @@
               text-gray-700
             "
           >
-            Metode Pembayaran
+          Način plaćanja
           </div>
           <div
             class="ml-4 pt-6 md:col-span-6 lg:col-span-7 flex gap-4 flex-wrap"
@@ -345,7 +345,7 @@
               text-gray-700
             "
           >
-            Pilih Bank
+         <!--Odaberite Karticu maknut tekst, odkomentirati ako se zeli tekst-->
           </div>
 
           <commerce-payment
@@ -371,7 +371,7 @@
               class="md:w-1/2 lg:w-1/3 flex justify-between items-center flex-1"
             >
               <div class="text-sm text-gray-500 text-left">
-                Subtotal untuk Produk:
+                Zbroj za odabrano:
               </div>
               <div class="text-sm text-gray-500">
                 {{ $currency(getTotalCost) }}
@@ -381,7 +381,7 @@
               class="md:w-1/2 lg:w-1/3 flex justify-between items-center flex-1"
             >
               <div class="text-sm text-gray-500 text-left">
-                Total Ongkos Kirim:
+                Ukupni trošak dostave:
               </div>
               <div class="text-sm text-gray-500">
                 {{ $currency(shippingCost) }}
@@ -391,7 +391,7 @@
               class="md:w-1/2 lg:w-1/3 flex justify-between items-center flex-1"
             >
               <div class="text-sm text-gray-500 text-left">
-                Total Pembayaran:
+                Ukupno Plaćanje:
               </div>
               <div class="text-3xl text-primary">
                 {{ $currency(getTotalCost + parseInt(shippingCost)) }}
@@ -417,12 +417,16 @@
               @click="checkout"
               class="bg-primary px-12 py-2 text-white rounded-lg font-medium"
             >
-              Buat Pesanan
+              Na plaćanje
             </button>
           </div>
         </div>
       </div>
     </div>
+
+
+
+
 
     <div class="block sm:hidden relative">
       <div class="p-2 bg-white h-14 fixed bottom-0 left-0 right-0">
@@ -442,7 +446,7 @@
           v-if="option && addressSelected.id"
           @click="checkout"
         >
-          Buat Pesanan
+          Na plaćanje
         </div>
 
         <div
@@ -460,7 +464,7 @@
           "
           v-else
         >
-          Buat Pesanan
+          Na plaćanje
         </div>
       </div>
     </div>
@@ -666,8 +670,15 @@
       </transition>
     </div>
 
+
+
+
+
+
+
+    
     <div class="block sm:hidden pb-16">
-      <!-- alamat mobile -->
+      <!-- mobilna verzija -->
       <div
         class="flex bg-white flex flex-row items-center gap-2 p-3"
         @click="openAddressDialog"
@@ -696,13 +707,13 @@
         </div>
         <div class="flex-grow flex flex-col">
           <div class="text-sm mb-1">
-            Alamat Pengiriman
+            Adresa dostave
           </div>
             <template v-if="isAddState">
               <Link
                 :href="route('skijasi.commerce-theme.address')"
                 class="text-sm text-gray-500 px-2 py-1 border rounded"
-                >Kelola Alamat</Link
+                >Izmjena adrese</Link
               >
             </template>
           <template v-if="userAddress.length > 0">
@@ -736,7 +747,7 @@
                     <span
                       v-if="address.isMain == 1"
                       class="text-sm text-gray-500"
-                      >Utama</span
+                      >Glavna adresa</span
                     >
                   </div>
                 </div>
@@ -745,7 +756,7 @@
                     class="bg-primary px-3 py-1 w-24 text-white rounded"
                     @click="isAddState = false"
                   >
-                    OK
+                    Potvrdi
                   </button>
                 </div>
               </div>
@@ -825,12 +836,12 @@
                 />
               </svg>
               <span class="text-gray-700 text-center text-sm mt-2"
-                >No user addresses was found.</span
+                >Nije pronađena nijedna adresa.</span
               >
               <Link
                 :href="route('skijasi.commerce-theme.address')"
                 class="bg-primary text-white px-3 text-sm py-1 rounded"
-                >Kelola Alamat</Link
+                >Izmjena adrese</Link
               >
             </div>
           </template>
@@ -872,7 +883,7 @@
                 {{ item.productDetail.product.name }}
               </div>
               <div class="text-xs text-gray-500">
-                Variasi: {{ item.productDetail.name }}
+                Opcije: {{ item.productDetail.name }}
               </div>
               <div
                 class="
@@ -891,19 +902,19 @@
         </div>
 
         <div class="p-3 flex justify-between w-full text-sm border-b">
-          <div>Pesan:</div>
+          <div>Napomena(opcionalno):</div>
           <div>
             <input
               type="text"
               v-model="message"
               class="outline-none focus:outline-none text-right"
-              placeholder="Silakan tinggalkan pesan..."
+              placeholder="Možete ostaviti napomenu ako imate..."
             />
           </div>
         </div>
 
         <div class="p-3 flex justify-between text-sm w-full">
-          <div>Total Pesanan ({{ items.length }} Produk):</div>
+          <div>Ukupni iznos narudžbe (Odabrano {{ items.length }}):</div>
           <div class="font-medium text-primary">
             {{ $currency(getTotalCost) }}
           </div>
@@ -929,11 +940,11 @@
               d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span class="text-gray-500">Metode Pembayaran</span>
+          <span class="text-gray-500">Načini plaćanja</span>
         </div>
         <div class="1/4 text-sm flex items-center">
           <span class="text-primary" v-if="!option"
-            >Pilih Metode<br />Pembayaran</span
+            >Odaberite naćin<br />plaćanja</span
           >
           <span class="text-primary text-right" v-else>{{
             selectedPaymentOption
@@ -956,16 +967,16 @@
       </div>
 
       <div class="p-3 flex w-full bg-white flex-col gap-1">
-        <div class="flex justify-between items-center">
-          <div class="text-xs text-gray-700">Subtotal untuk Produk</div>
+       <!--    <div class="flex justify-between items-center">
+          <div class="text-xs text-gray-700">Ukupno bez PDV-a</div>
           <div class="text-xs text-gray-700">{{ $currency(getTotalCost) }}</div>
         </div>
         <div class="flex justify-between items-center">
-          <div class="text-xs text-gray-700">Subtotal Pengiriman</div>
-          <div class="text-xs text-gray-700">{{ $currency(shippingCost) }}</div>
-        </div>
+          <div class="text-xs text-gray-700">PDV</div>
+     <div class="text-xs text-gray-700">{{ $currency(shippingCost) }}</div>
+        </div>-->  
         <div class="flex justify-between items-center">
-          <div class="text-gray-700">Total Pembayaran</div>
+          <div class="text-gray-700">Ukupno Plaćanje</div>
           <div class="text-primary">
             {{ $currency(getTotalCost + parseInt(shippingCost)) }}
           </div>
@@ -1134,6 +1145,12 @@ export default {
     },
     checkout() {
       this.$openLoading();
+console.log("TEST address",this.addressSelected.id);
+console.log("TEST message",this.message);
+
+console.log("TEST paymentoption",this.option);
+
+
       this.$api.skijasiCheckout
         .finish({
           items: this.items.map((val) => {
@@ -1147,7 +1164,7 @@ export default {
           this.$store.dispatch("FETCH_CARTS");
 
           this.$helper.alert(
-            "Transaksi sedang diproses, mohon tetap dihalaman ini."
+            "Transakcija se obrađuje, ostanite na ovoj stranici."
           );
 
           if (typeof this.checkoutData === "function") {
@@ -1189,10 +1206,14 @@ export default {
       }
     },
     setPaymentOption($event, { slug }, payment) {
+            console.log ("TEST postavljanje option paymenta id ", payment.id)
+
       this.checkoutData = $event;
       this.option = slug;
       this.payment = payment.slug;
       this.closePaymentDialog();
+      console.log ("TEST postavljanje option paymenta", this.option)
+
     },
     sortedOptions(option) {
       return this.$_.sortBy(option, ["order"], ["asc"]);
