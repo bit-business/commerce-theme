@@ -1,151 +1,20 @@
-
-
-
 <template>
-<div>
+  <div>
 <Head :title="$page.props.name" />
 
 <commerce-top-bar class="pocetnaanimacija  sm:flex" />
 
-
-<div class="hzuts-home-screen-desktop">
-  <commerce-main-banner class="homepageglavnaslika-icon hidden sm:block" />
+  <div class="hzuts-home-screen-desktop">
+    <commerce-main-banner class="homepageglavnaslika-icon hidden sm:block" />
     <commerce-mobile-main-banner class="block sm:hidden" />
-   <!-- <img
-      class="homepageglavnaslika-icon"
-      alt=""
-      src="/storage/slike/homepageglavnaslika@2x.png"
-    />-->
-    <div class="dogadajitrecired">
-      <div class="dogadajipodgrupa">
-        <div class="srednjibannerdogadaji">
-    
-        <commerce-main-banner class="" />
-    <commerce-mobile-main-banner class="block sm:hidden" />
-  </div>
-        <img class="animate-on-scroll dogadajipodgrupa-item" alt="" src="/storage/slike/group-271.svg" />
-       
 
-        <div class="objavljenotekst">
-          <b class="objavljeno-20032023">OBJAVLJENO: 20.03.2023.</b>
-        </div>
-      </div>
-      <div class="dogadajusredini">
-     
-     
-        <div class="otkazan-ctt-test-sigurnosti-wrapper">
-          <b class="otkazan-ctt-test"
-            >OTKAZAN C.T.T. TEST SIGURNOSTI - ZERMATT, 12.-16.04.2023.</b
-          >
-        </div>
-      </div> 
-    </div>
-    <div class="analitikahome">
-      <div class="analitikapodgrupa">
-        <div class="analitika1">
-          <b class="b">{{ totalUsers }}</b>
-          <b class="lanova">Članova</b>
-          <img class="animate-on-scroll analitika1-child" alt="" src="/storage/slike/line-11.svg" />
-          <img class="animate-on-scroll membership-1-icon" alt="" src="/storage/slike/membership-1.svg" />
-        </div>
-        <div class="analitika2">
-          <b class="b1">40</b>
-          <b class="godina-postojanja">Godina postojanja</b>
-          <img class="animate-on-scroll analitika2-child" alt="" src="/storage/slike/line-11.svg" />
-          <img class="animate-on-scroll group-icon1" alt="" src="/storage/slike/group.svg" />
-        </div>
-        <div class="analitika3">
-          <b class="b2">6</b>
-          <b class="podrunih-zborova">Područnih zborova</b>
-          <img class="animate-on-scroll analitika3-child" alt="" src="/storage/slike/line-11.svg" />
-          <img class="animate-on-scroll group-icon2" alt="" src="/storage/slike/group1.svg" />
-        </div>
-        <div class="analitika4">
-          <b class="b3">100</b>
-          <b class="demostratora-skijanja">Demostratora skijanja</b>
-          <img class="animate-on-scroll clip-path-group" alt="" src="/storage/slike/clip-path-group.svg" />
-        </div>
-      </div>
-    </div>
-    <div class="sponzorigrupa">
-      <div class="sponzor1">
-        <img class="animate-on-scroll rostsport-1-icon" alt="" src="/storage/slike/rostsport-1@2x.png" />
-      </div>
-      <div class="sponzor2">
-        <img
-          class="animate-on-scroll porsche-logo-1-icon"
-          alt=""
-          src="/storage/slike/223238porschelogo-1@2x.png"
-        />
-      </div>
-      <div class="sponzor3">
-        <img
-          class="animate-on-scroll lenovo-global-corporate-logo-1-icon"
-          alt=""
-          src="/storage/slike/lenovo-global-corporate-logo-1@2x.png"
-        />
-      </div>
-    </div>
     <div class="framesadrzaji">
-     
-      <div class="popustizaclanove">
-        <img
-          class="animate-on-scroll img-4689-photoroom-1-icon"
-          alt=""
-          src="/storage/slike/img-4689photoroom-1@2x.png"
-        />
-        <b class="popusti-za-nae">Popusti za naše članove</b>
-        <div class="saznajte-pogodnosti-za">
-          Saznajte pogodnosti za članove HZUTS-a
-        </div>
-        <div class="popustisaznajvise">
-          <Link class="saznaj-vie" :href="route('skijasi.commerce-theme.uclanise')">SAZNAJ VIŠE</Link>
-        </div>
-
-      </div>
-      <div class="drugired">
-        <Link class="drugiredlijevo animacijakvadrati" :href="route('skijasi.commerce-theme.uclanise')">
-          <div class="drugiredlijevotekst">
-            <b class="kako-postati-uitelj"
-              >Kako postati učitelj sportova na snijegu</b
-            >
-            <div class="saznajvise">
-              <img class="vector-icon6" alt="" src="/storage/slike/vector6.svg" />
-              <div class="saznaj-vie1">Saznaj više</div>
-            </div>
-            <div class="proitajte-kako-postati">
-              Pročitajte kako postati učitelj skijanja ili daskanja na snijegu
-            </div>
-          </div>
-          <img
-            class="animate-on-scroll whatsapp-image-2023-06-14-at-1 animacijaslike"
-            alt=""
-            src="/storage/slike/whatsapp-image-20230614-at-195410photoroom-1@2x.png"
-          />
-        </Link>
-        <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.uclanise')">
-          <img
-            class="animate-on-scroll fullsizerender-3-photoroom-1-icon"
-            alt=""
-            src="/storage/slike/fullsizerender-3photoroom-1@2x.png"
-          />
-          <div class="tekstdrugireddesno">
-            <b class="ulanite-se-u">Učlanite se u HZUTS</b>
-            <div class="saznajte-informacije-kako">
-              Saznajte informacije kako se možete učlaniti te postati dio HZUTS
-              obitelji.
-            </div>
-            <div class="tekstdrugiredsaznajvise">
-              <img class=" vector-icon6" alt="" src="/storage/slike/vector6.svg" />
-              <div class="saznaj-vie1">Saznaj više</div>
-            </div>
-          </div>
-        </Link>
-      </div>
       <div class="prviredframeova">
-        <Link class="drugiredlijevo animacijakvadrati" :href="route('skijasi.commerce-theme.podrucnizborovi')">
+      
+          <Link class="prviredlijevo animacijakvadrati" :href="route('skijasi.commerce-theme.podrucnizborovi')">
+
           <img
-            class="animate-on-scroll img-5449-photoroom-1-icon"
+            class="img-5449-photoroom-1-icon"
             alt=""
             src="/storage/slike/img-5449photoroom-1@2x.png"
           />
@@ -154,19 +23,19 @@
             Saznajte informacije o područnim zborovima
           </div>
           <div class="vector-parent">
-            <img class=" vector-icon6" alt="" src="/storage/slike/vector6.svg" />
-            <div class="saznaj-vie3">Saznaj više</div>
+            <img class="vector-icon" alt="" src="/storage/slike/vector6.svg" />
+            <div class="saznaj-vie">Saznaj više</div>
           </div>
         </Link>
-        <Link  class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.interskikongres')">
+        <Link  class="prviredlijevo animacijakvadrati" :href="route('skijasi.commerce-theme.interskikongres')">
           <img
-            class="animate-on-scroll img-7155-photoroom-1-icon"
+            class="img-7155-photoroom-1-icon"
             alt=""
             src="/storage/slike/img-7155photoroom-1@2x.png"
           />
           <b class="interski-kongresi-i">Interski kongresi i Demo team</b>
-          <div class="saznajvise1">
-            <img class="vector-icon6" alt="" src="/storage/slike/vector6.svg" />
+          <div class="saznajvise">
+            <img class="vector-icon1" alt="" src="/storage/slike/vector6.svg" />
             <div class="saznaj-vie1">Saznaj više</div>
           </div>
           <div class="saznajte-informacije-o1">
@@ -176,178 +45,210 @@
         </Link>
       </div>
     </div>
-  </div>
+    <div class="drugired">
+     <Link class="prviredlijevo animacijakvadrati" :href="route('skijasi.commerce-theme.uclanise')">
 
-
-
-
-</div>
-
-<!--
-
-
-
-  <div>
-    <Head :title="$page.props.name" />
-
-    <commerce-main-banner class="hidden sm:block" />
-    <commerce-mobile-main-banner class="block sm:hidden" />
-    <div class="h-5 hidden sm:block" />
-
-    
-
-
-    <card class="hidden sm:block">
-      <card-header>
-        Kategorija
-      </card-header>
-      <card-body color="transparent" no-gutter>
-        <carousel show="10" class="container">
-          <carousel-item v-for="category, index in splitCategory" :key="index">
-            <div class="flex items-start justify-start h-full flex-wrap gap-y-2">
-              <Link v-if="category[0]" :href="route('skijasi.commerce-theme.category', category[0].slug)" class="bg-white h-1/2 rounded-xl block">
-                <img :src="category[0].image" alt="" class="rounded-full p-4">
-                <div class="pb-4 text-center text-sm">
-                  {{ category[0].name }}
-                </div>
-              </Link>
-              <Link v-if="category[1]" :href="route('skijasi.commerce-theme.category', category[1].slug)" class="bg-white h-1/2 rounded-xl block">
-                <img :src="category[1].image" alt="" class="rounded-full p-4">
-                <div class="pb-4 text-center text-sm">
-                  {{ category[1].name }}
-                </div>
-              </Link>
-            </div>
-          </carousel-item>
-        </carousel>
-      </card-body>
-    </card>
-    <card class="sm:hidden block" :gap="0">
-      <div class="text-gray-400 bg-white pl-2 pt-2">KATEGORIJA</div>
-      <card-body color="white" no-gutter :radius="0" class="overflow-x-scroll hide-scrollbar pb-4">
-        <div class="inline-flex items-start justify-start h-full flex-row gap-x-2 mx-2">
-          <div v-for="category, index in splitCategory" :key="index" class="w-24 flex-1">
-            <Link v-if="category[0]" :href="route('skijasi.commerce-theme.category', category[0].slug)" class="h-full w-24 rounded-xl flex flex-wrap">
-              <img :src="category[0].image" alt="" class="rounded-full object-contain object-center w-24 h-24">
-              <div class="text-center text-sm h-10 w-full line-clamp-2">{{ category[0].name }}</div>
-            </Link>
-            <Link v-if="category[1]" :href="route('skijasi.commerce-theme.category', category[1].slug)" class="h-full w-24 rounded-xl flex flex-wrap mt-2">
-              <img :src="category[1].image" alt="" class="rounded-full object-contain object-center w-24 h-24">
-              <div class="text-center text-sm h-10 w-full line-clamp-2">{{ category[1].name }}</div>
-            </Link>
+        <div class="drugiredlijevotekst">
+          <b class="kako-postati-uitelj"
+            >Kako postati učitelj sportova na snijegu</b
+          >
+          <div class="saznajvise1">
+            <img class="vector-icon1" alt="" src="/storage/slike/vector6.svg" />
+            <div class="saznaj-vie1">Saznaj više</div>
+          </div>
+          <div class="proitajte-kako-postati">
+            Pročitajte kako postati učitelj skijanja ili daskanja na snijegu
           </div>
         </div>
-      </card-body>
-    </card>
-
-    <div class="h-4 sm:h-5" />
-
-  // Product Terlaris 
-    <card class="hidden sm:block">
-      <card-header text-color="primary">
-        Najprodavanije
-        <card-action>
-          <a href="#" class="capitalize font-normal tracking-normal text-sm inline-flex items-center">
-            Pogledaj sve
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-              <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
-            </svg>
-          </a>
-        </card-action>
-      </card-header>
-      <card-body color="transparent" no-gutter>
-        <carousel show="6" class="container">
-          <carousel-item v-for="product, index in bestSelling" :key="index">
-            <Link :href="route('skijasi.commerce-theme.detail', product.slug)" class="bg-white rounded-xl flex w-full flex-wrap">
-              <div class="w-full relative mb-2 flex items-center">
-                <div class="p-2 bg-primary absolute top-0 left-4">
-                  <span class="text-sm text-white font-semibold">TOP</span>
-                </div>
-                <div class="absolute bottom-0 w-full text-center text-white p-1">
-                  <span class="z-10 relative">Prodaja / mjesec {{ getProductSoldTotal(product) }}+</span>
-                  <div class="bg-black opacity-40 w-full top-0 left-0 absolute h-full z-0"></div>
-                </div>
-                <div class="w-full bg-contain bg-no-repeat rounded-t-xl" :style="`background-image: url('${product.productImage}'); padding-top: 100%`" />
-              </div>
-              <div class="flex-1 px-4 pb-4">
-                <div class="text-left text-xl font-semibold line-clamp-1">{{ product.name }}</div>
-              </div>
-            </Link>
-          </carousel-item>
-        </carousel>
-      </card-body>
-    </card>
-    <card class="sm:hidden block" :gap="0">
-      <div class="text-gray-400 bg-white pl-2 pt-2">NAJPRODAVANIJE</div>
-      <card-body color="white" no-gutter :radius="0" class="overflow-x-scroll overflow-y-hidden hide-scrollbar">
-        <div class="inline-flex items-start justify-start h-full flex-row-reverse my-2">
-          <div v-for="product, index in bestSelling" :key="index" class="w-32 flex-1 ml-2 first:mr-2">
-            <Link :href="route('skijasi.commerce-theme.detail', product.slug)" class="rounded-xl border border-gray-300 flex w-32 flex-wrap">
-              <div class="w-full relative mb-2 flex items-center">
-                <div class="p-1 bg-primary absolute top-0 left-0 rounded-tl-xl">
-                  <span class="text-sm text-white font-semibold">TOP</span>
-                </div>
-                <div class="w-full bg-contain bg-no-repeat rounded-t-xl" :style="`background-image: url('${product.productImage}'); padding-top: 100%`" />
-              </div>
-              <div class="flex-1 px-4 pb-4">
-                <div class="text-left text-sm line-clamp-2">{{ product.name }}</div>
-                <div class="text-xs mt-2">{{ getProductSoldTotal(product) }}+ prodano</div>
-              </div>
-            </Link>
+        <img
+          class="whatsapp-image-2023-06-14-at-1"
+          alt=""
+          src="/storage/slike/whatsapp-image-20230614-at-195410photoroom-1@2x.png"
+        />
+      </Link>
+      <Link class="prviredlijevo animacijakvadrati" :href="route('skijasi.commerce-theme.uclanise')">
+        <img
+          class="fullsizerender-3-photoroom-1-icon"
+          alt=""
+          src="/storage/slike/fullsizerender-3photoroom-1@2x.png"
+        />
+        <div class="tekstdrugireddesno">
+          <b class="ulanite-se-u">Učlanite se u HZUTS</b>
+          <div class="saznajte-informacije-kako">
+            Saznajte informacije kako se možete učlaniti te postati dio HZUTS
+            obitelji.
+          </div>
+          <div class="tekstdrugiredsaznajvise">
+            <img class="vector-icon1" alt="" src="/storage/slike/vector6.svg" />
+            <div class="saznaj-vie1">Saznaj više</div>
           </div>
         </div>
-      </card-body>
-    </card>
+      </Link>
+    </div>
+    <div class="dogadajitrecired">
 
-    <div class="h-4 sm:h-5" />
 
-    <card gap="2" class="relative hidden sm:block">
-      <card-header text-color="primary" class="sticky top-0 z-30">
-        Preporuka
-      </card-header>
-      <card-body color="transparent" no-gutter class="mt-1">
-        <div class="w-full grid md:grid-cols-4 lg:grid-cols-6 gap-2">
-          <commerce-product :product="product" v-for="product, index in products.data" :key="index" />
-          <div class="h-5 col-span-full" />
-          <div class="flex lg:col-start-3 lg:col-end-5 md:col-start-2 md:col-end-4">
-            <Link :href="route('skijasi.commerce-theme.product-list')" class="bg-white flex justify-center items-center w-full text-sm py-2 border border-gray-300 hover:bg-gray-200 rounded-lg">Lihat Lainnya</Link>
-          </div>
+
+          <vueper-slides
+  class="no-shadow srednjibannerdogadaji-child "
+  :visible-slides="1"
+  :slide-ratio="1 / 2.5"
+  :infinite="true" 
+  :bullets="true"
+  :bullets-outside="false"
+  :arrows="true"
+  :touchable="true"
+  :gap="1"
+  :dragging-distance="20"
+  :breakpoints="{ 800: { visibleSlides: 1, slideMultiple: 1 } }"
+
+  >
+
+  <vueper-slide
+    v-for="(slide, i) in slides"
+    :key="i"
+    :image="slide.image">
+
+    <div class="objavljenotekst">
+      <b class="objavljeno-20032023">{{ 'OBJAVLJENO: ' + $moment(slides.title).format('DD.MM.YYYY') }}</b>
+    </div>
+  </vueper-slide>
+
+      <div class="dogadajusredini">
+        <div class="otkazan-ctt-test-sigurnosti-wrapper" v-for="(item, index) in thumbnails" :key="'title-' + index">
+          <b class="otkazan-ctt-test">{{ item.title }}</b>
         </div>
-      </card-body>
-    </card>
-    <card class="sm:hidden block" :gap="0">
-      <div class="text-gray-400 bg-white pl-2 pt-2">PREPORUKA</div>
-      <card-body color="white" no-gutter :radius="0">
-        <div class="w-full grid grid-cols-2 px-2 mt-2 gap-2 bg-gradient-to-t from-gray-100 via-gray-100 to-white">
-          <commerce-mobile-product :product="product" v-for="product, index in products.data" :key="index" />
-          <div class="h-3 col-span-full" />
-          <div class="flex col-span-full">
-            <Link :href="route('skijasi.commerce-theme.product-list')" class="bg-white flex justify-center items-center w-full text-sm py-2 border border-primary text-primary hover:bg-gray-200 rounded-lg">Lihat Lainnya</Link>
-          </div>
-        </div>
-      </card-body>
-    </card>
-
-    <div class="h-4 sm:h-5" />
-  </div>
-
-
-
-
-
--->
-
-
-
-
-
-
+      </div>
 
   
+</vueper-slides>
+
+    </div>
+    <div class="sponzorigrupa">
+      <div class="sponzor1">
+        <img class="rostsport-1-icon" alt="" src="/storage/slike/rostsport-1@2x.png" />
+      </div>
+      <div class="sponzor1">
+        <img
+          class="porsche-logo-1-icon"
+          alt=""
+          src="/storage/slike/223238porschelogo-1@2x.png"
+        />
+      </div>
+      <div class="sponzor1">
+        <img
+          class="lenovo-global-corporate-logo-1-icon"
+          alt=""
+          src="/storage/slike/lenovo-global-corporate-logo-1@2x.png"
+        />
+      </div>
+    </div>
+    <div class="popustizaclanove">
+      <div class="frameslikapopusti">
+        <img class="img-4689-photoroom-1-icon" alt="" src="/storage/slike/image@2x.png" />
+      </div>
+      <div class="okvirtekst">
+        <b class="popusti-za-nae">Popusti za naše članove</b>
+        <div class="saznajte-pogodnosti-za">
+          Saznajte pogodnosti za članove HZUTS-a
+        </div>
+        <div class="popustisaznajvise">
+          <Link class="saznaj-vie4" :href="route('skijasi.commerce-theme.uclanise')">SAZNAJ VIŠE</Link>
+
+        </div>
+      </div>
+    </div>
+    <div class="analitikahome">
+      <div class="analitikapodgrupa">
+        <div class="analitika1">
+          <b class="b">{{ totalUsers }}</b>
+          <b class="lanova">Članova</b>
+          <img class="analitika1-child" alt="" src="/storage/slike/line-11.svg" />
+          <img class="membership-1-icon" alt="" src="/storage/slike/membership-1.svg" />
+        </div>
+        <div class="analitika2">
+          <b class="b1">40</b>
+          <b class="godina-postojanja">Godina postojanja</b>
+          <img class="analitika2-child" alt="" src="/storage/slike/line-11.svg" />
+          <img class="group-icon" alt="" src="/storage/slike/group.svg" />
+        </div>
+        <div class="analitika3">
+          <b class="b2">6</b>
+          <b class="podrunih-zborova">Područnih zborova</b>
+          <img class="analitika3-child" alt="" src="/storage/slike/line-11.svg" />
+          <img class="group-icon1" alt="" src="/storage/slike/group1.svg" />
+        </div>
+        <div class="analitika4">
+          <b class="b3">100</b>
+          <b class="demostratora-skijanja">Demostratora skijanja</b>
+          <img class="clip-path-group" alt="" src="/storage/slike/clip-path-group.svg" />
+        </div>
+      </div>
+    </div>
+    <div class="bilteniframe">
+      <div class="biltenipodframe">
+        <b class="bilteni-hzuts-a">BILTENI HZUTS-a</b>
+        <div class="frame-parent">
+          <div class="rectangle-parent">
+            <img class="frame-child" alt="" src="/storage/demo/rectangle-236@2x.png" />
+            <b class="bilten-sezona-20192020-container">
+              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">2019/2020</p>
+            </b>
+          </div>
+          <div class="rectangle-parent">
+            <img class="frame-child" alt="" src="/storage/demo/rectangle-2361@2x.png" />
+            <b class="bilten-sezona-20192020-container">
+              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">2019/2020</p>
+            </b>
+          </div>
+          <div class="rectangle-parent">
+            <img class="frame-child" alt="" src="/storage/demo/rectangle-2362@2x.png" />
+            <b class="bilten-sezona-20192020-container">
+              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">2019/2020</p>
+            </b>
+          </div>
+          <div class="rectangle-parent">
+            <img class="frame-child" alt="" src="/storage/demo/rectangle-2363@2x.png" />
+            <b class="bilten-sezona-20192020-container">
+              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">2019/2020</p>
+            </b>
+          </div>
+          <div class="rectangle-parent">
+            <img class="frame-child" alt="" src="/storage/demo/rectangle-236@2x.png" />
+            <b class="bilten-sezona-20192020-container">
+              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">2019/2020</p>
+            </b>
+          </div>
+        </div>
+        <img class="lijevastrelica-icon" alt="" src="/storage/slike/lijevastrelica.svg" />
+        <div class="desnastrelica">
+         
+          <svg c width="60" height="61" viewBox="0 0 60 61" fill="none" xmlns="http://www.w3.org/2000/svg">
+<circle cx="30" cy="30.333" r="30" fill="black" fill-opacity="0.5"/>
+<path d="M24 42.333L36 30.333L24 18.333" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 </template>
+
+
+
+
 
 <script>
 import CommerceTopBar from '../components/commerce-top-bar.vue'
+import NovostiBanner from './../components/novosti-banner.vue'
+import { VueperSlides, VueperSlide } from 'vueperslides'
+import 'vueperslides/dist/vueperslides.css'
 
 import CommerceMainBanner from './../components/commerce-main-banner.vue'
 import CommerceMobileMainBanner from './../components/commerce-mobile-main-banner.vue'
@@ -369,6 +270,9 @@ export default {
   components: {
     CommerceTopBar,
     CommerceMainBanner,
+    NovostiBanner,
+    VueperSlides, VueperSlide,
+
     CommerceMobileMainBanner,
     CommerceMobileProduct,
     CommerceProduct,
@@ -380,9 +284,12 @@ export default {
     CarouselItem,
     Link,
     Head,
+    
   },
   layout: [appLayout, defaultLayout],
   computed: {
+
+
     user(state) {
         return state.user
       },
@@ -393,6 +300,17 @@ export default {
   },
   data() {
     return {
+// za clanke
+      clanci:  [],
+    thumbnails: [],
+  // za clanke
+
+
+  slides: [
+    ],
+
+
+
 
       totalUsers: 1961,
 
@@ -550,33 +468,105 @@ this.fetchTotalUsers();
       return product.productDetails.reduce((prev, curr) => {
         return prev + parseInt(curr.sold || 0)
       }, 0) || 0;
+    },
+
+
+    fetchPosts() {
+  this.loading = true;
+  this.$api.skijasiPostPublic
+    .fetchPosts({
+      page: 1,
+      limit: 10
+    })
+    .then((res) => {
+      this.posts = res.data.posts;
+      this.getThumbnails();
+      this.loading = false;
+    })
+    .catch((err) => {
+      console.log('Error on fetching posts', err);
+      this.loading = false;
+    });
+},
+
+  getThumbnails() {
+  this.posts.data.forEach(element => {
+    if (element.thumbnail) {
+      this.thumbnails.push(element);
     }
+  });
 
-
-
-
+  // Map over thumbnails to create the slides array
+  this.slides = this.thumbnails.map(item => {
+    return {
+      title: item.publishedAt,
+      image: item.thumbnail // Assuming thumbnail is the image URL/path
+    };
+  });
+}
 
 
   },
 
-
+  created() {
+    this.fetchPosts();
+  },
 
 
 }
 </script>
 
 <style scoped>
-  .homepageglavnaslika-icon {
-    position: absolute;
-    top: -3.75rem; 
-    left: calc(50% - 720px);
-    width: 90rem;
-    height: 50rem;
-    object-fit: cover;
-opacity: 0; /* Set initial opacity to 50% */
-  transition: opacity 1s ease-in-out; /* Apply a smooth transition to opacity */
-  animation: fadeIn 1s ease-in-out 3s forwards; /* Apply the initial fade-in animation */
+
+
+.vueperslides__bullet .default {
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  box-shadow: none;
+  transition: 0.3s;
+  width: 16px;
+  height: 16px;
 }
+
+.vueperslides__bullet--active .default {background-color: #42b983;}
+
+.vueperslides__bullet span {
+  display: block;
+  color: #000;
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.vueperslides__arrow {color: yellow}
+.vueperslides__bullet {color: yellow}
+.vueperslides__bullet--active {color: yellow}
+.vueperslides__bullet span {
+  display: block;
+  color: #000;
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.thumbnails {
+  margin: auto;
+  max-width: 100%;
+}
+
+.thumbnails .vueperslide {
+  box-sizing: border-box;
+  border: 1px solid #000;
+  transition: 0.3s ease-in-out;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.thumbnails .vueperslide--active {
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+  border-color: #000;
+}
+
+
 
 .pocetnaanimacija {
 opacity: 0; /* Set initial opacity to 50% */
@@ -605,634 +595,167 @@ opacity: 0; /* Set initial opacity to 50% */
   transition: transform 0.3s; /* Add transition property */
 }
 
+.popustisaznajvise:hover {
+    background-color: #03a9f4;
+    color: #fff; 
+  }
+
+
+
+.inactive-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: bold;
+  border-radius: 20px;
+  font-size: 2rem;
+  z-index: 2;  /* Ensure it's above other content */
+}
 
 
 
 
-.srednjibannerdogadaji {
-    position: absolute;
-    top: 0rem;
-    left: 14.06rem;
-    width: 62.5rem;
-    height: 37.5rem;
-  }
 
-  .dogadajipodgrupa-child {
-    position: absolute;
-    top: calc(50% - 324.5px);
-    left: calc(50% - 495px);
-    width: 62.5rem;
-    height: 37.5rem;
-    object-fit: contain;
-  }
-  .dogadajipodgrupa-item {
-    position: absolute;
-    top: 39.94rem;
-    left: 39.06rem;
-    width: 11.88rem;
-    height: 0.63rem;
-  }
-  .dogadajipodgrupa-inner {
-    position: absolute;
-    top: calc(50% - 253.5px);
-    left: 0rem;
-    width: 11.69rem;
-    height: 28.13rem;
-  }
-  .group-icon {
-    position: absolute;
-    top: calc(50% - 253.5px);
-    left: 78.31rem;
-    width: 11.69rem;
-    height: 28.13rem;
-  }
-  .objavljeno-20032023 {
-    position: absolute;
-    top: calc(50% - 11.5px);
-    left: calc(50% - 133px);
-  }
-  .objavljenotekst {
-    position: absolute;
-    top: 0rem;
-    left: 56.56rem;
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 20rem;
-    height: 4.06rem;
-  }
-  .dogadajipodgrupa {
-    position: absolute;
-    top: 4.63rem;
-    left: 0rem;
-    width: 90rem;
-    height: 40.56rem;
-  }
-  .otkazan-ctt-test {
-    position: absolute;
-    top: calc(50% - 11.5px);
-    left: calc(50% - 314px);
-  }
-  .otkazan-ctt-test-sigurnosti-wrapper {
-    position: absolute;
-    top: 0rem;
-    left: 0.63rem;
-    background-color: rgba(0, 0, 0, 0.6);
-    width: 62.5rem;
-    height: 4.06rem;
-  }
-
-
-  .dogadajusredini {
-    position: absolute;
-    top: 38.06rem;
-    left: 13.44rem;
-    width: 63.13rem;
-    height: 64.06rem;
+.homepageglavnaslika-icon {
+  position: relative; /* make sure it's positioned relative or absolute */
+    top: -3.75rem;
+    max-width: 100%;
     overflow: hidden;
+    max-height: 100%; 
+    height: 50rem;
+    object-fit: cover;
+    opacity: 0; /* Set initial opacity to 50% */
+  transition: opacity 1s ease-in-out; /* Apply a smooth transition to opacity */
+  animation: fadeIn 1s ease-in-out 3s forwards; /* Apply the initial fade-in animation */
   }
-  .dogadajitrecired {
+  .img-5449-photoroom-1-icon {
     position: absolute;
-    top: 130rem;
+    top: 4.69rem;
     left: 0rem;
-    background-color: #fff;
-    width: 90rem;
-    height: 47.06rem;
-  }
-  .b {
-    position: absolute;
-    top: 11.81rem;
-    left: calc(50% - 120.5px);
-  }
-  .lanova {
-    position: absolute;
-    top: 18.31rem;
-    left: calc(50% - 82.5px);
-    font-size: 1.25rem;
-    color: #000;
-  }
-  .analitika1-child {
-    position: absolute;
-    top: 1.06rem;
-    left: calc(50% + 106.5px);
-    width: 0.13rem;
-    height: 18.75rem;
-  }
-  .membership-1-icon {
-    position: absolute;
-    top: 0rem;
-    left: calc(50% - 107.5px);
-    width: 8.13rem;
-    height: 8.13rem;
-    overflow: hidden;
-  }
-  .analitika1 {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    width: 13.44rem;
-    height: 19.81rem;
-  }
-  .b1 {
-    position: absolute;
-    top: 11.81rem;
-    left: calc(50% - 75px);
-  }
-  .godina-postojanja {
-    position: absolute;
-    top: 18.31rem;
-    left: calc(50% - 119px);
-    font-size: 1.25rem;
-    color: #000;
-  }
-  .analitika2-child {
-    position: absolute;
-    top: 1.06rem;
-    left: calc(50% + 118px);
-    width: 0.13rem;
-    height: 18.75rem;
-  }
-  .group-icon1 {
-    position: absolute;
-    top: 0rem;
-    left: calc(50% - 96px);
-    width: 8.13rem;
-    height: 8.13rem;
-  }
-  .analitika2 {
-    position: absolute;
-    top: 0rem;
-    left: 18.13rem;
-    width: 14.88rem;
-    height: 19.81rem;
-  }
-  .b2 {
-    position: absolute;
-    top: 11.81rem;
-    left: calc(50% - 50px);
-  }
-  .podrunih-zborova {
-    position: absolute;
-    top: 18.31rem;
-    left: calc(50% - 121px);
-    font-size: 1.25rem;
-    color: #000;
-  }
-  .analitika3-child {
-    position: absolute;
-    top: 1.06rem;
-    left: calc(50% + 120px);
-    width: 0.13rem;
-    height: 18.75rem;
-  }
-  .group-icon2 {
-    position: absolute;
-    top: 0rem;
-    left: calc(50% - 94px);
-    width: 8.13rem;
-    height: 8.13rem;
-  }
-  .analitika3 {
-    position: absolute;
-    top: 0.19rem;
-    left: 37.69rem;
-    width: 15.13rem;
-    height: 19.81rem;
-  }
-  .b3 {
-    position: absolute;
-    top: 11.83rem;
-    left: calc(50% - 60.5px);
-  }
-  .demostratora-skijanja {
-    position: absolute;
-    top: 18.33rem;
-    left: calc(50% - 107.5px);
-    font-size: 1.25rem;
-    color: #000;
-  }
-  .clip-path-group {
-    position: absolute;
-    top: 0rem;
-    left: calc(50% - 65.5px);
-    width: 8.13rem;
-    height: 8.13rem;
-  }
-  .analitika4 {
-    position: absolute;
-    top: 0rem;
-    left: 57.5rem;
-    width: 13.44rem;
-    height: 19.83rem;
-  }
-  .analitikapodgrupa {
-    position: absolute;
-    top: 2.5rem;
-    left: 9.5rem;
-    width: 70.94rem;
-    height: 20rem;
-  }
-  .analitikahome {
-    position: absolute;
-    top: 224.88rem;
-    left: calc(50% - 720px);
-    background-color: #fff;
-    width: 90rem;
-    height: 25rem;
-    font-size: 4rem;
-    color: #03a9f4;
-  }
-  .rostsport-1-icon {
-    position: absolute;
-    top: calc(50% - 61.5px);
-    left: calc(50% - 125px);
-    width: 15.63rem;
-    height: 7.68rem;
+    width: 43.13rem;
+    height: 32.81rem;
     object-fit: cover;
   }
-  .sponzor1 {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    background-color: #fff;
-    width: 26.25rem;
-    height: 15.94rem;
-  }
-  .porsche-logo-1-icon {
-    position: absolute;
-    top: calc(50% - 96.5px);
-    left: calc(50% - 75px);
-    width: 9.38rem;
-    height: 12.11rem;
-    object-fit: cover;
-  }
-  .sponzor2 {
-    position: absolute;
-    top: 0rem;
-    left: 28.13rem;
-    background-color: #fff;
-    width: 26.25rem;
-    height: 15.94rem;
-  }
-  .lenovo-global-corporate-logo-1-icon {
-    position: absolute;
-    top: calc(50% - 33.5px);
-    left: calc(50% - 100px);
-    width: 12.5rem;
-    height: 4.17rem;
-    object-fit: cover;
-  }
-  .sponzor3 {
-    position: absolute;
-    top: 0rem;
-    left: 56.25rem;
-    background-color: #fff;
-    width: 26.25rem;
-    height: 15.94rem;
-  }
-  .sponzorigrupa {
-    position: absolute;
-    top: 178.94rem;
-    left: 0rem;
-    width: 90rem;
-    height: 15.94rem;
-  }
-
-  .map-pin-1-icon {
-    position: relative;
-    width: 1rem;
-    height: 1rem;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .maksimirska-51a-10000 {
-    text-decoration: none;
-    position: relative;
-    color: inherit;
-    white-space: nowrap;
-  }
-  .frame1 {
-    width: 14.94rem;
-    height: 1.06rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.75rem;
-    text-align: left;
-  }
-  .div {
-    position: relative;
-    letter-spacing: -0.17px;
-  }
-  .frame2 {
-    width: 8.88rem;
-    height: 1.06rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.63rem;
-  }
-  .frame3 {
-    width: 8.88rem;
-    height: 1.13rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.63rem;
-  }
-  .infohzutshr {
-    text-decoration: none;
-    position: relative;
-    letter-spacing: -0.17px;
-    color: inherit;
-    white-space: nowrap;
-  }
-  .frame4 {
-    width: 7.25rem;
-    height: 1.06rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.63rem;
-    color: #03a9f4;
-  }
-  .frame {
-    width: 14.94rem;
-    height: 7.13rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0.64rem;
-    text-align: center;
-    font-size: 0.88rem;
-    color: #000;
-  }
-  .kontakt-parent {
-    margin: 0 !important;
-    position: absolute;
-    right: 19.25rem;
-    bottom: 13.81rem;
-    width: 14.94rem;
-    height: 10.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1.88rem;
-    z-index: 1;
-    white-space: nowrap;
-  }
-  .o-nama {
-    position: relative;
-    font-weight: 600;
-    white-space: nowrap;
-  }
-  .osnovne-informacije {
-    text-decoration: none;
-    position: relative;
-    font-weight: 500;
-    color: inherit;
-    white-space: nowrap;
-  }
-  .frame6 {
-    width: 8.63rem;
-    height: 7.06rem;
-    overflow:visible;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0.64rem;
-    font-size: 0.88rem;
-    color: #000;
-  }
-  .frame5 {
-    width: 8.63rem;
-    height: 16.44rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1.88rem;
-  }
- 
-  .frame-parent {
-    margin: 0 !important;
-    position: absolute;
-    right: 39.19rem;
-    bottom: 9.88rem;
-    width: 8.63rem;
-    height: 14.44rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.94rem;
-    z-index: 2;
-  }
-  .copyright-2023 {
-    position: absolute;
-    margin: 0 !important;
-    bottom: 1.69rem;
-    left: calc(50% - 227px);
-    font-size: 1rem;
-    font-weight: 600;
-    color: #fff;
-    z-index: 3;
-    white-space: nowrap;
-  }
-  .img-5195-photoroom-1-icon {
-    position: absolute;
-    margin: 0 !important;
-    bottom: 4.56rem;
-    left: 0rem;
-    width: 40.88rem;
-    height: 23.88rem;
-    object-fit: cover;
-    z-index: 4;
-  }
-  .pratite-nas-wrapper {
-    width: 6.44rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    white-space: nowrap;
-  }
-  .vector-icon2 {
-    position: absolute;
-    right: 0.47rem;
-    bottom: 0.47rem;
-    width: 0.93rem;
-    height: 0.93rem;
-  }
-  .instagram-group {
-    text-decoration: none;
-    position: absolute;
-    right: 9.38rem;
-    bottom: 0rem;
-    border-radius: 5px;
-    background-color: rgba(29, 161, 242, 0.95);
-    width: 1.88rem;
-    height: 1.88rem;
-  }
-  .vector-icon3 {
-    position: absolute;
-    right: 0.66rem;
-    bottom: 0.49rem;
-    width: 0.52rem;
-    height: 0.9rem;
-  }
-  .facebook-group {
-    text-decoration: none;
-    position: absolute;
-    right: 6.25rem;
-    bottom: 0rem;
-    border-radius: 5px;
-    background-color: rgba(29, 161, 242, 0.95);
-    width: 1.88rem;
-    height: 1.88rem;
-  }
-  .vector-icon4 {
-    position: absolute;
-    right: 0.45rem;
-    bottom: 0.53rem;
-    width: 0.98rem;
-    height: 0.81rem;
-  }
-  .twitter-group {
-    text-decoration: none;
-    position: absolute;
-    right: 3.13rem;
-    bottom: 0rem;
-    border-radius: 5px;
-    background-color: rgba(29, 161, 242, 0.95);
-    width: 1.88rem;
-    height: 1.88rem;
-  }
-  .vector-icon5 {
-    position: absolute;
-    right: 0.49rem;
-    bottom: 0.53rem;
-    width: 0.9rem;
-    height: 0.85rem;
-  }
-  .linkedin-group {
-    text-decoration: none;
-    position: absolute;
-    right: 0rem;
-    bottom: 0rem;
-    border-radius: 5px;
-    background-color: rgba(29, 161, 242, 0.95);
-    width: 1.88rem;
-    height: 1.88rem;
-    
-  }
-  .frame9 {
-    position: relative;
-    width: 11.25rem;
-    height: 1.88rem;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .frame-group {
-    width: 11.25rem;
-    height: 5.25rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 1.88rem;
-  }
-  .frame8 {
-    position: absolute;
-    top: -3.37rem;
-    left: 0rem;
-    width: 11.25rem;
-    height: 8.63rem;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
-  }
-  .grupasocialnemreze {
-    position: absolute;
-    margin: 0 !important;
-    right: 3rem;
-    bottom: 19.06rem;
-    width: 11.25rem;
-    height: 1.88rem;
-    z-index: 5;
-  }
-
-  .img-4689-photoroom-1-icon {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    width: 43.75rem;
-    height: 25.95rem;
-    object-fit: cover;
-  }
-  .popusti-za-nae {
+  .podruni-zborovi-hzuts-a {
     position: absolute;
     top: 2.19rem;
-    left: calc(50% + 129px);
-    font-size: 2.5rem;
+    left: 5.25rem;
   }
-  .saznajte-pogodnosti-za {
+  .saznajte-informacije-o {
     position: absolute;
-    top: calc(50% - 87px);
-    left: calc(50% + 177px);
+    top: 6.44rem;
+    left: 14.38rem;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14.44rem;
+  }
+  .vector-icon {
+    position: absolute;
+    top: 0.31rem;
+    left: 6.19rem;
+    width: 0.38rem;
+    height: 0.63rem;
+  }
+  .saznaj-vie {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    font-weight: 600;
+  }
+  .vector-parent {
+    position: absolute;
+    top: 10.69rem;
+    left: 17.19rem;
+    width: 6.5rem;
+    height: 1.19rem;
+    font-size: 1rem;
+    color: #03a9f4;
+  }
+  .prviredlijevo {
+    position: relative;
+    background-color: #fff;
+    width: 43.13rem;
+    height: 37.5rem;
+  }
+  .img-7155-photoroom-1-icon {
+    position: absolute;
+    top: 8.31rem;
+    left: 21.25rem;
+    width: 21.88rem;
+    height: 29.17rem;
+    object-fit: cover;
+  }
+  .interski-kongresi-i {
+    position: absolute;
+    top: calc(50% - 265px);
+    left: calc(50% - 298px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 37.25rem;
+  }
+  .vector-icon1 {
+    position: absolute;
+    height: 52.63%;
+    width: 5.77%;
+    top: 26.32%;
+    right: -0.96%;
+    bottom: 21.05%;
+    left: 95.19%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .saznaj-vie1 {
+    position: absolute;
+    top: calc(50% - 9.5px);
+    left: calc(50% - 52px);
+    font-weight: 600;
+  }
+  .saznajvise {
+    position: absolute;
+    top: 10.69rem;
+    left: 18.13rem;
+    width: 6.5rem;
+    height: 1.19rem;
+    font-size: 1rem;
+    color: #03a9f4;
+  }
+  .saznajte-informacije-o1 {
+    position: absolute;
+    top: 6.44rem;
+    left: calc(50% - 187px);
+    font-size: 1.25rem;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 23.38rem;
   }
-  .saznaj-vie {
-    position: absolute;
-    top: calc(50% - 12px);
-    left: calc(50% - 117px);
-    letter-spacing: 10px;
+  .prviredframeova {
+    height: 37.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
   }
-  .popustisaznajvise {
-    position: absolute;
-    top: 16.63rem;
-    left: 54.81rem;
-    border: 2px solid #03a9f4;
-    box-sizing: border-box;
-    width: 25rem;
-    height: 3.75rem;
-  }
-  .popustisaznajvise:hover {
-    background-color: #03a9f4;
-    color: #fff; 
-  }
-
-  .popustizaclanove {
-    position: absolute;
-    top: 145.19rem;
-    left: 1.25rem;
-    background-color: #fff;
-    width: 87.5rem;
-    height: 26.25rem;
-    font-size: 1.25rem;
+  .framesadrzaji {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    max-height: 375rem;
   }
   .kako-postati-uitelj {
     position: absolute;
@@ -1243,27 +766,7 @@ opacity: 0; /* Set initial opacity to 50% */
     justify-content: center;
     width: 37.06rem;
   }
-  .vector-icon6 {
-  position: absolute;
-  height: 52.63%;
-  width: 5.77%;
-  top: calc(26.32% + 3px); /* Adjusted top value */
-  right: -0.96%;
-  bottom: 21.05%;
-  left: 95.19%;
-  max-width: 100%;
-  align-items: center;
-  overflow: hidden;
-  max-height: 100%;
-}
-
-  .saznaj-vie1 {
-    position: absolute;
-    top: calc(50% - 9.5px);
-    left: calc(50% - 52px);
-    font-weight: 600;
-  }
-  .saznajvise {
+  .saznajvise1 {
     position: absolute;
     top: 12.13rem;
     left: 15.25rem;
@@ -1298,17 +801,6 @@ opacity: 0; /* Set initial opacity to 50% */
     height: 22rem;
     object-fit: cover;
   }
-  .drugiredlijevo {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    background-color: #fff;
-    width: 43.13rem;
-    height: 37.5rem;
-  }
-  
-
-
   .fullsizerender-3-photoroom-1-icon {
     position: absolute;
     top: 12.25rem;
@@ -1350,149 +842,612 @@ opacity: 0; /* Set initial opacity to 50% */
     height: 9.69rem;
     overflow: hidden;
   }
-  .drugireddesno {
-    position: absolute;
-    top: 0rem;
-    left: 44.38rem;
-    background-color: #fff;
-    width: 43.13rem;
-    height: 37.5rem;
-  }
   .drugired {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+  }
+
+  .objavljeno-20032023 {
+    position: relative;
+  }
+  .objavljenotekst {
+    margin: 0 !important;
     position: absolute;
-    top: 39.06rem;
-    left: 1.25rem;
-    width: 87.5rem;
+    width: 32%;
+    top: calc(50% - 290px);
+    right: 0%;
+    left: 68%;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1.25rem 1.69rem;
+    box-sizing: border-box;
+    z-index: 1;
+  }
+  .srednjibannerdogadaji {
+    width: 100% !important;
     height: 37.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    gap: 0.63rem;
+    
+    overflow: hidden; 
+  }
+
+  .srednjibannerdogadaji-child {
+    width: 70%;
+    height: auto;
+    object-fit: cover;
+    display: block; 
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    position: relative;
+    max-width: 100%;
     overflow: hidden;
+
+    flex-shrink: 0;
+    z-index: 1003;
   }
-  .img-5449-photoroom-1-icon {
-    position: absolute;
-    top: 4.69rem;
-    left: 0rem;
-    width: 43.13rem;
-    height: 32.81rem;
-    object-fit: cover;
+
+  .otkazan-ctt-test {
+    position: relative;
   }
-  .podruni-zborovi-hzuts-a {
-    position: absolute;
-    top: 2.19rem;
-    left: 5.25rem;
-  }
-  .saznajte-informacije-o {
-    position: absolute;
-    top: 6.44rem;
-    left: 14.38rem;
-    font-size: 1.25rem;
+  .otkazan-ctt-test-sigurnosti-wrapper {
+    background-color: rgba(0, 0, 0, 0.6);
+    width: 62.5rem;
+    height: 4rem;
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 14.44rem;
+    padding: 1.2rem 11.63rem;
+    box-sizing: border-box;
   }
-  .vector-icon8 {
+  .dogadajusredini {
+    margin: 0 !important;
     position: absolute;
-    top: 0.31rem;
-    left: 6.19rem;
-    width: 0.38rem;
-    height: 0.63rem;
+    top: 37.3rem;
+    left: calc(50% - 500px);
+    height: 4rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    z-index: 1;
   }
-  .saznaj-vie3 {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    font-weight: 600;
+  .dogadajitrecired {
+    align-self: stretch;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 3.75rem 0rem;
+    position: relative;
+    gap: 0.63rem;
+    font-size: 1.25rem;
+    color: #fff;
   }
-  .vector-parent {
+  .rostsport-1-icon {
     position: absolute;
-    top: 10.69rem;
-    left: 17.19rem;
-    width: 6.5rem;
-    height: 1.19rem;
-    font-size: 1rem;
-    color: #03a9f4;
-  }
-  .img-7155-photoroom-1-icon {
-    position: absolute;
-    top: 8.31rem;
-    left: 21.25rem;
-    width: 21.88rem;
-    height: 29.17rem;
+    top: calc(50% - 61.5px);
+    left: calc(50% - 125px);
+    width: 15.63rem;
+    height: 7.68rem;
     object-fit: cover;
   }
-  .interski-kongresi-i {
+  .sponzor1 {
+    position: relative;
+    background-color: #fff;
+    width: 26.25rem;
+    height: 15.94rem;
+  }
+  .porsche-logo-1-icon {
     position: absolute;
-    top: calc(50% - 265px);
-    left: calc(50% - 298px);
+    top: calc(50% - 96.5px);
+    left: calc(50% - 75px);
+    width: 9.38rem;
+    height: 12.11rem;
+    object-fit: cover;
+  }
+  .lenovo-global-corporate-logo-1-icon {
+    position: absolute;
+    top: calc(50% - 33.5px);
+    left: calc(50% - 100px);
+    width: 12.5rem;
+    height: 4.17rem;
+    object-fit: cover;
+  }
+  .sponzorigrupa {
     display: flex;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    width: 37.25rem;
+    gap: 1.88rem;
   }
-  .saznajvise1 {
-    position: absolute;
-    top: 10.69rem;
-    left: 18.13rem;
-    width: 6.5rem;
-    height: 1.19rem;
-    font-size: 1rem;
-    color: #03a9f4;
+  .img-4689-photoroom-1-icon {
+    position: relative;
+    width: 43.75rem;
+    height: 25.95rem;
+    object-fit: cover;
   }
-  .saznajte-informacije-o1 {
-    position: absolute;
-    top: 6.44rem;
-    left: calc(50% - 187px);
-    font-size: 1.25rem;
+  .frameslikapopusti {
+    width: 43.75rem;
+    height: 25.95rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .popusti-za-nae {
+    position: relative;
+    font-size: 2.5rem;
+  }
+  .saznajte-pogodnosti-za {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 23.38rem;
+    flex-shrink: 0;
   }
-  .prviredframeova {
+  .saznaj-vie4 {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 117px);
+    letter-spacing: 10px;
+  }
+  .popustisaznajvise {
+    position: relative;
+    border: 2px solid #03a9f4;
+    box-sizing: border-box;
+    width: 25rem;
+    height: 3.75rem;
+  }
+  .okvirtekst {
+    flex: 1;
+    height: 26.25rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 2.69rem 6.25rem;
+    box-sizing: border-box;
+    gap: 4.25rem;
+  }
+  .popustizaclanove {
+    background-color: #fff;
+    width: 87.5rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.25rem;
+  }
+  .b {
+    position: absolute;
+    top: 11.81rem;
+    left: calc(50% - 116.5px);
+  }
+  .lanova {
+    position: absolute;
+    top: 18.31rem;
+    left: calc(50% - 82.5px);
+    font-size: 1.25rem;
+    color: #000;
+  }
+  .analitika1-child {
+    position: absolute;
+    top: 1.06rem;
+    left: calc(50% + 106.5px);
+    width: 0.13rem;
+    height: 18.75rem;
+  }
+  .membership-1-icon {
     position: absolute;
     top: 0rem;
-    left: 1.25rem;
-    width: 87.5rem;
-    height: 37.5rem;
+    left: calc(50% - 107.5px);
+    width: 8.13rem;
+    height: 8.13rem;
     overflow: hidden;
   }
-
-
-  .framesadrzaji {
+  .analitika1 {
+    position: relative;
+    width: 13.44rem;
+    height: 19.81rem;
+  }
+  .b1 {
     position: absolute;
-    top: 51.56rem;
-    left: 0rem;
-    width: 100%;
-    height: 225.25rem;
-    overflow: hidden;
-    font-size: 2.5rem;
+    top: 11.81rem;
+    left: calc(50% - 75px);
+  }
+  .godina-postojanja {
+    position: absolute;
+    top: 18.31rem;
+    left: calc(50% - 119px);
+    font-size: 1.25rem;
     color: #000;
+  }
+  .analitika2-child {
+    position: absolute;
+    top: 1.06rem;
+    left: calc(50% + 118px);
+    width: 0.13rem;
+    height: 18.75rem;
+  }
+  .group-icon {
+    position: absolute;
+    top: 0rem;
+    left: calc(50% - 96px);
+    width: 8.13rem;
+    height: 8.13rem;
+  }
+  .analitika2 {
+    position: relative;
+    width: 14.88rem;
+    height: 19.81rem;
+  }
+  .b2 {
+    position: absolute;
+    top: 11.81rem;
+    left: calc(50% - 50px);
+  }
+  .podrunih-zborova {
+    position: absolute;
+    top: 18.31rem;
+    left: calc(50% - 121px);
+    font-size: 1.25rem;
+    color: #000;
+  }
+  .analitika3-child {
+    position: absolute;
+    top: 1.06rem;
+    left: calc(50% + 120px);
+    width: 0.13rem;
+    height: 18.75rem;
+  }
+  .group-icon1 {
+    position: absolute;
+    top: 0rem;
+    left: calc(50% - 94px);
+    width: 8.13rem;
+    height: 8.13rem;
+  }
+  .analitika3 {
+    position: relative;
+    width: 15.13rem;
+    height: 19.81rem;
+  }
+  .b3 {
+    position: absolute;
+    top: 11.83rem;
+    left: calc(50% - 60.5px);
+  }
+  .demostratora-skijanja {
+    position: absolute;
+    top: 18.33rem;
+    left: calc(50% - 107.5px);
+    font-size: 1.25rem;
+    color: #000;
+  }
+  .clip-path-group {
+    position: absolute;
+    top: 0rem;
+    left: calc(50% - 65.5px);
+    width: 8.13rem;
+    height: 8.13rem;
+  }
+  .analitika4 {
+    position: relative;
+    width: 13.44rem;
+    height: 19.83rem;
+  }
+  .analitikapodgrupa {
+    flex: 1;
+    height: 19.83rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4.69rem;
+  }
+  .analitikahome {
+    background-color: #fff;
+    width: 89.94rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 2.5rem 9.5rem;
+    box-sizing: border-box;
+    font-size: 4rem;
+    color: #03a9f4;
+  }
+  .bilteni-hzuts-a {
+    position: absolute;
+    top: 1.88rem;
+    left: 2.5rem;
+  }
+  .frame-child {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    width: 12.5rem;
+    height: 15.63rem;
+    object-fit: cover;
+  }
+  .bilten-sezona {
+    margin: 0;
+  }
+  .bilten-sezona-20192020-container {
+    position: absolute;
+    top: 17.5rem;
+    left: 1.06rem;
+  }
+  .rectangle-parent {
+    position: relative;
+    width: 12.5rem;
+    height: 21.13rem;
+  }
+  .frame-parent {
+    position: absolute;
+    top: 6.04rem;
+    left: 1.25rem;
+    width: 87.63rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2.94rem;
+    font-size: 1.5rem;
+    color: #03a9f4;
+  }
+  .lijevastrelica-icon {
+    position: absolute;
+    top: 14.75rem;
+    left: 1.25rem;
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+  .desnastrelica-child {
+    position: relative;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 3.75rem;
+    height: 3.75rem;
+    z-index: 0;
+  }
+  .vector-icon4 {
+    position: absolute;
+    margin: 0 !important;
+    top: calc(50% - 13.5px);
+    right: 1.41rem;
+    width: 0.94rem;
+    height: 1.69rem;
+    z-index: 1;
+  }
+  .desnastrelica {
+    position: absolute;
+    top: calc(50% - 20px);
+    right: 1.13rem;
+    height: 3.75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.63rem;
+  }
+  .biltenipodframe {
+    position: absolute;
+    width: 100%;
+    top: 0rem;
+    right: 0%;
+    left: 0%;
+    background-color: #fff;
+    height: 32rem;
+  }
+  .bilteniframe {
+    align-self: stretch;
+    position: relative;
+    height: 32rem;
+    font-size: 2rem;
   }
   .hzuts-home-screen-desktop {
     position: relative;
     background-color: #f8f7f5;
     width: 100%;
-    height: 252rem;
+    height: 296.88rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.75rem;
     text-align: center;
-    font-size: 1.25rem;
-    color: #fff;
+    font-size: 2.5rem;
+    color: #000;
     font-family: Inter;
   }
 
-  @media screen and (max-width: 1200px) {
-    .hzuts-home-screen-desktop {
-      max-width: 1200px;
-    }
-  }
   @media screen and (max-width: 960px) {
+    .prviredframeova {
+      width: auto;
+      align-self: unset;
+      height: auto;
+      flex-direction: column;
+      gap: 1.25rem;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .objavljeno-20032023 {
+      font-size: 0.94rem;
+    }
+
+    .srednjibannerdogadaji {
+      width: auto;
+      align-self: unset;
+      height: auto;
+      gap: 0.63rem;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 0rem;
+      padding-right: 0rem;
+      box-sizing: border-box;
+
+    
+    overflow: hidden; 
+    }
+
+    .otkazan-ctt-test {
+      font-size: 0.94rem;
+    }
+
+    .sponzorigrupa {
+      height: auto;
+    }
+
+    .okvirtekst {
+      width: auto;
+      align-self: stretch;
+      height: auto;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+      box-sizing: border-box;
+      flex: unset;
+    }
+
+    .popustizaclanove {
+      flex-direction: column;
+    }
+
+    .analitikapodgrupa {
+      flex: 1;
+      align-self: stretch;
+      height: auto;
+      flex-direction: row;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 9.38rem;
+      padding-bottom: 0rem;
+      box-sizing: border-box;
+    }
+
     .hzuts-home-screen-desktop {
-      max-width: 960px;
+      width: auto;
+      align-self: unset;
+      height: auto;
+
     }
   }
   @media screen and (max-width: 420px) {
-    .hzuts-home-screen-desktop {
-      max-width: 420px;
+    .podruni-zborovi-hzuts-a {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .saznajte-informacije-o {
+      font-size: 1.06rem;
+    }
+
+    .saznaj-vie {
+      font-size: 1.06rem;
+    }
+
+    .interski-kongresi-i {
+      font-size: 1.5rem;
+    }
+
+    .saznajte-informacije-o1 {
+      font-size: 1.06rem;
+    }
+
+    .prviredframeova {
+      flex-direction: column;
+    }
+
+    .kako-postati-uitelj {
+      font-size: 1.5rem;
+      text-align: center;
+    }
+
+    .proitajte-kako-postati {
+      font-size: 1.06rem;
+    }
+
+    .ulanite-se-u {
+      font-size: 1.5rem;
+    }
+
+    .saznajte-informacije-kako {
+      font-size: 1.06rem;
+    }
+
+    .objavljeno-20032023 {
+      font-size: 0.81rem;
+    }
+
+    .srednjibannerdogadaji {
+      align-self: stretch;
+      width: auto;
+      height: auto;
+      flex-direction: row;
+    }
+
+    .otkazan-ctt-test {
+      font-size: 0.69rem;
+    }
+
+    .sponzorigrupa {
+      width: auto;
+      align-self: unset;
+      height: auto;
+      gap: 0.63rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
+    .popusti-za-nae {
+      font-size: 1.88rem;
+    }
+
+    .saznajte-pogodnosti-za {
+      font-size: 1.25rem;
+    }
+
+    .saznaj-vie4 {
+      font-size: 1.13rem;
+    }
+
+    .analitikapodgrupa {
+      gap: 17.19rem;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 31.25rem;
+      box-sizing: border-box;
     }
   }
+
 
 
   .animate-on-scroll {

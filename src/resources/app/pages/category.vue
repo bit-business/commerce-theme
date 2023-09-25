@@ -9,7 +9,7 @@
     no-gutter
     :class="['vrhslikaitekst']"
     :padding="2"
-    :style="{ 'background-image': `url(${nextEvent.productImage ? nextEvent.productImage : 'storage/slike/Crazy_skiing.jpg'})` }"
+    :style="{ 'background-image': `url(${nextEvent.productImage ? nextEvent.productImage : '/storage/slike/prvireddesni@3x.png'})` }"
 >
 
       <div class="frame-parent">
@@ -99,10 +99,8 @@
                     <div class="lachtal">{{ product.mjesto }}</div>
                   </div>
                   <div class="parent">
-                    <div class="div2">+890</div>
-                    <img class="frame-inner" alt="" src="/storage/slike/dogadajiikona.png" />
-                    <img class="ellipse-icon" alt="" src="/storage/slike/dogadajiikona.png" />
-                    <img class="frame-child1" alt="" src="/storage/slike/dogadajiikona.png" />
+                  
+              
                   </div>
                 </div>
                 <div class="teaj-za-uitelje">{{ product.name }}</div>
@@ -827,6 +825,7 @@ computeCountdown() {
   background-size: cover; /* This makes the image aspect-fill */
   background-repeat: no-repeat;
   background-position: center; /* Centers the image */
+
 }
 .vrhslikaitekst::before {
     content: "";

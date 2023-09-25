@@ -1381,9 +1381,9 @@ export default {
   }
   .footertekst {
     position: absolute;
-    top: calc(50% + 466px);
-    left: calc(50% - 227px);
-    font-size: 1rem;
+    top: calc(50% + 326px);
+    left: calc(50% - 200px);
+    font-size: 0.9rem;
     font-weight: 500;
     color: #fff;
     text-align: left;
@@ -1422,8 +1422,8 @@ export default {
 
   .srednjiframe {
     position: absolute;
-    height: 59.96%;
-    top: 15.02%;
+    height: 83.96%;
+    top: 4.02%;
     bottom: 20.02%;
     left: calc(50% - 301px);
     border-radius: 20px;
@@ -1443,7 +1443,7 @@ export default {
   .hzuts-registration-desktop {
     position: relative;
     width: 100%;
-    height: 64rem;
+    height: 100%;
     overflow: hidden;
     background-image: url("/storage/slike/hzuts-login-desktop@3x.png");
     background-size: cover;
@@ -2660,6 +2660,40 @@ export default {
     background-color: #fff;
     width: 37.56rem;
   }
+
+
+
+
+  @media screen and (max-width: 960px) {
+    .hzuts-registration-desktop {
+      max-width: 960px;
+    }
+    .logohzuts-icon {
+        top: 0.18rem;
+        left: 44%;
+        height: 4rem;
+  }
+  .backgumb {
+    top: 0rem;
+    z-index: 100;
+  }
+
+  }
+  @media screen and (max-width: 420px) {
+    .hzuts-registration-desktop {
+      max-width: 420px;
+    }
+    .logohzuts-icon {
+      top: 0.18rem;
+      left: 44%;
+      height: 4rem;
+  }
+  .backgumb {
+    top: 0rem;
+    z-index: 100;
+  }
+  }
+
 
 </style>
 

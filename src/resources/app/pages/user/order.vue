@@ -119,12 +119,12 @@
                 </div>
                 <div class="flex flex-col space-y-4 items-end">
                   <div class="flex space-x-3 items-center">
-                    <div class="text-sm">Total Pesanan:</div>
+                    <div class="text-sm">Ukupno za platiti:</div>
                     <div class="text-2xl text-primary">{{ $currency(parseInt(order.payed)) }}</div>
                   </div>
                   <div class="flex items-center space-x-2">
-                    <button @click="review(order.id)" class="text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Ocjena</button>
-                    <!-- <button class="text-sm bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border">Hubungi Penjual</button> -->
+                   <!-- <button @click="review(order.id)" class="text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Ocjena</button>
+                     <button class="text-sm bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border">Hubungi Penjual</button> -->
                     <Link class="text-sm block text-center bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border" :href="route('skijasi.commerce-theme.detail', order.orderDetails[0].productDetail.product.slug)">Kupi ponovo</Link>
                     <button class="text-sm bg-primary hover:bg-opacity-90 text-white py-2 rounded-md w-40 border" v-if="order.status === 'waitingBuyerPayment'">
                       <component

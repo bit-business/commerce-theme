@@ -77,10 +77,6 @@
 
 
 
-
-
-
-
      
         <img
           class="ikonasrednjiframetop-icon"
@@ -568,8 +564,8 @@ export default {
   }
   .srednjiframeglavni {
     position: absolute;
-    height: 55.47%;
-    top: 19.36%;
+    height: 75.47%;
+    top: 10.36%;
     bottom: 22.17%;
     left: calc(50% - 248px);
     width: 31rem;
@@ -593,11 +589,22 @@ export default {
     bottom: 0%;
     left: 0%;
   }
+
+  .hzuts-login-desktop-child {
+    position: absolute;
+    height: 7.13%;
+    width: 100%;
+    top: 92.87%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    background-color: #03a9f4;
+  }
   .footertext {
     position: absolute;
-    top: calc(50% + 466px);
-    left: calc(50% - 227px);
-    font-size: 1rem;
+    top: calc(50% + 326px);
+    left: calc(50% - 200px);
+    font-size: 0.9rem;
     font-weight: 500;
     color: #fff;
     text-align: left;
@@ -616,7 +623,7 @@ export default {
     position: relative;
     background-color: #fff;
     width: 100%;
-    height: 64rem;
+    height: 100%;
     overflow: hidden;
     text-align: center;
     font-size: 0.88rem;
@@ -634,10 +641,20 @@ export default {
     .hzuts-reset-password-desktop {
       max-width: 960px;
     }
+    .logoprijava-icon {
+      top: 0.38rem;
+left: 43%;
+height: 5.5rem;
+  }
   }
   @media screen and (max-width: 420px) {
     .hzuts-reset-password-desktop {
       max-width: 420px;
     }
+    .logoprijava-icon {
+      top: 0.38rem;
+left: 43%;
+height: 5.5rem;
+  }
   }
 </style>

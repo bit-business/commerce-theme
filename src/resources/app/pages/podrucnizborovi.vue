@@ -13,11 +13,11 @@
         <a class="ulica-grada-vukovara"
           >Ulica grada Vukovara 32, 10 000 Zagreb</a
         >
-        <div class="frame">
+        <div class="frameprvi">
           <div class="predsjednik">Predsjednik:</div>
           <b class="predsjednik">Dubravko Grgić</b>
         </div>
-        <div class="frame1">
+        <div class="frame1prvi">
           <div class="predsjednik">Tajnik:</div>
           <b class="predsjednik">Andrej Hubel</b>
         </div>
@@ -98,7 +98,7 @@
       <div class="frame-div">
         <div class="frame6">
           <div class="frame7">
-            <b class="zuts-istra1">ZUTS Istra</b>
+            <b class="zuts-istra1">{{ zborovi && zborovi[2] ? zborovi[2].ime : '' }}</b>
             <img class="frame-item" alt="" src="/storage/slike/undefined9.png" />
           </div>
           <div class="frame8">
@@ -114,7 +114,7 @@
     </div>
     <div class="podrucnizbor3">
       <div class="zuts-istra-group">
-        <b class="zuts-istra2">ZUTS Istra</b>
+        <b class="zuts-istra2">{{ zborovi && zborovi[3] ? zborovi[3].ime : '' }}</b>
         <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
         <div class="frame10">
           <div class="predsjednik">Predsjednik:</div>
@@ -198,7 +198,7 @@
         </div>
       </div>
       <div class="zuts-istra-group">
-        <b class="zuts-istra3">ZUTS Istra</b>
+        <b class="zuts-istra3">{{ zborovi && zborovi[4] ? zborovi[4].ime : '' }}</b>
         <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
         <div class="frame16">
           <div class="predsjednik">Predsjednik:</div>
@@ -212,7 +212,7 @@
     </div>
     <div class="podrucnizbor3">
       <div class="zuts-istra-group">
-        <b class="zuts-istra4">ZUTS Istra</b>
+        <b class="zuts-istra4">{{ zborovi && zborovi[5] ? zborovi[5].ime : '' }}</b>
         <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
         <div class="frame10">
           <div class="predsjednik">Predsjednik:</div>
@@ -296,7 +296,7 @@
         </div>
       </div>
       <div class="zuts-istra-group">
-        <b class="zuts-istra3">ZUTS Istra</b>
+        <b class="zuts-istra3">{{ zborovi && zborovi[6] ? zborovi[6].ime : '' }}</b>
         <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
         <div class="frame16">
           <div class="predsjednik">Predsjednik:</div>
@@ -462,6 +462,35 @@ export default {
   }
   .predsjednik {
     position: relative;
+  }
+  .predsjednik1 {
+    position: relative;
+    text-align: left;
+  }
+  .frameprvi {
+    position: absolute;
+    top: 3.78rem;
+    left: 0rem;
+    width: 20.06rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: left;
+    justify-content: flex-start;
+    gap: 1.5rem;
+  }
+  .frame1prvi {
+    position: absolute;
+    top: 5.59rem;
+    left: 0rem;
+    width: 20.06rem;
+    height: 1.19rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: right;
+    justify-content: flex-start;
+    gap: 4.2rem;
   }
   .frame {
     position: absolute;
@@ -1037,7 +1066,7 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    text-align: center;
+    text-align: left;
     font-size: 1rem;
     color: #000;
     font-family: Inter;
@@ -1072,6 +1101,16 @@ export default {
       padding-left: 0rem;
       padding-top: -37.5rem;
       box-sizing: border-box;
+      order: -1;
+    }
+
+    .slika3zbor-parent {
+      width: 32.13rem;
+      height: 25rem;
+      order: -1;
+    }
+    .slika5zbor-parent {
+      order: -1;
     }
 
     .podrucnizbor1 {
@@ -1090,6 +1129,16 @@ export default {
     .slikaframe {
       align-self: stretch;
       width: auto;
+      order: -1;
+    }
+
+    .slika3zbor-parent {
+      width: 32.13rem;
+      height: 25rem;
+      order: -1;
+    }
+    .slika5zbor-parent {
+      order: -1;
     }
 
     .podrucnizbor1 {

@@ -85,6 +85,14 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
+    public function osnovneinformacije()
+    {
+        return Inertia::render('osnovneinformacije', [
+     
+            'name' => 'Osnovne Informacije',
+        ], 'commerce-theme:app');
+    }
+
     public function interskikongres()
     {
         return Inertia::render('interskikongres', [

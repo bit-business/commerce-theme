@@ -29,7 +29,7 @@
             <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Profil</div>
           </Link>
           <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center ml-10 group">
-            <div class="col-start-2 col-end-3 text-primary cursor-pointer text-sm">Adresa</div>
+            <div class="col-start-2 col-end-3 text-primary cursor-pointer text-sm">Adresa i Suputnici</div>
           </Link>
           <Link :href="route('skijasi.commerce-theme.change-password')" class="w-full inline-flex items-center ml-10 group">
             <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Promijeni Lozinku</div>
@@ -111,7 +111,7 @@
         </Link>
 
         <Link :href="route('skijasi.commerce-theme.address-add')" class="flex justify-between bg-white p-3">
-          <div class="text-sm text-gray-400">Dodaj novu adresu</div>
+          <div class="text-sm text-gray-400">Dodaj</div>
           <div class="text-gray-400">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4v16m8-8H4" />

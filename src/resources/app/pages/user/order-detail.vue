@@ -15,7 +15,7 @@
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor">
                   <path d="M13.586 3.586a2 2 0 112.828 2.828l-.793.793-2.828-2.828.793-.793zM11.379 5.793L3 14.172V17h2.828l8.38-8.379-2.83-2.828z" />
                 </svg>
-                Ubah Profil
+                Izmijeni profil
               </Link>
             </div>
           </div>
@@ -24,19 +24,19 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
               </svg>
-              <span class="text-gray-700 font-semibold group-hover:text-primary transition-colors text-sm pl-2">Akun Saya</span>
+              <span class="text-gray-700 font-semibold group-hover:text-primary transition-colors text-sm pl-2">Moj račun</span>
             </Link>
             <Link :href="route('skijasi.commerce-theme.order')" class="w-full inline-flex items-center group text-primary">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
               </svg>
-              <span class="font-semibold cursor-pointer transition-colors text-sm pl-2">Pesanan Saya</span>
+              <span class="font-semibold cursor-pointer transition-colors text-sm pl-2">Moja narudžba</span>
             </Link>
             <Link :href="route('skijasi.commerce-theme.notification')" class="w-full inline-flex items-center group">
               <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
               </svg>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Notifikasi</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Obavijesti</span>
             </Link>
           </div>
         </div>
@@ -46,10 +46,10 @@
               <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                 <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
               </svg>
-              Kembali
+              Povratak
             </Link>
             <div class="divide-x flex space-x-4">
-              <div>NO. PESANAN. {{ $page.props.id }}</div>
+              <div>Broj narudžbe {{ $page.props.id }}</div>
               <div class="pl-4 text-primary uppercase">{{ formatStatus(order.status) }}</div>
             </div>
           </div>
@@ -60,7 +60,7 @@
                   <path d="m19,21l0,-16a2,2 0 0 0 -2,-2l-10,0a2,2 0 0 0 -2,2l0,16l3.5,-2l3.5,2l3.5,-2l3.5,2z" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/>
                 </svg>
               </div>
-              <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Pesanan Dibuat</div>
+              <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Naručeno</div>
             </div>
             <template v-if="order.status !== 'cancel'">
               <div class="flex-auto h-16 flex items-center -mx-8"><div class="bg-primary h-1 w-full" /></div>
@@ -70,7 +70,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
                   </svg>
                 </div>
-                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Pesanan Dikonfirmasi</div>
+                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Narudžba potvrđena</div>
               </div>
             </template>
             <template v-if="order.status !== 'cancel'">
@@ -82,7 +82,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
                   </svg>
                 </div>
-                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Pesanan Diproses</div>
+                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Narudžba obrađena</div>
               </div>
             </template>
             <template v-if="order.status !== 'cancel'">
@@ -94,7 +94,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
                   </svg>
                 </div>
-                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Pesanan Dikirim</div>
+                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Narudžba poslana</div>
               </div>
             </template>
             <template v-if="order.status !== 'cancel'">
@@ -105,7 +105,7 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" />
                   </svg>
                 </div>
-                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Pesanan Selesai</div>
+                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Narudžba završena</div>
               </div>
             </template>
             <template v-if="order.status === 'cancel'">
@@ -116,24 +116,24 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
                   </svg>
                 </div>
-                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Pesanan Dibatalkan</div>
+                <div class="px-4 lg:px-0 text-sm text-gray-700 w-32 text-center mt-6 mb-1">Narudžba otkazana</div>
               </div>
             </template>
           </div>
           <div class="bg-white rounded-xl border-t border-dotted">
             <div class="flex justify-end cursor-pointer select-none border-b items-center text-sm bg-primary bg-opacity-5 rounded-t-xl text-gray-700 px-6 py-4" v-if="order.status === 'waitingBuyerPayment'">
               <component :is="`${order.orderPayment.paymentType}-pay`" :order="order" class="text-sm text-center bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter">
-                Bayar
+                Platiti
               </component>
             </div>
             <div class="flex justify-between items-center text-sm bg-primary bg-opacity-5 rounded-b-xl text-gray-700 px-6 py-4">
               <div class="text-center text-xs text-gray-400 flex flex-col items-start text-left w-1/3">
                 <template v-if="order.status === 'cancel'">
-                  Kelihatannya pesanan kamu dibatalkan karena {{ order.cancelMessage }}
+                  Čini se da je vaša narudžba otkazana jer {{ order.cancelMessage }}
                 </template>
-                <span>Terima kasih sudah berbelanja di {{ title }}!</span>
+                <span>Hvala što kupujete u {{ title }}!</span>
               </div>
-              <Link v-if="order.orderDetails.length > 0" :href="route('skijasi.commerce-theme.detail', order.orderDetails[0].productDetail.product.slug)" class="block text-center text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter">Beli Lagi</Link>
+              <Link v-if="order.orderDetails.length > 0" :href="route('skijasi.commerce-theme.detail', order.orderDetails[0].productDetail.product.slug)" class="block text-center text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter">Ostali događaji</Link>
             </div>
           </div>
           <!-- <div class="bg-white rounded-t-xl border-t border-dotted">
@@ -143,8 +143,8 @@
           </div> -->
           <div class="bg-white flex flex-wrap rounded-t-xl border-t border-dotted justify-between items-center text-sm text-gray-700 p-6">
             <div class="w-full pb-6 flex justify-between">
-              <div class="text-center text-lg text-gray-700 font-medium flex items-center">Alamat Pengiriman</div>
-              <div class="text-center text-xs text-gray-400 flex items-center" v-if="order.trackingNumber">No. Resi: {{ order.trackingNumber }}</div>
+              <div class="text-center text-lg text-gray-700 font-medium flex items-center">Dostavna adresa</div>
+              <div class="text-center text-xs text-gray-400 flex items-center" v-if="order.trackingNumber">Track no.(zamijenit):{{ order.trackingNumber }}</div>
             </div>
             <div class="w-full flex divide-x">
               <div class="flex w-1/3 flex-col space-y-1 pr-6">
@@ -180,19 +180,19 @@
           </div>
           <div class="bg-gray-50 border-t divide-y flex flex-wrap divide-dotted shadow-sm">
             <div class="flex w-full divide-x divide-dotted items-center">
-              <div class="flex w-2/3 justify-end p-3 text-xs text-gray-500">Subtotal Produk</div>
+              <div class="flex w-2/3 justify-end p-3 text-xs text-gray-500">Međuzbroj</div>
               <div class="flex w-1/3 justify-end p-3 pr-6 text-sm text-gray-700">{{ $currency(order.total - order.discounted) }}</div>
             </div>
             <div class="flex w-full divide-x divide-dotted items-center">
-              <div class="flex w-2/3 justify-end p-3 text-xs text-gray-500">Pengiriman</div>
+              <div class="flex w-2/3 justify-end p-3 text-xs text-gray-500">Dostava</div>
               <div class="flex w-1/3 justify-end p-3 pr-6 text-sm text-gray-700">{{ $currency(order.shippingCost) }}</div>
             </div>
             <div class="flex w-full divide-x divide-dotted items-center">
-              <div class="flex w-2/3 justify-end p-3 text-xs text-gray-500">Total Pesanan</div>
+              <div class="flex w-2/3 justify-end p-3 text-xs text-gray-500">Ukupna narudžba</div>
               <div class="flex w-1/3 justify-end p-3 pr-6 text-2xl text-primary">{{ $currency(order.payed) }}</div>
             </div>
             <div class="flex w-full divide-x divide-dotted items-center">
-              <div class="flex w-2/3 justify-end p-3 text-xs text-gray-500">Metode Pembayaran</div>
+              <div class="flex w-2/3 justify-end p-3 text-xs text-gray-500">Način plaćanja</div>
               <div class="flex w-1/3 justify-end p-3 pr-6 text-sm text-gray-700">{{ paymentOption.name }}</div>
             </div>
           </div>
@@ -202,16 +202,16 @@
     
     <div class="block relative sm:hidden">
       <div class="fixed bottom-0 left-0 right-0 p-2 bg-white" v-if="order.status === 'done'">
-        <Link class="block bg-primary text-white py-2 text-center rounded-md text-sm" :href="route('skijasi.commerce-theme.detail', order.orderDetails[0].productDetail.product.slug)" v-if="order.orderDetails.length > 0">Beli Lagi</Link>
+        <Link class="block bg-primary text-white py-2 text-center rounded-md text-sm" :href="route('skijasi.commerce-theme.detail', order.orderDetails[0].productDetail.product.slug)" v-if="order.orderDetails.length > 0">Drugi događaji</Link>
       </div>
 
       <div class="fixed bottom-0 left-0 right-0 p-2 bg-white" v-if="!['waitingBuyerPayment', 'done'].includes(order.status)">
-        <div class="bg-primary text-white py-2 text-center rounded-md text-sm">Pesanan telah Diterima</div>
+        <div class="bg-primary text-white py-2 text-center rounded-md text-sm">Narudžba je primljena</div>
       </div>
 
       <div class="fixed bottom-0 left-0 right-0 p-2 bg-white" v-if="order.status === 'waitingBuyerPayment'">
         <component :is="`${order.orderPayment.paymentType}-pay`" :order="order" class="bg-primary text-white py-2 text-center rounded-md text-sm">
-          Bayar Sekarang
+          Plati sada
         </component>
       </div>
     </div>
@@ -227,7 +227,7 @@
             </svg>
           </div>
           <div class="flex-grow flex flex-col">
-            <div class="text-sm font-semibold mb-1">Alamat Pengiriman</div>
+            <div class="text-sm font-semibold mb-1">Dostavna adresa</div>
             <div class="flex flex-col text-xs text-gray-400">
               <div>{{ order.orderAddress.recipientName }}</div>
               <div>{{ order.orderAddress.phoneNumber }}</div>
@@ -254,15 +254,15 @@
 
           <div class="flex flex-col p-3 gap-1">
             <div class="flex justify-between">
-              <div class="text-sm text-gray-400">Subtotal Produk</div>
+              <div class="text-sm text-gray-400">Međuzbroj</div>
               <div class="text-sm text-gray-400">{{ $currency(getSubTotal) }}</div>
             </div>
             <div class="flex justify-between">
-              <div class="text-sm text-gray-400">Subtotal Pengiriman</div>
+              <div class="text-sm text-gray-400">Međuzbroj sa ship</div>
               <div class="text-sm text-gray-400">{{ $currency(order.shippingCost) }}</div>
             </div>
             <div class="flex justify-between py-1">
-              <div class="text-sm font-semibold">Total Pesanan</div>
+              <div class="text-sm font-semibold">Ukupna narudžba</div>
               <div class="text-sm font-semibold">{{ $currency(order.payed) }}</div>
             </div>
           </div>
@@ -275,7 +275,7 @@
             </svg>
           </div>
           <div class="flex-grow flex flex-col">
-            <div class="text-sm font-semibold mb-1">Metode Pembayaran</div>
+            <div class="text-sm font-semibold mb-1">Način plaćanja</div>
             <div class="flex flex-col text-sm text-gray-400">
               {{ paymentOption.name }}
             </div>
@@ -285,15 +285,15 @@
         <div class="mt-3 bg-white w-full">
           <div class="flex flex-col p-3 gap-1">
             <div class="flex justify-between font-medium">
-              <div class="text-xs w-1/2">No. Pesanan</div>
+              <div class="text-xs w-1/2">Broj narudžbe:</div>
               <div class="text-xs w-1/2 text-right">{{ order.id }}</div>
             </div>
             <div class="flex justify-between">
-              <div class="text-xs w-1/2">Waktu Pemesanan</div>
+              <div class="text-xs w-1/2">Vrijeme narudžbe</div>
               <div class="text-xs w-1/2 text-right">{{ order.createdAt | date }}</div>
             </div>
             <div class="flex justify-between">
-              <div class="text-xs w-1/2">Waktu Terakhir Update</div>
+              <div class="text-xs w-1/2">Vrijeme posljednjeg ažuriranja</div>
               <div class="text-xs w-1/2 text-right">{{ order.updatedAt | date }}</div>
             </div>
           </div>

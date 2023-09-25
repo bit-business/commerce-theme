@@ -1,6 +1,8 @@
     <template>
     <div class="interskikongresi">
       <Head :title="$page.props.name" />
+
+
     <div class="glavnaslikagoreitekst">
       <div class="tekstvrh">
         <div class="interski-kongres-i">INTERSKI KONGRES I DEMO TEAM</div>
@@ -13,6 +15,8 @@
         </div>
       </div>
     </div>
+
+    
     <div class="prvired">
       <div class="lijeviprvidio">
         <img class="lijeviprvidio-child" alt="" src="/storage/slike/zastava_finska.png" />
@@ -88,6 +92,8 @@
       </div>
     </div>
   </div>
+
+  
 </template>
 <script>
 
@@ -575,7 +581,22 @@ export default {
     font-family: Inter;
   }
 
+  
+
+  @media screen and (max-width: 660px) {
+  
+
+
+  }
+
+
+
   @media screen and (max-width: 960px) {
+
+    .glavnaslikagoreitekst {
+    padding: 8.85rem 2.38rem;
+  }
+    
     .tekstvrh {
       flex: 1;
       height: auto;
@@ -630,7 +651,10 @@ export default {
       flex-direction: column;
       flex: unset;
       align-self: stretch;
-    }
+
+    order: -1;
+  }
+    
 
     .drugired {
       align-self: stretch;
@@ -664,6 +688,11 @@ export default {
       height: auto;
     }
   }
+
+
+  
+
+
 </style>
 
 

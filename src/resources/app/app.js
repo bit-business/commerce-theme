@@ -62,7 +62,9 @@ Vue.prototype.$alert = (
   });
 };
 Vue.prototype.$currency = (value) => {
-  return currency(value, {
+  let symbol = _.find(store.state.moduleConfigurations, { key: "currencySymbol" }).value;
+  
+  let formattedValue = currency(value, {
     precision: _.find(store.state.moduleConfigurations, {
       key: "currencyPrecision",
     }).value,
@@ -72,10 +74,17 @@ Vue.prototype.$currency = (value) => {
     separator: _.find(store.state.moduleConfigurations, {
       key: "currencySeparator",
     }).value,
-    symbol: _.find(store.state.moduleConfigurations, { key: "currencySymbol" })
-      .value,
+    symbol: symbol
   }).format();
+
+  // Move the symbol to the end
+  if (formattedValue.includes(symbol)) {
+    formattedValue = formattedValue.replace(symbol, "") + symbol;
+  }
+
+  return formattedValue;
 };
+
 Vue.prototype.$moment = moment;
 Vue.prototype.$openLoading = () => {
   store.dispatch("SHOW_LOADING");

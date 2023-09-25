@@ -3,8 +3,8 @@
     <Head :title="$page.props.name" />
 
     <div class="navbar hidden sm:block">
-      <div class="pt-8 container grid grid-cols-profile">
-        <div class="pr-8">
+      <div class="pt-8  container grid grid-cols-profile">
+        <div class="pr-8 " >
           <div class="h-22 flex items-center border-b">
             <div class="h-16 w-16 items-center justify-center clip-circle">
               <img :src="user.avatar" alt="User's avatar" class="object-cover h-16 w-16">
@@ -30,7 +30,7 @@
               <div class="col-start-2 col-end-3 text-primary cursor-pointer text-sm">Profil</div>
             </Link>
             <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center ml-10 group">
-              <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Adresa</div>
+              <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Adresa i Suputnici</div>
             </Link>
             <Link :href="route('skijasi.commerce-theme.change-password')" class="w-full inline-flex items-center ml-10 group">
               <div class="col-start-2 col-end-3 text-gray-500 cursor-pointer text-sm group-hover:text-primary">Promjena lozinke</div>
@@ -49,9 +49,7 @@
             </Link>
 
             <div class="w-full inline-flex items-center group">
-              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
-              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500"  fill="none"  width="32" height="32" viewBox="0 0 32 32"><rect x="0" y="0" width="26" height="26"  stroke="none" /><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M22.5 4.742a13 13 0 1 1-13 0M16 3v10"/></svg>
               <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2">Odjavi se</span>
             </div>
           </div>

@@ -1,6 +1,6 @@
 
 <template>
-  <header class="navigation-bar">
+<header class="navigation-bar" :class="{'transparent-bg': isHomePage}">
     <nav class="navbartekstoviframe">
       <div class="navbartekstoviframe-inner">
         <div class="poetna-parent">
@@ -8,7 +8,7 @@
       <Link class="poetna"  :class="{ 'active-link': isRouteActive('/web') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
       <Link class="dogaanja"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.category') }" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">Događanja</Link>
       <Link class="pretraivanje" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.cart') }" :href="route('skijasi.commerce-theme.cart')">Naši članovi</Link>
-      <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.uclanise') }" :href="route('skijasi.commerce-theme.uclanise')">Informacije</Link>
+      <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')">Informacije</Link>
       <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija</Link>
       <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt</Link>
 
@@ -68,7 +68,7 @@
 
    
     <div v-if="showDropdown" class="dropdownnavglavni">
-      <div class="pozadinadropdown" />
+      <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}"/>
       <Link :href="route('skijasi.commerce-theme.login')" class="prvigumbprijavise">
         <div class="prijavi-se">Prijavi se</div>
         <div class="prvigumbprijavise-child" />
@@ -81,7 +81,7 @@
 
        
     <div v-if="showDropdownprijavljen" class="dropdownnavglavni">
-      <div class="pozadinadropdown" />
+      <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}" />
       <Link :href="route('skijasi.commerce-theme.profile')" class="prvigumbprijavise">
         <div class="prijavi-se">Profil</div>
         <div class="prvigumbprijavise-child" />
@@ -96,7 +96,7 @@
 
 
 
-    <div v-if="showDropdownjezik"  class="dropdownjezikglavni">
+    <div v-if="showDropdownjezik"  class="dropdownjezikglavni" :class="{'transparent-bg': isHomePage}">
       <div class="izaberi-jezik">IZABERI JEZIK</div>
       <div class="listajezika">
         <button class="talijanskiframe">
@@ -122,20 +122,20 @@
     
     <div class="mobilnimeniglavni" v-if="showDropdownmeni" @click="toggleDropdownmeni" >
       <div class="pozadinamobilnimeni" />
-      <div class="mobilnimeni">
-
-        <button class="ikonax" @click="closeDropdown">
+      <button class="ikonax" @click="closeDropdown">
           <img class="vector-icon2" alt="" src="/storage/slike/menivector2.svg" />
           <img class="vector-icon2" alt="" src="/storage/slike/menivector3.svg" />
         </button>
-      <Link class="poetna"  :class="{ 'active-link': isRouteActive('/web') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
-      <Link class="dogaanja"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.category') }" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">Događanja</Link>
-      <Link class="pretraivanje" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.cart') }" :href="route('skijasi.commerce-theme.cart')">Naši članovi</Link>
-      <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.uclanise') }" :href="route('skijasi.commerce-theme.uclanise')">Informacije</Link>
-      <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija</Link>
-      <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt</Link>
+      <div class="mobilnimeni">
 
-        <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" />
+     
+      <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('/web') }" :href="route('skijasi.commerce-theme.home')">Početna <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.category') }" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">Događanja <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.cart') }" :href="route('skijasi.commerce-theme.cart')">Naši članovi <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')">Informacije <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+    
       </div>
     </div>
   </header>
@@ -158,6 +158,8 @@ export default {
   },
   data() {
     return {
+
+      
       dropdownOpen: false,
       showDropdown: false,
       showDropdownmeni: false,
@@ -176,6 +178,12 @@ export default {
     },
   },
   computed: {
+
+
+    isHomePage() {
+        return this.isRouteActive('/web');
+    },
+
     activeRoute() {
     return this.$page.url.split('/').pop();
   },
@@ -340,8 +348,28 @@ export default {
 
 .active-link {
   position: relative; /* Needed for absolute positioning of pseudo-element */
-  padding-bottom: 8px !important;
+  padding-bottom: 8px !important; 
 }
+
+
+.active-linkmobile {
+  position: relative; /* Needed for absolute positioning of pseudo-element */
+ /* padding-bottom: 8px !important; */
+ color:#03a9f4;
+}
+.pocetnamobile:active {
+  color:#03a9f4;
+  }
+  .pocetnamobile {
+  position: relative;
+    font-weight: 600;
+  }
+
+
+
+
+
+
 
 .active-link::before {
   content: "";
@@ -380,6 +408,12 @@ export default {
 .active-link:hover::after,
 .active-link:focus::after {
   transform: scaleX(1);
+}
+
+
+
+.pocetnamobile:hover .ikonaselectmeni-icon {
+  display: block;  /* Show the image when .pocetnamobile is hovered over */
 }
 
 
@@ -507,6 +541,8 @@ export default {
 
 
 
+
+
 .pozadinadropdown {
     position: absolute;
     height: 100%;
@@ -540,7 +576,11 @@ export default {
     bottom: 55.71%;
     left: calc(50% - 99.5px);
     width: 200px;
+    transition: transform 0.3s ease;
   }
+  .prvigumbprijavise:hover {
+    transform: scale(1.07); 
+}
   .drugigumbregistracija-child {
     position: absolute;
     height: 100%;
@@ -759,7 +799,7 @@ export default {
     background-color: transparent;
     position: absolute;
     top: 0rem;
-    right: 2.75rem;
+    right: 2.35rem;
     width: 1.3rem;
     height: 1.3rem;
   }
@@ -856,6 +896,7 @@ align-items: center;
     width: 12.5rem;
     height: 2.5rem;
   }
+ 
   .registriraj-se {
     position: absolute;
     top: 0.81rem;
@@ -870,7 +911,11 @@ align-items: center;
     width: 12.5rem;
     height: 2.5rem;
     color: #fff;
+    transition: transform 0.3s ease; 
   }
+  .drugigumbregistracija:hover {
+    transform: scale(1.07); 
+}
   .dropdownnavglavni {
     position: absolute;
     top: 3.75rem;
@@ -989,40 +1034,40 @@ align-items: center;
   .pozadinamobilnimeni {
     position: relative;
     background-color: #fff;
-    width: 220px;
-    height: 224px;
+    width: 100%;
+    height: 120%;
     z-index: 0;
-    top: 10%;
-    
+    top: 9.5%;
+    display: flex;
   
   }
+
+
+
+
+
+
   .vector-icon2 {
-    position: absolute;
-    height: 50%;
-    width: 50%;
-    top: 25%;
-    right: 25%;
-    bottom: 25%;
-    left: 25%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-  }
-  .ikonax {
     cursor: pointer;
     border: none;
     padding: 0;
     background-color: transparent;
     position: absolute;
     margin: 0 !important;
-    top: 25%;
-    right: 190%;
     width: 1.1rem;
     height: 1.1rem;
     overflow: hidden;
     display: flex;
     z-index: 1;
   }
+  .ikonax {
+  position: absolute;
+  top: 5rem;
+  right: 5%; /* Position it 5% from the right */
+  width: 1rem;
+  height: 1rem;
+}
+
   .poetna1 {
     text-decoration: none;
     position: absolute;
@@ -1091,29 +1136,31 @@ align-items: center;
   }
   .ikonaselectmeni-icon {
     position: absolute;
-    margin: 0 !important;
-    top: 7.81rem;
-    left: 95%;
-    width: 1.25rem;
-    height: 1.25rem;
+right: 100%;
+top: 0%;
+    width: 2rem;
+    height: 2rem;
     overflow: hidden;
-    flex-shrink: 0;
-    z-index: 8;
-    opacity: 0;
+  display: none;  /* Hide the image by default */
+
+
+
   }
+
   .mobilnimeni {
     position: absolute;
-    padding-top: 5.4rem;
-    left: 1.5rem;
+    padding-top: 6rem;
+    left: 2rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 0.72rem;
+    gap: 1.3rem;
+
   }
   .mobilnimeniglavni {
     position: absolute;
-    height: 745%;
+    height: 1000%;
     width: 100%;
     top: 1.67%;
     right: 44.44%;
@@ -1122,17 +1169,37 @@ align-items: center;
     display: none;
     font-size: 1.5rem;
   }
+
+
+
   .navigation-bar {
-    position: relative;
-    background-color: #fff;
-    backdrop-filter: blur(4px);
+
+    backdrop-filter: blur(2px);
     width: 100%;
     height: 3.75rem;
     text-align: center;
     font-size: 0.75rem;
     color: #000;
     font-family: Inter;
-  }
+    z-index: 1000;
+
+   /*  position: fixed;  ako zelimo da je uvijek vidljiv*/
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 1000;
+}
+
+
+
+.transparent-bg {
+    background-color: transparent;
+}
+
+
+
+
   .user-avatar{
     top: 1.67%;
     right: 44.44%;
@@ -1158,11 +1225,11 @@ align-items: center;
     }
     .ikonax {
       display: flex;
-      left: 190%;
     }
 
-
-  
+.navigation-bar{
+background-color: #fff;
+}
 
   }
   @media screen and (max-width: 800px) {
@@ -1177,7 +1244,7 @@ align-items: center;
     }
     .ikonax {
       display: flex;
-      left: 190%;
+
     }
 
     .ikonameniframe {
@@ -1194,7 +1261,6 @@ align-items: center;
     }
 
     .avatar-container {
- 
   right: 0.4rem;
 }
 

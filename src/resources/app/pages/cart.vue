@@ -73,8 +73,8 @@
             <span class="text-2xl text-primary">{{ $currency(getTotal) }}</span>
           </div>
           <div class="flex items-center gap-4 text-sm w-full float-right justify-end">
-           Popust
-            <span class="text-primary">{{ $currency(getSaving) }}RB</span>
+           Popust:
+            <span class="text-primary"> -{{ $currency(getSaving) }}</span>
           </div>
         </div>
         <div class="flex items-center w-48">
@@ -84,6 +84,8 @@
         </div>
       </div>
 
+
+      <!-- možda ti se svidi kod
       <div class="flex gap-2 w-full mt-8 flex-wrap">
         <div class="text-gray-400 font-medium w-full">
           MOŽDA TI SE TAKOĐER SVIDI
@@ -99,6 +101,8 @@
           </carousel-item>
         </carousel>
       </div>
+          -->
+
     </div>
 
     <div class="block sm:hidden relative">

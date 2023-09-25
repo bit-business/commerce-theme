@@ -72,7 +72,7 @@
           </div>
           <div class="flex w-full flex-nowrap gap-4">
             <label class="w-1/6 py-2 text-sm text-right text-gray-500">Država*</label>
-            <vt-select placeholder="Negara" :items="countries" v-model="address.country"></vt-select>
+            <vt-select placeholder="Država" :items="countries" v-model="address.country"></vt-select>
           </div>
           <div class="flex w-full flex-nowrap gap-4">
             <label class="w-1/6 py-2 text-sm text-right text-gray-500">Grad*</label>

@@ -72,7 +72,7 @@
           </div>
           <div class="flex w-full flex-nowrap gap-4">
             <label class="w-1/6 py-2 text-sm text-right text-gray-500">Država*</label>
-            <vt-select placeholder="Negara" :items="countries" v-model="address.country"></vt-select>
+            <vt-select placeholder="Država" :items="countries" v-model="address.country"></vt-select>
           </div>
           <div class="flex w-full flex-nowrap gap-4">
             <label class="w-1/6 py-2 text-sm text-right text-gray-500">Grad*</label>
@@ -127,7 +127,7 @@
     <div class="block sm:hidden">
       <div class="flex w-full flex-col bg-white py-2">
         <div class="border-b pb-1">
-          <div class="text-xs text-gray-500 font-medium px-3 mb-2">Kontak</div>
+          <div class="text-xs text-gray-500 font-medium px-3 mb-2">Kontakt</div>
           <input type="text" class="py-2 outline-none text-sm px-3 w-full" placeholder="Nama Lengkap" v-model="address.recipientName">
         </div>
 

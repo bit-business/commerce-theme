@@ -31,7 +31,7 @@ export default new Vuex.Store({
       },
       {
         key: "currencySymbol",
-        value: "Rp"
+        value: "EUR"
       },
       {
         key: "homeProductLimit",

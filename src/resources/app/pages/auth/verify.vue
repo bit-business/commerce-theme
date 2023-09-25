@@ -54,9 +54,9 @@
                 <div class="h-px w-full bg-gray-300" />
               </div>
               <div class="text-sm text-gray-300 w-full text-center">
-                Baru di {{ title }}?
+                Novi račun {{ title }}?
                 <Link :href="route('skijasi.commerce-theme.register')" class="text-primary font-medium cursor-pointer">
-                  Daftar
+                 Registriraj se
                 </Link>
               </div>
             </div>

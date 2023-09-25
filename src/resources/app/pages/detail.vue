@@ -1,3 +1,8 @@
+
+
+
+
+<!--
 <template>
   <div>
     <div class="container mt-8 hidden sm:block navbarpraznina">
@@ -91,7 +96,7 @@
       <div class="grid grid-cols-5 gap-8 mt-8">
         <div class="flex flex-wrap col-start-1 col-end-5 shadow-sm">
           <div class="bg-white p-6 rounded-xl">
-            <div class="w-full bg-gray-100 text-gray-700 font-medium text-lg py-2 px-4 rounded-xl">Specifikacije </div>
+            <div class="w-full bg-gray-100 text-gray-700 font-medium text-lg py-2 px-4 rounded-xl">Opis:</div>
             <div class="mt-2 p-4 grid grid-cols-4 gap-16 text-sm flex-wrap">
               <div class="flex gap-4 flex-wrap col-span-1">
                 <div class="text-gray-400 w-full">Kategorija</div>
@@ -149,7 +154,7 @@
             </div>
             <pagination v-if="review.data.length > 0" :total="review.total" :per-page="10" v-model="currentPage" />
           </div>
-        -->
+        ->
 
         </div>
         <div class="flex flex-wrap col-start-5 col-end-auto row-span-2 mb-auto bg-white shadow-sm pt-4 rounded-xl">
@@ -458,6 +463,99 @@
   </div>
 </template>
 
+-->
+
+
+
+<template>
+  <div class="hzuts-events-details-screen-de">
+    <b class="hzuts-zutss"
+      >HZUTS & ZUTSS Nik Krčmar - Seminar za potvrđivanje licence, Sljeme, 16. -
+      18.02.2023.</b
+    >
+    <b class="galerija">Galerija:</b>
+    <div class="gallery-group">
+
+
+    <carousel :show="4" class=" mt-2" :hide-navigation="product.productDetails.length <= 4" v-if="product.productDetails.length > 0">
+            <carousel-item
+              v-for="productDetail, index in product.productDetails"
+              :key="index"
+              no-gutter
+              :class="['cursor-pointer', 'rounded-xl']"
+              :padding="2"
+            >
+              <img
+                :src="productDetail.productImage"
+                alt=""
+                @mouseenter="activeImageSource = productDetail.productImage; activeImageCarousel = index"
+                @mouseleave="activeImageSource = product.productDetails[active].productImage; activeImageCarousel = active"
+                class="rounded-xl"
+              >
+            </carousel-item>
+          </carousel>
+
+    </div>
+    <b class="opis">Opis:</b>
+    <div class="dragi-lanovi-hzuts-a">
+      Dragi članovi HZUTS-a, objavljujemo održavanje državnog seminara za
+      potvrđivanje licence koji organiziramo u suradnji sa ZUTSS "Nik Krčmar", a
+      koji će se održati od 16.- 18.02.2023. na Sljemenu.
+    </div>
+    <b class="informacije">Informacije:</b>
+    <div class="dragi-lanovi-hzuts-a1">
+      Dragi članovi HZUTS-a, objavljujemo održavanje državnog seminara za
+      potvrđivanje licence koji organiziramo u suradnji sa ZUTSS "Nik Krčmar", a
+      koji će se održati od 16.- 18.02.2023. na Sljemenu.
+    </div>
+    <div class="frame-parent">
+      <a class="home-icon-parent cursor-pointer">
+        <svg class="home-icon" width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M5.5 14.9999L20.5 3.33325L35.5 14.9999V33.3333C35.5 34.2173 35.1488 35.0652 34.5237 35.6903C33.8986 36.3154 33.0507 36.6666 32.1667 36.6666H8.83333C7.94928 36.6666 7.10143 36.3154 6.47631 35.6903C5.85119 35.0652 5.5 34.2173 5.5 33.3333V14.9999Z" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M15.5 36.6667V20H25.5V36.6667" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        <div class="smjetaj">Smještaj</div>
+      </a>
+      <a class="truck-1-parent cursor-pointer">
+        <svg class="truck-1-icon" width="43" height="40" viewBox="0 0 43 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M28.167 5H3.16699V26.6667H28.167V5Z" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M28.167 13.3333H34.8337L39.8337 18.3333V26.6666H28.167V13.3333Z" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M10.6667 35.0001C12.9679 35.0001 14.8333 33.1346 14.8333 30.8334C14.8333 28.5322 12.9679 26.6667 10.6667 26.6667C8.36548 26.6667 6.5 28.5322 6.5 30.8334C6.5 33.1346 8.36548 35.0001 10.6667 35.0001Z" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M32.3337 35.0001C34.6348 35.0001 36.5003 33.1346 36.5003 30.8334C36.5003 28.5322 34.6348 26.6667 32.3337 26.6667C30.0325 26.6667 28.167 28.5322 28.167 30.8334C28.167 33.1346 30.0325 35.0001 32.3337 35.0001Z" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        <div class="smjetaj">Prijevoz</div>
+      </a>
+
+      <a class="check-square-1-parent cursor-pointer" @click="buyNow">
+        <svg class="check-square-1-icon"  width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14.25 18.3334L19.25 23.3334L35.9167 6.66675" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M35.5 20V31.6667C35.5 32.5507 35.1488 33.3986 34.5237 34.0237C33.8986 34.6488 33.0507 35 32.1667 35H8.83333C7.94928 35 7.10143 34.6488 6.47631 34.0237C5.85119 33.3986 5.5 32.5507 5.5 31.6667V8.33333C5.5 7.44928 5.85119 6.60143 6.47631 5.97631C7.10143 5.35119 7.94928 5 8.83333 5H27.1667" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+        <div class="smjetaj">Prijava i plaćanje</div>
+      </a>
+    </div>
+    <div class="frame">
+      <div class="logoframe-parent">
+        <div class="logoframe">
+          <img class="logohzuts-icon" alt="" src="/storage/slike/logohzuts.svg" />
+        </div>
+        <div class="objavljenoframe">
+          <b class="objavljeno-20032023">OBJAVLJENO: 20.03.2023.</b>
+        </div>
+      </div>
+      <a class="qrcodeframe">
+        <div class="qrcodeframe-child" />
+        <img class="qr-code-1-icon" alt="" src="/storage/slike/qrcode-1.svg" />
+      </a>
+    </div>
+    <div class="frame1">
+      <b class="kada">Kada:</b>
+      <b class="b">16 - 18.02.2023.</b>
+    </div>
+  </div>
+</template>
+
+
 <script>
 import Rating from './../components/rating/rating.vue'
 import Counter from './../components/counter/counter.vue'
@@ -740,12 +838,12 @@ export default {
     },
     addToCart() {
       if (this.selectedProduct.id === null) {
-        this.$helper.alert("You have to select one of the variant!")
+        this.$helper.alert("Morate odabrati opciju!")
         return
       }
 
       if (!this.isAuthenticated) {
-        this.$helper.alert("You must login first!")
+        this.$helper.alert("Morate se prijaviti prvo!")
         this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
         return
       }
@@ -829,6 +927,457 @@ export default {
 </script>
 <style scoped>
   .navbarpraznina {
-    padding-top: 0.00rem; 
+    padding-top: 3.75rem; 
   }
-  </style>
+
+  .hzuts-zutss {
+    position: absolute;
+    width: 89.79%;
+    bottom: 73.44rem;
+    left: 5.07%;
+    font-size: 2.94rem;
+    display: flex;
+    align-items: center;
+  }
+  .galerija {
+    position: absolute;
+    top: 51.25rem;
+    left: 5.07%;
+  }
+  .gallery-group-child {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    border-radius: 10px;
+    width: 12.5rem;
+    height: 12.5rem;
+    object-fit: cover;
+  }
+  .gallery-group-item {
+    position: absolute;
+    top: 0rem;
+    left: 15rem;
+    border-radius: 10px;
+    width: 12.5rem;
+    height: 12.5rem;
+    object-fit: cover;
+  }
+  .gallery-group-inner {
+    position: absolute;
+    top: 0rem;
+    left: 30rem;
+    border-radius: 10px;
+    width: 12.5rem;
+    height: 12.5rem;
+    object-fit: cover;
+  }
+  .rectangle-icon {
+    position: absolute;
+    top: 0rem;
+    left: 45rem;
+    border-radius: 10px;
+    width: 12.5rem;
+    height: 12.5rem;
+    object-fit: cover;
+  }
+  .gallery-group-child1 {
+    position: absolute;
+    top: 0rem;
+    left: 60rem;
+    border-radius: 10px;
+    width: 12.5rem;
+    height: 12.5rem;
+    object-fit: cover;
+  }
+  .gallery-group {
+    position: absolute;
+    width: 80.56%;
+    top: 56.19rem;
+    right: 14.38%;
+    left: 5.07%;
+    height: 12.5rem;
+  }
+  .opis {
+    position: absolute;
+    top: 71.19rem;
+    left: 5.07%;
+  }
+  .dragi-lanovi-hzuts-a {
+    position: absolute;
+    width: 90.76%;
+    top: 74.88rem;
+    left: 5.07%;
+    font-size: 1.75rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+  }
+  .informacije {
+    position: absolute;
+    top: 83.75rem;
+    left: 5.07%;
+  }
+  .dragi-lanovi-hzuts-a1 {
+    position: absolute;
+    width: 90.76%;
+    top: 87.44rem;
+    left: 5.07%;
+    font-size: 1.75rem;
+    font-weight: 300;
+    display: flex;
+    align-items: center;
+  }
+  .home-icon {
+    position: relative;
+    border-radius: 20px;
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .smjetaj {
+    position: relative;
+    font-weight: 600;
+  }
+  .home-icon-parent {
+    text-decoration: none;
+    border-radius: 20px;
+    border: 4px solid #03a9f4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 2rem 2.5rem;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.5rem;
+    color: inherit;
+  }
+  .truck-1-icon {
+    position: relative;
+    border-radius: 20px;
+    width: 2.67rem;
+    height: 2.5rem;
+  }
+  .truck-1-parent {
+    text-decoration: none;
+    border-radius: 20px;
+    border: 4px solid #03a9f4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1.88rem 2.81rem;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.13rem;
+    color: inherit;
+  }
+  .check-square-1-icon {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .check-square-1-parent {
+    text-decoration: none;
+    border-radius: 20px;
+    border: 4px solid #03a9f4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1.88rem 0.75rem;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    font-size: 1.63rem;
+    color: inherit;
+  }
+  .check-square-1-parent:hover,
+.truck-1-parent:hover,
+.home-icon-parent:hover {
+    color: #fff;
+    background-color: #03a9f4;
+}
+
+.check-square-1-parent:hover .check-square-1-icon path,
+.truck-1-parent:hover .truck-1-icon path,
+.home-icon-parent:hover .home-icon path {
+    stroke: white; 
+}
+
+
+
+  .frame-parent {
+    position: absolute;
+    width: calc(100% - 170px);
+    top: calc(50% + 728.5px);
+    right: 5.31rem;
+    left: 5.31rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    font-size: 1.69rem;
+    color: #03a9f4;
+  }
+  .logohzuts-icon {
+    position: absolute;
+    margin: 0 !important;
+    top: 0rem;
+    left: 0rem;
+    width: 8.75rem;
+    height: 8.75rem;
+    z-index: 0;
+  }
+  .logoframe {
+    margin: 0 !important;
+    position: absolute;
+    top: 23.5rem;
+    left: 4rem;
+    width: 8.75rem;
+    display: flex;
+    flex-direction: row;
+    padding: 0.63rem;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+  }
+  .objavljeno-20032023 {
+    position: relative;
+  }
+  .objavljenoframe {
+    margin: 0 !important;
+    position: absolute;
+    top: 30.38rem;
+    right: 0rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    height: 4rem;
+    display: flex;
+    flex-direction: row;
+    padding: 1.25rem 1.63rem;
+    box-sizing: border-box;
+    align-items: flex-end;
+    justify-content: center;
+    z-index: 1;
+  }
+  .logoframe-parent {
+    align-self: stretch;
+    height: 34.38rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    position: relative;
+    background-image: url("/storage/demo/frame-441@3x.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    z-index: 0;
+  }
+  .qrcodeframe-child {
+    position: relative;
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 3.75rem;
+    height: 3.75rem;
+    z-index: 0;
+  }
+  .qr-code-1-icon {
+    position: absolute;
+    margin: 0 !important;
+    top: calc(50% - 15px);
+    left: calc(50% - 15px);
+    width: 1.88rem;
+    height: 1.88rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .qrcodeframe {
+    text-decoration: none;
+    margin: 0 !important;
+    position: absolute;
+    top: 1.56rem;
+    right: 2.94rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.63rem;
+    z-index: 1;
+  }
+  .frame {
+    position: absolute;
+    width: 100%;
+    top: 0rem;
+    right: 0%;
+    left: 0%;
+    height: 34.38rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.63rem;
+    text-align: center;
+    font-size: 1.25rem;
+    color: #fff;
+  }
+  .kada {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+  }
+  .b {
+    position: absolute;
+    top: 0rem;
+    left: 9.38rem;
+    display: flex;
+    color: #03a9f4;
+    align-items: center;
+    width: 18.19rem;
+  }
+  .frame1 {
+    position: absolute;
+    width: 30.63%;
+    top: 46.56rem;
+    right: 64.31%;
+    left: 5.07%;
+    height: 2.44rem;
+  }
+  .hzuts-events-details-screen-de {
+    position: relative;
+    background-color: #f8f7f5;
+    width: 100%;
+    height: 117.06rem;
+    text-align: left;
+    font-size: 2rem;
+    color: #000;
+    font-family: Inter;
+    
+  }
+
+  @media screen and (max-width: 1200px) {
+    .hzuts-zutss {
+      font-size: 2.63rem;
+      text-align: left;
+    }
+
+    .opis {
+      font-size: 1.88rem;
+    }
+
+    .dragi-lanovi-hzuts-a {
+      font-size: 1.69rem;
+    }
+
+    .informacije {
+      font-size: 1.88rem;
+    }
+
+    .dragi-lanovi-hzuts-a1 {
+      font-size: 1.69rem;
+    }
+
+    .kada {
+      font-size: 1.88rem;
+    }
+
+    .b {
+      font-size: 1.88rem;
+    }
+  }
+  @media screen and (max-width: 960px) {
+    .hzuts-zutss {
+      font-size: 2.19rem;
+    }
+
+    .opis {
+      font-size: 1.75rem;
+    }
+
+    .dragi-lanovi-hzuts-a {
+      font-size: 1.44rem;
+    }
+
+    .informacije {
+      font-size: 1.75rem;
+    }
+
+    .dragi-lanovi-hzuts-a1 {
+      font-size: 1.44rem;
+    }
+
+    .logoframe {
+      width: auto;
+      align-self: unset;
+      flex-direction: row;
+      gap: 0.63rem;
+      align-items: center;
+      justify-content: flex-start;
+      padding-left: 0.63rem;
+      box-sizing: border-box;
+    }
+
+    .kada {
+      font-size: 1.75rem;
+    }
+
+    .b {
+      font-size: 1.75rem;
+    }
+  }
+  @media screen and (max-width: 420px) {
+    .hzuts-zutss {
+      font-size: 1.56rem;
+    }
+
+    .galerija {
+      font-size: 1.88rem;
+      text-align: left;
+    }
+
+    .opis {
+      font-size: 1.88rem;
+      text-align: left;
+    }
+
+    .dragi-lanovi-hzuts-a {
+      font-size: 1.13rem;
+    }
+
+    .informacije {
+      font-size: 1.88rem;
+    }
+
+    .dragi-lanovi-hzuts-a1 {
+      font-size: 1.13rem;
+    }
+
+    .logoframe {
+      display: none;
+      width: auto;
+      align-self: unset;
+      height: auto;
+      align-items: center;
+      justify-content: center;
+      padding-left: 0.63rem;
+      padding-bottom: 0.63rem;
+      box-sizing: border-box;
+    }
+
+    .frame {
+      display: flex;
+      flex-direction: column;
+      gap: 0rem;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-left: 0rem;
+      padding-top: 0rem;
+      padding-bottom: 0rem;
+      box-sizing: border-box;
+    }
+  }
+</style>

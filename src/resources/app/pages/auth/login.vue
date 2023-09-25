@@ -565,8 +565,8 @@ export default {
   }
   .srednjiframe {
     position: absolute;
-    height: 55.47%;
-    top: 19.27%;
+    height: 77%;
+    top: 10%;
     bottom: 22.27%;
     left: calc(50% - 248px);
     width: 31rem;
@@ -583,9 +583,9 @@ export default {
   }
   .footertext {
     position: absolute;
-    top: calc(50% + 466px);
-    left: calc(50% - 227px);
-    font-size: 1rem;
+    top: calc(50% + 326px);
+    left: calc(50% - 200px);
+    font-size: 0.9rem;
     font-weight: 500;
     color: #fff;
     text-align: left;
@@ -604,7 +604,7 @@ export default {
     position: relative;
     background-color: #fff;
     width: 100%;
-    height: 64rem;
+    height: 100%;
     overflow: hidden;
     text-align: center;
     font-size: 0.88rem;
@@ -620,11 +620,23 @@ export default {
     .hzuts-login-desktop {
       max-width: 960px;
     }
+
+    .logohzuts-icon {
+    top: 1rem;
+    left: 43%;
+    height: 5.5rem;
+  }
+
   }
   @media screen and (max-width: 420px) {
     .hzuts-login-desktop {
       max-width: 420px;
     }
+    .logohzuts-icon {
+      top: 1rem;
+left: 43%;
+height: 5.5rem;
+  }
   }
 </style>
 
