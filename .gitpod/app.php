@@ -55,7 +55,7 @@ return [
     /*
     'url' => env('APP_URL', 'http://localhost'),
   */
-  'url' => env('APP_URL', 'https://baza-dev.hzuts.hr/'),
+  'url' => env('APP_URL', 'https://baza-dev.hzuts.hr'),
 
     'asset_url' => env('ASSET_URL', null),
 
