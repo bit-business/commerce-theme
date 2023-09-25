@@ -52,7 +52,10 @@ return [
     |
     */
 
+    /*
     'url' => env('APP_URL', 'http://localhost'),
+  */
+  'url' => env('APP_URL', 'https://baza-dev.hzuts.hr/'),
 
     'asset_url' => env('ASSET_URL', null),
 
@@ -67,7 +70,7 @@ return [
     |
     */
 
-    'timezone' => 'UTC',
+    'timezone' => 'UTC+2',
 
     /*
     |--------------------------------------------------------------------------
@@ -80,7 +83,7 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'hr',
 
     /*
     |--------------------------------------------------------------------------
