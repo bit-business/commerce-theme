@@ -4,7 +4,7 @@
 
     <div class="container pt-8 hidden sm:block">
       <div class="h-16 flex items-center justify-center relative">
-        <div class="px-4 py-2 rounded-lg bg-primary text-white text-lg font-medium z-10">Semua</div>
+        <div class="px-4 py-2 rounded-lg bg-primary text-white text-lg font-medium z-10">Svi</div>
         <div class="absolute border-t border-dotted border-black w-full z-0" />
       </div>
       <div class="h-4 sm:h-5" />

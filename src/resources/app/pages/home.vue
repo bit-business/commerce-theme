@@ -8,7 +8,23 @@
     <commerce-main-banner class="homepageglavnaslika-icon hidden sm:block" />
     <commerce-mobile-main-banner class="block sm:hidden" />
 
+  
+    <vue-marquee-slider
+  id="marquee-slider-cards"
+  :space="60"
+  :speed="42000"
+  :width="420"
+  class="pokretnitekst"
+>
+  <div>Dobrodošli na našu novu web stranicu!</div>
+  <div>Pratite najnovije informacije!</div>
+  <div>Pogledajte planirana događanja za novu sezonu!</div>
+</vue-marquee-slider>
     <div class="framesadrzaji">
+
+    
+
+
       <div class="prviredframeova">
       
           <Link class="prviredlijevo animacijakvadrati" :href="route('skijasi.commerce-theme.podrucnizborovi')">
@@ -249,6 +265,7 @@ import CommerceTopBar from '../components/commerce-top-bar.vue'
 import NovostiBanner from './../components/novosti-banner.vue'
 import { VueperSlides, VueperSlide } from 'vueperslides'
 import 'vueperslides/dist/vueperslides.css'
+import { VueMarqueeSlider } from 'vue-marquee-slider';
 
 import CommerceMainBanner from './../components/commerce-main-banner.vue'
 import CommerceMobileMainBanner from './../components/commerce-mobile-main-banner.vue'
@@ -266,12 +283,15 @@ import defaultLayout from '../layouts/default.vue'
 import { Link, Head } from "@inertiajs/inertia-vue"
 
 import { mapState } from 'vuex';
+
 export default {
   components: {
     CommerceTopBar,
     CommerceMainBanner,
     NovostiBanner,
-    VueperSlides, VueperSlide,
+    VueperSlides,
+    VueperSlide,
+    VueMarqueeSlider,
 
     CommerceMobileMainBanner,
     CommerceMobileProduct,
@@ -423,6 +443,7 @@ this.fetchTotalUsers();
     }),
   },
   methods: {
+    
 
     // za prikaz ukupnog broja clanova api
     fetchTotalUsers() {
@@ -518,6 +539,14 @@ this.fetchTotalUsers();
 
 <style scoped>
 
+.pokretnitekst{
+  font-size: 1rem;
+  font-weight: 700;
+  opacity: 0.7;
+  background-color: #fff;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
 
 .vueperslides__bullet .default {
   background-color: rgba(0, 0, 0, 0.3);
@@ -930,6 +959,7 @@ opacity: 0; /* Set initial opacity to 50% */
   .dogadajitrecired {
     align-self: stretch;
     background-color: #fff;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -953,6 +983,8 @@ opacity: 0; /* Set initial opacity to 50% */
     background-color: #fff;
     width: 26.25rem;
     height: 15.94rem;
+    overflow: hidden;
+    flex-shrink: 0;
   }
   .porsche-logo-1-icon {
     position: absolute;
@@ -1101,6 +1133,8 @@ opacity: 0; /* Set initial opacity to 50% */
     position: relative;
     width: 14.88rem;
     height: 19.81rem;
+    overflow: hidden;
+    flex-shrink: 0;
   }
   .b2 {
     position: absolute;
@@ -1132,6 +1166,8 @@ opacity: 0; /* Set initial opacity to 50% */
     position: relative;
     width: 15.13rem;
     height: 19.81rem;
+    overflow: hidden;
+    flex-shrink: 0;
   }
   .b3 {
     position: absolute;
@@ -1156,6 +1192,8 @@ opacity: 0; /* Set initial opacity to 50% */
     position: relative;
     width: 13.44rem;
     height: 19.83rem;
+    overflow: hidden;
+    flex-shrink: 0;
   }
   .analitikapodgrupa {
     flex: 1;
@@ -1269,6 +1307,8 @@ opacity: 0; /* Set initial opacity to 50% */
     position: relative;
     height: 32rem;
     font-size: 2rem;
+    overflow: hidden;
+    flex-shrink: 0;
   }
   .hzuts-home-screen-desktop {
     position: relative;

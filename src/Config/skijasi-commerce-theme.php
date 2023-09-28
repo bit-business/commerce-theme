@@ -9,7 +9,7 @@ return [
     | This prefix will set the entry point of the skijasi commerce theme.
     |
     */
-    'theme_prefix' => env('MIX_COMMERCE_WEB_ROUTE_PREFIX', 'commerce'),
+    'theme_prefix' => env('MIX_COMMERCE_WEB_ROUTE_PREFIX', 'web'),
 
     /*
     |--------------------------------------------------------------------------

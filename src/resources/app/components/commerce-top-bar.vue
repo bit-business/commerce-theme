@@ -761,10 +761,10 @@ export default {
   .logoframe {
     text-decoration: none;
     position: absolute;
-    top: calc(50% + 20px);
+    top: calc(50% + 4px);
     left: 2rem;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 4.2rem;
+    height: 4.2rem;
   }
   .croatia-icon {
     position: absolute;
@@ -867,6 +867,7 @@ align-items: center;
     top: 0.81rem;
     right: 4.56rem;
     font-weight: 600;
+
   }
   .prvigumbprijavise-child {
     position: absolute;
@@ -1183,8 +1184,8 @@ top: 0%;
     font-family: Inter;
     z-index: 1000;
 
-   /*  position: fixed;  ako zelimo da je uvijek vidljiv*/
-    position: relative;
+   /*  position: fixed;  relative ako zelimo da je uvijek vidljiv*/
+   position: fixed;
     top: 0;
     left: 0;
     width: 100%;

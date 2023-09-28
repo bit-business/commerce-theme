@@ -6,7 +6,7 @@
     </div>
     <div class="podrucnizbor1">
       <div class="zuts-istra-parent">
-        <b class="zuts-istra">{{ zborovi && zborovi[0] ? zborovi[0].ime : '' }}
+        <b class="zuts-istra">{{ zborovi && zborovi[2] ? zborovi[2].ime : '' }}
 </b>
         <img class="frame-child" alt="" src="/storage/slike/undefined.png" />
         <div class="adresa">Adresa:</div>
@@ -98,7 +98,7 @@
       <div class="frame-div">
         <div class="frame6">
           <div class="frame7">
-            <b class="zuts-istra1">{{ zborovi && zborovi[2] ? zborovi[2].ime : '' }}</b>
+            <b class="zuts-istra1">{{ zborovi && zborovi[3] ? zborovi[3].ime : '' }}</b>
             <img class="frame-item" alt="" src="/storage/slike/undefined9.png" />
           </div>
           <div class="frame8">
@@ -114,7 +114,7 @@
     </div>
     <div class="podrucnizbor3">
       <div class="zuts-istra-group">
-        <b class="zuts-istra2">{{ zborovi && zborovi[3] ? zborovi[3].ime : '' }}</b>
+        <b class="zuts-istra2">{{ zborovi && zborovi[4] ? zborovi[4].ime : '' }}</b>
         <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
         <div class="frame10">
           <div class="predsjednik">Predsjednik:</div>
@@ -198,7 +198,7 @@
         </div>
       </div>
       <div class="zuts-istra-group">
-        <b class="zuts-istra3">{{ zborovi && zborovi[4] ? zborovi[4].ime : '' }}</b>
+        <b class="zuts-istra3">{{ zborovi && zborovi[5] ? zborovi[5].ime : '' }}</b>
         <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
         <div class="frame16">
           <div class="predsjednik">Predsjednik:</div>
@@ -212,7 +212,7 @@
     </div>
     <div class="podrucnizbor3">
       <div class="zuts-istra-group">
-        <b class="zuts-istra4">{{ zborovi && zborovi[5] ? zborovi[5].ime : '' }}</b>
+        <b class="zuts-istra4">{{ zborovi && zborovi[6] ? zborovi[6].ime : '' }}</b>
         <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
         <div class="frame10">
           <div class="predsjednik">Predsjednik:</div>
@@ -296,7 +296,7 @@
         </div>
       </div>
       <div class="zuts-istra-group">
-        <b class="zuts-istra3">{{ zborovi && zborovi[6] ? zborovi[6].ime : '' }}</b>
+        <b class="zuts-istra3">{{ zborovi && zborovi[7] ? zborovi[7].ime : '' }}</b>
         <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
         <div class="frame16">
           <div class="predsjednik">Predsjednik:</div>
@@ -854,6 +854,8 @@ export default {
     position: relative;
     width: 18.75rem;
     height: 7.25rem;
+    display: flex;
+    align-items: center;
   }
   .mail-icon-container {
     width: 15rem;

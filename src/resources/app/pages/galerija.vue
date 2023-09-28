@@ -28,28 +28,28 @@
 
 
 
-
 <!-- Current Folder Title -->
 <div class="folder-bar">
     <div class="folder-title">{{ currentFolder }}</div>
 </div>
 
 
-      
-
-          <masonry-wall :items="images" :ssr-columns="4" :min-columns="4" :max-columns="8" :column-width="300" :gap="16">
-              <template v-slot:default="slotProps">
-                  <div class="image-container" @click="showFullscreen(slotProps.item)">
-                      <img :src="slotProps.item" class="image-preview">
-                      <div class="overlay">
-                            <svg width="32"  class="eye-icon" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<masonry-wall :items="images" :ssr-columns="4" :min-columns="4" :max-columns="8" :column-width="300" :gap="16">
+    <template v-slot:default="slotProps">
+        <div class="image-container" @click="showFullscreen(slotProps.item)">
+            <img :src="slotProps.item" class="image-preview">
+            <div class="overlay">
+                  <svg width="32"  class="eye-icon" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M31.7966 15.3772C31.5108 14.9861 24.6993 5.80176 15.9998 5.80176C7.30039 5.80176 0.488626 14.9861 0.203063 15.3768C-0.0676876 15.7478 -0.0676876 16.251 0.203063 16.622C0.488626 17.013 7.30039 26.1974 15.9998 26.1974C24.6993 26.1974 31.5108 17.013 31.7966 16.6223C32.0678 16.2513 32.0678 15.7478 31.7966 15.3772ZM15.9998 24.0875C9.59177 24.0875 4.0417 17.9917 2.39875 15.9988C4.03957 14.0043 9.57802 7.91164 15.9998 7.91164C22.4076 7.91164 27.9573 14.0064 29.6009 16.0003C27.9601 17.9948 22.4217 24.0875 15.9998 24.0875Z" fill="white"/>
 <path d="M15.9999 9.66992C12.5097 9.66992 9.67017 12.5095 9.67017 15.9996C9.67017 19.4898 12.5097 22.3293 15.9999 22.3293C19.49 22.3293 22.3296 19.4898 22.3296 15.9996C22.3296 12.5095 19.49 9.66992 15.9999 9.66992ZM15.9999 20.2194C13.673 20.2194 11.7801 18.3264 11.7801 15.9996C11.7801 13.6728 13.673 11.7799 15.9999 11.7799C18.3267 11.7799 20.2196 13.6728 20.2196 15.9996C20.2196 18.3264 18.3267 20.2194 15.9999 20.2194Z" fill="white"/>
 </svg>                
-                      </div>
-                  </div>
-              </template>
-          </masonry-wall>
+            
+            </div>
+        </div>
+    </template>
+</masonry-wall>
+
+
       </div>
   </div>
 
@@ -72,11 +72,19 @@ import CarouselItemSingle from '../components/carousel-single/carousel-item.vue'
 
 import MasonryWall from "@yeger/vue2-masonry-wall";
 
+import firebase from 'firebase/app';
+import 'firebase/storage';
+
+
+
+
 import galerijaLayout from '../layouts/galerija.vue'
 import appLayout from '../layouts/app.vue'
 import { mapState } from 'vuex'
 import { Link, Head } from '@inertiajs/inertia-vue'
 import _ from "lodash";
+
+
 
 export default {
   layout: [appLayout, galerijaLayout],
@@ -84,16 +92,17 @@ export default {
     Link,
     Head,
     MasonryWall,
+    firebase,
     CarouselSingle,
     CarouselItemSingle
   },
   data() {
     return {
       unapprovedUsers: [],
-
-      folders: [],
+      firebaseInstance: null,
+      folders: ['INTERSKI Argentina'],
         
-      currentFolder: 'galerija',
+      currentFolder: 'INTERSKI Argentina',
 
 
       page: 1,
@@ -149,15 +158,49 @@ export default {
     this.getFiles();
 
 
+    this.firebaseInstance = this.$firebase;
+
+
+ 
   },
   watch: {
     currentFolder: function(newVal, oldVal) {
         this.selectFolder(newVal);
+    },
+
+    firebaseInstance(newVal) {
+      if (newVal) {
+        // Firebase is now available, perform your operations here
+        const firebaseInstance = this.$firebase;  // Accessing Firebase instance
+    const storageRef = firebaseInstance.storage().ref();
+    console.log("Firebase from Vue:", this.$firebase);
+
+        // ... 
+      }
     }
+
+
 },
 
 
   methods: {
+
+    async fetchImagesFromFirebase() {
+
+
+    const galleryFolderRef = storageRef.child('galerija/INTERSKI Argentina'); // Adjust this path
+
+    // List all files in the gallery folder
+    let imageUrls = [];
+    const files = await galleryFolderRef.listAll();
+
+    for (let imageRef of files.items) {
+      const url = await imageRef.getDownloadURL();
+      imageUrls.push(url);
+    }
+
+    this.images = imageUrls;  // Assign to your images data property
+  },
 
 
     moveToLeftFolder() {
@@ -189,8 +232,20 @@ moveToRightFolder() {
     },
 
 
-    
+    async fetchFolders() {
+  const storageRef = firebase.storage().ref();
+  const rootRef = storageRef.child('galerija');  // Assuming 'galerija' is your root folder
 
+  try {
+    const folders = await rootRef.listAll();
+    this.folders = folders.prefixes.map(prefix => prefix.name);
+  } catch (error) {
+    console.error("Error fetching folders:", error);
+  }
+},
+
+
+    /* stari za lokalno foldere nije radio potpuno
     fetchFolders() {
       this.$api.skijasiFile.getFolderNames({
   directory: ('/') 
@@ -203,8 +258,29 @@ moveToRightFolder() {
         console.error("Error fetching folders:", error);
     });
 },
+*/
 
 
+async getFiles() {
+  this.fetchImagesFromFirebase();
+  const storageRef = firebase.storage().ref();
+  const folderPath = 'galerija/INTERSKI Argentina'; // Path to your Firebase Storage folder
+  
+  try {
+    const items = await storageRef.child(folderPath).listAll();
+    const downloadURLs = await Promise.all(
+      items.items.map(async (item) => {
+        return item.getDownloadURL();
+      })
+    );
+    this.images = downloadURLs;
+  } catch (error) {
+    console.error('Error fetching images:', error);
+  }
+},
+
+
+/* getfiles preko lmf-a sa servera a ne firebasea
     getFiles() {
   
     let folderIndex = this.folders.indexOf(this.currentFolder);
@@ -242,7 +318,7 @@ console.log('Current Folder Index:', folderIndex);
      
       
     },
-
+*/
   
 
     showFullscreen(imageSrc) {

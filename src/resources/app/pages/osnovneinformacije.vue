@@ -451,6 +451,7 @@ export default {
     background-position: top;
     font-size: 2.5rem;
     color: #fff;
+    overflow: hidden;
   }
   .g14-icon {
     position: absolute;

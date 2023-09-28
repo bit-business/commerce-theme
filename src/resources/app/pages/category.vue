@@ -1074,6 +1074,7 @@ computeCountdown() {
   font-size: 1.25rem;
   color: #fff;
   font-family: Inter;
+  overflow: hidden;
 }
 
 @media screen and (max-width: 720px) {
