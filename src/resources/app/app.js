@@ -20,6 +20,14 @@ import CommerceLoading from "./components/commerce-loading.vue";
 import Alert from "./components/alert/alert.vue";
 import Radio from "./components/form/radio.vue";
 
+
+import firebase from "firebase/app";
+import "firebase/firebase-messaging";
+import 'firebase/storage';
+import { notificationMessageReceiveHandle } from "./utils/firebase";
+import { broadcastMessageHandle } from "./utils/broadcast-messages";
+
+
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
 
@@ -40,6 +48,87 @@ try {
     });
   });
 } catch (error) {}
+console.log("TESTBITAN");
+
+//pocetak firebase koda osim importa gore
+const firebaseConfig = {
+  apiKey: process.env.MIX_FIREBASE_API_KEY,
+  authDomain: process.env.MIX_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.MIX_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.MIX_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.MIX_FIREBASE_MESSAGE_SEENDER,
+  appId: process.env.MIX_FIREBASE_APP_ID,
+  measurementId: process.env.MIX_FIREBASE_MEASUREMENT_ID
+};
+console.log("Firebase Environment Variables:", {
+  apiKey: process.env.MIX_FIREBASE_API_KEY,
+  authDomain: process.env.MIX_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.MIX_FIREBASE_PROJECT_ID
+  //... add the rest
+});
+console.log("TESTBITAN",process.env.FIREBASE_API_KEY);
+
+
+console.log("Firebase config status:", statusActiveFeatureFirebase);
+for (const key in firebaseConfig) {
+  if (firebaseConfig[key] === undefined || firebaseConfig[key] === "") {
+    console.error("Problematic Firebase config key:", key);
+  }
+}
+
+let statusActiveFeatureFirebase = true;
+for (const key in firebaseConfig)
+  statusActiveFeatureFirebase =
+    statusActiveFeatureFirebase &&
+    firebaseConfig[key] != undefined &&
+    firebaseConfig[key] != "";
+
+Vue.prototype.$messaging = {};
+Vue.prototype.$messagingToken = {};
+Vue.prototype.$statusActiveFeatureFirebase = statusActiveFeatureFirebase;
+
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker
+      .register("/firebase-messaging-sw.js")
+      .then((register) => {})
+      .catch((error) => console.log("Service Worker Firebase Register Failed : ", error));
+  });
+}
+
+if (statusActiveFeatureFirebase) {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+    console.log("FIREBASE JE POKRENUT U APP.JS")
+  } else {
+    firebase.app();
+    console.log("FIREBASE1 JE POKRENUT U APP.JS")
+  }
+  Vue.prototype.$firebase = firebase;
+  Vue.prototype.$storage = firebase.storage();
+  Vue.prototype.$messaging = firebase.messaging();
+  Vue.prototype.$messagingToken = firebase
+    .messaging()
+    .getToken({ vapidKey: process.env.FIREBASE_WEB_PUSH_CERTIFICATES });
+}
+
+
+const broadcastChannelName = "sw-skijasi-messages";
+let broadcastChannel = null;
+try {
+  broadcastChannel = new BroadcastChannel(broadcastChannelName);
+} catch (error) {
+  console.error("Broadcast Channel Error ", error);
+}
+
+Vue.prototype.$broadcastChannelName = broadcastChannelName;
+Vue.prototype.$broadcastChannel = broadcastChannel;
+// kraj firebase koda osim na kraju fajla
+
+
+
+
+
 
 Vue.prototype.$voca = voca;
 Vue.prototype.$api = api;
@@ -140,3 +229,14 @@ createInertiaApp({
     }).$mount(el);
   },
 });
+
+
+
+// HANDLE FIREBASE MESSAGE
+if (statusActiveFeatureFirebase) notificationMessageReceiveHandle(app);
+
+// HANDLE BROADCAST MESSAGE FROM SERVICE WORKER
+broadcastMessageHandle(app);
+
+// HANDLE OFFLINE MODE
+//checkConnection(app);

@@ -6,7 +6,7 @@
       <slot />
     </div>
 
-    <!-- Carousel Navigation Button -->
+    <!-- Carousel Navigation Button 
     <template>
       <div class="absolute top-1/2 transform -translate-y-1/2 left-0 z-10 invisible group-hover:visible">
         <button @click="prev" class="py-2 bg-primary bg-opacity-10 hover:bg-opacity-75 rounded-r-xl">
@@ -23,13 +23,13 @@
         </button>
       </div>
     </template>
-
-    <!-- Carousel Pagination -->
+-->
+    <!-- Carousel Pagination
     <template>
       <div class="w-full justify-center absolute bottom-2 flex gap-2">
         <div :class="['w-3 h-3 rounded-full border border-primary bg-white', currentActiveIndex === index ? 'bg-opacity-70' : 'bg-opacity-20']" v-for="index in getTotalPage" :key="index" />
       </div>
-    </template>
+    </template>-->
   </div>
 </template>
 

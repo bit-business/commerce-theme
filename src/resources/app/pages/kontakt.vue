@@ -3,92 +3,88 @@
     <Head :title="$page.props.name" />
 
     <div class="hzuts-kontakt-page">
-    <div class="kartakontaktframe">
-      <img class="kartakontakt-icon" alt="" src="/storage/slike/kartakontakt@2x.png" />
-      <img class="placeholder-1-icon" alt="" src="/storage/slike/mapplaceholder-1.svg" />
+
+      <div class="kartakontaktframe">
+      <img class="kartakontakt-icon" alt="" src="/storage/slike/kontakt/kartakontakt@2x.png" />
+      <div class="placeholder-1">
+        <img class="vector-icon" alt="" src="/storage/slike/kontakt/vector.svg" />
+        <img class="vector-icon1" alt="" src="/storage/slike/kontakt/vector1.svg" />
+      </div>
     </div>
     <div class="kontaktformaframe">
-
-    <div class="kontaktiraj-nas-parent">
-    <div class="kontaktiraj-nas">Kontaktiraj nas</div>
-    <div class="kontaktformapolja">
-      <div class="va-e-mail">Vaš e-mail</div>
-      <div class="image-wrapper">
-          <img class="crtekontaktforma3-icon" alt="" src="/storage/slike/crtekontaktforma3.svg">
-          <input v-model="email" type="email" class="crtekontaktforma3-icon">
-      </div>
-      <div class="naslov">Naslov</div>
-      <div class="image-wrapper">
-          <img class="crtekontaktforma2-icon" alt="" src="/storage/slike/crtekontaktforma3.svg"/>
-          <input v-model="subject" type="text" class="crtekontaktforma2-icon">
-      </div>
-      <div class="poruka">Poruka</div>
-      <div class="image-wrapper">
-          <img class="crtekontaktforma1-icon" alt="" src="/storage/slike/crtekontaktforma1.svg"/>
-          <textarea v-model="message" class="crtekontaktforma1-icon"></textarea>
-      </div>
-      <button class="poalji-wrapper" @click="sendContactEmail()">
+      <div class="kontaktiraj-nas-parent">
+        <div class="kontaktiraj-nas">Kontaktiraj nas</div>
+        <div class="kontaktformapolja">
+          <div class="va-e-mail">Vaš e-mail</div>
+          <img
+            class="crtekontaktforma3-icon"
+            alt=""
+            src="/storage/slike/kontakt/crtekontaktforma3.svg"
+          />
+          <div class="naslov">Naslov</div>
+          <img
+            class="crtekontaktforma2-icon"
+            alt=""
+            src="/storage/slike/kontakt/crtekontaktforma3.svg"
+          />
+          <div class="poruka">Poruka</div>
+          <img
+            class="crtekontaktforma1-icon"
+            alt=""
+            src="/storage/slike/kontakt/crtekontaktforma1.svg"
+          />
+          <button class="poalji-wrapper" @click="sendContactEmail()">
         <div class="poalji">POŠALJI</div>
       </button>
-    </div>
-</div>
-
-
+        </div>
+      </div>
       <div class="kontaktpodacionama">
         <div class="uredovno-vrijeme-za-lanove-u-parent">
           <div class="uredovno-vrijeme-za-container">
-            <span>Uredovno vrijeme za članove: </span>
-            <span class="utorkom">utorkom</span>
-            <span> i </span>
-            <span class="utorkom">četvrtkom</span>
-            <span> od 11 - 15h</span>
+            <span class="uredovno-vrijeme-za-container1">
+              <span>Uredovno vrijeme za članove: </span>
+              <span class="utorkom">utorkom</span>
+              <span> i </span>
+              <span class="utorkom">četvrtkom</span>
+              <span> od 11 - 15h</span>
+            </span>
           </div>
-          <img class="group-icon" alt="" src="/storage/slike/calendargroup.svg" />
+          <img class="group-icon" alt="" src="/storage/slike/kontakt/group2.svg" />
         </div>
         <div class="maksimirska-51a-10000-zagreb-parent">
           <div class="maksimirska-51a-10000">
             Maksimirska 51A, 10000 Zagreb, Hrvatska
           </div>
-          <img class="map-pin-1-icon" alt="" src="/storage/slike/mappin-1.svg" />
+          <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/mappin-12.svg" />
         </div>
         <div class="parent">
           <div class="div">+385 1 23 999 50</div>
-          <img class="map-pin-1-icon" alt="" src="/storage/slike/phone-1-1.svg" />
+          <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/phone-1-1.svg" />
         </div>
         <div class="printer-2-parent">
-          <img class="map-pin-1-icon" alt="" src="/storage/slike/printer-2.svg" />
+          <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/printer-2.svg" />
           <div class="div1">+385 1 23 999 55</div>
         </div>
         <div class="mail-icon-parent">
-          <img class="map-pin-1-icon" alt="" src="/storage/slike/mail-icon.svg" />
+          <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/mail-icon.svg" />
           <a class="infohzutshr">info@hzuts.hr</a>
         </div>
         <div class="hr7423600001101359833-parent">
-          <div class="uredovno-vrijeme-za-container">HR7423600001101359833</div>
-          <img class="map-pin-1-icon" alt="" src="/storage/slike/creditcard-1.svg" />
+          <div class="hr7423600001101359833">HR7423600001101359833</div>
+          <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/creditcard-1.svg" />
         </div>
         <div class="clip-path-group-parent">
-          <img class="clip-path-group" alt="" src="/storage/slike/paintclip-path-group.svg" />
+          <img class="clip-path-group" alt="" src="/storage/slike/kontakt/clip-path-group1.svg" />
           <div class="mb-1603388">MB: 1603388</div>
         </div>
         <div class="vector-parent">
-          <img class="vector-icon" alt="" src="/storage/slike/iconacontactvector.svg" />
+          <img class="vector-icon2" alt="" src="/storage/slike/kontakt/vector3.svg" />
           <div class="oib-31990276348">OIB: 31990276348</div>
         </div>
       </div>
     </div>
   </div>
-
-      
-
-       
-
-   
-    </div>
-
-<!-- BLOCK ZA MOBITELE OBRISATI?-->
-
-
+</div>
 </template>
 
 <script>
@@ -212,22 +208,46 @@ export default {
     object-fit: cover;
     z-index: 0;
   }
-  .placeholder-1-icon {
+  .vector-icon {
+    position: relative;
+    width: 2.86rem;
+    height: 4rem;
+    z-index: 0;
+  }
+  .vector-icon1 {
     position: absolute;
     margin: 0 !important;
-    top: 24.63rem;
-    left: 22.44rem;
-    width: 4.06rem;
-    height: 4rem;
+    height: 23.44%;
+    width: 32.41%;
+    top: 23.44%;
+    right: 33.79%;
+    bottom: 53.12%;
+    left: 33.79%;
+    max-width: 100%;
     overflow: hidden;
-    flex-shrink: 0;
+    max-height: 100%;
+    z-index: 1;
+  }
+  .placeholder-1 {
+    margin: 0 !important;
+    position: absolute;
+    top: calc(50% - 147px);
+    left: calc(50% - 64.25px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 0.06rem;
+    gap: 0.63rem;
     z-index: 1;
   }
   .kartakontaktframe {
-    width: 44.03rem;
+    align-self: stretch;
+    flex: 1;
+    overflow: hidden;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
     position: relative;
@@ -235,13 +255,13 @@ export default {
   }
   .kontaktiraj-nas {
     position: absolute;
+    width: 100%;
     top: 0rem;
-    left: 0rem;
+    left: 0%;
     font-weight: 600;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 39.78rem;
     height: 3.63rem;
   }
   .va-e-mail {
@@ -256,8 +276,6 @@ export default {
     left: 0rem;
     width: 37.5rem;
     height: 1.88rem;
-    border-left: 1.5px solid #03a9f4; 
-    border-bottom: 1.5px solid #03a9f4;  
   }
   .naslov {
     position: absolute;
@@ -271,8 +289,6 @@ export default {
     left: 0rem;
     width: 37.5rem;
     height: 1.88rem;
-    border-left: 1.5px solid #03a9f4; 
-    border-bottom: 1.5px solid #03a9f4;  
   }
   .poruka {
     position: absolute;
@@ -286,10 +302,7 @@ export default {
     left: 0rem;
     width: 37.5rem;
     height: 3.75rem;
-    border-left: 1.5px solid #03a9f4; 
-    border-bottom: 1.5px solid #03a9f4;  
-}
-
+  }
   .poalji {
     position: absolute;
     top: calc(50% - 7px);
@@ -298,10 +311,15 @@ export default {
     letter-spacing: 5px;
     font-weight: 600;
     font-family: Inter;
-    color: #000;
+
     text-align: center;
   }
+  .poalji-wrapper:hover {
+  background-color: #03a9f4;
+  color: #fff;
+}
   .poalji-wrapper {
+    color: #000;
     cursor: pointer;
     border: 1px solid #03a9f4;
     padding: 0;
@@ -314,26 +332,40 @@ export default {
     width: 9.38rem;
     height: 2.5rem;
   }
+ 
   .kontaktformapolja {
     position: absolute;
+    width: 94.27%;
     top: 7.19rem;
-    left: 0rem;
-    width: 37.5rem;
+    right: 5.73%;
+    left: 0%;
     height: 21.06rem;
+    overflow: hidden;
     font-size: 1rem;
   }
   .kontaktiraj-nas-parent {
+    align-self: stretch;
     position: relative;
-    width: 39.78rem;
     height: 28.25rem;
   }
   .utorkom {
     color: #03a9f4;
   }
+  .uredovno-vrijeme-za-container1 {
+    line-break: anywhere;
+    width: 100%;
+  }
   .uredovno-vrijeme-za-container {
     position: absolute;
-    top: 0.19rem;
-    left: 2.38rem;
+    width: 93.95%;
+    top: 0.22rem;
+    left: 8.63%;
+    display: -webkit-inline-box;
+    align-items: center;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
   }
   .group-icon {
     position: absolute;
@@ -353,11 +385,15 @@ export default {
     left: 0.06rem;
     width: 27.88rem;
     height: 1.5rem;
+    text-align: left;
   }
   .maksimirska-51a-10000 {
     position: absolute;
     top: calc(50% - 10px);
     left: calc(50% - 120px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .map-pin-1-icon {
     position: absolute;
@@ -380,6 +416,9 @@ export default {
     top: 0.13rem;
     left: 2.31rem;
     letter-spacing: -0.17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .parent {
     position: absolute;
@@ -393,6 +432,9 @@ export default {
     top: 0.13rem;
     left: 2.44rem;
     letter-spacing: -0.17px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .printer-2-parent {
     position: absolute;
@@ -408,6 +450,9 @@ export default {
     left: 2.38rem;
     letter-spacing: -0.17px;
     color: inherit;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .mail-icon-parent {
     position: absolute;
@@ -416,6 +461,14 @@ export default {
     width: 8rem;
     height: 1.5rem;
     color: #03a9f4;
+  }
+  .hr7423600001101359833 {
+    position: absolute;
+    top: 0.19rem;
+    left: 2.38rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .hr7423600001101359833-parent {
     position: absolute;
@@ -448,7 +501,7 @@ export default {
     width: 7.94rem;
     height: 1.5rem;
   }
-  .vector-icon {
+  .vector-icon2 {
     position: absolute;
     height: 100%;
     width: 14.72%;
@@ -464,6 +517,9 @@ export default {
     position: absolute;
     top: 5%;
     left: 23.31%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .vector-parent {
     position: absolute;
@@ -473,21 +529,21 @@ export default {
     height: 1.25rem;
   }
   .kontaktpodacionama {
+    align-self: stretch;
     position: relative;
-    width: 27.94rem;
     height: 20.5rem;
     font-size: 0.88rem;
   }
   .kontaktformaframe {
+    align-self: stretch;
+    flex: 1;
     background-color: #fff;
-    width: 44.03rem;
+    overflow: hidden;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
     padding: 2.44rem 2.13rem;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: flex-start;
     gap: 3.56rem;
   }
   .hzuts-kontakt-page {
@@ -496,28 +552,14 @@ export default {
     width: 100%;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    gap: 1.94rem;
+    gap: 0.94rem;
     text-align: center;
     font-size: 3rem;
     color: #000;
     font-family: Inter;
   }
-
-  .image-wrapper {
-    position: relative;
-}
-
-.input-email, .input-subject, .input-message {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    /* Add any additional styling you need for your inputs here */
-}
-
 
   @media screen and (max-width: 960px) {
     .kartakontakt-icon {
@@ -527,13 +569,16 @@ export default {
 
     .kartakontaktframe {
       flex-direction: column;
+      flex: unset;
+      align-self: stretch;
     }
 
     .kontaktformaframe {
       width: auto;
-      align-self: unset;
+      align-self: stretch;
       height: auto;
       flex-direction: column;
+      flex: unset;
     }
 
     .hzuts-kontakt-page {
@@ -553,4 +598,3 @@ export default {
     }
   }
 </style>
-

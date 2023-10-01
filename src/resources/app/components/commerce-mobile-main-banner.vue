@@ -1,4 +1,6 @@
 <template>
+
+  <!--
   <div class="bg-white p-0 sm:p-8">
     <div class="h-40 w-full gap-1 mx-auto container">
       <div class="rounded-sm">
@@ -10,6 +12,15 @@
       </div>
     </div>
   </div>
+-->
+<div class="h-full p-0 w-full overflow-hidden video-fullwidth">
+<carousel-single class="rounded-sm h-full ">
+  <div class="rounded-sm h-full">
+    <video autoplay muted playsinline loop class="h-full w-full video-fullwidth" v-if="isSafari" :src="banner.mainBanner.data.banner1.data"></video>
+    <video autoplay muted playsinline loop class="h-full w-full video-fullwidth" v-else :src="banner.mainBanner.data.banner2.data"></video>
+  </div>
+</carousel-single>
+</div>
 </template>
 
 <script>
@@ -25,7 +36,19 @@ export default {
       bannerSrc: [],
       banner: {
         mainBanner: {
-          data: {}
+        //  data: {}
+
+        data: { 
+          banner1: {
+              data: null
+            },
+            banner2: {
+              data: null
+            },
+          
+          }
+
+
         },
         subBanner: {
           data: {
@@ -40,6 +63,14 @@ export default {
       }
     }
   },
+
+  computed: {
+    isSafari() {
+      return /Safari/.test(navigator.userAgent) && !/Chrome/.test(navigator.userAgent) && !/Firefox/.test(navigator.userAgent) && !/Opera|OPR\//.test(navigator.userAgent);
+    }
+  },
+
+
   mounted() {
     this.getBanner()
   },
@@ -50,6 +81,9 @@ export default {
           slug: 'home-banner'
         })
         .then(res => {
+
+          this.banner = res.data.value;
+/*
           let value = res.data.value;
           let mainBanner = value.mainBanner.data;
           for (let key in mainBanner) {
@@ -57,6 +91,7 @@ export default {
           }
           this.bannerSrc.push(value.subBanner.data.subBanner1.data)
           this.bannerSrc.push(value.subBanner.data.subBanner2.data)
+          */
         })
         .catch(err => {
           console.error(err);
@@ -65,3 +100,16 @@ export default {
   }
 }
 </script>
+<style scope>
+.full-dimensions {
+  width: 140%;
+  height: 140%;
+}
+
+.video-fullwidth {
+  width: 140%;
+  height: 140%;
+  object-fit: fill;
+}
+
+</style>

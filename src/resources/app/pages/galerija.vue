@@ -25,6 +25,12 @@
 
 
 
+<!-- Loading Overlay -->
+<div v-if="isLoading" class="loading-overlay">
+  <div class="loader"></div>
+</div>
+<!-- Loading Overlay -->
+
 
 
 
@@ -37,7 +43,7 @@
 <masonry-wall :items="images" :ssr-columns="4" :min-columns="4" :max-columns="8" :column-width="300" :gap="16">
     <template v-slot:default="slotProps">
         <div class="image-container" @click="showFullscreen(slotProps.item)">
-            <img :src="slotProps.item" class="image-preview">
+            <img :src="slotProps.item" class="image-preview" loading="lazy">
             <div class="overlay">
                   <svg width="32"  class="eye-icon" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M31.7966 15.3772C31.5108 14.9861 24.6993 5.80176 15.9998 5.80176C7.30039 5.80176 0.488626 14.9861 0.203063 15.3768C-0.0676876 15.7478 -0.0676876 16.251 0.203063 16.622C0.488626 17.013 7.30039 26.1974 15.9998 26.1974C24.6993 26.1974 31.5108 17.013 31.7966 16.6223C32.0678 16.2513 32.0678 15.7478 31.7966 15.3772ZM15.9998 24.0875C9.59177 24.0875 4.0417 17.9917 2.39875 15.9988C4.03957 14.0043 9.57802 7.91164 15.9998 7.91164C22.4076 7.91164 27.9573 14.0064 29.6009 16.0003C27.9601 17.9948 22.4217 24.0875 15.9998 24.0875Z" fill="white"/>
@@ -72,8 +78,7 @@ import CarouselItemSingle from '../components/carousel-single/carousel-item.vue'
 
 import MasonryWall from "@yeger/vue2-masonry-wall";
 
-import firebase from 'firebase/app';
-import 'firebase/storage';
+
 
 
 
@@ -92,17 +97,18 @@ export default {
     Link,
     Head,
     MasonryWall,
-    firebase,
     CarouselSingle,
     CarouselItemSingle
   },
   data() {
     return {
+      isLoading: false,
+
       unapprovedUsers: [],
       firebaseInstance: null,
-      folders: ['INTERSKI Argentina'],
+      folders: [],
         
-      currentFolder: 'INTERSKI Argentina',
+      currentFolder: 'INTERSKI Finska',
 
 
       page: 1,
@@ -154,6 +160,8 @@ export default {
 
   },
   mounted() {
+    console.log("TEST Firebase instance in mounted:", this.$firebase);
+
     this.fetchFolders();
     this.getFiles();
 
@@ -186,11 +194,11 @@ export default {
   methods: {
 
     async fetchImagesFromFirebase() {
+  this.isLoading = true; // Start loading
+  const storageRef = this.$firebase.storage().ref();
+  const galleryFolderRef = storageRef.child('galerija/' + this.currentFolder);
 
-
-    const galleryFolderRef = storageRef.child('galerija/INTERSKI Argentina'); // Adjust this path
-
-    // List all files in the gallery folder
+  try {
     let imageUrls = [];
     const files = await galleryFolderRef.listAll();
 
@@ -199,8 +207,16 @@ export default {
       imageUrls.push(url);
     }
 
-    this.images = imageUrls;  // Assign to your images data property
-  },
+    this.images = imageUrls;
+  } catch (error) {
+    console.error("Error fetching images:", error);
+  } finally {
+    setTimeout(() => {
+      this.isLoading = false; // End loading after 1 second
+    }, 1000);
+  }
+},
+
 
 
     moveToLeftFolder() {
@@ -231,9 +247,8 @@ moveToRightFolder() {
         this.getFiles(); // to reload the files based on the selected folder
     },
 
-
     async fetchFolders() {
-  const storageRef = firebase.storage().ref();
+      const storageRef = this.$firebase.storage().ref();
   const rootRef = storageRef.child('galerija');  // Assuming 'galerija' is your root folder
 
   try {
@@ -383,7 +398,7 @@ console.log('Current Folder Index:', folderIndex);
 <style scoped>
   .navbar {
     padding-top: 0.15rem; 
-    padding-bottom: 3.15rem; 
+    padding-bottom: 3.75rem; 
   }
 
   .hzuts-gallery-screen-desktop-child {
@@ -402,14 +417,14 @@ console.log('Current Folder Index:', folderIndex);
 
   .lijevipointer-icon {
     position: absolute;
-    top: 0rem;
+    top: -1rem;
     left: 5.19rem;
     width: 3.15rem;
     height: 3.15rem;
   }
   .desnipointer-icon {
     position: absolute;
-    top: 0rem;
+    top: -1rem;
     right: 5.19rem;
     width: 3.15rem;
     height: 3.15rem;
@@ -506,6 +521,7 @@ color: #03A9F4CC;
     width: 100%;             /* Take full width of the parent */
     position: relative;
     margin-bottom: 25px; 
+    margin-top: 70px; 
 }
 
 .left-pointer, .right-pointer {
@@ -565,6 +581,35 @@ color: #03A9F4CC;
 .folder-items-container {
     -ms-overflow-style: none;  /* Hide scrollbar for IE and Edge */
 }
+
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.loader {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid #3498db;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
 
 
 </style>

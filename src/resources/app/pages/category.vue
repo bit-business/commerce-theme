@@ -34,7 +34,7 @@
     v-else
     class="login-with-email-button cursor-pointer"
 >     
-    <div class="saznaj-vie">Saznaj više</div>
+    <div class="saznaj-vie">Uskoro novi događaji</div>
 </div>
 
 
@@ -335,12 +335,13 @@ return sortedEvents.length > 0 ? sortedEvents[0] : {};
 
 
     updateCountdown() {
-    if (this.nextEvent) {
+    if (this.nextEvent && Object.keys(this.nextEvent).length > 0) {
         this.computeCountdown();
     } else {
         this.countdownTime = '00 : 00 : 00 : 00';
     }
 },
+
 
 
 computeCountdown() {
@@ -569,61 +570,6 @@ computeCountdown() {
     grid-column: span 2;
 }
 
-@media screen and (max-width: 1200px) {
-    .prvireddesni {
-        max-width: 45vw;
-        height: auto;  /* Adjust this as needed */
-    }
-    .frame7 {
-        max-width: 45vw;
-        height: auto;  /* Adjust this as needed */
-    }
-    .frame-container {
-        max-width: 45vw;
-        height: auto;  /* Adjust this as needed */
-    }
-}
-
-@media screen and (max-width: 720px) {
-  .prvireddesni {
-        max-width: 45vw;
-        height: auto;  /* Adjust this as needed */
-    }
-    .frame7 {
-        max-width: 45vw;
-        height: auto;  /* Adjust this as needed */
-    }
-    .frame-container {
-        max-width: 45vw;
-        height: auto;  /* Adjust this as needed */
-    }
-
-    .products-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .product-item {
-        grid-column: span 1;
-    }
-}
-
-
-@media screen and (max-width: 480px) {
-    .prvireddesni {
-        max-width: 80vw;
-        height: auto;  /* Adjust this as needed */
-    }
-    .frame7 {
-        max-width: 80vw;
-        height: auto;  /* Adjust this as needed */
-    }
-    .frame-container {
-        max-width: 80vw;
-        height: auto;  /* Adjust this as needed */
-    }
-}
-
-
 
 
 
@@ -711,8 +657,8 @@ computeCountdown() {
 .login-with-email-button:hover {
   background-color: #03a9f4;
   color: #fff;
-
 }
+
 .frame {
   align-self: stretch;
   height: 29.69rem;
@@ -1056,7 +1002,7 @@ computeCountdown() {
   font-family: Inter;
 
   margin-bottom: 3rem;
-    height: 100%;  /* Adjust this value based on your requirements */
+    height: 100%; 
    overflow-y: auto;
 
 }
@@ -1077,27 +1023,165 @@ computeCountdown() {
   overflow: hidden;
 }
 
+
+
+
+
+
+@media screen and (max-width: 1200px) {
+    .prvireddesni {
+        max-width: 45vw;
+        height: auto;  
+    }
+    .frame7 {
+        max-width: 45vw;
+        height: auto; 
+    }
+    .frame-container {
+        max-width: 45vw;
+        height: auto; 
+    }
+}
+
 @media screen and (max-width: 720px) {
-  .frame6 {
-    flex: unset;
-    align-self: stretch;
+
+  .countdown {
+        max-width: 100vw;
+        height: auto; 
+        white-space: nowrap;
+        font-size: calc(40px + (40 - 20) * ((100vw - 320px) / (720 - 320)));
+    }
+
+    .dana {
+        max-width: 50vw;
+        height: auto; 
+        white-space: nowrap;
+        font-size: calc(2px + (40 - 20) * ((100vw - 320px) / (720 - 320)));
+    }
+    .frame3 {
+    left: 52%;               
+    transform: translateX(-50%); 
+    top: 4.6rem;
+    gap: 2.3rem;
+    max-width: 100vw;
+    height: auto; 
   }
+  
+  .frame4, .frame5{
+      gap: 2.2rem;
+      top: 4.1rem;
+      width:auto;
+  }
+
+
+
+
 
   .prvireddesni {
-    width: auto;
-    align-self: unset;
-    height: auto;
-    flex-direction: column;
+        max-width: 80vw;
+        height: auto;  
+    }
+    .frame7 {
+        max-width: 45vw;
+        height: auto;  
+    }
+    .frame-container {
+        max-width: 45vw;
+        height: auto;  
+    }
+
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .product-item {
+        grid-column: span 1;
+    }
+}
+
+
+@media screen and (max-width: 480px) {
+    .prvireddesni {
+        max-width: 80vw;
+        height: auto;  
+    }
+    .frame7 {
+        max-width: 80vw;
+        height: auto; 
+    }
+    .frame1 {
+        max-width: 80vw;
+        height: auto; 
+    }
+    .frame-container {
+        max-width: 80vw;
+        height: auto;  
+    }
+
+
+
+    .frame {
+  height: 33.69rem;
+
+  gap: 29.06rem;
+}
+    .login-with-email-button {
+          width: 16rem;
+          height: 5.73rem;
+          font-size: 1rem;
+        margin-top: 0.4rem;
+        overflow: visible;
+              }
+        .frame3 {
+            left: 52%;           
+            transform: translateX(-50%); 
+            top: 3.3rem;
+       
+            max-width: 100vw;
+            height: auto; 
+
+          }
+          
+          .frame4, .frame5{
+              gap: 2.2rem;
+              top: 3.2rem;
+              width:auto;
+              margin-top: 1rem;
+            
+          }
+          .dana{
+        font-size: 0.8rem;   
+          }
+
+
+
+.frame {
+
+}
+.teaj-za-uitelja {
+margin-top: -10%;
+}
+
+
+}
+
+
+
+  @media screen and (max-width: 400px) {
+  .countdown{
+font-size: 2rem;
+  }
+  .dana{
+font-size: 0.5rem;
+    
+  }
+  .frame3 {
+    left: 50%;     
+    top: 2.2rem;           /* Move the left edge to the center of the parent */
   }
 
-  .velikikvadratiskupinapodframe {
-    flex: 1;
-    align-self: stretch;
-    height: auto;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0rem;
-  }
 }
+
+
+
 </style>

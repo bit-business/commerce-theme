@@ -796,6 +796,7 @@ export default {
 <style scoped>
   .navbarpraznina {
     padding-top: 3.75rem; 
+    overflow: hidden;
   }
 
 

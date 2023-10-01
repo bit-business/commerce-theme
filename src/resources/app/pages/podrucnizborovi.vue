@@ -1,57 +1,72 @@
-    <template>
+  
+  <template>
   <div class="hzuts-podrucni-zborovi-screen-">
     <Head :title="$page.props.name" />
     <div class="slikanavrhupodrucnihzborova">
       <div class="podruni-zborovi">PODRUČNI ZBOROVI</div>
     </div>
     <div class="podrucnizbor1">
-      <div class="zuts-istra-parent">
-        <b class="zuts-istra">{{ zborovi && zborovi[2] ? zborovi[2].ime : '' }}
-</b>
-        <img class="frame-child" alt="" src="/storage/slike/undefined.png" />
-        <div class="adresa">Adresa:</div>
-        <a class="ulica-grada-vukovara"
-          >Ulica grada Vukovara 32, 10 000 Zagreb</a
-        >
-        <div class="frameprvi">
-          <div class="predsjednik">Predsjednik:</div>
-          <b class="predsjednik">Dubravko Grgić</b>
+      <div class="frame-parent">
+        <div class="zuts-istra-parent">
+          <b class="zuts-istra">{{ zborovi && zborovi[2] ? zborovi[2].ime : '' }}</b>
+          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
-        <div class="frame1prvi">
-          <div class="predsjednik">Tajnik:</div>
-          <b class="predsjednik">Andrej Hubel</b>
+        <div class="tekstovi1">
+          <div class="frame">
+            <div class="predsjednik">Predsjednik:</div>
+            <b class="dubravko-grgi">{{ zborovi && zborovi[2] ? zborovi[2].predsjednik : '' }}</b>
+          </div>
+          <div class="frame1">
+            <div class="predsjednik">Tajnik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].tajnik : '' }}</b>
+          </div>
+          <div class="adresa-parent">
+            <div class="adresa">Adresa:</div>
+            <a class="ulica-grada-vukovara"
+              >{{ zborovi && zborovi[2] ? zborovi[2].depaddress : '' }}</a
+            >
+          </div>
         </div>
       </div>
-      <div class="frame-parent">
+      <div class="frame-group">
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined1.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].depphone : '' }}</div>
         </div>
         <div class="mail-icon-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined2.png" />
-          <div class="predsjednik">tajnikzutsistra@gmail.com</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/mail-icon.svg" />
+          <div class="predsjednik">
+    <a :href="'mailto:' + (zborovi && zborovi[2] ? zborovi[2].depemail : '')">{{ zborovi && zborovi[2] ? zborovi[2].depemail : '' }}</a>
+</div>
+
         </div>
         <div class="layout-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined3.png" />
-          <a class="wwwzuts-istrahr">www.zuts-istra.hr</a>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/layout-1.svg" />
+          <a 
+   :href="zborovi && zborovi[2] && zborovi[2].depwww ? (zborovi[2].depwww.startsWith('https') ? zborovi[2].depwww : 'https://' + zborovi[2].depwww) : '#'" 
+   target="_blank" 
+   class="wwwzuts-istrahr">
+   {{ zborovi && zborovi[2] && zborovi[2].depwww ? zborovi[2].depwww : '' }}
+</a>
+
         </div>
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined4.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].depfax : '' }}</div>
         </div>
         <div class="dollar-sign-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined5.png" />
-          <div class="predsjednik">10 eura</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].clanarina : '' }}</div>
         </div>
         <div class="credit-card-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined6.png" />
-          <div class="predsjednik">HR899823232323232</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/creditcard-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].ziroracun : '' }}</div>
         </div>
       </div>
       <div class="slikaframe">
-        <div class="frame-group">
+        <div class="frame-container">
           <div class="frame2" />
-          <img class="slika1zbor-icon" alt="" src="/storage/slike/undefined7.png" />
+          <img class="slika1zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined8.png" />
           <b class="b">1</b>
         </div>
         <div class="frame3">
@@ -61,7 +76,7 @@
     </div>
     <div class="podrucnizbor2">
       <div class="slika2zbor-parent">
-        <img class="slika2zbor-icon" alt="" src="/storage/slike/undefined8.png" />
+        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined7.png" />
         <div class="frame4">
           <b class="predsjednik">2</b>
         </div>
@@ -69,242 +84,327 @@
           <iframe class="map-group" src="http://google.maps/nekiurl" />
         </div>
       </div>
-      <div class="frame-container">
+      <div class="frame-div">
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined1.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].depphone: '' }}</div>
         </div>
         <div class="mail-icon-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined2.png" />
-          <div class="predsjednik">tajnikzutsistra@gmail.com</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/mail-icon.svg" />
+          <div class="predsjednik">
+    <a :href="'mailto:' + (zborovi && zborovi[3] ? zborovi[3].depemail : '')">{{ zborovi && zborovi[3] ? zborovi[3].depemail : '' }}</a>
+</div>
         </div>
-        <div class="layout-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined3.png" />
-          <div class="wwwzuts-istrahr1">www.zuts-istra.hr</div>
+        <div class="layout-1-parentveci">
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/layout-1.svg" />
+          <a 
+   :href="zborovi && zborovi[3] && zborovi[3].depwww ? (zborovi[3].depwww.startsWith('https') ? zborovi[3].depwww : 'https://' + zborovi[3].depwww) : '#'" 
+   target="_blank" 
+   class="wwwzuts-istrahr">
+   {{ zborovi && zborovi[3] && zborovi[3].depwww ? zborovi[3].depwww : '' }}
+</a>
         </div>
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined4.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].depfax: '' }}</div>
         </div>
         <div class="dollar-sign-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined5.png" />
-          <div class="predsjednik">10 eura</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].clanarina: '' }}</div>
         </div>
         <div class="credit-card-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined6.png" />
-          <div class="predsjednik">HR899823232323232</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/creditcard-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].ziroracun: '' }}</div>
         </div>
       </div>
-      <div class="frame-div">
+      <div class="frame-parent1">
         <div class="frame6">
+          <b class="zutss-nik-krmar">{{ zborovi && zborovi[3] ? zborovi[3].ime : '' }}</b>
+          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
+        </div>
+        <div class="frame-parent2">
           <div class="frame7">
-            <b class="zuts-istra1">{{ zborovi && zborovi[3] ? zborovi[3].ime : '' }}</b>
-            <img class="frame-item" alt="" src="/storage/slike/undefined9.png" />
+            <div class="predsjednik">Predsjednik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].predsjednik : '' }}</b>
           </div>
           <div class="frame8">
-            <div class="predsjednik">Predsjednik:</div>
-            <b class="predsjednik">Dubravko Grgić</b>
+            <div class="predsjednik">Tajnik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].tajnik : '' }}</b>
           </div>
-        </div>
-        <div class="frame9">
-          <div class="predsjednik">Tajnik:</div>
-          <b class="predsjednik">Andrej Hubel</b>
+          <div class="adresa2">
+            <div class="adresa1">Adresa:</div>
+            <a class="ulica-grada-vukovara1"
+              >{{ zborovi && zborovi[3] ? zborovi[3].depaddress : '' }}</a
+            >
+          </div>
         </div>
       </div>
     </div>
     <div class="podrucnizbor3">
-      <div class="zuts-istra-group">
-        <b class="zuts-istra2">{{ zborovi && zborovi[4] ? zborovi[4].ime : '' }}</b>
-        <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
-        <div class="frame10">
-          <div class="predsjednik">Predsjednik:</div>
-          <b class="predsjednik">Dubravko Grgić</b>
+      <div class="frame-parent3">
+        <div class="zuts-ogulin-parent">
+          <b class="zuts-ogulin">{{ zborovi && zborovi[4] ? zborovi[4].ime : '' }}</b>
+          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
-        <div class="frame11">
-          <div class="predsjednik">Tajnik:</div>
-          <b class="predsjednik">Andrej Hubel</b>
+        <div class="adresa2-parent">
+          <div class="adresa21">
+            <div class="adresa1">Adresa:</div>
+            <a class="ulica-grada-vukovara2"
+              >{{ zborovi && zborovi[4] ? zborovi[4].depaddress : '' }}</a
+            >
+          </div>
+          <div class="frame9">
+            <div class="predsjednik">Predsjednik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].predsjednik : '' }}</b>
+          </div>
+          <div class="frame10">
+            <div class="predsjednik">Tajnik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].tajnik : '' }}</b>
+          </div>
         </div>
       </div>
-      <div class="frame-parent">
+      <div class="frame-group">
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined10.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].depphone : '' }}</div>
         </div>
         <div class="mail-icon-container">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined11.png" />
-          <div class="predsjednik">tajnikzutsistra@gmail.com</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/mail-icon.svg" />
+          <div class="predsjednik">
+    <a :href="'mailto:' + (zborovi && zborovi[4] ? zborovi[4].depemail : '')">{{ zborovi && zborovi[4] ? zborovi[4].depemail : '' }}</a>
+</div>
         </div>
         <div class="layout-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined12.png" />
-          <a class="wwwzuts-istrahr">www.zuts-istra.hr</a>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/layout-1.svg" />
+          <a 
+   :href="zborovi && zborovi[4] && zborovi[4].depwww ? (zborovi[4].depwww.startsWith('https') ? zborovi[4].depwww : 'https://' + zborovi[4].depwww) : '#'" 
+   target="_blank" 
+   class="wwwzuts-istrahr">
+   {{ zborovi && zborovi[4] && zborovi[4].depwww ? zborovi[4].depwww : '' }}
+</a>
         </div>
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined13.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].depfax : '' }}</div>
         </div>
         <div class="dollar-sign-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined14.png" />
-          <div class="predsjednik">10 eura</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].clanarina : '' }}</div>
         </div>
         <div class="credit-card-1-container">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined15.png" />
-          <div class="predsjednik">HR899823232323232</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/creditcard-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].ziroracun : '' }}</div>
         </div>
       </div>
       <div class="slika3zbor-parent">
-        <img class="slika3zbor-icon" alt="" src="/storage/slike/undefined7.png" />
-        <div class="frame12">
+        <img class="slika3zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined7.png" />
+        <div class="frame11">
           <b class="predsjednik">3</b>
         </div>
-        <div class="frame13">
+        <div class="frame12">
           <iframe class="map-group" />
         </div>
       </div>
     </div>
     <div class="podrucnizbor4">
       <div class="slika4zbor-parent">
-        <img class="slika2zbor-icon" alt="" src="/storage/slike/undefined8.png" />
-        <div class="frame14">
+        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined8.png" />
+        <div class="frame13">
           <b class="predsjednik">4</b>
         </div>
         <div class="frame5">
           <iframe class="map-group" />
         </div>
       </div>
-      <div class="frame-parent">
+      <div class="frame-group">
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined1.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].depphone : '' }}</div>
         </div>
         <div class="mail-icon-container">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined2.png" />
-          <div class="predsjednik">tajnikzutsistra@gmail.com</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/mail-icon.svg" />
+          <div class="predsjednik">
+    <a :href="'mailto:' + (zborovi && zborovi[5] ? zborovi[5].depemail : '')">{{ zborovi && zborovi[5] ? zborovi[5].depemail : '' }}</a>
+</div>
         </div>
         <div class="layout-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined3.png" />
-          <div class="wwwzuts-istrahr1">www.zuts-istra.hr</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/layout-1.svg" />
+          <a 
+   :href="zborovi && zborovi[5] && zborovi[5].depwww ? (zborovi[5].depwww.startsWith('https') ? zborovi[5].depwww : 'https://' + zborovi[5].depwww) : '#'" 
+   target="_blank" 
+   class="wwwzuts-istrahr">
+   {{ zborovi && zborovi[5] && zborovi[5].depwww ? zborovi[5].depwww : '' }}
+</a>
         </div>
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined4.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].depfax : '' }}</div>
         </div>
         <div class="dollar-sign-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined5.png" />
-          <div class="predsjednik">10 eura</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].clanarina : '' }}</div>
         </div>
         <div class="credit-card-1-container">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined6.png" />
-          <div class="predsjednik">HR899823232323232</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/creditcard-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].ziroracun : '' }}</div>
         </div>
       </div>
-      <div class="zuts-istra-group">
-        <b class="zuts-istra3">{{ zborovi && zborovi[5] ? zborovi[5].ime : '' }}</b>
-        <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
-        <div class="frame16">
-          <div class="predsjednik">Predsjednik:</div>
-          <b class="predsjednik">Dubravko Grgić</b>
+      <div class="frame-parent6">
+        <div class="zuts-primorsko-goranske-upani-parent">
+          <b class="zuts-primorsko-goranske-upani"
+            >{{ zborovi && zborovi[5] ? zborovi[5].ime : '' }}</b
+          >
+          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
-        <div class="frame17">
-          <div class="predsjednik">Tajnik:</div>
-          <b class="predsjednik">Andrej Hubel</b>
+        <div class="adresa2-group">
+          <div class="adresa22">
+            <div class="adresa1">Adresa:</div>
+            <a class="ulica-grada-vukovara1"
+              >{{ zborovi && zborovi[5] ? zborovi[5].depaddress : '' }}</a
+            >
+          </div>
+          <div class="frame15">
+            <div class="predsjednik">Predsjednik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].predsjednik : '' }}</b>
+          </div>
+          <div class="frame16">
+            <div class="predsjednik">Tajnik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].tajnik : '' }}</b>
+          </div>
         </div>
       </div>
     </div>
-    <div class="podrucnizbor3">
-      <div class="zuts-istra-group">
-        <b class="zuts-istra4">{{ zborovi && zborovi[6] ? zborovi[6].ime : '' }}</b>
-        <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
-        <div class="frame10">
-          <div class="predsjednik">Predsjednik:</div>
-          <b class="predsjednik">Dubravko Grgić</b>
+    <div class="podrucnizbor5">
+      <div class="frame-parent7">
+        <div class="zuts-sjeverozapadna-hrvatska-parent">
+          <b class="zuts-sjeverozapadna-hrvatska"
+            >{{ zborovi && zborovi[6] ? zborovi[6].ime : '' }}</b
+          >
+          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
-        <div class="frame11">
-          <div class="predsjednik">Tajnik:</div>
-          <b class="predsjednik">Andrej Hubel</b>
+        <div class="adresa2-container">
+          <div class="adresa23">
+            <div class="adresa1">Adresa:</div>
+            <a class="ulica-grada-vukovara2"
+              >{{ zborovi && zborovi[6] ? zborovi[6].depaddress : '' }}</a
+            >
+          </div>
+          <div class="frame17">
+            <div class="predsjednik">Predsjednik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].predsjednik : '' }}</b>
+          </div>
+          <div class="frame18">
+            <div class="predsjednik">Tajnik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].tajnik : '' }}</b>
+          </div>
         </div>
       </div>
-      <div class="frame-parent">
+      <div class="frame-group">
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined10.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-11.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].depphone : '' }}</div>
         </div>
         <div class="mail-icon-container">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined11.png" />
-          <div class="predsjednik">tajnikzutsistra@gmail.com</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/mail-icon1.svg" />
+          <div class="predsjednik">
+    <a :href="'mailto:' + (zborovi && zborovi[6] ? zborovi[6].depemail : '')">{{ zborovi && zborovi[6] ? zborovi[6].depemail : '' }}</a>
+</div>
         </div>
         <div class="layout-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined12.png" />
-          <div class="wwwzuts-istrahr1">www.zuts-istra.hr</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/layout-11.svg" />
+          <a 
+   :href="zborovi && zborovi[6] && zborovi[6].depwww ? (zborovi[6].depwww.startsWith('https') ? zborovi[6].depwww : 'https://' + zborovi[6].depwww) : '#'" 
+   target="_blank" 
+   class="wwwzuts-istrahr">
+   {{ zborovi && zborovi[6] && zborovi[6].depwww ? zborovi[6].depwww : '' }}
+</a>
         </div>
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined13.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-11.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].depfax : '' }}</div>
         </div>
         <div class="dollar-sign-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined14.png" />
-          <div class="predsjednik">10 eura</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-11.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].clanarina : '' }}</div>
         </div>
         <div class="credit-card-1-container">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined15.png" />
-          <div class="predsjednik">HR899823232323232</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/creditcard-11.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].ziroracun : '' }}</div>
         </div>
       </div>
       <div class="slika5zbor-parent">
-        <img class="slika5zbor-icon" alt="" src="/storage/slike/undefined7.png" />
-        <div class="frame20">
+        <img class="slika5zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined7.png" />
+        <div class="frame19">
           <b class="predsjednik">5</b>
         </div>
-        <div class="frame21">
+        <div class="frame20">
           <iframe class="map-group" />
         </div>
       </div>
     </div>
     <div class="podrucnizbor4">
       <div class="slika6zbor-parent">
-        <img class="slika2zbor-icon" alt="" src="/storage/slike/undefined8.png" />
-        <div class="frame22">
+        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined8.png" />
+        <div class="frame21">
           <b class="predsjednik">6</b>
         </div>
         <div class="frame5">
           <iframe class="map-group" />
         </div>
       </div>
-      <div class="frame-parent">
+      <div class="frame-group">
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined1.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].depphone : '' }}</div>
         </div>
         <div class="mail-icon-container">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined2.png" />
-          <div class="predsjednik">tajnikzutsistra@gmail.com</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/mail-icon.svg" />
+          <div class="predsjednik">
+    <a :href="'mailto:' + (zborovi && zborovi[7] ? zborovi[7].depemail : '')">{{ zborovi && zborovi[7] ? zborovi[7].depemail : '' }}</a>
+</div>
         </div>
         <div class="layout-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined3.png" />
-          <div class="wwwzuts-istrahr1">www.zuts-istra.hr</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/layout-1.svg" />
+          <a 
+   :href="zborovi && zborovi[7] && zborovi[7].depwww ? (zborovi[7].depwww.startsWith('https') ? zborovi[7].depwww : 'https://' + zborovi[7].depwww) : '#'" 
+   target="_blank" 
+   class="wwwzuts-istrahr">
+   {{ zborovi && zborovi[7] && zborovi[7].depwww ? zborovi[7].depwww : '' }}
+</a>
         </div>
         <div class="phone-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined4.png" />
-          <div class="predsjednik">099 839 8367</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].depfax : '' }}</div>
         </div>
         <div class="dollar-sign-1-parent">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined5.png" />
-          <div class="predsjednik">10 eura</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].clanarina : '' }}</div>
         </div>
         <div class="credit-card-1-container">
-          <img class="phone-1-icon" alt="" src="/storage/slike/undefined6.png" />
-          <div class="predsjednik">HR899823232323232</div>
+          <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/creditcard-1.svg" />
+          <div class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].ziroracun : '' }}</div>
         </div>
       </div>
-      <div class="zuts-istra-group">
-        <b class="zuts-istra3">{{ zborovi && zborovi[7] ? zborovi[7].ime : '' }}</b>
-        <img class="frame-inner" alt="" src="/storage/slike/undefined9.png" />
-        <div class="frame16">
-          <div class="predsjednik">Predsjednik:</div>
-          <b class="predsjednik">Dubravko Grgić</b>
+      <div class="frame-parent10">
+        <div class="zuts-slavonije-i-baranje-parent">
+          <b class="zuts-slavonije-i">{{ zborovi && zborovi[7] ? zborovi[7].ime : '' }}</b>
+          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
-        <div class="frame17">
-          <div class="predsjednik">Tajnik:</div>
-          <b class="predsjednik">Andrej Hubel</b>
+        <div class="frame-parent11">
+          <div class="frame23">
+            <div class="predsjednik">Predsjednik:</div>
+            <b class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].predsjednik : '' }}</b>
+          </div>
+          <div class="frame24">
+            <div class="tajnik5">Tajnik:</div>
+            <b class="mirna-rajle-broanac">{{ zborovi && zborovi[7] ? zborovi[7].tajnik : '' }}</b>
+          </div>
+          <div class="adresa6">
+            <div class="adresa1">Adresa:</div>
+            <a class="ulica-grada-vukovara5"
+              >{{ zborovi && zborovi[7] ? zborovi[7].depaddress : '' }}</a
+            >
+          </div>
         </div>
       </div>
     </div>
@@ -416,10 +516,10 @@ export default {
     align-self: stretch;
     display: flex;
     flex-direction: row;
-    padding: 15rem 31rem;
     align-items: center;
     justify-content: flex-start;
-    background-image: url("/storage/slike/slikanavrhupodrucnihzborova@3x.png");
+    padding: 15rem 31rem;
+    background-image: url("/storage/slike/podrucnizborovi/slikanavrhupodrucnihzborova@3x.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
@@ -428,98 +528,99 @@ export default {
     white-space: nowrap;
   }
   .zuts-istra {
-    position: absolute;
-    top: 0.13rem;
-    left: 0.03rem;
-    font-size: 2rem;
+    position: relative;
     letter-spacing: 3px;
     display: flex;
-    color: #21231e;
-    text-align: left;
     align-items: center;
     width: 21.31rem;
   }
   .frame-child {
-    position: absolute;
-    top: 3.09rem;
-    left: 0rem;
+    position: relative;
     width: 18.75rem;
     height: 0.13rem;
-    object-fit: cover;
   }
-  .adresa {
+  .zuts-istra-parent {
     position: absolute;
-    top: 7.41rem;
+    top: 0.13rem;
     left: 0rem;
-  }
-  .ulica-grada-vukovara {
-    text-decoration: none;
-    position: absolute;
-    top: 9.22rem;
-    left: 0rem;
-    font-weight: 700;
-    color: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.63rem;
   }
   .predsjednik {
     position: relative;
+ 
   }
-  .predsjednik1 {
+  .dubravko-grgi {
     position: relative;
     text-align: left;
   }
-  .frameprvi {
-    position: absolute;
-    top: 3.78rem;
-    left: 0rem;
-    width: 20.06rem;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: left;
-    justify-content: flex-start;
-    gap: 1.5rem;
-  }
-  .frame1prvi {
-    position: absolute;
-    top: 5.59rem;
-    left: 0rem;
-    width: 20.06rem;
-    height: 1.19rem;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: right;
-    justify-content: flex-start;
-    gap: 4.2rem;
-  }
   .frame {
-    position: absolute;
-    top: 3.78rem;
-    left: 0rem;
-    width: 16.06rem;
+    align-self: stretch;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 0.94rem;
   }
   .frame1 {
-    position: absolute;
-    top: 5.59rem;
-    left: 0rem;
-    width: 12.06rem;
+    align-self: stretch;
     height: 1.19rem;
-    overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 2.63rem;
+    gap: 3.56rem;
   }
-  .zuts-istra-parent {
+  .adresa {
+    align-self: stretch;
+    position: relative;
+    display: inline-block;
+    width: 3.63rem;
+    flex-shrink: 0;
+  }
+  .ulica-grada-vukovara {
+    text-decoration: none;
+    position: relative;
+    font-weight: 700;
+    color: inherit;
+    text-align: left;
+    display: inline-block;
+    width: 13.38rem;
+    height: 3rem;
+    flex-shrink: 0;
+  }
+  .adresa-parent {
+    align-self: stretch;
+    height: 3rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3rem;
+  }
+  .tekstovi1 {
+    position: absolute;
+    top: 3.81rem;
+    left: 0rem;
+    width: 18rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.63rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #000;
+  }
+  .frame-parent {
     position: relative;
     width: 18rem;
     height: 10.5rem;
+    text-align: left;
   }
   .phone-1-icon {
     position: relative;
@@ -527,10 +628,9 @@ export default {
     height: 1.5rem;
     overflow: hidden;
     flex-shrink: 0;
-    object-fit: cover;
   }
   .phone-1-parent {
-    width: 9.56rem;
+    width: 12.56rem;
     height: 1.5rem;
     display: flex;
     flex-direction: row;
@@ -568,6 +668,18 @@ export default {
     gap: 1.13rem;
     color: #03a9f4;
   }
+
+  .layout-1-parentveci {
+    width: 16.06rem;
+    height: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1.93rem;
+    color: #03a9f4;
+    white-space: nowrap;
+  }
   .dollar-sign-1-parent {
     width: 6.25rem;
     height: 1.5rem;
@@ -586,13 +698,15 @@ export default {
     justify-content: flex-start;
     gap: 1.19rem;
   }
-  .frame-parent {
+  .frame-group {
     display: flex;
     flex-direction: column;
-    padding: 3.75rem 0rem;
     align-items: flex-start;
     justify-content: flex-start;
+    padding: 3.75rem 0rem;
     gap: 1.25rem;
+    font-size: 1rem;
+    color: #000;
   }
   .frame2 {
     position: relative;
@@ -616,7 +730,7 @@ export default {
     display: inline-block;
     z-index: 2;
   }
-  .frame-group {
+  .frame-container {
     width: 30.25rem;
     display: flex;
     flex-direction: row;
@@ -661,9 +775,9 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 1.5rem 1.63rem;
     align-items: flex-start;
     justify-content: space-between;
+    padding: 1.5rem 1.63rem;
   }
   .slika2zbor-icon {
     position: absolute;
@@ -710,84 +824,96 @@ export default {
     height: 1.19rem;
     flex-shrink: 0;
   }
-  .frame-container {
+  .frame-div {
     height: 22.75rem;
     display: flex;
     flex-direction: column;
-    padding: 4.38rem 0rem;
-    box-sizing: border-box;
     align-items: flex-start;
     justify-content: flex-start;
+    padding: 4.38rem 0rem;
+    box-sizing: border-box;
     gap: 1.25rem;
     font-size: 1rem;
     color: #000;
   }
-  .zuts-istra1 {
+  .zutss-nik-krmar {
     position: relative;
     letter-spacing: 3px;
     display: flex;
     align-items: center;
-    width: 18rem;
-  }
-  .frame-item {
-    position: relative;
-    width: 18.75rem;
-    height: 0.06rem;
-    object-fit: cover;
-  }
-  .frame7 {
-    align-self: stretch;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
-    gap: 0.56rem;
-  }
-  .frame8 {
-    width: 14.69rem;
-    height: 1.19rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 1.25rem;
-    text-align: center;
-    font-size: 1rem;
-    color: #000;
+    width: 23.75rem;
   }
   .frame6 {
-    align-self: stretch;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: flex-start;
-    gap: 1.25rem;
-  }
-  .frame9 {
-    width: 14.69rem;
-    height: 1.19rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 5.25rem;
-    text-align: center;
-    font-size: 1rem;
-    color: #000;
-  }
-  .frame-div {
-    width: 18.75rem;
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
     justify-content: flex-start;
     gap: 0.63rem;
+  }
+  .frame7 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4.81rem;
+  }
+  .frame8 {
+
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 4rem;
+    
+  }
+  .adresa1 {
+    position: relative;
+    display: inline-block;
+    width: 3.63rem;
+    height: 1.19rem;
+    flex-shrink: 0;
+  }
+  .ulica-grada-vukovara1 {
+    text-decoration: none;
+    position: relative;
+    font-weight: 700;
+    color: inherit;
+    text-align: right;
+    display: inline-block;
+    width: 13.38rem;
+    height: 3rem;
+    flex-shrink: 0;
+    margin-left: -0.69rem;
+  }
+  .adresa2 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .frame-parent2 {
+    position: absolute;
+    top: 3.88rem;
+    left: 6.34rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 0.63rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #000;
+  }
+  .frame-parent1 {
+    position: relative;
+    width: 23.75rem;
+    height: 10.5rem;
     text-align: right;
     font-size: 2rem;
     color: #21231e;
@@ -798,36 +924,57 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 1.5rem 1.63rem;
     align-items: flex-start;
     justify-content: space-between;
+    padding: 1.5rem 1.63rem;
     font-size: 18.75rem;
     color: #03a9f4;
   }
-  .zuts-istra2 {
-    position: absolute;
-    top: 0rem;
-    left: -0.03rem;
-    font-size: 2rem;
+  .zuts-ogulin {
+    position: relative;
     letter-spacing: 3px;
     display: flex;
-    color: #21231e;
-    text-align: left;
     align-items: center;
     width: 20.81rem;
   }
-  .frame-inner {
+  .zuts-ogulin-parent {
     position: absolute;
-    top: 2.94rem;
+    top: 0rem;
     left: 0rem;
-    width: 18.75rem;
-    height: 0.13rem;
-    object-fit: cover;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.56rem;
   }
-  .frame10 {
+  .ulica-grada-vukovara2 {
+    text-decoration: none;
+    position: relative;
+    font-weight: 700;
+    color: inherit;
+    text-align: left;
+    display: inline-block;
+    width: 13.38rem;
+    height: 3rem;
+    flex-shrink: 0;
+  }
+  .adresa21 {
     position: absolute;
-    top: 4.25rem;
-    left: 0rem;
+    top: 3.63rem;
+    left: 0.06rem;
+    width: 16.31rem;
+    height: 1.19rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 3.36rem;
+
+  }
+  .frame9 {
+    position: absolute;
+    top: 0rem;
+    left: 0.03rem;
     width: 14.69rem;
     height: 1.19rem;
     overflow: hidden;
@@ -837,11 +984,11 @@ export default {
     justify-content: flex-start;
     gap: 1.25rem;
   }
-  .frame11 {
+  .frame10 {
     position: absolute;
-    top: 6.06rem;
-    left: 0rem;
-    width: 13.44rem;
+    top: 1.81rem;
+    left: 0.03rem;
+    width: 13.94rem;
     height: 1.19rem;
     overflow: hidden;
     display: flex;
@@ -850,12 +997,21 @@ export default {
     justify-content: flex-start;
     gap: 4rem;
   }
-  .zuts-istra-group {
+  .adresa2-parent {
+    position: absolute;
+    top: 3.63rem;
+    left: 0rem;
+    width: 19.49rem;
+    height: 6rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #000;
+  }
+  .frame-parent3 {
     position: relative;
-    width: 18.75rem;
+    width: 20.81rem;
     height: 7.25rem;
-    display: flex;
-    align-items: center;
+    text-align: left;
   }
   .mail-icon-container {
     width: 15rem;
@@ -884,7 +1040,7 @@ export default {
     height: 25rem;
     object-fit: cover;
   }
-  .frame12 {
+  .frame11 {
     position: absolute;
     top: 0rem;
     left: 0rem;
@@ -896,7 +1052,7 @@ export default {
     align-items: center;
     justify-content: flex-end;
   }
-  .frame13 {
+  .frame12 {
     position: absolute;
     top: 0rem;
     left: 26.63rem;
@@ -920,11 +1076,11 @@ export default {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    padding: 1.5rem 1.63rem;
     align-items: flex-start;
     justify-content: space-between;
+    padding: 1.88rem 1.63rem;
   }
-  .frame14 {
+  .frame13 {
     position: absolute;
     top: 1.13rem;
     left: 0rem;
@@ -939,26 +1095,121 @@ export default {
     position: relative;
     width: 32.13rem;
     height: 25rem;
-    font-size: 18.75rem;
-    color: #03a9f4;
   }
-  .zuts-istra3 {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    font-size: 2rem;
+  .zuts-primorsko-goranske-upani {
+    position: relative;
     letter-spacing: 3px;
     display: flex;
-    color: #21231e;
-    text-align: right;
     align-items: center;
-    width: 18.75rem;
+    width: 21.25rem;
+  }
+  .zuts-primorsko-goranske-upani-parent {
+    position: absolute;
+    top: 0rem;
+    left: -0.06rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0.63rem;
+  }
+  .adresa22 {
+    position: absolute;
+    top: 3.63rem;
+    left: 0.06rem;
+    width: 16.31rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .frame15 {
+    position: absolute;
+    top: 0rem;
+    left: 0.06rem;
+    height: 1.19rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3rem;
   }
   .frame16 {
     position: absolute;
-    top: 4.25rem;
-    left: 4.06rem;
-    width: 14.69rem;
+    top: 1.81rem;
+    left: 0rem;
+    height: 1.19rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 6.88rem;
+  }
+  .adresa2-group {
+    position: absolute;
+    top: 6.56rem;
+    left: 4.88rem;
+    width: 16.38rem;
+    height: 6.63rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #000;
+  }
+  .frame-parent6 {
+    position: relative;
+    width: 21.25rem;
+    height: 10.94rem;
+    text-align: right;
+    font-size: 2rem;
+    color: #21231e;
+  }
+  .podrucnizbor4 {
+    align-self: stretch;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2.13rem 1.63rem;
+    font-size: 18.75rem;
+    color: #03a9f4;
+  }
+  .zuts-sjeverozapadna-hrvatska {
+    position: relative;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    width: 35.31rem;
+  }
+  .zuts-sjeverozapadna-hrvatska-parent {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.63rem;
+  }
+  .adresa23 {
+    position: absolute;
+    top: 3.63rem;
+    left: 0rem;
+    width: 16.31rem;
+    height: 1.19rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 3.33rem;
+  }
+  .frame17 {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
     height: 1.19rem;
     overflow: hidden;
     display: flex;
@@ -967,40 +1218,33 @@ export default {
     justify-content: flex-start;
     gap: 1.25rem;
   }
-  .frame17 {
+  .frame18 {
     position: absolute;
-    top: 6.06rem;
-    left: 4.06rem;
-    width: 14.69rem;
+    top: 1.81rem;
+    left: 0rem;
     height: 1.19rem;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 5.25rem;
+    gap: 4rem;
   }
-  .podrucnizbor4 {
-    align-self: stretch;
-    background-color: #fff;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 1.5rem 1.63rem;
-    align-items: flex-start;
-    justify-content: space-between;
-  }
-  .zuts-istra4 {
+  .adresa2-container {
     position: absolute;
-    top: 0rem;
-    left: 0.03rem;
-    font-size: 2rem;
-    letter-spacing: 3px;
-    display: flex;
-    color: #21231e;
+    top: 6.38rem;
+    left: 0rem;
+    width: 14.56rem;
+    height: 6.06rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #000;
+  }
+  .frame-parent7 {
+    position: relative;
+    width: 35.38rem;
+    height: 10.94rem;
     text-align: left;
-    align-items: center;
-    width: 18.75rem;
   }
   .slika5zbor-icon {
     position: absolute;
@@ -1011,7 +1255,7 @@ export default {
     height: 25rem;
     object-fit: cover;
   }
-  .frame20 {
+  .frame19 {
     position: absolute;
     top: 0rem;
     left: 0rem;
@@ -1023,7 +1267,7 @@ export default {
     align-items: center;
     justify-content: flex-end;
   }
-  .frame21 {
+  .frame20 {
     position: absolute;
     top: 0rem;
     left: 26.5rem;
@@ -1042,7 +1286,16 @@ export default {
     font-size: 18.75rem;
     color: #03a9f4;
   }
-  .frame22 {
+  .podrucnizbor5 {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 2.13rem 1.63rem;
+  }
+  .frame21 {
     position: absolute;
     top: 1.13rem;
     left: 0rem;
@@ -1057,8 +1310,103 @@ export default {
     position: relative;
     width: 32rem;
     height: 25rem;
-    font-size: 18.75rem;
-    color: #03a9f4;
+  }
+  .zuts-slavonije-i {
+    position: relative;
+    letter-spacing: 3px;
+    display: flex;
+    align-items: center;
+    width: 18.75rem;
+  }
+  .zuts-slavonije-i-baranje-parent {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 0.63rem;
+  }
+  .frame23 {
+    align-self: stretch;
+    height: 1.19rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2rem;
+    z-index: 0;
+  }
+  .tajnik5 {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.69rem;
+    flex-shrink: 0;
+  
+  }
+  .mirna-rajle-broanac {
+    position: relative;
+    display: flex;
+    text-align: right;
+    align-items: center;
+    width: 10.8rem;
+    flex-shrink: 0;
+  }
+  .frame24 {
+    align-self: stretch;
+    height: 1.19rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 2.1rem;
+    z-index: 1;
+  }
+  .ulica-grada-vukovara5 {
+    text-decoration: none;
+    position: relative;
+    font-weight: 700;
+    color: inherit;
+    text-align: right;
+    display: inline-block;
+    width: 13.38rem;
+    height: 3rem;
+    flex-shrink: 0;
+    margin-left: -0.75rem;
+  }
+  .adresa6 {
+    margin: 0 !important;
+    position: absolute;
+    top: 4.06rem;
+    left: 2.56rem;
+    height: 2.75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    z-index: 2;
+  }
+  .frame-parent11 {
+    align-self: stretch;
+    height: 3.31rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    position: relative;
+    text-align: center;
+    font-size: 1rem;
+    color: #000;
+  }
+  .frame-parent10 {
+    height: 9.81rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    text-align: right;
+    font-size: 2rem;
+    color: #21231e;
   }
   .hzuts-podrucni-zborovi-screen- {
     position: relative;
@@ -1068,9 +1416,9 @@ export default {
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    text-align: left;
-    font-size: 1rem;
-    color: #000;
+    text-align: center;
+    font-size: 2rem;
+    color: #21231e;
     font-family: Inter;
   }
 
@@ -1105,18 +1453,28 @@ export default {
       box-sizing: border-box;
       order: -1;
     }
-
     .slika3zbor-parent {
-      width: 32.13rem;
-      height: 25rem;
-      order: -1;
-    }
+    order: -1;
+  }
     .slika5zbor-parent {
-      order: -1;
-    }
+    order: -1;
+  }
 
     .podrucnizbor1 {
       flex-direction: row;
+    }
+
+    .zuts-primorsko-goranske-upani {
+      text-align: left;
+    }
+
+    .frame16 {
+      width: auto;
+      align-self: unset;
+    }
+
+    .podrucnizbor4 {
+ padding-bottom: 5rem;
     }
   }
   @media screen and (max-width: 420px) {
@@ -1133,15 +1491,12 @@ export default {
       width: auto;
       order: -1;
     }
-
     .slika3zbor-parent {
-      width: 32.13rem;
-      height: 25rem;
-      order: -1;
-    }
+    order: -1;
+  }
     .slika5zbor-parent {
-      order: -1;
-    }
+    order: -1;
+  }
 
     .podrucnizbor1 {
       flex-direction: column;
@@ -1161,6 +1516,17 @@ export default {
     }
 
     .podrucnizbor4 {
+      flex-direction: column;
+ padding-bottom: 5rem;
+    }
+    .frame-group{
+      order: +1;
+  }
+  .frame-div{
+      order: +1;
+  }
+
+    .podrucnizbor5 {
       flex-direction: column;
     }
   }

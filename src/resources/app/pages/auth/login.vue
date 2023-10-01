@@ -583,7 +583,7 @@ export default {
   }
   .footertext {
     position: absolute;
-    top: calc(50% + 326px);
+    top: calc(50% + 336px);
     left: calc(50% - 200px);
     font-size: 0.9rem;
     font-weight: 500;

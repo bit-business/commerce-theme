@@ -1,6 +1,6 @@
 <template>
   <div>
-    <commerce-top-bar class="hidden sm:flex" />
+    <commerce-top-bar class="" />
 
     <slot />
     <commerce-footer class="" />
