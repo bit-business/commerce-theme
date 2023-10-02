@@ -16,8 +16,8 @@
 <div class="h-full p-0 w-full overflow-hidden video-fullwidth">
 <carousel-single class="rounded-sm h-full ">
   <div class="rounded-sm h-full">
-    <video autoplay muted playsinline loop class="h-full w-full video-fullwidth" v-if="isSafari" :src="banner.mainBanner.data.banner1.data"></video>
-    <video autoplay muted playsinline loop class="h-full w-full video-fullwidth" v-else :src="banner.mainBanner.data.banner2.data"></video>
+    <video autoplay muted playsinline preload="auto" loop class="h-full w-full video-fullwidth" v-if="isSafari" :src="banner.mainBanner.data.banner1.data"></video>
+    <video autoplay muted playsinline preload="auto" loop class="h-full w-full video-fullwidth" v-else :src="banner.mainBanner.data.banner2.data"></video>
   </div>
 </carousel-single>
 </div>

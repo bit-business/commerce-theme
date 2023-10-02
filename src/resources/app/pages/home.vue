@@ -121,7 +121,7 @@
         <div class="objavljenotekst">
           <b class="objavljeno-20032023">{{ 'OBJAVLJENO: ' + $moment(slide.datum).format('DD.MM.YYYY') }}</b>
         </div>
-        <figcaption>
+        <figcaption class="fontweight">
           {{ slide.title }}
         </figcaption>
 
@@ -186,7 +186,7 @@
   :speed="100000"
   :width="370"
   :pause="isPaused"
-  class="padsponzori"
+  class="rostsport-1-icon"
   @mouseenter="pauseMarquee"
     @mouseleave="resumeMarquee"
 >
@@ -642,6 +642,9 @@ this.fetchTotalUsers();
 
 <style scoped>
 
+
+
+
 .carousel-3d-container figure {
   margin:0;
 
@@ -652,13 +655,13 @@ this.fetchTotalUsers();
 }
 .carousel-3d-container figcaption {
   position: absolute;
- 
+  font-weight: 800;
   color: #fff;
   bottom: 0;
   position: absolute;
   bottom: 0;
   padding: 15px;
-  font-size: 12px;
+  font-size: 17px;
   min-width: 100%;
   box-sizing: border-box;
 
@@ -1092,8 +1095,7 @@ this.fetchTotalUsers();
   .rostsport-1-icon {
     position: absolute;
     top: calc(50% - 61.5px);
-    left: calc(50% - 125px);
-    width: 15.63rem;
+    width: 100%;
     height: 7.68rem;
     object-fit: cover;
   }
@@ -1102,6 +1104,8 @@ this.fetchTotalUsers();
     background-color: #fff;
     width: 100%;
     height: 15.94rem;
+    align-items: center;
+    justify-content: center;
     overflow: hidden;
     flex-shrink: 0;
   }

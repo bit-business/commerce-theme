@@ -16,23 +16,21 @@
         <div class="kontaktiraj-nas">Kontaktiraj nas</div>
         <div class="kontaktformapolja">
           <div class="va-e-mail">Vaš e-mail</div>
-          <img
-            class="crtekontaktforma3-icon"
-            alt=""
-            src="/storage/slike/kontakt/crtekontaktforma3.svg"
-          />
+          <div class="image-wrapper">
+  <img class="crtekontaktforma3-icon" alt="" src="/storage/slike/kontakt/crtekontaktforma3.svg" />
+  <input v-model="email" type="email" class="input-email">
+</div>
+
           <div class="naslov">Naslov</div>
-          <img
-            class="crtekontaktforma2-icon"
-            alt=""
-            src="/storage/slike/kontakt/crtekontaktforma3.svg"
-          />
+          <div class="image-wrapper">
+  <img class="crtekontaktforma2-icon" alt="" src="/storage/slike/kontakt/crtekontaktforma3.svg" />
+  <input v-model="subject" type="text" class="input-subject">
+</div>
           <div class="poruka">Poruka</div>
-          <img
-            class="crtekontaktforma1-icon"
-            alt=""
-            src="/storage/slike/kontakt/crtekontaktforma1.svg"
-          />
+          <div class="image-wrapper">
+  <img class="crtekontaktforma1-icon" alt="" src="/storage/slike/kontakt/crtekontaktforma1.svg" />
+  <textarea v-model="message" class="textarea-message"></textarea>
+</div>
           <button class="poalji-wrapper" @click="sendContactEmail()">
         <div class="poalji">POŠALJI</div>
       </button>
@@ -113,18 +111,17 @@ export default {
   data() {
     return {
 
-      res: {
+      email: '',
+    subject: '',
+    message: '',
+    res: {
       active: false,
       icon: "",
       status: "",
       message: "",
     },
-
     errors: {},
-    
-
-
-    }
+  }
   },
   computed: {
     ...mapState({
@@ -199,6 +196,48 @@ export default {
 </script>
 
 <style scoped>
+
+.input-email,
+.input-subject,
+.textarea-message {
+  z-index: 2;
+  left: 2rem;
+
+}
+
+
+.input-email {
+  width: 37.5rem;
+  border: none;
+  background: transparent;
+  outline: none;
+  position: absolute;
+  top: 2.13rem;
+
+}
+
+.input-subject {
+  width: 37.5rem;
+  border: none;
+  background: transparent;
+  outline: none;
+  position: absolute;
+  top: 7.38rem;
+}
+
+.textarea-message {
+  width: 37.5rem;
+  border: none;
+  background: transparent;
+  outline: none;
+  position: absolute;
+  top: 12.63rem;
+  resize: none;
+  height: 3.75rem;
+}
+
+
+
   .kartakontakt-icon {
     flex: 1;
     position: relative;

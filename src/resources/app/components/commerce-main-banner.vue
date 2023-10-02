@@ -14,8 +14,8 @@
 
 <carousel-single class="">
   <div class=" full-dimensions">
-    <video autoplay muted playsinline loop class="video-fullwidth" v-if="isSafari" :src="banner.mainBanner.data.banner1.data"></video>
-    <video autoplay muted playsinline loop class="video-fullwidth" v-else :src="banner.mainBanner.data.banner2.data"></video>
+    <video autoplay preload="auto" muted playsinline loop class="video-fullwidth" v-if="isSafari" :src="banner.mainBanner.data.banner1.data"></video>
+    <video autoplay muted preload="auto" playsinline loop class="video-fullwidth" v-else :src="banner.mainBanner.data.banner2.data"></video>
   </div>
 </carousel-single>
 

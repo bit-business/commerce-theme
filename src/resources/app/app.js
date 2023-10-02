@@ -60,13 +60,8 @@ const firebaseConfig = {
   appId: process.env.MIX_FIREBASE_APP_ID,
   measurementId: process.env.MIX_FIREBASE_MEASUREMENT_ID
 };
-console.log("Firebase Environment Variables:", {
-  apiKey: process.env.MIX_FIREBASE_API_KEY,
-  authDomain: process.env.MIX_FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.MIX_FIREBASE_PROJECT_ID
-  //... add the rest
-});
-console.log("TESTBITAN",process.env.FIREBASE_API_KEY);
+
+
 
 
 console.log("Firebase config status:", statusActiveFeatureFirebase);

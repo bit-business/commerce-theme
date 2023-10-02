@@ -467,7 +467,7 @@
 
 
 <template>
-  <div class="hzuts-events-details-screen-de">
+  <div class="hzuts-events-details-screen-de navbarpraznina">
     <div class="frame">
       <div class="logoframe-parent">
         <div class="logoframe">
@@ -520,7 +520,6 @@
           <p class="p">
            Ubrzo više informacija i cijene!
           </p>
-          <p class="p">.</p>
         </div>
       </div>
       <div class="frame-parent">
@@ -541,7 +540,7 @@
         <div class="smjetaj">Prijevoz</div>
       </a>
 
-      <a class="check-square-1-parent cursor-pointer" @click="">
+    <a class="check-square-1-parent cursor-pointer" @click="">
         <svg class="check-square-1-icon"  width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.25 18.3334L19.25 23.3334L35.9167 6.66675" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M35.5 20V31.6667C35.5 32.5507 35.1488 33.3986 34.5237 34.0237C33.8986 34.6488 33.0507 35 32.1667 35H8.83333C7.94928 35 7.10143 34.6488 6.47631 34.0237C5.85119 33.3986 5.5 32.5507 5.5 31.6667V8.33333C5.5 7.44928 5.85119 6.60143 6.47631 5.97631C7.10143 5.35119 7.94928 5 8.83333 5H27.1667" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -952,10 +951,6 @@ export default {
 }
 </script>
 <style scoped>
-  .navbarpraznina {
-    padding-top: 3.75rem; 
-  }
-
 
 
   .check-square-1-parent:hover,
@@ -970,8 +965,6 @@ export default {
 .home-icon-parent:hover .home-icon path {
     stroke: white; 
 }
-
-
 
   .logohzuts-icon {
     position: absolute;
@@ -995,6 +988,7 @@ export default {
     padding: 0.63rem;
     box-sizing: border-box;
     z-index: 0;
+   
   }
   .objavljeno-20032023 {
     position: relative;
@@ -1048,21 +1042,23 @@ export default {
   }
   .logoframe-parent {
     align-self: stretch;
-    width: 92.94rem;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
-    background-image: url("/public/frame-441@3x.png");
+    background-image: url("/storage/demo/frame-441@3x.png");
     background-size: cover;
     background-repeat: no-repeat;
     background-position: top;
+    top: 3.75rem;
   }
   .frame {
+    align-self: stretch;
     height: 34.38rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
   }
@@ -1079,7 +1075,7 @@ export default {
     display: flex;
     color: #03a9f4;
     align-items: center;
-    width: 18.19rem;
+    width: 28.19rem;
     flex-shrink: 0;
   }
   .frame1 {
@@ -1191,8 +1187,23 @@ export default {
     height: 2.5rem;
     overflow: hidden;
     flex-shrink: 0;
+    z-index: 100;
   }
-
+  .check-square-1-parent {
+    text-decoration: none;
+    border-radius: 20px;
+    border: 4px solid #03a9f4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.88rem 0.75rem;
+    gap: 0.5rem;
+    font-size: 1.63rem;
+    color: inherit;
+    z-index: 100;
+  }
   .frame-parent {
     align-self: stretch;
     display: flex;
