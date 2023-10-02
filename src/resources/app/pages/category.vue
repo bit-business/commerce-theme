@@ -555,7 +555,7 @@ computeCountdown() {
 
 
 <style scoped>
-
+/*
 .products-grid {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
@@ -569,7 +569,16 @@ computeCountdown() {
 .product-item:nth-child(n+3) {
     grid-column: span 2;
 }
+*/
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 20px;
+}
 
+.product-item {
+    grid-column: span 3;
+}
 
 
 

@@ -470,14 +470,13 @@
 <template>
   <div class="hzuts-events-details-screen-de">
     <b class="hzuts-zutss"
-      >HZUTS & ZUTSS Nik Krčmar - Seminar za potvrđivanje licence, Sljeme, 16. -
-      18.02.2023.</b
+      >{{ product.name }}</b
     >
     <b class="galerija">Galerija:</b>
     <div class="gallery-group">
 
 
-    <carousel :show="4" class=" mt-2" :hide-navigation="product.productDetails.length <= 4" v-if="product.productDetails.length > 0">
+    <carousel :show="4" class=" mt-2 mb-8" :hide-navigation="product.productDetails.length <= 4" v-if="product.productDetails.length > 0">
             <carousel-item
               v-for="productDetail, index in product.productDetails"
               :key="index"
@@ -497,16 +496,14 @@
 
     </div>
     <b class="opis">Opis:</b>
-    <div class="dragi-lanovi-hzuts-a">
-      Dragi članovi HZUTS-a, objavljujemo održavanje državnog seminara za
-      potvrđivanje licence koji organiziramo u suradnji sa ZUTSS "Nik Krčmar", a
-      koji će se održati od 16.- 18.02.2023. na Sljemenu.
+
+      <div class="dragi-lanovi-hzuts-a text-sm flex-wrap text-justify ">
+              <div v-html="product.desc"></div>
     </div>
-    <b class="informacije">Informacije:</b>
+
+    <b class="informacije">Informacije i plaćanje:</b>
     <div class="dragi-lanovi-hzuts-a1">
-      Dragi članovi HZUTS-a, objavljujemo održavanje državnog seminara za
-      potvrđivanje licence koji organiziramo u suradnji sa ZUTSS "Nik Krčmar", a
-      koji će se održati od 16.- 18.02.2023. na Sljemenu.
+     Uskoro više informacija!
     </div>
     <div class="frame-parent">
       <a class="home-icon-parent cursor-pointer">
@@ -526,7 +523,7 @@
         <div class="smjetaj">Prijevoz</div>
       </a>
 
-      <a class="check-square-1-parent cursor-pointer" @click="buyNow">
+      <a class="check-square-1-parent cursor-pointer" @click="">
         <svg class="check-square-1-icon"  width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M14.25 18.3334L19.25 23.3334L35.9167 6.66675" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M35.5 20V31.6667C35.5 32.5507 35.1488 33.3986 34.5237 34.0237C33.8986 34.6488 33.0507 35 32.1667 35H8.83333C7.94928 35 7.10143 34.6488 6.47631 34.0237C5.85119 33.3986 5.5 32.5507 5.5 31.6667V8.33333C5.5 7.44928 5.85119 6.60143 6.47631 5.97631C7.10143 5.35119 7.94928 5 8.83333 5H27.1667" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -550,7 +547,7 @@
     </div>
     <div class="frame1">
       <b class="kada">Kada:</b>
-      <b class="b">16 - 18.02.2023.</b>
+      <b class="b">{{ formatDateRange(product.datumPocetka, product.datumKraja) }}, {{ product.mjesto }}</b>
     </div>
   </div>
 </template>
@@ -614,6 +611,10 @@ export default {
       product: {
         desc: null,
         name: "",
+        datum_pocetka: null,
+        datum_kraja: null,
+        mjesto: "",
+
         reviewAvgRating: 0,
         reviewCount: 0,
         productCategory: {
@@ -714,6 +715,27 @@ export default {
     this.getProduct()
   },
   methods: {
+
+    formatDateRange(datumPocetka, datumKraja) {
+        const startDate = new Date(datumPocetka);
+        const endDate = new Date(datumKraja);
+
+        const startDay = startDate.getDate().toString().padStart(2, '0');
+        const startMonth = (startDate.getMonth() + 1).toString().padStart(2, '0');
+
+        const endDay = endDate.getDate().toString().padStart(2, '0');
+        const endMonth = (endDate.getMonth() + 1).toString().padStart(2, '0');
+
+        const year = endDate.getFullYear();
+
+        return `${startDay}.${startMonth}.-${endDay}.${endMonth}.${year}.`;
+    },
+
+
+
+
+
+
     openVariationDialog() {
       if (!this.isAuthenticated) {
         this.$helper.alert("Morate se prijaviti prvo!")

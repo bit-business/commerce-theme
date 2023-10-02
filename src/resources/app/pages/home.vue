@@ -113,7 +113,7 @@
 
 
       <div class="srednjibannerdogadaji animate-on-scroll">
-        <carousel-3d :controls-visible="true" :loop="true" :display="3" :width="760" :height="500" :count="slides.length">
+        <carousel-3d :controls-visible="true" :loop="true" :display="3" :width="760" :height="440" :count="slides.length">
     <slide v-for="(slide, i) in slides" :index="i" :key="i" >
       <figure>
        <!-- <Link :href="route('skijasi.commerce-theme.uclanise', slide.slug)" style="color: white">  promijenit ovo za vijesti-->
@@ -184,16 +184,33 @@
 <vue-marquee-slider
   id="marquee-slider-width"
   :speed="100000"
-  :width="300"
+  :width="370"
+  :pause="isPaused"
   class="padsponzori"
+  @mouseenter="pauseMarquee"
+    @mouseleave="resumeMarquee"
 >
+<a href="https://www.dreizinnen.com/en/skiresort-3-zinnen-dolomites.html">
   <img src="/storage/slike/sponzori/sponzor1.jpg" />
+</a>
+<a href="https://www.energiapura.info">
   <img src="/storage/slike/sponzori/sponzor2.jpg" />
+</a>
+<a href="https://elan.si">
   <img src="/storage/slike/sponzori/sponzor3.png" />
+</a>
+<a href="https://dobro.hr">
   <img src="/storage/slike/sponzori/sponzor4.png" />
+</a>
+  <a href="https://www.kotanyi.com/en/">
   <img src="/storage/slike/sponzori/sponzor5.jpg" />
+</a>
+  <a href="https://www.oryx-osiguranje.hr">
   <img src="/storage/slike/sponzori/sponzor6.png" />
+</a>
+  <a href="https://staklorez-buric.hr">
   <img src="/storage/slike/sponzori/sponzor7.jpg" />
+</a>
 </vue-marquee-slider>
 
       </div>
@@ -375,7 +392,7 @@ Slide,
 
   slides: [{}, {}, {}, {}, {}, {}, {},{},{}, {}, {}, {}, {}, {},{},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}],
 
-
+  isPaused: false,
 
   bannersponzori: {
       
@@ -520,7 +537,13 @@ this.fetchTotalUsers();
     },
 
 
-    
+    pauseMarquee() {
+      this.isPaused = true;
+    },
+    resumeMarquee() {
+      this.isPaused = false;
+    },
+
 
     // za prikaz ukupnog broja clanova api
     fetchTotalUsers() {
@@ -626,9 +649,7 @@ this.fetchTotalUsers();
 
 .padsponzori {
  padding: 2%;
-
 }
-
 .carousel-3d-container figcaption {
   position: absolute;
  
