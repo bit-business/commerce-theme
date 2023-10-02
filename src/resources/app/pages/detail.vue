@@ -466,17 +466,33 @@
 -->
 
 
-
 <template>
   <div class="hzuts-events-details-screen-de">
-    <b class="hzuts-zutss"
-      >{{ product.name }}</b
-    >
-    <b class="galerija">Galerija:</b>
-    <div class="gallery-group">
-
-
-    <carousel :show="4" class=" mt-2 mb-8" :hide-navigation="product.productDetails.length <= 4" v-if="product.productDetails.length > 0">
+    <div class="frame">
+      <div class="logoframe-parent">
+        <div class="logoframe">
+          <img class="logohzuts-icon" alt="" src="/storage/slike/logohzuts.svg" />
+        </div>
+        <div class="objavljenoframe">
+          <b class="objavljeno-20032023">OBJAVLJENO: 02.10.2023.</b>
+        </div>
+        <a class="qrcodeframe">
+          <div class="qrcodeframe-child" />
+          <img class="qr-code-1-icon" alt="" src="/storage/slike/qrcode-1.svg" />
+        </a>
+      </div>
+    </div>
+    <div class="donjidiobezslike">
+      <b class="hzuts-zutss"
+        >{{ product.name }}</b
+      >
+      <div class="frame1">
+        <b class="kada">Kada:</b>
+        <b class="b">{{ formatDateRange(product.datumPocetka, product.datumKraja) }}, {{ product.mjesto }}</b>
+      </div>
+      <b class="galerija">Galerija:</b>
+      
+    <carousel :show="4" class="gallery-group" :hide-navigation="product.productDetails.length <= 4" v-if="product.productDetails.length > 0">
             <carousel-item
               v-for="productDetail, index in product.productDetails"
               :key="index"
@@ -489,23 +505,25 @@
                 alt=""
                 @mouseenter="activeImageSource = productDetail.productImage; activeImageCarousel = index"
                 @mouseleave="activeImageSource = product.productDetails[active].productImage; activeImageCarousel = active"
-                class="rounded-xl"
+                class="gallery-group-item"
               >
             </carousel-item>
           </carousel>
 
-    </div>
-    <b class="opis">Opis:</b>
-
-      <div class="dragi-lanovi-hzuts-a text-sm flex-wrap text-justify ">
+      <div class="grupazatekstove">
+        <b class="opis">Opis:</b>
+          <div class="dragi-lanovi-hzuts-a text-sm flex-wrap text-justify ">
               <div v-html="product.desc"></div>
     </div>
-
-    <b class="informacije">Informacije i plaćanje:</b>
-    <div class="dragi-lanovi-hzuts-a1">
-     Uskoro više informacija!
-    </div>
-    <div class="frame-parent">
+        <b class="informacije">Informacije:</b>
+        <div class="dragi-lanovi-hzuts-a-container">
+          <p class="p">
+           Ubrzo više informacija i cijene!
+          </p>
+          <p class="p">.</p>
+        </div>
+      </div>
+      <div class="frame-parent">
       <a class="home-icon-parent cursor-pointer">
         <svg class="home-icon" width="41" height="40" viewBox="0 0 41 40" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M5.5 14.9999L20.5 3.33325L35.5 14.9999V33.3333C35.5 34.2173 35.1488 35.0652 34.5237 35.6903C33.8986 36.3154 33.0507 36.6666 32.1667 36.6666H8.83333C7.94928 36.6666 7.10143 36.3154 6.47631 35.6903C5.85119 35.0652 5.5 34.2173 5.5 33.3333V14.9999Z" stroke="#03A9F4" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
@@ -531,26 +549,12 @@
         <div class="smjetaj">Prijava i plaćanje</div>
       </a>
     </div>
-    <div class="frame">
-      <div class="logoframe-parent">
-        <div class="logoframe">
-          <img class="logohzuts-icon" alt="" src="/storage/slike/logohzuts.svg" />
-        </div>
-        <div class="objavljenoframe">
-          <b class="objavljeno-20032023">OBJAVLJENO: 20.03.2023.</b>
-        </div>
-      </div>
-      <a class="qrcodeframe">
-        <div class="qrcodeframe-child" />
-        <img class="qr-code-1-icon" alt="" src="/storage/slike/qrcode-1.svg" />
-      </a>
-    </div>
-    <div class="frame1">
-      <b class="kada">Kada:</b>
-      <b class="b">{{ formatDateRange(product.datumPocetka, product.datumKraja) }}, {{ product.mjesto }}</b>
     </div>
   </div>
 </template>
+
+
+
 
 
 <script>
@@ -952,168 +956,8 @@ export default {
     padding-top: 3.75rem; 
   }
 
-  .hzuts-zutss {
-    position: absolute;
-    width: 89.79%;
-    bottom: 73.44rem;
-    left: 5.07%;
-    font-size: 2.94rem;
-    display: flex;
-    align-items: center;
-  }
-  .galerija {
-    position: absolute;
-    top: 51.25rem;
-    left: 5.07%;
-  }
-  .gallery-group-child {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    border-radius: 10px;
-    width: 12.5rem;
-    height: 12.5rem;
-    object-fit: cover;
-  }
-  .gallery-group-item {
-    position: absolute;
-    top: 0rem;
-    left: 15rem;
-    border-radius: 10px;
-    width: 12.5rem;
-    height: 12.5rem;
-    object-fit: cover;
-  }
-  .gallery-group-inner {
-    position: absolute;
-    top: 0rem;
-    left: 30rem;
-    border-radius: 10px;
-    width: 12.5rem;
-    height: 12.5rem;
-    object-fit: cover;
-  }
-  .rectangle-icon {
-    position: absolute;
-    top: 0rem;
-    left: 45rem;
-    border-radius: 10px;
-    width: 12.5rem;
-    height: 12.5rem;
-    object-fit: cover;
-  }
-  .gallery-group-child1 {
-    position: absolute;
-    top: 0rem;
-    left: 60rem;
-    border-radius: 10px;
-    width: 12.5rem;
-    height: 12.5rem;
-    object-fit: cover;
-  }
-  .gallery-group {
-    position: absolute;
-    width: 80.56%;
-    top: 56.19rem;
-    right: 14.38%;
-    left: 5.07%;
-    height: 12.5rem;
-  }
-  .opis {
-    position: absolute;
-    top: 71.19rem;
-    left: 5.07%;
-  }
-  .dragi-lanovi-hzuts-a {
-    position: absolute;
-    width: 90.76%;
-    top: 74.88rem;
-    left: 5.07%;
-    font-size: 1.75rem;
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-  }
-  .informacije {
-    position: absolute;
-    top: 83.75rem;
-    left: 5.07%;
-  }
-  .dragi-lanovi-hzuts-a1 {
-    position: absolute;
-    width: 90.76%;
-    top: 87.44rem;
-    left: 5.07%;
-    font-size: 1.75rem;
-    font-weight: 300;
-    display: flex;
-    align-items: center;
-  }
-  .home-icon {
-    position: relative;
-    border-radius: 20px;
-    width: 2.5rem;
-    height: 2.5rem;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .smjetaj {
-    position: relative;
-    font-weight: 600;
-  }
-  .home-icon-parent {
-    text-decoration: none;
-    border-radius: 20px;
-    border: 4px solid #03a9f4;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 2rem 2.5rem;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2.5rem;
-    color: inherit;
-  }
-  .truck-1-icon {
-    position: relative;
-    border-radius: 20px;
-    width: 2.67rem;
-    height: 2.5rem;
-  }
-  .truck-1-parent {
-    text-decoration: none;
-    border-radius: 20px;
-    border: 4px solid #03a9f4;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 1.88rem 2.81rem;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2.13rem;
-    color: inherit;
-  }
-  .check-square-1-icon {
-    position: relative;
-    width: 2.5rem;
-    height: 2.5rem;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .check-square-1-parent {
-    text-decoration: none;
-    border-radius: 20px;
-    border: 4px solid #03a9f4;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 1.88rem 0.75rem;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.5rem;
-    font-size: 1.63rem;
-    color: inherit;
-  }
+
+
   .check-square-1-parent:hover,
 .truck-1-parent:hover,
 .home-icon-parent:hover {
@@ -1129,21 +973,6 @@ export default {
 
 
 
-  .frame-parent {
-    position: absolute;
-    width: calc(100% - 170px);
-    top: calc(50% + 728.5px);
-    right: 5.31rem;
-    left: 5.31rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    gap: 2.5rem;
-    font-size: 1.69rem;
-    color: #03a9f4;
-  }
   .logohzuts-icon {
     position: absolute;
     margin: 0 !important;
@@ -1161,10 +990,10 @@ export default {
     width: 8.75rem;
     display: flex;
     flex-direction: row;
-    padding: 0.63rem;
-    box-sizing: border-box;
     align-items: center;
     justify-content: center;
+    padding: 0.63rem;
+    box-sizing: border-box;
     z-index: 0;
   }
   .objavljeno-20032023 {
@@ -1179,25 +1008,11 @@ export default {
     height: 4rem;
     display: flex;
     flex-direction: row;
-    padding: 1.25rem 1.63rem;
-    box-sizing: border-box;
     align-items: flex-end;
     justify-content: center;
+    padding: 1.25rem 1.63rem;
+    box-sizing: border-box;
     z-index: 1;
-  }
-  .logoframe-parent {
-    align-self: stretch;
-    height: 34.38rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    justify-content: center;
-    position: relative;
-    background-image: url("/storage/demo/frame-441@3x.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    z-index: 0;
   }
   .qrcodeframe-child {
     position: relative;
@@ -1222,85 +1037,207 @@ export default {
     text-decoration: none;
     margin: 0 !important;
     position: absolute;
-    top: 1.56rem;
-    right: 2.94rem;
+    top: 2.63rem;
+    right: 3.25rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 0.63rem;
-    z-index: 1;
+    z-index: 2;
   }
-  .frame {
-    position: absolute;
-    width: 100%;
-    top: 0rem;
-    right: 0%;
-    left: 0%;
-    height: 34.38rem;
+  .logoframe-parent {
+    align-self: stretch;
+    width: 92.94rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    gap: 0.63rem;
-    text-align: center;
-    font-size: 1.25rem;
-    color: #fff;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-image: url("/public/frame-441@3x.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+  }
+  .frame {
+    height: 34.38rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+  }
+  .hzuts-zutss {
+    align-self: stretch;
+    position: relative;
+    font-size: 2.94rem;
   }
   .kada {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
+    position: relative;
   }
   .b {
-    position: absolute;
-    top: 0rem;
-    left: 9.38rem;
+    position: relative;
     display: flex;
     color: #03a9f4;
     align-items: center;
     width: 18.19rem;
+    flex-shrink: 0;
   }
   .frame1 {
-    position: absolute;
-    width: 30.63%;
-    top: 46.56rem;
-    right: 64.31%;
-    left: 5.07%;
-    height: 2.44rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 3.75rem;
+  }
+  .galerija {
+    position: relative;
+  }
+  .gallery-group-child {
+    position: relative;
+    border-radius: 10px;
+    width: 12.5rem;
+    height: 12.5rem;
+    object-fit: cover;
+  }
+  .gallery-group {
+    align-self: stretch;
+    height: 12.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.5rem;
+  }
+  .opis {
+    position: relative;
+  }
+  .dragi-lanovi-hzuts-a {
+    align-self: stretch;
+    position: relative;
+    font-size: 1.75rem;
+    font-weight: 300;
+  }
+  .informacije {
+    position: relative;
+  }
+  .p {
+    margin: 0;
+  }
+  .dragi-lanovi-hzuts-a-container {
+    align-self: stretch;
+    position: relative;
+    font-size: 1.75rem;
+    font-weight: 300;
+    white-space: pre-wrap;
+  }
+  .grupazatekstove {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.69rem;
+  }
+  .home-icon {
+    position: relative;
+    border-radius: 20px;
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .smjetaj {
+    position: relative;
+    font-weight: 600;
+  }
+  .home-icon-parent {
+    text-decoration: none;
+    border-radius: 20px;
+    border: 4px solid #03a9f4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2rem 2.5rem;
+    gap: 2.5rem;
+    color: inherit;
+  }
+  .truck-1-icon {
+    position: relative;
+    border-radius: 20px;
+    width: 2.67rem;
+    height: 2.5rem;
+  }
+  .truck-1-parent {
+    text-decoration: none;
+    border-radius: 20px;
+    border: 4px solid #03a9f4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.88rem 2.81rem;
+    gap: 2.13rem;
+    color: inherit;
+  }
+  .check-square-1-icon {
+    position: relative;
+    width: 2.5rem;
+    height: 2.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+
+  .frame-parent {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 2.5rem;
+    font-size: 1.69rem;
+    color: #03a9f4;
+  }
+  .donjidiobezslike {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0rem 5.63rem;
+    gap: 4.38rem;
+    text-align: left;
+    font-size: 2rem;
+    color: #000;
   }
   .hzuts-events-details-screen-de {
     position: relative;
     background-color: #f8f7f5;
     width: 100%;
-    height: 117.06rem;
-    text-align: left;
-    font-size: 2rem;
-    color: #000;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0rem 0rem 5.63rem;
+    box-sizing: border-box;
+    gap: 4.38rem;
+    text-align: center;
+    font-size: 1.25rem;
+    color: #fff;
     font-family: Inter;
-    
   }
 
   @media screen and (max-width: 1200px) {
     .hzuts-zutss {
       font-size: 2.63rem;
       text-align: left;
-    }
-
-    .opis {
-      font-size: 1.88rem;
-    }
-
-    .dragi-lanovi-hzuts-a {
-      font-size: 1.69rem;
-    }
-
-    .informacije {
-      font-size: 1.88rem;
-    }
-
-    .dragi-lanovi-hzuts-a1 {
-      font-size: 1.69rem;
     }
 
     .kada {
@@ -1310,28 +1247,24 @@ export default {
     .b {
       font-size: 1.88rem;
     }
-  }
-  @media screen and (max-width: 960px) {
-    .hzuts-zutss {
-      font-size: 2.19rem;
-    }
 
     .opis {
-      font-size: 1.75rem;
+      font-size: 1.88rem;
     }
 
     .dragi-lanovi-hzuts-a {
-      font-size: 1.44rem;
+      font-size: 1.69rem;
     }
 
     .informacije {
-      font-size: 1.75rem;
+      font-size: 1.88rem;
     }
 
-    .dragi-lanovi-hzuts-a1 {
-      font-size: 1.44rem;
+    .dragi-lanovi-hzuts-a-container {
+      font-size: 1.69rem;
     }
-
+  }
+  @media screen and (max-width: 960px) {
     .logoframe {
       width: auto;
       align-self: unset;
@@ -1343,6 +1276,10 @@ export default {
       box-sizing: border-box;
     }
 
+    .hzuts-zutss {
+      font-size: 2.19rem;
+    }
+
     .kada {
       font-size: 1.75rem;
     }
@@ -1350,34 +1287,24 @@ export default {
     .b {
       font-size: 1.75rem;
     }
-  }
-  @media screen and (max-width: 420px) {
-    .hzuts-zutss {
-      font-size: 1.56rem;
-    }
-
-    .galerija {
-      font-size: 1.88rem;
-      text-align: left;
-    }
 
     .opis {
-      font-size: 1.88rem;
-      text-align: left;
+      font-size: 1.75rem;
     }
 
     .dragi-lanovi-hzuts-a {
-      font-size: 1.13rem;
+      font-size: 1.44rem;
     }
 
     .informacije {
-      font-size: 1.88rem;
+      font-size: 1.75rem;
     }
 
-    .dragi-lanovi-hzuts-a1 {
-      font-size: 1.13rem;
+    .dragi-lanovi-hzuts-a-container {
+      font-size: 1.44rem;
     }
-
+  }
+  @media screen and (max-width: 490px) {
     .logoframe {
       display: none;
       width: auto;
@@ -1400,6 +1327,32 @@ export default {
       padding-top: 0rem;
       padding-bottom: 0rem;
       box-sizing: border-box;
+    }
+
+    .hzuts-zutss {
+      font-size: 1.56rem;
+    }
+
+    .galerija {
+      font-size: 1.88rem;
+      text-align: left;
+    }
+
+    .opis {
+      font-size: 1.88rem;
+      text-align: left;
+    }
+
+    .dragi-lanovi-hzuts-a {
+      font-size: 1.13rem;
+    }
+
+    .informacije {
+      font-size: 1.88rem;
+    }
+
+    .dragi-lanovi-hzuts-a-container {
+      font-size: 1.13rem;
     }
   }
 </style>
