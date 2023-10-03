@@ -59,10 +59,7 @@
           <div class="div">+385 1 23 999 50</div>
           <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/phone-1-1.svg" />
         </div>
-        <div class="printer-2-parent">
-          <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/printer-2.svg" />
-          <div class="div1">+385 1 23 999 55</div>
-        </div>
+  
         <div class="mail-icon-parent">
           <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/mail-icon.svg" />
           <a class="infohzutshr">info@hzuts.hr</a>
@@ -475,13 +472,7 @@ export default {
     text-overflow: ellipsis;
     white-space: nowrap;
   }
-  .printer-2-parent {
-    position: absolute;
-    top: 8.25rem;
-    left: 0rem;
-    width: 9.69rem;
-    height: 1.5rem;
-  }
+
   .infohzutshr {
     text-decoration: none;
     position: absolute;
@@ -495,7 +486,8 @@ export default {
   }
   .mail-icon-parent {
     position: absolute;
-    top: 11rem;
+
+    top: 8.25rem;
     left: 0.06rem;
     width: 8rem;
     height: 1.5rem;
@@ -511,7 +503,8 @@ export default {
   }
   .hr7423600001101359833-parent {
     position: absolute;
-    top: 13.75rem;
+    top: 11rem;
+
     left: 0.06rem;
     width: 13.5rem;
     height: 1.5rem;
@@ -535,7 +528,8 @@ export default {
   }
   .clip-path-group-parent {
     position: absolute;
-    top: 16.5rem;
+    top: 13.75rem;
+ 
     left: 0.06rem;
     width: 7.94rem;
     height: 1.5rem;
@@ -562,7 +556,8 @@ export default {
   }
   .vector-parent {
     position: absolute;
-    top: 19.25rem;
+    top: 16.5rem;
+
     left: 0.06rem;
     width: 10.19rem;
     height: 1.25rem;

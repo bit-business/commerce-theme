@@ -17,6 +17,7 @@
             <img class="container-icontelefon" alt="" src="/storage/slike/containertelefon.svg" />
             <div class="div">+385 1 23 999 50</div>
           </div>
+          <!--
           <div class="horizontal-container">
             <img
               class="vertical-container-icon"
@@ -24,7 +25,7 @@
               src="/storage/slike/printer-21.svg"
             />
             <div class="div1">+385 1 23 999 55</div>
-          </div>
+          </div>-->
           <a class="text-input1">
             <img class="container-icon1email" alt="" src="/storage/slike/container1email.svg" />
             <a class="infohzutshr" href="mailto:info@hzuts.hr">info@hzuts.hr</a>
@@ -476,6 +477,7 @@ export default {
   }
   .copyright-2023 {
     position: absolute;
+    height: 26.06%;
     top: 36.99%;
     left: calc(50% - 216px);
     font-weight: 500;
@@ -486,12 +488,13 @@ export default {
   }
   .footernajdonji {
     position: absolute;
-    height: 15.06%;
-    top: 84.94%;
+    height: 15.08%;
+    width: 100%;
+    top: 84.92%;
+    right: 0%;
     bottom: 0%;
-    left: calc(50% - 720px);
+    left: 0%;
     background-color: #03a9f4;
-    width: 90rem;
     text-align: center;
     font-size: 1rem;
     color: #fff;

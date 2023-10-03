@@ -51,6 +51,7 @@ try {
 console.log("TESTBITAN");
 
 //pocetak firebase koda osim importa gore
+/*
 const firebaseConfig = {
   apiKey: process.env.MIX_FIREBASE_API_KEY,
   authDomain: process.env.MIX_FIREBASE_AUTH_DOMAIN,
@@ -120,7 +121,7 @@ Vue.prototype.$broadcastChannelName = broadcastChannelName;
 Vue.prototype.$broadcastChannel = broadcastChannel;
 // kraj firebase koda osim na kraju fajla
 
-
+*/
 
 
 
@@ -228,10 +229,10 @@ createInertiaApp({
 
 
 // HANDLE FIREBASE MESSAGE
-if (statusActiveFeatureFirebase) notificationMessageReceiveHandle(app);
+//if (statusActiveFeatureFirebase) notificationMessageReceiveHandle(app);
 
 // HANDLE BROADCAST MESSAGE FROM SERVICE WORKER
-broadcastMessageHandle(app);
+//broadcastMessageHandle(app);
 
-// HANDLE OFFLINE MODE
+// HANDLE OFFLINE MODE ovaj je bio i prije zakomentiran
 //checkConnection(app);

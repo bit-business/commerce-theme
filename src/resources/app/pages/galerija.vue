@@ -42,8 +42,9 @@
 
 <masonry-wall :items="images" :ssr-columns="4" :min-columns="4" :max-columns="8" :column-width="300" :gap="16">
     <template v-slot:default="slotProps">
-        <div class="image-container" @click="showFullscreen(slotProps.item)">
-            <img :src="slotProps.item" class="image-preview" loading="lazy">
+        <div class="image-container" @click="showFullscreen(slotProps.item.original)">
+            <img :src="slotProps.item.thumbnail" class="image-preview" loading="lazy">
+
             <div class="overlay">
                   <svg width="32"  class="eye-icon" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M31.7966 15.3772C31.5108 14.9861 24.6993 5.80176 15.9998 5.80176C7.30039 5.80176 0.488626 14.9861 0.203063 15.3768C-0.0676876 15.7478 -0.0676876 16.251 0.203063 16.622C0.488626 17.013 7.30039 26.1974 15.9998 26.1974C24.6993 26.1974 31.5108 17.013 31.7966 16.6223C32.0678 16.2513 32.0678 15.7478 31.7966 15.3772ZM15.9998 24.0875C9.59177 24.0875 4.0417 17.9917 2.39875 15.9988C4.03957 14.0043 9.57802 7.91164 15.9998 7.91164C22.4076 7.91164 27.9573 14.0064 29.6009 16.0003C27.9601 17.9948 22.4217 24.0875 15.9998 24.0875Z" fill="white"/>
@@ -77,10 +78,22 @@ import CarouselSingle from '../components/carousel-single/carousel.vue'
 import CarouselItemSingle from '../components/carousel-single/carousel-item.vue'
 
 import MasonryWall from "@yeger/vue2-masonry-wall";
+import firebase from "firebase/app";
+import "firebase/storage";
 
 
-
-
+const firebaseConfig = {
+  apiKey: process.env.MIX_FIREBASE_API_KEY,
+  authDomain: process.env.MIX_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.MIX_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.MIX_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.MIX_FIREBASE_MESSAGE_SEENDER,
+  appId: process.env.MIX_FIREBASE_APP_ID,
+  measurementId: process.env.MIX_FIREBASE_MEASUREMENT_ID
+};
+if (!firebase.apps.length) {
+  firebase.initializeApp(firebaseConfig);
+}
 
 
 import galerijaLayout from '../layouts/galerija.vue'
@@ -194,28 +207,35 @@ export default {
   methods: {
 
     async fetchImagesFromFirebase() {
-  this.isLoading = true; // Start loading
-  const storageRef = this.$firebase.storage().ref();
+  this.isLoading = true;
+  const storageRef = firebase.storage().ref();
+ // const storageRef = this.$firebase.storage().ref();
   const galleryFolderRef = storageRef.child('galerija/' + this.currentFolder);
 
   try {
-    let imageUrls = [];
+    let imageData = [];
     const files = await galleryFolderRef.listAll();
 
     for (let imageRef of files.items) {
-      const url = await imageRef.getDownloadURL();
-      imageUrls.push(url);
+      const originalUrl = await imageRef.getDownloadURL();
+      const thumbnailUrl = await storageRef.child('galerija/' + this.currentFolder + '/thumbnails/' + imageRef.name).getDownloadURL();
+      
+      imageData.push({
+        original: originalUrl,
+        thumbnail: thumbnailUrl
+      });
     }
 
-    this.images = imageUrls;
+    this.images = imageData;
   } catch (error) {
     console.error("Error fetching images:", error);
   } finally {
     setTimeout(() => {
-      this.isLoading = false; // End loading after 1 second
+      this.isLoading = false;
     }, 1000);
   }
 },
+
 
 
 
@@ -248,7 +268,8 @@ moveToRightFolder() {
     },
 
     async fetchFolders() {
-      const storageRef = this.$firebase.storage().ref();
+    //  const storageRef = this.$firebase.storage().ref();
+    const storageRef = firebase.storage().ref();
   const rootRef = storageRef.child('galerija');  // Assuming 'galerija' is your root folder
 
   try {
