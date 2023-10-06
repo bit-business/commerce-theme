@@ -800,6 +800,7 @@ computeCountdown() {
   align-items: center;
   width: 13rem;
   flex-shrink: 0;
+  
 }
 .dogadanjatekst {
   align-self: stretch;
@@ -861,8 +862,8 @@ computeCountdown() {
   font-weight: 600;
   display: flex;
   align-items: center;
-  justify-content: center;
-  width: 4.57rem;
+  justify-content: flex-start;
+  width: 9.57rem;
   height: 1.84rem;
   flex-shrink: 0;
 }
@@ -1019,7 +1020,7 @@ computeCountdown() {
   position: relative;
   background-color: #f8f7f5;
   width: 100%;
-  height: 110.49rem;
+  height: 130.49rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1030,6 +1031,9 @@ computeCountdown() {
   color: #fff;
   font-family: Inter;
   overflow: hidden;
+
+
+  
 }
 
 

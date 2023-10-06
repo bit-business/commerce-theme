@@ -8,7 +8,7 @@
       <Link class="poetna"  :class="{ 'active-link': isRouteActive('/web') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
       <Link class="dogaanja"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.category') }" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">Događanja</Link>
       <Link class="pretraivanje" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.cart') }" :href="route('skijasi.commerce-theme.home')">Naši članovi</Link>
-      <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')">Informacije</Link>
+      <div class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')">Informacije</div> 
       <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija</Link>
       <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt</Link>
 
@@ -462,10 +462,10 @@ export default {
   }
   .vector-icon {
     position: absolute;
-    top: calc(50% - 60px);
+    top: calc(50% - 40px);
     left: 0rem;
-    width: 2.5rem;
-    height: 2.5rem;
+    width: 2.8rem;
+    height: 2.8rem;
   }
   .g14 {
     text-decoration: none;
@@ -526,18 +526,7 @@ export default {
     justify-content: flex-end;
     gap: 2rem;
   }
-  .navigation-bar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  background-color: #fff;
-  backdrop-filter: blur(4px);
-  width: 100%;
-  height: 3.75rem;
-  z-index: 1000;
-
-}
-
+ 
 
 
 
@@ -1172,11 +1161,19 @@ top: 0%;
   }
 
 
-
   .navigation-bar {
 
-    backdrop-filter: blur(2px);
-    width: 100%;
+  top: 0;
+  left: 0;
+  background-color: #fff;
+
+  width: 100vw;
+  height: 3.75rem;
+
+
+
+    backdrop-filter: blur(4px);
+ 
     height: 3.75rem;
     text-align: center;
     font-size: 0.75rem;
@@ -1186,9 +1183,8 @@ top: 0%;
 
    /*  position: fixed;  relative ako zelimo da je uvijek vidljiv*/
    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
+
+  
     z-index: 1000;
 }
 

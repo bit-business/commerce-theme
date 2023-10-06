@@ -32,7 +32,7 @@
     <link rel="shortcut icon" href="{{ Storage::url(Config::get('commerceThemeFavicon')) }}" type="image/x-icon">
 </head>
 
-<body class="@if(App::environment() === 'local') debug-screens @endif h-full" scroll-region>
+<body class="@if(App::environment() === 'local') debug-screens @endif h-full">
     @routes
     @inertia
 </body>

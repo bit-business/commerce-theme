@@ -117,6 +117,8 @@ export default {
     return {
       isLoading: false,
 
+      fullscreenImageIndex: null,
+
       unapprovedUsers: [],
       firebaseInstance: null,
       folders: [],
@@ -232,7 +234,7 @@ export default {
   } finally {
     setTimeout(() => {
       this.isLoading = false;
-    }, 1000);
+    }, 10);
   }
 },
 
@@ -356,26 +358,118 @@ console.log('Current Folder Index:', folderIndex);
     },
 */
   
+showFullscreen(imageSrc) {
+  this.fullscreenImageIndex = this.images.findIndex(image => image.original === imageSrc);
+  
+  const overlay = document.createElement('div');
+  overlay.id = 'fullscreen-overlay';
+  overlay.style.position = 'fixed';
+  overlay.style.top = '0';
+  overlay.style.left = '0';
+  overlay.style.width = '100%';
+  overlay.style.height = '100%';
+  overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
+  overlay.style.display = 'flex';
+  overlay.style.justifyContent = 'center';
+  overlay.style.alignItems = 'center';
+  overlay.style.zIndex = '10000';
 
-    showFullscreen(imageSrc) {
-    const img = new Image();
-    img.src = imageSrc;
-    const overlay = document.createElement('div');
-    overlay.style.position = 'fixed';
-    overlay.style.top = '0';
-    overlay.style.left = '0';
-    overlay.style.width = '100%';
-    overlay.style.height = '100%';
-    overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
-    overlay.style.display = 'flex';
-    overlay.style.justifyContent = 'center';
-    overlay.style.alignItems = 'center';
-    overlay.style.zIndex = '10000';
-    overlay.appendChild(img);
-    document.body.appendChild(overlay);
-    overlay.addEventListener('click', () => {
+  const img = new Image();
+  img.src = imageSrc;
+  overlay.appendChild(img);
+
+  const leftArrow = document.createElement('button');
+  leftArrow.innerHTML = '&lt;';
+  leftArrow.onclick = () => this.showPreviousImage();
+  leftArrow.style.position = 'absolute';
+  leftArrow.style.left = '10px';
+  leftArrow.style.top = '50%';
+  leftArrow.style.transform = 'translateY(-50%) scaleY(1.7)';  
+  leftArrow.style.fontSize = '3em';  
+leftArrow.style.lineHeight = '1'; 
+  leftArrow.style.color = 'white';
+  leftArrow.style.background = 'none';
+  leftArrow.style.border = 'none';
+  leftArrow.style.cursor = 'pointer';
+
+  overlay.appendChild(leftArrow);
+
+  const rightArrow = document.createElement('button');
+  rightArrow.innerHTML = '&gt;';
+  rightArrow.onclick = () => this.showNextImage();
+  rightArrow.style.position = 'absolute';
+  rightArrow.style.right = '10px';
+  rightArrow.style.top = '50%';
+  rightArrow.style.transform = 'translateY(-50%) scaleY(1.7)';  // Stretch the arrow vertically
+  rightArrow.style.fontSize = '3em';  
+  rightArrow.style.lineHeight = '1'; 
+  rightArrow.style.color = 'white';
+  rightArrow.style.background = 'none';
+  rightArrow.style.border = 'none';
+  rightArrow.style.cursor = 'pointer';
+  overlay.appendChild(rightArrow);
+
+  document.body.appendChild(overlay);
+  overlay.addEventListener('click', (e) => {
+    if (e.target === overlay) {
       document.body.removeChild(overlay);
+      this.fullscreenImageIndex = null;
+    }
+ });
+
+
+ // Create the "X" button
+ const closeButton = document.createElement('button');
+    closeButton.innerHTML = 'x';
+    closeButton.onclick = () => {
+        document.body.removeChild(overlay);
+    };
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '20px';
+    closeButton.style.right = '20px';
+    closeButton.style.fontSize = '1.4em';
+    closeButton.style.transform = 'translateY(-50%) scaleX(1.4)';  // Stretch the arrow vertically
+    closeButton.style.color = 'white';
+    closeButton.style.background = 'none';
+    closeButton.style.border = 'none';
+    closeButton.style.cursor = 'pointer';
+    closeButton.style.zIndex = '10';  // Ensure it's above other elements
+    overlay.appendChild(closeButton);
+
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            document.body.removeChild(overlay);
+        }
     });
+
+
+
+
+},
+
+
+
+showNextImage() {
+    if (this.fullscreenImageIndex < this.images.length - 1) {
+      this.fullscreenImageIndex++;
+    } else {
+      this.fullscreenImageIndex = 0; // loop back to the first image
+    }
+    const overlay = document.getElementById('fullscreen-overlay');
+    const img = overlay.querySelector('img');
+    img.src = this.images[this.fullscreenImageIndex].original;
+  },
+
+  showPreviousImage() {
+    if (this.fullscreenImageIndex > 0) {
+      this.fullscreenImageIndex--;
+    } else {
+      this.fullscreenImageIndex = this.images.length - 1; // loop back to the last image
+    }
+    const overlay = document.getElementById('fullscreen-overlay');
+    const img = overlay.querySelector('img');
+    img.src = this.images[this.fullscreenImageIndex].original;
   },
 
   
@@ -435,6 +529,11 @@ console.log('Current Folder Index:', folderIndex);
     max-height: 100%;
     z-index: 0;
   }
+
+  .hzuts-gallery-screen-desktop-child {
+bottom: 3%;
+  }
+
 
   .lijevipointer-icon {
     position: absolute;

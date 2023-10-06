@@ -1,37 +1,32 @@
 <template>
-    <div class="footer-container">
   <div class="footerdesktop">
     <footer class="velikifooterkvadrat">
       <div class="bijelapozadina" />
-      <div class="slikaframe">
-        <img
-          class="img-5195-photoroom-1-icon"
-          alt=""
-          src="/storage/slike/img-5195photoroom-1@2x.png"
-        />
-      </div>
+      <img class="slikaframe-icon" alt="" src="/storage/slike/footer/slikaframe.svg" />
       <div class="glavnagrupakontakt">
         <div class="kontakt">Kontakt</div>
         <div class="kontainerzakontakttekstove">
           <div class="text-input">
-            <img class="container-icontelefon" alt="" src="/storage/slike/containertelefon.svg" />
+            <img class="container-icon" alt="" src="/storage/slike/footer/container.svg" />
             <div class="div">+385 1 23 999 50</div>
           </div>
+          <a class="text-input1">
+            <img class="container-icon1" alt="" src="/storage/slike/footer/container1.svg" />
+            <a class="infohzutshr" href="mailto:info@hzuts.hr">info@hzuts.hr</a>
+          </a>
           <!--
           <div class="horizontal-container">
             <img
               class="vertical-container-icon"
               alt=""
-              src="/storage/slike/printer-21.svg"
+              src="/storage/slike/footer/vertical-container.svg"
             />
             <div class="div1">+385 1 23 999 55</div>
-          </div>-->
-          <a class="text-input1">
-            <img class="container-icon1email" alt="" src="/storage/slike/container1email.svg" />
-            <a class="infohzutshr" href="mailto:info@hzuts.hr">info@hzuts.hr</a>
-          </a>
+          </div>
+        -->
+
           <a class="adresaframe" href="https://goo.gl/maps/18tA6BKkGBjNovbM8">
-            <img class="map-pin-1-icon" alt="" src="/storage/slike/mappin-1.svg" />
+            <img class="map-pin-1-icon" alt="" src="/storage/slike/footer/mappin-1.svg" />
             <div class="maksimirska-51a-10000">
               Maksimirska 51A, 10000 Zagreb
             </div>
@@ -42,28 +37,29 @@
         <div class="gornjidiotekstovionama">
           <div class="o-nama">O nama</div>
           <div class="paragraph-container">
+            <a class="politika-privatnosti">Politika privatnosti</a>
+            <a class="politika-o-kolaiima">Politika o kolačićima</a>
             <a class="osnovne-informacije">Osnovne informacije</a>
-            <a class="povijest">Povijest</a>
+           <a class="povijest">Povijest</a>
             <a class="bilteni-hzuts-a">Bilteni HZUTS-a</a>
             <a class="podruni-zborovi">Područni zborovi</a>
           </div>
         </div>
-        <div class="donjidioonama">
-          <a class="osnovne-informacije">Politika privatnosti</a>
-          <a class="povijest">Politika o kolačićima</a>
-        </div>
+        <div class="donjidioonama" />
       </div>
       <div class="glavnagrupapratitenas">
         <div class="pratitenasnaslov">
           <div class="pratite-nas">Pratite nas</div>
         </div>
-        <a class="facebookgrupa" target="_blank" href="https://www.facebook.com/hzuts">
-          <img class="fbvector-icon" alt="" src="/storage/slike/fbvector.svg" />
-        </a>
         <a class="instagramgrupa" target="_blank" href="https://www.instagram.com/hzuts/">
-          <img class="instagramvector-icon" alt="" src="/storage/slike/instagramvector.svg" />
+          <img class="instagramvector-icon" alt="" src="/storage/slike/footer/instagramvector.svg" />
         </a>
-      
+        <a class="facebookgrupa" target="_blank" href="https://www.facebook.com/hzuts">
+          <img class="fbvector-icon" alt="" src="/storage/slike/footer/fbvector.svg" />
+        </a>
+       <a class="youtubegrupa">
+          <img class="fbvector-icon" alt="" src="/storage/slike/footer/fbvector.svg" />
+        </a>
       </div>
     </footer>
     <footer class="footernajdonji">
@@ -72,8 +68,10 @@
       </div>
     </footer>
   </div>
-</div>
 </template>
+
+
+
 <!--
   <div :class="[`bg-gray-100  border-primary pt-16`, noGutter ? 'mt-0 border-t-0' : 'mt-16 border-t-4']">
     <div class="container flex justify-between">
@@ -168,46 +166,34 @@ export default {
 }
 </script>
 
-
 <style scoped>
   .bijelapozadina {
-    align-self: stretch;
-    flex: 1;
     position: relative;
     background-color: #fff;
+    width: 100vw;
+    height: 25.56rem;
     z-index: 0;
   }
-  .img-5195-photoroom-1-icon {
-    position: relative;
-    width: 40.85rem;
-    height: 25.35rem;
-    object-fit: cover;
-  }
-  .slikaframe {
-    margin: 0 !important;
+  .slikaframe-icon {
     position: absolute;
+    margin: 0 !important;
     width: 45.42%;
-    top: calc(50% - 243.28px);
-    right: 54.57%;
-    left: 0.02%;
-    height: 25.47rem;
-   
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0.06rem 0rem;
-    box-sizing: border-box;
-    align-items: flex-start;
-    justify-content: center;
+    top: calc(50% - 174.5px);
+    right: 54.58%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 24.81rem;
+    flex-shrink: 0;
     z-index: 1;
   }
   .kontakt {
     position: absolute;
-    top: 0%;
-    left: 0%;
+    top: 0rem;
+    left: 0rem;
     font-weight: 500;
   }
-  .container-icontelefon {
+  .container-icon {
     position: absolute;
     right: 9.75rem;
     bottom: 0.03rem;
@@ -229,29 +215,7 @@ export default {
     height: 1.06rem;
     overflow: hidden;
   }
-  .vertical-container-icon {
-    position: absolute;
-    right: 7.88rem;
-    bottom: 0.06rem;
-    width: 1rem;
-    height: 1rem;
-    overflow: hidden;
-  }
-  .div1 {
-    position: absolute;
-    right: 0rem;
-    bottom: 0.03rem;
-    letter-spacing: -0.17px;
-  }
-  .horizontal-container {
-    position: absolute;
-    top: 4rem;
-    left: 0rem;
-    width: 8.88rem;
-    height: 1.13rem;
-    overflow: hidden;
-  }
-  .container-icon1email {
+  .container-icon1 {
     position: absolute;
     right: 6.25rem;
     bottom: 0.03rem;
@@ -270,12 +234,34 @@ export default {
   .text-input1 {
     text-decoration: none;
     position: absolute;
-    top: 6.06rem;
+    top: 4rem;
     left: 0rem;
     width: 7.25rem;
     height: 1.06rem;
     overflow: hidden;
     color: #03a9f4;
+  }
+  .vertical-container-icon {
+    position: absolute;
+    right: 7.88rem;
+    bottom: 0.06rem;
+    width: 1.2rem;
+    height: 1rem;
+    overflow: hidden;
+  }
+  .div1 {
+    position: absolute;
+    right: 0rem;
+    bottom: 0.03rem;
+    letter-spacing: -0.17px;
+  }
+  .horizontal-container {
+    position: absolute;
+    top: 6rem;
+    left: 0rem;
+    width: 8.88rem;
+    height: 1.13rem;
+    overflow: hidden;
   }
   .map-pin-1-icon {
     position: absolute;
@@ -288,7 +274,7 @@ export default {
   .maksimirska-51a-10000 {
     position: absolute;
     top: 0rem;
-    left: 1.81rem;
+    left: 1.68rem;
     display: inline-block;
     width: 14.25rem;
     height: 3.13rem;
@@ -296,16 +282,17 @@ export default {
   .adresaframe {
     position: absolute;
     top: 0.02rem;
-    left: 0.03rem;
+    left: 0rem;
     width: 16.08rem;
     height: 1.06rem;
     overflow: hidden;
     text-align: left;
+    display: inline-block;
   }
   .kontainerzakontakttekstove {
     position: absolute;
     top: 3.38rem;
-    left: 0.06rem;
+    left: 0rem;
     width: 15.56rem;
     height: 10.44rem;
     overflow: hidden;
@@ -316,18 +303,34 @@ export default {
   .glavnagrupakontakt {
     position: absolute;
     margin: 0 !important;
-    width: 17.92%;
-    top: calc(50% - 148px);
-    right: 20.14%;
-    left: 61.94%;
-    height: 14.44rem;
+    width: 17.29%;
+    top: calc(50% - 142.5px);
+    right: 21.15%;
+    left: 61.56%;
+    height: 13.81rem;
     z-index: 2;
   }
   .o-nama {
     position: absolute;
     right: 4rem;
-    bottom: 8.94rem;
+    bottom: 15.15rem;
     font-weight: 500;
+  }
+  .politika-privatnosti {
+    text-decoration: none;
+    position: absolute;
+    top: 8rem;
+    left: 0.06rem;
+    font-weight: 500;
+    color: inherit;
+  }
+  .politika-o-kolaiima {
+    text-decoration: none;
+    position: absolute;
+    top: 10rem;
+    left: 0.06rem;
+    font-weight: 500;
+    color: inherit;
   }
   .osnovne-informacije {
     text-decoration: none;
@@ -363,11 +366,10 @@ export default {
   }
   .paragraph-container {
     position: absolute;
-    top: 3.38rem;
+    top: 3.4rem;
     left: 0rem;
     width: 8.63rem;
-    height: 7.06rem;
-    overflow: hidden;
+    height: 13.25rem;
     font-size: 0.88rem;
     color: #000;
   }
@@ -376,42 +378,42 @@ export default {
     top: 0rem;
     left: 0rem;
     width: 8.63rem;
-    height: 10.44rem;
+    height: 16.65rem;
     overflow: hidden;
   }
   .donjidioonama {
     position: absolute;
-    top: 11.38rem;
+    top: 13rem;
     left: 0.06rem;
     width: 8.5rem;
     height: 3.06rem;
     overflow: hidden;
-    font-size: 0.88rem;
-    color: #000;
+    display: none;
   }
   .glavnagrupaonama {
     position: absolute;
     margin: 0 !important;
-    height: 47.93%;
-    top: 19.23%;
-    bottom: 32.85%;
-    left: calc(50% - 33px);
-    width: 8.63rem;
+    width: 9.58%;
+    top: calc(50% - 142.5px);
+    right: 43.61%;
+    left: 46.81%;
+    height: 16.65rem;
     z-index: 3;
   }
   .pratite-nas {
     position: absolute;
-    right: 0rem;
     bottom: 0rem;
+    left: 0rem;
     font-weight: 500;
     display: inline-block;
-    width: 6.44rem;
+    width: 8.06rem;
+    height: 1.5rem;
   }
   .pratitenasnaslov {
     position: absolute;
     top: 0rem;
     left: 0rem;
-    width: 6.44rem;
+    width: 8.69rem;
     height: 1.5rem;
   }
   .instagramvector-icon {
@@ -442,7 +444,17 @@ export default {
     text-decoration: none;
     position: absolute;
     top: 2.75rem;
-    left: 3.13rem;
+    left: 2.84rem;
+    border-radius: 5px;
+    background-color: rgba(29, 161, 242, 0.95);
+    width: 1.88rem;
+    height: 1.88rem;
+  }
+  .youtubegrupa {
+    text-decoration: none;
+    position: absolute;
+    top: 2.75rem;
+    left: 5.69rem;
     border-radius: 5px;
     background-color: rgba(29, 161, 242, 0.95);
     width: 1.88rem;
@@ -451,50 +463,42 @@ export default {
   .glavnagrupapratitenas {
     position: absolute;
     margin: 0 !important;
-    width: 7.15%;
-    top: calc(50% - 148px);
-    right: 8.19%;
-    left: 84.65%;
+    width: 8.4%;
+    top: calc(50% - 142.5px);
+    right: 7.57%;
+    left: 84.03%;
     height: 4.63rem;
     z-index: 4;
   }
   .velikifooterkvadrat {
-    position: absolute;
-    width: 100%;
-    top: calc(50% - 240px);
-    right: 0%;
-    left: 0%;
-    height: 30.13rem;
+    align-self: stretch;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 0.63rem;
+    position: relative;
     text-align: left;
     font-size: 1.25rem;
     color: #03a9f4;
     font-family: Inter;
   }
   .copyright-2023 {
-    position: absolute;
-    height: 26.06%;
-    top: 36.99%;
-    left: calc(50% - 216px);
+    flex: 1;
+    position: relative;
     font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28.31rem;
+    height: 1.19rem;
   }
   .footernajdonji {
-    position: absolute;
-    height: 15.08%;
-    width: 100%;
-    top: 84.92%;
-    right: 0%;
-    bottom: 0%;
-    left: 0%;
+    align-self: stretch;
     background-color: #03a9f4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1.69rem 0rem;
     text-align: center;
     font-size: 1rem;
     color: #fff;
@@ -503,32 +507,369 @@ export default {
   .footerdesktop {
     position: relative;
     width: 100%;
-    height: 30.25rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 
-  @media screen and (max-width: 1200px) {
-    .glavnagrupaonama {
-      flex-direction: column;
-      padding-right: 15%;
-      box-sizing: border-box;
-    }
-
-    .glavnagrupapratitenas {
-      width: 6.5rem;
-    }
-
-
-
-  }
-  
- 
-  
-  
-  
-  
-  
   @media screen and (max-width: 1080px) {
+ 
+  .bijelapozadina {
+    align-self: stretch;
+    position: relative;
+    background-color: #fff;
+    height: 25.56rem;
+    z-index: 0;
+  }
+  .slikaframe-icon {
+    position: absolute;
+    margin: 0 !important;
+    width: 40.28%;
+    top: calc(50% - 176.5px);
+    right: 59.72%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 19rem;
+    flex-shrink: 0;
+    z-index: 1;
+  }
+  .kontakt {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    font-weight: 500;
+  }
+  .container-icon {
+    position: absolute;
+    right: 9.75rem;
+    bottom: 0.03rem;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+  }
+  .div {
+    position: absolute;
+    right: 1.88rem;
+    bottom: 0rem;
+    letter-spacing: -0.17px;
+  }
+  .text-input {
+    position: absolute;
+    top: 2.33rem;
+    left: 0rem;
+    width: 10.75rem;
+    height: 1.06rem;
+  }
+  .container-icon1 {
+    position: absolute;
+    right: 6.25rem;
+    bottom: 0.03rem;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+  }
+  .infohzutshr {
+    text-decoration: none;
+    position: absolute;
+    right: 0rem;
+    bottom: 0rem;
+    letter-spacing: -0.17px;
+    color: inherit;
+  }
+  .text-input1 {
+    text-decoration: none;
+    position: absolute;
+    top: 4.65rem;
+    left: 0rem;
+    width: 7.25rem;
+    height: 1.06rem;
+    color: #03a9f4;
+  }
+  .vertical-container-icon {
+    position: absolute;
+    right: 7.88rem;
+    bottom: 0.06rem;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+  }
+  .div1 {
+    position: absolute;
+    right: 0rem;
+    bottom: 0.03rem;
+    letter-spacing: -0.17px;
+  }
+  .horizontal-container {
+  
+    top: 6.96rem;
+    left: 0rem;
+    width: 8.88rem;
+    height: 1.13rem;
+    overflow: hidden;
+  }
+  .map-pin-1-icon {
+   
+    top: 0.06rem;
+    left: 0rem;
+    width: 1.03rem;
+    height: 1rem;
+    overflow: hidden;
+  }
+  .maksimirska-51a-10000 {
 
+    top: 0rem;
+    left: 1.68rem;
+    display: inline-block;
+    width: 14.25rem;
+    height: 3.13rem;
+  }
+  .adresaframe {
+   
+    top: 0.02rem;
+    left: 0.03rem;
+    width: 16.08rem;
+    height: 4.06rem;
+    overflow: hidden;
+    text-align: left;
+    padding-bottom: 4rem;
+  }
+  .kontainerzakontakttekstove {
+    position: absolute;
+    top: 3.06rem;
+    left: 0rem;
+    width: 15.56rem;
+    height: 10.44rem;
+    overflow: hidden;
+    text-align: center;
+    font-size: 0.88rem;
+    color: #000;
+  }
+  .glavnagrupakontakt {
+    position: absolute;
+    margin: 0 !important;
+    height: 54.03%;
+    width: 23.06%;
+    top: 5.13%;
+    right: 9.72%;
+    bottom: 40.83%;
+    left: 67.22%;
+    z-index: 2;
+  }
+  .o-nama {
+    position: absolute;
+    right: 4rem;
+    bottom: 15.15rem;
+    font-weight: 500;
+  }
+  .politika-privatnosti {
+    text-decoration: none;
+    position: absolute;
+    top: 9.25rem;
+    left: 0.06rem;
+    font-weight: 500;
+    color: inherit;
+  }
+  .politika-o-kolaiima {
+    text-decoration: none;
+    position: absolute;
+    top: 11.56rem;
+    left: 0.06rem;
+    font-weight: 500;
+    color: inherit;
+  }
+  .osnovne-informacije {
+    text-decoration: none;
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    font-weight: 500;
+    color: inherit;
+  }
+  .povijest {
+    text-decoration: none;
+    position: absolute;
+    top: 2.31rem;
+    left: 0rem;
+    font-weight: 500;
+    color: inherit;
+  }
+  .bilteni-hzuts-a {
+    text-decoration: none;
+    position: absolute;
+    top: 4.63rem;
+    left: 0rem;
+    font-weight: 500;
+    color: inherit;
+  }
+  .podruni-zborovi {
+    text-decoration: none;
+    position: absolute;
+    top: 6.94rem;
+    left: 0rem;
+    font-weight: 500;
+    color: inherit;
+  }
+  .paragraph-container {
+    position: absolute;
+    top: 3.06rem;
+    left: 0rem;
+    width: 8.63rem;
+    height: 13.25rem;
+    font-size: 0.88rem;
+    color: #000;
+  }
+  .gornjidiotekstovionama {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    width: 8.63rem;
+    height: 16.65rem;
+    overflow: hidden;
+  }
+  .donjidioonama {
+    position: absolute;
+    top: 13rem;
+    left: 0.06rem;
+    width: 8.5rem;
+    height: 3.06rem;
+    overflow: hidden;
+    display: none;
+  }
+  .glavnagrupaonama {
+    position: absolute;
+    margin: 0 !important;
+    height: 65.28%;
+    top: 5.13%;
+    bottom: 29.58%;
+    left: calc(50% - 37px);
+    width: 8.63rem;
+    z-index: 3;
+  }
+  .pratite-nas {
+    position: absolute;
+    bottom: 0rem;
+    left: 0rem;
+    font-weight: 500;
+    display: inline-block;
+    width: 8.06rem;
+    height: 1.5rem;
+  }
+  .pratitenasnaslov {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    width: 8.69rem;
+    height: 1.5rem;
+  }
+  .instagramvector-icon {
+    position: absolute;
+    right: 0.47rem;
+    bottom: 0.47rem;
+    width: 0.93rem;
+    height: 0.93rem;
+  }
+  .instagramgrupa {
+    text-decoration: none;
+    position: absolute;
+    top: 2.5rem;
+    left: 0rem;
+    border-radius: 5px;
+    background-color: rgba(29, 161, 242, 0.95);
+    width: 1.88rem;
+    height: 1.88rem;
+  }
+  .fbvector-icon {
+    position: absolute;
+    right: 0.66rem;
+    bottom: 0.49rem;
+    width: 0.52rem;
+    height: 0.9rem;
+  }
+  .facebookgrupa {
+    text-decoration: none;
+    position: absolute;
+    top: 2.5rem;
+    left: 2.88rem;
+    border-radius: 5px;
+    background-color: rgba(29, 161, 242, 0.95);
+    width: 1.88rem;
+    height: 1.88rem;
+  }
+  .youtubegrupa {
+    text-decoration: none;
+    position: absolute;
+    top: 2.5rem;
+    left: 5.75rem;
+    border-radius: 5px;
+    background-color: rgba(29, 161, 242, 0.95);
+    width: 1.88rem;
+    height: 1.88rem;
+  }
+  .glavnagrupapratitenas {
+    position: absolute;
+    margin: 0 !important;
+    height: 18.09%;
+    top: 75.55%;
+    bottom: 6.36%;
+    left: calc(50% - 37px);
+    width: 8.69rem;
+    z-index: 4;
+  }
+  .velikifooterkvadrat {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    position: relative;
+    text-align: left;
+    font-size: 1.25rem;
+    color: #03a9f4;
+    font-family: Inter;
+  }
+  .copyright-2023 {
+    flex: 1;
+    position: relative;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 1.19rem;
+  }
+  .footernajdonji {
+    align-self: stretch;
+    background-color: #03a9f4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1.69rem 0rem;
+    text-align: center;
+    font-size: 1rem;
+    color: #fff;
+    font-family: Inter;
+  }
+  .footerdesktop-tablet {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+
+
+
+
+  }
+  
+  @media screen and (max-width: 750px) {
+  
   .bijelapozadina {
     align-self: stretch;
     flex: 1;
@@ -536,140 +877,129 @@ export default {
     background-color: #fff;
     z-index: 0;
   }
-  .img-5195-photoroom-1-icon {
-    position: relative;
-    width: 24.94rem;
-    height: 15.5rem;
-    object-fit: cover;
-  }
-  .slikaframe {
-    margin: 0 !important;
+  .slikaframe-icon {
     position: absolute;
-    width: 45.42%;
-    top: calc(50% - 243.28px);
-    right: 54.57%;
-    left: 0.02%;
-    height: 25.47rem;
+    margin: 0 !important;
+    width: 66.93%;
+    top: calc(50% - 325.5px);
+    right: 10.4%;
+    left: 22.67%;
+    max-width: 100%;
     overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0.06rem 0rem;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
+    height: 17.44rem;
+    flex-shrink: 0;
     z-index: 1;
   }
   .kontakt {
     position: absolute;
-    width: 83.14%;
-    top: 0%;
-    left: 0.19%;
+    top: 0rem;
+    left: 0rem;
     font-weight: 500;
-    display: inline-block;
   }
   .container-icon {
     position: absolute;
-    right: 9.75rem;
-    bottom: 0.03rem;
+    top: 0rem;
+    left: 0rem;
     width: 1rem;
     height: 1rem;
     overflow: hidden;
   }
   .div {
     position: absolute;
-    right: 1.88rem;
-    bottom: 0rem;
+    top: 0rem;
+    left: 1.63rem;
     letter-spacing: -0.17px;
+    text-align: left;
   }
   .text-input {
     position: absolute;
-    top: 2.33rem;
-    left: 0rem;
-    width: 10.75rem;
+    top: 2.19rem;
+    left: 0.18rem;
+    width: 10.88rem;
     height: 1.06rem;
-    overflow: hidden;
+  }
+  .infohzutshr {
+    text-decoration: none;
+    position: absolute;
+    top: 0rem;
+    left: 1.85rem;
+    letter-spacing: -0.17px;
+    color: inherit;
+    text-align: left;
+  }
+  .text-input1 {
+    text-decoration: none;
+    position: absolute;
+    top: 4.38rem;
+    left: 0rem;
+    width: 7.44rem;
+    height: 1.06rem;
+    color: #03a9f4;
+    text-align: left;
   }
   .vertical-container-icon {
     position: absolute;
-    right: 7.88rem;
-    bottom: 0.06rem;
+    top: 0.06rem;
+    left: 0rem;
     width: 1rem;
     height: 1rem;
     overflow: hidden;
   }
   .div1 {
     position: absolute;
-    right: 0rem;
-    bottom: 0.03rem;
+    top: 0.06rem;
+    left: 1.84rem;
     letter-spacing: -0.17px;
+    text-align: left;
   }
   .horizontal-container {
     position: absolute;
-    top: 4.65rem;
+    top: 6.56rem;
     left: 0rem;
-    width: 8.88rem;
-    height: 1.13rem;
-    overflow: hidden;
-  }
-  .container-icon1 {
-    position: absolute;
-    right: 6.25rem;
-    bottom: 0.03rem;
-    width: 1rem;
-    height: 1rem;
-    overflow: hidden;
-  }
-  .infohzutshr {
-    text-decoration: none;
-    position: absolute;
-    right: 0rem;
-    bottom: 0rem;
-    letter-spacing: -0.17px;
-    color: inherit;
-  }
-  .text-input1 {
-    text-decoration: none;
-    position: absolute;
-    top: 7.02rem;
-    left: 0rem;
-    width: 7.25rem;
-    height: 1.06rem;
-    overflow: hidden;
-    color: #03a9f4;
-  }
-  .map-pin-1-icon {
-    position: absolute;
-    top: 0.06rem;
-    left: 0rem;
-    width: 1.03rem;
-    height: 1rem;
-    overflow: hidden;
-  }
-  .maksimirska-51a-10000 {
-    position: absolute;
-    top: 0rem;
-    left: 1.81rem;
-    display: inline-block;
-    width: 14.25rem;
-    height: 3.13rem;
-  }
-  .adresaframe {
-    position: absolute;
-    top: 0.02rem;
-    left: 0.03rem;
-    width: 16.08rem;
-    height: 1.06rem;
+    width: 9.06rem;
+    height: 1.19rem;
     overflow: hidden;
     text-align: left;
   }
+  .map-pin-1-icon {
+    position: absolute;
+    top: 0rem;
+  left: 0.2rem;
+    width: 1.03rem;
+    height: 1rem;
+    overflow: hidden;
+
+  }
+  .maksimirska-51a-10000 {
+  position: absolute;
+  top: 0rem;
+  left: 1.84rem;
+  width: 13.97rem;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+}
+
+
+
+
+  .adresaframe {
+    position: absolute;
+    top: 0rem;
+    left: 0.03rem;
+    width: 17.81rem;
+    height: 1.06rem;
+    text-align: left;
+    display: inline-block;
+    
+  }
   .kontainerzakontakttekstove {
     position: absolute;
-    top: 3.38rem;
-    left: 0.06rem;
-    width: 15.56rem;
+    top: 2.81rem;
+    left: 0rem;
+    width: 16.88rem;
     height: 10.44rem;
-    overflow: hidden;
     text-align: center;
     font-size: 0.88rem;
     color: #000;
@@ -677,18 +1007,33 @@ export default {
   .glavnagrupakontakt {
     position: absolute;
     margin: 0 !important;
-    width: 17.92%;
-    top: calc(50% - 213px);
-    right: 11.98%;
-    left: 70.1%;
-    height: 14.44rem;
+    top: 16.44rem;
+    left: calc(50% + 8.5px);
+    width: 16.88rem;
+    height: 13.5rem;
     z-index: 2;
   }
   .o-nama {
     position: absolute;
     right: 4rem;
-    bottom: 10.19rem;
+    bottom: 15.46rem;
     font-weight: 500;
+  }
+  .politika-privatnosti {
+    text-decoration: none;
+    position: absolute;
+    top: 9.25rem;
+    left: 0.06rem;
+    font-weight: 500;
+    color: inherit;
+  }
+  .politika-o-kolaiima {
+    text-decoration: none;
+    position: absolute;
+    top: 11.56rem;
+    left: 0.06rem;
+    font-weight: 500;
+    color: inherit;
   }
   .osnovne-informacije {
     text-decoration: none;
@@ -724,10 +1069,10 @@ export default {
   }
   .paragraph-container {
     position: absolute;
-    top: 3.38rem;
+    top: 3.06rem;
     left: 0rem;
-    width: 8.56rem;
-    height: 8.69rem;
+    width: 8.63rem;
+    height: 12.63rem;
     font-size: 0.88rem;
     color: #000;
   }
@@ -736,42 +1081,32 @@ export default {
     top: 0rem;
     left: 0rem;
     width: 8.63rem;
-    height: 11.69rem;
-    overflow: hidden;
+    height: 16.96rem;
   }
-  .donjidioonama {
-    position: absolute;
-    top: 12.25rem;
-    left: 0rem;
-    width: 8.5rem;
-    height: 4.31rem;
-    overflow: hidden;
-    font-size: 0.88rem;
-    color: #000;
-  }
-  .glavnagrupaonama {
+ .glavnagrupaonama {
     position: absolute;
     margin: 0 !important;
-    height: 47.93%;
-    top: 5.81%;
-    bottom: 46.27%;
-    left: calc(50% - 17px);
-    width: 8.63rem;
+    width: 18.4%;
+    top: 16.44rem;
+    right: 71.33%;
+    left: 10.27%;
+    height: 16.96rem;
     z-index: 3;
   }
+ 
   .pratite-nas {
     position: absolute;
-    right: 0rem;
     bottom: 0rem;
+    left: 0rem;
     font-weight: 500;
     display: inline-block;
-    width: 6.44rem;
+    width: 7.44rem;
   }
   .pratitenasnaslov {
     position: absolute;
-    top: 0rem;
-    left: 0rem;
-    width: 6.44rem;
+    bottom: 2.88rem;
+    left: 0.5rem;
+    width: 7.44rem;
     height: 1.5rem;
   }
   .instagramvector-icon {
@@ -784,8 +1119,8 @@ export default {
   .instagramgrupa {
     text-decoration: none;
     position: absolute;
-    top: 2.75rem;
-    left: 0rem;
+    top: 2.54rem;
+    left: 0.25rem;
     border-radius: 5px;
     background-color: rgba(29, 161, 242, 0.95);
     width: 1.88rem;
@@ -801,8 +1136,18 @@ export default {
   .facebookgrupa {
     text-decoration: none;
     position: absolute;
-    top: 2.75rem;
+    top: 2.54rem;
     left: 3.13rem;
+    border-radius: 5px;
+    background-color: rgba(29, 161, 242, 0.95);
+    width: 1.88rem;
+    height: 1.88rem;
+  }
+  .youtubegrupa {
+    text-decoration: none;
+    position: absolute;
+    top: 2.54rem;
+    left: 6rem;
     border-radius: 5px;
     background-color: rgba(29, 161, 242, 0.95);
     width: 1.88rem;
@@ -811,461 +1156,204 @@ export default {
   .glavnagrupapratitenas {
     position: absolute;
     margin: 0 !important;
-    width: 7.15%;
-    top: calc(50% + 68px);
-    right: 44.62%;
-    left: 48.23%;
-    height: 4.63rem;
+    height: 10.25%;
+    top: 80.81%;
+    bottom: 8.95%;
+    left: calc(50% - 73px);
+    width: 8.69rem;
     z-index: 4;
+    text-align: center;
   }
   .velikifooterkvadrat {
-    position: absolute;
-    width: 100%;
-    top: calc(50% - 240px);
-    right: 0%;
-    left: 0%;
-    height: 30.13rem;
+    align-self: stretch;
+    height: 43.31rem;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    gap: 0.63rem;
+    position: relative;
     text-align: left;
     font-size: 1.25rem;
     color: #03a9f4;
     font-family: Inter;
   }
   .copyright-2023 {
-    position: absolute;
-    height: 26.06%;
-    top: 36.99%;
-    left: calc(50% - 216px);
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 28.31rem;
-  }
-  .footernajdonji {
-    position: absolute;
-    height: 15.08%;
-    width: 100%;
-    top: 84.92%;
-    right: 0%;
-    bottom: 0%;
-    left: 0%;
-    background-color: #03a9f4;
-    text-align: center;
-    font-size: 1rem;
-    color: #fff;
-    font-family: Inter;
-  }
-  .footerdesktop {
-    position: relative;
-    width: 100%;
-    height: 30.25rem;
-  }
-
-}
-
-
-
-  
-
-
-
-
-  @media screen and (max-width: 660px) {
-    .bijelapozadina {
     flex: 1;
     position: relative;
-    background-color: #fff;
-    height: 47.5rem;
-    z-index: 0;
-  }
-  .img-5195-photoroom-1-icon {
-    position: relative;
-    width: 29.56rem;
-    height: 17.75rem;
-    object-fit: cover;
-  }
-  .slikaframe {
-    margin: 0 !important;
-    position: absolute;
-    height: 35.39%;
-    width: 112.27%;
-    top: -0.53%;
-    right: -12.27%;
-    bottom: 65.13%;
-    left: 0%;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    padding: 0.06rem 0rem;
-    box-sizing: border-box;
-    align-items: center;
-    justify-content: center;
-    z-index: 1;
-  }
-  .kontakt {
-    position: absolute;
-    width: 83.14%;
-    top: 0%;
-    left: 0.19%;
-    font-weight: 500;
-    display: inline-block;
-  }
-  .container-icon {
-    position: absolute;
-    right: 9.75rem;
-    bottom: 0.03rem;
-    width: 1rem;
-    height: 1rem;
-    overflow: hidden;
-  }
-  .div {
-    position: absolute;
-    right: 1.88rem;
-    bottom: 0rem;
-    letter-spacing: -0.17px;
-  }
-  .text-input {
-    position: absolute;
-    top: 2.33rem;
-    left: 0rem;
-    width: 10.75rem;
-    height: 1.06rem;
-    overflow: hidden;
-  }
-  .vertical-container-icon {
-    position: absolute;
-    right: 7.88rem;
-    bottom: 0.06rem;
-    width: 1rem;
-    height: 1rem;
-    overflow: hidden;
-  }
-  .div1 {
-    position: absolute;
-    right: 0rem;
-    bottom: 0.03rem;
-    letter-spacing: -0.17px;
-  }
-  .horizontal-container {
-    position: absolute;
-    top: 4.65rem;
-    left: 0rem;
-    width: 8.88rem;
-    height: 1.13rem;
-    overflow: hidden;
-  }
-  .container-icon1 {
-    position: absolute;
-    right: 6.25rem;
-    bottom: 0.03rem;
-    width: 1rem;
-    height: 1rem;
-    overflow: hidden;
-  }
-  .infohzutshr {
-    text-decoration: none;
-    position: absolute;
-    right: 0rem;
-    bottom: 0rem;
-    letter-spacing: -0.17px;
-    color: inherit;
-  }
-  .text-input1 {
-    text-decoration: none;
-    position: absolute;
-    top: 7.02rem;
-    left: 0rem;
-    width: 7.25rem;
-    height: 1.06rem;
-    overflow: hidden;
-    color: #03a9f4;
-  }
-  .map-pin-1-icon {
-    position: absolute;
-    top: 0.06rem;
-    left: 0rem;
-    width: 1.03rem;
-    height: 1rem;
-    overflow: hidden;
-  }
-  .maksimirska-51a-10000 {
-    position: absolute;
-    top: 0rem;
-    left: 1.81rem;
-    display: inline-block;
-    width: 14.25rem;
-    height: 3.13rem;
-  }
-  .adresaframe {
-    position: absolute;
-    top: 0.02rem;
-    left: 0.03rem;
-    width: 16.08rem;
-    height: 1.06rem;
-    overflow: hidden;
-    text-align: left;
-  }
-  .kontainerzakontakttekstove {
-    position: absolute;
-    top: 3.38rem;
-    left: 0.06rem;
-    width: 15.56rem;
-    height: 10.44rem;
-    overflow: hidden;
-    text-align: center;
-    font-size: 0.88rem;
-    color: #000;
-  }
-  .glavnagrupakontakt {
-    position: absolute;
-    margin: 0 !important;
-    height: 30.39%;
-    width: 17.92%;
-    top: 40.10%;
-    right: 33.6%;
-    bottom: 34.21%;
-    left: 48.48%;
-    z-index: 2;
-  }
-  .o-nama {
-    position: absolute;
-    right: 4rem;
-    bottom: 10.19rem;
-    font-weight: 500;
-  }
-  .osnovne-informacije {
-    text-decoration: none;
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    font-weight: 500;
-    color: inherit;
-  }
-  .povijest {
-    text-decoration: none;
-    position: absolute;
-    top: 2.31rem;
-    left: 0rem;
-    font-weight: 500;
-    color: inherit;
-  }
-  .bilteni-hzuts-a {
-    text-decoration: none;
-    position: absolute;
-    top: 4.63rem;
-    left: 0rem;
-    font-weight: 500;
-    color: inherit;
-  }
-  .podruni-zborovi {
-    text-decoration: none;
-    position: absolute;
-    top: 6.94rem;
-    left: 0rem;
-    font-weight: 500;
-    color: inherit;
-  }
-  .paragraph-container {
-    position: absolute;
-    top: 3.38rem;
-    left: 0rem;
-    width: 8.56rem;
-    height: 8.69rem;
-    font-size: 0.88rem;
-    color: #000;
-  }
-  .gornjidiotekstovionama {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    width: 8.63rem;
-    height: 11.69rem;
-    overflow: hidden;
-  }
-  .donjidioonama {
-    position: absolute;
-    top: 12.25rem;
-    left: 0rem;
-    width: 8.5rem;
-    height: 4.31rem;
-    overflow: hidden;
-    font-size: 0.88rem;
-    color: #000;
-  }
-  .glavnagrupaonama {
-    position: absolute;
-    margin: 0 !important;
-    height: 47.89%;
-    width: 26.97%;
-    top: 39.87%;
-    right: 59.39%;
-    bottom: 17.24%;
-    left: 9.64%;
-    z-index: 3;
-  }
-  .pratite-nas {
-    position: absolute;
-    right: 0rem;
-    bottom: 0rem;
-    font-weight: 500;
-    display: inline-block;
-    width: 6.44rem;
-  }
-  .pratitenasnaslov {
-    position: absolute;
-    top: 0rem;
-    left: 0rem;
-    width: 6.44rem;
-    height: 1.5rem;
-  }
-  .instagramvector-icon {
-    position: absolute;
-    right: 0.47rem;
-    bottom: 0.47rem;
-    width: 0.93rem;
-    height: 0.93rem;
-  }
-  .instagramgrupa {
-    text-decoration: none;
-    position: absolute;
-    top: 2.75rem;
-    left: 0rem;
-    border-radius: 5px;
-    background-color: rgba(29, 161, 242, 0.95);
-    width: 1.88rem;
-    height: 1.88rem;
-  }
-  .fbvector-icon {
-    position: absolute;
-    right: 0.66rem;
-    bottom: 0.49rem;
-    width: 0.52rem;
-    height: 0.9rem;
-  }
-  .facebookgrupa {
-    text-decoration: none;
-    position: absolute;
-    top: 2.75rem;
-    left: 3.13rem;
-    border-radius: 5px;
-    background-color: rgba(29, 161, 242, 0.95);
-    width: 1.88rem;
-    height: 1.88rem;
-  }
-  .glavnagrupapratitenas {
-    position: absolute;
-    margin: 0 !important;
-    width: 7.15%;
-    top: calc(50% + 235px);
-    right: 51.48%;
-    left: 41.36%;
-    height: 4.63rem;
-    z-index: 4;
-  }
-  .velikifooterkvadrat {
-    position: absolute;
-    width: 100%;
-    top: calc(50% - 240px);
-    right: 0%;
-    left: 0%;
-    height: 47.5rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.63rem;
-    text-align: left;
-    font-size: 1.25rem;
-    color: #03a9f4;
-    font-family: Inter;
-  }
-  .copyright-2023 {
-    position: absolute;
-    height: 26.06%;
-    top: 36.99%;
-    left: calc(50% - 216px);
     font-weight: 500;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 28.31rem;
-    font-size: 0.85rem;
+    height: 1.19rem;
   }
   .footernajdonji {
-    position: absolute;
-    height: 15.06%;
-    top: 84.94%;
-    bottom: 0%;
-    left: calc(50% - 720px);
+    align-self: stretch;
     background-color: #03a9f4;
-    width: 90rem;
-    text-align: center;
-    font-size: 0.85rem;
-    color: #fff;
-    font-family: Inter;
-    margin-top: 21rem;
-  }
-  
-    
-  .footerdesktop {
-    position: relative;
-    width: 100%;
-    height: 30.25rem;
-  }
-
-
-
-  }
-
-
- 
-
-  @media screen and (max-width: 800px) {
-  .footer-container {
-    transform: scale(0.85);
-    transform-origin: center top; /* to ensure scaling happens from the center top */
-
-  }
-  .bijelapozadina {
-    transform: scale(1.17647); 
-    transform-origin: center top; 
-  
-  }
- 
-  .slikaframe {
-
-    left: -10%;
-    overflow: visible;
-
-    }
-
-    .footernajdonji {
-      transform: scale(1.17647); 
-    position: absolute;
-    height: 15.08%;
-    width: 100%;
-    top: 100%;
-    right: 0%;
-    bottom: -57.44%;
-    left: 0%;
-    background-color: #03a9f4;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 1.69rem 0rem;
     text-align: center;
     font-size: 1rem;
     color: #fff;
     font-family: Inter;
   }
-
-}
+  .footerdesktop-mobitel {
+    position: relative;
+    width: 100%;
+    height: 47.94rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
 
   
+  @media screen and (max-width: 420px) {
+    .div {
+      font-size: 0.63rem;
+    }
+
+    .infohzutshr {
+      font-size: 0.63rem;
+    }
+
+    .div1 {
+      font-size: 0.63rem;
+    }
+
+    .maksimirska-51a-10000 {
+
+      font-size: 0.63rem;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .adresaframe {
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+
+    .glavnagrupakontakt {
+      gap: 0.63rem;
+      align-items: center;
+      justify-content: flex-start;
+      padding-right: 0rem;
+      box-sizing: border-box;
+    }
+
+    .politika-privatnosti {
+      font-size: 0.69rem;
+    }
+
+    .politika-o-kolaiima {
+      font-size: 0.69rem;
+    }
+
+    .osnovne-informacije {
+      font-size: 0.69rem;
+    }
+
+    .povijest {
+      font-size: 0.69rem;
+    }
+
+    .bilteni-hzuts-a {
+      font-size: 0.69rem;
+    }
+
+    .podruni-zborovi {
+      font-size: 0.69rem;
+    }
+
+    .glavnagrupaonama {
+      height: auto;
+      flex-direction: column;
+      gap: 0.63rem;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 0rem;
+      box-sizing: border-box;
+    }
+
+    .glavnagrupapratitenas {
+      align-self: stretch;
+      width: auto;
+      flex: 1;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-bottom: 25rem;
+      box-sizing: border-box;
+    }
+
+    .copyright-2023 {
+      font-size: 0.70rem;
+    }
+
+    .footerdesktop-mobitel {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+    }
+  }
+
+  @media screen and (max-width: 500px) {
+  
+    .text-input{
+      top: 3.19rem;
+    }
+    .text-input1{
+      top: 5.88rem;
+    }
+    .horizontal-container{
+      top: 7.56rem;
+    }
+    .maksimirska-51a-10000 {
+  position: absolute;
+  top: 0rem;
+  left: 1.84rem;
+  max-width: 8.97rem;  
+  text-align: left;
+  white-space: normal; 
+  overflow-wrap: break-word;  /* Wrap long words */
+  white-space: normal;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+.map-pin-1-icon {
+    position: absolute;
+    top: 0.5rem;
+  left: 0.2rem;
+    width: 1.03rem;
+    height: 1rem;
+    overflow: hidden;
+
+  }
+
+    .glavnagrupakontakt {
+      gap: 1.38rem;
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-right: 2.5rem;
+      box-sizing: border-box;
+    }
+
+    .glavnagrupaonama {
+      align-items: flex-start;
+      justify-content: flex-start;
+      padding-left: 1.25rem;
+      padding-right: 0rem;
+      box-sizing: border-box;
+    }
+  }
 
 
-
+}
 </style>

@@ -4,13 +4,13 @@
 
     <div class="hzuts-kontakt-page">
 
-      <div class="kartakontaktframe">
-      <img class="kartakontakt-icon" alt="" src="/storage/slike/kontakt/kartakontakt@2x.png" />
-      <div class="placeholder-1">
+      <a class="kartakontaktframe" href="https://www.google.com/maps/dir/?api=1&destination=Maksimirska+51A,10000+Zagreb,Hrvatska" target="_blank">
+        <iframe class="kartakontakt-icon"  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2780.715944467365!2d16.000421276077827!3d45.816946971081975!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4765d7b1bda6afb3%3A0x8e64d5b9cc2ee7ca!2sMaksimirska%20cesta%2051A%2C%2010000%2C%20Zagreb!5e0!3m2!1sen!2shr!4v1696560637473!5m2!1sen!2shr"  style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+     <!-- <div class="placeholder-1">
         <img class="vector-icon" alt="" src="/storage/slike/kontakt/vector.svg" />
         <img class="vector-icon1" alt="" src="/storage/slike/kontakt/vector1.svg" />
-      </div>
-    </div>
+      </div>-->
+    </a>
     <div class="kontaktformaframe">
       <div class="kontaktiraj-nas-parent">
         <div class="kontaktiraj-nas">Kontaktiraj nas</div>
@@ -62,7 +62,9 @@
   
         <div class="mail-icon-parent">
           <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/mail-icon.svg" />
-          <a class="infohzutshr">info@hzuts.hr</a>
+      
+          <a href="mailto:info@hzuts.hr" class="infohzutshr">&#105;&#110;&#102;&#111;&#64;&#104;&#122;&#117;&#116;&#115;&#46;&#104;&#114;</a>
+
         </div>
         <div class="hr7423600001101359833-parent">
           <div class="hr7423600001101359833">HR7423600001101359833</div>
@@ -309,7 +311,7 @@ export default {
   .crtekontaktforma3-icon {
     position: absolute;
     top: 2.13rem;
-    left: 0rem;
+    left: -0.3rem;
     width: 37.5rem;
     height: 1.88rem;
   }
@@ -322,7 +324,7 @@ export default {
   .crtekontaktforma2-icon {
     position: absolute;
     top: 7.38rem;
-    left: 0rem;
+    left: -0.3rem;
     width: 37.5rem;
     height: 1.88rem;
   }
@@ -593,6 +595,9 @@ export default {
     font-size: 3rem;
     color: #000;
     font-family: Inter;
+
+    padding: 2%;
+    padding-top: 5%;
   }
 
   @media screen and (max-width: 960px) {
@@ -617,6 +622,7 @@ export default {
 
     .hzuts-kontakt-page {
       flex-direction: column;
+
     }
   }
   @media screen and (max-width: 420px) {

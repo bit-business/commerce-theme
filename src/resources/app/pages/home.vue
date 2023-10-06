@@ -2,12 +2,37 @@
   <div>
 <Head :title="$page.props.name" />
 
+<VuePreloader
+  background-color="#000"
+  color="#fff"
+  transition-type="fade-down"
+  :loading-speed="25"
+  :transition-speed="1400"
+  @loading-is-over="showAnimation = false"
+  @transition-is-over="transitionIsOver"
+>
+
+</VuePreloader>
+
 <commerce-top-bar class="pocetnaanimacija  sm:flex" />
 <div class="hzuts-home-screen-desktop">
+  <div class="video-container homepageglavnaslika-icon">
+            <iframe 
+    class="video-fullwidth" 
+    :src="'https://www.youtube.com/embed/g1QNLH6nhMM?autoplay=1&mute=1&loop=1&playlist=g1QNLH6nhMM&modestbranding=1&rel=0&controls=0&vq=hd1080'"
+    frameborder="0"
+    width="740"
+    height="465" 
+    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+</iframe>
+</div>
+ 
+ <!--
   <commerce-main-banner class="homepageglavnaslika-icon hidden sm:block" />
   
   <commerce-mobile-main-banner class="block sm:hidden" />
-
+-->
 
                 <vue-marquee-slider
               id="marquee-slider-cards"
@@ -20,7 +45,7 @@
               <div>Pratite najnovije informacije!</div>
               <div>Pogledajte planirana događanja za novu sezonu!</div>
             </vue-marquee-slider>
-
+           
 
     <div class="obavijestitraka" />
     <div class="drugired">
@@ -300,6 +325,9 @@ import { Link, Head } from "@inertiajs/inertia-vue"
 
 import { mapState } from 'vuex';
 
+
+import { VuePreloader } from 'vue2-preloader';
+
 export default {
   components: {
     CommerceTopBar,
@@ -310,6 +338,7 @@ export default {
     VueMarqueeSlider,
     Carousel3d,
 Slide,
+VuePreloader,
 
 
     CommerceMobileMainBanner,
@@ -343,7 +372,7 @@ Slide,
       clanci:  [],
     thumbnails: [],
   // za clanke
-
+  showAnimation: true,
 
   slides: [{}, {}, {}, {}, {}, {}, {},{},{}, {}, {}, {}, {}, {},{},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}],
 
@@ -595,6 +624,49 @@ this.fetchTotalUsers();
 </script>
 
 <style scoped>
+
+
+.video-container{
+  width: 100vw;
+  height: 115vh;
+}
+
+ iframe {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vw;
+  height: 100vh;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+}
+
+#text{
+  position: absolute;
+  color: #FFFFFF;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@media (min-aspect-ratio: 16/9) {
+  .video-container iframe {
+    height: 56.25vw;
+  }
+}
+@media (max-aspect-ratio: 16/9) {
+  .video-container iframe {
+    width: 177.78vh;
+  }
+}
+@media (max-width: 767px) {
+  .video-container iframe {
+    width: 88vh;
+    height: 95vw;
+  }
+
+
+}
 
 
 
@@ -1382,6 +1454,7 @@ this.fetchTotalUsers();
     overflow: hidden;
     flex-shrink: 0;
     font-size: 2rem;
+    padding-bottom: 5rem;
   }
   .hzuts-home-screen-desktop {
     position: relative;
