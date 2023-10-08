@@ -1213,7 +1213,7 @@ splitCategory() {
   }
   .objavljeno-20032023 {
     position: relative;
-    font-size: 0.94rem;
+    font-size: 0.8rem;
   }
   .objavljenotekst {
     margin: 0 !important;
@@ -1720,9 +1720,9 @@ splitCategory() {
     }
 
     .srednjibannerdogadaji {
-      width: auto;
+   
       align-self: unset;
-      height: auto;
+      height: 37.5rem;
       gap: 0.63rem;
       align-items: center;
       justify-content: flex-start;
@@ -1878,8 +1878,7 @@ splitCategory() {
 
     .srednjibannerdogadaji {
       align-self: stretch;
-      width: auto;
-      height: auto;
+
       flex-direction: row;
     }
 
