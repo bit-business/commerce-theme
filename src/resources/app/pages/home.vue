@@ -2,31 +2,32 @@
   <div>
 <Head :title="$page.props.name" />
 
-<VuePreloader
-  background-color="#000"
-  color="#fff"
-  transition-type="fade-down"
-  :loading-speed="25"
-  :transition-speed="1400"
-  @loading-is-over="showAnimation = false"
-  @transition-is-over="transitionIsOver"
->
+    <VuePreloader
+      v-if="showPreloader"
+      background-color="#000"
+      color="#4698F4"
+      transition-type="fade-down"
+      :loading-speed="25"
+      :transition-speed="1400"
+      @loading-is-over="showAnimation = false"
+      @transition-is-over="transitionIsOver"
+    >
+    </VuePreloader>
 
-</VuePreloader>
+<commerce-top-bar class="pocetnaanimacija sm:flex" :class="{ 'pocetnaanimacija': !firstLoad }"/>
+<div class="hzuts-home-screen-desktop" >
 
-<commerce-top-bar class="pocetnaanimacija  sm:flex" />
-<div class="hzuts-home-screen-desktop">
-  <div class="video-container homepageglavnaslika-icon">
-            <iframe 
-    class="video-fullwidth" 
-    :src="'https://www.youtube.com/embed/g1QNLH6nhMM?autoplay=1&mute=1&loop=1&playlist=g1QNLH6nhMM&modestbranding=1&rel=0&controls=0&vq=hd1080'"
-    frameborder="0"
-    width="740"
-    height="465" 
-    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen>
-</iframe>
-</div>
+  <div class="homepageglavnaslika-icon" :class="['video-container', isSmallScreen ? 'mobile' : 'desktop', { 'pocetnaanimacija': !firstLoad }]">
+      <iframe
+        id="youtube-player"
+        :src="isSmallScreen ? mobileVideoUrl : desktopVideoUrl"
+        frameborder="0"
+        allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+        allowfullscreen
+      ></iframe>
+      <div class="overlay"></div>
+    </div>
+
  
  <!--
   <commerce-main-banner class="homepageglavnaslika-icon hidden sm:block" />
@@ -137,9 +138,12 @@
     </div>
     <div class="dogadajitrecired">
       <div class="srednjibannerdogadaji animate-on-scroll">
-        <carousel-3d :controls-visible="true" :loop="true" :display="5" :width="780" :height="530" :count="slides.length"
+        <carousel-3d :controls-visible="true" :loop="false" :display="3" :width="550" :height="360" :count="slides.length"
          :controls-prev-html="'&#10092; '" :controls-next-html="'&#10093;'" 
-               :controls-width="60" :controls-height="60" :perspective="12" >
+               :controls-width="60" :controls-height="60" :perspective="1" 
+        
+               ref="carousel"
+               @after-slide-change="updateCurrentIndex">
     <slide v-for="(slide, i) in slides" :index="i" :key="i" >
       <figure>
        <!-- <Link :href="route('skijasi.commerce-theme.uclanise', slide.slug)" style="color: white">  promijenit ovo za vijesti-->
@@ -157,6 +161,13 @@
       </figure>
     </slide>
 </carousel-3d>
+<div class="slide-dots">
+    <span v-for="(slide, i) in slides" :key="'dot-' + i" 
+          :class="{ 'active-dot': i === currentIndex }" 
+          @click="goToSlide(i)"></span>
+</div>
+
+
 </div>
 
     </div>
@@ -167,30 +178,54 @@
   :speed="100000"
   :width="250"
   :paused="isPaused"
-  class="rostsport-1-icon"
+  class="sponzor1"
   @mouseenter="pauseMarquee"
     @mouseleave="resumeMarquee"
 >
-<a href="https://www.dreizinnen.com/en/skiresort-3-zinnen-dolomites.html">
+<a class="rostsport-1-icon" href="https://www.dreizinnen.com/en/skiresort-3-zinnen-dolomites.html">
   <img src="/storage/slike/sponzori/sponzor1.jpg" />
 </a>
-<a href="https://www.energiapura.info">
+<a class="rostsport-1-icon" href="https://www.energiapura.info">
   <img src="/storage/slike/sponzori/sponzor2.jpg" />
 </a>
-<a href="https://elan.si">
+<a class="rostsport-1-icon" href="https://elan.si">
   <img src="/storage/slike/sponzori/sponzor3.png" />
 </a>
-<a href="https://dobro.hr">
+<a class="rostsport-1-icon" href="https://dobro.hr">
   <img src="/storage/slike/sponzori/sponzor4.png" />
 </a>
-  <a href="https://www.kotanyi.com/en/">
+  <a class="rostsport-1-icon" href="https://www.kotanyi.com/en/">
   <img src="/storage/slike/sponzori/sponzor5.jpg" />
 </a>
-  <a href="https://www.oryx-osiguranje.hr">
+  <a class="rostsport-1-icon" href="https://www.oryx-osiguranje.hr">
   <img src="/storage/slike/sponzori/sponzor6.png" />
 </a>
-  <a href="https://staklorez-buric.hr">
+  <a class="rostsport-1-icon" href="https://staklorez-buric.hr">
   <img src="/storage/slike/sponzori/sponzor7.jpg" />
+</a>
+<a class="rostsport-1-icon" href="https://lenovostore.hr">
+  <img src="/storage/slike/sponzori/sponzor8.png" />
+</a>
+<a class="rostsport-1-icon" href="https://5th-element.com.hr">
+  <img src="/storage/slike/sponzori/sponzor9.jpg" />
+</a>
+<a class="rostsport-1-icon" href="https://www.bolle.com">
+  <img src="/storage/slike/sponzori/sponzor10.jpg" />
+</a>
+<a class="rostsport-1-icon" href="https://www.jamnica.hr">
+  <img src="/storage/slike/sponzori/sponzor11.jpg" />
+</a>
+<a class="rostsport-1-icon" href="https://klara.hr">
+  <img src="/storage/slike/sponzori/sponzor12.jpg" />
+</a>
+<a class="rostsport-1-icon" href="https://www.oryx-asistencija.hr">
+  <img src="/storage/slike/sponzori/sponzor13.png" />
+</a>
+<a class="rostsport-1-icon" href="https://www.seat.hr">
+  <img src="/storage/slike/sponzori/sponzor14.jpg" />
+</a>
+<a class="rostsport-1-icon" href="https://galic-vina.hr">
+  <img src="/storage/slike/sponzori/sponzor15.png" />
 </a>
 </vue-marquee-slider>
 
@@ -301,8 +336,7 @@
 <script>
 import CommerceTopBar from '../components/commerce-top-bar.vue'
 import NovostiBanner from './../components/novosti-banner.vue'
-import { VueperSlides, VueperSlide } from 'vueperslides'
-import 'vueperslides/dist/vueperslides.css'
+
 import { VueMarqueeSlider } from 'vue-marquee-slider';
 import { Carousel3d, Slide } from 'vue-carousel-3d';
 
@@ -326,6 +360,9 @@ import { Link, Head } from "@inertiajs/inertia-vue"
 import { mapState } from 'vuex';
 
 
+
+
+
 import { VuePreloader } from 'vue2-preloader';
 
 export default {
@@ -333,8 +370,7 @@ export default {
     CommerceTopBar,
     CommerceMainBanner,
     NovostiBanner,
-    VueperSlides,
-    VueperSlide,
+
     VueMarqueeSlider,
     Carousel3d,
 Slide,
@@ -355,28 +391,34 @@ VuePreloader,
     
   },
   layout: [appLayout, defaultLayout],
-  computed: {
-
-
-    user(state) {
-        return state.user
-      },
-
-    splitCategory() {
-      return this.$_.chunk(this.productCategories, 2)
-    }
-  },
+ 
   data() {
     return {
+      showPreloader: false,
+      showAnimation: true,
+
+
+      firstLoad: true, 
+
+
+    
+      desktopVideoUrl:
+        'https://www.youtube.com/embed/9QR0c8cybkM?autoplay=1&mute=1&loop=1&playlist=9QR0c8cybkM&modestbranding=1&rel=0&controls=0&vq=hd2160',
+      mobileVideoUrl:
+        'https://www.youtube.com/embed/kYD8pPOTmDs?autoplay=1&mute=1&loop=1&playlist=kYD8pPOTmDs&modestbranding=1&rel=0&controls=0&vq=hd2160',
+      isSmallScreen: window.innerWidth < 800,
+
 // za clanke
       clanci:  [],
     thumbnails: [],
   // za clanke
-  showAnimation: true,
+
 
   slides: [{}, {}, {}, {}, {}, {}, {},{},{}, {}, {}, {}, {}, {},{},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}],
 
   isPaused: false,
+
+  currentIndex: 0,
 
   bannersponzori: {
       
@@ -483,7 +525,10 @@ this.fetchTotalUsers();
 
 
 
+  window.addEventListener('resize', this.updateScreenSize);
 
+  
+ 
 
 
 
@@ -503,8 +548,102 @@ this.fetchTotalUsers();
         return this.$_.find(state.themeConfigurations, { key: "twitterUrl" }).value;
       },
     }),
+
+    user(state) {
+    return state.user
+  },
+
+splitCategory() {
+  return this.$_.chunk(this.productCategories, 2)
+}
+  },
+
+ 
+
+
+  beforeDestroy() {
+    window.removeEventListener('resize', this.updateScreenSize);
+  },
+
+  watch: {
+    $route(to, from) {
+      this.firstLoad = from === null || from === undefined;
+    },
   },
   methods: {
+    checkAnimationStatus() {
+  // Check if the animation has been shown before
+  const animationShown = localStorage.getItem('animationShown');
+  console.log("TEST:", animationShown);
+  if (!animationShown) {
+    // Check the time since the last animation
+    const lastAnimationTime = localStorage.getItem('lastAnimationTime');
+    const currentTime = new Date().getTime();
+    const timeDifference = currentTime - lastAnimationTime;
+
+    // If not shown in the last 12 hours, show the animation
+    if (!lastAnimationTime || timeDifference > 12 * 60 * 60 * 1000) {
+      this.showAnimation = true;
+      localStorage.setItem('lastAnimationTime', currentTime);
+      console.log("TEST2:");
+    }
+  }
+},
+
+
+
+
+
+    checkPreloaderStatus() {
+      const lastVisitTimestamp = localStorage.getItem('lastVisitTimestamp');
+
+      if (!lastVisitTimestamp || this.isTimestampOlderThan12Hours(lastVisitTimestamp)) {
+        // If no timestamp is found or it's older than 12 hours, show the preloader
+        this.showPreloader = true;
+
+        // Update the timestamp in local storage to the current time
+        localStorage.setItem('lastVisitTimestamp', new Date().getTime().toString());
+      }
+    },
+
+    isTimestampOlderThan12Hours(timestamp) {
+      const twelveHoursInMilliseconds = 12 * 60 * 60 * 1000;
+      const currentTime = new Date().getTime();
+      const lastVisitTime = parseInt(timestamp);
+
+      return currentTime - lastVisitTime > twelveHoursInMilliseconds;
+    },
+
+
+    transitionIsOver() {
+  // Set a flag in local storage to indicate that the animation has been shown
+  localStorage.setItem('animationShown', 'true');
+
+  console.log("TEST1");
+
+  // Set the current timestamp in localStorage
+  localStorage.setItem('lastAnimationTime', new Date().getTime());
+
+  this.showAnimation = false;
+},
+
+
+ 
+
+    updateScreenSize() {
+      this.isSmallScreen = window.innerWidth < 800;
+    },
+
+
+    updateCurrentIndex(newIndex) {
+    this.currentIndex = newIndex;
+},
+
+
+    goToSlide(index) {
+        this.$refs.carousel.goSlide(index);
+        this.currentIndex = index;
+    },
     getSponzore() {
       this.$api.skijasiContent
         .fetch({
@@ -617,6 +756,9 @@ this.fetchTotalUsers();
 
   created() {
     this.fetchPosts();
+
+    this.checkAnimationStatus();
+    this.checkPreloaderStatus();
   },
 
 
@@ -625,20 +767,36 @@ this.fetchTotalUsers();
 
 <style scoped>
 
-
-.video-container{
-  width: 100vw;
-  height: 115vh;
+.video-container {
+  position: relative;
+  width: 100%;
 }
 
- iframe {
+.video-container.mobile {
+  padding-bottom: 133.33%; /* 3:4 aspect ratio for mobile */
+}
+
+.video-container.desktop {
+  padding-bottom: 60.25%; /* 16:9 aspect ratio for desktop */
+}
+
+#youtube-player {
   position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 100vw;
-  height: 100vh;
-  transform: translate(-50%, -50%);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   pointer-events: none;
+}
+
+.overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 8%; /* sakrivanje logoa */
+  background: #f3f3f3; 
+  pointer-events: none; /* Ensure the overlay doesn't block interaction */
 }
 
 #text{
@@ -649,24 +807,47 @@ this.fetchTotalUsers();
   transform: translate(-50%, -50%);
 }
 
-@media (min-aspect-ratio: 16/9) {
-  .video-container iframe {
-    height: 56.25vw;
-  }
-}
-@media (max-aspect-ratio: 16/9) {
-  .video-container iframe {
-    width: 177.78vh;
-  }
-}
-@media (max-width: 767px) {
-  .video-container iframe {
-    width: 88vh;
-    height: 95vw;
-  }
 
 
+
+
+
+
+
+
+.carousel-3d-container {
+    overflow: visible;
 }
+
+.carousel-3d-controls-prev {
+    left: -90px; /* Adjust this value as needed */
+}
+
+.carousel-3d-controls-next {
+    right: -40px; /* Adjust this value as needed */
+}
+
+.slide-dots {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px; /* adjust as needed */
+}
+
+.slide-dots span {
+    width: 10px;
+    height: 10px;
+    background-color: gray; /* Default color is gray */
+    border-radius: 50%;
+    margin: 0 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* transition on background-color */
+}
+
+.slide-dots .active-dot {
+    background-color: #03a9f4; /* Active dot is blue */
+}
+
+
 
 
 
@@ -713,14 +894,14 @@ this.fetchTotalUsers();
     max-height: 100%; 
     
     object-fit: cover;
-    opacity: 0; /* Set initial opacity to 50% */
-  transition: opacity 1s ease-in-out; /* Apply a smooth transition to opacity */
-  animation: fadeIn 1s ease-in-out 3s forwards; /* Apply the initial fade-in animation */
+    /* opacity: 0;  Set initial opacity to 50% 
+  transition: opacity 1s ease-in-out;  Apply a smooth transition to opacity 
+  animation: fadeIn 1s ease-in-out 3s forwards;  Apply the initial fade-in animation */
     margin-bottom: -3.7rem;
   }
   .obavijestitraka {
     align-self: stretch;
-    background-color: #fff;
+    background-color: #ffffff;
 
     margin-bottom: -4rem;
   }
@@ -1024,7 +1205,7 @@ this.fetchTotalUsers();
     align-self: stretch;
     flex: 1;
     position: relative;
-    max-width: 100%;
+    max-width: 20%;
     overflow: hidden;
     max-height: 100%;
     object-fit: cover;
@@ -1120,7 +1301,7 @@ this.fetchTotalUsers();
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 6.25rem 0rem;
+    padding: 0.25rem 0rem;
     font-size: 1.25rem;
     color: #fff;
   }
@@ -1138,19 +1319,23 @@ this.fetchTotalUsers();
     align-items: center;
     justify-content: center;
     position: relative;
-    background-color: #fff;
+ 
     width: 100%;
     height: 7.69rem;
     overflow: hidden;
 }
 
+
 .rostsport-1-icon {
     display: flex;
     align-items: center;
-    width: 100%;
-    height: 100%;
+    width: 15.63rem;
+    height: 7.68rem;
+    padding: 2.4rem;
     object-fit: cover;
+    background-color: #fff;
 }
+
 
 
   .img-4689-photoroom-1-icon {
@@ -1470,6 +1655,7 @@ this.fetchTotalUsers();
     font-size: 2.5rem;
     color: #000;
     font-family: Inter;
+    padding-bottom: 3%;
   }
 
   @media screen and (max-width: 1200px) {
@@ -1767,39 +1953,15 @@ this.fetchTotalUsers();
   font-size: 1rem;
   font-weight: 1000;
   opacity: 0.7;
-  background-color: #fff;
-  color: #03a9f4;
+  background-color: #fe792c;
+  color: #fff;
   padding-top: 1.5rem;
   padding-bottom: 1.5rem;
+  margin-top: -4rem; 
 }
 
-.vueperslides__bullet .default {
-  background-color: rgba(0, 0, 0, 0.3);
-  border: none;
-  box-shadow: none;
-  transition: 0.3s;
-  width: 16px;
-  height: 16px;
-}
 
-.vueperslides__bullet--active .default {background-color: #42b983;}
 
-.vueperslides__bullet span {
-  display: block;
-  color: #000;
-  font-size: 10px;
-  opacity: 0.8;
-}
-
-.vueperslides__arrow {color: yellow}
-.vueperslides__bullet {color: yellow}
-.vueperslides__bullet--active {color: yellow}
-.vueperslides__bullet span {
-  display: block;
-  color: #000;
-  font-size: 10px;
-  opacity: 0.8;
-}
 
 .thumbnails {
   margin: auto;
@@ -1825,7 +1987,7 @@ this.fetchTotalUsers();
 .pocetnaanimacija {
 opacity: 0; /* Set initial opacity to 50% */
   transition: opacity 1s ease-in-out; /* Apply a smooth transition to opacity */
-  animation: fadeIn 1s ease-in-out 5s forwards; /* Apply the initial fade-in animation */
+  animation: fadeIn 1s ease-in-out 4s forwards; /* Apply the initial fade-in animation */
 }
 
 /* Keyframes animation for fading in */

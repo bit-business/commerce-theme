@@ -583,13 +583,17 @@ export default {
   }
   .footertext {
     position: absolute;
-    top: calc(50% + 336px);
+    top: calc(50% + 326px);
     left: calc(50% - 200px);
     font-size: 0.9rem;
     font-weight: 500;
     color: #fff;
     text-align: left;
   }
+
+
+
+
   .logohzuts-icon {
     position: absolute;
     width: 13.89%;

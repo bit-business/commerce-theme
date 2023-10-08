@@ -1172,7 +1172,7 @@ top: 0%;
 
 
 
-    backdrop-filter: blur(4px);
+    backdrop-filter: blur(1px);
  
     height: 3.75rem;
     text-align: center;
@@ -1224,9 +1224,7 @@ top: 0%;
       display: flex;
     }
 
-.navigation-bar{
-background-color: #fff;
-}
+
 
   }
   @media screen and (max-width: 800px) {
