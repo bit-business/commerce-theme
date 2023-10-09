@@ -58,7 +58,7 @@
           <img class="fbvector-icon" alt="" src="/storage/slike/footer/fbvector.svg" />
         </a>
        <a class="youtubegrupa">
-          <img class="fbvector-icon" alt="" src="/storage/slike/footer/fbvector.svg" />
+          <img class="instagramvector-icon" alt="" src="/storage/slike/footer/youtubeicona.svg" />
         </a>
       </div>
     </footer>

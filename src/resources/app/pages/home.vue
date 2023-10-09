@@ -177,6 +177,7 @@
   id="marquee-slider-width"
   :speed="100000"
   :width="250"
+  :space="100"
   :paused="isPaused"
   class="sponzor1"
   @mouseenter="pauseMarquee"
@@ -250,19 +251,16 @@
         <div class="analitika1">
           <b class="b">{{ totalUsers }}</b>
           <b class="lanova">Članova</b>
-          <img class="analitika1-child" alt="" src="/storage/slike/pocetna/line-112.svg" />
           <img class="membership-1-icon" alt="" src="/storage/slike/pocetna/membership-1.svg" />
         </div>
         <div class="analitika1">
           <b class="b1">87</b>
           <b class="godina-postojanja">Godina postojanja</b>
-          <img class="analitika2-child" alt="" src="/storage/slike/pocetna/line-112.svg" />
           <img class="group-icon" alt="" src="/storage/slike/pocetna/group.svg" />
         </div>
         <div class="analitika1">
           <b class="b2">6</b>
           <b class="podrunih-zborova">Područnih zborova</b>
-          <img class="analitika3-child" alt="" src="/storage/slike/pocetna/line-112.svg" />
           <img class="group-icon1" alt="" src="/storage/slike/pocetna/group1.svg" />
         </div>
         <div class="analitika4">
@@ -272,10 +270,18 @@
         </div>
       </div>
     </div>
+
+  
     <div class="bilteniframe animate-on-scroll">
+
+
       <div class="biltenipodframe">
         <b class="bilteni-hzuts-a">BILTENI HZUTS-a</b>
-        <div class="frame-parent">
+
+        <div class="slider-container">
+        <img class="slider-arrow left-arrow" src="/storage/slike/pocetna/lijevastrelica.svg" @click="moveSlider(-1)">
+      <div class="bilteni-slides">
+     
           <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2020/01/HZUTS-Bilten-2020-v1.3.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2020.png" />
             <b class="bilten-sezona-20192020-container">
@@ -311,14 +317,45 @@
               <p class="bilten-sezona">2015/2016</p>
             </b>
           </a>
-        </div>
-        <img class="lijevastrelica-icon" alt="" src="/storage/slike/pocetna/lijevastrelica.svg" />
-        <div class="desnastrelica">
-          <div class="desnastrelica-child" />
-          <img class="vector-icon4" alt="" src="/storage/slike/pocetna/vector11.svg" />
-        </div>
+        
+          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/02/HZUTS_Bilten_2015.pdf">
+            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2015.png" />
+            <b class="bilten-sezona-20192020-container">
+              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">2014/2015</p>
+            </b>
+          </a>
+
+          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/02/HZUTS_Bilten_2014.pdf">
+            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2014.png" />
+            <b class="bilten-sezona-20192020-container">
+              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">2013/2014</p>
+            </b>
+          </a>
+
+          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/02/HZUTS_Bilten_2013.pdf">
+            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2013.png" />
+            <b class="bilten-sezona-20192020-container">
+              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">2012/2013</p>
+            </b>
+          </a>
+          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/02/HZUTS_Bilten_2012.pdf">
+            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2012.png" />
+            <b class="bilten-sezona-20192020-container">
+              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">2011/2012</p>
+            </b>
+          </a>
+    
       </div>
+      
+      <img class="slider-arrow right-arrow" src="/storage/slike/pocetna/desnipointer.svg" @click="moveSlider(1)">
     </div>
+    </div>
+    </div>
+
   </div>
 </div>
 </template>
@@ -399,6 +436,9 @@ VuePreloader,
 
 
       firstLoad: true, 
+
+      scrollPosition: 0,
+    maxScroll: 0,
 
 
     
@@ -528,7 +568,9 @@ this.fetchTotalUsers();
   window.addEventListener('resize', this.updateScreenSize);
 
   
- 
+  const slider = this.$el.querySelector('.bilteni-slides');
+  this.maxScroll = slider.scrollWidth - slider.clientWidth;
+  this.updateArrowsVisibility();
 
 
 
@@ -571,6 +613,39 @@ splitCategory() {
     },
   },
   methods: {
+    moveSlider(direction) {
+    const slider = this.$el.querySelector('.bilteni-slides');
+    const amount = direction * 250;
+    slider.scrollBy({
+      left: amount,
+      behavior: 'smooth'
+    });
+    this.scrollPosition = slider.scrollLeft;
+
+    // Update arrows visibility
+    this.updateArrowsVisibility();
+  },
+
+  updateArrowsVisibility() {
+    const leftArrow = this.$el.querySelector('.left-arrow');
+    const rightArrow = this.$el.querySelector('.right-arrow');
+
+    // Hide left arrow if at the start
+    if (this.scrollPosition <= 0) {
+      leftArrow.style.display = 'none';
+    } else {
+      leftArrow.style.display = 'block';
+    }
+
+    // Hide right arrow if at the end
+    if (this.scrollPosition >= this.maxScroll) {
+      rightArrow.style.display = 'none';
+    } else {
+      rightArrow.style.display = 'block';
+    }
+  },
+   
+
     checkAnimationStatus() {
   // Check if the animation has been shown before
   const animationShown = localStorage.getItem('animationShown');
@@ -908,11 +983,55 @@ splitCategory() {
 
 
 
+  .slider-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-  .obavijestitraka {
-    align-self: stretch;
-    background-color: #fff;
-  }
+    overflow: hidden;
+width: 100%;
+  height: 100%;    
+}
+
+
+.bilteni-slides {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow-x: scroll;
+
+  align-items: center;
+    justify-content: flex-start;
+
+padding-left: 6%;
+padding-right: 6%;
+}
+
+.rectangle-parent {
+  scroll-snap-align: start;
+  flex: 0 0 auto;
+  margin-right: 66px; /* Adjust this gap between slides if necessary */
+}
+
+.slider-arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 10;
+}
+
+.left-arrow {
+  left: 3%;
+}
+
+.right-arrow {
+  right: 3%;
+}
+
+
+
+
   .kako-postati-uitelj {
     position: absolute;
     width: 100%;
@@ -1053,7 +1172,7 @@ splitCategory() {
     height: 37.5rem;
   }
   .drugiredlijevo-parent {
-    width: 87.5rem;
+    flex: 1;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -1072,6 +1191,9 @@ splitCategory() {
     box-sizing: border-box;
     max-height: 375rem;
   }
+
+
+
   .img-5449-photoroom-1-icon {
     position: absolute;
     height: 87.5%;
@@ -1496,19 +1618,19 @@ splitCategory() {
   .b3 {
     position: absolute;
     top: 11.83rem;
-    left: calc(50% - 36.5px);
+    left: calc(50% - 70px);
   }
   .demostratora-skijanja {
     position: absolute;
     top: 18.33rem;
-    left: calc(50% - 107.5px);
+    left: calc(50% - 141px);
     font-size: 1.25rem;
     color: #000;
   }
   .clip-path-group {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 65.5px);
+    left: calc(50% - 94px);
     width: 8.13rem;
     height: 8.13rem;
   }
@@ -1519,23 +1641,28 @@ splitCategory() {
     position: relative;
   }
   .analitikapodgrupa {
+
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Adjust the 200px to your preferred minimum width */
+
     flex: 1;
-    height: 19.81rem;
+    height: auto;
     padding: 0rem 8.75rem;
     box-sizing: border-box;
     gap: 4.69rem;
     display: grid;
-    grid-template-columns: minmax(auto, 240px) minmax(auto, 238px) minmax(
-        auto,
-        242px
-      ) minmax(auto, 215px);
-    grid-row-gap: 0px;
-    grid-column-gap: 75px;
+
+    justify-content: center;  /* Horizontally center the children */
+    align-items: center;      /* Vertically center the children */
+
+      /* Gap between the grid items */
+    grid-gap: 3.2rem 4.69rem; 
+
+    flex-wrap: wrap; 
   }
   .analitikahome {
     align-self: stretch;
     background-color: #fff;
-    overflow: hidden;
+
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1545,8 +1672,7 @@ splitCategory() {
     color: #03a9f4;
   }
   .analitika1, .analitika2, .analitika3, .analitika4 {
-    display: inline-block;
-    flex: none;
+grid-column: span 1;
 }
   .bilteni-hzuts-a {
     position: absolute;
@@ -1949,14 +2075,15 @@ splitCategory() {
 
 
 .pokretnitekst{
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 1000;
   opacity: 0.7;
   background-color: #fe792c;
   color: #fff;
-  padding-top: 1.5rem;
-  padding-bottom: 1.5rem;
-  margin-top: -4rem; 
+  padding-top: 0.9rem;
+  padding-bottom: 0.9rem;
+  margin-top: -4.6rem; 
+  width: 100%;
 }
 
 

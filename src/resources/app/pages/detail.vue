@@ -1,7 +1,4 @@
 
-
-
-
 <!--
 <template>
   <div>
@@ -463,7 +460,9 @@
   </div>
 </template>
 
--->
+->
+
+
 
 
 <template>
@@ -552,8 +551,241 @@
   </div>
 </template>
 
+-->
 
 
+
+<template>
+  <div class="hzuts-dogadaji-detalji">
+    <div class="glavnipodframe">
+      <div class="glavnipodpodframe">
+        <div class="glavnaslikaframe" :style="{ backgroundImage: backgroundImage }">
+
+          <div class="glavnisasvimenazivisimjesto">
+            <div class="nazivseminarapodframe">
+              <div class="dravni-seminar">{{ product.name }}</div>
+              <div class="div">{{ formatDateRange(product.datumPocetka, product.datumKraja) }}</div>
+            </div>
+            <div class="nazivmjestaframe">
+              <div class="nazivmjestaframe2">
+                <div class="sexten">{{ product.mjesto }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+     <!--  <button class="qrcodeframe">
+          <div class="qrcodeframe-child" />
+          <img class="qr-code-1-icon" alt="" src="/storage/slike/detail/qrcode-1.svg" />
+        </button>--> 
+        <div class="trakakategorije">
+  <div class="framezakategorijepod">
+    <div class="framezakategorije">
+      <button :class="{ 'active': activeSection === 'skijaliste' }" class="o-skijalitu" @click="activeSection = 'skijaliste'">O skijalištu</button>
+      <div class="framezakategorije-child" />
+      
+      <button :class="{ 'active': activeSection === 'informacije' }" class="o-skijalitu" @click="activeSection = 'informacije'">Informacije</button>
+      <div class="framezakategorije-child" />
+      
+      <button :class="{ 'active': activeSection === 'smjestaj' }" class="o-skijalitu" @click="activeSection = 'smjestaj'">Smještaj</button>
+      <img class="framezakategorije-inner" alt="" src="/storage/slike/detail/line-39.svg" />
+      
+      <button :class="{ 'active': activeSection === 'prijevoz' }" class="o-skijalitu" @click="activeSection = 'prijevoz'">Prijevoz</button>
+      <img class="framezakategorije-inner" alt="" src="/storage/slike/detail/line-39.svg" />
+      
+      <button :class="{ 'active': activeSection === 'cijene' }" class="o-skijalitu" @click="activeSection = 'cijene'">Plaćanje i cijene</button>
+    </div>
+  </div>
+</div>
+
+      </div>
+
+      
+
+
+
+
+
+        <div v-if="activeSection === 'skijaliste'" class="smjestajpodframe">
+  <!-- Content for O skijalištu -->
+  <div class="smjestajglavniframe">
+  <div class="smjestajpodframe">
+          <div class="tekstovipodpodframe">
+            <div class="titleglavninatekstu">
+              <b class="sexten">O skijalištu</b>
+            </div>
+            <div class="adminsadrzajframe">
+              <div class="sudionici-seminara-bit-e-smje-parent">
+             
+                <div class="smjetaj-je-u-container">
+                  <div v-html="product.desc"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+  
+        </div>
+      </div>
+  <!-- Content for O skijalištu -->
+</div>
+
+<div v-if="activeSection === 'informacije'" class="smjestajpodframe">
+  <!-- Content for Informacije -->
+  <div class="smjestajglavniframe">
+  <div class="smjestajpodframe">
+          <div class="tekstovipodpodframe">
+            <div class="titleglavninatekstu">
+              <b class="sexten">Informacije</b>
+            </div>
+            <div class="adminsadrzajframe">
+              <div class="sudionici-seminara-bit-e-smje-parent">
+             
+                <div class="smjetaj-je-u-container">
+                  <div v-html="product.desc2"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+  
+  
+        </div>
+      </div>
+   <!-- Content for Informacije -->
+</div>
+
+<div v-if="activeSection === 'smjestaj'" class="smjestajpodframe">
+  <!-- Content for Smještaj -->
+
+  <div class="smjestajglavniframe">
+  <div class="smjestajpodframe">
+          <div class="tekstovipodpodframe">
+            <div class="titleglavninatekstu">
+              <b class="sexten">Smještaj</b>
+            </div>
+            <div class="adminsadrzajframe">
+              <div class="sudionici-seminara-bit-e-smje-parent">
+             
+                <div class="smjetaj-je-u-container">
+                  <div v-html="product.desc3"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="galerijaframe">
+
+            <div class="photo-gallery">
+              <img class="arrow-left" @click="prevPhoto" alt="" src="/storage/slike/detail/group-276.svg" />
+              <img class="arrow-right" @click="nextPhoto" src="/storage/slike/detail/group-2761.svg"/>
+
+    <div class="gallery-container" ref="galleryContainer">
+      <div v-for="(photo, index) in photos" :key="index" class="photo" @click="showFullscreen(index)">
+        <img class="galerijaframe-item" :src="photo" alt="Photo">
+        <div class="overlay">
+                  <svg width="32"  class="eye-icon" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M31.7966 15.3772C31.5108 14.9861 24.6993 5.80176 15.9998 5.80176C7.30039 5.80176 0.488626 14.9861 0.203063 15.3768C-0.0676876 15.7478 -0.0676876 16.251 0.203063 16.622C0.488626 17.013 7.30039 26.1974 15.9998 26.1974C24.6993 26.1974 31.5108 17.013 31.7966 16.6223C32.0678 16.2513 32.0678 15.7478 31.7966 15.3772ZM15.9998 24.0875C9.59177 24.0875 4.0417 17.9917 2.39875 15.9988C4.03957 14.0043 9.57802 7.91164 15.9998 7.91164C22.4076 7.91164 27.9573 14.0064 29.6009 16.0003C27.9601 17.9948 22.4217 24.0875 15.9998 24.0875Z" fill="white"/>
+<path d="M15.9999 9.66992C12.5097 9.66992 9.67017 12.5095 9.67017 15.9996C9.67017 19.4898 12.5097 22.3293 15.9999 22.3293C19.49 22.3293 22.3296 19.4898 22.3296 15.9996C22.3296 12.5095 19.49 9.66992 15.9999 9.66992ZM15.9999 20.2194C13.673 20.2194 11.7801 18.3264 11.7801 15.9996C11.7801 13.6728 13.673 11.7799 15.9999 11.7799C18.3267 11.7799 20.2196 13.6728 20.2196 15.9996C20.2196 18.3264 18.3267 20.2194 15.9999 20.2194Z" fill="white"/>
+</svg>                
+            </div>
+      </div>
+      
+    </div>
+
+   
+  </div>
+
+          </div>
+  
+  
+        </div>
+      </div>
+    <!-- Content for Smještaj -->
+</div>
+
+<div v-if="activeSection === 'prijevoz'" class="smjestajpodframe">
+  <!-- Content for Prijevoz -->
+  <div class="smjestajglavniframe">
+  <div class="smjestajpodframe">
+          <div class="tekstovipodpodframe">
+            <div class="titleglavninatekstu">
+              <b class="sexten">Prijevoz</b>
+            </div>
+            <div class="adminsadrzajframe">
+              <div class="sudionici-seminara-bit-e-smje-parent">
+             
+                <div class="smjetaj-je-u-container">
+                  <div v-html="product.desc4"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+       
+  
+  
+        </div>
+      </div>
+    <!-- Content for Prijevoz -->
+</div>
+
+<div v-if="activeSection === 'cijene'" class="smjestajpodframe">
+  <!-- Content for Plaćanje i cijene -->
+  <div class="smjestajglavniframe">
+  <div class="smjestajpodframe">
+          <div class="tekstovipodpodframe">
+            <div class="titleglavninatekstu">
+              <b class="sexten">Plaćanje i cijene</b>
+            </div>
+            <div class="adminsadrzajframe">
+              <div class="sudionici-seminara-bit-e-smje-parent">
+             
+                <div class="smjetaj-je-u-container">
+                  <div v-html="product.desc5"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+  
+        </div>
+
+
+
+
+
+
+
+</div>
+      <div class="framegumbi">
+        <a class="lijevigumb" href="https://forms.gle/z95LVJdJV6Lr8jyh7">
+          <b class="prijavnica-za-dogaaj">PRIJAVNICA ZA DOGAĐAJ</b>
+        </a>
+       <!-- <a class="desnigumb">
+          <b class="uplatite-lanarinu-hzuts-u">UPLATITE ČLANARINU HZUTS-U</b>
+        </a>-->
+      </div>
+
+    <!-- Content for Plaćanje i cijene -->
+
+</div>
+
+
+
+
+
+
+
+      
+
+
+
+
+
+
+
+  
+    </div>
+  </div>
+</template>
 
 
 <script>
@@ -587,6 +819,26 @@ export default {
   inject: ['goBack'],
   data() {
     return {
+
+      activeSection: 'skijaliste',
+
+
+      backgroundImage: null,
+      photos: [
+        '/storage/slike/dogadaj1/galerija1.jpeg',
+        '/storage/slike/dogadaj1/galerija2.jpeg',
+        '/storage/slike/dogadaj1/galerija3.jpeg',
+        '/storage/slike/dogadaj1/galerija4.jpeg',
+        '/storage/slike/dogadaj1/galerija5.jpeg',
+        '/storage/slike/dogadaj1/galerija6.jpeg',
+        '/storage/slike/dogadaj1/galerija7.jpeg',
+        '/storage/slike/dogadaj1/galerija8.jpeg',
+
+      ],
+      currentIndex: 0,
+      fullscreenImageIndex: null,
+
+
       reviewActive: 0,
       quantity: 1,
       activeImageCarousel: 0,
@@ -613,6 +865,10 @@ export default {
       },
       product: {
         desc: null,
+        desc2: null,
+        desc3: null,
+        desc4: null,
+        desc5: null,
         name: "",
         datum_pocetka: null,
         datum_kraja: null,
@@ -712,12 +968,170 @@ export default {
       handler() {
         this.getReviews()
       }
-    }
+    },
+
+    'product.productImage': {
+    immediate: true,
+    handler(newVal) {
+      console.log('New image value:', newVal);
+      this.backgroundImage = newVal ? `url(${newVal})` : 'none';
+      console.log('Background image:', this.backgroundImage);
+    },
+  },
+
   },
   mounted() {
     this.getProduct()
+
   },
   methods: {
+    prevPhoto() {
+      if (this.currentIndex > 0) {
+        this.currentIndex--;
+        this.scrollToCurrentIndex();
+      }
+    },
+    nextPhoto() {
+      if (this.currentIndex < this.photos.length - 1) {
+        this.currentIndex++;
+        this.scrollToCurrentIndex();
+      }
+    },
+    scrollToCurrentIndex() {
+      const container = this.$refs.galleryContainer;
+      const scrollPosition = container.offsetWidth * this.currentIndex;
+      container.scrollLeft = scrollPosition;
+    },
+
+
+    showFullscreen(index) {
+    // Use the index directly to get the image URL from the photos array
+    const imageURL = this.photos[index];
+    this.fullscreenImageIndex = index;
+
+
+    const overlay = document.createElement('div');
+    overlay.id = 'fullscreen-overlay';
+    overlay.style.position = 'fixed';
+    overlay.style.top = '0';
+    overlay.style.left = '0';
+    overlay.style.width = '100%';
+    overlay.style.height = '100%';
+    overlay.style.backgroundColor = 'rgba(0,0,0,0.9)';
+    overlay.style.display = 'flex';
+    overlay.style.justifyContent = 'center';
+    overlay.style.alignItems = 'center';
+    overlay.style.zIndex = '10000';
+
+    overlay.innerHTML = ''; // Clear previous content
+
+    const img = new Image();
+    img.src = imageURL;
+    overlay.appendChild(img);
+
+    const leftArrow = document.createElement('button');
+    leftArrow.innerHTML = '&lt;';
+    leftArrow.onclick = () => this.showPreviousImage();
+    leftArrow.style.position = 'absolute';
+    leftArrow.style.left = '10px';
+    leftArrow.style.top = '50%';
+    leftArrow.style.transform = 'translateY(-50%) scaleY(1.7)';  
+    leftArrow.style.fontSize = '3em';  
+    leftArrow.style.lineHeight = '1'; 
+    leftArrow.style.color = 'white';
+    leftArrow.style.background = 'none';
+    leftArrow.style.border = 'none';
+    leftArrow.style.cursor = 'pointer';
+    overlay.appendChild(leftArrow);
+
+    const rightArrow = document.createElement('button');
+    rightArrow.innerHTML = '&gt;';
+    rightArrow.onclick = () => this.showNextImage();
+    rightArrow.style.position = 'absolute';
+    rightArrow.style.right = '10px';
+    rightArrow.style.top = '50%';
+    rightArrow.style.transform = 'translateY(-50%) scaleY(1.7)';  // Stretch the arrow vertically
+    rightArrow.style.fontSize = '3em';  
+    rightArrow.style.lineHeight = '1'; 
+    rightArrow.style.color = 'white';
+    rightArrow.style.background = 'none';
+    rightArrow.style.border = 'none';
+    rightArrow.style.cursor = 'pointer';
+    overlay.appendChild(rightArrow);
+
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            document.body.removeChild(overlay);
+            this.fullscreenImageIndex = null;
+        }
+    });
+
+
+
+
+ // Create the "X" button
+ const closeButton = document.createElement('button');
+    closeButton.innerHTML = 'x';
+    closeButton.onclick = () => {
+        document.body.removeChild(overlay);
+    };
+    closeButton.style.position = 'absolute';
+    closeButton.style.top = '20px';
+    closeButton.style.right = '20px';
+    closeButton.style.fontSize = '1.4em';
+    closeButton.style.transform = 'translateY(-50%) scaleX(1.4)';  // Stretch the arrow vertically
+    closeButton.style.color = 'white';
+    closeButton.style.background = 'none';
+    closeButton.style.border = 'none';
+    closeButton.style.cursor = 'pointer';
+    closeButton.style.zIndex = '10';  // Ensure it's above other elements
+    overlay.appendChild(closeButton);
+
+    document.body.appendChild(overlay);
+    overlay.addEventListener('click', (e) => {
+        if (e.target === overlay) {
+            document.body.removeChild(overlay);
+        }
+    });
+
+
+
+
+},
+
+
+
+showNextImage() {
+    if (this.fullscreenImageIndex < this.photos.length - 1) {
+      this.fullscreenImageIndex++;
+    } else {
+      this.fullscreenImageIndex = 0; // loop back to the first image
+    }
+    const overlay = document.getElementById('fullscreen-overlay');
+    const img = overlay.querySelector('img');
+    img.src = this.photos[this.fullscreenImageIndex];
+  },
+
+  showPreviousImage() {
+    if (this.fullscreenImageIndex > 0) {
+      this.fullscreenImageIndex--;
+    } else {
+      this.fullscreenImageIndex = this.photos.length - 1; // loop back to the last image
+    }
+    const overlay = document.getElementById('fullscreen-overlay');
+    const img = overlay.querySelector('img');
+    img.src = this.photos[this.fullscreenImageIndex];
+  },
+
+
+
+
+
+
+    setBackgroundImage(imageUrl) {
+      this.backgroundImage = imageUrl || 'none';
+    },
 
     formatDateRange(datumPocetka, datumKraja) {
         const startDate = new Date(datumPocetka);
@@ -832,8 +1246,10 @@ export default {
           this.activeStock = res.data.product.productDetails[0].quantity
           this.selectedProduct.id = res.data.product.productDetails[0].id
           this.activeDiscount = res.data.product.productDetails[0].discount
-          this.getSimilarProduct()
-          this.getReviews()
+         // this.getSimilarProduct()
+         // this.getReviews()
+         console.log('Active Image Source:', this.activeImageSource);
+
         })
         .catch(err => {
           this.$helper.displayErrors(err)
@@ -951,283 +1367,508 @@ export default {
 }
 </script>
 <style scoped>
+.photo-gallery {
+  position: relative;
+  width: 100%;  /* Or any defined width */
+  height: auto; /* Or any defined height */
+}
+
+.active {
+  background-color: #03A9F4;
+  color: white;
+}
 
 
-  .check-square-1-parent:hover,
-.truck-1-parent:hover,
-.home-icon-parent:hover {
+.o-skijalitu::before {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    bottom: -30px; 
+    left: 0;
+    right: 0;
+    height: 2px;  /* Thickness of the line */
+    background-color: #03A9F4;
+    transform: scaleX(0);
+    transform-origin: bottom right;
+    transition: transform 0.3s ease-out;
+}
+
+/* Hover effect: Line appears from right to left */
+.o-skijalitu:hover::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+/* Active button style: A full line below the button */
+.active::before {
+    transform: scaleX(1);
+    transform-origin: bottom left;
+}
+
+
+
+
+.photo {
+  position: relative; 
+  flex: none;  /* This ensures that the item does not shrink or grow */
+  width: 11.14rem;  /* Set a fixed width for the photos */
+  height: 12.5rem; 
+  margin-right: 1.13rem;  /* Set a fixed gap between photos */
+
+
+  cursor: pointer;
+  display: flex; 
+  align-items: center;  /* Center vertically */
+  justify-content: flex-start;  /* Center horizontally */
+  overflow: hidden;
+}
+
+.gallery-container {
+  display: flex;
+  width: calc(100% - 4%);  /* Minus the width of both arrows */
+  overflow-x: scroll;
+  scroll-snap-type: x mandatory;
+  white-space: nowrap;
+  margin: 0 auto;
+  padding: 0 2%;  /* Padding equals half the width of one arrow, so the first and last photos are not hidden behind arrows */
+}
+.arrow-left, .arrow-right {
+    z-index: 1001; /* Ensure it's above the photos and other elements */
+}
+
+
+
+
+.arrow-left {
+    position: absolute;
+    left: 0; /* Position it to the extreme left */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.arrow-right {
+    position: absolute;
+    right: 0; /* Position it to the extreme right */
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+.photo, .overlay, .galerijaframe-item {
+  box-sizing: border-box;
+}
+
+.overlay {
+  position: absolute;
+    border-radius: 10px;
+    width: 11.14rem;
+    height: 80%;
+    object-fit: cover;
+    display: block;
+
+
+  background-color: #03A9F4CC;
+  opacity: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out; /* smooth fade-in effect */
+}
+
+.eye-icon {
+  width: 32px;
+  height: 32px;
+}
+
+.photo:hover .overlay {
+  opacity: 1;
+}
+
+.left-pointer, .right-pointer {
+    position: absolute; /* Takes the pointers out of the normal flow */
+    top: 50%;  /* Vertically centers the pointers */
+    transform: translateY(-50%); 
+    width: 40px;  /* Adjusted width */
+    height: 40px; /* Adjusted height to match width */
+    font-size: 24px; 
+    align-items: center;
+    justify-content: center;
+    background-color: black; 
+    opacity: 40%;
+    display: flex;  
+    border-radius: 50%; /* Makes it a circle */
+    padding: 10px; /* Adjusts the size of the circle */
+    cursor: pointer; /* Indicates interactivity */
+    z-index: 2; /* Ensure pointers are above other elements */
+}
+
+.left-pointer {
+    left: 3%; /* Positions at the left end */
+    color: white;
+/* adjust as needed */
+    font-weight: 500;
+}
+
+.right-pointer {
+    right: 3%; /* Positions at the right end */
+    color: white;
+ /* adjust as needed */
+    font-weight: 500;
+}
+
+
+
+
+
+.lijevigumb {
+    text-decoration: none;
+    border: 2px solid #03a9f4;
+    box-sizing: border-box;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 3.94rem;
+    opacity: 1;
+    color: inherit;
+  }
+  .lijevigumb:hover {
     color: #fff;
     background-color: #03a9f4;
 }
 
-.check-square-1-parent:hover .check-square-1-icon path,
-.truck-1-parent:hover .truck-1-icon path,
-.home-icon-parent:hover .home-icon path {
-    stroke: white; 
-}
-
-  .logohzuts-icon {
-    position: absolute;
-    margin: 0 !important;
-    top: 0rem;
-    left: 0rem;
-    width: 8.75rem;
-    height: 8.75rem;
-    z-index: 0;
-  }
-  .logoframe {
-    margin: 0 !important;
-    position: absolute;
-    top: 23.5rem;
-    left: 4rem;
-    width: 8.75rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0.63rem;
-    box-sizing: border-box;
-    z-index: 0;
-   
-  }
-  .objavljeno-20032023 {
+  .dravni-seminar {
+    align-self: stretch;
     position: relative;
   }
-  .objavljenoframe {
-    margin: 0 !important;
-    position: absolute;
-    top: 30.38rem;
-    right: 0rem;
-    background-color: rgba(0, 0, 0, 0.6);
-    height: 4rem;
+  .div {
+    align-self: stretch;
+    position: relative;
+    font-size: 2.25rem;
+    font-family: Monoton;
+  }
+  .nazivseminarapodframe {
+    width: 30.13rem;
     display: flex;
-    flex-direction: row;
-    align-items: flex-end;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
-    padding: 1.25rem 1.63rem;
-    box-sizing: border-box;
-    z-index: 1;
+    gap: 0.06rem;
+    flex-wrap: wrap;  
+  }
+  .sexten {
+    position: relative;
+  }
+  .nazivmjestaframe2 {
+    border-radius: 30px;
+    background-color: #fff;
+    width: 7.5rem;
+    height: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap; 
+  }
+  .nazivmjestaframe {
+    width: 9.5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: left;
+    font-size: 0.88rem;
+    color: #000;
+    font-family: Inter;
+  }
+  .glavnisasvimenazivisimjesto {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+  }
+  .glavnaslikaframe {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 9.56rem 32.44rem;
+
+    background-size: cover;
+  background-position: center;
+    background-repeat: no-repeat;
+
+    z-index: 0;
   }
   .qrcodeframe-child {
     position: relative;
     border-radius: 50%;
     background-color: #03a9f4;
-    width: 3.75rem;
-    height: 3.75rem;
+    width: 2.5rem;
+    height: 2.5rem;
     z-index: 0;
   }
   .qr-code-1-icon {
     position: absolute;
     margin: 0 !important;
-    top: calc(50% - 15px);
-    left: calc(50% - 15px);
-    width: 1.88rem;
-    height: 1.88rem;
+    top: calc(50% - 10px);
+    left: calc(50% - 10px);
+    width: 1.25rem;
+    height: 1.25rem;
     overflow: hidden;
     flex-shrink: 0;
     z-index: 1;
   }
   .qrcodeframe {
-    text-decoration: none;
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
     margin: 0 !important;
     position: absolute;
-    top: 2.63rem;
-    right: 3.25rem;
+    top: 1.31rem;
+    left: 85.75rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
     gap: 0.63rem;
+    z-index: 1;
+  }
+  .o-skijalitu {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: relative;
+    font-size: 1.25rem;
+    font-weight: 700;
+    font-family: Inter;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+  }
+  .framezakategorije-child {
+    position: relative;
+    border-right: 2px solid #03a9f4;
+    box-sizing: border-box;
+    width: 0.13rem;
+    height: 2rem;
+  }
+  .framezakategorije-inner {
+    position: relative;
+    width: 0.13rem;
+    height: 1.88rem;
+  }
+  .framezakategorije {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1.88rem;
+  }
+  .framezakategorijepod {
+    margin: 0 !important;
+    position: absolute;
+    top: 1.88rem;
+    left: calc(50% - 400px);
+    width: 50rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+  }
+  .trakakategorije {
+    align-self: stretch;
+    background-color: #000;
+    height: 5.63rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.88rem 20.63rem;
+    box-sizing: border-box;
+    position: relative;
     z-index: 2;
   }
-  .logoframe-parent {
-    align-self: stretch;
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-    background-image: url("/storage/demo/frame-441@3x.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
-    top: 3.75rem;
-  }
-  .frame {
-    align-self: stretch;
-    height: 34.38rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-  .hzuts-zutss {
-    align-self: stretch;
-    position: relative;
-    font-size: 2.94rem;
-  }
-  .kada {
-    position: relative;
-  }
-  .b {
-    position: relative;
-    display: flex;
-    color: #03a9f4;
-    align-items: center;
-    width: 28.19rem;
-    flex-shrink: 0;
-  }
-  .frame1 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 3.75rem;
-  }
-  .galerija {
-    position: relative;
-  }
-  .gallery-group-child {
-    position: relative;
-    border-radius: 10px;
-    width: 12.5rem;
-    height: 12.5rem;
-    object-fit: cover;
-  }
-  .gallery-group {
-    align-self: stretch;
-    height: 12.5rem;
+  .glavnipodpodframe {
     overflow: hidden;
-    flex-shrink: 0;
     display: flex;
-    flex-direction: row;
-    align-items: center;
+    flex-direction: column;
+    align-items: flex-start;
     justify-content: flex-start;
-    gap: 2.5rem;
-  }
-  .opis {
     position: relative;
+    color: #fff;
+    font-family: "Luckiest Guy";
   }
-  .dragi-lanovi-hzuts-a {
+  .titleglavninatekstu {
     align-self: stretch;
-    position: relative;
-    font-size: 1.75rem;
-    font-weight: 300;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
   }
-  .informacije {
-    position: relative;
-  }
-  .p {
+  .sudionici-seminara-bit {
     margin: 0;
   }
-  .dragi-lanovi-hzuts-a-container {
+  .rainer {
+    margin-bottom: false;
+  }
+  .waldheim {
+    text-decoration: underline;
+  }
+  .rainer-passo-monte-croce-drei {
+    margin: 0;
+    padding-left: 1.35rem;
+    color: #03a9f4;
+  }
+  .sudionici-seminara-bit-container {
     align-self: stretch;
     position: relative;
-    font-size: 1.75rem;
-    font-weight: 300;
-    white-space: pre-wrap;
+    font-weight: 500;
   }
-  .grupazatekstove {
+  .vana-napomena {
+    margin: 0;
+    color: #db1f26;
+  }
+  .smjetaj-je-u-container {
+    align-self: stretch;
+    position: relative;
+    font-size: 1.25rem;
+    font-weight: 500;
+    font-family: Inter;
+  }
+  .sudionici-seminara-bit-e-smje-parent {
+    flex: 1;
+    border-radius: 20px;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.94rem 1.88rem 1.81rem;
+    gap: 1.25rem;
+  }
+  .adminsadrzajframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    font-size: inherit;
+    font-family: inherit;
+  }
+  .tekstovipodpodframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 4.25rem;
+    gap: 1.25rem;
+  }
+  .galerijaframe-child {
+    position: relative;
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+  .galerijaframe-item {
+    position: relative;
+    border-radius: 10px;
+    width: 11.14rem;
+    height: 80%;
+    object-fit: cover;
+    display: block;
+  }
+  .group-icon {
+    position: relative;
+    width: 11.56rem;
+    height: 12.5rem;
+  }
+  .galerijaframe {
+    width: 95%;
+    height: 12.5rem;
+    overflow: hidden;
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1rem 1rem;
+    gap: 1.88rem;
+
+    margin: 0 auto;
+  }
+  .smjestajpodframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 1.25rem;
+    gap: 1.88rem;
+  }
+  .smjestajglavniframe {
     align-self: stretch;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    gap: 1.69rem;
+    padding: 0rem 1.25rem;
+    text-align: left;
+    font-size: 2rem;
   }
-  .home-icon {
+  .prijavnica-za-dogaaj {
     position: relative;
-    border-radius: 20px;
-    width: 2.5rem;
-    height: 2.5rem;
-    overflow: hidden;
-    flex-shrink: 0;
-  }
-  .smjetaj {
-    position: relative;
-    font-weight: 600;
-  }
-  .home-icon-parent {
-    text-decoration: none;
-    border-radius: 20px;
-    border: 4px solid #03a9f4;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
-    justify-content: flex-start;
-    padding: 2rem 2.5rem;
-    gap: 2.5rem;
-    color: inherit;
+    justify-content: center;
+    width: 17.44rem;
   }
-  .truck-1-icon {
-    position: relative;
-    border-radius: 20px;
-    width: 2.67rem;
-    height: 2.5rem;
-  }
-  .truck-1-parent {
-    text-decoration: none;
-    border-radius: 20px;
-    border: 4px solid #03a9f4;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 1.88rem 2.81rem;
-    gap: 2.13rem;
-    color: inherit;
-  }
-  .check-square-1-icon {
-    position: relative;
-    width: 2.5rem;
-    height: 2.5rem;
-    overflow: hidden;
-    flex-shrink: 0;
-    z-index: 100;
-  }
-  .check-square-1-parent {
-    text-decoration: none;
-    border-radius: 20px;
-    border: 4px solid #03a9f4;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 1.88rem 0.75rem;
-    gap: 0.5rem;
-    font-size: 1.63rem;
-    color: inherit;
-    z-index: 100;
-  }
-  .frame-parent {
+ 
+  .uplatite-lanarinu-hzuts-u {
     align-self: stretch;
+    position: relative;
+  }
+  .desnigumb {
+    text-decoration: none;
+    background-color: #03a9f4;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 2.81rem;
+    box-sizing: border-box;
+    color: #fff;
+  }
+  .framegumbi {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 2.5rem;
-    font-size: 1.69rem;
-    color: #03a9f4;
+    gap: 5rem;
+    font-size: 1.25rem;
   }
-  .donjidiobezslike {
+  .glavnipodframe {
     align-self: stretch;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
-    padding: 0rem 5.63rem;
-    gap: 4.38rem;
-    text-align: left;
-    font-size: 2rem;
-    color: #000;
+    align-items: center;
+    justify-content: center;
+    padding: 3.75rem 0rem;
+    gap: 3.75rem;
   }
-  .hzuts-events-details-screen-de {
+  .hzuts-dogadaji-detalji {
     position: relative;
     background-color: #f8f7f5;
     width: 100%;
@@ -1236,134 +1877,79 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 0rem 0rem 5.63rem;
+    padding: 0rem 0rem 3.13rem;
     box-sizing: border-box;
-    gap: 4.38rem;
     text-align: center;
-    font-size: 1.25rem;
-    color: #fff;
+    font-size: 3rem;
+    color: #000;
     font-family: Inter;
   }
 
-  @media screen and (max-width: 1200px) {
-    .hzuts-zutss {
-      font-size: 2.63rem;
-      text-align: left;
+  @media screen and (max-width: 550px) {
+    .o-skijalitu {
+      font-size: 0.63rem !important;
     }
 
-    .kada {
-      font-size: 1.88rem;
-    }
-
-    .b {
-      font-size: 1.88rem;
-    }
-
-    .opis {
-      font-size: 1.88rem;
-    }
-
-    .dragi-lanovi-hzuts-a {
-      font-size: 1.69rem;
-    }
-
-    .informacije {
-      font-size: 1.88rem;
-    }
-
-    .dragi-lanovi-hzuts-a-container {
-      font-size: 1.69rem;
-    }
-  }
-  @media screen and (max-width: 960px) {
-    .logoframe {
-      width: auto;
-      align-self: unset;
-      flex-direction: row;
-      gap: 0.63rem;
-      align-items: center;
-      justify-content: flex-start;
-      padding-left: 0.63rem;
-      box-sizing: border-box;
-    }
-
-    .hzuts-zutss {
-      font-size: 2.19rem;
-    }
-
-    .kada {
-      font-size: 1.75rem;
-    }
-
-    .b {
-      font-size: 1.75rem;
-    }
-
-    .opis {
-      font-size: 1.75rem;
-    }
-
-    .dragi-lanovi-hzuts-a {
-      font-size: 1.44rem;
-    }
-
-    .informacije {
-      font-size: 1.75rem;
-    }
-
-    .dragi-lanovi-hzuts-a-container {
-      font-size: 1.44rem;
-    }
-  }
-  @media screen and (max-width: 490px) {
-    .logoframe {
-      display: none;
-      width: auto;
-      align-self: unset;
-      height: auto;
+    .framezakategorije {
+      gap: 0.31rem;
       align-items: center;
       justify-content: center;
-      padding-left: 0.63rem;
-      padding-bottom: 0.63rem;
+    }
+
+    .prijavnica-za-dogaaj {
+      font-size: 0.81rem;
+    }
+
+    .lijevigumb {
+      width: 16.88rem;
+      height: 3.75rem;
+      padding-left: 1.88rem;
+      padding-right: 1.88rem;
       box-sizing: border-box;
     }
 
-    .frame {
-      display: flex;
-      flex-direction: column;
-      gap: 0rem;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding-left: 0rem;
-      padding-top: 0rem;
-      padding-bottom: 0rem;
+    .uplatite-lanarinu-hzuts-u {
+      font-size: 0.81rem;
+    }
+
+    .desnigumb {
+      width: 16.88rem;
+      height: 3.75rem;
+      padding-left: 1.88rem;
+      padding-right: 1.88rem;
       box-sizing: border-box;
     }
+    .dravni-seminar {
+      font-size: 2rem;
+  }
+  .div {
+    font-size: 2rem;
+  }
+ 
 
-    .hzuts-zutss {
-      font-size: 1.56rem;
+  }
+
+
+  @media screen and (max-width: 800px) {
+    .o-skijalitu {
+      font-size: 1rem;
     }
 
-    .galerija {
-      font-size: 1.88rem;
-      text-align: left;
+    .framezakategorije {
+      flex-direction: row;
+      gap: 0.63rem;
     }
 
-    .opis {
-      font-size: 1.88rem;
-      text-align: left;
-    }
+    .tekstovipodpodframe {
+    padding: 0rem 0.85rem;
 
-    .dragi-lanovi-hzuts-a {
-      font-size: 1.13rem;
-    }
+  }
+  .galerijaframe {
 
-    .informacije {
-      font-size: 1.88rem;
-    }
+padding: 0%;  
+}
 
-    .dragi-lanovi-hzuts-a-container {
-      font-size: 1.13rem;
-    }
+
+
   }
 </style>

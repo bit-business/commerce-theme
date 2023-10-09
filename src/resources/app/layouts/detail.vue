@@ -1,9 +1,9 @@
 <template>
   <div>
-    <commerce-top-bar class="hidden sm:flex" />
+    <commerce-top-bar class=" sm:flex" />
     <commerce-navbar class="hidden sm:flex" />
     <slot />
-    <commerce-footer class="hidden sm:block" />
+    <commerce-footer class=" sm:block" />
     <transition
       enter-active-class="transition-all duration-75 ease transform"
       leave-active-class="transition-all duration-75 ease transform"
