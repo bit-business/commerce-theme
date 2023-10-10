@@ -161,9 +161,6 @@
       </figure>
     </slide>
 </carousel-3d>
-
-
-
 <div class="slide-dots">
     <span v-for="(slide, i) in slides" :key="'dot-' + i" 
           :class="{ 'active-dot': i === currentIndex }" 
@@ -400,7 +397,7 @@ import { Link, Head } from "@inertiajs/inertia-vue"
 import { mapState } from 'vuex';
 
 
-import { Glide, GlideSlide } from 'vue-glide-js'
+
 
 
 import { VuePreloader } from 'vue2-preloader';
@@ -410,8 +407,6 @@ export default {
     CommerceTopBar,
     CommerceMainBanner,
     NovostiBanner,
-    Glide,
-    GlideSlide,
 
     VueMarqueeSlider,
     Carousel3d,
