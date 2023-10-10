@@ -107,9 +107,9 @@
             alt=""
             src="/storage/slike/pocetna/img-5449photoroom-1@2x.png"
           />
-          <b class="podruni-zborovi-hzuts-a">Područni zborovi HZUTS-a</b>
+          <b class="podruni-zborovi-hzuts-a">Savjeti za članove</b>
           <div class="saznajte-informacije-o">
-            Saznajte informacije o područnim zborovima
+            Sve što trebate znati na jednom mjestu
           </div>
           <div class="vector-parent">
             <img class="vector-icon2" alt="" src="/storage/slike/pocetna/vector.svg" />
@@ -161,6 +161,9 @@
       </figure>
     </slide>
 </carousel-3d>
+
+
+
 <div class="slide-dots">
     <span v-for="(slide, i) in slides" :key="'dot-' + i" 
           :class="{ 'active-dot': i === currentIndex }" 
@@ -263,7 +266,7 @@
           <b class="podrunih-zborova">Područnih zborova</b>
           <img class="group-icon1" alt="" src="/storage/slike/pocetna/group1.svg" />
         </div>
-        <div class="analitika4">
+        <div class="analitika1">
           <b class="b3">51</b>
           <b class="demostratora-skijanja">Demostratora skijanja</b>
           <img class="clip-path-group" alt="" src="/storage/slike/pocetna/clip-path-group.svg" />
@@ -397,7 +400,7 @@ import { Link, Head } from "@inertiajs/inertia-vue"
 import { mapState } from 'vuex';
 
 
-
+import { Glide, GlideSlide } from 'vue-glide-js'
 
 
 import { VuePreloader } from 'vue2-preloader';
@@ -407,6 +410,8 @@ export default {
     CommerceTopBar,
     CommerceMainBanner,
     NovostiBanner,
+    Glide,
+    GlideSlide,
 
     VueMarqueeSlider,
     Carousel3d,
@@ -899,7 +904,7 @@ splitCategory() {
 }
 
 .carousel-3d-controls-next {
-    right: -40px; /* Adjust this value as needed */
+    right: -90px; /* Adjust this value as needed */
 }
 
 .slide-dots {
@@ -1533,26 +1538,26 @@ padding-right: 6%;
   .b {
     position: absolute;
     top: 11.81rem;
-    left: calc(50% - 116.5px);
+    left: calc(50% - 86.5px);
   }
   .lanova {
     position: absolute;
     top: 18.31rem;
-    left: calc(50% - 82.5px);
+    left: calc(50% - 50.5px);
     font-size: 1.25rem;
     color: #000;
   }
   .analitika1-child {
     position: absolute;
     top: 1.06rem;
-    left: calc(50% + 106.5px);
+    left: calc(50% + 96.5px);
     width: 0.06rem;
     height: 18.75rem;
   }
   .membership-1-icon {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 107.5px);
+    left: calc(50% - 67.5px);
     width: 8.13rem;
     height: 8.13rem;
     overflow: hidden;
@@ -1566,71 +1571,71 @@ padding-right: 6%;
   .b1 {
     position: absolute;
     top: 11.81rem;
-    left: calc(50% - 71px);
+    left: calc(50% - 51px);
   }
   .godina-postojanja {
     position: absolute;
     top: 18.31rem;
-    left: calc(50% - 119px);
+    left: calc(50% - 95px);
     font-size: 1.25rem;
     color: #000;
   }
   .analitika2-child {
     position: absolute;
     top: 1.06rem;
-    left: calc(50% + 118px);
+    left: calc(50% + 108px);
     width: 0.06rem;
     height: 18.75rem;
   }
   .group-icon {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 96px);
+    left: calc(50% - 76px);
     width: 8.13rem;
     height: 8.13rem;
   }
   .b2 {
     position: absolute;
     top: 11.81rem;
-    left: calc(50% - 50px);
+    left: calc(50% - 40px);
   }
   .podrunih-zborova {
     position: absolute;
     top: 18.31rem;
-    left: calc(50% - 121px);
+    left: calc(50% - 101px);
     font-size: 1.25rem;
     color: #000;
   }
   .analitika3-child {
     position: absolute;
     top: 1.06rem;
-    left: calc(50% + 120px);
+    left: calc(50% + 110px);
     width: 0.06rem;
     height: 18.75rem;
   }
   .group-icon1 {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 94px);
+    left: calc(50% - 80px);
     width: 8.13rem;
     height: 8.13rem;
   }
   .b3 {
     position: absolute;
     top: 11.83rem;
-    left: calc(50% - 70px);
+    left: calc(50% - 60px);
   }
   .demostratora-skijanja {
     position: absolute;
     top: 18.33rem;
-    left: calc(50% - 141px);
+    left: calc(50% - 116px);
     font-size: 1.25rem;
     color: #000;
   }
   .clip-path-group {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 94px);
+    left: calc(50% - 74px);
     width: 8.13rem;
     height: 8.13rem;
   }
@@ -1792,7 +1797,7 @@ grid-column: span 1;
     .analitikapodgrupa {
     display: flex; /* Display children in a row */
     white-space: nowrap; /* Prevent wrapping */
-    overflow-x: auto; /* Make it horizontally scrollable */
+    overflow-x: hidden; /* Make it horizontally scrollable */
     overflow-y: hidden; /* Prevent vertical scrolling */
   }
 
@@ -1891,6 +1896,11 @@ grid-column: span 1;
       height: auto;
     }
   }
+
+
+
+
+
   @media screen and (max-width: 490px) {
     .homepageglavnaslika-icon {
       height: 35rem;
@@ -2064,6 +2074,20 @@ grid-column: span 1;
 
   }
 
+
+  @media screen and (max-width: 490px) {
+  .popustisaznajvise {
+      width: 3rem;
+      gap: 3.13rem;
+      padding-left: 8rem;
+      padding-right: 8rem;
+      max-width: 23.75rem;
+    }
+
+    .popusti-za-nae {
+      font-size: 1.7rem;
+    }
+  }
 
 
 

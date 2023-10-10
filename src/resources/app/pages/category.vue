@@ -79,7 +79,9 @@
             <div v-if="products.data.length > 0" class="products-grid">
     <div 
         class="product-item animacijakvadrati"
-        v-for="product in products.data"
+
+       v-for="product in reversedProducts"
+
         :key="product.id"
     >
         <Link :href="route('skijasi.commerce-theme.detail', product.slug)" class="prvireddesni">
@@ -194,7 +196,9 @@ export default {
     }
   },
   computed: {
-
+    reversedProducts() {
+        return this.products.data.slice().reverse();
+    },
 
     nextEvent() {
       const now = new Date();
@@ -1095,21 +1099,24 @@ computeCountdown() {
         height: auto;  
     }
     .frame7 {
-        max-width: 45vw;
+        max-width: 80vw;
         height: auto;  
     }
     .frame-container {
-        max-width: 45vw;
+        max-width: 80vw;
         height: auto;  
     }
 
     .products-grid {
-        grid-template-columns: repeat(2, 1fr);
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .product-item {
         grid-column: span 1;
     }
+ 
+ 
+
 }
 
 
@@ -1142,8 +1149,10 @@ computeCountdown() {
           width: 16rem;
           height: 5.73rem;
           font-size: 1rem;
-        margin-top: 0.4rem;
+          margin-top: -2.5rem;
+    margin-bottom: 2.4rem;
         overflow: visible;
+        bottom: 5rem;
               }
         .frame3 {
             left: 52%;           
@@ -1168,9 +1177,7 @@ computeCountdown() {
 
 
 
-.frame {
 
-}
 .teaj-za-uitelja {
 margin-top: -10%;
 }

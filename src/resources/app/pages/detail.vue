@@ -827,6 +827,10 @@ export default {
       photos: [
         '/storage/slike/dogadaj1/galerija1.jpeg',
         '/storage/slike/dogadaj1/galerija2.jpeg',
+        '/storage/slike/dogadaj1/hotel1.jpg',
+        '/storage/slike/dogadaj1/hotel2.jpg',
+        '/storage/slike/dogadaj1/hotel3.jpg',
+        '/storage/slike/dogadaj1/hotel4.jpg',
         '/storage/slike/dogadaj1/galerija3.jpeg',
         '/storage/slike/dogadaj1/galerija4.jpeg',
         '/storage/slike/dogadaj1/galerija5.jpeg',
@@ -1952,4 +1956,17 @@ padding: 0%;
 
 
   }
+
+
+  @media screen and (max-width: 500px) {
+.smjestajpodframe {
+  padding: 0rem 0rem;
+  }
+  .smjestajglavniframe {
+  padding: 0rem 0rem;
+  }
+
+
+}
+
 </style>

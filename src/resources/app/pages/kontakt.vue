@@ -636,5 +636,58 @@ export default {
       align-items: flex-start;
       justify-content: flex-start;
     }
+
+    .uredovno-vrijeme-za-container {
+      word-wrap: break-word;
+   height: auto;  /* Adjust this according to your needs */
+}
+
   }
+
+
+
+  @media screen and (max-width: 500px) {
+.uredovno-vrijeme-za-container {
+
+
+
+    position: absolute;
+    width: 93.95%;
+    top: 0.22rem;
+    left: 12.63%;
+
+    align-items: center;
+
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    display: flex;
+
+  }
+  .uredovno-vrijeme-za-lanove-u-parent {
+
+    width: 17.88rem;
+max-height: 2rem;
+  }
+  .group-icon {
+
+    height: 1.34rem;
+    width: 1.34rem;
+    top: 1%;
+    right: 94.62%;
+    bottom: 0%;
+    left: 0.8%;
+
+  }
+
+
+
+.kartakontaktframe {
+height: 30rem;
+  }
+
+
+  }
+
+
+
 </style>

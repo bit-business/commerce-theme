@@ -7,7 +7,7 @@
        
       <Link class="poetna"  :class="{ 'active-link': isRouteActive('/web') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
       <Link class="dogaanja"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.category') }" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">Događanja</Link>
-      <Link class="pretraivanje" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.cart') }" :href="route('skijasi.commerce-theme.home')">Naši članovi</Link>
+      <div class="pretraivanje" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.cart') }" :href="route('skijasi.commerce-theme.osnovneinformacije')">Naši članovi</div>
       <div class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')">Informacije</div> 
       <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija</Link>
       <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt</Link>
@@ -69,15 +69,15 @@
    
     <div v-if="showDropdown" class="dropdownnavglavni">
       <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}"/>
-      <Link :href="route('skijasi.commerce-theme.login')" class="prvigumbprijavise">
+    <div :href="route('skijasi.commerce-theme.login')" class="prvigumbprijavise">
         <div class="prijavi-se">Prijavi se</div>
         <div class="prvigumbprijavise-child" />
-      </Link>
-      <Link :href="route('skijasi.commerce-theme.register')" class="drugigumbregistracija">
+    </div>
+  <div :href="route('skijasi.commerce-theme.register')" class="drugigumbregistracija">
         <div class="drugigumbregistracija-child" />
         <div class="registriraj-se">Registriraj se</div>
-      </Link>
-    </div>
+  </div>
+       </div>
 
        
     <div v-if="showDropdownprijavljen" class="dropdownnavglavni">
@@ -131,8 +131,8 @@
      
       <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('/web') }" :href="route('skijasi.commerce-theme.home')">Početna <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
       <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.category') }" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">Događanja <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
-      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.cart') }" :href="route('skijasi.commerce-theme.home')">Naši članovi <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
-      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')">Informacije <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <div class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.cart') }" :href="route('skijasi.commerce-theme.osnovneinformacije')">Naši članovi <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></div>
+      <div class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')">Informacije <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></div>
       <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
       <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
     
