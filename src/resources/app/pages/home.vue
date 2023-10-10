@@ -73,7 +73,7 @@
           </div>
         </a>
   
-  <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.uclanise')">
+     <!--Link-->  <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">
 
     
           <div class="slikaframe4">
@@ -94,13 +94,13 @@
               obitelji.
             </div>
           </div>
-        </Link>
+         <!--Link-->    </Link>
       </div>
     </div>
     <div class="framesadrzaji">
       <div class="prviredframeova">
        
-          <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.podrucnizborovi')">
+    <!--Link-->      <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">
 
           <img
             class="img-5449-photoroom-1-icon"
@@ -115,7 +115,7 @@
             <img class="vector-icon2" alt="" src="/storage/slike/pocetna/vector.svg" />
             <div class="saznaj-vie2">Saznaj više</div>
           </div>
-        </Link>
+     <!--Link-->   </Link>
  
           <Link  class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.interskikongres')">
 
@@ -242,7 +242,7 @@
           Saznajte pogodnosti za članove HZUTS-a
         </div>
         <div class="popustisaznajvise">
-          <Link class="saznaj-vie4" :href="route('skijasi.commerce-theme.uclanise')">SAZNAJ VIŠE</Link>
+          <!--Link-->     <div class="saznaj-vie4" :href="route('skijasi.commerce-theme.uclanise')">SAZNAJ VIŠE</div>
         </div>
       </div>
     </div>

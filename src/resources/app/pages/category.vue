@@ -80,7 +80,7 @@
     <div 
         class="product-item animacijakvadrati"
 
-       v-for="product in reversedProducts"
+        v-for="(product, index) in reversedProducts"
 
         :key="product.id"
     >
@@ -113,6 +113,10 @@
             <div v-if="!isEventActive(product)" class="inactive-overlay">
                               NIJE AKTIVNO
             </div>
+       <div v-if="index !== 0" class="inactive-overlay">
+    UBRZO DETALJI
+</div>
+
         </div>
     </div>
 
@@ -320,6 +324,11 @@ return sortedEvents.length > 0 ? sortedEvents[0] : {};
         const now = new Date();
         const eventEndDate = new Date(product.datumKraja);
         return now < eventEndDate;
+    },
+
+    isEvenUnajavi() {
+  
+        return true
     },
 
     formatDateRange(datumPocetka, datumKraja) {
@@ -593,7 +602,7 @@ computeCountdown() {
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6); /* Black with 60% opacity */
+  background-color: rgba(0, 0, 0, 0.5); /* Black with 60% opacity */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -985,7 +994,7 @@ computeCountdown() {
 }
 .velikikvadratiskupinapodframe {
   flex: 1;
-  height: 34.37rem;
+  height: 100%;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -994,7 +1003,7 @@ computeCountdown() {
 }
 .svikvadrtatiframe {
   flex: 1;
-  height: 34.37rem;
+  height: 100%;
  
   display: flex;
   flex-direction: row;
@@ -1017,7 +1026,7 @@ computeCountdown() {
 
   margin-bottom: 3rem;
     height: 100%; 
-   overflow-y: auto;
+  height: 100%;
 
 }
 .dogadanja {

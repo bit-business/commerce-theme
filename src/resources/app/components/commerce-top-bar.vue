@@ -363,6 +363,8 @@ export default {
   .pocetnamobile {
   position: relative;
     font-weight: 600;
+    width: 100vw;
+    text-align: left;
   }
 
 
@@ -1025,9 +1027,9 @@ align-items: center;
     position: relative;
     background-color: #fff;
     width: 100%;
-    height: 120%;
+    height: 100vh;
     z-index: 0;
-    top: 9.5%;
+    top: 0.5%;
     display: flex;
   
   }
