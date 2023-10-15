@@ -14,7 +14,7 @@
         <div class="folders-container">
           <img class="lijevipointer-icon" @click="moveToLeftFolder" alt="" src="/storage/slike/lijevipointer.svg" />
     
-    eye-icon
+
     <div class="folder-items-container">
         <div v-for="folder in folders" :key="folder" :class="['folder-item', { active: currentFolder === folder }]" class="folder-item" @click="selectFolder(folder)">
             {{ folder }}
@@ -25,11 +25,11 @@
 
 
 
-<!-- Loading Overlay 
+<!-- Loading Overlay -->
 <div v-if="isLoading" class="loading-overlay">
   <div class="loader"></div>
 </div>
-<!- Loading Overlay -->
+<!-- Loading Overlay -->
 
 
 

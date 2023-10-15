@@ -117,7 +117,7 @@
           </div>
      <!--Link-->   </Link>
  
-          <Link  class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.interskikongres')">
+          <Link  class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">
 
           <img
             class="img-7155-photoroom-1-icon animate-on-scroll"
@@ -228,6 +228,16 @@
 <a class="rostsport-1-icon" href="https://galic-vina.hr">
   <img src="/storage/slike/sponzori/sponzor15.png" />
 </a>
+
+<a class="rostsport-1-icon" href="https://croatia.hr">
+  <img src="/storage/slike/sponzori/sponzor16.png" />
+</a>
+<a class="rostsport-1-icon" href="https://www.milojevic.hr">
+  <img src="/storage/slike/sponzori/sponzor17.png" />
+</a>
+<a class="rostsport-1-icon" href="https://www.messer.hr">
+  <img src="/storage/slike/sponzori/sponzor18.jpg" />
+</a>
 </vue-marquee-slider>
 
       </div>
@@ -282,35 +292,35 @@
         <img class="slider-arrow left-arrow" src="/storage/slike/pocetna/lijevastrelica.svg" @click="moveSlider(-1)">
       <div class="bilteni-slides">
      
-          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2020/01/HZUTS-Bilten-2020-v1.3.pdf">
+          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2020-v1.3.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2020.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2019/2020</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2018/12/HZUTS-Bilten-2019-v1.3low.pdf">
+          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2019-v1.3low.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2019.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2018/2019</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2017/11/HZUTS-Bilten-2018-v2.3-rgb-web.pdf">
+          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2018-v2.3-rgb-web.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2018.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2017/2018</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/10/HZUTS-Bilten-2017-v1.2.1-150dpiR.pdf">
+          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2017-v1.2.1-150dpiR.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2017.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2016/2017</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/02/HZUTS_Bilten_2016.pdf">
+          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2016.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2016.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
@@ -318,7 +328,7 @@
             </b>
           </a>
         
-          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/02/HZUTS_Bilten_2015.pdf">
+          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2015.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2015.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
@@ -326,7 +336,7 @@
             </b>
           </a>
 
-          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/02/HZUTS_Bilten_2014.pdf">
+          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2014.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2014.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
@@ -334,14 +344,14 @@
             </b>
           </a>
 
-          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/02/HZUTS_Bilten_2013.pdf">
+          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2013.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2013.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2012/2013</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="https://hzuts.hr/repozitorij/2016/02/HZUTS_Bilten_2012.pdf">
+          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2012.pdf">
             <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2012.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
@@ -1335,13 +1345,13 @@ padding-right: 6%;
   }
   .objavljeno-20032023 {
     position: relative;
-    font-size: 0.8rem;
+    font-size: 0.6rem;
   }
   .objavljenotekst {
     margin: 0 !important;
     position: absolute;
     height: calc(100% - 536px);
-    width: 32%;
+    width: 34%;
     top: 0rem;
     right: 0%;
     bottom: 33.5rem;
@@ -1689,6 +1699,7 @@ grid-column: span 1;
   }
   .bilten-sezona {
     margin: 0;
+    color: #03a9f4;
   }
   .bilten-sezona-20192020-container {
     position: absolute;
@@ -1764,7 +1775,7 @@ grid-column: span 1;
     height: 32rem;
     overflow: hidden;
     flex-shrink: 0;
-    font-size: 2rem;
+    font-size: 1.55rem;
     padding-bottom: 5rem;
   }
   .hzuts-home-screen-desktop {

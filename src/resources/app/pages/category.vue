@@ -994,7 +994,7 @@ computeCountdown() {
 }
 .velikikvadratiskupinapodframe {
   flex: 1;
-  height: 100%;
+  height: 34.37rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -1003,7 +1003,7 @@ computeCountdown() {
 }
 .svikvadrtatiframe {
   flex: 1;
-  height: 100%;
+  height: 34.37rem;
  
   display: flex;
   flex-direction: row;
@@ -1124,6 +1124,11 @@ computeCountdown() {
         grid-column: span 1;
     }
  
+
+    .dogadanja {
+  height: 190rem;
+
+}
  
 
 }

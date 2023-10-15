@@ -1871,6 +1871,7 @@ showNextImage() {
     justify-content: center;
     padding: 3.75rem 0rem;
     gap: 3.75rem;
+    width: 100%; 
   }
   .hzuts-dogadaji-detalji {
     position: relative;
@@ -1966,7 +1967,23 @@ padding: 0%;
   padding: 0rem 0rem;
   }
 
+}
+
+
+
+@media screen and (min-width: 1510px) {
+.glavnaslikaframe {
+width: 100%;
+  }
+
+.glavnipodpodframe {
+width: 100%;
+  }
+  .glavnisasvimenazivisimjesto {
+width: 100%;
+  }
 
 }
+
 
 </style>

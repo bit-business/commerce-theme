@@ -40,9 +40,9 @@
             <a class="politika-privatnosti">Politika privatnosti</a>
             <a class="politika-o-kolaiima">Politika o kolačićima</a>
             <a class="osnovne-informacije">Osnovne informacije</a>
-           <a class="povijest">Povijest</a>
-            <a class="bilteni-hzuts-a">Bilteni HZUTS-a</a>
-            <a class="podruni-zborovi">Područni zborovi</a>
+           <a class="povijest">Popusti za članove</a>
+            <a class="bilteni-hzuts-a">Članarine</a>
+            <a class="podruni-zborovi">Dokumenti</a>
           </div>
         </div>
         <div class="donjidioonama" />

@@ -1,6 +1,6 @@
 
 <template>
-<header class="navigation-bar" :class="{'transparent-bg': isHomePage}">
+  <header class="navigation-bar" :class="{ 'white-bg': hasScrolled, 'transparent-bg': isHomePage && !hasScrolled }">
     <nav class="navbartekstoviframe">
       <div class="navbartekstoviframe-inner">
         <div class="poetna-parent">
@@ -159,7 +159,9 @@ export default {
   data() {
     return {
 
-      
+      hasScrolled: false,
+
+
       dropdownOpen: false,
       showDropdown: false,
       showDropdownmeni: false,
@@ -177,11 +179,20 @@ export default {
       }
     },
   },
+
+
+  mounted() {
+  window.addEventListener('scroll', this.handleScroll);
+},
+beforeDestroy() {
+  window.removeEventListener('scroll', this.handleScroll);
+},
+
   computed: {
 
 
     isHomePage() {
-        return this.isRouteActive('/web');
+        return this.isRouteActive('/');
     },
 
     activeRoute() {
@@ -206,6 +217,11 @@ export default {
     })
   },
   methods: {
+    handleScroll() {
+    this.hasScrolled = window.scrollY > 0;
+  },
+
+
     toggleDropdown() {
       if (this.showDropdownjezik) {
       this.showDropdownjezik = false;
@@ -287,6 +303,10 @@ export default {
 </script>
 
 <style scoped>
+
+.white-bg {
+  background-color: white;
+}
 
 /* Define the initial state for every link */
 .poetna::after, .dogaanja::after, .pretraivanje::after {
