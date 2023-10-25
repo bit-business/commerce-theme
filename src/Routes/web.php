@@ -25,6 +25,7 @@ Route::prefix($commerce_route_prefix)
         Route::get('/osnovneinformacije', HelpersRoute::getController('InertiaController@osnovneinformacije'))->name('osnovneinformacije');
       
         Route::get('/podrucnizborovi', HelpersRoute::getController('InertiaController@podrucnizborovi'))->name('podrucnizborovi');
+        Route::get('/infoclanarine', HelpersRoute::getController('InertiaController@infoclanarine'))->name('infoclanarine');
         Route::get('/interskikongres', HelpersRoute::getController('InertiaController@interskikongres'))->name('interskikongres');
         Route::get('/list', HelpersRoute::getController('InertiaController@productList'))->name('product-list');
         Route::get('/search', HelpersRoute::getController('InertiaController@search'))->name('search');

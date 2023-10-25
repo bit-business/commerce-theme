@@ -1,0 +1,1484 @@
+  .lanarine {
+    flex: 1;
+    position: relative;
+    letter-spacing: 3px;
+    font-weight: 600;
+  }
+  .lanarine-wrapper {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 15rem 32.13rem;
+    box-sizing: border-box;
+    background-image: url("/storage/slike/infoclanarine/desktop/frame-451@3x.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    min-width: 87.5rem;
+    font-size: 2.5rem;
+  }
+  .lanarine-icon {
+    position: relative;
+    width: 35.77rem;
+    height: 4.6rem;
+  }
+  .voditelj-skijanja-iaess {
+    position: absolute;
+    top: calc(50% - 171.5px);
+    left: 15.75%;
+    letter-spacing: 2px;
+  }
+  .frame-child {
+    position: absolute;
+    top: 0rem;
+    left: calc(50% - 100px);
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 12.5rem;
+    height: 12.5rem;
+  }
+  .div {
+    position: absolute;
+    top: 3.81rem;
+    left: calc(50% - 68px);
+    letter-spacing: 2px;
+    font-weight: 800;
+  }
+  .ellipse-parent {
+    position: absolute;
+    top: 3.69rem;
+    left: calc(50% - 100px);
+    width: 12.5rem;
+    height: 12.5rem;
+  }
+  .dravna-lanarina {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 108px);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+  }
+  .krug1 {
+    position: absolute;
+    top: calc(50% - 93.5px);
+    left: calc(50% - 107.5px);
+    width: 13.5rem;
+    height: 16.19rem;
+    font-size: 4rem;
+    color: #fff;
+  }
+  .dodajukosaricu1-icon {
+    position: relative;
+    width: 1.5rem;
+    height: 1.5rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    
+  }
+  .dodaj-u-koaricu {
+    position: relative;
+    font-size: 0.88rem;
+    font-family: Inter;
+    color: #000;
+    text-align: center;
+  }
+  .dodajukosaricu1frame {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 23.75rem;
+    left: 1.88rem;
+    height: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+
+    opacity: 0%;
+  }
+  .voditelj-skijanja-iaess-licen-parent {
+    flex: 1;
+    position: relative;
+    border-radius: 20px;
+    border: 5px solid #03a9f4;
+    box-sizing: border-box;
+    height: 26.44rem;
+  }
+  .krug2-child {
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 100px);
+    right: 0%;
+    left: 0%;
+    border-radius: 50%;
+    background-color: #03a9f4;
+    height: 12.5rem;
+  }
+  .div1 {
+    position: absolute;
+    top: calc(50% - 38.6px);
+    left: 18%;
+    letter-spacing: 2px;
+    font-weight: 800;
+  }
+  .krug2 {
+    position: absolute;
+    top: 11.06rem;
+    left: calc(50% - 99.5px);
+    width: 12.5rem;
+    height: 12.5rem;
+    font-size: 4rem;
+  }
+  .dravna-lanarina1 {
+    position: absolute;
+    top: 27.9%;
+    left: calc(50% - 124.5px);
+    font-weight: 600;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15.63rem;
+  }
+  .uitelj-skijanjadaskanja-ivs {
+    position: relative;
+    letter-spacing: 2px;
+  }
+  .treneri-skijanjadaskanja-na {
+    position: relative;
+    letter-spacing: 2px;
+  }
+  .uitelj-skijanjadaskanja-ivs-parent {
+    position: absolute;
+    width: 94.49%;
+    top: calc(50% - 173.5px);
+    right: 2.68%;
+    left: 2.83%;
+    height: 3.94rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.31rem;
+    color: #03a9f4;
+  }
+  .krug2-parent {
+    flex: 1;
+    position: relative;
+    border-radius: 20px;
+    border: 5px solid #03a9f4;
+    box-sizing: border-box;
+    height: 26.44rem;
+    color: #fff;
+  }
+  .frame-group {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 3.13rem;
+  }
+  .isia-uitelj-skijanjadaskanja {
+    position: absolute;
+    top: 2.31rem;
+    left: calc(50% - 197px);
+    letter-spacing: 2px;
+  }
+  .demonstratori-skijanjadaskanj {
+    position: absolute;
+    top: 5.06rem;
+    left: calc(50% - 294px);
+    letter-spacing: 2px;
+  }
+  .treneri-skijanjadaskanja-na1 {
+    position: absolute;
+    top: 7.81rem;
+    left: calc(50% - 361px);
+    letter-spacing: 2px;
+  }
+  .div2 {
+    position: absolute;
+    top: 3.81rem;
+    left: 2.19rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+  }
+  .dravna-lanarina2 {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 108px);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 13.5rem;
+  }
+  .krug3-parent {
+    position: absolute;
+    width: 16.36%;
+    top: calc(50% - 47.5px);
+    right: 68.56%;
+    left: 15.08%;
+    height: 16.19rem;
+    font-size: 4rem;
+    color: #fff;
+  }
+  .krug4 {
+    position: absolute;
+    top: 3.71rem;
+    left: calc(50% - 74.5px);
+    width: 12.5rem;
+    height: 12.5rem;
+  }
+  .meunarodna-isia-lanarina {
+    position: absolute;
+    top: 0.15%;
+    left: calc(50% - 141.5px);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20.81rem;
+  }
+  .krug4-parent {
+    position: absolute;
+    width: 25.23%;
+    top: calc(50% - 47.5px);
+    right: 15.15%;
+    left: 59.62%;
+    height: 16.19rem;
+    font-size: 4rem;
+    color: #fff;
+  }
+  .frame-item {
+    position: absolute;
+    width: 0.38%;
+    top: calc(50% - 39.1px);
+    right: 49.73%;
+    left: 49.89%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 15.69rem;
+  }
+  .dodaj-u-koaricu2 {
+    position: relative;
+    font-size: 0.88rem;
+    font-family: Inter;
+    color: #000;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.25rem;
+    flex-shrink: 0;
+
+    opacity: 0%;
+  }
+  .dodajukosaricu3 {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 29.38rem;
+    left: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+    
+    opacity: 0%;
+  }
+  .dodajukosaricu4 {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    width: 11.36%;
+    top: calc(50% + 211.5px);
+    right: 35.61%;
+    left: 53.03%;
+    height: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+
+    opacity: 0%;
+  }
+  .isia-uitelj-skijanjadaskanja-parent {
+    align-self: stretch;
+    position: relative;
+    border-radius: 20px;
+    border: 5px solid #03a9f4;
+    box-sizing: border-box;
+    height: 32.31rem;
+  }
+  .demonstrator-skijanja-s {
+    position: absolute;
+    top: 2.31rem;
+    left: calc(50% - 255px);
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    color: #03a9f4;
+  }
+  .frame-inner {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 12.5rem;
+    height: 12.5rem;
+  }
+  .dravna-lanarina3 {
+    position: absolute;
+    width: 117.59%;
+    top: calc(50% - 129.1px);
+    left: -8.8%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .frame-container {
+    position: absolute;
+    width: 16.36%;
+    top: calc(50% - 92.5px);
+    right: 77.58%;
+    left: 6.06%;
+    height: 16.19rem;
+  }
+  .ellipse-container {
+    position: absolute;
+    top: 3.69rem;
+    left: calc(50% - 100.5px);
+    width: 12.5rem;
+    height: 12.5rem;
+  }
+  .meunarodna-isia-lanarina1 {
+    position: absolute;
+    top: calc(50% - 129.1px);
+    left: 0%;
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+  }
+  .frame-div {
+    position: absolute;
+    width: 25.23%;
+    top: calc(50% - 92.5px);
+    right: 37.35%;
+    left: 37.42%;
+    height: 16.19rem;
+  }
+  .dodajukosaricu6 {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    width: 11.36%;
+    top: calc(50% + 172.5px);
+    right: 55.91%;
+    left: 32.73%;
+    height: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+
+    opacity: 0%;
+  }
+  .line-icon {
+    position: absolute;
+    width: 0.23%;
+    top: calc(50% - 85px);
+    right: 69.73%;
+    left: 30.04%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 15.69rem;
+  }
+  .div6 {
+    position: absolute;
+    top: 3.81rem;
+    left: 2.38rem;
+    letter-spacing: 2px;
+    font-weight: 800;
+  }
+  .isia-card-lanarina {
+    position: absolute;
+    top: 0.15%;
+    left: calc(50% - 127px);
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15.88rem;
+  }
+  .frame-parent1 {
+    position: absolute;
+    width: 17.27%;
+    top: calc(50% - 92.5px);
+    right: 6.06%;
+    left: 76.67%;
+    height: 16.19rem;
+  }
+  .frame-child2 {
+    position: absolute;
+    width: 0.23%;
+    top: calc(50% - 85.5px);
+    right: 30.42%;
+    left: 69.36%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 15.69rem;
+  }
+  .dodajukosaricu5 {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    width: 11.36%;
+    top: calc(50% + 172.5px);
+    right: 86.36%;
+    left: 2.27%;
+    height: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+
+    opacity: 0%;
+  }
+  .dodajukosaricu7 {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    width: 11.36%;
+    top: calc(50% + 172.5px);
+    right: 17.42%;
+    left: 71.21%;
+    height: 1.5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+
+    opacity: 0%;
+  }
+  .demonstrator-skijanja-s-isia-c-parent {
+    align-self: stretch;
+    position: relative;
+    border-radius: 20px;
+    border: 5px solid #03a9f4;
+    box-sizing: border-box;
+    height: 26.94rem;
+    font-size: 4rem;
+    color: #fff;
+  }
+  .frame-parent {
+    align-self: stretch;
+    height: 91.94rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3.13rem;
+    z-index: 0;
+  }
+  .logousredininevidljivi-icon {
+    position: absolute;
+    margin: 0 !important;
+    width: 69.31%;
+    top: calc(50% - 420.1px);
+    right: 15.34%;
+    left: 15.36%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 62.5rem;
+    flex-shrink: 0;
+    opacity: 0.1;
+    z-index: 1;
+  }
+  .prvidiogdjesukrugovi {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 2.5rem;
+    position: relative;
+    gap: 4.13rem;
+    font-size: 1.5rem;
+    color: #03a9f4;
+  }
+  .dodatne-lanarine-icon {
+    position: relative;
+    width: 35.77rem;
+    height: 8.96rem;
+  }
+  .id-card-1-1 {
+    position: absolute;
+    width: 32%;
+    top: calc(50% - 270px);
+    right: 34%;
+    left: 34%;
+    border-radius: 20px;
+    max-width: 100%;
+    overflow: hidden;
+    height: 8rem;
+  }
+  .izdavanje-iskaznice {
+    position: relative;
+  }
+  .uitelj-skijanjadaskanja1 {
+    margin: 0;
+    padding-left: 1.36rem;
+    font-size: 0.9rem;
+  }
+  .uitelj-skijanjadaskanja {
+    position: relative;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    width: 14.25rem;
+  }
+  .trener-skijanjadaskanja {
+    position: relative;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    width: 14.31rem;
+  }
+  .isia-card {
+    position: relative;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    width: 8.25rem;
+  }
+  .uitelj-skijanjadaskanja-parent {
+    width: 15.63rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0rem 2.19rem;
+    box-sizing: border-box;
+    gap: 0.63rem;
+    font-size: 1rem;
+    font-family: inherit;
+  }
+  .izdavanje-iskaznice-parent {
+    position: absolute;
+    width: 85.5%;
+    top: calc(50% - 122.3px);
+    right: 5.75%;
+    left: 11.75%;
+    height: 8.31rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.63rem;
+  }
+  .frame-child3 {
+    position: relative;
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 12.5rem;
+    height: 12.5rem;
+    z-index: 0;
+  }
+  .div7 {
+    position: absolute;
+    margin: 0 !important;
+    top: calc(50% - 39px);
+    left: 27%;
+    letter-spacing: 2px;
+    font-weight: 800;
+    z-index: 1;
+  }
+  .ellipse-parent2 {
+    position: absolute;
+    top: calc(50% + 18px);
+    left: calc(50% - 100px);
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0.63rem;
+    text-align: center;
+    font-size: 4rem;
+  }
+  .shopping-bag-1-14 {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    overflow: hidden;
+  }
+  .dodaj-u-koaricu7 {
+    position: absolute;
+    top: 0.25rem;
+    left: 2.06rem;
+    font-size: 0.88rem;
+    font-weight: 600;
+    font-family: Inter;
+    color: #fff;
+    text-align: center;
+
+    opacity: 0%;
+  }
+  .shopping-bag-1-1-parent {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 34.44rem;
+    left: 1.25rem;
+    width: 9.13rem;
+    height: 1.5rem;
+
+    opacity: 0%;
+  }
+  .id-card-1-1-parent {
+    position: absolute;
+    width: 30.3%;
+    top: calc(50% - 300px);
+    right: 69.7%;
+    left: 0%;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #03a9f4, #1c63b7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 37.5rem;
+  }
+  .badge-1-icon {
+    position: absolute;
+    width: 32%;
+    top: calc(50% - 270px);
+    right: 34%;
+    left: 34%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 8rem;
+  }
+  .div8 {
+    position: absolute;
+    margin: 0 !important;
+    top: calc(50% - 39px);
+    left: 18%;
+    letter-spacing: 2px;
+    font-weight: 800;
+    z-index: 1;
+  }
+  .ellipse-parent3 {
+    position: absolute;
+    top: calc(50% + 16px);
+    left: calc(50% - 100px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.63rem;
+  }
+  .amblem {
+    position: absolute;
+    top: calc(50% - 122px);
+    left: calc(50% - 65px);
+    font-size: 2rem;
+    text-align: left;
+  }
+  .badge-1-parent {
+    position: absolute;
+    width: 30.3%;
+    top: calc(50% - 300px);
+    right: 34.85%;
+    left: 34.85%;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #03a9f4, #1c63b7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 37.5rem;
+    text-align: center;
+    font-size: 4rem;
+  }
+  .potvrda {
+    position: absolute;
+    top: calc(50% - 122px);
+    left: calc(50% - 61px);
+  }
+  .div9 {
+    position: absolute;
+    margin: 0 !important;
+    height: 38.3%;
+    width: 44.5%;
+    top: 30.75%;
+    left: 27.5%;
+    letter-spacing: 2px;
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  .ellipse-parent4 {
+    position: absolute;
+    top: calc(50% + 15.7px);
+    left: calc(50% - 100px);
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.63rem;
+    text-align: center;
+    font-size: 4rem;
+  }
+  .confirmation-1-parent {
+    position: absolute;
+    width: 30.3%;
+    top: calc(50% - 300px);
+    right: 0%;
+    left: 69.7%;
+    border-radius: 20px;
+    background: linear-gradient(180deg, #03a9f4, #1c63b7);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    height: 37.5rem;
+  }
+  .frame-parent2 {
+    position: absolute;
+    width: 94.29%;
+    top: calc(50% - 301.4px);
+    right: 2.86%;
+    left: 2.86%;
+    height: 37.5rem;
+  }
+  .dodatneclanarinebadgevi {
+    align-self: stretch;
+    flex: 1;
+    position: relative;
+    text-align: left;
+    font-size: 2rem;
+  }
+  .pravilaglavniframe-child {
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 1297.9px);
+    right: 0%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 58.44rem;
+    object-fit: cover;
+  }
+  .pravilaglavniframe-item {
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 362.9px);
+    right: 0%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 56.81rem;
+    object-fit: cover;
+  }
+  .pravilaglavniframe-inner {
+    position: absolute;
+    width: 100%;
+    top: calc(50% + 546.1px);
+    right: 0%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 58.13rem;
+    object-fit: cover;
+  }
+  .pravilaglavniframe-child1 {
+    position: absolute;
+    top: 1.07rem;
+    left: calc(50% - 211px);
+    width: 31.25rem;
+  }
+  .pravila-stroke-icon {
+    position: absolute;
+    top: 0.88rem;
+    left: calc(50% - 215px);
+    width: 26.84rem;
+    height: 3.56rem;
+  }
+  .div10 {
+    position: absolute;
+    top: 2.84rem;
+    left: 0.03rem;
+    letter-spacing: 20px;
+    background: linear-gradient(180deg, #1c63b7, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 7.31rem;
+    height: 20.31rem;
+  }
+
+  .tijekom-prvog-ulanjivanja-upl {
+    font-size: 1.5rem;
+    margin: 0;
+  }
+  .izrada-iskaznice {
+    margin-bottom: false;
+    list-style-type: circle !important;
+    color: black !important;
+  }
+  .dravna-lanarina-izrada-iskaz {
+    margin: 0;
+    padding-left: 1.33rem;
+
+  }
+
+  .izrada-iskaznice li:before {
+    content: ''; /* necessary property for the pseudo-element to appear */
+    position: absolute;
+    left: 0; /* position the pseudo-element at the start of the LI */
+    top: 50%; /* center it vertically */
+    transform: translateY(-50%); /* fine-tune the vertical centering */
+    width: 6px; /* size of the bullet point */
+    height: 6px;
+    border-radius: 50%; /* make it circular */
+    background-color: black /* color of the bullet point */
+  }
+
+
+  .tijekom-prvog-ulanjivanja-container1 {
+    font-size: 1.5rem;
+    width: 100%;
+  }
+
+  .tijekom-prvog-ulanjivanja-container {
+    position: absolute;
+    width: 76.9%;
+    top: calc(50% - 57.6px);
+    left: 23.15%;
+    font-size: inherit;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    font-family: Inter;
+  }
+  .parent {
+    align-self: stretch;
+    position: relative;
+    height: 18.75rem;
+  }
+  .div11 {
+    position: absolute;
+    top: 0.03rem;
+    right: 3.84rem;
+    letter-spacing: 20px;
+    background: linear-gradient(180deg, #1c63b7, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 9.56rem;
+    height: 22.31rem;
+  }
+  .tijekom-slijedeih-godina {
+    position: absolute;
+    width: 51.93%;
+    top: calc(50% - 51.8px);
+    left: 6.85%;
+    font-size: 1.5rem;
+    font-family: Inter;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  .group {
+    align-self: stretch;
+    position: relative;
+    height: 16.18rem;
+  }
+  .div12 {
+    position: absolute;
+    top: -1.09rem;
+    left: 1.28rem;
+    letter-spacing: 20px;
+    background: linear-gradient(180deg, #1c63b7, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 9.94rem;
+    height: 24.06rem;
+  }
+  .seniori-lanice-starije-container {
+    position: absolute;
+    width: 63.43%;
+    top: calc(50% - 82.8px);
+    left: 35.58%;
+    font-size: 1.5rem;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    font-family: Inter;
+  }
+  .div13 {
+    position: absolute;
+    top: -0.43rem;
+    right: 0.03rem;
+    letter-spacing: 20px;
+    background: linear-gradient(180deg, #1c63b7, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 15.06rem;
+    height: 20.63rem;
+  }
+  .podruni-zborovi {
+    text-decoration: underline;
+    color: #03a9f4;
+  }
+  .lanarina-podrunom-zboru-container {
+    position: absolute;
+    width: 61.54%;
+    top: calc(50% - 82.3px);
+    left: 0.05%;
+    font-size: 1.5rem;
+    font-family: Inter;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  .div14 {
+    position: absolute;
+    top: -0.68rem;
+    left: 1.34rem;
+    letter-spacing: 20px;
+    background: linear-gradient(180deg, #1c63b7, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 10rem;
+    height: 20.75rem;
+  }
+  .potvrda-o-plaenoj {
+    position: absolute;
+    width: 60.11%;
+    top: calc(50% - 84.3px);
+    left: 35.08%;
+    font-size: 1.5rem;
+    font-family: Inter;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  .div15 {
+    position: absolute;
+    top: 0.03rem;
+    right: -0.03rem;
+    letter-spacing: 20px;
+    background: linear-gradient(180deg, #1c63b7, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12.69rem;
+    height: 21.5rem;
+  }
+  .licence-i-hologrami {
+    position: absolute;
+    width: 65.37%;
+    top: calc(50% - 95.4px);
+    left: 0%;
+    font-size: 1.5rem;
+    font-family: Inter;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  .parent3 {
+    align-self: stretch;
+    position: relative;
+    height: 21.5rem;
+  }
+  .div16 {
+    position: absolute;
+    top: -0.02rem;
+    left: 0.03rem;
+    letter-spacing: 20px;
+    background: linear-gradient(180deg, #1c63b7, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 9.5rem;
+    height: 20.19rem;
+  }
+  .prilikom-podizanja-holograma {
+    position: absolute;
+    width: 61.66%;
+    top: calc(50% - 85.4px);
+    left: 34.91%;
+    font-size: 1.5rem;
+    font-family: Inter;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  .div17 {
+    position: absolute;
+    top: -0.02rem;
+    right: 0.84rem;
+    letter-spacing: 20px;
+    background: linear-gradient(180deg, #1c63b7, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 13.19rem;
+    height: 20.31rem;
+  }
+  .markicu-i-hologram {
+    position: absolute;
+    width: 66.19%;
+    top: calc(50% - 84.4px);
+    left: 0%;
+    font-size: 1.5rem;
+    font-family: Inter;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  .div18 {
+    position: absolute;
+    top: -0.01rem;
+    left: -1.03rem;
+    letter-spacing: 20px;
+    background: linear-gradient(180deg, #1c63b7, #03a9f4);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 12.63rem;
+    height: 20.88rem;
+  }
+  .vrijeme-izrade-iskaznice {
+    position: absolute;
+    width: 70.38%;
+    top: calc(50% - 58.3px);
+    left: 27.46%;
+    font-size: 1.5rem;
+    font-family: Inter;
+    text-align: left;
+    display: flex;
+    align-items: center;
+  }
+  .frame-parent3 {
+    position: absolute;
+    width: 65.14%;
+    top: calc(50% - 1259.6px);
+    right: 17.39%;
+    left: 17.46%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 0.06rem;
+    box-sizing: border-box;
+    gap: 2.19rem;
+  }
+  .pravilaglavniframe {
+    align-self: stretch;
+    position: relative;
+    height: 178.63rem;
+    font-size: 18.75rem;
+    color: #000;
+    font-family: "Luckiest Guy";
+  }
+  .podaci-za-uplatu {
+    position: relative;
+    width: 34.52rem;
+    height: 8.96rem;
+  }
+  .ime-primatelja {
+    font-weight: 800;
+    font-family: Inter;
+  }
+  .b {
+    font-family: Inter;
+  }
+  .span {
+    font-weight: 600;
+    font-family: Inter;
+  }
+  .blank-line1 {
+    margin: 0;
+    font-weight: 600;
+  }
+  .vatpdv-id-number {
+    font-weight: 800;
+  }
+  .poziv-na-broj1 {
+    margin: 0;
+    font-weight: 800;
+  }
+  .ime-primatelja-hrvatski-container {
+    position: relative;
+  }
+  .iskaznicaprimjer-icon {
+    position: relative;
+    width: 29.94rem;
+    height: 18.61rem;
+  }
+  .upuujemo-lanove-da-container {
+    flex: 1;
+    position: relative;
+  }
+  .frameokvirazaplacanje {
+    align-self: stretch;
+    flex: 1;
+    border-radius: 20px;
+    background-color: #fff;
+    border: 3px solid #03a9f4;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 1.69rem 2.44rem;
+    gap: 2.75rem;
+  }
+  .uplatnica-icon {
+    align-self: stretch;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 30.86rem;
+    flex-shrink: 0;
+  }
+  .okvirzapodatkeplacanja {
+    align-self: stretch;
+    height: 87.36rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 5rem;
+    box-sizing: border-box;
+    gap: 4.88rem;
+    text-align: left;
+    color: #000;
+  }
+  .idi-na-plaanje {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 28.18rem;
+  }
+  .gumbzaplacanje {
+    text-decoration: none;
+    border-radius: 10px;
+    background-color: #03a9f4;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.75rem 2.31rem;
+    color: inherit;
+    opacity: 0%;
+  }
+  .glavnipodframe {
+    align-self: stretch;
+    height: 494.99rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 0rem 5rem;
+    box-sizing: border-box;
+    gap: 4.38rem;
+  }
+  .clanarine-desktop-radi {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 3.75rem 0rem 0rem;
+    box-sizing: border-box;
+    text-align: center;
+    font-size: 1.25rem;
+    color: #fff;
+    font-family: Inter;
+  }
+
+  @media screen and (max-width: 1150px) {
+    .voditelj-skijanja-iaess {
+      font-size: 0.94rem;
+    }
+
+    .dravna-lanarina {
+      font-size: 0.94rem;
+    }
+
+    .dravna-lanarina1 {
+      font-size: 0.94rem;
+    }
+
+    .uitelj-skijanjadaskanja-ivs {
+      font-size: 0.94rem;
+    }
+
+    .treneri-skijanjadaskanja-na {
+      font-size: 0.94rem;
+    }
+
+    .isia-uitelj-skijanjadaskanja {
+      font-size: 0.94rem;
+    }
+
+    .demonstratori-skijanjadaskanj {
+      font-size: 0.94rem;
+    }
+
+    .treneri-skijanjadaskanja-na1 {
+      font-size: 0.94rem;
+    }
+
+    .dravna-lanarina2 {
+      font-size: 0.94rem;
+    }
+
+    .meunarodna-isia-lanarina {
+      font-size: 0.94rem;
+    }
+
+    .demonstrator-skijanja-s {
+      font-size: 0.94rem;
+    }
+
+    .dravna-lanarina3 {
+      font-size: 0.94rem;
+    }
+
+    .meunarodna-isia-lanarina1 {
+      font-size: 0.94rem;
+    }
+
+    .isia-card-lanarina {
+      font-size: 0.94rem;
+    }
+
+    .dodatne-lanarine-icon {
+      height: 6.88rem;
+    }
+
+    .izdavanje-iskaznice {
+      font-size: 1.75rem;
+    }
+
+    .uitelj-skijanjadaskanja {
+      font-size: 0.81rem;
+    }
+
+    .trener-skijanjadaskanja {
+      font-size: 0.81rem;
+    }
+
+    .isia-card {
+      font-size: 0.81rem;
+    }
+
+    .amblem {
+      font-size: 1.75rem;
+    }
+
+    .potvrda {
+      font-size: 1.75rem;
+    }
+
+    .tijekom-prvog-ulanjivanja-container {
+      font-size: 1.5rem;
+    }
+
+    .ime-primatelja-hrvatski-container {
+      font-size: 1rem;
+    }
+
+    .upuujemo-lanove-da-container {
+      font-size: 1rem;
+    }
+
+    .frameokvirazaplacanje {
+      flex: 1;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .lanarine-icon {
+      align-self: stretch;
+      width: auto;
+      height: 3.13rem;
+    }
+
+    .voditelj-skijanja-iaess {
+      font-size: 0.94rem;
+    }
+
+    .dravna-lanarina {
+      font-size: 0.94rem;
+    }
+
+    .uitelj-skijanjadaskanja-ivs {
+      font-size: 0.94rem;
+    }
+
+    .dodatne-lanarine-icon {
+      height: 6.88rem;
+    }
+
+    .pravila-stroke-icon {
+      height: 3.25rem;
+    }
+
+    .div13 {
+      letter-spacing: 20px;
+      text-align: justify;
+      width: 11.25rem;
+    }
+
+    .lanarina-podrunom-zboru-container {
+      text-align: left;
+      width: 19.13rem;
+    }
+
+    .podaci-za-uplatu {
+      height: 6.88rem;
+    }
+
+    .frameokvirazaplacanje {
+      gap: 2.75rem;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding-top: 1.69rem;
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    .frame-parent {
+      align-self: stretch;
+      width: auto;
+      flex: 1;
+      flex-direction: column;
+    }
+  }
+  @media screen and (max-width: 1270px) {
+    .voditelj-skijanja-iaess {
+      font-size: 1.31rem;
+    }
+
+    .dravna-lanarina {
+      font-size: 1.38rem;
+    }
+
+    .dravna-lanarina1 {
+      font-size: 1.38rem;
+    }
+
+    .uitelj-skijanjadaskanja-ivs {
+      font-size: 1.31rem;
+    }
+
+    .treneri-skijanjadaskanja-na {
+      font-size: 1.31rem;
+    }
+
+    .isia-uitelj-skijanjadaskanja {
+      font-size: 1.31rem;
+    }
+
+    .demonstratori-skijanjadaskanj {
+      font-size: 1.31rem;
+    }
+
+    .treneri-skijanjadaskanja-na1 {
+      font-size: 1.31rem;
+    }
+
+    .dravna-lanarina2 {
+      font-size: 1.38rem;
+    }
+
+    .meunarodna-isia-lanarina {
+      font-size: 1.38rem;
+    }
+
+    .demonstrator-skijanja-s {
+      font-size: 1.31rem;
+    }
+
+    .dravna-lanarina3 {
+      font-size: 1.38rem;
+    }
+
+    .meunarodna-isia-lanarina1 {
+      font-size: 1.38rem;
+    }
+
+    .isia-card-lanarina {
+      font-size: 1.38rem;
+    }
+
+    .izdavanje-iskaznice {
+      font-size: 1.75rem;
+    }
+
+    .amblem {
+      font-size: 1.75rem;
+    }
+
+    .potvrda {
+      font-size: 1.75rem;
+    }
+  }

@@ -42,13 +42,117 @@
               :width="420"
               class="pokretnitekst"
             >
-              <div>Dobrodošli na našu novu web stranicu!</div>
-              <div>Pratite najnovije informacije!</div>
-              <div>Pogledajte planirana događanja za novu sezonu!</div>
+              <div>Važne vijesti</div>
+              <div>Važne vijesti</div>
+              <div>Važne vijesti</div>
+              <div>Važne vijesti</div>
+              <div>Važne vijesti</div>
             </vue-marquee-slider>
            
 
     <div class="obavijestitraka" />
+
+
+    
+ 
+    
+<!--
+
+      <carousel-3d :controls-visible="true" :loop="false" :display="3" :width="550" :height="360" :count="slides.length"
+         :controls-prev-html="'&#10092; '" :controls-next-html="'&#10093;'" 
+               :controls-width="60" :controls-height="60" :perspective="1" 
+        
+               ref="carousel"
+               @after-slide-change="updateCurrentIndex">
+    <slide v-for="(slide, i) in slides" :index="i" :key="i" >
+      <figure>
+       <!- <Link :href="route('skijasi.commerce-theme.uclanise', slide.slug)" style="color: white">  promijenit ovo za vijesti->
+        <img class="" :src="slide.image" :alt="'Image ' + i">
+        <div class="objavljenotekst">
+          <b class="objavljeno-20032023">{{ 'OBJAVLJENO: ' + $moment(slide.datum).format('DD.MM.YYYY') }}</b>
+        </div>
+        <figcaption class="fontweight">
+          {{ slide.title }}
+        </figcaption>
+
+      
+             </Link>
+
+      </figure>
+    </slide>
+</carousel-3d>
+
+--> 
+<div class="dogadajitrecired">
+    
+      <ssr-carousel  v-if="slides.length > 0" class="dogadajipodgrupa "
+      overflow-visible
+      show-arrows
+  :slides-per-page='3'
+  gutter='40'
+  :peek='40'
+  :responsive='[
+    {
+      maxWidth: 1280,
+      slidesPerPage: 3,
+    },
+    {
+      maxWidth: 1024,
+      slidesPerPage: 3,
+    },
+    {
+      maxWidth: 767,
+      slidesPerPage: 3
+    }
+  ]'>
+<template>
+  <div class="dogadajipodgrupa-child" v-for="(slide, i) in slides" :index="i" :key="i">
+    <!-- Conditionally wrap slide content in an anchor tag if slide.url exists -->
+    <a v-if="slide.link" :href="slide.link" style="text-decoration: none; color: #3498db;">
+      <!-- Slide content -->
+      <img class="slikeslider" :src="slide.image" :alt="'Image ' + i">
+      <div class="vijestinaslov">
+        {{ slide.title }}
+        <div class="vijestitekst" v-html="slide.content"></div>
+      </div>
+      <b class="objavljeno-20032023">{{ $moment(slide.datum).format('DD.MM.YYYY') }}</b>
+    </a>
+    <!-- Render slide content normally if slide.url doesn't exist -->
+    <template v-else>
+      <img class="slikeslider" :src="slide.image" :alt="'Image ' + i">
+      <div class="vijestinaslov">
+        {{ slide.title }}
+        <div class="vijestitekst" v-html="slide.content"></div>
+      </div>
+      <b class="objavljeno-20032023">{{ $moment(slide.datum).format('DD.MM.YYYY') }}</b>
+    </template>
+  </div>
+</template>
+
+
+   <!-- Back Arrow -->
+   <template #back-arrow='{ disabled }'>
+    <div class="arrow-overlay" :style="{ left: 0 }">
+      <div class="arrow" :class="{ 'is-disabled': disabled }">←</div> <!-- Replace with your actual back arrow -->
+    </div>
+  </template>
+
+  <!-- Next Arrow -->
+  <template #next-arrow='{ disabled }'>
+    <div class="arrow-overlay" :style="{ right: 0 }">
+      <div class="arrow" :class="{ 'is-disabled': disabled }">→</div> <!-- Replace with your actual next arrow -->
+    </div>
+  </template>
+
+</ssr-carousel>
+
+
+
+
+    </div>
+
+
+
     <div class="drugired">
       <div class="drugiredlijevo-parent">
         <a class="drugiredlijevo animacijakvadrati" href="https://www.skijasko-uciliste.hr" target="_blank" rel="noopener noreferrer">
@@ -136,41 +240,7 @@
         </Link>
       </div>
     </div>
-    <div class="dogadajitrecired">
-      <div class="srednjibannerdogadaji animate-on-scroll">
-        <carousel-3d :controls-visible="true" :loop="false" :display="3" :width="550" :height="360" :count="slides.length"
-         :controls-prev-html="'&#10092; '" :controls-next-html="'&#10093;'" 
-               :controls-width="60" :controls-height="60" :perspective="1" 
-        
-               ref="carousel"
-               @after-slide-change="updateCurrentIndex">
-    <slide v-for="(slide, i) in slides" :index="i" :key="i" >
-      <figure>
-       <!-- <Link :href="route('skijasi.commerce-theme.uclanise', slide.slug)" style="color: white">  promijenit ovo za vijesti-->
-        <img class="" :src="slide.image" :alt="'Image ' + i">
-        <div class="objavljenotekst">
-          <b class="objavljeno-20032023">{{ 'OBJAVLJENO: ' + $moment(slide.datum).format('DD.MM.YYYY') }}</b>
-        </div>
-        <figcaption class="fontweight">
-          {{ slide.title }}
-        </figcaption>
-
-      
-            <!-- </Link>--> 
-
-      </figure>
-    </slide>
-</carousel-3d>
-<div class="slide-dots">
-    <span v-for="(slide, i) in slides" :key="'dot-' + i" 
-          :class="{ 'active-dot': i === currentIndex }" 
-          @click="goToSlide(i)"></span>
-</div>
-
-
-</div>
-
-    </div>
+   
     <div class="sponzorigrupa">
       <div class="sponzor1">
         <vue-marquee-slider
@@ -424,6 +494,7 @@ Slide,
 VuePreloader,
 
 
+
     CommerceMobileMainBanner,
     CommerceMobileProduct,
     CommerceProduct,
@@ -464,7 +535,7 @@ VuePreloader,
   // za clanke
 
 
-  slides: [{}, {}, {}, {}, {}, {}, {},{},{}, {}, {}, {}, {}, {},{},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {},{}, {}, {}, {}, {}, {}, {}],
+  slides: [],
 
   isPaused: false,
 
@@ -621,8 +692,11 @@ splitCategory() {
     $route(to, from) {
       this.firstLoad = from === null || from === undefined;
     },
+    
   },
   methods: {
+  
+    
     moveSlider(direction) {
     const slider = this.$el.querySelector('.bilteni-slides');
     const amount = direction * 250;
@@ -826,14 +900,16 @@ splitCategory() {
   });
 
   // Map over thumbnails to create the slides array
-  this.slides = this.thumbnails.map(item => {
+  this.$set(this, 'slides', this.thumbnails.map(item => {
     return {
       datum: item.publishedAt,
       title: item.title,
+      link: item.link,
+      content: item.content,
       slug: item.slug,
-      image: item.thumbnail // Assuming thumbnail is the image URL/path
+      image: item.thumbnail 
     };
-  });
+  }));
 }
 
 
@@ -894,7 +970,89 @@ splitCategory() {
 
 
 
+.arrow-overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    z-index: 2;
+}
 
+.arrow-overlay::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 1;
+}
+
+.arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  /* Add other styles for the arrow here */
+}
+
+.arrow.is-disabled {
+  opacity: 0; /* For example, make it semi-transparent when disabled */
+}
+
+
+.vijestinaslov{
+align-self: stretch;
+    position: relative;
+
+    text-align: left;
+ padding: 3%;
+
+
+    color: #000;
+font-family: Inter;
+font-size: 1.1rem;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+  }
+  .vijestitekst {
+  color: #000;
+  font-family: Inter;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 300;
+  line-height: normal;
+  padding-top: 2%;
+  
+  display: -webkit-box;       /* Required for line-clamp to work */
+  -webkit-line-clamp: 3;      /* Truncate text after 3 lines */
+  -webkit-box-orient: vertical; /* Required for line-clamp to work */
+  overflow: hidden;           /* Hide any content that exceeds this height */
+  max-height: calc(1.2em * 3);  /* Adjust based on line-height and number of lines */
+}
+
+
+.dogadajipodgrupa-child {
+  transition: transform 0.3s ease-in-out; /* Smooth transition for scaling */
+  z-index: 1; /* Default z-index */
+}
+
+.dogadajipodgrupa-child .vijestitekst {
+    height: 5%;           /* Set the height to 20% of parent */
+    overflow: hidden;      /* Hide any content that exceeds this height */
+    display: block;        /* Ensure it behaves like a block element */
+    display: -webkit-box;      /* Important for line-clamp to work */
+    -webkit-line-clamp: 3;     /* Truncate text after 3 lines */
+    -webkit-box-orient: vertical; /* Required for line-clamp to work */
+}
+
+
+.dogadajipodgrupa-child:hover {
+  transform: scale(1.15);
+    z-index: 1000;  /* Ensures that the enlarged slide is above other elements */
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); 
+}
 
 
 
@@ -917,6 +1075,9 @@ splitCategory() {
     justify-content: center;
     margin-top: 10px; /* adjust as needed */
 }
+
+
+
 
 .slide-dots span {
     width: 10px;
@@ -1008,7 +1169,7 @@ width: 100%;
   width: 100%;
   height: 100%;
   display: flex;
-  overflow-x: scroll;
+  overflow-x: auto;
 
   align-items: center;
     justify-content: flex-start;
@@ -1016,6 +1177,19 @@ width: 100%;
 padding-left: 6%;
 padding-right: 6%;
 }
+
+
+.bilteni-slides::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge, and Firefox */
+.bilteni-slides {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+
 
 .rectangle-parent {
   scroll-snap-align: start;
@@ -1337,24 +1511,40 @@ padding-right: 6%;
     align-self: stretch;
     flex: 1;
     position: relative;
-    max-width: 20%;
+    max-width: 30%;
     overflow: hidden;
-    max-height: 100%;
+    max-height: 10%;
     object-fit: cover;
-    z-index: 0;
+    z-index: 1;
   }
   .objavljeno-20032023 {
-    position: relative;
-    font-size: 0.6rem;
+    position: absolute; /* Changed from relative to absolute */
+    bottom: 0.5rem; /* Adjust as desired */
+    left: 0.7rem; /* Adjust as desired */
+
+    color: rgba(0, 0, 0, 0.30);
+font-family: Inter;
+font-size: 12px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
   }
-  .objavljenotekst {
+
+.slikeslider {
+  overflow: hidden;
+  width: 100%;
+  height: 50%;
+  object-fit: cover; /* Ensure image maintains aspect ratio and is cropped to fit */
+}
+
+.objavljenotekst {
     margin: 0 !important;
     position: absolute;
     height: calc(100% - 536px);
     width: 34%;
     top: 0rem;
     right: 0%;
-    bottom: 33.5rem;
+    bottom: 23.5rem;
     left: 68%;
     background-color: rgba(0, 0, 0, 0.6);
     display: flex;
@@ -1366,22 +1556,29 @@ padding-right: 6%;
     z-index: 1;
   }
   .srednjibannerdogadaji {
-    width: 62.5rem;
-    height: 37.5rem;
+    color: #000;
+    width: 100%;
+    height: 20rem;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     position: relative;
+
     gap: 0.63rem;
     z-index: 0;
   }
   .dogadajipodgrupa-child {
-    position: relative;
-    width: 11.88rem;
-    height: 0.63rem;
-    z-index: 1;
-  }
+    height: 300px;
+
+  position: relative;
+  width: 13%; /* Adjust this as per your design */
+/* Adjust this as per your design */
+  overflow: hidden; /* This will clip any child content going out of the boundaries */
+  z-index: 1;
+  background-color: #fff;
+  transition: transform 0.3s ease-in-out;
+}
   .otkazan-ctt-test {
     flex: 1;
     position: relative;
@@ -1416,26 +1613,26 @@ padding-right: 6%;
     z-index: 2;
   }
   .dogadajipodgrupa {
-    overflow: hidden;
+   
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 1.25rem 0rem;
+    padding: 0.25rem 0rem;
     position: relative;
     gap: 2.06rem;
+    
   }
   .dogadajitrecired {
-    align-self: stretch;
-    background-color: #fff;
-    overflow: hidden;
+ 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 0.25rem 0rem;
+    padding: 0.25rem 1rem;
     font-size: 1.25rem;
-    color: #fff;
+    color: #000;
+
   }
   .sponzorigrupa {
     display: flex;
@@ -1856,17 +2053,7 @@ grid-column: span 1;
       font-size: 0.94rem;
     }
 
-    .srednjibannerdogadaji {
-   
-      align-self: unset;
-      height: 37.5rem;
-      gap: 0.63rem;
-      align-items: center;
-      justify-content: flex-start;
-      padding-left: 0rem;
-      padding-right: 0rem;
-      box-sizing: border-box;
-    }
+ 
 
     .otkazan-ctt-test {
       font-size: 0.94rem;
@@ -2105,15 +2292,17 @@ grid-column: span 1;
 
 
 .pokretnitekst{
-  font-size: 0.9rem;
-  font-weight: 1000;
-  opacity: 0.7;
-  background-color: #fe792c;
-  color: #fff;
-  padding-top: 0.9rem;
-  padding-bottom: 0.9rem;
-  margin-top: -4.6rem; 
+  
+  background-color: transparent;
+  margin-top: -5rem; 
   width: 100%;
+
+  color: #DB1F26;
+font-family: Inter;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
 }
 
 

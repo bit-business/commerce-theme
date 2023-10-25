@@ -100,6 +100,13 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
+    public function infoclanarine()
+    {
+        return Inertia::render('infoclanarine', [
+            'name' => 'Članarine',
+        ], 'commerce-theme:app');
+    }
+    
     public function podrucnizborovi()
     {
         return Inertia::render('podrucnizborovi', [

@@ -8,7 +8,7 @@
         <div class="kontainerzakontakttekstove">
           <div class="text-input">
             <img class="container-icon" alt="" src="/storage/slike/footer/container.svg" />
-            <div class="div">+385 1 23 999 50</div>
+            <div class="divbrojmob">+385 1 23 999 50</div>
           </div>
           <a class="text-input1">
             <img class="container-icon1" alt="" src="/storage/slike/footer/container1.svg" />
@@ -21,7 +21,7 @@
               alt=""
               src="/storage/slike/footer/vertical-container.svg"
             />
-            <div class="div1">+385 1 23 999 55</div>
+            <div class="div1brojmob">+385 1 23 999 55</div>
           </div>
         -->
 
@@ -201,7 +201,7 @@ export default {
     height: 1rem;
     overflow: hidden;
   }
-  .div {
+  .divbrojmob {
     position: absolute;
     right: 1.88rem;
     bottom: 0rem;
@@ -249,7 +249,7 @@ export default {
     height: 1rem;
     overflow: hidden;
   }
-  .div1 {
+  .div1brojmob {
     position: absolute;
     right: 0rem;
     bottom: 0.03rem;
@@ -550,7 +550,7 @@ export default {
     height: 1rem;
     overflow: hidden;
   }
-  .div {
+  .divbrojmob {
     position: absolute;
     right: 1.88rem;
     bottom: 0rem;
@@ -596,7 +596,7 @@ export default {
     height: 1rem;
     overflow: hidden;
   }
-  .div1 {
+  .div1brojmob {
     position: absolute;
     right: 0rem;
     bottom: 0.03rem;
@@ -904,7 +904,7 @@ export default {
     height: 1rem;
     overflow: hidden;
   }
-  .div {
+  .divbrojmob {
     position: absolute;
     top: 0rem;
     left: 1.63rem;
@@ -945,7 +945,7 @@ export default {
     height: 1rem;
     overflow: hidden;
   }
-  .div1 {
+  .div1brojmob {
     position: absolute;
     top: 0.06rem;
     left: 1.84rem;
@@ -1212,7 +1212,7 @@ export default {
 
   
   @media screen and (max-width: 420px) {
-    .div {
+    .divbrojmob {
       font-size: 0.63rem;
     }
 
@@ -1220,7 +1220,7 @@ export default {
       font-size: 0.63rem;
     }
 
-    .div1 {
+    .div1brojmob {
       font-size: 0.63rem;
     }
 

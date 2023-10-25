@@ -28,6 +28,10 @@ import { notificationMessageReceiveHandle } from "./utils/firebase";
 import { broadcastMessageHandle } from "./utils/broadcast-messages";
 
 
+import SsrCarousel from 'vue-ssr-carousel';
+import ssrCarouselCss from 'vue-ssr-carousel/index.css';
+
+
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
 
@@ -36,6 +40,9 @@ Vue.directive("tooltip", VTooltip);
 Vue.component("commerce-loading", CommerceLoading);
 Vue.component("alert", Alert);
 Vue.component("radio", Radio);
+
+Vue.component('ssr-carousel', SsrCarousel);
+
 
 const plugins = process.env.MIX_PAYMENT_MODULE.split(",");
 
