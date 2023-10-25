@@ -756,10 +756,10 @@
 
 </div>
       <div class="framegumbi">
-        <a class="lijevigumb" href="https://forms.gle/z95LVJdJV6Lr8jyh7">
+        <a class="lijevigumb" href="product.prijavnicalink">
           <b class="prijavnica-za-dogaaj">PRIJAVNICA ZA DOGAĐAJ</b>
         </a>
-       <!-- <a class="desnigumb">
+       <!-- <a class="desnigumb">      https://forms.gle/z95LVJdJV6Lr8jyh7
           <b class="uplatite-lanarinu-hzuts-u">UPLATITE ČLANARINU HZUTS-U</b>
         </a>-->
       </div>
@@ -877,6 +877,7 @@ export default {
         datum_pocetka: null,
         datum_kraja: null,
         mjesto: "",
+        prijavnicalink: "",
 
         reviewAvgRating: 0,
         reviewCount: 0,

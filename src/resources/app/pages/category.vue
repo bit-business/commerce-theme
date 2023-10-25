@@ -113,7 +113,7 @@
             <div v-if="!isEventActive(product)" class="inactive-overlay">
                               NIJE AKTIVNO
             </div>
-       <div v-if="index !== 0" class="inactive-overlay">
+            <div v-if="index !== 0 && index !== 1" class="inactive-overlay">
     UBRZO DETALJI
 </div>
 
