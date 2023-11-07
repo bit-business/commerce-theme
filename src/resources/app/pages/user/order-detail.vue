@@ -133,7 +133,7 @@
                 </template>
                 <span>Hvala što kupujete u {{ title }}!</span>
               </div>
-              <Link v-if="order.orderDetails.length > 0" :href="route('skijasi.commerce-theme.detail', order.orderDetails[0].productDetail.product.slug)" class="block text-center text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter">Ostali događaji</Link>
+              <Link v-if="order.orderDetails.length > 0" :href="route('skijasi.commerce-theme.detalji', order.orderDetails[0].productDetail.product.slug)" class="block text-center text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter">Ostali događaji</Link>
             </div>
           </div>
           <!-- <div class="bg-white rounded-t-xl border-t border-dotted">
@@ -163,7 +163,7 @@
               </tooltip> -->
             </div>
             <div class="flex w-full flex-col">
-              <Link :href="route('skijasi.commerce-theme.detail', orderDetail.productDetail.product.slug)" class="flex space-x-4 w-full py-4 first:border-t border-b last:border-b-0 last:pb-0 items-start" v-for="orderDetail, index in order.orderDetails" :key="index">
+              <Link :href="route('skijasi.commerce-theme.detalji', orderDetail.productDetail.product.slug)" class="flex space-x-4 w-full py-4 first:border-t border-b last:border-b-0 last:pb-0 items-start" v-for="orderDetail, index in order.orderDetails" :key="index">
                 <img :src="orderDetail.productDetail.productImage" class="border w-20">
                 <div class="flex flex-col">
                   <div class="text-gray-700">{{ orderDetail.productDetail.product.name }}</div>
@@ -202,7 +202,7 @@
     
     <div class="block relative sm:hidden">
       <div class="fixed bottom-0 left-0 right-0 p-2 bg-white" v-if="order.status === 'done'">
-        <Link class="block bg-primary text-white py-2 text-center rounded-md text-sm" :href="route('skijasi.commerce-theme.detail', order.orderDetails[0].productDetail.product.slug)" v-if="order.orderDetails.length > 0">Drugi događaji</Link>
+        <Link class="block bg-primary text-white py-2 text-center rounded-md text-sm" :href="route('skijasi.commerce-theme.detalji', order.orderDetails[0].productDetail.product.slug)" v-if="order.orderDetails.length > 0">Drugi događaji</Link>
       </div>
 
       <div class="fixed bottom-0 left-0 right-0 p-2 bg-white" v-if="!['waitingBuyerPayment', 'done'].includes(order.status)">
@@ -238,7 +238,7 @@
         </div>
 
         <div class="mt-3 bg-white w-full">
-          <Link :href="route('skijasi.commerce-theme.detail', orderDetail.productDetail.product.slug)" v-for="orderDetail, index in order.orderDetails" :key="index" class="flex flex-row p-2 last:border-b-0 gap-2">
+          <Link :href="route('skijasi.commerce-theme.detalji', orderDetail.productDetail.product.slug)" v-for="orderDetail, index in order.orderDetails" :key="index" class="flex flex-row p-2 last:border-b-0 gap-2">
             <div class="w-1/4">
               <img :src="orderDetail.productDetail.productImage">
             </div>

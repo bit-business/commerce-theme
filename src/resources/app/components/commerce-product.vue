@@ -1,6 +1,6 @@
 <template>
   <div @mouseenter="isHover = true" @mouseover="isHover = true" @mouseout="isHover = false" class="w-full h-72 pointer-events-auto">
-    <Link :href="route('skijasi.commerce-theme.detail', product.slug)" class="relative block transition-all ease duration-200 group bg-white ring-primary rounded-xl h-full hover:ring-2 hover:rounded-b-none" >
+    <Link :href="route('skijasi.commerce-theme.detalji', product.slug)" class="relative block transition-all ease duration-200 group bg-white ring-primary rounded-xl h-full hover:ring-2 hover:rounded-b-none" >
       <div class="w-full bg-cover bg-no-repeat rounded-t-xl mb-2" :style="`background-image: url('${product.productImage}'); padding-top: 100%`">
       <div class="absolute right-4 top-0 h-8 w-8" v-if="hasActiveDiscount">
         <span class="absolute right-0 top-0 text-xs z-10 w-full text-center text-white font-bold line-clamp-2">{{ getDiscount }}<br/>

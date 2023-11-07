@@ -17,9 +17,9 @@
   </div>
       </div>
     </nav>
-    <a class="logoframe">
-      <img class="vector-icon" alt="" src="/storage/slike/vector.svg" />
-    </a>
+    <Link class="logoframe" :href="route('skijasi.commerce-theme.home')">
+      <img class="vector-icon" alt="" src="/storage/slike/logonovi.svg" />
+    </Link>
     
     <div class="ikonedesnoframe">
       <button class="drzavaikona" @click="toggleDropdownjezik">
@@ -434,8 +434,9 @@ beforeDestroy() {
 
 
 
-.pocetnamobile:hover .ikonaselectmeni-icon {
-  display: block;  /* Show the image when .pocetnamobile is hovered over */
+.pocetnamobile:hover  {
+  color: #03a9f4;
+/*   display: block;  Show the image when .pocetnamobile is hovered over */
 }
 
 
@@ -1049,7 +1050,7 @@ align-items: center;
     width: 100%;
     height: 100vh;
     z-index: 0;
-    top: 0.5%;
+    margin-top: 3.75rem;
     display: flex;
   
   }
@@ -1174,7 +1175,7 @@ top: 0%;
     position: absolute;
     height: 1000%;
     width: 100%;
-    top: 1.67%;
+    top: 0%;
     right: 44.44%;
     bottom: -646.67%;
     left: 0%;

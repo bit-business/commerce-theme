@@ -56,7 +56,7 @@
           <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/mappin-12.svg" />
         </div>
         <div class="parent">
-          <div class="div">+385 1 23 999 50</div>
+          <div class="divkontakt">+385 1 23 999 50</div>
           <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/phone-1-1.svg" />
         </div>
   
@@ -449,7 +449,7 @@ export default {
     height: 1.5rem;
     text-align: left;
   }
-  .div {
+  .divkontakt {
     position: absolute;
     top: 0.13rem;
     left: 2.31rem;
@@ -465,7 +465,7 @@ export default {
     width: 9.56rem;
     height: 1.5rem;
   }
-  .div1 {
+  .div1kontakt {
     position: absolute;
     top: 0.13rem;
     left: 2.44rem;

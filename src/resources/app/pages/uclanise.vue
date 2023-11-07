@@ -1,142 +1,140 @@
-    <template>
-  <div class="uclanisescreen">
+<template>
+  <div class="hzuts-join-screen-desktop">
     <Head :title="$page.props.name" />
-    <div class="ulanite-se-u-hzuts-wrapper">
-      <div class="ulanite-se-u">UČLANITE SE U HZUTS</div>
-    </div>
-    <div class="licence-i-hologrami-podiu-se-parent">
-      <div class="licence-i-hologrami-container">
-        <span class="licence-i-hologrami-container1">
-          <b
-            >Licence i hologrami podižu se isključivo u vrijeme dežurstva
-            HZUTS-a ili Vašeg područnog zbora</b
-          >
-          <span class="koje-moete-saznati">
-            koje možete saznati na web stranicama područnih zborova ili
-            kontaktiranjem tajnika područnog zbora. Vrijeme izrade iskaznice je
-            minimalno tjedan dana od zaprimanja svih materijala. Nakon izrade
-            iskaznicu i amblem možete pruzeti u uredovno vrijeme u HZUTS-u ili
-            iste možemo poslati na vašu kućnu adresu.</span
-          >
-        </span>
+    <div class="glavnipodframe">
+      <div class="gornjiblokframe">
+        <img class="gornjiblokframe-child" alt="" src="/storage/slike/uclanise/rectangle-200@2x.png" />
+        <div class="gornjiblokframe-item" />
+        <div class="ulanite-se-u-hzuts-wrapper">
+          <div class="ulanite-se-u">UČLANITE SE U HZUTS</div>
+        </div>
       </div>
-      <b class="za-ulanjenje-u"
-        >Za učlanjenje u HZUTS je potrebno ispuniti sljedeće uvjete:</b
-      >
-      <div class="frame-parent">
-        <div class="frame-group">
-          <div class="ellipse-parent">
-            <div class="frame-child" />
-            <div class="div">1</div>
+      <div class="donjiblokframe">
+        <div class="bijelidioglavniframe">
+          <b class="za-ulanjenje-u"
+            >Za učlanjenje u HZUTS potrebno je ispuniti sljedeće uvjete:</b
+          >
+          <div class="prvired">
+            <div class="ellipse-parent">
+              <div class="group-child" />
+              <div class="div">1</div>
+            </div>
+            <div class="imati-zvanje-uitelja">navršiti minimalno 18 godina</div>
           </div>
-          <div class="posjedovat-minimalno-status-container">
-            <span class="licence-i-hologrami-container1">
-              <span>posjedovat minimalno </span>
-              <span class="status-uitelja-ili"
-                >status učitelja ili voditelja skijanja</span
-              >
-            </span>
+          <div class="drugired">
+            <div class="ellipse-group">
+              <div class="group-item" />
+              <div class="div1">2</div>
+            </div>
+            <div class="imati-zvanje-uitelja">
+              imati zvanje učitelja ili trenera sportova na snijegu (za učitelja
+              skijanja to znači završen program odobren od Ministarstva znanosti
+              i obrazovanja u trajanju od minimalno 310 sati te položen ispit
+              ispred komisije HZUTS-a)
+            </div>
           </div>
-        </div>
-        <div class="frame-container">
-          <div class="ellipse-group">
-            <div class="frame-child" />
-            <div class="div1">2</div>
+          <div class="prvired">
+            <div class="ellipse-container">
+              <div class="group-inner" />
+              <div class="div">3</div>
+            </div>
+            <div class="imati-zvanje-uitelja">
+              dostaviti svu dokumentaciju za dokaz statusa prethodne točke
+              (Uvjerenje o osposobljavanju, diploma Kineziološkog fakulteta
+              osoba koje su diplomirale i usmjerile skijanje – zvanje:
+              Sveučilišni magistar kineziologije u edukaciji i skijanju)
+            </div>
           </div>
-          <div class="prethodno-se-ulaniti-container">
-            <span class="licence-i-hologrami-container1">
-              <span class="prethodno-se-ulaniti"
-                >prethodno se učlaniti u jedan od
+          <div class="prvired">
+            <div class="ellipse-container">
+              <div class="group-inner" />
+              <div class="div">4</div>
+            </div>
+            <div class="prethodno-se-ulaniti-container">
+              <span>prethodno se učlaniti u jedan od </span>
+              <span class="podrunih-zborova">Područnih zborova</span>
+            </div>
+          </div>
+          <div class="prvired">
+            <div class="ellipse-container">
+              <div class="group-inner" />
+              <div class="div">5</div>
+            </div>
+            <div class="imati-zvanje-uitelja">ispuniti obrazac za prijavu</div>
+          </div>
+          <div class="prvired">
+            <div class="ellipse-parent2">
+              <div class="group-child2" />
+              <div class="div5">6</div>
+            </div>
+            <div class="uz-prijavu-ili-container">
+              <span class="uz-prijavu-ili">uz prijavu (ili na </span>
+              <span class="infohzutshr">          <a href="mailto:info@hzuts.hr" >&#105;&#110;&#102;&#111;&#64;&#104;&#122;&#117;&#116;&#115;&#46;&#104;&#114;</a>
+</span>
+              <span class="uz-prijavu-ili"
+                >) poslati fotografiju u digitalnom obliku - više informacija
+                potražite pod linkom
               </span>
-              <span class="status-uitelja-ili"
-                >Područnih zborova na način da kontaktirate tajnika određenog
-                područnog zbora</span
+              <span class="izrada-lanske-iskaznice"
+                >Izrada članske iskaznice</span
               >
-              <span class="prethodno-se-ulaniti"
-                >. Možete se učlaniti u Područni zbor prema svome izboru.</span
-              >
-            </span>
+            </div>
+          </div>
+          <div class="prvired">
+            <div class="ellipse-parent2">
+              <div class="group-child2" />
+              <div class="div5">7</div>
+            </div>
+            <div class="imati-zvanje-uitelja">
+              uplatiti članarinu HZUTS-u i članarinu područnom zboru na račun
+              prema cijenama članarina područnih zborova
+            </div>
+          </div>
+          <div class="vano-vrijeme-izrade-container">
+            <p class="vano">
+              <b>VAŽNO</b>
+            </p>
+            <p class="vano">
+              <b>&nbsp;</b>
+            </p>
+            <p class="vrijeme-izrade-iskaznice">
+              Vrijeme izrade iskaznice je minimalno tjedan dana od zaprimanja
+              svih materijala.
+            </p>
+            <p class="vrijeme-izrade-iskaznice">
+              Nakon izrade iskaznicu i amblem možete pruzeti u uredovno vrijeme
+              u HZUTS-u ili iste možemo poslati na vašu kućnu adresu.
+            </p>
+            <p class="vrijeme-izrade-iskaznice">
+              Licence i hologrami podižu se isključivo u vrijeme dežurstva Vašeg
+              područnog zbora koje možete saznati na web stranicama područnih
+              zborova ili kontaktiranjem tajnika područnog zbora.
+            </p>
+          </div>
+          <div class="gumbiframeglavni">
+            <div class="lijevigumbframe">
+              <a class="pozadinalijevoggumba" href="https://docs.google.com/forms/d/e/1FAIpQLSeqSOqOlZ5W5EprcXO1Ic-a03P4r3sGhOnKMta-cIRNTVj2uQ/viewform?usp=send_form" >
+              <b class="prijavnica-za-lanstvo">PRIJAVNICA ZA ČLANSTVO</b>
+              </a>
+            </div>
+            <div class="desnigumbframe">
+              <a class="pozadinadesnoggumba" href="https://hzuts.hr/infoclanarine" >
+              <b class="uplatite-lanarinu-hzuts-u" 
+                >UPLATITE ČLANARINU HZUTS-U</b
+              ></a>
+            </div>
           </div>
         </div>
-        <div class="frame-div">
-          <div class="ellipse-container">
-            <div class="frame-child" />
-            <div class="div2">3</div>
-          </div>
-          <div class="ispuniti-dolje-navedeni-container">
-            <span class="ispuniti-dolje-navedeni-container1">
-              <span>ispuniti dolje navedeni </span>
-              <b>obrazac za prijavu</b>
-            </span>
-          </div>
-        </div>
-        <div class="frame-parent1">
-          <div class="ellipse-container">
-            <div class="frame-child" />
-            <div class="div2">4</div>
-          </div>
-          <div class="uz-prijavu-poslat-container">
-            <span class="licence-i-hologrami-container1">
-              <span>uz prijavu </span>
-              <b>poslat fotografiju</b>
-              <span> u digitalnom obliku</span>
-            </span>
-          </div>
-          <button class="alert-circle-1">
-            <img class="vector-icon" alt="" src="/storage/slike/uclanisevector.svg" />
-            <img class="vector-icon1" alt="" src="/storage/slike/uclanisevector1.svg" />
-            <img class="vector-icon2" alt="" src="/storage/slike/uclanisevector2.svg" />
-          </button>
-        </div>
-        <div class="frame-parent2">
-          <div class="ellipse-parent2">
-            <div class="frame-child" />
-            <div class="div1">5</div>
-          </div>
-          <div class="uz-prijavu-poslat-container">
-            <span class="licence-i-hologrami-container1">
-              <span class="status-uitelja-ili"
-                >uplatite članarinu HZUTS-a i članarinu područnom zboru</span
-              >
-              <span class="prethodno-se-ulaniti">
-                na račun i prema cijenama članarina područnih zborova</span
-              >
-            </span>
-          </div>
-        </div>
-        <div class="frame-parent3">
-          <div class="ellipse-container">
-            <div class="frame-child" />
-            <div class="div2">6</div>
-          </div>
-          <div class="dostaviti-svu-dokumentaciju">
-            dostaviti svu dokumentaciju za dokaz statusa (Uvjerenje o
-            osposobljavanju, potvrda s KIF-a o statusu ili diploma o stečenom
-            zvanju dipl. profesora za Voditelje skijanja.
-          </div>
-        </div>
-        <div class="frame-parent4">
-          <a class="prijavnica-za-lanstvo-wrapper">
-            <b class="prijavnica-za-lanstvo">PRIJAVNICA ZA ČLANSTVO</b>
-          </a>
-         
-            <Link :href="route('skijasi.commerce-theme.cart')" class="uplatite-lanarinu-hzuts-u-wrapper">
-            
-              <b class="prijavnica-za-lanstvo">UPLATITE ČLANARINU HZUTS-U</b>
-      </Link>
-          
-         
-        </div>
+        <img class="maskota-final-2-1" alt="" src="/storage/slike/uclanise/maskota-final-2-1@2x.png" />
       </div>
     </div>
   </div>
 </template>
+
+
+   
+
 <script>
-
-import CarouselSingle from '../components/carousel-single/carousel.vue'
-import CarouselItemSingle from '../components/carousel-single/carousel-item.vue'
-
-import MasonryWall from "@yeger/vue2-masonry-wall";
 
 import galerijaLayout from '../layouts/galerija.vue'
 import appLayout from '../layouts/app.vue'
@@ -149,10 +147,7 @@ export default {
   layout: [appLayout, galerijaLayout],
   components: {
     Link,
-    Head,
-    MasonryWall,
-    CarouselSingle,
-    CarouselItemSingle
+    Head
   },
   data() {
     return {
@@ -185,26 +180,6 @@ export default {
 
   methods: {
 
-    sendContactEmail() {
-
-      this.$api.skijasiAuth
-        .sendContactForm({
-          email: this.email,
-    subject: this.subject,
-    message: this.message,
-        })
-        .then((response) => {
-          this.$helper.alert("Uspješno je poslana poruka!")
-  
-       
-       
-        })
-        .catch((error) => {
-          this.$helper.alert("Nije uspjelo slanje! Provjerit da li ste dobro unijeli email.")
-        });
-    },
-
-    
 
 
     logout() {
@@ -243,652 +218,540 @@ export default {
 </script>
 
 <style scoped>
+  .gornjiblokframe-child {
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 264px);
+    right: 0%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    height: 33rem;
+    object-fit: cover;
+  }
+  .gornjiblokframe-item {
+    position: absolute;
+    width: 100%;
+    top: calc(50% - 264px);
+    right: 0%;
+    left: 0%;
+    background-color: rgba(0, 0, 0, 0.7);
+    height: 33rem;
+  }
   .ulanite-se-u {
+    flex: 1;
     position: relative;
     letter-spacing: 3px;
     font-weight: 600;
   }
   .ulanite-se-u-hzuts-wrapper {
-    width: 90rem;
-    height: 33rem;
+    position: absolute;
+    top: calc(50% - 24px);
+    left: calc(50% - 252px);
+    width: 31.56rem;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    background-image: url("/storage/slike/frame-451@3x.png");
-    background-size: cover;
-    background-repeat: no-repeat;
-    background-position: top;
   }
-  .koje-moete-saznati {
-    font-weight: 500;
-  }
-  .licence-i-hologrami-container1 {
-    line-break: anywhere;
-  }
-  .licence-i-hologrami-container {
-    align-self: stretch;
+  .gornjiblokframe {
     position: relative;
-    display: flex;
-    align-items: center;
-    height: 7.47rem;
-    flex-shrink: 0;
+    width: 100%;
+    height: 33rem;
   }
   .za-ulanjenje-u {
     align-self: stretch;
     position: relative;
-    font-size: 2.25rem;
-    display: flex;
+    font-size: 1.5rem;
     color: #03a9f4;
-    align-items: center;
-    height: 7.47rem;
-    flex-shrink: 0;
+    text-align: left;
   }
-  .frame-child {
-    position: relative;
+  .group-child {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
     border-radius: 50%;
     background-color: #03a9f4;
-    width: 6.25rem;
-    height: 6.25rem;
-    z-index: 0;
+    width: 4.38rem;
+    height: 4.38rem;
   }
   .div {
     position: absolute;
-    margin: 0 !important;
-    top: calc(50% - 38px);
-    left: calc(50% - 15px);
+    top: calc(50% - 26.6px);
+    left: calc(50% - 10.5px);
     font-weight: 600;
-    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.36rem;
+    height: 3.37rem;
   }
   .ellipse-parent {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
     position: relative;
-    gap: 0.63rem;
+    width: 4.38rem;
+    height: 4.38rem;
   }
-  .status-uitelja-ili {
-    font-weight: 600;
-  }
-  .posjedovat-minimalno-status-container {
-    flex: 1;
-    position: relative;
-    font-size: 2rem;
-    color: #000;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    height: 6.25rem;
-  }
-  .frame-group {
+  .prvired {
     align-self: stretch;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    gap: 2.19rem;
+    gap: 1.88rem;
+  }
+  .group-item {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 4.26rem;
+    height: 4.38rem;
   }
   .div1 {
     position: absolute;
-    margin: 0 !important;
-    top: calc(50% - 38px);
-    left: calc(50% - 20px);
+    top: calc(50% - 26.6px);
+    left: calc(50% - 10.2px);
     font-weight: 600;
-    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.32rem;
+    height: 3.37rem;
   }
   .ellipse-group {
+    position: relative;
+    width: 4.26rem;
+    height: 4.38rem;
+  }
+  .imati-zvanje-uitelja {
+    flex: 1;
+    position: relative;
+    font-size: 1.63rem;
+    color: #000;
+    text-align: left;
+  }
+  .drugired {
+    align-self: stretch;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: flex-start;
-    position: relative;
-    gap: 0.63rem;
+    gap: 1.81rem;
   }
-  .prethodno-se-ulaniti {
-    font-weight: 300;
+  .group-inner {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 4.38rem;
+    height: 4.38rem;
+  }
+  .ellipse-container {
+    position: relative;
+    width: 4.38rem;
+    height: 4.38rem;
+  }
+  .podrunih-zborova {
+    text-decoration: underline;
+    color: #03a9f4;
   }
   .prethodno-se-ulaniti-container {
     flex: 1;
     position: relative;
-    font-size: 2rem;
-    color: #000;
+    font-size: 1.63rem;
     text-align: left;
-    display: flex;
-    align-items: center;
-    height: 7.31rem;
+    color: #000;
   }
-  .frame-container {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2.19rem;
-  }
-  .div2 {
+  .group-child2 {
     position: absolute;
-    margin: 0 !important;
-    top: calc(50% - 38px);
-    left: calc(50% - 21px);
+    top: 0rem;
+    left: 0rem;
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 4.92rem;
+    height: 4.38rem;
+  }
+  .div5 {
+    position: absolute;
+    top: calc(50% - 26.6px);
+    left: calc(50% - 11.85px);
     font-weight: 600;
-    z-index: 1;
-  }
-  .ellipse-container {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    gap: 0.63rem;
-  }
-  .ispuniti-dolje-navedeni-container1 {
-    line-break: anywhere;
-    width: 100%;
-  }
-  .ispuniti-dolje-navedeni-container {
-    position: relative;
-    font-size: 2rem;
-    color: #000;
-    text-align: left;
     display: flex;
     align-items: center;
-    width: 39.44rem;
-    height: 2.44rem;
-    flex-shrink: 0;
-  }
-  .frame-div {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2.19rem;
-  }
-  .ellipse-parent1 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    gap: 0.63rem;
-    z-index: 0;
-  }
-  .uz-prijavu-poslat-container {
-    flex: 1;
-    position: relative;
-    font-size: 2rem;
-    color: #000;
-    text-align: left;
-    display: flex;
-    align-items: center;
-    height: 6.25rem;
-    z-index: 1;
-  }
-  .vector-icon {
-    position: relative;
-    width: 1.79rem;
-    height: 1.79rem;
-    z-index: 0;
-  }
-  .vector-icon1 {
-    position: absolute;
-    margin: 0 !important;
-    height: 22.79%;
-    width: 6.12%;
-    top: 30.27%;
-    right: 46.94%;
-    bottom: 46.94%;
-    left: 46.94%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-    z-index: 1;
-  }
-  .vector-icon2 {
-    position: absolute;
-    margin: 0 !important;
-    height: 6.12%;
-    width: 6.16%;
-    top: 63.61%;
-    right: 46.9%;
-    bottom: 30.27%;
-    left: 46.94%;
-    max-width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-    z-index: 2;
-  }
-  .alert-circle-1 {
-    cursor: pointer;
-    border: none;
-    padding: 0.19rem;
-    background-color: transparent;
-    margin: 0 !important;
-    position: absolute;
-    top: 1.13rem;
-    left: 53.69rem;
-    overflow: hidden;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 0.63rem;
-    z-index: 2;
-  }
-  .frame-parent1 {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
-    gap: 2.19rem;
+    justify-content: center;
+    width: 1.53rem;
+    height: 3.37rem;
   }
   .ellipse-parent2 {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
     position: relative;
-    gap: 0.63rem;
+    width: 4.92rem;
+    height: 4.38rem;
   }
-  .uplatite-lanarinu-hzuts-a-container {
+  .uz-prijavu-ili {
+    color: #000;
+  }
+  .infohzutshr {
+    color: #03a9f4;
+  }
+  .izrada-lanske-iskaznice {
+    text-decoration: underline;
+  }
+  .uz-prijavu-ili-container {
     flex: 1;
     position: relative;
-    font-size: 2rem;
-    color: #000;
+    font-size: 1.63rem;
     text-align: left;
-    display: flex;
-    align-items: center;
-    height: 6.25rem;
+    color: #03a9f4;
   }
-  .frame-parent2 {
+  .vano {
+    margin: 0;
+  }
+  .vrijeme-izrade-iskaznice {
+    margin: 0;
+    font-weight: 500;
+  }
+  .vano-vrijeme-izrade-container {
     align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2.19rem;
-  }
-  .dostaviti-svu-dokumentaciju {
-    flex: 1;
     position: relative;
-    font-size: 2rem;
-    font-weight: 300;
+    font-size: 1.25rem;
     color: #000;
     text-align: left;
-    display: flex;
-    align-items: center;
-    height: 7.31rem;
   }
-  .frame-parent3 {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: flex-start;
-    gap: 2.19rem;
-  }
+
   .prijavnica-za-lanstvo {
-    position: relative;
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 139px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 17.44rem;
   }
-  .prijavnica-za-lanstvo-wrapper {
-    text-decoration: none;
+  .lijevigumbframe {
+    position: relative;
+    width: 28.13rem;
+    height: 5rem;
+  }
+
+
+    .pozadinalijevoggumba {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
     border: 2px solid #03a9f4;
+    background-color: #fff;
     box-sizing: border-box;
     width: 28.13rem;
     height: 5rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    color: inherit;
   }
-  .prijavnica-za-lanstvo-wrapper:hover {
-    background-color: #03a9f4;  
-    color: #fff;
-  }
-  .uplatite-lanarinu-hzuts-u-wrapper {
-    text-decoration: none;
+  .pozadinadesnoggumba {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
     border: 2px solid #03a9f4;
+    background-color: #fff;
     width: 28.13rem;
-    height: 4.81rem;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    color: inherit;
+    height: 5rem;
   }
 
-  .uplatite-lanarinu-hzuts-u-wrapper:hover {
-    background-color: #03a9f4;  
+  .pozadinalijevoggumba:hover{
+    background-color: #03a9f4;
+    border: 2px solid #fff;
     color: #fff;
   }
-  .frame-parent4 {
-    align-self: stretch;
+  .pozadinadesnoggumba:hover{
+  background-color: #03a9f4;
+  color: #fff;
+  border: 2px solid #fff;
+}
+  .uplatite-lanarinu-hzuts-u {
+    position: absolute;
+    top: calc(50% - 12px);
+    left: calc(50% - 192px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 24.06rem;
+  }
+  .desnigumbframe {
+    position: relative;
+    width: 28.13rem;
+    height: 5rem;
+
+  }
+  .gumbiframeglavni {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
+    padding: 5.06rem 0rem;
     gap: 6.25rem;
     font-size: 1.25rem;
     color: #000;
   }
-  .frame-parent {
+  .bijelidioglavniframe {
     align-self: stretch;
-    height: 69rem;
-    display: flex;
-    flex-direction: column;
-    padding: 0rem 0.38rem;
-    box-sizing: border-box;
-    align-items: flex-start;
-    justify-content: center;
-    gap: 4.06rem;
-    text-align: center;
-    font-size: 4rem;
-    color: #fff;
-  }
-  .licence-i-hologrami-podiu-se-parent {
-    align-self: stretch;
+    border-radius: 40px;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    padding: 1.88rem 3.75rem;
     align-items: center;
     justify-content: flex-start;
-    gap: 3rem;
-    text-align: left;
-    font-size: 1.5rem;
-    color: #21231e;
+    padding: 2.88rem 3.75rem 1.56rem;
+    gap: 1.94rem;
+    z-index: 0;
   }
-  .uclanisescreen {
+  .maskota-final-2-1 {
+    position: absolute;
+    margin: 0 !important;
+    height: 11.53%;
+    top: 2%;
+    right: 7.5rem;
+    bottom: 86.47%;
+    max-height: 100%;
+    width: 12.5rem;
+    object-fit: cover;
+    z-index: 1;
+  }
+  .donjiblokframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 3.75rem;
+    position: relative;
+    gap: 0.63rem;
+  }
+  .glavnipodframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 2.5rem;
+  }
+  .hzuts-join-screen-desktop {
     position: relative;
     background-color: #f8f7f5;
     width: 100%;
-    height: 132.19rem;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     justify-content: flex-start;
-    gap: 1.88rem;
+    padding: 3.75rem 0rem;
+    box-sizing: border-box;
     text-align: center;
     font-size: 2.5rem;
     color: #fff;
     font-family: Inter;
   }
 
-  @media screen and (max-width: 1200px) {
-    .frame-parent4 {
+  @media screen and (max-width: 1150px) {
+    .maskota-final-2-1 {
+      align-self: stretch;
+      width: auto;
+      flex: 1;
+      max-height: 6.25rem;
+    }
+  }
+  @media screen and (max-width: 800px) {
+    .prijavnica-za-lanstvo {
+      font-size: 1.25rem;
+    }
+
+    .lijevigumbframe {
+      width: 28.13rem;
+    }
+
+    .uplatite-lanarinu-hzuts-u {
+      font-size: 1.25rem;
+      width: 24.06rem;
+    }
+
+    .desnigumbframe {
+      width: 28.13rem;
+    }
+
+    .gumbiframeglavni {
+      height: 4.5rem;
       flex-direction: row;
-      gap: 0.63rem;
+      gap: 1.25rem;
       align-items: center;
-      justify-content: flex-start;
-    }
-  }
-  @media screen and (max-width: 960px) {
-    .ulanite-se-u-hzuts-wrapper {
-      align-self: stretch;
-      width: auto;
-      flex: 1;
-      flex-direction: column;
-      align-items: center;
-      justify-content: flex-start;
-    }
-
-    .posjedovat-minimalno-status-container {
-      text-align: left;
-      flex: unset;
-      align-self: stretch;
-    }
-
-    .frame-group {
-      flex-direction: column;
-    }
-
-    .prethodno-se-ulaniti-container {
-      flex: unset;
-      align-self: stretch;
-    }
-
-    .frame-container {
-      flex-direction: column;
-    }
-
-    .ispuniti-dolje-navedeni-container {
-      align-self: stretch;
-      width: auto;
-    }
-
-    .frame-div {
-      flex-direction: column;
-    }
-
-    .uz-prijavu-poslat-container {
-      flex: unset;
-      align-self: stretch;
-    }
-
-    .alert-circle-1 {
-      height: auto;
-      flex-direction: column;
-      gap: 0.63rem;
-      align-items: flex-start;
-      justify-content: flex-start;
-      padding-left: 0.19rem;
+      justify-content: center;
+      padding-top: 3.75rem;
+      padding-bottom: 12.5rem;
       box-sizing: border-box;
     }
 
-    .frame-parent1 {
-      flex-direction: column;
-    }
-
-    .uplatite-lanarinu-hzuts-a-container {
-      flex: unset;
-      align-self: stretch;
-    }
-
-    .frame-parent2 {
-      flex-direction: column;
-    }
-
-    .dostaviti-svu-dokumentaciju {
-      flex: unset;
-      align-self: stretch;
-    }
-
-    .frame-parent3 {
-      flex-direction: column;
-    }
-
-    .frame-parent4 {
-      flex-direction: column;
-      gap: 0.63rem;
-      align-items: center;
-      justify-content: flex-start;
-    }
-
-    .frame-parent {
-      height: auto;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .licence-i-hologrami-podiu-se-parent {
-      flex: 1;
-    }
-
-    .uclanisescreen {
-      height: auto;
+    .maskota-final-2-1 {
+      width: 6.25rem;
+      height: 4.63rem;
     }
   }
-  @media screen and (max-width: 420px) {
-    .ulanite-se-u-hzuts-wrapper {
-      height: auto;
-    }
-
-    .licence-i-hologrami-container {
-      flex: 1;
-    }
-
+  @media screen and (max-width: 600px) {
     .za-ulanjenje-u {
-      flex: 1;
+      font-size: 1.13rem;
     }
 
-    .posjedovat-minimalno-status-container {
-      flex: unset;
-      align-self: stretch;
+    .group-child {
+      height: 4.5rem;
     }
 
-    .frame-group {
-      flex-direction: column;
-      gap: 2.88rem;
-      align-items: center;
-      justify-content: center;
+    .ellipse-parent {
+      height: 4.5rem;
     }
 
-    .ellipse-group {
-      width: auto;
-      align-self: unset;
-      height: auto;
-      flex-direction: column;
-      gap: 0.63rem;
-      padding-bottom: 0rem;
-      box-sizing: border-box;
+    .imati-zvanje-uitelja {
+      font-size: 1.13rem;
     }
 
     .prethodno-se-ulaniti-container {
-      flex: unset;
-      align-self: stretch;
+      font-size: 1.13rem;
     }
 
-    .frame-container {
-      align-self: stretch;
-      width: auto;
-      height: auto;
-      flex-direction: column;
-      gap: 9.38rem;
+    .uz-prijavu-ili-container {
+      font-size: 1.13rem;
+    }
+
+    .vano-vrijeme-izrade-container {
+      font-size: 0.94rem;
+    }
+
+    .lijevigumbframe {
+      height: 5rem;
+    }
+
+    .gumbiframeglavni {
+      flex-direction: row;
+      gap: 1.88rem;
       align-items: center;
       justify-content: center;
+      padding-left: 0rem;
+      padding-top: 3.75rem;
+      padding-bottom: 0rem;
+      box-sizing: border-box;
     }
 
-    .ellipse-container {
-      flex-direction: column;
-    }
-
-    .ispuniti-dolje-navedeni-container {
+    .bijelidioglavniframe {
       align-self: stretch;
       width: auto;
-    }
-
-    .frame-div {
-      width: auto;
-      align-self: unset;
       flex-direction: column;
-      gap: 3.75rem;
+      gap: 1.88rem;
       align-items: center;
       justify-content: flex-start;
-    }
-
-    .ellipse-parent1 {
-      flex-direction: column;
-    }
-
-    .uz-prijavu-poslat-container {
-      flex: unset;
-      align-self: stretch;
-    }
-
-    .frame-parent1 {
-      flex-direction: column;
-      gap: 1.56rem;
-    }
-
-    .ellipse-parent2 {
-      align-self: stretch;
-      width: auto;
-      height: auto;
-      flex-direction: column;
-      gap: 2.19rem;
-      padding-bottom: 0rem;
+      padding: 2.88rem 1.25rem 17.5rem;
       box-sizing: border-box;
     }
 
-    .uplatite-lanarinu-hzuts-a-container {
-      flex: unset;
-      align-self: stretch;
-    }
-
-    .frame-parent2 {
+    .maskota-final-2-1 {
       align-self: stretch;
       width: auto;
-      flex-direction: column;
-      gap: 6.88rem;
-      align-items: center;
-      justify-content: flex-start;
-      padding-bottom: 0rem;
-      box-sizing: border-box;
+      flex: 1;
+
+      width: 5.25rem;
+      height: 3.63rem;
+    bottom: 96.47%;
+    right: 1%;
+
     }
 
-    .dostaviti-svu-dokumentaciju {
-      flex: unset;
-      align-self: stretch;
+    .pozadinalijevoggumba {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid #03a9f4;
+  box-sizing: border-box;
+  width: 18rem; /* Or a smaller width */
+  height: 4rem;
+}
+
+  .pozadinadesnoggumba {
+    position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 2px solid #03a9f4;
+  box-sizing: border-box;
+  width: 18rem; /* Or a smaller width */
+  height: 4rem;
+  }
+  .prijavnica-za-lanstvo {
+      font-size: 1rem;
+
+    }
+    .uplatite-lanarinu-hzuts-u {
+      font-size: 1rem;
+  
+
     }
 
-    .frame-parent3 {
-      align-self: stretch;
-      width: auto;
-      height: auto;
-      flex-direction: column;
-      gap: 9.75rem;
-      align-items: center;
-      justify-content: center;
-      padding-bottom: 0rem;
-      box-sizing: border-box;
-    }
 
-    .frame-parent4 {
-      width: auto;
-      align-self: unset;
-      height: auto;
-      flex-direction: column;
+    .donjiblokframe {
       gap: 0.63rem;
-      align-items: flex-start;
-      justify-content: flex-start;
-    }
-
-    .frame-parent {
-      align-self: stretch;
-      width: auto;
-      height: auto;
-      flex-direction: column;
-      gap: 13.13rem;
-      align-items: center;
-      justify-content: flex-start;
-    }
-
-    .licence-i-hologrami-podiu-se-parent {
-      height: auto;
-    }
-
-    .uclanisescreen {
-      height: auto;
+      padding-left: 1.75rem;
+      padding-right: 1.75rem;
+      box-sizing: border-box;
     }
   }
+  @media screen and (max-width: 460px) {
+    .prvired {
+      flex-direction: column;
+    }
+
+    .imati-zvanje-uitelja {
+      text-align: center;
+      flex: unset;
+      align-self: stretch;
+    }
+
+    .drugired {
+      flex-direction: column;
+    }
+
+    .prethodno-se-ulaniti-container {
+      text-align: center;
+      flex: unset;
+      align-self: stretch;
+    }
+
+    .uz-prijavu-ili-container {
+      text-align: center;
+      flex: unset;
+      align-self: stretch;
+    }
+
+ 
+    .bijelidioglavniframe {
+
+      padding: 2.88rem 1.25rem 14.5rem;
+
+    }
+  }
+
+
+  @media screen and (max-width: 340px) {
+  .ulanite-se-u {
+    letter-spacing: 1px;
+    padding-left: 4%;
+    padding-right: 4%;
+  }
+  }
+
+
+  @media screen and (max-width: 1020px) {
+    .maskota-final-2-1 {
+    top: 4%;
+    right: 9%;
+
+  }
+  }
+
+
 </style>
 

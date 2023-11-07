@@ -2,9 +2,9 @@
   <div class="text-center py-2">
     <Head :title="$page.props.name" />
 
-    <div class="text-2xl">404 Not Found</div>
+    <div class="text-2xl">Nije pronađena stranica!</div>
     <Link :href="route('skijasi.commerce-theme.home')" class="text-primary font-bold">
-      [Go Home]
+      [Odi na početnu stranicu]
     </Link>
   </div>
 </template>

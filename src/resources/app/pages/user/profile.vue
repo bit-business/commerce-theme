@@ -116,6 +116,7 @@
                 <button class="bg-primary font-medium px-6 py-2 rounded-md text-white text-sm filter hover:brightness-110" @click="save">Spremi</button>
               </div>
             </div>
+
             <div class="flex flex-col justify-start col-span-1 p-8 items-center border-l ml-4">
            
                 <div class="h-24 w-24 bg-gray-300 flex rounded-full items-center justify-center clip-circle relative"> 
@@ -139,6 +140,7 @@
               <span class="text-sm text-gray-400">Veličina slike: maks. 4 MB</span>
               <span class="text-sm text-gray-400">Formati slike: .JPEG, .PNG</span>
             </div>
+            
           </div>
         </div>
       </div>

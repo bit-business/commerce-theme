@@ -109,7 +109,7 @@
         <div class="flex flex-wrap col-start-5 col-end-auto row-span-2 mb-auto bg-white shadow-sm pt-4 rounded-xl">
           <div class="text-gray-400 text-sm pl-4">Drugi događaji</div>
           <div class="flex flex-col w-full">
-            <Link :href="route('skijasi.commerce-theme.detail', similarProduct.slug)" v-for="similarProduct, index in similarProducts" :key="index">
+            <Link :href="route('skijasi.commerce-theme.detalji', similarProduct.slug)" v-for="similarProduct, index in similarProducts" :key="index">
               <div class="flex flex-col p-4">
                 <div class="aspect-w-15 aspect-h-16">
                   <img :src="similarProduct.productImage" :alt="similarProduct.name" class="w-full h-full object-center object-cover">
@@ -400,7 +400,7 @@
         <div class="overflow-x-scroll overflow-y-hidden hide-scrollbar">
           <div class="inline-flex items-start justify-start h-full flex-row my-2">
             <div v-for="similarProduct, index in similarProducts" :key="index" class="w-32 flex-1 mr-2 first:ml-2">
-              <Link :href="route('skijasi.commerce-theme.detail', similarProduct.slug)" class="rounded-xl border border-gray-300 flex w-32 flex-wrap">
+              <Link :href="route('skijasi.commerce-theme.detalji', similarProduct.slug)" class="rounded-xl border border-gray-300 flex w-32 flex-wrap">
                 <div class="w-full relative mb-2 flex items-center">
                   <div class="w-full bg-contain bg-no-repeat rounded-t-xl" :style="`background-image: url('${similarProduct.productImage}'); padding-top: 100%`" />
                 </div>

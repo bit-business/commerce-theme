@@ -39,7 +39,7 @@
               id="marquee-slider-cards"
               :space="60"
               :speed="42000"
-              :width="420"
+              :width="computedSpace"
               class="pokretnitekst"
             >
               <div>Važne vijesti</div>
@@ -85,7 +85,7 @@
 --> 
 <div class="dogadajitrecired">
     
-      <ssr-carousel  v-if="slides.length > 0" class="dogadajipodgrupa "
+      <ssr-carousel  v-if="slides.length > 0" class="dogadajipodgrupa"
       overflow-visible
       show-arrows
   :slides-per-page='3'
@@ -101,13 +101,18 @@
       slidesPerPage: 3,
     },
     {
-      maxWidth: 767,
-      slidesPerPage: 3
-    }
+      maxWidth: 867,
+      slidesPerPage: 2,
+    },
+      {
+        maxWidth: 600,  
+        slidesPerPage: 1,  
+        gutter: 12,
+      }
   ]'>
 <template>
   <div class="dogadajipodgrupa-child" v-for="(slide, i) in slides" :index="i" :key="i">
-    <!-- Conditionally wrap slide content in an anchor tag if slide.url exists -->
+
     <a v-if="slide.link" :href="slide.link" style="text-decoration: none; color: #3498db;">
       <!-- Slide content -->
       <img class="slikeslider" :src="slide.image" :alt="'Image ' + i">
@@ -130,19 +135,26 @@
 </template>
 
 
-   <!-- Back Arrow -->
-   <template #back-arrow='{ disabled }'>
-    <div class="arrow-overlay" :style="{ left: 0 }">
-      <div class="arrow" :class="{ 'is-disabled': disabled }">←</div> <!-- Replace with your actual back arrow -->
+<!-- Back Arrow -->
+<template #back-arrow='{ disabled }'>
+    <div class="arrow-overlay dogadajipodgrupa" :style="{ left: '-2rem', backgroundColor: disabled ? 'transparent' : 'rgba(0, 0, 0, 0.5)' }">
+      <div class="arrow" :class="{ 'is-disabled': disabled }"><svg width="16" height="28" viewBox="0 0 16 28" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 26L2 14L14 2" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
+</div> 
     </div>
-  </template>
+</template>
 
-  <!-- Next Arrow -->
-  <template #next-arrow='{ disabled }'>
-    <div class="arrow-overlay" :style="{ right: 0 }">
-      <div class="arrow" :class="{ 'is-disabled': disabled }">→</div> <!-- Replace with your actual next arrow -->
+<!-- Next Arrow -->
+<template #next-arrow='{ disabled }'>
+    <div class="arrow-overlay dogadajipodgrupa" :style="{ right: '-2rem', backgroundColor: disabled ? 'transparent' : 'rgba(0, 0, 0, 0.5)' }">
+      <div class="arrow" :class="{ 'is-disabled': disabled }"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="28" viewBox="0 0 16 28" fill="none">
+  <path d="M2 26L14 14L2 2" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg></div> 
     </div>
-  </template>
+</template>
+
+
 
 </ssr-carousel>
 
@@ -177,7 +189,7 @@
           </div>
         </a>
   
-     <!--Link-->  <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">
+       <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.uclanise')">
 
     
           <div class="slikaframe4">
@@ -198,7 +210,7 @@
               obitelji.
             </div>
           </div>
-         <!--Link-->    </Link>
+           </Link>
       </div>
     </div>
     <div class="framesadrzaji">
@@ -657,6 +669,15 @@ this.fetchTotalUsers();
 
   },
   computed: {
+    computedSpace() {
+    // Check if window width is less than 500
+    if (window.innerWidth < 500) {
+      return 180;
+    }
+    return 410;
+  },
+
+
     ...mapState({
       title(state) {
         return this.$_.find(state.themeConfigurations, { key: "themeTitle" }).value;
@@ -970,35 +991,33 @@ splitCategory() {
 
 
 
-.arrow-overlay {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    height: 100%;
-    z-index: 2;
-}
 
-.arrow-overlay::before {
-    content: "";
+.arrow-overlay {
+  background-color: transparent;
+
     position: absolute;
     top: 0;
     bottom: 0;
-    left: 0;
-    right: 0;
-    background-color: rgba(0, 0, 0, 0.9);
-    z-index: 1;
+    width: 38px;
+    height: 300px; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10; /* Make sure the overlay is on top */
 }
 
 .arrow {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  /* Add other styles for the arrow here */
+    font-size: 24px; /* Adjust based on the desired size of the arrow */
+    cursor: pointer;
+    color: white; /* Color of the arrow */
 }
 
 .arrow.is-disabled {
-  opacity: 0; /* For example, make it semi-transparent when disabled */
+    opacity: 0;
+
+
 }
+
 
 
 .vijestinaslov{
@@ -1147,7 +1166,7 @@ line-height: normal;
   }
   .obavijestitraka {
     align-self: stretch;
-    background-color: #ffffff;
+
 
     margin-bottom: -4rem;
   }
@@ -1992,6 +2011,22 @@ grid-column: span 1;
     padding-bottom: 3%;
   }
 
+
+.pokretnitekst{
+  
+  background-color: transparent;
+  margin-top: -5rem; 
+  width: 100%;
+
+  color: #DB1F26;
+font-family: Inter;
+font-size: 1.5rem;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+}
+
+
   @media screen and (max-width: 1200px) {
     .saznajte-informacije-kako {
       width: 27.5rem;
@@ -2100,12 +2135,7 @@ grid-column: span 1;
     }
 
     .obavijestitraka {
-      height: 3.31rem;
-      flex-direction: row;
-      gap: 0rem;
-      padding-top: 0rem;
-      padding-bottom: 0rem;
-      box-sizing: border-box;
+
     }
 
     .kako-postati-uitelj {
@@ -2263,12 +2293,15 @@ grid-column: span 1;
       padding-left: 0rem;
       box-sizing: border-box;
     }
+    .pokretnitekst{
+  
+  font-size: 1.2rem;
+margin-top: -4rem;
+
+}
 
 
-  }
 
-
-  @media screen and (max-width: 490px) {
   .popustisaznajvise {
       width: 3rem;
       gap: 3.13rem;
@@ -2280,6 +2313,8 @@ grid-column: span 1;
     .popusti-za-nae {
       font-size: 1.7rem;
     }
+
+    
   }
 
 
@@ -2290,20 +2325,6 @@ grid-column: span 1;
 
 
 
-
-.pokretnitekst{
-  
-  background-color: transparent;
-  margin-top: -5rem; 
-  width: 100%;
-
-  color: #DB1F26;
-font-family: Inter;
-font-size: 1.5rem;
-font-style: normal;
-font-weight: 700;
-line-height: normal;
-}
 
 
 

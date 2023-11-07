@@ -38,7 +38,7 @@
                   <template v-if="isAuthenticated && carts.length > 0">
                     <div class="p-2">
                       <div class="text-gray-300 text-sm mb-2">Upravo dodano</div>
-                      <Link :href="route('skijasi.commerce-theme.detail', cart.productDetail.product.slug)" class="flex items-start px-2 py-4 hover:bg-gray-100 -mx-2" v-for="cart, index in carts" :key="index">
+                      <Link :href="route('skijasi.commerce-theme.detalji', cart.productDetail.product.slug)" class="flex items-start px-2 py-4 hover:bg-gray-100 -mx-2" v-for="cart, index in carts" :key="index">
                         <img class="h-10 w-10 object-cover" :src="cart.productDetail.productImage">
                         <p class="text-gray-700 font-medium text-sm mx-2 line-clamp-1 uppercase">{{ cart.productDetail.product.name }}</p>
                         <p class="text-primary text-sm mx-2">{{ $currency(cart.productDetail.price) }}</p>

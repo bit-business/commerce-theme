@@ -8,7 +8,7 @@
         <div class="kontainerzakontakttekstove">
           <div class="text-input">
             <img class="container-icon" alt="" src="/storage/slike/footer/container.svg" />
-            <div class="divbrojmob">+385 1 23 999 50</div>
+            <a href="tel:+38512399950" class="divbrojmob">+385 1 23 999 50</a>
           </div>
           <a class="text-input1">
             <img class="container-icon1" alt="" src="/storage/slike/footer/container1.svg" />
@@ -35,13 +35,13 @@
       </div>
       <div class="glavnagrupaonama">
         <div class="gornjidiotekstovionama">
-          <div class="o-nama">O nama</div>
+          <div class="o-nama" href>O nama</div>
           <div class="paragraph-container">
             <a class="politika-privatnosti">Politika privatnosti</a>
             <a class="politika-o-kolaiima">Politika o kolačićima</a>
             <a class="osnovne-informacije">Osnovne informacije</a>
            <a class="povijest">Popusti za članove</a>
-            <a class="bilteni-hzuts-a">Članarine</a>
+            <a class="bilteni-hzuts-a" href="https://hzuts.hr/infoclanarine">Članarine</a>
             <a class="podruni-zborovi">Dokumenti</a>
           </div>
         </div>
@@ -498,7 +498,7 @@ export default {
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 1.69rem 0rem;
+    padding: 1.67rem 0rem;
     text-align: center;
     font-size: 1rem;
     color: #fff;

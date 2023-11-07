@@ -45,9 +45,9 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
-    public function detail($slug)
+    public function detalji($slug)
     {
-        return Inertia::render('detail', [
+        return Inertia::render('detalji', [
             'slug' => $slug,
             'name' => 'Detalji',
         ], 'commerce-theme:app');

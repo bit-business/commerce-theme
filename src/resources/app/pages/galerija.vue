@@ -42,8 +42,9 @@
 
 <masonry-wall :items="images" :ssr-columns="4" :min-columns="4" :max-columns="8" :column-width="300" :gap="16">
     <template v-slot:default="slotProps">
-        <div class="image-container" @click="showFullscreen(slotProps.item.original)">
-            <img :src="slotProps.item.thumbnail" class="image-preview" loading="lazy">
+        <div class="image-container" @click="showFullscreen(slotProps.item)">
+            <img :src="slotProps.item" class="image-preview" loading="lazy">
+
 
             <div class="overlay">
                   <svg width="32"  class="eye-icon" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -207,9 +208,10 @@ export default {
 
 
   methods: {
+    /*
 
     async fetchImagesFromFirebase() {
-  this.isLoading = true;
+  this.isLoading = false;
   const storageRef = firebase.storage().ref();
  // const storageRef = this.$firebase.storage().ref();
   const galleryFolderRef = storageRef.child('galerija/' + this.currentFolder);
@@ -239,7 +241,7 @@ export default {
 },
 
 
-
+*/
 
     moveToLeftFolder() {
     const currentIndex = this.folders.indexOf(this.currentFolder);
@@ -298,7 +300,7 @@ moveToRightFolder() {
 },
 */
 
-
+/* kod za firebase koji radi
 async getFiles() {
   this.fetchImagesFromFirebase();
   const storageRef = firebase.storage().ref();
@@ -316,20 +318,20 @@ async getFiles() {
     console.error('Error fetching images:', error);
   }
 },
+*/
 
-
-/* getfiles preko lmf-a sa servera a ne firebasea
+/* getfiles preko lmf-a sa servera a ne firebasea */
     getFiles() {
   
     let folderIndex = this.folders.indexOf(this.currentFolder);
 if (folderIndex < 0) {
     folderIndex = 0;
 }
-console.log('Current Folder Index:', folderIndex);
+console.log('Current Folder Index:', this.currentFolder);
 
         this.$api.skijasiFile
         .browseUsingLfm({
-          workingDir: "/" + folderIndex,
+          workingDir: "/" + encodeURIComponent(this.currentFolder),
             type: "galerija",
             sort_type: 'time',
             page: this.page,
@@ -356,7 +358,7 @@ console.log('Current Folder Index:', folderIndex);
      
       
     },
-*/
+
   
 showFullscreen(imageSrc) {
   this.fullscreenImageIndex = this.images.findIndex(image => image.original === imageSrc);

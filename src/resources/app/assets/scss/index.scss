@@ -1,5 +1,5 @@
 @import '~vue-resize/dist/vue-resize.css';
-@import url("https://fonts.googleapis.com/css2?family=Luckiest+Guy:wght@400&display=swap");
+@import url('https://fonts.cdnfonts.com/css/luckiest-guy'); 
 @import url("https://fonts.googleapis.com/css2?family=Monoton:wght@400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
 
@@ -21,6 +21,29 @@ body {
   border-width: 0;
 }
 
+@layer base {
+  // define revert css here
+  .no-tailwindcss-base {
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      font-size: revert;
+      font-weight: revert;
+    }
+
+    ol,
+    ul {
+      list-style: revert;
+      margin: revert;
+      padding: revert;
+    }
+  }
+}
+ // define revert css here za tinymce fix za html
 
 
 

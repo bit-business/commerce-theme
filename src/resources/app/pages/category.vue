@@ -24,7 +24,7 @@
 <Link 
     v-if="nextEvent.slug"
     class="login-with-email-button cursor-pointer" 
-    :href="route('skijasi.commerce-theme.detail', nextEvent.slug)"
+    :href="route('skijasi.commerce-theme.detalji', nextEvent.slug)"
 >     
     <div class="saznaj-vie">Saznaj više</div>
 </Link>
@@ -84,7 +84,7 @@
 
         :key="product.id"
     >
-        <Link :href="route('skijasi.commerce-theme.detail', product.slug)" class="prvireddesni">
+        <Link :href="route('skijasi.commerce-theme.detalji', product.slug)" class="prvireddesni">
           <div class="prvireddesni" :style="`background-image: url('${product.productImage}');`">
 
 

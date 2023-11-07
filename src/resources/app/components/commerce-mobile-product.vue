@@ -1,5 +1,5 @@
 <template>
-  <Link :href="route('skijasi.commerce-theme.detail', product.slug)" class="relative block transition-all ease duration-200 group bg-white ring-primary rounded-xl h-72 hover:ring-2 shadow-sm" v-if="product.productDetails.length > 0">
+  <Link :href="route('skijasi.commerce-theme.detalji', product.slug)" class="relative block transition-all ease duration-200 group bg-white ring-primary rounded-xl h-72 hover:ring-2 shadow-sm" v-if="product.productDetails.length > 0">
     <div class="w-full bg-cover bg-no-repeat rounded-t-xl mb-2" :style="`background-image: url('${product.productImage}'); padding-top: 100%`">
     <div class="absolute right-4 top-0 h-8 w-8" v-if="hasActiveDiscount">
       <span class="absolute right-0 top-0 text-xs z-10 w-full text-center text-white font-bold line-clamp-2">{{ getDiscount }}<br/>

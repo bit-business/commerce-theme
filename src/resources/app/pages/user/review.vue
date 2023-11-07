@@ -47,7 +47,7 @@
         <div class="flex flex-wrap mb-6 w-full" v-if="order.orderDetails.length > 0">
           <template v-for="orderDetail, index in order.orderDetails">
             <div :key="index" class="w-full">
-              <Link :href="route('skijasi.commerce-theme.detail', orderDetail.productDetail.product.slug)" class="flex space-x-4 w-full py-4 items-start" :key="`product-${index}`">
+              <Link :href="route('skijasi.commerce-theme.detalji', orderDetail.productDetail.product.slug)" class="flex space-x-4 w-full py-4 items-start" :key="`product-${index}`">
                 <img :src="orderDetail.productDetail.productImage" class="border w-20">
                 <div class="flex flex-col">
                   <div class="text-gray-700">{{ orderDetail.productDetail.product.name }}</div>
@@ -106,7 +106,7 @@
       <div class="flex flex-wrap mb-6 w-full bg-white px-3" v-if="order.orderDetails.length > 0">
         <template v-for="orderDetail, index in order.orderDetails">
           <div :key="index" class="w-full">
-            <Link :href="route('skijasi.commerce-theme.detail', orderDetail.productDetail.product.slug)" class="flex space-x-4 w-full py-4 items-start" :key="`product-${index}`">
+            <Link :href="route('skijasi.commerce-theme.detalji', orderDetail.productDetail.product.slug)" class="flex space-x-4 w-full py-4 items-start" :key="`product-${index}`">
               <img :src="orderDetail.productDetail.productImage" class="border w-20">
               <div class="flex flex-col gap-1">
                 <div class="text-gray-700 text-sm line-clamp-1">{{ orderDetail.productDetail.product.name }}</div>
