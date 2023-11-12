@@ -403,7 +403,7 @@
     import { mapState } from "vuex";
     import { Link, Head } from "@inertiajs/inertia-vue";
     import appLayout from "../layouts/app.vue";
-    import categoryLayout from "../layouts/category.vue";
+    import categoryLayout from "../layouts/kategorija.vue";
     export default {
         layout: [appLayout, categoryLayout],
         components: {

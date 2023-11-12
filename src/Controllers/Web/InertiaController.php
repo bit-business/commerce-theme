@@ -17,9 +17,9 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
-    public function category()
+    public function kategorija()
     {
-        return Inertia::render('category', [
+        return Inertia::render('kategorija', [
             'slug'     => request('slug'),
             'name'     => 'Događanja',
             'sort'     => request('sort'),

@@ -14,7 +14,7 @@ Route::prefix($commerce_route_prefix)
          * General route.
          */
         Route::get('/', HelpersRoute::getController('InertiaController@home'))->name('home');
-        Route::get('/category/{slug}', HelpersRoute::getController('InertiaController@category'))->name('category');
+        Route::get('/kategorija/{slug}', HelpersRoute::getController('InertiaController@kategorija'))->name('kategorija');
         Route::get('/cart', HelpersRoute::getController('InertiaController@cart'))->name('cart');
         Route::get('/checkout', HelpersRoute::getController('InertiaController@checkout'))->name('checkout');
         Route::get('/detalji/{slug}', HelpersRoute::getController('InertiaController@detalji'))->name('detalji');

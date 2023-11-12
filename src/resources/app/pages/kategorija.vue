@@ -113,7 +113,7 @@
             <div v-if="!isEventActive(product)" class="inactive-overlay">
                               NIJE AKTIVNO
             </div>
-            <div v-if="index !== 0 && index !== 1" class="inactive-overlay">
+            <div v-if="index > 2" class="inactive-overlay">
     UBRZO DETALJI
 </div>
 
@@ -155,7 +155,7 @@ import CommerceSearchInput from "../components/commerce-search-input.vue";
 import { mapState } from 'vuex'
 import { Link, Head } from '@inertiajs/inertia-vue'
 import appLayout from '../layouts/app.vue'
-import categoryLayout from '../layouts/category.vue'
+import categoryLayout from '../layouts/kategorija.vue'
 export default {
   layout: [appLayout, categoryLayout],
   components: {
@@ -493,7 +493,7 @@ computeCountdown() {
     applyFilterSort(sort) {
       this.sort = sort;
       this.type = 'desc'
-      this.$inertia.visit(this.route('skijasi.commerce-theme.category', {
+      this.$inertia.visit(this.route('skijasi.commerce-theme.kategorija', {
         ...this.queryParams(),
         sort
       }))
@@ -501,14 +501,14 @@ computeCountdown() {
     applyFilterSortPrice(type) {
       this.sort = 'price';
       this.type = 'type'
-      this.$inertia.visit(this.route('skijasi.commerce-theme.category', {
+      this.$inertia.visit(this.route('skijasi.commerce-theme.kategorija', {
         ...this.queryParams(),
         sort: this.sort,
         type
       }))
     },
     applyFilterQueryString() {
-      this.$inertia.visit(this.route('skijasi.commerce-theme.category', this.queryParams()))
+      this.$inertia.visit(this.route('skijasi.commerce-theme.kategorija', this.queryParams()))
     },
     applyFilter() {
       this.products = {

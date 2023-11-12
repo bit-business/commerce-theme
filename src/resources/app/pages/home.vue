@@ -216,7 +216,7 @@
     <div class="framesadrzaji">
       <div class="prviredframeova">
        
-    <!--Link-->      <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">
+    <!--Link-->      <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">
 
           <img
             class="img-5449-photoroom-1-icon"
@@ -233,7 +233,7 @@
           </div>
      <!--Link-->   </Link>
  
-          <Link  class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.category', { slug: 'dogadanja' })">
+          <Link  class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">
 
           <img
             class="img-7155-photoroom-1-icon animate-on-scroll"

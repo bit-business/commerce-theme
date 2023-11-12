@@ -11,7 +11,7 @@
 
 <script>
 import appLayout from "../layouts/app.vue";
-import categoryLayout from "../layouts/category.vue";
+import categoryLayout from "../layouts/kategorija.vue";
 import { Link, Head } from "@inertiajs/inertia-vue";
 
 export default {
