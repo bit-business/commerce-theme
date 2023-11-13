@@ -316,6 +316,18 @@ export default {
         '/storage/slike/dogadaj2/galerija19.jpg',
         '/storage/slike/dogadaj2/galerija20.jpg',
       ],
+      photos3: [
+        '/storage/slike/dogadaj3/galerija1.jpg',
+        '/storage/slike/dogadaj3/galerija2.jpg',
+        '/storage/slike/dogadaj3/galerija3.jpg',
+        '/storage/slike/dogadaj3/galerija4.jpg',
+        '/storage/slike/dogadaj3/galerija5.jpg',
+        '/storage/slike/dogadaj3/galerija6.jpg',
+        '/storage/slike/dogadaj3/galerija7.jpg',
+        '/storage/slike/dogadaj3/galerija8.jpg',
+        '/storage/slike/dogadaj3/galerija9.jpg',
+        '/storage/slike/dogadaj3/galerija10.jpg',
+      ],
       currentIndex: 0,
       fullscreenImageIndex: null,
 
@@ -393,8 +405,17 @@ export default {
   },
   computed: {
     currentPhotos() {
-    return this.product.mjesto === "SEXTEN" ? this.photos2 : this.photos;
+ //   return this.product.mjesto === "SEXTEN" ? this.photos2 : this.photos;
+    if (this.product.name == "DRŽAVNI SEMINAR") {
+      return this.photos2;
+    } else if (this.product.name == "ISIA SEMINAR") {
+      return this.photos3;
+    } else {
+      return this.photos;
+    }
   },
+
+
 
 
 

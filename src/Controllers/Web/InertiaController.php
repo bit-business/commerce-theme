@@ -114,6 +114,20 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
+    public function politikaprivatnosti()
+    {
+        return Inertia::render('politikaprivatnosti', [
+            'name' => 'Politika Privatnosti',
+        ], 'commerce-theme:app');
+    }
+
+    public function politikakolacica()
+    {
+        return Inertia::render('politikakolacica', [
+            'name' => 'Politika Kolačića',
+        ], 'commerce-theme:app');
+    }
+
 
     public function productList()
     {

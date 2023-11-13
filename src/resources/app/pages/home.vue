@@ -913,14 +913,18 @@ splitCategory() {
     });
 },
 
-  async getThumbnails() {
-  this.posts.data.forEach(element => {
+async getThumbnails() {
+  // Filter out unpublished posts
+  const publishedPosts = this.posts.data.filter(post => post.published === 1);
+
+  // Iterate over the filtered, published posts
+  publishedPosts.forEach(element => {
     if (element.thumbnail) {
       this.thumbnails.push(element);
     }
   });
 
-  // Map over thumbnails to create the slides array
+  // Map over thumbnails of published posts to create the slides array
   this.$set(this, 'slides', this.thumbnails.map(item => {
     return {
       datum: item.publishedAt,
@@ -928,6 +932,7 @@ splitCategory() {
       link: item.link,
       content: item.content,
       slug: item.slug,
+      published: item.published,
       image: item.thumbnail 
     };
   }));

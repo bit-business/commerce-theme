@@ -37,8 +37,8 @@
         <div class="gornjidiotekstovionama">
           <div class="o-nama" href>O nama</div>
           <div class="paragraph-container">
-            <a class="politika-privatnosti">Politika privatnosti</a>
-            <a class="politika-o-kolaiima">Politika o kolačićima</a>
+            <a class="politika-privatnosti" href="https://hzuts.hr/politikaprivatnosti">Politika privatnosti</a>
+            <a class="politika-o-kolaiima" href="https://hzuts.hr/politikakolacica">Politika o kolačićima</a>
             <a class="osnovne-informacije">Osnovne informacije</a>
            <a class="povijest">Popusti za članove</a>
             <a class="bilteni-hzuts-a" href="https://hzuts.hr/infoclanarine">Članarine</a>
