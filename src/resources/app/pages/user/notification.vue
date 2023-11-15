@@ -2,7 +2,7 @@
   <div>
     <Head :title="$page.props.name" />
 
-    <div class="pt-8 container hidden sm:grid grid-cols-profile">
+    <div class="pt-8 navbar container hidden sm:grid grid-cols-profile">
       <div class="pr-8">
         <div class="h-22 flex items-center border-b">
           <div class="h-16 w-16 items-center justify-center clip-circle">
@@ -217,3 +217,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .navbar {
+    padding-top: 4.9rem; 
+    padding-bottom: 3.15rem; 
+  }
+  </style>

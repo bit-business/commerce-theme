@@ -388,7 +388,7 @@ export default {
 
 <style scoped>
   .navbar {
-    padding-top: 0.15rem; 
+    padding-top: 3rem; 
     padding-bottom: 3.15rem; 
   }
   </style>
