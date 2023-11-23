@@ -160,6 +160,7 @@
 <div class="detaljiclanaframeglavni" v-if="showDetailsFrame">
     <div class="glavnipodframedetalji">
       <div class="framedetalji">
+         <img class="placeholderzaslike-icon" :alt="'slika'" :src="selectedUser.avatar || '/storage/slike/nasiclanovi/slikaplaceholder.png'" />
         <div class="detaljnije-informacije">Detaljnije informacije</div>
 
         <div @click="viewingPaymentsList ? closePaymentsList() : closeDetailsFrame()">
@@ -173,6 +174,7 @@
       <img class="closexgumb-icon" alt="" src="/storage/slike/nasiclanovi/closexgumb.svg" />
     </template>
   </div>
+
 
       </div>
       <div class="sviframeoviizaduzenje">
@@ -1724,6 +1726,9 @@ margin-top: 5%;
   }
 
   @media screen and (max-width: 600px) {
+    .filteriframeglavni-child {
+    height: 24.81rem;
+  }
     .filteritraka {
       flex-direction: row;
       padding-right: 4.38rem;
@@ -1731,7 +1736,7 @@ margin-top: 5%;
     }
 
     .pretrazivanjepoimenu {
-      width: 12.88rem;
+      width: 14.88rem;
       gap: 1.5rem;
       padding-left: 0.81rem;
       padding-right: 2.5rem;
@@ -1739,22 +1744,28 @@ margin-top: 5%;
     }
 
     .ponistigumb {
-      width: auto;
-      align-self: unset;
-      flex-direction: row;
-      gap: 0.63rem;
-      align-items: center;
-      justify-content: center;
-      padding: 0rem 0;
-      box-sizing: border-box;
-    }
+    top: 47%;
+    right: 5%;
 
+  }
+    .input-wrapper {
+padding-left: 24px;
+}
   
   }
 
   @media screen and (max-width: 978px) {
   .filteriframeglavni-child {
-    height: 17.81rem;
+    height: 19.81rem;
+  }
+  .filteriframeglavni {
+    height: 26rem;
+  }
+
+  .ponistigumb {
+    top: 63%;
+    right: 7%;
+
   }
   }
 
@@ -1782,13 +1793,47 @@ margin-top: 5%;
   }
   @media screen and (max-width: 460px) {
     .pretrazivanjepoimenu {
-      width: 12.5rem;
+      width: 14.45rem;
+      left: 3rem;
     }
+    .filteriframeglavni-child {
+    height: 24.81rem;
+  }
+
+    .prikaz-group {
+    width: 4.25rem;
+    height: 1.88rem;
+   right: 2rem;
+    gap: 0.75rem;
+  }
+  .input-wrapper {
+align-items: center;
+width: 20.13rem;
+  height: 2.35rem;
+padding-left: 24px;
+}
+
+.ponistigumb {
+    top: 90%;
+    right: 40%;
+
+  }
+
   }
 
 
 
+  @media screen and (max-width: 552px) {
+    .filteriframeglavni-child {
+    height: 24.81rem;
+  }
+.ponistigumb {
+    top: 90%;
+    right: 40%;
 
+  }
+
+  }
 
 
 
@@ -1815,6 +1860,7 @@ margin-top: 5%;
     align-items: flex-start;
     justify-content: space-between;
     text-align: center;
+    margin-left: 0%
   }
   .imeclana {
     position: relative;
@@ -1840,6 +1886,8 @@ margin-top: 5%;
     align-items: flex-start;
     justify-content: flex-start;
     font-size: 32px;
+    margin-left: 22%;
+    margin-top: 6%;
   }
   .info-icon {
     position: relative;
@@ -2186,7 +2234,7 @@ margin-top: 5%;
     align-items: center;
     justify-content: flex-start;
     gap: 30px;
-    padding-top: 1.2rem;
+    padding-top: 1.6rem;
   }
   .glavnipodframedetalji {
     align-self: stretch;
@@ -2201,7 +2249,8 @@ margin-top: 5%;
   .detaljiclanaframeglavni {
 
     flex: 1;
-    max-height: 100%; /* Maximum height of the viewport */
+    min-width: 600px;
+    height: 100%; 
     overflow-y: scroll; 
 
     margin: 0 !important;
@@ -2224,6 +2273,12 @@ margin-top: 5%;
   }
 
   @media screen and (max-width: 600px) {
+
+    .detaljiclanaframeglavni {
+      min-width: auto; 
+    width: 100%;
+}
+
     .imeclana {
       font-size: 30px;
     }
@@ -2305,35 +2360,35 @@ margin-top: 5%;
   width: 300px; /* Adjust as necessary */
   border: 1px solid rgba(3, 169, 244, 0.5); 
   cursor: pointer;
-  z-index: 2000;
+  
 }
 .custom-dropdown2 {
   position: relative;
   width: 120px; /* Adjust as necessary */
   border: 1px solid rgba(3, 169, 244, 0.5); 
   cursor: pointer;
-  z-index: 2000;
+
 }
 .custom-dropdown3 {
   position: relative;
   width: 120px; /* Adjust as necessary */
   border: 1px solid rgba(3, 169, 244, 0.5); 
   cursor: pointer;
-  z-index: 2000;
+
 }
 .custom-dropdown4 {
   position: relative;
   width: 120px; /* Adjust as necessary */
   border: 1px solid rgba(3, 169, 244, 0.5); 
   cursor: pointer;
-  z-index: 2000;
+ 
 }
 
 .dropdown-label {
   padding: 10px; /* Adjust as necessary */
   background-color: white;
   border: 1px solid rgba(3, 169, 244, 0.5); 
-  z-index: 1000;
+ 
 }
 
 
@@ -2346,7 +2401,7 @@ margin-top: 5%;
   background-color: #ffffff; /* Set background color */
   min-width: 170px; /* Minimum width of the dropdown content */
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow for depth */
-  z-index: 1; /* Ensure it's above other content */
+  z-index: 2010; /* Ensure it's above other content */
 }
 
 
@@ -2453,6 +2508,19 @@ overflow-y: scroll;
 .payment-status.unpaid {
   background-color: #f44336; /* Red background for unpaid status */
 }
+
+
+.placeholderzaslike-icon {
+        width: 100px; /* Set the desired size */
+        height: 100px; /* Set the desired size */
+        position: absolute;
+        left: 4%;
+        margin-top: 7%;
+
+        border-radius: 50%; /* Makes it circular */
+        border: 2px solid #03A9F4; /* Adds a blue stroke. Change the color as needed */
+        object-fit: cover; /* Ensures the image covers the area without distortion */
+    }
 
 
 

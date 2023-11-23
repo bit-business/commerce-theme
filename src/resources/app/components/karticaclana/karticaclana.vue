@@ -1,15 +1,12 @@
 <template>
  
    
- <div :class="['kartica-clana', { 'hover-effect': user.statusAktivan === 'Aktivan' && user.statusPlacanja === 'Sve plaćeno' }]" @click="user.statusAktivan === 'Aktivan' && user.statusPlacanja === 'Sve plaćeno' ? cardClicked() : null">
+ <div :class="['kartica-clana', { 'hover-effect':  user.statusPlacanja === 'Sve plaćeno' }]" @click=" user.statusPlacanja === 'Sve plaćeno' ? cardClicked() : null">
   <img class="g14-icon" alt="" src="/storage/slike/nasiclanovi/g14.svg" />
 
-        <!--          <img class="placeholderzaslike-icon" 
-         :alt="'slika'" 
-         :src="user.avatar || '/storage/slike/nasiclanovi/slikaplaceholder.png'" />
-          -->
+  
          
-             <img class="placeholderzaslike-icon" :class="{ 'inactive-icon': user.statusPlacanja !== 'Sve plaćeno' || user.statusAktivan !== 'Aktivan' }" :alt="user.name" :src="user.avatar || '/storage/slike/nasiclanovi/slikaplaceholder.png'" />
+             <img class="placeholderzaslike-icon" :class="{ 'inactive-icon': user.statusPlacanja !== 'Sve plaćeno' }" :alt="'slika'" :src="user.avatar || '/storage/slike/nasiclanovi/slikaplaceholder.png'" />
  
       
              <div class="frame3">
@@ -19,7 +16,7 @@
                <div class="aktivnaframe">
     <!-- Render this span only if user.statusPlacanja is 'Nije plaćeno' or 'Djelomično plaćeno' -->
     <span v-if="user.statusPlacanja === 'Nije plaćeno' || user.statusPlacanja === 'Djelomično plaćeno'" class="nije-plaena expired-license">NIJE PLAĆENA ČLANARINA</span>
-    <span v-else class="nije-plaena" :class="{'expired-license': user.statusAktivan === 'Istekla licenca'}">
+    <span v-else-if="user.statusAktivan === 'Aktivan'" class="nije-plaena">
       {{ user.statusAktivan }}
     </span>
     <!-- Render this span only if user.statusPlacanja is NOT 'Nije plaćeno' and NOT 'Djelomično plaćeno' and user.statusAktivan is 'Istekla licenca' -->
