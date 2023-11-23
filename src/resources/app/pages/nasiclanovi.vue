@@ -1792,6 +1792,7 @@ padding-left: 24px;
     }
   }
   @media screen and (max-width: 460px) {
+    
     .pretrazivanjepoimenu {
       width: 14.45rem;
       left: 3rem;
@@ -1886,7 +1887,7 @@ padding-left: 24px;
     align-items: flex-start;
     justify-content: flex-start;
     font-size: 32px;
-    margin-left: 22%;
+    margin-left: 24%;
     margin-top: 6%;
   }
   .info-icon {
@@ -2317,16 +2318,109 @@ padding-left: 24px;
 
 
   @media screen and (max-width: 460px) {
+
+      .naslovosnovneinfo {
+    gap: 66px;
+  }
+  .gradframe {
+    gap: 121px;
+  }
+
+  .podrucnizborframe {
+    gap: 53px;
+  }
+  .clanskibrojframe {
+    gap: 70px;
+  }
+
+
+.naslovstatus {
+    gap: 104px;
+  }
+
+  .statusframedetalji {
+
+    gap: 102px;
+  }
+
+
+
+  .licenceframe {
+    gap: 98px;
+  }
+  .licencavrijediframe {
+    gap: 24px;
+  }
+
+  .valjanostlicenceframe {
+    gap: 29px;
+  }
+
+  .clanskaiskaznicaframe {
+
+    gap: 22px;
+  }
+
+
+
+
+
+      .sviframeoviizaduzenje {
+
+    margin-left: 30%;
+    margin-top: 3%;
+  }
+
+    .placeholderzaslike-icon {
+        width: 70px; /* Set the desired size */
+        height: 70px; /* Set the desired size */
+        position: absolute;
+        left: 4%;
+        margin-top: 7%;
+top:7%
+    
+    }
+
+ 
+     .statusdetalji {
+    font-size: 12px;
+  }
+ .statusstecenframe {
+
+    gap: 40px;
+  }
+  .drzavaframe {
+
+    gap: 104px;
+  }
+  .organizatorframe {
+    gap: 67px;
+  }
+  .licencaframe {
+    gap: 98px;
+  }
+      .datumseminaraframe {
+    gap: 33px;
+  }
+  .mjestoseminaraframe {
+    gap: 32px;
+  }
     .imeclana {
       font-size: 26px;
     }
 
+    .naslovseminar {
+      font-size: 12px;
+     gap: 105px;
+    }
+    
     .frameimeistatus {
       align-items: flex-start;
       justify-content: center;
       padding-top: 20px;
       padding-bottom: 0px;
       box-sizing: border-box;
+        font-size: 12px;
     }
 
     .osnovne-informacije {
