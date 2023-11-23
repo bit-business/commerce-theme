@@ -403,10 +403,15 @@ export default {
       payments: false,
       licence: false
     },
+
+
     statusOptions: [
-      { value: 'Aktivan', text: 'Aktivan' },
-      { value: 'Istekla licenca', text: 'Istekla licenca' },
-      // ... other status options ...
+      { value: 'Demostrator skijanja', text: 'Demostrator skijanja' },
+      { value: 'Voditelj skijanja', text: 'Voditelj skijanja' },
+      { value: 'Učitelj skijanja', text: 'Učitelj skijanja' },
+      { value: 'ISIA učitelj', text: 'ISIA učitelj' },
+      { value: 'Snowboard učitelj', text: 'Snowboard učitelj' },
+      { value: 'Snowboard demostrator', text: 'Snowboard demostrator' },
     ],
     paymentOptions: [
       { value: 'Sve plaćeno', text: 'Plaćena' },
@@ -414,8 +419,9 @@ export default {
       // ... other payment options ...
     ],
     licenceOptions: [
+    { value: 'Aktivan', text: 'Aktivna licenca' },
       { value: 'Istekla licenca', text: 'Istekla licenca' },
-      { value: 'Aktivan', text: 'Aktivna licenca' },
+ 
       // ... other payment options ...
     ],
     selectedStatus: [], // Holds selected statuses
@@ -1470,7 +1476,13 @@ margin-top: 5%;
     color: #000;
     text-align: left;
   }
+  .ponistigumb:active {
+  transform: scale(0.95); /* Slightly reduce the button size when clicked */
+  background-color: #ececec; /* Change background color when clicked */
+}
   .ponistigumb {
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
     cursor: pointer;
     border: none;
     padding: 0;

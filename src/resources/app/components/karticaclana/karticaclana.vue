@@ -94,16 +94,16 @@
    
  
    .kartica-clana.hover-effect:hover {
-   height: 116%; /* Increase height by 8% */
+   height: 112%; /* Increase height by 8% */
    box-shadow: 0px 6px 8px rgba(3, 169, 244, 0.4); /* Slightly increased shadow */
  }
  
  .kartica-clana .dodatne-animacije-btn {
    display: none; /* Initially hidden */
    position: absolute;
-   bottom: 150px; /* Adjust as needed */
+   bottom: 100px; /* Adjust as needed */
    left: 51%;
-   top: 150%;
+   top: 100%;
    transform: translateX(-50%);
 
    /* Additional styling for the button */
@@ -131,10 +131,10 @@
     color: #fff;
     background-color: #03a9f4;
     border-radius: 10px;
-    margin-top: 5rem;
+    margin-top: 3.2rem;
     
     width: 17.25rem;
-    height: 2.55rem;
+    height: 2.62rem;
     display: flex;
 
     z-index: 4;
