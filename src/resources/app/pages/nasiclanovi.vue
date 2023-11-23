@@ -90,13 +90,23 @@
 </div>
 
           <div class="filteriframeglavni-item" />
-          <div class="prikaz-group">
+
+
+    
+
+
+          <div class="prikaz-group" @click="toggleDropdown('sorting', $event)">
             <div class="status">Prikaz</div>
             <img
               class="chevron-right-1-icon4"
               alt=""
               src="/storage/slike/nasiclanovi/chevronright-12.svg"
             />
+            <div class="dropdown-content" v-show="dropdowns.sorting">
+            <label v-for="option in sortingOptions" :key="option.value" class="dropdown-item">
+      <input type="radio" :value="option.value" v-model="sortOrder" @change="changeSortingOrder(option.value)" />
+      {{ option.text }}
+    </label>   </div>
           </div>
           <b class="popis-lanova-hzuts-a">POPIS ČLANOVA HZUTS-a</b>
           <button @click="resetAllSelections" class="ponistigumb">
@@ -401,7 +411,8 @@ export default {
       zborovi: false,
       status: false,
       payments: false,
-      licence: false
+      licence: false,
+      sorting: false
     },
 
 
@@ -429,7 +440,10 @@ export default {
     selectedLicence: [],
  
 
-
+    sortingOptions: [
+      { value: 'asc', text: 'A-Z' },
+      { value: 'desc', text: 'Z-A' },
+    ],
 
 
       selectedZborovi: [], // Holds selected zborovi
@@ -613,6 +627,12 @@ await this.ucitajClanove(); // Ensure users are loaded before proceeding
 
 
   methods: {
+    changeSortingOrder(newOrder) {
+    this.sortOrder = newOrder;
+    this.ucitajClanove(); // Call the method that fetches or sorts the user data
+  },
+
+  
        //sortiranje placanja:
        sortDataDescending() {
     this.staraPlacanjaArray.sort((a, b) => {
