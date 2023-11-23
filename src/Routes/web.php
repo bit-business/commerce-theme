@@ -23,6 +23,7 @@ Route::prefix($commerce_route_prefix)
         Route::get('/kontakt', HelpersRoute::getController('InertiaController@kontakt'))->name('kontakt');
         Route::get('/uclanise', HelpersRoute::getController('InertiaController@uclanise'))->name('uclanise');
         Route::get('/osnovneinformacije', HelpersRoute::getController('InertiaController@osnovneinformacije'))->name('osnovneinformacije');
+        Route::get('/nasiclanovi', HelpersRoute::getController('InertiaController@nasiclanovi'))->name('nasiclanovi');
       
         Route::get('/politikakolacica', HelpersRoute::getController('InertiaController@politikakolacica'))->name('politikakolacica');
         Route::get('/politikaprivatnosti', HelpersRoute::getController('InertiaController@politikaprivatnosti'))->name('politikaprivatnosti');

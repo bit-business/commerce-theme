@@ -488,10 +488,6 @@ import { Link, Head } from "@inertiajs/inertia-vue"
 
 import { mapState } from 'vuex';
 
-
-
-
-
 import { VuePreloader } from 'vue2-preloader';
 
 export default {

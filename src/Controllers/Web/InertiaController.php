@@ -85,6 +85,15 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
+    public function nasiclanovi()
+    {
+        return Inertia::render('nasiclanovi', [
+     
+            'name' => 'Naši Članovi',
+        ], 'commerce-theme:app');
+    }
+
+
     public function osnovneinformacije()
     {
         return Inertia::render('osnovneinformacije', [
