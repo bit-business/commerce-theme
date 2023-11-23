@@ -322,20 +322,24 @@
       </div>
 
 <!-- New payments list view -->
-<!-- New payments list view -->
 <div v-if="viewingPaymentsList" class="payments-list">
   <div v-for="payment in staraPlacanjaArray" :key="payment.id" class="payment-item">
-    <div class="payment-title">{{ payment.paymenttitle }}</div> <!-- This is the payment title -->
-    <div class="payment-details">
+    <!-- Payment title on its own line -->
+    <div class="payment-title">{{ payment.paymenttitle }}</div>
+
+    <!-- Payment status, date, and price on the next line -->
+    <div class="payment-info">
       <div class="payment-status">
   {{ payment.paidstatus === 1 ? 'PODMIRENO' : 'NEPODMIRENO' }}
 </div>
-      <div class="payment-date">{{ payment.paydate }}</div> <!-- This is the payment date -->
-      <div class="payment-price">{{ payment.price }} eura</div> <!-- This is the payment price -->
+<span class="payment-date">{{ formatDate(payment.paydate) }}</span>
+      <span class="payment-price">{{ payment.price }} eura</span>
     </div>
+
+    <!-- Blue line separator -->
+    <div class="payment-separator"></div>
   </div>
 </div>
-
 
 
 
@@ -852,7 +856,14 @@ async getStaraPlacanja() {
   }
 },
 
-
+formatDate(dateString) {
+    if (!dateString) return ''; // Handle null, undefined, or empty strings
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 because months are 0-indexed
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}.`;
+  },
 
 async loadAllStatusData() {
   try {
@@ -2343,18 +2354,29 @@ margin-top: 5%;
 
 
 .payments-list {
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
+
+  align-self: stretch;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 1.2rem;
+    max-height: 100%;
+overflow-y: scroll;
+
 }
 
-.payment-item {
-  border-bottom: 2px solid #03A9F4; /* Blue border for each item */
-  padding: 10px 0; /* Padding around the whole item */
+.payment-separator {
+  height: 2px;
+  background-color: #03A9F4; /* blue separator line */
+  margin-top: 5px; /* space between the info and the line */
 }
 
 .payment-title {
+  display: block; /* ensures the title is on its own line */
   font-weight: bold;
+  font-size: medium;
   margin-bottom: 5px; /* Space between title and details */
 }
 
@@ -2364,25 +2386,36 @@ margin-top: 5%;
 }
 
 .payment-date {
-  margin-left: 10px; /* Space between the name and the date */
+  font-size: 0.8rem;
+  margin-top: auto;
+  margin-left: 1px; /* Space between the name and the date */
 }
 
 .payment-status {
-  margin-left: 10px; /* Space between the date and the status */
-  background-color: #4CAF50; /* Green background for paid status */
-  color: white; /* White text color */
-  border-radius: 5px; /* Rounded corners */
-  padding: 2px 6px; /* Padding inside the status box */
+  background-color: #67C371; /* green background */
+  color: white; /* white text */
+  padding: 5px 5px; /* padding inside the status tag */
+
+  font-weight: bold;
+  font-size: 0.8rem !important;
+}
+.payment-info {
+  /* styles for the container of status, date, and price */
+  display: flex;
+  justify-content: space-between; /* adjust as needed */
+  align-items: flex-start;
+  padding: 8px 0; /* spacing above and below the info line */
 }
 
 .payment-price {
   margin-left: 10px; /* Space between the status and the price */
-  font-weight: bold;
+  font-size: 0.8rem;
+  margin-top: auto;
 }
 
 /* Adjust the background-color and color properties to match your actual 'paidstatus' values */
 .payment-status.paid {
-  background-color: #4CAF50; /* Green background for paid status */
+  background-color: #67C371; /* Green background for paid status */
 }
 
 .payment-status.unpaid {
