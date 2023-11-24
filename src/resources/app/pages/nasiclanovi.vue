@@ -108,6 +108,7 @@
       {{ option.text }}
     </label>   </div>
           </div>
+          
           <b class="popis-lanova-hzuts-a">POPIS ČLANOVA HZUTS-a</b>
           <button @click="resetAllSelections" class="ponistigumb">
             <img class="arrow-1-icon" alt="" src="/storage/slike/nasiclanovi/arrow-1.svg" />
@@ -541,12 +542,15 @@ export default {
   return this.dataLICENCE
     .filter(licence => licence.aktivna && allowedIdPayGroups.includes(licence.idpaygroup))
     .map(licence => {
-      if (licence.nazivlicence.includes("ISIA")) {
-        // Check if selectedUser and isiaBroj are valid
-        const isiaNumber = this.selectedUser && this.selectedUser.isiaBroj.idisia 
+      if (licence.nazivlicence.includes("ISIA Skijanje")) {
+        // Check if selectedUser and isiaBroj are valid and not null
+        const isiaNumber = (this.selectedUser && this.selectedUser.isiaBroj && this.selectedUser.isiaBroj.idisia) 
                            ? this.selectedUser.isiaBroj.idisia 
                            : '';
         return `ISIA${isiaNumber ? ' (br. ' + isiaNumber + ')' : ''}`;
+      }
+      if (licence.nazivlicence.includes("IVSI Skijanje")) {
+        return `IVSI`;
       }
       return licence.nazivlicence;
     })
@@ -1820,8 +1824,8 @@ padding-left: 24px;
   @media screen and (max-width: 460px) {
     
     .pretrazivanjepoimenu {
-      width: 14.45rem;
-      left: 3rem;
+      width: 15.15rem;
+      left: 2.4rem;
     }
     .filteriframeglavni-child {
     height: 24.81rem;
@@ -2353,7 +2357,7 @@ padding-left: 24px;
   }
 
   .podrucnizborframe {
-    gap: 53px;
+    gap: 93px;
   }
   .clanskibrojframe {
     gap: 70px;
@@ -2366,7 +2370,7 @@ padding-left: 24px;
 
   .statusframedetalji {
 
-    gap: 102px;
+    gap: 112px;
   }
 
 
@@ -2422,7 +2426,7 @@ top:6%
   }
  .statusstecenframe {
 
-    gap: 40px;
+    gap: 30px;
   }
   .drzavaframe {
 
