@@ -157,7 +157,7 @@
 <!-- DETALJI pocetak-->
 
   <transition name="slide-fade">
-<div class="detaljiclanaframeglavni" v-if="showDetailsFrame">
+<div class="detaljiclanaframeglavni" v-if="showDetailsFrame" ref="myScrollableElement">
     <div class="glavnipodframedetalji">
       <div class="framedetalji">
          <img class="placeholderzaslike-icon" :alt="'slika'" :src="selectedUser.avatar || '/storage/slike/nasiclanovi/slikaplaceholder.png'" />
@@ -530,19 +530,28 @@ export default {
 
 
   activeLicences() {
-        // Define the allowed idpaygroup values
-        const allowedIdPayGroups = [2, 7, 8, 9, 10, 11, 12, 13, 14];
+  // Define the allowed idpaygroup values
+  const allowedIdPayGroups = [2, 7, 8, 9, 10, 11, 12, 13, 14];
 
-        if (!Array.isArray(this.dataLICENCE)) {
-            console.error('dataLICENCE is not an array', this.dataLICENCE);
-            return '';
-        }
+  if (!Array.isArray(this.dataLICENCE)) {
+    console.error('dataLICENCE is not an array', this.dataLICENCE);
+    return '';
+  }
 
-        return this.dataLICENCE
-            .filter(licence => licence.aktivna && allowedIdPayGroups.includes(licence.idpaygroup))
-            .map(licence => licence.nazivlicence)
-            .join(', ');
-    },
+  return this.dataLICENCE
+    .filter(licence => licence.aktivna && allowedIdPayGroups.includes(licence.idpaygroup))
+    .map(licence => {
+      if (licence.nazivlicence.includes("ISIA")) {
+        // Check if selectedUser and isiaBroj are valid
+        const isiaNumber = this.selectedUser && this.selectedUser.isiaBroj.idisia 
+                           ? this.selectedUser.isiaBroj.idisia 
+                           : '';
+        return `ISIA${isiaNumber ? ' (br. ' + isiaNumber + ')' : ''}`;
+      }
+      return licence.nazivlicence;
+    })
+    .join(', ');
+},
    
   paginationRange() {
     const range = [];
@@ -629,6 +638,20 @@ await this.ucitajClanove(); // Ensure users are loaded before proceeding
 
 
   methods: {
+
+    scrollToTop() {
+    if (this.$refs.myScrollableElement) {
+      this.$refs.myScrollableElement.scrollTop = 0;
+    }
+  },
+
+
+    closeAllDropdowns() {
+  Object.keys(this.dropdowns).forEach(key => {
+    this.dropdowns[key] = false;
+  });
+},
+
     changeSortingOrder(newOrder) {
     this.sortOrder = newOrder;
     this.ucitajClanove(); // Call the method that fetches or sorts the user data
@@ -645,6 +668,8 @@ await this.ucitajClanove(); // Ensure users are loaded before proceeding
   },
     viewPaymentsList() {
     this.viewingPaymentsList = true;
+    this.scrollToTop();
+
   },
   closePaymentsList() {
       // Logic to hide the payments list and show the main details frame
@@ -663,6 +688,7 @@ await this.ucitajClanove(); // Ensure users are loaded before proceeding
       this.selectedStatus = [];
     this.selectedPayments = [];
     this.selectedLicence = [];
+   this.closeAllDropdowns;
   },
 
   toggleDropdown(dropdownName, event) {
@@ -2362,13 +2388,22 @@ padding-left: 24px;
   }
 
 
+ .framesvekartice {
 
+    padding-top: 3.4rem;
+  }
+
+.payments-list {
+  
+    padding-top: 3.4rem;
+
+}
 
 
       .sviframeoviizaduzenje {
 
     margin-left: 30%;
-    margin-top: 3%;
+    margin-top: 5%;
   }
 
     .placeholderzaslike-icon {
@@ -2376,8 +2411,8 @@ padding-left: 24px;
         height: 70px; /* Set the desired size */
         position: absolute;
         left: 4%;
-        margin-top: 7%;
-top:7%
+        margin-top: 6%;
+top:6%
     
     }
 
@@ -2542,7 +2577,7 @@ top:7%
     align-items: center;
     justify-content: flex-start;
     gap: 30px;
-    padding-top: 1.2rem;
+    padding-top: 1.9rem;
     max-height: 100%;
 overflow-y: scroll;
 
@@ -2551,14 +2586,14 @@ overflow-y: scroll;
 .payment-separator {
   height: 2px;
   background-color: #03A9F4; /* blue separator line */
-  margin-top: 5px; /* space between the info and the line */
+  margin-top: 3px; /* space between the info and the line */
 }
 
 .payment-title {
   display: block; /* ensures the title is on its own line */
   font-weight: bold;
   font-size: medium;
-  margin-bottom: 5px; /* Space between title and details */
+  margin-top: 8px; /* Space between title and details */
 }
 
 
@@ -2567,9 +2602,10 @@ overflow-y: scroll;
 }
 
 .payment-date {
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-top: auto;
-  margin-left: 1px; /* Space between the name and the date */
+margin-right: auto;
+padding-left: 1rem;
 }
 
 .payment-status {
@@ -2578,7 +2614,7 @@ overflow-y: scroll;
   padding: 5px 5px; /* padding inside the status tag */
 
   font-weight: bold;
-  font-size: 0.8rem !important;
+  font-size: 0.9rem !important;
 }
 .payment-info {
   /* styles for the container of status, date, and price */
@@ -2590,7 +2626,7 @@ overflow-y: scroll;
 
 .payment-price {
   margin-left: 10px; /* Space between the status and the price */
-  font-size: 0.8rem;
+  font-size: 0.9rem;
   margin-top: auto;
 }
 
