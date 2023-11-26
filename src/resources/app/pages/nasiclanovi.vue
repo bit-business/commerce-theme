@@ -80,6 +80,7 @@
     placeholder="Pretraživanje po imenu, prezimenu..."
     type="text"
     v-model="searchQuery"
+    @keyup.enter="handleSearchEnter" 
   />
   <span v-if="searchQuery" class="clear-icon" @click="searchQuery = ''">
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -643,6 +644,11 @@ await this.ucitajClanove(); // Ensure users are loaded before proceeding
 
   methods: {
 
+    handleSearchEnter() {
+    this.currentPage = 1; // Reset to first page
+    this.ucitajClanove(); // Assuming this method handles the search logic
+  },
+
     scrollToTop() {
     if (this.$refs.myScrollableElement) {
       this.$refs.myScrollableElement.scrollTop = 0;
@@ -1140,6 +1146,7 @@ margin-top: 5%;
   justify-content: center;
   list-style: none;
   padding: 0;
+  padding-top: 3.6rem;
 }
 
 .pagination button {
@@ -1769,7 +1776,7 @@ margin-top: 5%;
       width: 14.88rem;
       gap: 1.5rem;
       padding-left: 0.81rem;
-      padding-right: 2.5rem;
+      
       box-sizing: border-box;
     }
 
@@ -1842,6 +1849,12 @@ align-items: center;
 width: 20.13rem;
   height: 2.35rem;
 padding-left: 24px;
+}
+
+.input-wrapper::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  font-size: 9.6px;
+  color: #999999;
+  opacity: 1; 
 }
 
 .ponistigumb {
