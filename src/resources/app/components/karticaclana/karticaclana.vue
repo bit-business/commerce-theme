@@ -15,7 +15,7 @@
                         
                <div class="aktivnaframe">
     <!-- Render this span only if user.statusPlacanja is 'Nije plaćeno' or 'Djelomično plaćeno' -->
-    <span v-if="user.statusPlacanja === 'Nije plaćeno' || user.statusPlacanja === 'Djelomično plaćeno'" class="nije-plaena expired-license">NIJE PLAĆENA ČLANARINA</span>
+    <span v-if="user.statusPlacanja === 'Nije plaćeno' || user.statusPlacanja === 'Djelomično plaćeno'" class="nije-plaena expired-license"><!--NIJE PLAĆENA ČLANARINA--></span>
     <span v-else-if="user.statusAktivan === 'Aktivan'" class="nije-plaena">
       {{ user.statusAktivan }}
     </span>
@@ -52,8 +52,10 @@
  </script>
  <style scoped>
 
- .expired-license {
-  color: #DB1F26; /* Red color for expired license */
+.expired-license {
+ /* color: #DB1F26;  Red color for expired license */
+color: #03a9f4;
+font-size: 19px !important;
 }
  
  .placeholderzaslike-icon.inactive-icon {

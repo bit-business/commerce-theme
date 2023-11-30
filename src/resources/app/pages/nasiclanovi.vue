@@ -15,6 +15,7 @@
              <!-- Zborovi Dropdown -->
 <div class="custom-dropdown1" @click="toggleDropdown('zborovi', $event)">
   <div class="dropdown-label">{{ 'Odaberi područne zborove' }}</div>
+  <span class="selected-count" v-if="selectedZboroviCount">{{ selectedZboroviCount }}</span>
   <img class="strelicapremadolje-icon" alt="" src="/storage/slike/nasiclanovi/strelicapremadolje.svg" />
   <div class="dropdown-content" v-show="dropdowns.zborovi">
     <label v-for="zbor in zboroviOptions" :key="zbor.value" class="dropdown-item">
@@ -29,6 +30,7 @@
 <!-- Status Dropdown -->
 <div class="custom-dropdown2" @click="toggleDropdown('status', $event)">
   <div class="dropdown-label">{{ 'Status' }}</div>
+  <span class="selected-count" v-if="selectedStatusCount">{{ selectedStatusCount }}</span>
   <img class="strelicapremadolje-icon2" alt="" src="/storage/slike/nasiclanovi/strelicapremadolje.svg" />
   <div class="dropdown-content" v-show="dropdowns.status">
     <label v-for="option in statusOptions" :key="option.value" class="dropdown-item">
@@ -42,6 +44,7 @@
 <!-- Payments Dropdown -->
 <div class="custom-dropdown3" @click="toggleDropdown('payments', $event)">
   <div class="dropdown-label">{{ 'Članarine' }}</div>
+  <span class="selected-count" v-if="selectedPaymentsCount">{{ selectedPaymentsCount }}</span>
   <img class="strelicapremadolje-icon2" alt="" src="/storage/slike/nasiclanovi/strelicapremadolje.svg" />
   <div class="dropdown-content" v-show="dropdowns.payments">
     <label v-for="option in paymentOptions" :key="option.value" class="dropdown-item">
@@ -54,6 +57,7 @@
 <!-- Licence Dropdown -->
 <div class="custom-dropdown4" @click="toggleDropdown('licence', $event)">
   <div class="dropdown-label">{{ 'Licence' }}</div>
+  <span class="selected-count" v-if="selectedLicenceCount">{{ selectedLicenceCount }}</span>
   <img class="strelicapremadolje-icon2" alt="" src="/storage/slike/nasiclanovi/strelicapremadolje.svg" />
   <div class="dropdown-content" v-show="dropdowns.licence">
     <label v-for="option in licenceOptions" :key="option.value" class="dropdown-item">
@@ -64,8 +68,14 @@
 </div>
 
 
-
-
+<div class="custom-dropdown4" @click="toggleDropdown('sorting', $event)">
+            <div class="dropdown-label">Prikaz</div>
+            <div class="dropdown-contentAZ" v-show="dropdowns.sorting">
+            <label v-for="option in sortingOptions" :key="option.value" class="dropdown-item">
+      <input type="radio" :value="option.value" v-model="sortOrder" @change="changeSortingOrder(option.value)" />
+      {{ option.text }}
+    </label>   </div>
+          </div>
 
           </div>
        
@@ -90,25 +100,16 @@
 </span>
 </div>
 
+
+
+
           <div class="filteriframeglavni-item" />
 
 
     
 
 
-          <div class="prikaz-group" @click="toggleDropdown('sorting', $event)">
-            <div class="status">Prikaz</div>
-            <img
-              class="chevron-right-1-icon4"
-              alt=""
-              src="/storage/slike/nasiclanovi/chevronright-12.svg"
-            />
-            <div class="dropdown-content" v-show="dropdowns.sorting">
-            <label v-for="option in sortingOptions" :key="option.value" class="dropdown-item">
-      <input type="radio" :value="option.value" v-model="sortOrder" @change="changeSortingOrder(option.value)" />
-      {{ option.text }}
-    </label>   </div>
-          </div>
+        
           
           <b class="popis-lanova-hzuts-a">POPIS ČLANOVA HZUTS-a</b>
           <button @click="resetAllSelections" class="ponistigumb">
@@ -117,19 +118,22 @@
           </button>
         </div>
 <!-- FILTERI kraj-->
-<!-- KARTICA GRID pocetak-->
-<div class="grid-wrapper">
-<div class="grid-container"> 
-  <KarticaClana
-  v-for="user in users" 
-    :key="user.id" 
-    :user="user" 
-    :get-status-aktivan="getStatusAktivan"
-    @cardClicked="handleCardClick"
-  />
-</div>
-</div>
-<!-- KARTICA GRID kraj-->
+ <!-- KARTICA GRID pocetak -->
+ <div class="grid-wrapper">
+    <div v-if="searchQuery" class="grid-container"> 
+      <KarticaClana
+        v-for="user in users" 
+        :key="user.id" 
+        :user="user" 
+        :get-status-aktivan="getStatusAktivan"
+        @cardClicked="handleCardClick"
+      />
+    </div>
+    <div v-else class="placeholder-container">
+      <img src="/storage/slike/nasiclanovi/placeholderclanovi.jpg" alt="Pretrazivanje" class="placeholder-image">
+    </div>
+  </div>
+  <!-- KARTICA GRID kraj -->
 
 
 
@@ -526,6 +530,19 @@ export default {
     totalPages() {
     return Math.ceil(this.totalItems / this.perPage);
   },
+    selectedZboroviCount() {
+    return this.selectedZborovi.length;
+  },
+  selectedStatusCount() {
+    return this.selectedStatus.length;
+  },
+  selectedPaymentsCount() {
+    return this.selectedPayments.length;
+  },
+  selectedLicenceCount() {
+    return this.selectedLicence.length;
+  },
+  
 
 
 
@@ -1221,7 +1238,7 @@ margin-top: 5%;
     top: 0rem;
     left: 0rem;
     background-color: #fff;
-    width: 90rem;
+    width: 100%;
     height: 14.81rem;
   }
   .strokeframe-child {
@@ -1357,9 +1374,11 @@ margin-top: 5%;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
-    justify-content: center;
+    
     padding: 0.63rem 10rem 0.63rem 0.63rem;
     gap: 1.63rem;
+    
+    justify-content: space-between; 
   }
   .frame2 {
     background-color: #73d2f6;
@@ -1465,7 +1484,8 @@ margin-top: 5%;
     border: 2px solid #03a9f4;
     font-weight: 300;
     font-family: Inter;
-    font-size: 0.88rem;
+    font-size: 1rem;
+    overflow: visible !important;
     background-color: transparent;
     position: absolute;
     top: 4.44rem;
@@ -1499,9 +1519,9 @@ margin-top: 5%;
     position: absolute;
     top: 4.88rem;
     right: 3.75rem;
-    border: 1px solid #03a9f4;
+    border: 1px solid rgba(3, 169, 244, 0.5); 
     box-sizing: border-box;
-    width: 6.25rem;
+    width: 3.25rem;
     height: 1.88rem;
     display: flex;
     flex-direction: row;
@@ -1763,19 +1783,26 @@ margin-top: 5%;
   }
 
   @media screen and (max-width: 600px) {
+
+    .placeholder-image {
+    content: url('/storage/slike/nasiclanovi/placeholderclanovi_mobile.jpg');
+  }
     .filteriframeglavni-child {
     height: 24.81rem;
   }
     .filteritraka {
       flex-direction: row;
-      padding-right: 4.38rem;
+  
       box-sizing: border-box;
+      
     }
 
     .pretrazivanjepoimenu {
-      width: 14.88rem;
-      gap: 1.5rem;
-      padding-left: 0.81rem;
+      width: calc(100% - 16%); /* Subtract left and right padding from 100% */
+    padding-left: 4%;
+    padding-right: 4%;
+
+  
       
       box-sizing: border-box;
     }
@@ -1808,16 +1835,23 @@ padding-left: 24px;
 
 
   @media screen and (max-width: 350px) {
-    .filteritraka {
-      flex-direction: row;
-      gap: 1.63rem;
-      align-items: center;
-      justify-content: center;
-    }
 
     .pretrazivanjepoimenu {
-      width: 19.38rem;
-    }
+
+
+width: calc(100% - 28%) !important; /* Subtract left and right padding from 100% */
+padding-left: 4%;
+padding-right: 4%;
+margin-left: 8%;
+margin-right: 8%;
+height: auto;
+
+
+}
+  
+    .popis-lanova-hzuts-a {
+    left: 3.05rem;
+  }
 
     .ponistigumb {
       height: auto;
@@ -1829,30 +1863,51 @@ padding-left: 24px;
     }
   }
   @media screen and (max-width: 460px) {
+    .popis-lanova-hzuts-a {
+    left: 2.8rem;
+  }
+    .filteritraka {
+   left: 2.8rem;
+      
+    }
+ .prikaz-group {
+    position: absolute;
+    top: 20.88rem;
+    right: 7.75rem;
+    border: 1px solid rgba(3, 169, 244, 0.5); 
+    box-sizing: border-box;
+    width: 5.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.44rem 0rem 0.44rem 0.75rem;
+    gap: 1.75rem;
+  }
     
     .pretrazivanjepoimenu {
-      width: 15.15rem;
-      left: 2.4rem;
+      width: 16.35rem;
+      padding: 0.63rem 0.5rem 0.63rem 0.81rem;
+      left: 2.1rem;
     }
     .filteriframeglavni-child {
     height: 24.81rem;
   }
-
-    .prikaz-group {
-    width: 4.25rem;
-    height: 1.88rem;
-   right: 2rem;
-    gap: 0.75rem;
-  }
   .input-wrapper {
+    width: calc(100% - 8%); /* Subtract left and right padding from 100% */
+    padding-left: 4%;
+    padding-right: 4%;
+
 align-items: center;
-width: 20.13rem;
+
   height: 2.35rem;
 padding-left: 24px;
+overflow: visible;
 }
 
 .input-wrapper::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
-  font-size: 9.6px;
+
   color: #999999;
   opacity: 1; 
 }
@@ -1867,9 +1922,19 @@ padding-left: 24px;
 
 
 
-  @media screen and (max-width: 552px) {
+  @media screen and (max-width: 675px) {
     .filteriframeglavni-child {
     height: 24.81rem;
+  }
+      .pretrazivanjepoimenu {
+
+
+      width: calc(100% - 16%); /* Subtract left and right padding from 100% */
+    padding-left: 4%;
+    padding-right: 4%;
+    height: auto;
+
+   
   }
 .ponistigumb {
     top: 90%;
@@ -2548,7 +2613,24 @@ top:6%
   min-width: 170px; /* Minimum width of the dropdown content */
   box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow for depth */
   z-index: 2010; /* Ensure it's above other content */
+  top: 100%;
+  border-bottom-left-radius: 5px;  
+  border-bottom-right-radius: 5px; 
 }
+.dropdown-contentAZ {
+/* Initially hide the dropdown content */
+  position: absolute; /* Position it absolutely within the relative container */
+  background-color: #ffffff; /* Set background color */
+  min-width: 5.25rem; /* Minimum width of the dropdown content */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow for depth */
+  z-index: 2010; /* Ensure it's above other content */
+  top: 100%;
+right: 0%;
+border-bottom-left-radius: 5px;  
+  border-bottom-right-radius: 5px; 
+
+}
+
 
 
 .dropdown-item label {
@@ -2670,5 +2752,47 @@ padding-left: 1rem;
     }
 
 
+    .selected-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+ /* This will help in case the numbers have two digits or more */
+  border-radius: 50%; /* circle */
+  background-color: #03a9f4; /* any color you want */
+  color: white; /* text color */
+  position: absolute;
+  top: -10px; /* half of the height to ensure it's centered on the y-axis */
+  left: -10px; /* half of the width to ensure it's centered on the x-axis */
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 2;
+  border: 2px solid white; /* match the background color of .custom-dropdown */
+}
+
+ /* Placeholder container styling */
+ .placeholder-container {
+    position: relative;
+    text-align: center;
+    width: 100%; 
+    height: auto;
+    color: #fff; /* Adjust text color as needed */
+  }
+
+  .placeholder-image {
+    width: 100%; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+
+  }
+
+  .placeholder-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px; /* Adjust font size as needed */
+  }
+  
 
 </style>

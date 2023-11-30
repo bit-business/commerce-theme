@@ -1,6 +1,6 @@
 <template>
   <div>
-    <commerce-top-bar class="hidden sm:flex" />
+    <commerce-top-bar class="" />
    <!-- <commerce-navbar class="hidden sm:flex" />-->
     <nav class="flex flex-nowrap bg-gray-50 shadow-md px-4 sm:hidden relative z-50 w-full h-14 justify-center items-center">
       <div @click="goBack">
