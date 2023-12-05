@@ -4,6 +4,7 @@
   
     <div class="hzuts-login-desktop">
       <Head title="Prijava" />
+    
     <img
       class="backgroundslika-icon"
       alt=""
@@ -75,6 +76,7 @@
         </div>
       </div>
     </div>
+
     <div class="hzuts-login-desktop-child" />
     <div class="footertext">
       Copyright © 2023 Sva prava pridržana od strane HZUTS-a.
@@ -298,12 +300,14 @@ export default {
 <style scoped>
 
 
+
+
   .backgroundslika-icon {
     position: absolute;
     top: 0rem;
     left: 0rem;
     width: 100%;
-    height: 64rem;
+    height: 100%;
     object-fit: cover;
   }
   .vector-icon2 {
@@ -564,15 +568,17 @@ export default {
     height: 28.44rem;
   }
   .srednjiframe {
-    position: absolute;
-    height: 77%;
-    top: 10%;
-    bottom: 22.27%;
-    left: calc(50% - 248px);
-    width: 31rem;
-  }
+  position: fixed; /* Use fixed positioning */
+  height: 34.5rem;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 31rem;
+}
+
+
   .hzuts-login-desktop-child {
-    position: absolute;
+    position: fixed;
     height: 7.13%;
     width: 100%;
     top: 92.87%;
@@ -582,13 +588,15 @@ export default {
     background-color: #03a9f4;
   }
   .footertext {
-    position: absolute;
-    top: calc(50% + 326px);
-    left: calc(50% - 200px);
-    font-size: 0.9rem;
+    position: fixed;
+    top: 95.43%;
+    height: 3.56%;
+  width: 100%;
+    bottom: 0%;
+    font-size: 0.82rem;
     font-weight: 500;
     color: #fff;
-    text-align: left;
+    text-align: center;
   }
 
 
