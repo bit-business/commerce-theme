@@ -276,7 +276,40 @@ export default {
         .catch(error => {
           this.$helper.displayErrors(error)
         })
+    },
+    logout() {
+      this.$api.skijasiAuth
+        .logout()
+        .then(res => {
+        })
+        .catch(err => {
+        })
+        .finally(() => {
+          this.$store.dispatch("SET_IS_AUTHENTICATED", false);
+          this.$store.dispatch("SET_NOTIFICATIONS", {
+            data: [],
+            total: null,
+            currentPage: 1,
+            perPage: 10
+          });
+          this.$store.dispatch("SET_USER", {
+            name: null,
+            email: null,
+            additionalInfo: null,
+            avatar: null,
+            emailVerifiedAt: null,
+            password: null,
+            rememberToken: null,
+            createdAt: null,
+            updatedAt: null,
+
+   
+          });
+          this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+        })
     }
+
+
   },
 }
 </script>
