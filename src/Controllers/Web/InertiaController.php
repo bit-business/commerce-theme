@@ -238,6 +238,18 @@ class InertiaController extends Controller
             'name' => 'Izmijeni Adresu',
         ], 'commerce-theme:app');
     }
+    public function Zaduzenja()
+    {
+        return Inertia::render('user/zaduzenja', [
+            'name' => 'Zaduženja',
+        ], 'commerce-theme:app');
+    }
+    public function Mojstatus()
+    {
+        return Inertia::render('user/mojstatus', [
+            'name' => 'Moj Status',
+        ], 'commerce-theme:app');
+    }
 
     public function userNotification()
     {

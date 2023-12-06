@@ -57,6 +57,8 @@ Route::prefix($commerce_route_prefix)
         Route::get('/profile/address/add', HelpersRoute::getController('InertiaController@userAddressAdd'))->name('address-add');
         Route::get('/profile/address/edit/{id}', HelpersRoute::getController('InertiaController@userAddressEdit'))->name('address-edit');
 
+        Route::get('/profile/zaduzenja', HelpersRoute::getController('InertiaController@Zaduzenja'))->name('zaduzenja');
+        Route::get('/profile/mojstatus', HelpersRoute::getController('InertiaController@Mojstatus'))->name('mojstatus');
         /**
          * Legal route.
          */
