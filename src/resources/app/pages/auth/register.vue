@@ -53,7 +53,7 @@
           <div class="frameime">
             <div class="imebackground">
               <div class="containerzaime" />
-              <input class="poljezaupisime" type="text" required v-model="name" ref="name"/>
+              <input class="poljezaupisime" type="text" required v-model="computedName" ref="name"/>
               <img class="user-icon" alt="" src="/storage/slike/user-icon.svg" />
             </div>
             <div class="ime">Ime</div>
@@ -61,7 +61,7 @@
           <div class="frameprezime">
             <div class="imebackground">
               <div class="containerzaime" />
-              <input class="poljezaupisime" type="text" required v-model="username" ref="username" />
+              <input class="poljezaupisime" type="text" required v-model="computedUsername" ref="username" />
               <img class="user-icon" alt="" src="/storage/slike/user-icon.svg" />
             </div>
             <div class="ime">Prezime</div>
@@ -172,7 +172,7 @@
                 type="text"
                 maxlength="20"
                 minlength="3"
-                v-model="drzava"
+                v-model="computedDrzava"
                 required
               />
               <img
@@ -193,7 +193,7 @@
               maxlength="100"
               minlength="4"
               required
-              v-model="adresa" 
+              v-model="computedAdresa" 
             />
             <img
               class="registracija-ikonaadresa-icon"
@@ -221,7 +221,7 @@
                 maxlength="20"
                 minlength="3"
                 required
-                v-model="grad" 
+                v-model="computedGrad" 
               />
               <img
                 class="ikonareg-adresa-icon"
@@ -675,27 +675,27 @@ export default {
     brojmobitela: {
       required,
       minLength: minLength(5),
-      maxLength: maxLength(255),
+      maxLength: maxLength(25),
     },
     grad: {
       required,
       minLength: minLength(3),
-      maxLength: maxLength(55),
+      maxLength: maxLength(35),
     },
     drzava: {
       required,
       minLength: minLength(3),
-      maxLength: maxLength(55),
+      maxLength: maxLength(35),
     },
     postanskibroj: {
       required,
       minLength: minLength(1),
-      maxLength: maxLength(55),
+      maxLength: maxLength(35),
     },
     adresa: {
       required,
       minLength: minLength(3),
-      maxLength: maxLength(55),
+      maxLength: maxLength(75),
     },
 
 
@@ -703,7 +703,7 @@ export default {
   
    oib: {
       required,
-      minLength: minLength(10),
+      minLength: minLength(11),
       maxLength: maxLength(11),
     },
     password: {
@@ -724,6 +724,49 @@ export default {
 
   },
   computed: {
+    computedName: {
+    get() {
+      return this.name;
+    },
+    set(value) {
+      this.name = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+  computedUsername: {
+    get() {
+      return this.username;
+    },
+    set(value) {
+      this.username = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+  computedDrzava: {
+    get() {
+      return this.drzava;
+    },
+    set(value) {
+      this.drzava = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+  computedGrad: {
+    get() {
+      return this.grad;
+    },
+    set(value) {
+      this.grad = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+  computedAdresa: {
+    get() {
+      return this.adresa;
+    },
+    set(value) {
+      this.adresa = value.charAt(0).toUpperCase() + value.slice(1);
+    }
+  },
+
+
+
     isFormValid() {
     return this.name && this.username && this.email && this.datumrodjenja;
   },
@@ -777,6 +820,8 @@ export default {
     }
   },
   methods: {
+
+    
     showInputField(selectedSocial) {
       this.selectedSocial = selectedSocial;
       this.showInput = true;

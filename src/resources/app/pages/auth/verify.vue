@@ -38,20 +38,34 @@
               placeholder="Email"
               v-model="email"
             />
+            
             <pin
               v-model="token"
               :length="6"
               class="mt-4"
               label="Upišite token"
             />
+            <div :class="['inline-block text-xs justify-end text-center w-30 rounded-md  p-2', getCountdown === 0 ? 'bg-primary text-white border-transparent' : 'border-gray-200 text-gray-400 bg-transparent']" @click="sendVerify">
+            Ponovno pošalji({{ getCountdown }})
+          </div>
             <button :class="buttonClasses" @click="verify">
               <commerce-loading v-if="loading" />
-              <span v-else>POTVRDI</span>
+              
+              <span v-else>Verificiraj</span>
             </button>
+
+            
+            
+            
             <div class="flex w-full flex-wrap">
+              
               <Link :href="route('skijasi.commerce-theme.forgot-password', $page.props.email)" class="text-xs plavitekst font-medium">
                 Zaboravili ste lozinku?
               </Link>
+           
+      
+      
+
               <div class="w-full flex items-center gap-4 my-2">
                 <div class="h-px w-full bg-gray-300" />
                 <div class="uppercase text-gray-300 text-sm"></div>
@@ -63,11 +77,17 @@
                  Registrirajte se
                 </Link>
               </div>
+            
             </div>
           </div>
         </div>
       </div>
     </div>
+
+
+
+
+    <!--
     <div class="flex flex-col sm:hidden bg-gray-50 h-auth relative z-0 justify-start pt-4 items-center transform px-4">
       <div class="relative mt-8 w-full">
         <div class="text-xs text-gray-400">Potvrdite svoju e-poštu unosom tokena koji je poslan na vašu e-poštu.</div>
@@ -86,11 +106,11 @@
           </div>
         </div>
       </div>
-      <div :class="['h-10 w-full mt-6 flex items-center justify-center rounded-md', $v.mobileToken.$invalid ? 'cursor-none text-gray-500 bg-gray-200 pointer-events-none' : 'bg-primary text-white']" @click="mobileVerify">
+      <div :class="['h-10 w-full mt-6 flex items-center justify-center rounded-md', $v.$invalid ? 'cursor-none text-gray-500 bg-gray-200 pointer-events-none' : 'bg-primary text-white']" @click="mobileVerify">
         Verifikacija
       </div>
     </div>
-
+-->
 
 
 
@@ -157,6 +177,7 @@ export default {
       email: "",
       token: "",
       loading: false,
+      
       mobileToken: "",
       countdown: 60,
       interval: null,
@@ -166,12 +187,16 @@ export default {
     getCountdown() {
       return this.countdown;
     },
-    buttonClasses() {
-      return [
-        "w-full plavitekstbg text-white py-2 rounded-md text-sm font-medium mt-4 select-none flex items-center justify-center gap-2",
-        this.$v.$invalid || this.loading ? "cursor-not-allowed opacity-50" : "",
-      ];
-    },
+    isFormValid() {
+    // This will ensure that any change in validation state triggers a re-render
+    return !this.$v.$invalid;
+  },
+  buttonClasses() {
+    return [
+      "w-full plavitekstbg text-white py-2 rounded-md text-sm font-medium mt-4 select-none flex items-center justify-center gap-2",
+       this.loading ? "opacity-100" : "",
+    ];
+  },
     ...mapState({
       isAuthenticated(state) {
         return state.isAuthenticated
@@ -211,12 +236,14 @@ export default {
     clearInterval(this.interval);
   },
   methods: {
+    
     verify() {
       this.loading = true
       this.$api.skijasiAuth
         .verify({
           email: this.email,
           token: this.token,
+         
         })
         .then((response) => {
           this.$inertia.visit(this.route("skijasi.commerce-theme.login"));
@@ -265,7 +292,7 @@ export default {
             email: this.email,
           })
           .then((response) => {
-            this.$helper.alert("Token za verifikaciju je poslan")
+            this.$helper.alert("Email sa tokenom je poslan")
           })
           .catch((error) => {
             this.$helper.displayErrors(error)

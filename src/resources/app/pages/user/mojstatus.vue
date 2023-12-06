@@ -142,8 +142,8 @@
       </div>
       <div class="sviframeoviizaduzenje">
         <div class="frameimeistatus">
-          <b class="imeclana">{{ user.name }} {{ user.username }}</b>
-          <b class="statusclanaaktivan">{{ user.statusAktivan }}</b>
+          <b class="imeclana">{{ korisnik.name }} {{ korisnik.username }}</b>
+          <b class="statusclanaaktivan">{{ korisnik.statusAktivan }}</b>
         </div>
       </div>
       <div class="framesvekartice">
@@ -158,7 +158,7 @@
                 <div class="grad">Grad:</div>
               </div>
               <div class="zagreb-wrapper">
-                <div class="osnovne-informacije">{{ user.grad }}</div>
+                <div class="osnovne-informacije">{{ korisnik.grad }}</div>
               </div>
             </div>
             <div class="podrucnizborframe">
@@ -166,7 +166,7 @@
                 <div class="grad">Područni zbor:</div>
               </div>
               <div class="zagreb-wrapper">
-                <div class="osnovne-informacije">{{ user.department }}</div>
+                <div class="osnovne-informacije">{{ korisnik.department }}</div>
               </div>
             </div>
             <div class="clanskibrojframe">
@@ -174,7 +174,7 @@
                 <div class="grad">Članski broj:</div>
               </div>
               <div class="zagreb-wrapper">
-                <div class="osnovne-informacije">{{ user.idmember }}</div>
+                <div class="osnovne-informacije">{{ korisnik.idmember }}</div>
               </div>
             </div>
           </div>
@@ -191,7 +191,7 @@
                   <div class="grad">Status</div>
                 </div>
                 <div class="zagreb-wrapper">
-                  <div class="osnovne-informacije">  {{ user.statusString }}</div>
+                  <div class="osnovne-informacije">  {{ korisnik.statusString }}</div>
                 </div>
               </div>
               <div class="licenceframe">
@@ -207,7 +207,7 @@
                   <div class="grad">Licenca vrijedi do:</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
-                  <div class="osnovne-informacije">{{ formatEuropeanDate(user.endstatusdate) }}</div>
+                  <div class="osnovne-informacije">{{ formatEuropeanDate(korisnik.endstatusdate) }}</div>
                 </div>
               </div>
               <div class="valjanostlicenceframe">
@@ -225,7 +225,7 @@
                 <div class="isia-br-7654-ivsi-wrapper">
 
                   <div class="osnovne-informacije">
-    {{ user.carddate === null ? 'Nije izdana' : 'Izdana' }}
+    {{ korisnik.carddate === null ? 'Nije izdana' : 'Izdana' }}
   </div>
                 </div>
               </div>
@@ -243,7 +243,7 @@
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="osnovne-informacije">
-                    {{ getEventDetails(user.idevent)?.label }}
+                    {{ getEventDetails(korisnik.idevent).label }}
                   </div>
                 </div>
               </div>
@@ -252,7 +252,7 @@
                   <div class="grad">Datum seminara:</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ getEventDetails(user.idevent)?.eventdate }}</div>
+                  <div class="osnovne-informacije">{{ getEventDetails(korisnik.idevent).eventdate }}</div>
                 </div>
               </div>
               <div class="mjestoseminaraframe">
@@ -260,7 +260,7 @@
                   <div class="mjesto-seminara">Mjesto seminara:</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ getEventDetails(user.idevent)?.eventplace }}</div>
+                  <div class="osnovne-informacije">{{ getEventDetails(korisnik.idevent).eventplace }}</div>
                 </div>
               </div>
               <div class="drzavaframe">
@@ -268,7 +268,7 @@
                   <div class="grad">Država:</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ getEventDetails(user.idevent)?.eventstate }}</div>
+                  <div class="osnovne-informacije">{{ getEventDetails(korisnik.idevent).eventstate }}</div>
                 </div>
               </div>
               <div class="organizatorframe">
@@ -276,7 +276,7 @@
                   <div class="grad">Organizator:</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="hzuts-i-nik">{{ getEventDetails(user.idevent)?.eventorganisation }}</div>
+                  <div class="hzuts-i-nik">{{ getEventDetails(korisnik.idevent).eventorganisation }}</div>
                 </div>
               </div>
               <div class="licencaframe">
@@ -284,7 +284,7 @@
                   <div class="grad">Licenca:</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
-                  <div class="osnovne-informacije">{{ user.statusAktivan === 'Aktivan' ? 'Važeća' : 'Nije važeća' }} </div>
+                  <div class="osnovne-informacije">{{ korisnik.statusAktivan === 'Aktivan' ? 'Važeća' : 'Nije važeća' }} </div>
                 </div>
               </div>
             </div>
@@ -342,6 +342,7 @@ export default {
   data() {
     return {
       avatar_approved: 0,
+      idmember: 0,
       name: '',
       username: '',
       datumrodjenja: '',
@@ -360,6 +361,7 @@ export default {
      isSidebarOpen: false,
 
 
+     korisnik: [],
 
      relationDataTRAINERSTS: {
       tblTrainersts: [], 
@@ -367,8 +369,7 @@ export default {
 
     dataLICENCE: [], 
     relationDataTBLEVENTS: {
-      tblEvents: [],
-      tblEventsSAARHIVOM: [],
+      tblEvents: []
     },
  
     }
@@ -378,6 +379,7 @@ export default {
     user: {
       handler(newValue) {
         this.prefillData(newValue);
+     
       },
       immediate: true, // Trigger handler immediately with the current value of the expression
       deep: true // Watch for nested changes in the user object
@@ -426,8 +428,8 @@ export default {
     .map(licence => {
       if (licence.nazivlicence.includes("ISIA Skijanje")) {
         // Check if selectedUser and isiaBroj are valid and not null
-        const isiaNumber = (this.selectedUser && this.selectedUser.isiaBroj && this.selectedUser.isiaBroj.idisia) 
-                           ? this.selectedUser.isiaBroj.idisia 
+        const isiaNumber = (this.korisnik && this.korisnik.isiaBroj && this.korisnik.isiaBroj.idisia) 
+                           ? this.korisnik.isiaBroj.idisia 
                            : '';
         return `ISIA${isiaNumber ? ' (br. ' + isiaNumber + ')' : ''}`;
       }
@@ -441,7 +443,7 @@ export default {
 
 
 yearDifference() {
-      const endStatusDate = this.selectedUser?.endstatusdate;
+      const endStatusDate = this.korisnik.endstatusdate;
       if (!endStatusDate) return '';
 
       const endDate = new Date(endStatusDate);
@@ -465,20 +467,44 @@ yearDifference() {
 
 
 },
-  mounted() {
+ mounted() {
     if (!this.isAuthenticated) {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     };
 
 
-    this.ucitajLICENCEPodatke();
-  this.getStaraPlacanja();
 
   },
 
 
+
+
   methods: {
 
+    async ucitajClanove() {
+      console.log("TEST PODACI111", this.idmember);
+
+  try {
+    this.number = Number(this.idmember);
+  
+    const response = await podaciusera.readmojstatus({
+        id: this.idmember,
+    });
+    console.log("TEST PODACI1", response.data.user);
+    
+        this.korisnik = response.data.user;
+    //  await this.loadAllStatusData();
+
+  
+    await   this.ucitajLICENCEPodatke();
+
+  await this.fetchRelationDataTBLEVENTS();
+     
+      } catch (error) {
+      // this.$closeLoader();
+   
+  }
+},
 
     formatDate(dateString) {
     if (!dateString) return ''; // Handle null, undefined, or empty strings
@@ -489,34 +515,7 @@ yearDifference() {
     return `${day}.${month}.${year}.`;
   },
 
-async loadAllStatusData() {
-  try {
-    const statusPromises = this.users.map(user => this.ucitajStatusPodatke(user.idmember));
-    await Promise.all(statusPromises);
-  } catch (error) {
-    console.error('Error in loadAllStatusData:', error);
-  }
-},
 
-
- // za STATUSE clanova  da ucita sve podatke
- async ucitajStatusPodatke(idmember) {
-  try {
-    const response = await statususera.citanje({ 
-      slug: "tbl-member-status", 
-      idmember: idmember});
-      
-    const statusDataArray = Array.isArray(response.data) ? response.data : [response.data];
-
-    // Find the user and update statusData
-    const userIndex = this.users.findIndex(u => u.idmember === idmember);
-    if (userIndex !== -1) {
-      this.$set(this.users[userIndex], 'statusData', statusDataArray);
-    }
-  } catch (error) {
-    console.error("Error loading status data:", error);
-  }
-},
 
 getTrainerstsLabel(trainerstsid) {
     // Find the item in the array where item.value matches trainerstsid
@@ -590,20 +589,33 @@ getStatusString(user) {
     return status;
   },
 
-  getEventDetails(idevent) {
-    return this.relationDataTBLEVENTS.tblEvents.find(item => item.value == idevent);
+
+getEventDetails(idevent) {
+  const event = this.relationDataTBLEVENTS.tblEvents.find(item => item.value == idevent);
+  if (event) {
+    return event;
+  }
+  // Return a default object to avoid errors when properties are accessed
+  return {
+    label: '',
+    eventdate: '',
+    eventplace: '',
+    eventstate: '',
+    eventorganisation: ''
+  };
 },
+
     
 
 
     async ucitajLICENCEPodatke() {
-    console.log("Selected User ID for Licence:", this.selectedUser?.idmember);
-    if (!this.selectedUser?.idmember) {
+    console.log("Selected User ID for Licence:", this.korisnik);
+    if (!this.korisnik.id) {
         console.error('No selected user ID for licence data');
         return;
     }
 
-    this.number = Number(this.selectedUser.idmember);
+    this.number = Number(this.korisnik.idmember);
     try {
         const response = await skijasiLicence.citanjenasiclanovi({ slug: "tbl-licence", idmember: this.number });
         console.log("Response Data Licence:", response);
@@ -674,7 +686,10 @@ console.log ("TEST EVENTI", response.data);
 
 
     prefillData(user) {
+     
       if (user) {
+      
+        this.idmember = user.idmember || null;
         this.name = user.name || '';
         this.username = user.username || '';
         this.email = user.email || '';
@@ -689,6 +704,9 @@ console.log ("TEST EVENTI", response.data);
         this.avatar = user.avatar || null;
         this.avatar_approved = user.avatarApproved ? 1 : 0;   
 
+        if (this.idmember) {
+         this.ucitajClanove();
+      }
       }
     },
 

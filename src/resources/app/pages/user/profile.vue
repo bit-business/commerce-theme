@@ -270,7 +270,7 @@ export default {
 
      isSidebarExpanded: window.innerWidth > 768, // Initialize based on screen width
      isSidebarOpen: false,
-
+     initialState: {},
 
  
     }
@@ -326,6 +326,17 @@ export default {
     },
 
 
+    getChangedData() {
+  const changedData = {};
+  for (const key in this.initialState) {
+    if (this[key] !== this.initialState[key]) {
+      changedData[key] = this[key];
+    }
+  }
+
+  return changedData;
+},
+
     prefillData(user) {
       if (user) {
         this.name = user.name || '';
@@ -341,6 +352,23 @@ export default {
         this.spol = user.spol || '';
         this.avatar = user.avatar || null;
         this.avatar_approved = user.avatarApproved ? 1 : 0;   
+
+
+
+     this.initialState = {
+  
+   
+      datumrodjenja: this.datumrodjenja,
+      brojmobitela: this.brojmobitela,
+      drzava: this.drzava,
+      grad: this.grad,
+      postanskibroj: this.postanskibroj,
+      adresa: this.adresa,
+      oib: this.oib,
+      spol: this.spol,
+      avatar: this.avatar,
+      avatar_approved: this.avatar_approved,
+    };
 
       }
     },
@@ -362,40 +390,27 @@ export default {
       };
     },
 
-    save() {
 
-      console.log("Data being sent:", {
-        name: this.name,
-        email: this.email,
-        brojmobitela: this.brojmobitela,
-        grad: this.grad,
-        drzava: this.drzava,
-        adresa: this.adresa,
-        avatar: this.avatar
-    // ... other fields ...
-  });
-      this.$api.skijasiUser
-        .edit({
-        name: this.name,
-        email: this.email,
-        brojmobitela: this.brojmobitela,
-        grad: this.grad,
-        drzava: this.drzava,
-        adresa: this.adresa,
-        avatar: this.avatar
-        //spremanje u new_avatar 
-   
+save() {
+      const changedData = this.getChangedData();
 
-        })
+// Check if there are changes
+    if (Object.keys(changedData).length === 0) {
+  this.$alert('Nema promjena');
+  return;
+    }
+  this.$api.skijasiUser.edit(changedData)
         .then(res => {
           console.log("API response:", res.data);
           this.$store.dispatch('SET_USER', res.data.user)
-          this.$alert('Uspješno pohranjeno!')
+          this.$alert('Uspješno spremljeno')
         })
         .catch(err => {
           this.$alert('Neuspješno! Provjerite da li ste unijeli sve dobro')
         })
     },
+
+
     logout() {
       this.$api.skijasiAuth
         .logout()
