@@ -9,7 +9,7 @@
     
 
 
-      <div class="pt-5  container grid grid-cols-2 md:grid-cols-profile">
+      <div class="pt-5  container grid grid-cols-1 md:grid-cols-profile">
 <!--1-->
         <div class="Moj-pr-8">
 
@@ -131,94 +131,179 @@
 
         <div class="bg-white shadow-sm px-6 rounded-xl">
           <!--2-->
-          <div class="h-22 flex flex-col py-4 justify-center border-plava-200 border-b">
-            <span class="text-lg font-medium plavi-text">Moj Profil</span>
-           
+        <!-- DETALJI pocetak-->
 
+ 
+<div class="detaljiclanaframeglavni" ref="myScrollableElement">
+    <div class="glavnipodframedetalji">
+      <div class="framedetalji">
+
+
+      </div>
+      <div class="sviframeoviizaduzenje">
+        <div class="frameimeistatus">
+          <b class="imeclana">{{ user.name }} {{ user.username }}</b>
+          <b class="statusclanaaktivan">{{ user.statusAktivan }}</b>
+        </div>
+      </div>
+      <div class="framesvekartice">
+        <div class="prviframedetalji border-plava-200 border-2">
+          <div class="naslovosnovneinfo">
+            <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/info-icon.svg" />
+            <div class="osnovne-informacije">Osnovne informacije</div>
           </div>
-          <div class="grid grid-cols-3 p-6 mb-4 items-start">
-            
-            <div class="col-span-2 grid md:grid-cols-3 lg:grid-cols-profile-content gap-x-6 pr-4 content-center items-center profile-info">
-              <div class="text-sm text-right text-black inter mb-4">Ime</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="name" disabled type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary  disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
+          <div class="kvadrat">
+            <div class="gradframe">
+              <div class="grad-wrapper">
+                <div class="grad">Grad:</div>
               </div>
-
-              <div class="text-sm text-right text-black inter mb-4">Prezime</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="username" disabled type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary  disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
-              </div>
-              <div class="text-sm text-right text-black inter mb-4">Datum rođenja</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="datumrodjenja" disabled type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary  disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
-              </div>
-              <div class="text-sm text-right text-black inter mb-4">OIB</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="oib" disabled type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary  disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
-              </div>
-              <div class="text-sm text-right text-black inter mb-4">Spol</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="spol" disabled type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary  disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
-              </div>
-
-              <div class="text-sm text-right text-black inter mb-4">Broj mobitela</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="brojmobitela" type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary">
-              </div>
-              <div class="text-sm text-right text-black inter mb-4">Država</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="drzava" type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary">
-              </div>
-       
-              <div class="text-sm text-right text-black inter mb-4">Grad</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="grad" type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary">
-              </div>
-              <div class="text-sm text-right text-black inter mb-4">Adresa</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="adresa" type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary">
-              </div>
-
-
-
-
-              <div class="text-sm text-right text-black inter mb-4">Email</div>
-              <div class="flex-1 mb-4 col-span-1 md:col-span-2 lg:col-span-1">
-                <input v-model="email" disabled type="text" class="tekstzainpute w-full border p-2 text-sm focus:outline-none hover:shadow-inner transition-shadow form-input border-plava-200 rounded-md focus:ring-0 focus:border-primary disabled:text-gray-700 disabled:shadow-none disabled:cursor-not-allowed">
-              </div>
-              <div class="col-start-2 col-end-3 mt-2 items-center justify-center flex text-center">
-                <button class="bg-primary1  font-medium px-9 py-2 rounded-md text-white text-sm filter hover:brightness-110" @click="save">Spremi</button>
+              <div class="zagreb-wrapper">
+                <div class="osnovne-informacije">{{ user.grad }}</div>
               </div>
             </div>
+            <div class="podrucnizborframe">
+              <div class="podruni-zbor-wrapper">
+                <div class="grad">Područni zbor:</div>
+              </div>
+              <div class="zagreb-wrapper">
+                <div class="osnovne-informacije">{{ user.department }}</div>
+              </div>
+            </div>
+            <div class="clanskibrojframe">
+              <div class="lanski-broj-wrapper">
+                <div class="grad">Članski broj:</div>
+              </div>
+              <div class="zagreb-wrapper">
+                <div class="osnovne-informacije">{{ user.idmember }}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="drugiframe border-plava-200 border-2">
+          <div class="kvadrat1">
+            <div class="naslovstatus">
+              <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/user-icon.svg" />
+              <div class="statusdetalji">Status</div>
+            </div>
+            <div class="kvadrat">
+              <div class="statusframedetalji">
+                <div class="status-wrapperdetalji">
+                  <div class="grad">Status</div>
+                </div>
+                <div class="zagreb-wrapper">
+                  <div class="osnovne-informacije">  {{ user.statusString }}</div>
+                </div>
+              </div>
+              <div class="licenceframe">
+                <div class="licenca-wrapper">
+                  <div class="grad">Licenca:</div>
+                </div>
+                <div class="isia-br-7654-ivsi-wrapper">
+                  <div class="osnovne-informacije">{{ activeLicences }}</div>
+                </div>
+              </div>
+              <div class="licencavrijediframe">
+                <div class="licenca-vrijedi-do-wrapper">
+                  <div class="grad">Licenca vrijedi do:</div>
+                </div>
+                <div class="isia-br-7654-ivsi-wrapper">
+                  <div class="osnovne-informacije">{{ formatEuropeanDate(user.endstatusdate) }}</div>
+                </div>
+              </div>
+              <div class="valjanostlicenceframe">
+                <div class="valjanost-licence-wrapper">
+                  <div class="grad">Valjanost licence:</div>
+                </div>
+                <div class="zagreb-wrapper">
+                  <div class="osnovne-informacije">{{ yearDifference }}</div>
+                </div>
+              </div>
+              <div class="clanskaiskaznicaframe">
+                <div class="lanska-iskaznica-wrapper">
+                  <div class="grad">Članska iskaznica:</div>
+                </div>
+                <div class="isia-br-7654-ivsi-wrapper">
+
+                  <div class="osnovne-informacije">
+    {{ user.carddate === null ? 'Nije izdana' : 'Izdana' }}
+  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="kvadrat2">
+            <div class="naslovseminar">
+              <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/trending-icon.svg" />
+              <div class="osnovne-informacije">Seminar</div>
+            </div>
+            <div class="kvadrat">
+              <div class="statusstecenframe">
+                <div class="status-steen-wrapper">
+                  <div class="grad">Status stečen:</div>
+                </div>
+                <div class="seminar-za-potvrivanje-licenc-wrapper">
+                  <div class="osnovne-informacije">
+                    {{ getEventDetails(user.idevent)?.label }}
+                  </div>
+                </div>
+              </div>
+              <div class="datumseminaraframe">
+                <div class="datum-seminara-wrapper">
+                  <div class="grad">Datum seminara:</div>
+                </div>
+                <div class="seminar-za-potvrivanje-licenc-wrapper">
+                  <div class="osnovne-informacije">{{ getEventDetails(user.idevent)?.eventdate }}</div>
+                </div>
+              </div>
+              <div class="mjestoseminaraframe">
+                <div class="mjesto-seminara-wrapper">
+                  <div class="mjesto-seminara">Mjesto seminara:</div>
+                </div>
+                <div class="seminar-za-potvrivanje-licenc-wrapper">
+                  <div class="osnovne-informacije">{{ getEventDetails(user.idevent)?.eventplace }}</div>
+                </div>
+              </div>
+              <div class="drzavaframe">
+                <div class="drava-wrapper">
+                  <div class="grad">Država:</div>
+                </div>
+                <div class="seminar-za-potvrivanje-licenc-wrapper">
+                  <div class="osnovne-informacije">{{ getEventDetails(user.idevent)?.eventstate }}</div>
+                </div>
+              </div>
+              <div class="organizatorframe">
+                <div class="organizator-wrapper">
+                  <div class="grad">Organizator:</div>
+                </div>
+                <div class="seminar-za-potvrivanje-licenc-wrapper">
+                  <div class="hzuts-i-nik">{{ getEventDetails(user.idevent)?.eventorganisation }}</div>
+                </div>
+              </div>
+              <div class="licencaframe">
+                <div class="licenca-wrapper">
+                  <div class="grad">Licenca:</div>
+                </div>
+                <div class="isia-br-7654-ivsi-wrapper">
+                  <div class="osnovne-informacije">{{ user.statusAktivan === 'Aktivan' ? 'Važeća' : 'Nije važeća' }} </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+
+    </div>
+  </div>
+
+<!-- DETALJI kraj-->
       <!--2-->
 
-            <!--3-->
-            <div class="profile-content flex flex-col justify-start col-span-1 p-8 items-center border-l border-plava-200 ml-4">
-              <div class="border-plava-200 border-2 rounded-full"> <!-- New container with border -->
-
-                <div class="avatardesni bg-gray-300 flex rounded-full items-center justify-center clip-circle relative "> 
-                <template v-if="user.avatar">
-                  <img :src="avatar ? avatar : user.avatar" alt="" class="object-cover avatardesni">
-        <!-- Conditional overlay based on avatar approval status -->
-        <div v-if="avatar_approved" class="absolute bottom-0 left-0 w-full h-full bg-black bg-opacity-50 flex items-center justify-center">
-            <span class="text-white items-center justify-center flex text-center">Čeka se odobrenje</span>
-        </div>
-                </template>
-                <template v-else>
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-auto w-full text-white" viewBox="0 0 20 20" fill="currentColor">
-                    <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd" />
-                  </svg>
-                </template>
-              </div>   </div>
-              <input type="file" @change="filesChange" accept="image/png, image/jpeg" ref="file" class="hidden">
-              <button @click="$refs.file.click()" class="px-6 py-2 text-sm bg-white border border-plava-200 mt-4 mb-2 rounded-md hover:bg-gray-50">
-                Odaberite Sliku
-              </button>
-              <span class="text-sm text-gray-400">Veličina slike: maks. 4 MB</span>
-              <span class="text-sm text-gray-400">Format slike: .jpeg, .png</span>
-            </div>
-       <!--3-->
-          </div>
+        
+      
         </div>
 
 
@@ -240,6 +325,13 @@ import appLayout from '../../layouts/app.vue'
 import profileLayout from '../../layouts/profile.vue'
 import { mapState } from 'vuex'
 import { Link, Head } from '@inertiajs/inertia-vue'
+
+
+import podaciusera from '../../../../../../core/src/resources/js/api/modules/skijasi-user.js';
+import statususera from '../../../../../../core/src/resources/js/api/modules/skijasi-statusclanova.js';
+import skijasitrainersts from '../../../../../../core/src/resources/js/api/modules/skijasi-trainersts.js';
+import skijasiLicence from '../../../../../../core/src/resources/js/api/modules/skijasi-licence.js';
+import skijasiTblevents from '../../../../../../core/src/resources/js/api/modules/skijasi-tblevents.js';
 
 export default {
   layout: [appLayout, profileLayout],
@@ -263,15 +355,21 @@ export default {
       email: '',
       avatar: null,
  
-     // urlfacebook: null,
-     // urltwitter: null,
-     // urlinstagram: null,
-     // urllinkedin: null,
 
      isSidebarExpanded: window.innerWidth > 768, // Initialize based on screen width
      isSidebarOpen: false,
 
 
+
+     relationDataTRAINERSTS: {
+      tblTrainersts: [], 
+    },
+
+    dataLICENCE: [], 
+    relationDataTBLEVENTS: {
+      tblEvents: [],
+      tblEventsSAARHIVOM: [],
+    },
  
     }
   },
@@ -311,16 +409,265 @@ export default {
       'justify-center': !this.isSidebarExpanded,
       };
   },
+
+
+
+  activeLicences() {
+  // Define the allowed idpaygroup values
+  const allowedIdPayGroups = [2, 7, 8, 9, 10, 11, 12, 13, 14];
+
+  if (!Array.isArray(this.dataLICENCE)) {
+    console.error('dataLICENCE is not an array', this.dataLICENCE);
+    return '';
+  }
+
+  return this.dataLICENCE
+    .filter(licence => licence.aktivna && allowedIdPayGroups.includes(licence.idpaygroup))
+    .map(licence => {
+      if (licence.nazivlicence.includes("ISIA Skijanje")) {
+        // Check if selectedUser and isiaBroj are valid and not null
+        const isiaNumber = (this.selectedUser && this.selectedUser.isiaBroj && this.selectedUser.isiaBroj.idisia) 
+                           ? this.selectedUser.isiaBroj.idisia 
+                           : '';
+        return `ISIA${isiaNumber ? ' (br. ' + isiaNumber + ')' : ''}`;
+      }
+      if (licence.nazivlicence.includes("IVSI Skijanje")) {
+        return `IVSI`;
+      }
+      return licence.nazivlicence;
+    })
+    .join(', ');
+},
+
+
+yearDifference() {
+      const endStatusDate = this.selectedUser?.endstatusdate;
+      if (!endStatusDate) return '';
+
+      const endDate = new Date(endStatusDate);
+      const today = new Date();
+      const diffTime = Math.abs(endDate - today);
+      const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365); // Convert milliseconds to years
+
+      if (diffYears < 1) {
+        return '<1 godine';
+      } else if (diffYears >= 1 && diffYears < 2) {
+        return '2 godine';
+      } else if (diffYears >= 2 && diffYears < 3) {
+        return '3 godine';
+      } else if (diffYears >= 4) {
+        return 'Doživotna';
+      }
+
+      return ''; // Default return value if none of the conditions are met
+    },
+
+
+
 },
   mounted() {
     if (!this.isAuthenticated) {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
-    }
+    };
+
+
+    this.ucitajLICENCEPodatke();
+  this.getStaraPlacanja();
 
   },
 
 
   methods: {
+
+
+    formatDate(dateString) {
+    if (!dateString) return ''; // Handle null, undefined, or empty strings
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 because months are 0-indexed
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}.`;
+  },
+
+async loadAllStatusData() {
+  try {
+    const statusPromises = this.users.map(user => this.ucitajStatusPodatke(user.idmember));
+    await Promise.all(statusPromises);
+  } catch (error) {
+    console.error('Error in loadAllStatusData:', error);
+  }
+},
+
+
+ // za STATUSE clanova  da ucita sve podatke
+ async ucitajStatusPodatke(idmember) {
+  try {
+    const response = await statususera.citanje({ 
+      slug: "tbl-member-status", 
+      idmember: idmember});
+      
+    const statusDataArray = Array.isArray(response.data) ? response.data : [response.data];
+
+    // Find the user and update statusData
+    const userIndex = this.users.findIndex(u => u.idmember === idmember);
+    if (userIndex !== -1) {
+      this.$set(this.users[userIndex], 'statusData', statusDataArray);
+    }
+  } catch (error) {
+    console.error("Error loading status data:", error);
+  }
+},
+
+getTrainerstsLabel(trainerstsid) {
+    // Find the item in the array where item.value matches trainerstsid
+    const item = this.relationDataTRAINERSTS.tblTrainersts.find(item => item.value == trainerstsid);
+
+    // If an item was found, return its label. Otherwise, return an empty string or some default value.
+    return item ? item.label : null;
+  },
+
+  async fetchRelationDataTRAINERSTS() {
+  try {
+    const response = await skijasitrainersts.all();
+    if (Array.isArray(response.data.data)) {
+      this.relationDataTRAINERSTS.tblTrainersts = response.data.data.map(item => ({
+        label: item.statusname, // the label to be displayed in the dropdown
+  value: item.id // , // the value to be emitted when an option is selected
+ // membershipfee: item.membershipfee
+}));
+    } else {
+      console.error('Unexpected response data:', response.data);
+    }
+  } catch (error) {
+    console.error('Failed to fetch relation data:', error);
+  }
+},
+
+
+
+getStatusString(user) {
+    // Assuming `record.statusData` holds the relevant status information for this row
+    console.log(`Status data for record with ID ${user.idmember}:`, user.statusData);
+
+    if (!user.statusData) {
+    return "Nema status?"; // or return an empty string
+  }
+
+    if (!Array.isArray(user.statusData)) {
+      console.error('statusData is not an array for record:', user);
+      return "";
+    }
+
+    const labels = user.statusData
+      .filter(item => item.statusdefault == 1)
+      .map(item => this.getTrainerstsLabel(item.trainerstsid))
+      .filter(Boolean) // Ensure that only valid labels are included
+      .join(', ');
+
+    console.log("Generated Status Labels for record:", labels);
+    return labels;
+  },
+
+  getStatusAktivan(user) {
+    // Assuming `record.statusData` holds the relevant status information for this row
+    if (!Array.isArray(user.statusData)) {
+      console.error('statusData is not an array for record:', user);
+      return "";
+    }
+
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Set to midnight for comparison
+
+    const status = user.statusData
+      .filter(item => item.statusdefault === 1)
+      .map(item => {
+        const endDate = item.endstatusdate ? new Date(item.endstatusdate) : null;
+        return (!endDate || endDate < today) ? "Istekla licenca" : "Aktivan";
+      })
+      .join(', ');
+
+    console.log("Generated Active Status for record:", status);
+    return status;
+  },
+
+  getEventDetails(idevent) {
+    return this.relationDataTBLEVENTS.tblEvents.find(item => item.value == idevent);
+},
+    
+
+
+    async ucitajLICENCEPodatke() {
+    console.log("Selected User ID for Licence:", this.selectedUser?.idmember);
+    if (!this.selectedUser?.idmember) {
+        console.error('No selected user ID for licence data');
+        return;
+    }
+
+    this.number = Number(this.selectedUser.idmember);
+    try {
+        const response = await skijasiLicence.citanjenasiclanovi({ slug: "tbl-licence", idmember: this.number });
+        console.log("Response Data Licence:", response);
+        if (response.data) {
+      // Check if data is an array
+      if (Array.isArray(response.data)) {
+        this.dataLICENCE = response.data;
+      } else {
+        this.dataLICENCE = [response.data];
+      }
+    } else {
+       this.dataLICENCE = [];
+      // or display a message to the user
+    }
+        // ... rest of your code ...
+    } catch (error) {
+        console.error("An error occurred while fetching licence data:", error);
+    }
+},
+
+    async fetchRelationDataTBLEVENTS() {
+  try {
+    const response = await skijasiTblevents.allnasiclanovi();
+    if (Array.isArray(response.data.data)) {
+      this.relationDataTBLEVENTS.tblEvents = response.data.data.map(item => ({
+        label: item.eventname,
+        eventdate: item.eventdate,
+        eventplace: item.eventplace,
+        eventstate: item.eventstate,
+        eventorganisation: item.eventorganisation,
+        value: item.id, // add this line
+      }));
+
+console.log ("TEST EVENTI", response.data);
+
+    } else {
+      console.error('Unexpected response data:', response.data);
+    }
+  } catch (error) {
+    console.error('Failed to fetch relation data:', error);
+  }
+},
+
+
+    formatEuropeanDate(dateString) {
+      if (!dateString) return ''; // Handle null, undefined, or empty string
+
+
+      const date = new Date(dateString);
+      const year = date.getFullYear();
+        // Check if the year is 2030 or greater
+        if (year >= 2030) {
+        return 'Doživotno';
+      }
+
+  
+      const day = date.getDate().toString().padStart(2, '0');
+      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 because months are 0-indexed
+  
+
+      return `${day}.${month}.${year}.`;
+    },
+
+    
     toggleSidebarExpansion() {
       this.isSidebarExpanded = !this.isSidebarExpanded;
     },
@@ -440,7 +787,6 @@ export default {
 
 
   .border-plava-200 {
-
     --tw-border-opacity: 1;
     border-color: rgba(3, 169, 244, var(--tw-border-opacity));
 }
@@ -490,8 +836,6 @@ font-weight: 500;
 line-height: normal; 
 padding-left: 12px;
 }
-
-
 
 
 
@@ -681,4 +1025,1709 @@ width: 80px;
 
 }
 
-  </style>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(100%);
+  opacity: 0.8;
+}
+
+
+.pagination button.active {
+  background-color: #03a9f4;
+  color: white;
+}
+.pagination button.separator {
+  background: none;
+  border: none;
+  pointer-events: none;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-gap: 60px;
+  grid-row-gap: 90px;
+  width: 100%;
+
+
+max-width: 1500px;
+
+  justify-content: center;
+  align-items: stretch;
+
+
+}
+.grid-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 4%; /* Adjust padding as needed */
+    margin-bottom: 5.9%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(3, minmax(270px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(2, minmax(270px, 1fr));
+  }
+  .grid-wrapper {
+margin-top: 5%;
+    margin-bottom: 5.9%;
+}
+
+
+
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  .grid-wrapper {
+    margin-top: 5%;
+    margin-bottom: 5.9%;
+}
+
+
+}
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  list-style: none;
+  padding: 0;
+  padding-top: 3.6rem;
+}
+
+.pagination button {
+  cursor: pointer;
+  border-radius: 50%; /* Circular buttons */
+  width: 40px;
+  height: 40px;
+  margin: 0 5px;
+  border: 1px solid #03a9f4; /* Blue border */
+  background-color: #fff;
+  color: #03a9f4; /* Blue text */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.pagination button:hover,
+.pagination button.active {
+  background-color: #03a9f4; /* Blue background for active/hover state */
+  color: #fff; /* White text for active/hover state */
+}
+
+.pagination button:disabled {
+  cursor: default;
+  opacity: 0.5;
+}
+
+.pagination button.separator {
+  pointer-events: none;
+  cursor: default;
+  background: transparent;
+  color: #aaa;
+}
+
+/* Arrow buttons styling */
+.pagination button.prev,
+.pagination button.next {
+  border-radius: 5px; /* Slightly rounded for arrows */
+}
+
+/* Hide the default arrows and use custom ones */
+.pagination button.prev::before,
+.pagination button.next::after {
+  content: '';
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentColor;
+  border-right: 2px solid currentColor;
+}
+
+.pagination button.prev::before {
+  transform: rotate(-135deg);
+  margin-right: 5px;
+}
+
+.pagination button.next::after {
+  transform: rotate(45deg);
+  margin-left: 5px;
+}
+
+
+
+
+
+
+
+
+  .filteriframeglavni-child {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    background-color: #fff;
+    width: 100%;
+    height: 14.81rem;
+  }
+  .strokeframe-child {
+    position: relative;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    width: 14.75rem;
+    height: 1.88rem;
+  }
+  .strokeframe {
+    width: 14.75rem;
+    height: 2.25rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .frame1 {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .odaberi-podrune-zborove {
+    position: relative;
+  }
+  .tekstokdaberizborframe {
+    position: absolute;
+    top: 0rem;
+    left: 0.06rem;
+    width: 13.06rem;
+    height: 1.6rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .strelicapremadolje-icon {
+    position: absolute;
+    top: 0.39rem;
+    left: 84%;
+    width: 0.75rem;
+    height: 1.13rem;
+    overflow: hidden;
+  }
+  .strelicapremadolje-icon2 {
+    position: absolute;
+    top: 0.39rem;
+    left: 84%;
+    width: 0.75rem;
+    height: 1.13rem;
+    overflow: hidden;
+  }
+  .odaberizbor {
+    flex: 1;
+    position: relative;
+    height: 21.5rem;
+    overflow: hidden;
+    margin-left: -14rem;
+  }
+  .odaberipodrucnizbor {
+    width: 15.13rem;
+    height: 2.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .status {
+    position: relative;
+    opacity: 0.2;
+  }
+  .chevron-right-1-icon {
+    position: relative;
+    width: 0.75rem;
+    height: 0.75rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    opacity: 0.2;
+  }
+  .statusfilter {
+    border: 1px solid rgba(3, 169, 244, 0.4);
+    box-sizing: border-box;
+    width: 6.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 0rem 0.44rem 0.75rem;
+    gap: 1.63rem;
+  }
+  .chevron-right-1-icon1 {
+    position: relative;
+    width: 0.75rem;
+    height: 0.75rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .clanarinefilter {
+    border: 1px solid rgba(3, 169, 244, 0.4);
+    box-sizing: border-box;
+    width: 6.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 0.44rem 0.44rem 0.75rem;
+    gap: 0.38rem;
+  }
+  .gradovifilter {
+    border: 1px solid rgba(3, 169, 244, 0.4);
+    box-sizing: border-box;
+    width: 6.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 0rem 0.44rem 0.75rem;
+    gap: 1.06rem;
+  }
+  .filteritraka {
+    position: absolute;
+    top: 10.75rem;
+    left: 3.75rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    padding: 0.63rem 10rem 0.63rem 0.63rem;
+    gap: 1.63rem;
+    
+    justify-content: space-between; 
+  }
+  .frame2 {
+    background-color: #73d2f6;
+    width: 1.25rem;
+    height: 1.25rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .nije-plaena {
+    position: relative;
+    font-weight: 600;
+  }
+  .nijeplaceno {
+    width: 6.38rem;
+    height: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+  }
+  .placenaodabir-child {
+    position: relative;
+    border: 1px solid #73d2f6;
+    box-sizing: border-box;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .plaena {
+    position: relative;
+    font-weight: 600;
+    opacity: 0.2;
+  }
+  .placenaodabir {
+    width: 4.75rem;
+    height: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+  }
+  .meniizbor {
+    position: absolute;
+    top: 13.45rem;
+    left: 29rem;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    width: 11.19rem;
+    height: 5.31rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0.94rem 0.94rem 0rem;
+    box-sizing: border-box;
+    gap: 0.94rem;
+    font-size: 0.75rem;
+    z-index: 2000;
+  }
+
+
+
+
+
+  .clear-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 10px; /* Adjust the value as needed */
+  z-index: 10;
+  /* Other styling as needed, e.g., color, font size, etc. */
+}
+
+
+
+  
+  .input-wrapper {
+
+  display: flex;
+  align-items: center;
+  width: 24.13rem;
+    height: 2.35rem;
+    position: relative;
+  flex-grow: 1; /* Let the input grow to fill the space */
+  border: none; /* Remove border if not needed */
+  outline: none; /* Remove default focus outline */
+  padding-right: 30px; /* Add padding to prevent text from going under the 'X' */
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px; /* Adjust the value as needed */
+  z-index: 10;
+  fill: #fff; /* Color of the icon */
+}
+
+  .pretrazivanjepoimenu {
+    border: 2px solid #03a9f4;
+    font-weight: 300;
+    font-family: Inter;
+    font-size: 1rem;
+    overflow: visible !important;
+    background-color: transparent;
+    position: absolute;
+    top: 4.44rem;
+    left: 3.75rem;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 24.13rem;
+    height: 2.75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.63rem 2.5rem 0.63rem 2.81rem;
+  }
+  .filteriframeglavni-item {
+    position: absolute;
+    top: 9.41rem;
+    left: 3.72rem;
+    border-top: 1px solid rgba(3, 169, 244, 0.3);
+    box-sizing: border-box;
+    width: 82.56rem;
+    height: 0.06rem;
+  }
+  .chevron-right-1-icon4 {
+    position: relative;
+    width: 0.75rem;
+    height: 0.75rem;
+    opacity: 0.2;
+  }
+  .prikaz-group {
+    position: absolute;
+    top: 4.88rem;
+    right: 3.75rem;
+    border: 1px solid rgba(3, 169, 244, 0.5); 
+    box-sizing: border-box;
+    width: 3.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.44rem 0rem 0.44rem 0.75rem;
+    gap: 1.75rem;
+  }
+  .popis-lanova-hzuts-a {
+    position: absolute;
+    top: 1.25rem;
+    left: 3.75rem;
+    font-size: 1.5rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 19.44rem;
+  }
+  .arrow-1-icon {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .poniti-sve {
+    position: relative;
+    font-size: 0.75rem;
+    font-family: Inter;
+    color: #000;
+    text-align: left;
+  }
+  .ponistigumb:active {
+  transform: scale(0.95); /* Slightly reduce the button size when clicked */
+  background-color: #ececec; /* Change background color when clicked */
+}
+  .ponistigumb {
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    height: 4.22%;
+    top: 72%;
+    right: 4.31rem;
+    bottom: 45.65%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.63rem;
+  }
+  .filteriframeglavni {
+    align-self: stretch;
+    position: relative;
+    height: 17rem;
+  }
+  .frame-icon {
+    align-self: stretch;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 13.75rem;
+    flex-shrink: 0;
+  }
+  .franjo-ml-jardas {
+    position: absolute;
+    top: 0rem;
+    left: calc(50% - 83px);
+  }
+  .demostrator-skijanja {
+    position: absolute;
+    top: 1.81rem;
+    left: calc(50% - 61px);
+    font-size: 0.75rem;
+    color: #03a9f4;
+  }
+  .frame4 {
+    position: absolute;
+    top: 5.25rem;
+    left: 2.81rem;
+    width: 5.63rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #68c471;
+  }
+  .span {
+    color: #03a9f4;
+  }
+  .licenca-vrijedi-do-container {
+    position: absolute;
+    top: 3.06rem;
+    left: calc(50% - 90px);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .frame3 {
+    position: relative;
+    width: 11.25rem;
+    height: 6.75rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .kartica-clana {
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(3, 169, 244, 0.2);
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2.53rem 0.63rem;
+    box-sizing: border-box;
+    gap: 0.88rem;
+  }
+  .containerkartica {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0rem 3.25rem;
+    margin-top: -2.5rem;
+    font-size: 1.25rem;
+  }
+  .frame {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-bottom: 3rem;
+  }
+  .stroke-1-icon {
+    position: relative;
+    width: 1.19rem;
+    height: 1.19rem;
+  }
+  .frame-child {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    border-radius: 50%;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    width: 2.19rem;
+    height: 2.19rem;
+  }
+  .div {
+    position: absolute;
+    top: 0.19rem;
+    left: 0.88rem;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .ellipse-parent {
+    position: relative;
+    width: 2.19rem;
+    height: 2.19rem;
+  }
+  .frame-item {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 2.19rem;
+    height: 2.19rem;
+  }
+  .div1 {
+    position: absolute;
+    top: 0.19rem;
+    left: 0.69rem;
+    font-weight: 500;
+  }
+  .ellipse-group {
+    position: relative;
+    width: 2.19rem;
+    height: 2.19rem;
+    color: #fff;
+  }
+  .div2 {
+    position: absolute;
+    top: 0.19rem;
+    left: 0.69rem;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .div3 {
+    position: relative;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .div4 {
+    position: absolute;
+    top: 0.19rem;
+    left: calc(50% - 11.5px);
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .straniceselector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    font-size: 1.25rem;
+    color: #03a9f4;
+    font-family: Poppins;
+  }
+  .glavnipodframe {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5.38rem 0rem;
+    gap: 6rem;
+    z-index: 0;
+  }
+  .blurbackground {
+    flex: 1;
+    position: absolute;
+    margin: 0 !important;
+    top: 0rem;
+    left: 0rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    width: 100%;
+    z-index: 2002;
+  }
+ 
+  .nasiclanovi {
+    position: relative;
+    background-color: #f8f7f5;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.63rem;
+    text-align: left;
+    font-size: 0.88rem;
+    color: #000;
+    font-family: Inter;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .placeholder-image {
+    content: url('/storage/slike/nasiclanovi/placeholderclanovi_mobile.jpg');
+  }
+    .filteriframeglavni-child {
+    height: 24.81rem;
+  }
+    .filteritraka {
+      flex-direction: row;
+  
+      box-sizing: border-box;
+      
+    }
+
+    .pretrazivanjepoimenu {
+      width: calc(100% - 16%); /* Subtract left and right padding from 100% */
+    padding-left: 4%;
+    padding-right: 4%;
+
+  
+      
+      box-sizing: border-box;
+    }
+
+    .ponistigumb {
+    top: 47%;
+    right: 5%;
+
+  }
+    .input-wrapper {
+padding-left: 24px;
+}
+  
+  }
+
+  @media screen and (max-width: 978px) {
+  .filteriframeglavni-child {
+    height: 19.81rem;
+  }
+  .filteriframeglavni {
+    height: 26rem;
+  }
+
+  .ponistigumb {
+    top: 63%;
+    right: 7%;
+
+  }
+  }
+
+
+  @media screen and (max-width: 350px) {
+
+    .pretrazivanjepoimenu {
+
+
+width: calc(100% - 28%) !important; /* Subtract left and right padding from 100% */
+padding-left: 4%;
+padding-right: 4%;
+margin-left: 8%;
+margin-right: 8%;
+height: auto;
+
+
+}
+  
+    .popis-lanova-hzuts-a {
+    left: 3.05rem;
+  }
+
+    .ponistigumb {
+      height: auto;
+      flex-direction: row;
+      gap: 0.63rem;
+      padding-top: 0;
+      padding-bottom: 0rem;
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 460px) {
+    .popis-lanova-hzuts-a {
+    left: 2.8rem;
+  }
+    .filteritraka {
+   left: 2.8rem;
+      
+    }
+ .prikaz-group {
+    position: absolute;
+    top: 20.88rem;
+    right: 7.75rem;
+    border: 1px solid rgba(3, 169, 244, 0.5); 
+    box-sizing: border-box;
+    width: 5.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.44rem 0rem 0.44rem 0.75rem;
+    gap: 1.75rem;
+  }
+    
+    .pretrazivanjepoimenu {
+      width: 16.35rem;
+      padding: 0.63rem 0.5rem 0.63rem 0.81rem;
+      left: 2.1rem;
+    }
+    .filteriframeglavni-child {
+    height: 24.81rem;
+  }
+  .input-wrapper {
+    width: calc(100% - 8%); /* Subtract left and right padding from 100% */
+    padding-left: 4%;
+    padding-right: 4%;
+
+align-items: center;
+
+  height: 2.35rem;
+padding-left: 24px;
+overflow: visible;
+}
+
+.input-wrapper::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+
+  color: #999999;
+  opacity: 1; 
+}
+
+.ponistigumb {
+    top: 90%;
+    right: 40%;
+
+  }
+
+  }
+
+
+
+  @media screen and (max-width: 675px) {
+    .filteriframeglavni-child {
+    height: 24.81rem;
+  }
+      .pretrazivanjepoimenu {
+
+
+      width: calc(100% - 16%); /* Subtract left and right padding from 100% */
+    padding-left: 4%;
+    padding-right: 4%;
+    height: auto;
+
+   
+  }
+.ponistigumb {
+    top: 90%;
+    right: 40%;
+
+  }
+
+  }
+
+
+
+
+
+
+  
+  .detaljnije-informacije {
+    position: relative;
+    font-weight: 500;
+  }
+  .closexgumb-icon {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .framedetalji {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: center;
+    margin-left: 0%
+  }
+  .imeclana {
+    position: relative;
+  }
+  .statusclanaaktivan {
+    position: relative;
+    font-size: 20px;
+    color: #68c471;
+  }
+  .frameimeistatus {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+  .sviframeoviizaduzenje {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 32px;
+    margin-left: 24%;
+    margin-top: 6%;
+  }
+  .info-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .osnovne-informacije {
+    position: relative;
+    font-weight: 600;
+  }
+  .naslovosnovneinfo {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 116px;
+  }
+  .grad {
+    position: relative;
+  }
+  .grad-wrapper {
+    width: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .zagreb-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: #03a9f4;
+  }
+  .gradframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 181px;
+  }
+  .podruni-zbor-wrapper {
+    width: 110px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .podrucnizborframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 113px;
+  }
+  .lanski-broj-wrapper {
+    width: 93px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .clanskibrojframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 130px;
+  }
+  .kvadrat {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+    font-size: 16px;
+  }
+  .prviframedetalji {
+    align-self: stretch;
+    border-radius: 10px;
+    
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 15px;
+    box-sizing: border-box;
+    gap: 20px;
+  }
+  .statusdetalji {
+    position: relative;
+    font-weight: 600;
+  }
+  .naslovstatus {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 184px;
+  }
+  .status-wrapperdetalji {
+    width: 49px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .statusframedetalji {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 172px;
+  }
+  .licenca-wrapper {
+    width: 63px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .isia-br-7654-ivsi-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: #68c471;
+  }
+  .licenceframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 158px;
+  }
+  .licenca-vrijedi-do-wrapper {
+    width: 137px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .licencavrijediframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 84px;
+  }
+  .valjanost-licence-wrapper {
+    width: 132px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .valjanostlicenceframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 89px;
+  }
+  .lanska-iskaznica-wrapper {
+    width: 139px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .clanskaiskaznicaframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 82px;
+  }
+  .kvadrat1 {
+    align-self: stretch;
+    border-radius: 10px 10px 0px 0px;
+ 
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 22px 15px;
+    gap: 20px;
+  }
+  .naslovseminar {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 175px;
+  }
+  .status-steen-wrapper {
+    width: 151px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .seminar-za-potvrivanje-licenc-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #03a9f4;
+  }
+  .statusstecenframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 70px;
+  }
+  .datum-seminara-wrapper {
+    width: 128px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .datumseminaraframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 93px;
+  }
+  .mjesto-seminara {
+    position: relative;
+  }
+  .mjesto-seminara-wrapper {
+    width: 129px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .mjestoseminaraframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 92px;
+  }
+  .drava-wrapper {
+    width: 57px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .drzavaframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 164px;
+  }
+  .organizator-wrapper {
+    width: 94px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .hzuts-i-nik {
+    position: relative;
+    font-weight: 600;
+  }
+  .organizatorframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 127px;
+  }
+  .licencaframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 158px;
+  }
+  .kvadrat2 {
+    align-self: stretch;
+    border-radius: 0px 0px 10px 10px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 18px 15px;
+    gap: 20px;
+  }
+  .drugiframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    border-radius: 10px;
+  }
+
+  .framesvekartice {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 1.6rem;
+  }
+  .glavnipodframedetalji {
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0px 1px 0px 0px;
+  
+  }
+  .detaljiclanaframeglavni {
+
+    flex: 1;
+    width: 600px;
+    height: 100%; 
+    margin: auto;
+    margin-bottom: 3rem;
+
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+  
+    gap: 1.5rem;
+    z-index: 2003;
+    font-size: 1.25rem;
+
+   
+
+
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .detaljiclanaframeglavni {
+      min-width: auto; 
+    width: 90%;
+}
+
+    .imeclana {
+      font-size: 30px;
+    }
+
+    .frameimeistatus {
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 20px;
+      padding-bottom: 0px;
+      box-sizing: border-box;
+    }
+
+    .osnovne-informacije {
+      font-size: 14px;
+    }
+
+    .grad {
+      font-size: 14px;
+    }
+
+    .status {
+      font-size: 14px;
+    }
+
+    .mjesto-seminara {
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .hzuts-i-nik {
+      font-size: 14px;
+      text-align: left;
+    }
+  }
+
+
+
+  @media screen and (max-width: 460px) {
+
+      .naslovosnovneinfo {
+    gap: 66px;
+  }
+  .gradframe {
+    gap: 121px;
+  }
+
+  .podrucnizborframe {
+    gap: 93px;
+  }
+  .clanskibrojframe {
+    gap: 70px;
+  }
+
+
+.naslovstatus {
+    gap: 104px;
+  }
+
+  .statusframedetalji {
+
+    gap: 112px;
+  }
+
+
+
+  .licenceframe {
+    gap: 98px;
+  }
+  .licencavrijediframe {
+    gap: 24px;
+  }
+
+  .valjanostlicenceframe {
+    gap: 29px;
+  }
+
+  .clanskaiskaznicaframe {
+
+    gap: 22px;
+  }
+
+
+ .framesvekartice {
+
+    padding-top: 3.4rem;
+  }
+
+.payments-list {
+  
+    padding-top: 3.4rem;
+
+}
+
+
+      .sviframeoviizaduzenje {
+
+    margin-left: 30%;
+    margin-top: 5%;
+  }
+
+    .placeholderzaslike-icon {
+        width: 70px; /* Set the desired size */
+        height: 70px; /* Set the desired size */
+        position: absolute;
+        left: 4%;
+        margin-top: 6%;
+top:6%
+    
+    }
+
+ 
+     .statusdetalji {
+    font-size: 12px;
+  }
+ .statusstecenframe {
+
+    gap: 30px;
+  }
+  .drzavaframe {
+
+    gap: 104px;
+  }
+  .organizatorframe {
+    gap: 67px;
+  }
+  .licencaframe {
+    gap: 98px;
+  }
+      .datumseminaraframe {
+    gap: 33px;
+  }
+  .mjestoseminaraframe {
+    gap: 32px;
+  }
+    .imeclana {
+      font-size: 26px;
+    }
+
+    .naslovseminar {
+      font-size: 12px;
+     gap: 105px;
+    }
+    
+    .frameimeistatus {
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 20px;
+      padding-bottom: 0px;
+      box-sizing: border-box;
+        font-size: 12px;
+    }
+
+    .osnovne-informacije {
+      font-size: 12px;
+    }
+
+    .grad {
+      font-size: 12px;
+    }
+
+    .status {
+      font-size: 12px;
+    }
+
+    .mjesto-seminara {
+      font-size: 12px;
+      text-align: left;
+    }
+
+    .hzuts-i-nik {
+      font-size: 12px;
+      text-align: left;
+    }
+  }
+
+
+
+
+.custom-dropdown1 {
+  position: relative;
+  width: 300px; /* Adjust as necessary */
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+  cursor: pointer;
+  
+}
+.custom-dropdown2 {
+  position: relative;
+  width: 120px; /* Adjust as necessary */
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+  cursor: pointer;
+
+}
+.custom-dropdown3 {
+  position: relative;
+  width: 120px; /* Adjust as necessary */
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+  cursor: pointer;
+
+}
+.custom-dropdown4 {
+  position: relative;
+  width: 120px; /* Adjust as necessary */
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+  cursor: pointer;
+ 
+}
+
+.dropdown-label {
+  padding: 10px; /* Adjust as necessary */
+  background-color: white;
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+ 
+}
+
+
+
+
+
+.dropdown-content {
+/* Initially hide the dropdown content */
+  position: absolute; /* Position it absolutely within the relative container */
+  background-color: #ffffff; /* Set background color */
+  min-width: 170px; /* Minimum width of the dropdown content */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow for depth */
+  z-index: 2010; /* Ensure it's above other content */
+  top: 100%;
+  border-bottom-left-radius: 5px;  
+  border-bottom-right-radius: 5px; 
+}
+.dropdown-contentAZ {
+/* Initially hide the dropdown content */
+  position: absolute; /* Position it absolutely within the relative container */
+  background-color: #ffffff; /* Set background color */
+  min-width: 5.25rem; /* Minimum width of the dropdown content */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow for depth */
+  z-index: 2010; /* Ensure it's above other content */
+  top: 100%;
+right: 0%;
+border-bottom-left-radius: 5px;  
+  border-bottom-right-radius: 5px; 
+
+}
+
+
+
+.dropdown-item label {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.dropdown-item label:hover {
+  background-color: #e6e6e6; /* Slight color change on hover */
+}
+
+
+.dropdown-item {
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+.dropdown-item:hover {
+  background-color:  rgba(3, 169, 244, 1);  /* Color change on hover */
+}
+
+
+
+
+.payments-list {
+
+  align-self: stretch;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 1.9rem;
+    max-height: 100%;
+overflow-y: scroll;
+
+}
+
+.payment-separator {
+  height: 2px;
+  background-color: #03A9F4; /* blue separator line */
+  margin-top: 3px; /* space between the info and the line */
+}
+
+.payment-title {
+  display: block; /* ensures the title is on its own line */
+  font-weight: bold;
+  font-size: medium;
+  margin-top: 8px; /* Space between title and details */
+}
+
+
+.payment-name {
+  font-weight: bold;
+}
+
+.payment-date {
+  font-size: 0.9rem;
+  margin-top: auto;
+margin-right: auto;
+padding-left: 1rem;
+}
+
+.payment-status {
+  background-color: #67C371; /* green background */
+  color: white; /* white text */
+  padding: 5px 5px; /* padding inside the status tag */
+
+  font-weight: bold;
+  font-size: 0.9rem !important;
+}
+.payment-info {
+  /* styles for the container of status, date, and price */
+  display: flex;
+  justify-content: space-between; /* adjust as needed */
+  align-items: flex-start;
+  padding: 8px 0; /* spacing above and below the info line */
+}
+
+.payment-price {
+  margin-left: 10px; /* Space between the status and the price */
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Adjust the background-color and color properties to match your actual 'paidstatus' values */
+.payment-status.paid {
+  background-color: #67C371; /* Green background for paid status */
+}
+
+.payment-status.unpaid {
+  background-color: #f44336; /* Red background for unpaid status */
+}
+
+
+.placeholderzaslike-icon {
+        width: 100px; /* Set the desired size */
+        height: 100px; /* Set the desired size */
+        position: absolute;
+        left: 4%;
+        margin-top: 7%;
+
+        border-radius: 50%; /* Makes it circular */
+        border: 2px solid #03A9F4; /* Adds a blue stroke. Change the color as needed */
+        object-fit: cover; /* Ensures the image covers the area without distortion */
+    }
+
+
+    .selected-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+ /* This will help in case the numbers have two digits or more */
+  border-radius: 50%; /* circle */
+  background-color: #03a9f4; /* any color you want */
+  color: white; /* text color */
+  position: absolute;
+  top: -10px; /* half of the height to ensure it's centered on the y-axis */
+  left: -10px; /* half of the width to ensure it's centered on the x-axis */
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 2;
+  border: 2px solid white; /* match the background color of .custom-dropdown */
+}
+
+ /* Placeholder container styling */
+ .placeholder-container {
+    position: relative;
+    text-align: center;
+    width: 100%; 
+    height: auto;
+    color: #fff; /* Adjust text color as needed */
+  }
+
+  .placeholder-image {
+    width: 100%; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+
+  }
+
+  .placeholder-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px; /* Adjust font size as needed */
+  }
+  
+
+</style>

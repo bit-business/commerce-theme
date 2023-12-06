@@ -5,7 +5,7 @@
       <div class="navbartekstoviframe-inner">
         <div class="poetna-parent">
        
-      <Link class="poetna"  :class="{ 'active-link': isRouteActive('/web') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
+      <Link class="poetna"  :class="{ 'active-link': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
       <Link class="dogaanja"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kategorija') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja</Link>
       <Link class="pretraivanje" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">Naši članovi</Link>
       <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')">Informacije</Link> 
@@ -69,14 +69,14 @@
    
     <div v-if="showDropdown" class="dropdownnavglavni">
       <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}"/>
-    <div :href="route('skijasi.commerce-theme.login')" class="prvigumbprijavise">
+    <Link :href="route('skijasi.commerce-theme.login')" class="prvigumbprijavise">
         <div class="prijavi-se">Prijavi se</div>
         <div class="prvigumbprijavise-child" />
-    </div>
-  <div :href="route('skijasi.commerce-theme.register')" class="drugigumbregistracija">
+    </Link>
+  <Link :href="route('skijasi.commerce-theme.register')" class="drugigumbregistracija">
         <div class="drugigumbregistracija-child" />
         <div class="registriraj-se">Registriraj se</div>
-  </div>
+  </Link>
        </div>
 
        
@@ -129,7 +129,7 @@
       <div class="mobilnimeni">
 
      
-      <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('/web') }" :href="route('skijasi.commerce-theme.home')">Početna <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">Početna <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
       <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.kategorija') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
       <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">Naši članovi <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
       <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')">Informacije <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
