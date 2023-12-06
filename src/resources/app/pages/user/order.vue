@@ -493,7 +493,7 @@ line-height: normal;
 
 
 .navbar {
-    padding-top: 4.2rem; 
+    padding-top: 3rem; 
     padding-bottom: 3.15rem; 
     font-family: Inter;
   }

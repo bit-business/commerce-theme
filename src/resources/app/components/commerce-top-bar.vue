@@ -66,7 +66,7 @@
       </button>
     </div>
 
-   
+    <transition name="fade">
     <div v-if="showDropdown" class="dropdownnavglavni">
       <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}"/>
     <Link :href="route('skijasi.commerce-theme.login')" class="prvigumbprijavise">
@@ -78,8 +78,9 @@
         <div class="registriraj-se">Registriraj se</div>
   </Link>
        </div>
+      </transition>
 
-       
+       <transition name="fade">
     <div v-if="showDropdownprijavljen" class="dropdownnavglavni">
       <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}" />
       <Link :href="route('skijasi.commerce-theme.profile')" class="prvigumbprijavise">
@@ -91,7 +92,7 @@
         <div class="registriraj-se">Odjavi se</div>
       </button>
     </div>
-
+  </transition>
 
 
 
@@ -324,11 +325,14 @@ beforeDestroy() {
 }
 
 
-/* Animate the line to full width when hovered */
-.poetna:hover::after, .dogaanja:hover::after, .pretraivanje:hover::after {
-  transform: scaleX(1);
-}
 
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
 
 
   .poetna {
