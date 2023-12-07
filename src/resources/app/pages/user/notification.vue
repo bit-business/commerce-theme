@@ -2,7 +2,7 @@
   <div>
     <Head :title="$page.props.name" />
 
-    <div class="pt-8 navbar container hidden sm:grid grid-cols-profile">
+    <div class="pt-8 navbar grid grid-cols-2 md:grid-cols-profile">
      <!--1-->
      <div class="Moj-pr-8">
 
@@ -125,7 +125,7 @@
 </div>  </div>
 <!--1-->
 
-      <div class="bg-white shadow-sm rounded-xl flex flex-wrap">
+      <div class="bg-white shadow-sm rounded-xl flex flex-wrap ml-16 mr-4">
 
         <div class="flex flex-col w-full px-6 justify-center items-start border-plava-200 border-b">
             <span class="text-lg font-medium plavi-text">Obavijesti</span>
@@ -177,6 +177,8 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
       </div>
     </div>
 
+
+    <!--mobilni dio
     <div class="sm:hidden">
       <div class="flex flex-col w-full divide-y">
         <div class="flex justify-between px-3 py-2 bg-white">
@@ -197,7 +199,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
           </div>
         </div>
       </div>
-    </div>
+    </div>-->
   </div>
 </template>
 
@@ -597,6 +599,19 @@ width: 80px;
     max-width: none;
     padding: 1rem;
   }
+
+  .tekstnemaobavijesti{
+  width: 74%;
+  padding-top: 2rem;
+}
+.grid-cols-profile {
+    grid-template-columns: 90% auto;
+  }
+  .container {
+    padding-right: 10%; /* Adjust as needed */
+    
+  }
+
 
 }
 

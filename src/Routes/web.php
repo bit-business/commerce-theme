@@ -36,6 +36,7 @@ Route::prefix($commerce_route_prefix)
         /**
          * Auth route.
          */
+        Route::get('/auth/loginweb', HelpersRoute::getController('InertiaController@authLoginWeb'))->name('loginweb');
         Route::get('/auth/login', HelpersRoute::getController('InertiaController@authLogin'))->name('login');
         Route::get('/auth/register', HelpersRoute::getController('InertiaController@authRegister'))->name('register');
         Route::get('/auth/reset-password/{email}/{token}', HelpersRoute::getController('InertiaController@authResetPassword'))->name('reset-password');

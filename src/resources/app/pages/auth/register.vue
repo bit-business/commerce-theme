@@ -1041,8 +1041,8 @@ export default {
   }
   .tekstdiv {
     position: absolute;
-    top: calc(50% - 14px);
-    left: calc(50% - 8px);
+    top: calc(50% - 9px);
+    left: calc(50% - 5px);
     font-weight: 600;
   }
   .framebroj4 {
@@ -1093,8 +1093,8 @@ export default {
   }
   .tekstdiv2 {
     position: absolute;
-    top: calc(50% - 14px);
-    left: calc(50% - 6px);
+    top: calc(50% - 10px);
+    left: calc(50% - 4px);
     font-weight: 600;
   }
   .framebroj1 {
@@ -1106,8 +1106,8 @@ export default {
   }
   .tekstdiv3 {
     position: absolute;
-    top: calc(50% - 14px);
-    left: calc(50% - 7px);
+    top: calc(50% - 9px);
+    left: calc(50% - 5px);
     font-weight: 600;
   }
   .framebroj2 {
@@ -1627,7 +1627,7 @@ export default {
     text-decoration: none;
     position: absolute;
     top: 0%;
-    left: calc(50% - 78px);
+    left: calc(50% - 66px);
     font-weight: 600;
     color: inherit;
   }
@@ -1644,8 +1644,9 @@ export default {
   .framenatrag {
     position: absolute;
     top: 34.13rem;
-    left: 10.25rem;
-    width: 12.38rem;
+    left: 5.25rem;
+    width: 18.38rem;
+    bottom: 1rem;
     height: 1.06rem;
     font-size: 0.88rem;
     color: #21231e;
@@ -1956,11 +1957,11 @@ export default {
     left: calc(50% - 74.5px);
     width: 9.38rem;
   }
-  .tekstnatragnaprethkorak {
+  .tekstnatragnaprethodnigrad {
     text-decoration: none;
     position: absolute;
     top: 0%;
-    left: calc(50% - 78px);
+    left: calc(50% - 66px);
     font-weight: 600;
     color: inherit;
   }
@@ -1977,8 +1978,8 @@ export default {
   .framezanatragnaprethodnikorak {
     position: absolute;
     top: 37.58rem;
-    left: 10.01rem;
-    width: 12.38rem;
+    left: 8.51rem;
+    width: 14.38rem;
     height: 1.06rem;
     font-size: 0.88rem;
     color: #21231e;
@@ -2537,8 +2538,8 @@ export default {
     text-decoration: none;
     position: absolute;
     top: 26.5rem;
-    left: 7.24rem;
-    width: 12.38rem;
+    left: 5.44rem;
+    width: 17.38rem;
     height: 1.06rem;
     font-size: 0.88rem;
     color: #21231e;
@@ -2582,9 +2583,9 @@ export default {
   }
 
   }
-  @media screen and (max-width: 420px) {
+  @media screen and (max-width: 600px) {
     .hzuts-registration-desktop {
-      max-width: 420px;
+      max-width: 600px;
     }
     .logohzuts-icon {
       top: 0.18rem;
@@ -2595,9 +2596,1461 @@ export default {
     top: 0rem;
     z-index: 100;
   }
+
+
+
+
+
+
+
+
+
+
+
+ 
+  .registracija {
+    position: absolute;
+    top: 0px;
+    left: calc(50% - 60.85px);
+    font-size: 20.97px;
+    text-align: left;
+  }
+  .sljedee {
+    position: absolute;
+    top: calc(50% - 5.25px);
+    left: calc(50% - 26.15px);
+    font-size: 9.32px;
+    letter-spacing: -0.1px;
+    font-weight: 600;
+    font-family: Inter;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 52.8px;
+  }
+  .gumbsljedece {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: #03a9f4;
+    position: absolute;
+    top: 280.7px;
+    left: calc(50% - 115.05px);
+    border-radius: 11.65px;
+    width: 232.9px;
+    height: 29.1px;
+  }
+  .framebroj4-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: #98d0f1;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .div {
+    position: absolute;
+    top: calc(50% - 8.15px);
+    left: calc(50% - 4.65px);
+    font-weight: 600;
+  }
+  .framebroj4 {
+    position: absolute;
+    top: 0px;
+    left: 32.6px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .framegore4-child {
+    position: absolute;
+    top: 14px;
+    left: 0px;
+    width: 29.1px;
+    height: 1.2px;
+  }
+  .framegore4 {
+    position: absolute;
+    top: 5.8px;
+    left: 174.1px;
+    width: 61.7px;
+    height: 29.1px;
+  }
+  .framegore3 {
+    position: absolute;
+    top: 5.8px;
+    left: 108.9px;
+    width: 61.7px;
+    height: 29.1px;
+  }
+  .framebroj1-child {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 50%;
+    background-color: rgba(3, 169, 244, 0.1);
+    width: 40.8px;
+    height: 40.8px;
+  }
+  .framebroj1-item {
+    position: absolute;
+    top: 5.8px;
+    left: 5.8px;
+    border-radius: 50%;
+    background-color: rgba(3, 169, 244, 0.2);
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .div2 {
+    position: absolute;
+    top: calc(50% - 8.2px);
+    left: calc(50% - 3.5px);
+    font-weight: 600;
+  }
+  .framebroj1 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 40.8px;
+    height: 40.8px;
+  }
+  .div3 {
+    position: absolute;
+    top: calc(50% - 8.15px);
+    left: calc(50% - 4.05px);
+    font-weight: 600;
+  }
+  .framebroj2 {
+    position: absolute;
+    top: 5.8px;
+    left: 76.3px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .framegore12-child {
+    position: absolute;
+    top: 19.8px;
+    left: 43.7px;
+    width: 29.1px;
+    height: 1.2px;
+  }
+  .framegore12 {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 105.4px;
+    height: 40.8px;
+  }
+  .frame1234 {
+    position: absolute;
+    top: 43.1px;
+    left: 35.5px;
+    width: 235.9px;
+    height: 40.8px;
+    font-size: 13.98px;
+    color: #fff;
+  }
+  .containerzaime {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 11.65px;
+    border: 1.2px solid #03a9f4;
+    box-sizing: border-box;
+    width: 145.6px;
+    height: 29.1px;
+  }
+  .poljezaupisime {
+    border: 1.2px solid #03a9f4;
+    background-color: transparent;
+    position: absolute;
+    top: 0px;
+    left: 30.3px;
+    border-radius: 0px 11.65px 11.65px 0px;
+    box-sizing: border-box;
+    width: 115.3px;
+    height: 29.1px;
+  }
+  .user-icon {
+    position: absolute;
+    top: 7.6px;
+    left: 8.7px;
+    width: 14px;
+    height: 14px;
+    overflow: hidden;
+  }
+  .imebackground {
+    position: absolute;
+    top: 13.4px;
+    left: 0px;
+    width: 145.6px;
+    height: 29.1px;
+  }
+  .ime {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    font-weight: 500;
+  }
+  .frameime {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 145.6px;
+    height: 42.5px;
+  }
+  .frameprezime {
+    position: absolute;
+    top: 0px;
+    left: 161.3px;
+    width: 145.6px;
+    height: 42.5px;
+  }
+  .frameimeiprezime {
+    position: absolute;
+    top: 101.3px;
+    left: 0px;
+    width: 306.9px;
+    height: 42.5px;
+  }
+  .containerzaemail {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    border-radius: 11.65px;
+    border: 1.2px solid #03a9f4;
+    box-sizing: border-box;
+    width: 306.9px;
+    height: 29.1px;
+  }
+  .poljezaupisemaila {
+    border: 1.2px solid #03a9f4;
+    background-color: transparent;
+    position: absolute;
+    top: 0px;
+    left: 30.3px;
+    border-radius: 0px 11.65px 11.65px 0px;
+    box-sizing: border-box;
+    width: 276.6px;
+    height: 29.1px;
+  }
+  .framezaemail {
+    position: absolute;
+    top: 13.4px;
+    left: 0px;
+    width: 306.9px;
+    height: 29.1px;
+  }
+  .frameemail {
+    position: absolute;
+    top: 153.2px;
+    left: 0px;
+    width: 306.9px;
+    height: 42.5px;
+  }
+  .framedatumrodjenja {
+    position: absolute;
+    top: 205px;
+    left: 0px;
+    width: 306.9px;
+    height: 42.5px;
+  }
+  .srednjipodframe {
+    position: absolute;
+    top: 23.9px;
+    left: 21.5px;
+    width: 306.9px;
+    height: 309.8px;
+  }
+  .srednjiframe {
+    border-radius: 11.65px;
+    background-color: #fff;
+    width: 350px;
+    height: 357.6px;
+    text-align: center;
+    font-size: 6.99px;
+    color: #000;
+    font-family: Inter;
+      flex-direction: column;
+      gap: 10px;
+      align-items: center;
+      justify-content: space-between;
+      padding-left: 0px;
+      padding-right: 0px;
+      box-sizing: border-box;
+    
   }
 
 
+
+/* 2 srednji frame */
+ 
+  .screen2div {
+    position: absolute;
+    top: 21.99%;
+    left: calc(50% - 4.65px);
+    font-weight: 600;
+  }
+  .frameregistracija-1do4glavni-b-child {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 14.55px);
+    border-radius: 50%;
+    background-color: #98d0f1;
+    width: 29.1px;
+  }
+  .div {
+    position: absolute;
+    top: 21.99%;
+    left: calc(50% - 4.65px);
+    font-weight: 600;
+  }
+  .frameregistracija-1do4glavni-b {
+    position: absolute;
+    top: 0px;
+    left: 32.6px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .frameregistracija-1do4glavni-f-child {
+    position: absolute;
+    height: 4.12%;
+    top: 48.11%;
+    bottom: 47.77%;
+    left: calc(50% - 30.85px);
+    max-height: 100%;
+    width: 29.1px;
+  }
+  .frameregistracija-1do4glavni-f {
+    position: absolute;
+    top: 5.8px;
+    left: 173.5px;
+    width: 61.7px;
+    height: 29.1px;
+  }
+  .frameregistracija-1do4glavni-f1 {
+    position: absolute;
+    top: 5.8px;
+    left: 108.3px;
+    width: 61.7px;
+    height: 29.1px;
+  }
+
+  .frameregistracija-1do4glavni-b-inner {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 14.55px);
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 29.1px;
+  }
+  .screen2div2 {
+    position: absolute;
+    top: 21.99%;
+    left: calc(50% - 3.45px);
+    font-weight: 600;
+  }
+  .frameregistracija-1do4glavni-b2 {
+    position: absolute;
+    top: 5.8px;
+    left: 0px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .ellipse-div {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 20.4px);
+    border-radius: 50%;
+    background-color: rgba(3, 169, 244, 0.1);
+    width: 40.8px;
+  }
+  .frameregistracija-1do4glavni-b-child1 {
+    position: absolute;
+    height: 71.32%;
+    top: 14.22%;
+    bottom: 14.46%;
+    left: calc(50% - 14.6px);
+    border-radius: 50%;
+    background-color: rgba(3, 169, 244, 0.2);
+    width: 29.1px;
+  }
+  .screen2div3 {
+    position: absolute;
+    top: 29.9%;
+    left: calc(50% - 4.1px);
+    font-weight: 600;
+  }
+  .frameregistracija-1do4glavni-b3 {
+    position: absolute;
+    top: 0px;
+    left: 64.6px;
+    width: 40.8px;
+    height: 40.8px;
+  }
+  .frameregistracija-1do4glavni-l-icon {
+    position: absolute;
+    height: 2.94%;
+    top: 48.53%;
+    bottom: 48.53%;
+    left: calc(50% - 20.7px);
+    max-height: 100%;
+    width: 29.1px;
+  }
+  .podframeregistracija-1do4glavn {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 105.4px;
+    height: 40.8px;
+  }
+  .frameregistracija-1do4glavni {
+    position: absolute;
+    top: 43.1px;
+    left: 35.5px;
+    width: 235.3px;
+    height: 40.8px;
+    font-size: 13.98px;
+    color: #fff;
+  }
+  .containerbrojmobitela {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 72.8px);
+    border-radius: 11.65px;
+    border: 1.2px solid #03a9f4;
+    box-sizing: border-box;
+    width: 145.6px;
+  }
+  .poljezaunosbrojmobitela {
+    border: 1.2px solid #03a9f4;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 42.5px);
+    border-radius: 0px 11.65px 11.65px 0px;
+    box-sizing: border-box;
+    width: 115.3px;
+  }
+  .ikonareg-mobitel-icon {
+    position: absolute;
+    height: 48.11%;
+    top: 26.12%;
+    bottom: 25.77%;
+    left: calc(50% - 64.1px);
+    max-height: 100%;
+    width: 14px;
+    overflow: hidden;
+  }
+  .podframebrojmobitela {
+    position: absolute;
+    height: 68.47%;
+    top: 31.53%;
+    bottom: 0%;
+    left: calc(50% - 72.8px);
+    width: 145.6px;
+  }
+  .broj-mobitela {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 72.8px);
+    font-weight: 500;
+  }
+  .framebrojmobitela {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 145.6px;
+    height: 42.5px;
+  }
+  .framedrzava {
+    position: absolute;
+    top: 0px;
+    left: 161.3px;
+    width: 145.6px;
+    height: 42.5px;
+  }
+  .framebrojmobiteladrzava {
+    position: absolute;
+    top: 101.3px;
+    left: 0px;
+    width: 306.9px;
+    height: 42.5px;
+  }
+  .containeradresa {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 153.45px);
+    border-radius: 11.65px;
+    border: 1.2px solid #03a9f4;
+    box-sizing: border-box;
+    width: 306.9px;
+  }
+  .poljezaupisadresa {
+    border: 1.2px solid #03a9f4;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 123.15px);
+    border-radius: 0px 11.65px 11.65px 0px;
+    box-sizing: border-box;
+    width: 276.6px;
+  }
+  .registracija-ikonaadresa-icon {
+    position: absolute;
+    height: 48.11%;
+    top: 26.12%;
+    bottom: 25.77%;
+    left: calc(50% - 143.55px);
+    max-height: 100%;
+    width: 11.6px;
+  }
+  .adresapodframe {
+    position: absolute;
+    height: 68.47%;
+    top: 31.53%;
+    bottom: 0%;
+    left: calc(50% - 153.45px);
+    width: 306.9px;
+  }
+  .adresa {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 153.45px);
+    font-weight: 500;
+  }
+  .frameadresa {
+    position: absolute;
+    top: 205px;
+    left: 0px;
+    width: 306.9px;
+    height: 42.5px;
+  }
+  .natrag-na-prethodni {
+    text-decoration: none;
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 45.45px);
+    font-weight: 600;
+    color: inherit;
+  }
+  .ikona-reg-strelicazanazad-icon {
+    position: absolute;
+    height: 93.94%;
+    top: 6.06%;
+    bottom: 0%;
+    left: calc(50% - 57.65px);
+    max-height: 100%;
+    width: 9.3px;
+    overflow: hidden;
+  }
+  .framenatrag {
+    position: absolute;
+    top: 318px;
+    left: 95.5px;
+    width: 115.3px;
+    height: 9.9px;
+    font-size: 8.15px;
+    color: #21231e;
+  }
+  .ikonareg-adresa-icon {
+    position: absolute;
+    height: 48.11%;
+    top: 26.12%;
+    bottom: 25.77%;
+    left: calc(50% - 62.9px);
+    max-height: 100%;
+    width: 11.6px;
+  }
+  .framegradpostanskibroj {
+    position: absolute;
+    top: 152.6px;
+    left: 0px;
+    width: 306.9px;
+    height: 42.5px;
+  }
+  .srednjipodframe2 {
+    position: absolute;
+    top: 15.1px;
+    left: 21.5px;
+    width: 306.9px;
+    height: 327.9px;
+  }
+  .srednjiframe2 {
+    border-radius: 11.65px;
+    background-color: #fff;
+    width: 350px;
+    height: 357.6px;
+    text-align: center;
+    font-size: 6.99px;
+    color: #000;
+    font-family: Inter;
+  }
+
+
+
+
+/* 3 srednji frame*/
+
+
+
+  .login-with-email-button {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: rgba(152, 208, 241, 0.6);
+    position: absolute;
+    height: 7.92%;
+    top: 84.63%;
+    bottom: 7.46%;
+    left: calc(50% - 123.75px);
+    border-radius: 11.65px;
+    width: 232.9px;
+  }
+  .reg-3screen-vector17 {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 14.55px);
+    border-radius: 50%;
+    background-color: #98d0f1;
+    width: 29.1px;
+  }
+  .screen3div {
+    position: absolute;
+    top: 21.99%;
+    left: calc(50% - 4.65px);
+    font-weight: 600;
+  }
+  .reg-3screen-vector17-parent {
+    position: absolute;
+    top: 0px;
+    left: 32.6px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .reg-3screen-vector16-icon {
+    position: absolute;
+    height: 4.12%;
+    top: 48.11%;
+    bottom: 47.77%;
+    left: calc(50% - 30.85px);
+    max-height: 100%;
+    width: 29.1px;
+  }
+  .frame-group {
+    position: absolute;
+    top: 5.2px;
+    left: 173.5px;
+    width: 61.7px;
+    height: 29.1px;
+  }
+  .reg-3screen-vector15 {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 20.4px);
+    border-radius: 50%;
+    background-color: rgba(3, 169, 244, 0.1);
+    width: 40.8px;
+  }
+  .reg-3screen-vector14 {
+    position: absolute;
+    height: 71.32%;
+    top: 14.22%;
+    bottom: 14.46%;
+    left: calc(50% - 14.6px);
+    border-radius: 50%;
+    background-color: rgba(3, 169, 244, 0.2);
+    width: 29.1px;
+  }
+  .div1 {
+    position: absolute;
+    top: 29.9%;
+    left: calc(50% - 4.7px);
+    font-weight: 600;
+  }
+  .reg-3screen-vector15-parent {
+    position: absolute;
+    top: 0px;
+    left: 32.6px;
+    width: 40.8px;
+    height: 40.8px;
+  }
+  .reg-3screen-vector13-icon {
+    position: absolute;
+    height: 2.94%;
+    top: 47.06%;
+    bottom: 50%;
+    left: calc(50% - 36.7px);
+    max-height: 100%;
+    width: 29.1px;
+  }
+  .frame-container {
+    position: absolute;
+    top: 0px;
+    left: 97.8px;
+    width: 73.4px;
+    height: 40.8px;
+  }
+  .reg-3screen-vector12 {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 14.55px);
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 29.1px;
+  }
+  .screen3div2 {
+    position: absolute;
+    top: 21.99%;
+    left: calc(50% - 3.45px);
+    font-weight: 600;
+  }
+  .reg-3screen-vector12-parent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .div3 {
+    position: absolute;
+    top: 21.99%;
+    left: calc(50% - 4.05px);
+    font-weight: 600;
+  }
+  .reg-3screen-vector11-parent {
+    position: absolute;
+    top: 0px;
+    left: 64.1px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .frame-child {
+    position: absolute;
+    height: 4.12%;
+    top: 48.11%;
+    bottom: 47.77%;
+    left: calc(50% - 14.6px);
+    max-height: 100%;
+    width: 29.1px;
+  }
+  .frame-div {
+    position: absolute;
+    top: 5.2px;
+    left: 0px;
+    width: 93.2px;
+    height: 29.1px;
+  }
+  .frame-parent {
+    position: absolute;
+    top: 43.7px;
+    left: 36.1px;
+    width: 235.3px;
+    height: 40.8px;
+    font-size: 13.98px;
+    color: #fff;
+  }
+  .containerlozinkaunos {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 72.8px);
+    border-radius: 11.65px;
+    border: 1.2px solid #03a9f4;
+    box-sizing: border-box;
+    width: 145.6px;
+  }
+  .poljezaunoslozinka-treciscreen {
+    border: 1.2px solid #03a9f4;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 42.5px);
+    border-radius: 0px 11.65px 11.65px 0px;
+    box-sizing: border-box;
+    width: 115.3px;
+  }
+  .password-icon {
+    position: absolute;
+    height: 48.11%;
+    top: 26.12%;
+    bottom: 25.77%;
+    left: calc(50% - 64.1px);
+    max-height: 100%;
+    width: 14px;
+    overflow: hidden;
+  }
+  .email-label {
+    position: absolute;
+    height: 68.47%;
+    top: 31.53%;
+    bottom: 0%;
+    left: calc(50% - 72.8px);
+    width: 145.6px;
+  }
+  .lozinka {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 72.8px);
+    font-weight: 500;
+  }
+  .email-label-parent {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 145.6px;
+    height: 42.5px;
+  }
+  .framezapotvrdulozinke {
+    position: absolute;
+    top: 0px;
+    left: 161.3px;
+    width: 145.6px;
+    height: 42.5px;
+  }
+  .framezalozinkuipotvrdulozinke {
+    position: absolute;
+    top: 242.3px;
+    left: 0px;
+    width: 306.9px;
+    height: 42.5px;
+  }
+  .ikona-reg-treciekran-elipsa {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 43.7px);
+    border-radius: 50%;
+    background-color: rgba(3, 155, 229, 0.7);
+    width: 87.4px;
+  }
+  .reg-3screen-vector3-icon {
+    position: absolute;
+    height: 86.4%;
+    width: 86.4%;
+    top: 6.8%;
+    right: 6.8%;
+    bottom: 6.8%;
+    left: 6.8%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .reg-3screen-vector2-icon {
+    position: absolute;
+    height: 36.49%;
+    width: 3.04%;
+    top: 31.84%;
+    right: 48.48%;
+    bottom: 31.66%;
+    left: 48.48%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .reg-3screen-vector1-icon {
+    position: absolute;
+    height: 3.04%;
+    width: 36.49%;
+    top: 48.48%;
+    right: 31.66%;
+    bottom: 48.48%;
+    left: 31.84%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .ikona-zagumbaddphoto {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    height: 63.96%;
+    top: 17.96%;
+    bottom: 18.08%;
+    left: calc(50% - 28.6px);
+    width: 55.9px;
+    overflow: hidden;
+  }
+  .frameaddphoto {
+    position: absolute;
+    height: 23.78%;
+    top: 25.52%;
+    bottom: 50.69%;
+    left: calc(50% - 43.35px);
+    width: 87.4px;
+  }
+  .natrag-na-prethodni {
+    text-decoration: none;
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 45.45px);
+    font-weight: 600;
+    color: inherit;
+  }
+  .arrow-left-1-icon {
+    position: absolute;
+    height: 93.94%;
+    top: 6.06%;
+    bottom: 0%;
+    left: calc(50% - 57.65px);
+    max-height: 100%;
+    width: 9.3px;
+    overflow: hidden;
+  }
+  .framezanatragnaprethodnikorak {
+    position: absolute;
+    top: 357.6px;
+    left: 96.1px;
+    width: 115.3px;
+    height: 9.9px;
+    font-size: 8.15px;
+    color: #21231e;
+  }
+  .containerzaoib {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 153.45px);
+    border-radius: 11.65px;
+    border: 1.2px solid #03a9f4;
+    box-sizing: border-box;
+    width: 306.9px;
+  }
+  .poljezunosoib {
+    border: 1.2px solid #03a9f4;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 123.15px);
+    border-radius: 0px 11.65px 11.65px 0px;
+    box-sizing: border-box;
+    width: 276.6px;
+  }
+  .ikonareg-oib-icon {
+    position: absolute;
+    height: 48.11%;
+    top: 26.12%;
+    bottom: 25.77%;
+    left: calc(50% - 144.75px);
+    max-height: 100%;
+    width: 14px;
+    overflow: hidden;
+  }
+  .email-label1 {
+    position: absolute;
+    height: 68.47%;
+    top: 31.53%;
+    bottom: 0%;
+    left: calc(50% - 153.45px);
+    width: 306.9px;
+  }
+  .oib {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 153.45px);
+    font-weight: 500;
+  }
+  .framepoib {
+    position: absolute;
+    top: 190.4px;
+    left: 0px;
+    width: 306.9px;
+    height: 42.5px;
+  }
+  .srednjipodframe3 {
+    position: absolute;
+    top: 19.2px;
+    left: 21.5px;
+    width: 306.9px;
+    height: 367.5px;
+  }
+  .srednjiframe3 {
+    border-radius: 11.65px;
+    background-color: #fff;
+    width: 350px;
+    height: 418.1px;
+    text-align: center;
+    font-size: 6.99px;
+    color: #000;
+    font-family: Inter;
+  }
+
+
+
+
+/* 4 srednji frame */
+
+
+  .screen4registriraj-se {
+    position: absolute;
+    top: 31.96%;
+    left: calc(50% - 29.05px);
+    font-size: 9.32px;
+    letter-spacing: -0.1px;
+    font-weight: 600;
+    font-family: Inter;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 57.7px;
+  }
+  .screen4gumbregistrirajseframe {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: #03a9f4;
+    position: absolute;
+    height: 11.33%;
+    top: 77.8%;
+    bottom: 10.86%;
+    left: calc(50% - 118.5px);
+    border-radius: 11.65px;
+    width: 232.9px;
+  }
+  .screen4frame-child {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 20.4px);
+    border-radius: 50%;
+    background-color: rgba(3, 169, 244, 0.1);
+    width: 40.8px;
+  }
+  .screen4frame-item {
+    position: absolute;
+    height: 71.32%;
+    top: 14.22%;
+    bottom: 14.46%;
+    left: calc(50% - 14.6px);
+    border-radius: 50%;
+    background-color: rgba(3, 169, 244, 0.2);
+    width: 29.1px;
+  }
+  .screen4div {
+    position: absolute;
+    top: 29.9%;
+    left: calc(50% - 4.7px);
+    font-weight: 600;
+  }
+  .screen4ellipse-parent {
+    position: absolute;
+    top: 0px;
+    left: 32.6px;
+    width: 40.8px;
+    height: 40.8px;
+  }
+  .screen4frame-inner {
+    position: absolute;
+    height: 2.94%;
+    top: 47.06%;
+    bottom: 50%;
+    left: calc(50% - 36.7px);
+    max-height: 100%;
+    width: 29.1px;
+  }
+  .screen4frame-parent {
+    position: absolute;
+    top: 0px;
+    left: 165.4px;
+    width: 73.4px;
+    height: 40.8px;
+  }
+  .screen4ellipse-div {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 14.55px);
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 29.1px;
+  }
+  .screen4div1 {
+    position: absolute;
+    top: 21.99%;
+    left: calc(50% - 4.65px);
+    font-weight: 600;
+  }
+  .screen4ellipse-group {
+    position: absolute;
+    top: 0px;
+    left: 33.8px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .screen4line-icon {
+    position: absolute;
+    height: 4.12%;
+    top: 48.11%;
+    bottom: 47.77%;
+    left: calc(50% - 31.45px);
+    max-height: 100%;
+    width: 29.1px;
+  }
+  .screen4frame-group {
+    position: absolute;
+    top: 5.2px;
+    left: 97.8px;
+    width: 62.9px;
+    height: 29.1px;
+  }
+  .screen4div2 {
+    position: absolute;
+    top: 21.99%;
+    left: calc(50% - 3.45px);
+    font-weight: 600;
+  }
+  .screen4ellipse-container {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .screen4div3 {
+    position: absolute;
+    top: 21.99%;
+    left: calc(50% - 4.05px);
+    font-weight: 600;
+  }
+  .screen4frame-div {
+    position: absolute;
+    top: 0px;
+    left: 64.1px;
+    width: 29.1px;
+    height: 29.1px;
+  }
+  .screen4reg4-frame1do2brojevi-child {
+    position: absolute;
+    height: 4.12%;
+    top: 48.11%;
+    bottom: 47.77%;
+    left: calc(50% - 14.6px);
+    max-height: 100%;
+    width: 29.1px;
+  }
+  .screen4reg4-frame1do2brojevi {
+    position: absolute;
+    top: 5.2px;
+    left: 0px;
+    width: 93.2px;
+    height: 29.1px;
+  }
+  .screen4reg4-frame1do4brojevi {
+    position: absolute;
+    top: 43.7px;
+    left: 2.3px;
+    width: 238.8px;
+    height: 40.8px;
+    text-align: center;
+    font-size: 13.98px;
+    color: #fff;
+  }
+  .screen4spol {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 20.65px);
+    font-weight: 600;
+    display: inline-block;
+    width: 18.6px;
+  }
+  .screen4radiooff {
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 19.8px);
+    border-radius: 50%;
+    border: 0.6px solid #03a9f4;
+    box-sizing: border-box;
+    width: 8.7px;
+  }
+  .screen4muko {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 2.9px);
+    display: inline-block;
+    width: 22.7px;
+  }
+  .screen4framemusko {
+    position: absolute;
+    top: 15.7px;
+    left: 0px;
+    width: 39.6px;
+    height: 8.7px;
+  }
+  .screen4radioon {
+    cursor: pointer;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 20.65px);
+    width: 8.7px;
+  }
+  .screen4ensko {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 3.75px);
+    display: inline-block;
+    width: 24.5px;
+  }
+  .screen4framezensko {
+    position: absolute;
+    top: 30.3px;
+    left: 0px;
+    width: 41.3px;
+    height: 8.7px;
+  }
+  .screen4framezaodabirpola {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 41.3px;
+    height: 39px;
+  }
+  .screen4dodajte-linkove-na {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 68.45px);
+    letter-spacing: -0.1px;
+    font-weight: 600;
+  }
+  .screen4background {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 8.75px);
+    border-radius: 2.91px;
+    background-color: rgba(29, 161, 242, 0.95);
+    width: 17.5px;
+  }
+  
+  .reg4-ikonalinkedin-icon {
+    position: absolute;
+    height: 45.71%;
+    top: 26.29%;
+    bottom: 28%;
+    left: calc(50% - 4.15px);
+    max-height: 100%;
+    width: 8.3px;
+  }
+  .screen4linkedin-group {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% + 35px);
+    width: 17.5px;
+  }
+  .screen4frameikonezadrustvnemreze {
+    position: absolute;
+    height: 46.17%;
+    top: 53.83%;
+    bottom: 0%;
+    left: calc(50% - 52.15px);
+    width: 104.8px;
+  }
+  .screen4framedodajlinkovesve {
+    position: absolute;
+    top: 0.6px;
+    left: 101.9px;
+    width: 136.9px;
+    height: 37.9px;
+    text-align: center;
+  }
+  .screen4framespolidodajlinkove {
+    position: absolute;
+    top: 100.2px;
+    left: 2.3px;
+    width: 238.8px;
+    height: 39px;
+    font-size: 6.99px;
+  }
+  .screen4uvjete-koritenja-i {
+    color: #03a9f4;
+  }
+
+  .screen4tekst-pristajemnaregistraciju {
+    position: absolute;
+    top: 10.34%;
+    left: calc(50% - 116px);
+    letter-spacing: -0.1px;
+    font-weight: 300;
+    font-size: 5px;
+    display: flex;
+    align-items: center;
+    width: 253px;
+  }
+  .screen4kvadratzacheckmark {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 129px);
+    border-radius: 1.16px;
+    background-color: #03a9f4;
+    border: 0.6px solid #03a9f4;
+    box-sizing: border-box;
+    width: 8.7px;
+  }
+  .screen4framechecktermsofuse {
+    position: absolute;
+    top: 161.3px;
+    left: 0px;
+    width: 258px;
+    height: 8.7px;
+    font-size: 5.82px;
+  }
+  .screen4natrag-na-prethodni {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 45.45px);
+    font-weight: 600;
+  }
+  .screen4arrow-left-1-icon {
+    position: absolute;
+    height: 93.94%;
+    top: 6.06%;
+    bottom: 0%;
+    left: calc(50% - 57.65px);
+    max-height: 100%;
+    width: 9.3px;
+    overflow: hidden;
+  }
+  .screen4framezanatrag {
+    text-decoration: none;
+    position: absolute;
+    top: 246.9px;
+    left: 78.6px;
+    width: 115.3px;
+    height: 9.9px;
+    text-align: center;
+    font-size: 8.15px;
+    color: #21231e;
+  }
+  .screen4poljezunoslinkova {
+    border: 1.2px solid #03a9f4;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 60.25px);
+    border-radius: 11.65px;
+    box-sizing: border-box;
+    width: 120.5px;
+  }
+  .screen4spremi {
+    position: absolute;
+    height: 37.93%;
+    top: 31.9%;
+    left: calc(50% - 29.15px);
+    font-size: 5.82px;
+    letter-spacing: -0.1px;
+    font-weight: 300;
+    font-family: Inter;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 57.7px;
+  }
+  .gumbspremilink {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: #03a9f4;
+    position: absolute;
+    height: 76.82%;
+    top: 11.26%;
+    bottom: 11.92%;
+    left: calc(50% + 35.25px);
+    border-radius: 11.65px;
+    width: 23.3px;
+  }
+  .dodajlinkglavni {
+    position: absolute;
+    height: 5.88%;
+    top: 56%;
+    bottom: 38.12%;
+    left: calc(50% - 15.4px);
+    width: 120.5px;
+  }
+  .srednjipodframe4 {
+    position: absolute;
+    top: 19.8px;
+    left: 46px;
+    width: 258px;
+    height: 256.8px;
+  }
+  .srednjiframe4 {
+    border-radius: 11.65px;
+    background-color: #fff;
+    width: 350px;
+    height: 296.4px;
+    text-align: left;
+    font-size: 20.97px;
+    color: #000;
+    font-family: Inter;
+  }
+
+  .ikona-zagumbaddphoto-icon {
+    position: absolute;
+    height: 80%;
+    top: 9%;
+    left: calc(50% - 35px);
+    max-height: 100%;
+    width: 80%;
+    overflow: hidden;
+  }
+  .screen4tekstregistrirajsezagumb {
+    top: 15%;
+  }
+  .footertekst {
+    font-size: 0.52rem;
+  }
+
+  }
 </style>
-
-

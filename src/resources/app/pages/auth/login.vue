@@ -268,7 +268,7 @@ export default {
       this.$v.email.$touch(); 
       this.loading = true
       this.$api.skijasiAuth
-        .login({
+        .loginweb({
           email: this.email,
           password: this.password,
           remember: this.rememberMe,

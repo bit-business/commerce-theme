@@ -182,6 +182,12 @@ class InertiaController extends Controller
             'name' => 'Prijava',
         ], 'commerce-theme:app');
     }
+    public function authLoginWeb()
+    {
+        return Inertia::render('auth/loginweb', [
+            'name' => 'Prijava',
+        ], 'commerce-theme:app');
+    }
 
     public function authRegister()
     {

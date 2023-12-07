@@ -16,7 +16,7 @@
 
 
 
-      <div class=" hidden sm:flex">
+      <div class="flex">
       <div class="grid grid-cols-1 container p-12 place-items-center">
    
         <div class="col-span-1 md:px-0 lg:px-20">
@@ -538,12 +538,12 @@ export default {
   }
   .footertext {
     position: absolute;
-    top: calc(50% + 326px);
+    top: 95%;
     left: calc(50% - 200px);
     font-size: 0.9rem;
     font-weight: 500;
     color: #fff;
-    text-align: left;
+    text-align: center;
   }
   .logoprijava-icon {
     position: absolute;

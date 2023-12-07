@@ -17,6 +17,18 @@ export default {
     return response;
   },
 
+  loginweb(data) {
+    let ep = apiPrefix + "/v1/auth/loginweb";
+    let response = resource.post(ep, data);
+    response.then((res) => {
+      if (res.data.accessToken) {
+        let token = res.data.accessToken;
+        localStorage.setItem("token", token);
+      }
+    });
+    return response;
+  },
+
   logout() {
     let ep = apiPrefix + "/v1/auth/logout";
     let response = resource.post(ep);

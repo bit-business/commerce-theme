@@ -694,6 +694,10 @@ width: 80px;
     padding: 1rem;
   }
 
+  .container {
+    padding-right: 4%; /* Adjust as needed */
+  }
+
 }
 
   </style>
