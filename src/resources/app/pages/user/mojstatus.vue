@@ -143,8 +143,9 @@
       <div class="sviframeoviizaduzenje">
         <div class="frameimeistatus">
           <b class="imeclana">{{ korisnik.name }} {{ korisnik.username }}</b>
-          <b class="statusclanaaktivan">{{ korisnik.statusAktivan }}</b>
+         
         </div>
+        <b class="statusclanaaktivan">{{ korisnik.statusAktivan }}</b>
       </div>
       <div class="framesvekartice">
         <div class="prviframedetalji border-plava-200 border-2">
@@ -1963,10 +1964,10 @@ overflow: visible;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
-    justify-content: flex-start;
+    align-items: center;
+    justify-content: center;
     font-size: 32px;
-    margin-left: 24%;
+   
     margin-top: 6%;
   }
   .info-icon {
@@ -2380,45 +2381,45 @@ overflow: visible;
   @media screen and (max-width: 460px) {
 
       .naslovosnovneinfo {
-    gap: 66px;
+    gap: 20px;
   }
   .gradframe {
-    gap: 121px;
+    gap: 6px;
   }
 
   .podrucnizborframe {
-    gap: 93px;
+    gap: 6px;
   }
   .clanskibrojframe {
-    gap: 70px;
+    gap: 6px;
   }
 
 
 .naslovstatus {
-    gap: 104px;
+    gap: 50px;
   }
 
   .statusframedetalji {
 
-    gap: 112px;
+    gap: 6px;
   }
 
 
 
   .licenceframe {
-    gap: 98px;
+    gap: 6px;
   }
   .licencavrijediframe {
-    gap: 24px;
+    gap: 6px;
   }
 
   .valjanostlicenceframe {
-    gap: 29px;
+    gap: 6px;
   }
 
   .clanskaiskaznicaframe {
 
-    gap: 22px;
+    gap: 6px;
   }
 
 
@@ -2434,11 +2435,7 @@ overflow: visible;
 }
 
 
-      .sviframeoviizaduzenje {
-
-    margin-left: 30%;
-    margin-top: 5%;
-  }
+    
 
     .placeholderzaslike-icon {
         width: 70px; /* Set the desired size */
@@ -2452,7 +2449,7 @@ top:6%
 
  
      .statusdetalji {
-    font-size: 12px;
+    font-size: 10px;
   }
  .statusstecenframe {
 
@@ -2475,12 +2472,16 @@ top:6%
     gap: 32px;
   }
     .imeclana {
-      font-size: 26px;
+      font-size: 20px;
+      text-align: right;
+
     }
 
     .naslovseminar {
-      font-size: 12px;
-     gap: 105px;
+      font-size: 10px;
+     
+
+     gap: 50px;
     }
     
     .frameimeistatus {
@@ -2489,29 +2490,31 @@ top:6%
       padding-top: 20px;
       padding-bottom: 0px;
       box-sizing: border-box;
-        font-size: 12px;
+        font-size: 10px;
     }
 
     .osnovne-informacije {
-      font-size: 12px;
+      font-size: 10px;
+      text-align: right;
+
     }
 
     .grad {
-      font-size: 12px;
+      font-size: 10px;
     }
 
     .status {
-      font-size: 12px;
+      font-size: 10px;
     }
 
     .mjesto-seminara {
-      font-size: 12px;
-      text-align: left;
+      font-size: 10px;
+      text-align: right;
     }
 
     .hzuts-i-nik {
-      font-size: 12px;
-      text-align: left;
+      font-size: 10px;
+      text-align: right;
     }
   }
 
@@ -2634,62 +2637,6 @@ overflow-y: scroll;
 
 }
 
-.payment-separator {
-  height: 2px;
-  background-color: #03A9F4; /* blue separator line */
-  margin-top: 3px; /* space between the info and the line */
-}
-
-.payment-title {
-  display: block; /* ensures the title is on its own line */
-  font-weight: bold;
-  font-size: medium;
-  margin-top: 8px; /* Space between title and details */
-}
-
-
-.payment-name {
-  font-weight: bold;
-}
-
-.payment-date {
-  font-size: 0.9rem;
-  margin-top: auto;
-margin-right: auto;
-padding-left: 1rem;
-}
-
-.payment-status {
-  background-color: #67C371; /* green background */
-  color: white; /* white text */
-  padding: 5px 5px; /* padding inside the status tag */
-
-  font-weight: bold;
-  font-size: 0.9rem !important;
-}
-.payment-info {
-  /* styles for the container of status, date, and price */
-  display: flex;
-  justify-content: space-between; /* adjust as needed */
-  align-items: flex-start;
-  padding: 8px 0; /* spacing above and below the info line */
-}
-
-.payment-price {
-  margin-left: 10px; /* Space between the status and the price */
-  font-size: 0.9rem;
-  margin-top: auto;
-}
-
-/* Adjust the background-color and color properties to match your actual 'paidstatus' values */
-.payment-status.paid {
-  background-color: #67C371; /* Green background for paid status */
-}
-
-.payment-status.unpaid {
-  background-color: #f44336; /* Red background for unpaid status */
-}
-
 
 .placeholderzaslike-icon {
         width: 100px; /* Set the desired size */
@@ -2704,24 +2651,7 @@ padding-left: 1rem;
     }
 
 
-    .selected-count {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-width: 24px;
-  height: 24px;
- /* This will help in case the numbers have two digits or more */
-  border-radius: 50%; /* circle */
-  background-color: #03a9f4; /* any color you want */
-  color: white; /* text color */
-  position: absolute;
-  top: -10px; /* half of the height to ensure it's centered on the y-axis */
-  left: -10px; /* half of the width to ensure it's centered on the x-axis */
-  font-size: 0.75rem;
-  font-weight: bold;
-  z-index: 2;
-  border: 2px solid white; /* match the background color of .custom-dropdown */
-}
+ 
 
  /* Placeholder container styling */
  .placeholder-container {
@@ -2745,6 +2675,25 @@ padding-left: 1rem;
     transform: translate(-50%, -50%);
     font-size: 20px; /* Adjust font size as needed */
   }
+
+
+  @media (max-width: 400px) {
+  .sakrij {
+    /*  display: none; This will hide the element on small screens */
+width: 66px;
+  }
+  .px-6 {
+    /*  display: none; This will hide the element on small screens */
+padding-left: 0.5rem !important;
+padding-right: 0.5rem !important;
+  }
+
+  .pt-5
+  {
+    /*  display: none; This will hide the element on small screens */
+padding-top: 0rem !important;
+  }
+}
   
 
 </style>

@@ -2,7 +2,7 @@
   <div>
     <Head :title="$page.props.name" />
 
-    <div class="pt-8 navbar grid grid-cols-2 md:grid-cols-profile">
+    <div class="pt-5 container grid grid-cols-1 md:grid-cols-profile ">  
      <!--1-->
      <div class="Moj-pr-8">
 
@@ -345,7 +345,7 @@ export default {
 
   .tekstnemaobavijesti{
   color: #000;
-  width: 40%;
+  width: 70%;
   padding-top: 2rem;
   padding-left: 2rem;
 text-align: center;
@@ -544,6 +544,10 @@ width: 80px;
   padding-right: 0rem/* 32px */;
 }
 
+.pt-5{
+padding-top: 4.1rem;
+}
+
 .sidebar-closed {
     background: none; /* Remove background */
     width: 250px; /* Adjust width as needed */
@@ -601,16 +605,20 @@ width: 80px;
   }
 
   .tekstnemaobavijesti{
-  width: 74%;
+  width: 84%;
   padding-top: 2rem;
+  padding-left: 0rem !important;
 }
 .grid-cols-profile {
     grid-template-columns: 90% auto;
   }
   .container {
-    padding-right: 10%; /* Adjust as needed */
+    padding-right: 4%; /* Adjust as needed */
     
   }
+  .pt-5{
+  padding-top: 0rem !important;
+}
 
 
 }

@@ -1,10 +1,13 @@
 <template>
 
 
+
   
-    <div class="hzuts-login-desktop">
+
+      <template v-if="isWideScreen>
+      
       <Head title="Prijava" />
-    
+        <div class="hzuts-login-desktop">
     <img
       class="backgroundslika-icon"
       alt=""
@@ -82,110 +85,84 @@
       Copyright © 2023 Sva prava pridržana od strane HZUTS-a.
     </div>
     <img class="logohzuts-icon" alt="" src="/storage/slike/logohzuts.svg" />
-  </div>
+    </div>
 </template>
 
 
 
-<!--
-  <div class="h-auth sm:h-auto">
-    <Head title="Login" />
-    <div class="bg-primary hidden sm:flex">
-      <div class="grid grid-cols-2 container p-12 place-items-center">
-        <div
-          class="col-span-1 flex items-start justify-center flex-wrap select-none"
-        >
-          <img :src="logo" class="h-56 w-56" alt="Logo Theme" />
-          <div
-            class="w-full text-5xl text-center font-semibold text-white mt-2"
-            v-html="this.$voca.replace(title, ' ', '<br />')"
-          ></div>
-          <div class="w-80 text-2xl font-light text-center text-white mt-4">
-            {{ subtitle }}
+<template v-else>
+  <div class="hzuts-login-desktop-mob360">
+    <img class="backgroundslika-icon" alt="" src="/storage/slike/hzuts-login-desktop@3x.png" />
+    <div class="srednjiframe">
+      <div class="pozadinasrednjiframe" />
+      <div class="srednjipodframe">
+        <div class="prijavi-se">Prijavi se</div>
+        <div class="emailframe">
+
+          <div class="email-label">
+            <div class="background-container" />
+            <input class="poljezaupisemail" type="email" v-model="email"
+              @keypress.enter="login" ref="emailInput" :class="{ invalid: $v.email.$error }"/>
+            <img class="mail-icon" alt="" src="/storage/slike/mail-iconprijava.svg" />
           </div>
+          <div class="email">Email</div>
         </div>
-        <div class="col-span-1 md:px-0 lg:px-20">
-          <div class="bg-white rounded-xl p-8 flex flex-wrap gap-2 shadow-md">
-            <div class="text-xl w-full">Log In</div>
-            <input
-              type="email"
-              class="w-full border border-gray-300 py-2 pl-2 pr-8 focus:outline-none mt-4 focus:border-primary text-sm rounded-md"
-              placeholder="Email"
-              v-model="email"
-              @keypress.enter="login"
-            />
-            <password v-model="password" placeholder="Password" class="mt-4" @keypress.enter="login" />
-            <button :class="buttonClasses" @click="login">
-              <commerce-loading v-if="loading" />
-              <span v-else>LOG IN</span>
-            </button>
-            <div class="flex w-full flex-wrap">
-              <Link :href="route('skijasi.commerce-theme.forgot-password')" class="text-xs text-primary font-medium">
-                Lupa Password
-              </Link>
-              <div class="w-full flex items-center gap-4 my-2">
-                <div class="h-px w-full bg-gray-300" />
-                <div class="uppercase text-gray-300 text-sm">atau</div>
-                <div class="h-px w-full bg-gray-300" />
-              </div>
-              <div class="text-sm text-gray-300 w-full text-center">
-                Baru di {{ title }}?
-                <Link :href="route('skijasi.commerce-theme.register')" class="text-primary font-medium cursor-pointer">
-                  Daftar
-                </Link>
-              </div>
-            </div>
+        <div class="lozinkaframe">
+
+          <div class="email-label1">
+            <div class="background-container" />
+            <input class="poljezaupisemail" type="password" v-model="password" :type="showPassword ? 'password' : 'text'"
+              @keypress.enter="login" ref="passwordInput" :class="{ invalid: $v.password.$error }" />
+            <img class="mail-icon" alt="" src="/storage/slike/password-iconprijava.svg" />
           </div>
+
+       
+          <div class="email">Lozinka</div>
+        </div>
+        <button class="prijavisegumb" :class="buttonClasses" @click="login">
+           <commerce-loading v-if="loading" />
+          <div class="prijavisepozadina" />
+          <div class="prijavisetekst">Prijavi se</div>
+        </button>
+   
+
+        <div class="registrirajsetekst">
+          <span>Nemaš račun? </span>
+          <Link :href="route('skijasi.commerce-theme.register')" class="registrirajte-se cursor-pointer">
+            Registrirajte se
+          </Link>
+        </div>
+        <button class="okoikona" @click="showPassword = !showPassword">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" v-if="showPassword" fill="none" viewBox="0 0 24 24" stroke="#03a9f4">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+            </svg>
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" v-else fill="none" viewBox="0 0 24 24" stroke="#03a9f4">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+            </svg>
+        </button>
+        <div class="zapamtimeframe">
+          <div class="zapamtime">
+            <input class="zapamtime-child" type="checkbox" v-model="rememberMe" />
+            <div class="zapamti-me">Zapamti me</div>
+          </div>
+          <Link :href="route('skijasi.commerce-theme.forgot-password')" class="zaboravljenalozinka">Zaboravljena lozinka</Link>
         </div>
       </div>
     </div>
-    <div class="flex flex-col sm:hidden bg-gray-50 h-auth relative z-0 justify-start pt-12 items-center transform px-4">
-      <img :src="logo" class="h-16 w-auto" alt="Logo Theme" />
-      <div class="relative mt-16 w-full">
-        <input type="email" class="border-none outline-none w-full py-2 pl-8 pr-6 focus:outline-none text-sm rounded-md rounded-b-none bg-transparent" placeholder="Email" v-model="email" ref="email">
-        <div class="w-full h-px bg-gray-400 absolute bottom-0" />
-        <div class="absolute left-1 top-1/2 transform -translate-y-1/2 text-gray-500">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-          </svg>
-        </div>
-        <div class="absolute right-1 top-1/2 transform -translate-y-1/2 text-gray-500" @click="() => $refs.email.value = null" v-if="email">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M6 18L18 6M6 6l12 12" />
-          </svg>
-        </div>
-      </div>
-      <div class="relative mt-6 w-full">
-        <input :type="showPassword ? 'password' : 'text'" class="border-none outline-none w-full py-2 pl-8 pr-24 focus:outline-none text-sm rounded-md rounded-b-none bg-transparent" placeholder="Password" v-model="password" ref="password">
-        <div class="w-full h-px bg-gray-400 absolute bottom-0" />
-        <div class="absolute left-1 top-1/2 transform -translate-y-1/2 text-gray-500">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
-          </svg>
-        </div>
-        <div class="absolute right-1 top-1/2 transform -translate-y-1/2 text-gray-500 flex divide-x">
-          <div @click="showPassword = !showPassword">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" v-if="showPassword" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
-            </svg>
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" v-else fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-            </svg>
-          </div>
-          <Link :href="route('skijasi.commerce-theme.forgot-password')" class="pl-2 text-blue-500 text-sm">Lupa?</Link>
-        </div>
-      </div>
-      <div :class="['h-10 w-full mt-6 flex items-center justify-center rounded-md', $v.$invalid ? 'cursor-none text-gray-500 bg-gray-200 pointer-events-none' : 'bg-primary text-white']" @click="login">
-        Log In
-      </div>
-      <div class="flex justify-end w-full mt-4">
-        <Link :href="route('skijasi.commerce-theme.register')" class="text-blue-500 text-sm">Daftar</Link>
-      </div>
+    <div class="hzuts-login-desktop-child" />
+    <div class="footertext">
+      Copyright © 2023 Sva prava pridržana od strane HZUTS-a.
     </div>
+    <img class="logohzuts-icon" alt="" src="/storage/slike/logohzuts.svg" />
+    <a class="backgumb">
+      <img class="vector-icon2" alt="" src="/storage/slike/vectornazad1.svg" />
+      <img class="vector-icon2" alt="" src="/storage/slike/vectornazad2.svg" />
+    </a>
   </div>
 </template>
--->
+</template>
+
 <script>
 import Password from "./../../components/form/password.vue";
 import { mapState } from "vuex";
@@ -228,7 +205,21 @@ export default {
       maxLength: maxLength(255),
     },
   },
+
+  watch: {
+    '$root.windowWidth': function(newWidth) {
+      this.$forceUpdate();
+    }
+  },
+  destroyed() {
+    window.removeEventListener('resize', this.updateWidth);
+  },
   computed: {
+    isWideScreen() {
+      return window.innerWidth > 460;
+    },
+
+
     buttonClasses() {
       return [
         "w-full bg-primary text-white py-2 rounded-md text-sm font-medium mt-4 select-none flex items-center justify-center gap-2",
@@ -257,7 +248,12 @@ export default {
   mounted() {
     if (this.isAuthenticated) {
       this.$inertia.visit(this.route("skijasi.commerce-theme.home"))
-    }
+    };
+
+    window.addEventListener('resize', () => {
+      this.$root.windowWidth = window.innerWidth;
+    });
+
   },
   methods: {
     back() {
@@ -461,6 +457,7 @@ export default {
     align-items: center;
     justify-content: center;
     width: 5.67rem;
+    z-index: 3;
   }
   .prijavisegumb {
     cursor: pointer;
@@ -640,15 +637,335 @@ export default {
   }
 
   }
-  @media screen and (max-width: 420px) {
-    .hzuts-login-desktop {
-      max-width: 420px;
-    }
-    .logohzuts-icon {
-      top: 1rem;
-left: 43%;
-height: 5.5rem;
+  @media screen and (max-width: 460px) {
+ 
+   
+  .prijavi-se {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 45.5px);
+    font-size: 1.31rem;
+    font-weight: 600;
+    text-align: left;
   }
+  .background-container {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 134.1px);
+    border-radius: 13.41px;
+    border: 1.3px solid #03a9f4;
+    box-sizing: border-box;
+    width: 16.76rem;
   }
+  .poljezaupisemail {
+    border: 1.3px solid #03a9f4;
+    background-color: transparent;
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 99.2px);
+    border-radius: 0px 13.41px 13.41px 0px;
+    box-sizing: border-box;
+    width: 14.58rem;
+  }
+  .mail-icon {
+    position: absolute;
+    height: 48.06%;
+    top: 25.97%;
+    bottom: 25.97%;
+    left: calc(50% - 124px);
+    max-height: 100%;
+    width: 1.01rem;
+    overflow: hidden;
+  }
+  .email-label {
+    position: absolute;
+    height: 67.54%;
+    top: 32.46%;
+    bottom: 0%;
+    left: calc(50% - 134.1px);
+    width: 16.76rem;
+  }
+  .email {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 134.1px);
+    font-weight: 500;
+  }
+  .emailframe {
+    position: absolute;
+    top: 3rem;
+    left: 0.01rem;
+    width: 16.76rem;
+    height: 3.1rem;
+  }
+  .email-label1 {
+    position: absolute;
+    top: 1.01rem;
+    left: 0rem;
+    border-radius: 13.41px;
+    width: 16.76rem;
+    height: 2.09rem;
+  }
+  .lozinkaframe {
+    position: absolute;
+    top: 7.53rem;
+    left: 0.01rem;
+    width: 16.76rem;
+    height: 3.1rem;
+  }
+  .prijavisepozadina {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 134.1px);
+    border-radius: 13.41px;
+    background-color: #03a9f4;
+    width: 16.76rem;
+  }
+  .prijavisetekst {
+    position: absolute;
+    top: 31.94%;
+    left: calc(50% - 30.4px);
+    font-size: 0.67rem;
+    letter-spacing: -0.11px;
+    font-weight: 600;
+    font-family: Inter;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 3.8rem;
+  }
+  .prijavisegumb {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: 13.81rem;
+    left: 0.01rem;
+    border-radius: 13.41px;
+    width: 16.76rem;
+    height: 2.09rem;
+    z-index: 3;
+  }
+  .registrirajte-se {
+    color: #03a9f4;
+  }
+  .registrirajsetekst {
+    position: absolute;
+    top: 96.11%;
+    left: calc(50% - 66.3px);
+    text-align: left;
+  }
+  .vector-icon {
+    position: absolute;
+    height: 75.16%;
+    width: 100%;
+    top: 12.42%;
+    right: 0%;
+    bottom: 12.42%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .vector-icon1 {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .okoikona {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: relative !important;
+    height: initial !important;
+    top: 50% !important; 
+    bottom: 41.66% !important;
+    left: 110px !important;
+    right: 10px !important; 
+    width: 1.5rem;
+    overflow: hidden;
+  }
+  .zapamtime-child {
+    position: absolute;
+    height: 100%;
+    top: 0%;
+    bottom: 0%;
+    left: calc(50% - 32.2px);
+    border-radius: 2.01px;
+    border: 0.7px solid #03a9f4;
+    box-sizing: border-box;
+    width: 0.63rem;
+  }
+  .zapamti-me {
+    position: absolute;
+    top: 0%;
+    left: calc(50% - 12.1px);
+    font-weight: 300;
+  }
+  .zapamtime {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    width: 4.03rem;
+    height: 0.63rem;
+  }
+  .zaboravljena-lozinka {
+    text-decoration: none;
+    position: absolute;
+    top: 0%;
+    left: calc(50% + 57px);
+    font-weight: 300;
+    color: #03a9f4;
+  }
+  .zapamtimeframe {
+    position: absolute;
+    top: 11.54rem;
+    left: 0.01rem;
+    width: 16.76rem;
+    height: 0.63rem;
+    font-size: 0.5rem;
+  }
+  .srednjipodframe {
+    position: absolute;
+    margin: 0 !important;
+    top: 3.28rem;
+    left: calc(50% - 135px);
+    width: 16.81rem;
+    height: 17.81rem;
+    z-index: 1;
+  }
+  
+  .logohzuts-icon {
+    position: absolute;
+    margin: 0 !important;
+    top: 29.3%;
+    left: calc(50% - 40px);
+    width: 5rem;
+    height: 5rem;
+    z-index: 2;
+  }
+  .footertext {
+    position: absolute;
+    margin: 0 !important;
+    font-weight: 500;
+    font-size: 0.56rem;
+    z-index: 2;
+  }
+  
+
+  .hzuts-login-desktop-child {
+    position: absolute;
+    height: 7.13%;
+    width: 100%;
+    top: 92.87%;
+    right: 0%;
+    bottom: 0%;
+    left: 0%;
+    background-color: #03a9f4;
+    z-index: 2;
+  }
+ 
+  .vector-icon2 {
+    position: absolute;
+    height: 53.85%;
+    width: 53.85%;
+    top: 23.08%;
+    right: 23.08%;
+    bottom: 23.08%;
+    left: 23.08%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+  }
+  .backgumb {
+    text-decoration: none;
+    position: absolute;
+    margin: 0 !important;
+    top: 1.34rem;
+    right: 0.94rem;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    z-index: 4;
+  }
+  .hzuts-login-desktop-mob360 {
+    position: relative;
+    background-color: #fff;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.59rem;
+    color: #000;
+    font-family: Inter;
+    overflow: hidden;
+
+    height: 100%;
+  }
+
+  .backgroundslika-icon {
+    align-self: stretch;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 35%;
+    flex-shrink: 0;
+    object-fit: cover;
+    z-index: 0;
+    
+  }
+  .pozadinasrednjiframe {
+    align-self: stretch;
+    flex: 1;
+    position: relative;
+    background-color: #fff;
+    z-index: 0;
+  }
+  .srednjiframe {
+    width: 100%;
+    max-height: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top:35%;
+    z-index: 1;
+  }
+
+  .zaboravljenalozinka {
+    text-decoration: none;
+    position: absolute;
+    top: 0%;
+    left: calc(50% + 55px);
+    font-weight: 300;
+    color: #03a9f4;
+  }
+
+  
+
+
+}
+
 </style>
 

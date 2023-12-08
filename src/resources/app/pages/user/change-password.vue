@@ -1,8 +1,7 @@
 <template>
   <div>
     <Head :title="$page.props.name" />
-    <div class="pt-8 navbar container  sm:grid grid-cols-profile ">
-  
+    <div class="pt-5  container grid grid-cols-1 md:grid-cols-profile ">  
 <!--1-->
         <div class="Moj-pr-8">
 
@@ -319,7 +318,7 @@ export default {
 
 <style scoped>
   .navbar {
-    padding-top: 4.2rem; 
+    padding-top: 3rem; 
     padding-bottom: 3.15rem; 
     font-family: Inter;
   }
@@ -377,6 +376,13 @@ line-height: normal;
 padding-left: 12px;
 }
 
+.no-payments {
+  /* Add your styles here */
+  text-align: center;
+  padding: 20px;
+  font-size: 1rem;
+  color: #666;
+}
 
 
 
@@ -393,9 +399,6 @@ padding-left: 12px;
 
 @media (max-width: 767px) {
   
-  .navbar {
-    padding-top: 0rem; 
-  }
 
   .sidebar:hover {
   width: 200px; /* Adjust the width as needed to fit the text */
@@ -489,22 +492,32 @@ transition: width 0.3s ease;  /* Smooth transition */
     /*  display: none; This will hide the element on small screens */
 width: 80px;
   }
+.grid-cols-profile {
+    grid-template-columns: 90% auto;
+  }
+  .container {
+    padding-right: 10%; /* Adjust as needed */
+  }
 
-  
   .user-info {
     display: none;
   }
   
 
 
+  .navbar .container {
+    grid-template-columns: max-content 1fr;
+  }
 
- 
 }
 @media (min-width: 768px) {
   .moj-pr-8 {
   padding-right: 0rem/* 32px */;
 }
 
+.pt-5{
+padding-top: 4.1rem;
+}
 .sidebar-closed {
     background: none; /* Remove background */
     width: 250px; /* Adjust width as needed */
@@ -535,6 +548,7 @@ width: 80px;
 
 
 @media (max-width: 550px) {
+
   .border-l {
    /* Hide the border div */
    border-left-width: 0px;
@@ -563,4 +577,1636 @@ width: 80px;
 
 }
 
-  </style>
+
+
+
+
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(100%);
+  opacity: 0.8;
+}
+
+
+.pagination button.active {
+  background-color: #03a9f4;
+  color: white;
+}
+.pagination button.separator {
+  background: none;
+  border: none;
+  pointer-events: none;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-gap: 60px;
+  grid-row-gap: 90px;
+  width: 100%;
+
+
+max-width: 1500px;
+
+  justify-content: center;
+  align-items: stretch;
+
+
+}
+.grid-wrapper {
+  display: flex;
+  justify-content: center;
+  padding: 0 4%; /* Adjust padding as needed */
+    margin-bottom: 5.9%;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1200px) {
+  .grid-container {
+    grid-template-columns: repeat(3, minmax(270px, 1fr));
+  }
+}
+
+@media (max-width: 992px) {
+  .grid-container {
+    grid-template-columns: repeat(2, minmax(270px, 1fr));
+  }
+  .grid-wrapper {
+margin-top: 5%;
+    margin-bottom: 5.9%;
+}
+
+
+
+}
+
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr;
+  }
+  .grid-wrapper {
+    margin-top: 5%;
+    margin-bottom: 5.9%;
+}
+
+
+}
+
+
+
+
+
+  .filteriframeglavni-child {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    background-color: #fff;
+    width: 100%;
+    height: 14.81rem;
+  }
+  .strokeframe-child {
+    position: relative;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    width: 14.75rem;
+    height: 1.88rem;
+  }
+  .strokeframe {
+    width: 14.75rem;
+    height: 2.25rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .frame1 {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .odaberi-podrune-zborove {
+    position: relative;
+  }
+  .tekstokdaberizborframe {
+    position: absolute;
+    top: 0rem;
+    left: 0.06rem;
+    width: 13.06rem;
+    height: 1.6rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .strelicapremadolje-icon {
+    position: absolute;
+    top: 0.39rem;
+    left: 84%;
+    width: 0.75rem;
+    height: 1.13rem;
+    overflow: hidden;
+  }
+  .strelicapremadolje-icon2 {
+    position: absolute;
+    top: 0.39rem;
+    left: 84%;
+    width: 0.75rem;
+    height: 1.13rem;
+    overflow: hidden;
+  }
+  .odaberizbor {
+    flex: 1;
+    position: relative;
+    height: 21.5rem;
+    overflow: hidden;
+    margin-left: -14rem;
+  }
+  .odaberipodrucnizbor {
+    width: 15.13rem;
+    height: 2.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+  }
+  .status {
+    position: relative;
+    opacity: 0.2;
+  }
+  .chevron-right-1-icon {
+    position: relative;
+    width: 0.75rem;
+    height: 0.75rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    opacity: 0.2;
+  }
+  .statusfilter {
+    border: 1px solid rgba(3, 169, 244, 0.4);
+    box-sizing: border-box;
+    width: 6.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 0rem 0.44rem 0.75rem;
+    gap: 1.63rem;
+  }
+  .chevron-right-1-icon1 {
+    position: relative;
+    width: 0.75rem;
+    height: 0.75rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .clanarinefilter {
+    border: 1px solid rgba(3, 169, 244, 0.4);
+    box-sizing: border-box;
+    width: 6.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 0.44rem 0.44rem 0.75rem;
+    gap: 0.38rem;
+  }
+  .gradovifilter {
+    border: 1px solid rgba(3, 169, 244, 0.4);
+    box-sizing: border-box;
+    width: 6.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0rem 0rem 0.44rem 0.75rem;
+    gap: 1.06rem;
+  }
+  .filteritraka {
+    position: absolute;
+    top: 10.75rem;
+    left: 3.75rem;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    
+    padding: 0.63rem 10rem 0.63rem 0.63rem;
+    gap: 1.63rem;
+    
+    justify-content: space-between; 
+  }
+  .frame2 {
+    background-color: #73d2f6;
+    width: 1.25rem;
+    height: 1.25rem;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  .nije-plaena {
+    position: relative;
+    font-weight: 600;
+  }
+  .nijeplaceno {
+    width: 6.38rem;
+    height: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+  }
+  .placenaodabir-child {
+    position: relative;
+    border: 1px solid #73d2f6;
+    box-sizing: border-box;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+  .plaena {
+    position: relative;
+    font-weight: 600;
+    opacity: 0.2;
+  }
+  .placenaodabir {
+    width: 4.75rem;
+    height: 1.25rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.63rem;
+  }
+  .meniizbor {
+    position: absolute;
+    top: 13.45rem;
+    left: 29rem;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
+    width: 11.19rem;
+    height: 5.31rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0.94rem 0.94rem 0rem;
+    box-sizing: border-box;
+    gap: 0.94rem;
+    font-size: 0.75rem;
+    z-index: 2000;
+  }
+
+
+
+
+
+  .clear-icon {
+  cursor: pointer;
+  position: absolute;
+  right: 10px; /* Adjust the value as needed */
+  z-index: 10;
+  /* Other styling as needed, e.g., color, font size, etc. */
+}
+
+
+
+  
+  .input-wrapper {
+
+  display: flex;
+  align-items: center;
+  width: 24.13rem;
+    height: 2.35rem;
+    position: relative;
+  flex-grow: 1; /* Let the input grow to fill the space */
+  border: none; /* Remove border if not needed */
+  outline: none; /* Remove default focus outline */
+  padding-right: 30px; /* Add padding to prevent text from going under the 'X' */
+}
+
+.input-icon {
+  position: absolute;
+  left: 10px; /* Adjust the value as needed */
+  z-index: 10;
+  fill: #fff; /* Color of the icon */
+}
+
+  .pretrazivanjepoimenu {
+    border: 2px solid #03a9f4;
+    font-weight: 300;
+    font-family: Inter;
+    font-size: 1rem;
+    overflow: visible !important;
+    background-color: transparent;
+    position: absolute;
+    top: 4.44rem;
+    left: 3.75rem;
+    border-radius: 10px;
+    box-sizing: border-box;
+    width: 24.13rem;
+    height: 2.75rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0.63rem 2.5rem 0.63rem 2.81rem;
+  }
+  .filteriframeglavni-item {
+    position: absolute;
+    top: 9.41rem;
+    left: 3.72rem;
+    border-top: 1px solid rgba(3, 169, 244, 0.3);
+    box-sizing: border-box;
+    width: 82.56rem;
+    height: 0.06rem;
+  }
+  .chevron-right-1-icon4 {
+    position: relative;
+    width: 0.75rem;
+    height: 0.75rem;
+    opacity: 0.2;
+  }
+  .prikaz-group {
+    position: absolute;
+    top: 4.88rem;
+    right: 3.75rem;
+    border: 1px solid rgba(3, 169, 244, 0.5); 
+    box-sizing: border-box;
+    width: 3.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.44rem 0rem 0.44rem 0.75rem;
+    gap: 1.75rem;
+  }
+  .popis-lanova-hzuts-a {
+    position: absolute;
+    top: 1.25rem;
+    left: 3.75rem;
+    font-size: 1.5rem;
+    display: flex;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    width: 19.44rem;
+  }
+  .arrow-1-icon {
+    position: relative;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .poniti-sve {
+    position: relative;
+    font-size: 0.75rem;
+    font-family: Inter;
+    color: #000;
+    text-align: left;
+  }
+  .ponistigumb:active {
+  transform: scale(0.95); /* Slightly reduce the button size when clicked */
+  background-color: #ececec; /* Change background color when clicked */
+}
+  .ponistigumb {
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    height: 4.22%;
+    top: 72%;
+    right: 4.31rem;
+    bottom: 45.65%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.63rem;
+  }
+  .filteriframeglavni {
+    align-self: stretch;
+    position: relative;
+    height: 17rem;
+  }
+  .frame-icon {
+    align-self: stretch;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 13.75rem;
+    flex-shrink: 0;
+  }
+  .franjo-ml-jardas {
+    position: absolute;
+    top: 0rem;
+    left: calc(50% - 83px);
+  }
+  .demostrator-skijanja {
+    position: absolute;
+    top: 1.81rem;
+    left: calc(50% - 61px);
+    font-size: 0.75rem;
+    color: #03a9f4;
+  }
+  .frame4 {
+    position: absolute;
+    top: 5.25rem;
+    left: 2.81rem;
+    width: 5.63rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #68c471;
+  }
+  .span {
+    color: #03a9f4;
+  }
+  .licenca-vrijedi-do-container {
+    position: absolute;
+    top: 3.06rem;
+    left: calc(50% - 90px);
+    font-size: 0.75rem;
+    font-weight: 600;
+  }
+  .frame3 {
+    position: relative;
+    width: 11.25rem;
+    height: 6.75rem;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .kartica-clana {
+    border-radius: 10px;
+    background-color: #fff;
+    box-shadow: 0px 4px 4px rgba(3, 169, 244, 0.2);
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 2.53rem 0.63rem;
+    box-sizing: border-box;
+    gap: 0.88rem;
+  }
+  .containerkartica {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 0rem 3.25rem;
+    margin-top: -2.5rem;
+    font-size: 1.25rem;
+  }
+  .frame {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+
+    padding-bottom: 3rem;
+  }
+  .stroke-1-icon {
+    position: relative;
+    width: 1.19rem;
+    height: 1.19rem;
+  }
+  .frame-child {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    border-radius: 50%;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    width: 2.19rem;
+    height: 2.19rem;
+  }
+  .div {
+    position: absolute;
+    top: 0.19rem;
+    left: 0.88rem;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .ellipse-parent {
+    position: relative;
+    width: 2.19rem;
+    height: 2.19rem;
+  }
+  .frame-item {
+    position: absolute;
+    top: 0rem;
+    left: 0rem;
+    border-radius: 50%;
+    background-color: #03a9f4;
+    width: 2.19rem;
+    height: 2.19rem;
+  }
+  .div1 {
+    position: absolute;
+    top: 0.19rem;
+    left: 0.69rem;
+    font-weight: 500;
+  }
+  .ellipse-group {
+    position: relative;
+    width: 2.19rem;
+    height: 2.19rem;
+    color: #fff;
+  }
+  .div2 {
+    position: absolute;
+    top: 0.19rem;
+    left: 0.69rem;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .div3 {
+    position: relative;
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .div4 {
+    position: absolute;
+    top: 0.19rem;
+    left: calc(50% - 11.5px);
+    letter-spacing: 0.02em;
+    font-weight: 500;
+  }
+  .straniceselector {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.25rem;
+    font-size: 1.25rem;
+    color: #03a9f4;
+    font-family: Poppins;
+  }
+  .glavnipodframe {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 5.38rem 0rem;
+    gap: 6rem;
+    z-index: 0;
+  }
+  .blurbackground {
+    flex: 1;
+    position: absolute;
+    margin: 0 !important;
+    top: 0rem;
+    left: 0rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    width: 100%;
+    z-index: 2002;
+  }
+ 
+  .nasiclanovi {
+    position: relative;
+    background-color: #f8f7f5;
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 0.63rem;
+    text-align: left;
+    font-size: 0.88rem;
+    color: #000;
+    font-family: Inter;
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .placeholder-image {
+    content: url('/storage/slike/nasiclanovi/placeholderclanovi_mobile.jpg');
+  }
+    .filteriframeglavni-child {
+    height: 24.81rem;
+  }
+    .filteritraka {
+      flex-direction: row;
+  
+      box-sizing: border-box;
+      
+    }
+
+    .pretrazivanjepoimenu {
+      width: calc(100% - 16%); /* Subtract left and right padding from 100% */
+    padding-left: 4%;
+    padding-right: 4%;
+
+  
+      
+      box-sizing: border-box;
+    }
+
+    .ponistigumb {
+    top: 47%;
+    right: 5%;
+
+  }
+    .input-wrapper {
+padding-left: 24px;
+}
+  
+  }
+
+  @media screen and (max-width: 978px) {
+  .filteriframeglavni-child {
+    height: 19.81rem;
+  }
+  .filteriframeglavni {
+    height: 26rem;
+  }
+
+  .ponistigumb {
+    top: 63%;
+    right: 7%;
+
+  }
+  }
+
+
+  @media screen and (max-width: 350px) {
+
+
+  
+    .popis-lanova-hzuts-a {
+    left: 3.05rem;
+  }
+
+    .ponistigumb {
+      height: auto;
+      flex-direction: row;
+      gap: 0.63rem;
+      padding-top: 0;
+      padding-bottom: 0rem;
+      box-sizing: border-box;
+    }
+  }
+  @media screen and (max-width: 460px) {
+    .popis-lanova-hzuts-a {
+    left: 2.8rem;
+  }
+    .filteritraka {
+   left: 2.8rem;
+      
+    }
+ .prikaz-group {
+    position: absolute;
+    top: 20.88rem;
+    right: 7.75rem;
+    border: 1px solid rgba(3, 169, 244, 0.5); 
+    box-sizing: border-box;
+    width: 5.25rem;
+    height: 1.88rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0.44rem 0rem 0.44rem 0.75rem;
+    gap: 1.75rem;
+  }
+    
+    .pretrazivanjepoimenu {
+      width: 16.35rem;
+      padding: 0.63rem 0.5rem 0.63rem 0.81rem;
+      left: 2.1rem;
+    }
+    .filteriframeglavni-child {
+    height: 24.81rem;
+  }
+  .input-wrapper {
+    width: calc(100% - 8%); /* Subtract left and right padding from 100% */
+    padding-left: 4%;
+    padding-right: 4%;
+
+align-items: center;
+
+  height: 2.35rem;
+padding-left: 24px;
+overflow: visible;
+}
+
+.input-wrapper::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+
+  color: #999999;
+  opacity: 1; 
+}
+
+.ponistigumb {
+    top: 90%;
+    right: 40%;
+
+  }
+
+  }
+
+
+
+  @media screen and (max-width: 675px) {
+    .filteriframeglavni-child {
+    height: 24.81rem;
+  }
+      .pretrazivanjepoimenu {
+
+
+      width: calc(100% - 16%); /* Subtract left and right padding from 100% */
+    padding-left: 4%;
+    padding-right: 4%;
+    height: auto;
+
+   
+  }
+.ponistigumb {
+    top: 90%;
+    right: 40%;
+
+  }
+
+  }
+
+
+
+
+
+
+  
+  .detaljnije-informacije {
+    position: relative;
+    font-weight: 500;
+  }
+  .closexgumb-icon {
+    position: relative;
+    width: 32px;
+    height: 32px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .framedetalji {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: space-between;
+    text-align: center;
+    margin-left: 0%
+  }
+  .imeclana {
+    position: relative;
+  }
+  .statusclanaaktivan {
+    position: relative;
+    font-size: 20px;
+    color: #68c471;
+  }
+  .frameimeistatus {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+  }
+  .sviframeoviizaduzenje {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    font-size: 32px;
+    margin-left: 24%;
+    margin-top: 6%;
+  }
+  .info-icon {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    flex-shrink: 0;
+  }
+  .osnovne-informacije {
+    position: relative;
+    font-weight: 600;
+  }
+  .naslovosnovneinfo {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 116px;
+  }
+  .grad {
+    position: relative;
+  }
+  .grad-wrapper {
+    width: 42px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .zagreb-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: #03a9f4;
+  }
+  .gradframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 181px;
+  }
+  .podruni-zbor-wrapper {
+    width: 110px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .podrucnizborframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 113px;
+  }
+  .lanski-broj-wrapper {
+    width: 93px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .clanskibrojframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 130px;
+  }
+  .kvadrat {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 5px;
+    font-size: 16px;
+  }
+  .prviframedetalji {
+    align-self: stretch;
+    border-radius: 10px;
+    background-color: #f8f7f5;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 15px;
+    box-sizing: border-box;
+    gap: 20px;
+  }
+  .statusdetalji {
+    position: relative;
+    font-weight: 600;
+  }
+  .naslovstatus {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 184px;
+  }
+  .status-wrapperdetalji {
+    width: 49px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .statusframedetalji {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 172px;
+  }
+  .licenca-wrapper {
+    width: 63px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .isia-br-7654-ivsi-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    color: #68c471;
+  }
+  .licenceframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 158px;
+  }
+  .licenca-vrijedi-do-wrapper {
+    width: 137px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .licencavrijediframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 84px;
+  }
+  .valjanost-licence-wrapper {
+    width: 132px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .valjanostlicenceframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 89px;
+  }
+  .lanska-iskaznica-wrapper {
+    width: 139px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .clanskaiskaznicaframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 82px;
+  }
+  .kvadrat1 {
+    align-self: stretch;
+    border-radius: 10px 10px 0px 0px;
+    background-color: #f8f7f5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 22px 15px;
+    gap: 20px;
+  }
+  .naslovseminar {
+    align-self: stretch;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 175px;
+  }
+  .status-steen-wrapper {
+    width: 151px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .seminar-za-potvrivanje-licenc-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #03a9f4;
+  }
+  .statusstecenframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 70px;
+  }
+  .datum-seminara-wrapper {
+    width: 128px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .datumseminaraframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 93px;
+  }
+  .mjesto-seminara {
+    position: relative;
+  }
+  .mjesto-seminara-wrapper {
+    width: 129px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .mjestoseminaraframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 92px;
+  }
+  .drava-wrapper {
+    width: 57px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .drzavaframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 164px;
+  }
+  .organizator-wrapper {
+    width: 94px;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+  .hzuts-i-nik {
+    position: relative;
+    font-weight: 600;
+  }
+  .organizatorframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 127px;
+  }
+  .licencaframe {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 158px;
+  }
+  .kvadrat2 {
+    align-self: stretch;
+    border-radius: 0px 0px 10px 10px;
+    background-color: #f8f7f5;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 18px 15px;
+    gap: 20px;
+  }
+  .drugiframe {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+  }
+  .zaduenja {
+    position: relative;
+    font-weight: 600;
+  }
+  .gumbzaduzenja {
+    align-self: stretch;
+    border-radius: 10px;
+    background-color: #03a9f4;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+  }
+  .framesvekartice {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 1.6rem;
+  }
+  .glavnipodframedetalji {
+    align-self: stretch;
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    padding: 0px 1px 0px 0px;
+  
+  }
+  .detaljiclanaframeglavni {
+
+    flex: 1;
+    min-width: 600px;
+    height: 100%; 
+    overflow-y: scroll; 
+
+    margin: 0 !important;
+    position: fixed; 
+    top: 0rem;
+    right: 0.06rem;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.75rem 1.81rem;
+    gap: 1.5rem;
+    z-index: 2003;
+    font-size: 1.25rem;
+
+   
+
+
+  }
+
+  @media screen and (max-width: 600px) {
+
+    .detaljiclanaframeglavni {
+      min-width: auto; 
+    width: 100%;
+}
+
+    .imeclana {
+      font-size: 30px;
+    }
+
+    .frameimeistatus {
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 20px;
+      padding-bottom: 0px;
+      box-sizing: border-box;
+    }
+
+    .osnovne-informacije {
+      font-size: 14px;
+    }
+
+    .grad {
+      font-size: 14px;
+    }
+
+    .status {
+      font-size: 14px;
+    }
+
+    .mjesto-seminara {
+      font-size: 14px;
+      text-align: left;
+    }
+
+    .hzuts-i-nik {
+      font-size: 14px;
+      text-align: left;
+    }
+  }
+
+
+
+  @media screen and (max-width: 460px) {
+
+      .naslovosnovneinfo {
+    gap: 66px;
+  }
+  .gradframe {
+    gap: 121px;
+  }
+
+  .podrucnizborframe {
+    gap: 93px;
+  }
+  .clanskibrojframe {
+    gap: 70px;
+  }
+
+
+.naslovstatus {
+    gap: 104px;
+  }
+
+  .statusframedetalji {
+
+    gap: 112px;
+  }
+
+
+
+  .licenceframe {
+    gap: 98px;
+  }
+  .licencavrijediframe {
+    gap: 24px;
+  }
+
+  .valjanostlicenceframe {
+    gap: 29px;
+  }
+
+  .clanskaiskaznicaframe {
+
+    gap: 22px;
+  }
+
+
+ .framesvekartice {
+
+    padding-top: 3.4rem;
+  }
+
+.payments-list {
+  
+    padding-top: 3.4rem;
+
+}
+
+
+      .sviframeoviizaduzenje {
+
+    margin-left: 30%;
+    margin-top: 5%;
+  }
+
+    .placeholderzaslike-icon {
+        width: 70px; /* Set the desired size */
+        height: 70px; /* Set the desired size */
+        position: absolute;
+        left: 4%;
+        margin-top: 6%;
+top:6%
+    
+    }
+
+ 
+     .statusdetalji {
+    font-size: 12px;
+  }
+ .statusstecenframe {
+
+    gap: 30px;
+  }
+  .drzavaframe {
+
+    gap: 104px;
+  }
+  .organizatorframe {
+    gap: 67px;
+  }
+  .licencaframe {
+    gap: 98px;
+  }
+      .datumseminaraframe {
+    gap: 33px;
+  }
+  .mjestoseminaraframe {
+    gap: 32px;
+  }
+    .imeclana {
+      font-size: 26px;
+    }
+
+    .naslovseminar {
+      font-size: 12px;
+     gap: 105px;
+    }
+    
+    .frameimeistatus {
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 20px;
+      padding-bottom: 0px;
+      box-sizing: border-box;
+        font-size: 12px;
+    }
+
+    .osnovne-informacije {
+      font-size: 12px;
+    }
+
+    .grad {
+      font-size: 12px;
+    }
+
+    .status {
+      font-size: 12px;
+    }
+
+    .mjesto-seminara {
+      font-size: 12px;
+      text-align: left;
+    }
+
+    .hzuts-i-nik {
+      font-size: 12px;
+      text-align: left;
+    }
+  }
+
+
+
+
+.custom-dropdown1 {
+  position: relative;
+  width: 300px; /* Adjust as necessary */
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+  cursor: pointer;
+  
+}
+.custom-dropdown2 {
+  position: relative;
+  width: 120px; /* Adjust as necessary */
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+  cursor: pointer;
+
+}
+.custom-dropdown3 {
+  position: relative;
+  width: 120px; /* Adjust as necessary */
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+  cursor: pointer;
+
+}
+.custom-dropdown4 {
+  position: relative;
+  width: 120px; /* Adjust as necessary */
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+  cursor: pointer;
+ 
+}
+
+.dropdown-label {
+  padding: 10px; /* Adjust as necessary */
+  background-color: white;
+  border: 1px solid rgba(3, 169, 244, 0.5); 
+ 
+}
+
+
+
+
+
+.dropdown-content {
+/* Initially hide the dropdown content */
+  position: absolute; /* Position it absolutely within the relative container */
+  background-color: #ffffff; /* Set background color */
+  min-width: 170px; /* Minimum width of the dropdown content */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow for depth */
+  z-index: 2010; /* Ensure it's above other content */
+  top: 100%;
+  border-bottom-left-radius: 5px;  
+  border-bottom-right-radius: 5px; 
+}
+.dropdown-contentAZ {
+/* Initially hide the dropdown content */
+  position: absolute; /* Position it absolutely within the relative container */
+  background-color: #ffffff; /* Set background color */
+  min-width: 5.25rem; /* Minimum width of the dropdown content */
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow for depth */
+  z-index: 2010; /* Ensure it's above other content */
+  top: 100%;
+right: 0%;
+border-bottom-left-radius: 5px;  
+  border-bottom-right-radius: 5px; 
+
+}
+
+
+
+.dropdown-item label {
+  padding: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.dropdown-item label:hover {
+  background-color: #e6e6e6; /* Slight color change on hover */
+}
+
+
+.dropdown-item {
+  padding: 10px;
+  border-bottom: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+}
+
+.dropdown-item:last-child {
+  border-bottom: none;
+}
+
+.dropdown-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+.dropdown-item:hover {
+  background-color:  rgba(3, 169, 244, 1);  /* Color change on hover */
+}
+
+
+
+
+.payments-list {
+
+  align-self: stretch;
+    display: block;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 30px;
+    padding-top: 1.9rem;
+    max-height: 100%;
+overflow-y: scroll;
+
+}
+
+.payment-separator {
+  height: 2px;
+  background-color: #03A9F4; /* blue separator line */
+  margin-top: 3px; /* space between the info and the line */
+}
+
+.payment-title {
+  display: block; /* ensures the title is on its own line */
+  font-weight: bold;
+  font-size: medium;
+  margin-top: 8px; /* Space between title and details */
+}
+
+
+.payment-name {
+  font-weight: bold;
+}
+
+.payment-date {
+  font-size: 0.9rem;
+  margin-top: auto;
+margin-right: auto;
+padding-left: 1rem;
+}
+
+.payment-status {
+  background-color: #67C371; /* green background */
+  color: white; /* white text */
+  padding: 5px 5px; /* padding inside the status tag */
+
+  font-weight: bold;
+  font-size: 0.9rem !important;
+}
+.payment-info {
+  /* styles for the container of status, date, and price */
+  display: flex;
+  justify-content: space-between; /* adjust as needed */
+  align-items: flex-start;
+  padding: 8px 0; /* spacing above and below the info line */
+}
+
+.payment-price {
+  margin-left: 10px; /* Space between the status and the price */
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Adjust the background-color and color properties to match your actual 'paidstatus' values */
+.payment-status.paid {
+  background-color: #67C371; /* Green background for paid status */
+}
+
+.payment-status.unpaid {
+  background-color: #f44336; /* Red background for unpaid status */
+}
+
+
+.placeholderzaslike-icon {
+        width: 100px; /* Set the desired size */
+        height: 100px; /* Set the desired size */
+        position: absolute;
+        left: 4%;
+        margin-top: 7%;
+
+        border-radius: 50%; /* Makes it circular */
+        border: 2px solid #03A9F4; /* Adds a blue stroke. Change the color as needed */
+        object-fit: cover; /* Ensures the image covers the area without distortion */
+    }
+
+
+    .selected-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+ /* This will help in case the numbers have two digits or more */
+  border-radius: 50%; /* circle */
+  background-color: #03a9f4; /* any color you want */
+  color: white; /* text color */
+  position: absolute;
+  top: -10px; /* half of the height to ensure it's centered on the y-axis */
+  left: -10px; /* half of the width to ensure it's centered on the x-axis */
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 2;
+  border: 2px solid white; /* match the background color of .custom-dropdown */
+}
+
+ /* Placeholder container styling */
+ .placeholder-container {
+    position: relative;
+    text-align: center;
+    width: 100%; 
+    height: auto;
+    color: #fff; /* Adjust text color as needed */
+  }
+
+  .placeholder-image {
+    width: 100%; /* Adjust width as needed */
+    height: auto; /* Adjust height as needed */
+
+  }
+
+  .placeholder-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 20px; /* Adjust font size as needed */
+  }
+  
+
+</style>

@@ -3,7 +3,7 @@
     <Head :title="$page.props.name" />
 
     <div class="navbar hidden sm:block">
-      <div class="pt-8  container grid grid-cols-profile">
+      <div class="pt-5  container grid grid-cols-profile">
 
 
         <div class="Moj-pr-8">

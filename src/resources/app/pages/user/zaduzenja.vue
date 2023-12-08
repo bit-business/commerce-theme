@@ -770,77 +770,6 @@ margin-top: 5%;
 
 
 }
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  padding-top: 3.6rem;
-}
-
-.pagination button {
-  cursor: pointer;
-  border-radius: 50%; /* Circular buttons */
-  width: 40px;
-  height: 40px;
-  margin: 0 5px;
-  border: 1px solid #03a9f4; /* Blue border */
-  background-color: #fff;
-  color: #03a9f4; /* Blue text */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.pagination button:hover,
-.pagination button.active {
-  background-color: #03a9f4; /* Blue background for active/hover state */
-  color: #fff; /* White text for active/hover state */
-}
-
-.pagination button:disabled {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.pagination button.separator {
-  pointer-events: none;
-  cursor: default;
-  background: transparent;
-  color: #aaa;
-}
-
-/* Arrow buttons styling */
-.pagination button.prev,
-.pagination button.next {
-  border-radius: 5px; /* Slightly rounded for arrows */
-}
-
-/* Hide the default arrows and use custom ones */
-.pagination button.prev::before,
-.pagination button.next::after {
-  content: '';
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-}
-
-.pagination button.prev::before {
-  transform: rotate(-135deg);
-  margin-right: 5px;
-}
-
-.pagination button.next::after {
-  transform: rotate(45deg);
-  margin-left: 5px;
-}
-
-
-
 
 
 
@@ -1449,18 +1378,7 @@ padding-left: 24px;
 
   @media screen and (max-width: 350px) {
 
-    .pretrazivanjepoimenu {
 
-
-width: calc(100% - 28%) !important; /* Subtract left and right padding from 100% */
-padding-left: 4%;
-padding-right: 4%;
-margin-left: 8%;
-margin-right: 8%;
-height: auto;
-
-
-}
   
     .popis-lanova-hzuts-a {
     left: 3.05rem;

@@ -697,7 +697,30 @@ width: 80px;
   .container {
     padding-right: 4%; /* Adjust as needed */
   }
-
+}
+  @media (max-width: 400px) {
+  .sakrij {
+    /*  display: none; This will hide the element on small screens */
+width: 66px;
+  }
+  .px-6 {
+    /*  display: none; This will hide the element on small screens */
+padding-left: 0.5rem !important;
+  }
+  .p-6 {
+    /*  display: none; This will hide the element on small screens */
+padding: 0.5rem !important;
+  }
+  .profile-content, .profile-info {
+    width: initial;
+    max-width: none;
+    padding: 0.6rem;
+  }
+  .pt-5
+  {
+    /*  display: none; This will hide the element on small screens */
+padding-top: 0rem !important;
+  }
 }
 
   </style>
