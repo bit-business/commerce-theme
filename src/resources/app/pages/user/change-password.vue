@@ -133,7 +133,7 @@
             <span class="text-lg font-medium plavi-text">Promijeni Lozinku</span>
           </div>
 
-        <div class="grid grid-cols-change-password p-6 mb-4 gap-y-4 items-center gap-x-6 pr-4">
+        <div class="grid moj-grid-cols-3 grid-cols-change-password p-6 mb-4 gap-y-4 items-center gap-x-6 pr-4">
           <div class="w-full col-span-full">
             <alert closeable v-if="isSuccess">
               <template slot="icon">
@@ -334,7 +334,6 @@ export default {
 font-family: Inter;
 }
 .plavi-text {
-   
   color: #03A9F4;
 font-family: Inter;
 font-size: 32px;
@@ -496,7 +495,7 @@ width: 80px;
     grid-template-columns: 90% auto;
   }
   .container {
-    padding-right: 10%; /* Adjust as needed */
+    padding-right: 2%; /* Adjust as needed */
   }
 
   .user-info {
@@ -544,11 +543,21 @@ padding-top: 4.1rem;
 
 }
 
-
-
+@media (max-width: 660px) {
+.moj-grid-cols-3{
+  grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
+  display: flex;
+    flex-direction: column;
+}
+.grid-cols-change-password{
+  grid-template-columns: initial !important;
+}
+}
 
 @media (max-width: 550px) {
-
+  .pt-5 {
+    padding-top: 0rem;
+}
   .border-l {
    /* Hide the border div */
    border-left-width: 0px;
@@ -651,10 +660,16 @@ margin-top: 5%;
     margin-bottom: 5.9%;
 }
 
-
+.grid-cols-change-password{
+grid-template-columns: 120px 1fr;
 }
 
+.ml-12 {
+    margin-left: 4.5rem;
+  
+}
 
+}
 
 
 
@@ -1207,41 +1222,7 @@ margin-top: 5%;
     font-family: Inter;
   }
 
-  @media screen and (max-width: 600px) {
 
-    .placeholder-image {
-    content: url('/storage/slike/nasiclanovi/placeholderclanovi_mobile.jpg');
-  }
-    .filteriframeglavni-child {
-    height: 24.81rem;
-  }
-    .filteritraka {
-      flex-direction: row;
-  
-      box-sizing: border-box;
-      
-    }
-
-    .pretrazivanjepoimenu {
-      width: calc(100% - 16%); /* Subtract left and right padding from 100% */
-    padding-left: 4%;
-    padding-right: 4%;
-
-  
-      
-      box-sizing: border-box;
-    }
-
-    .ponistigumb {
-    top: 47%;
-    right: 5%;
-
-  }
-    .input-wrapper {
-padding-left: 24px;
-}
-  
-  }
 
   @media screen and (max-width: 978px) {
   .filteriframeglavni-child {
@@ -1277,29 +1258,17 @@ padding-left: 24px;
     }
   }
   @media screen and (max-width: 460px) {
-    .popis-lanova-hzuts-a {
-    left: 2.8rem;
+    .plavi-text {
+   text-align: center;
+}
+    .container {
+    padding-right: 3%; 
   }
-    .filteritraka {
-   left: 2.8rem;
-      
-    }
- .prikaz-group {
-    position: absolute;
-    top: 20.88rem;
-    right: 7.75rem;
-    border: 1px solid rgba(3, 169, 244, 0.5); 
-    box-sizing: border-box;
-    width: 5.25rem;
-    height: 1.88rem;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    padding: 0.44rem 0rem 0.44rem 0.75rem;
-    gap: 1.75rem;
+  .p-6{
+   padding: initial;
   }
-    
+
+ 
     .pretrazivanjepoimenu {
       width: 16.35rem;
       padding: 0.63rem 0.5rem 0.63rem 0.81rem;
@@ -1332,31 +1301,14 @@ overflow: visible;
 
   }
 
-  }
-
-
-
-  @media screen and (max-width: 675px) {
-    .filteriframeglavni-child {
-    height: 24.81rem;
-  }
-      .pretrazivanjepoimenu {
-
-
-      width: calc(100% - 16%); /* Subtract left and right padding from 100% */
-    padding-left: 4%;
-    padding-right: 4%;
-    height: auto;
-
-   
-  }
-.ponistigumb {
-    top: 90%;
-    right: 40%;
+  .ml-12 {
+    margin-left: 4rem;
+  
+}
 
   }
 
-  }
+
 
 
 
@@ -1800,6 +1752,7 @@ overflow: visible;
     .detaljiclanaframeglavni {
       min-width: auto; 
     width: 100%;
+   
 }
 
     .imeclana {
@@ -1937,7 +1890,7 @@ top:6%
     gap: 32px;
   }
     .imeclana {
-      font-size: 26px;
+      font-size: 12px;
     }
 
     .naslovseminar {

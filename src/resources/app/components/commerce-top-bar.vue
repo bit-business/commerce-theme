@@ -1283,7 +1283,7 @@ top: 0%;
     }
 
     .avatar-container {
-  right: 0.4rem;
+  right: 0.8rem;
 }
 
 

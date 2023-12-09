@@ -1836,6 +1836,9 @@ height: auto;
     }
   }
   @media screen and (max-width: 460px) {
+    .plavi-text {
+   text-align: center;
+}
     .popis-lanova-hzuts-a {
     left: 2.8rem;
   }
@@ -2396,7 +2399,7 @@ overflow: visible;
 
 
 .naslovstatus {
-    gap: 50px;
+    gap: 47px;
   }
 
   .statusframedetalji {
@@ -2453,35 +2456,46 @@ top:6%
   }
  .statusstecenframe {
 
-    gap: 30px;
+  gap: 6px;
   }
   .drzavaframe {
 
-    gap: 104px;
+    gap: 6px;
   }
   .organizatorframe {
-    gap: 67px;
+    gap: 6px;
   }
   .licencaframe {
-    gap: 98px;
+    gap: 6px;
   }
       .datumseminaraframe {
-    gap: 33px;
+        gap: 6px;
   }
+
+  .lanska-iskaznica-wrapper {
+    gap: 6px;
+    width: 90px;
+  }
+  .licenca-vrijedi-do-wrapper {
+    width: 90px;
+  }
+  .valjanost-licence-wrapper {
+    width: 90px;
+  }
+
+
   .mjestoseminaraframe {
-    gap: 32px;
+    gap: 6px;
   }
     .imeclana {
       font-size: 20px;
-      text-align: right;
-
     }
 
     .naslovseminar {
       font-size: 10px;
      
 
-     gap: 50px;
+      gap: 6px;
     }
     
     .frameimeistatus {
@@ -2495,8 +2509,6 @@ top:6%
 
     .osnovne-informacije {
       font-size: 10px;
-      text-align: right;
-
     }
 
     .grad {
@@ -2509,13 +2521,17 @@ top:6%
 
     .mjesto-seminara {
       font-size: 10px;
-      text-align: right;
+    
     }
 
     .hzuts-i-nik {
       font-size: 10px;
-      text-align: right;
+  
     }
+    .container {
+    padding-right: 3%; 
+  }
+
   }
 
 
@@ -2523,7 +2539,7 @@ top:6%
 
 .custom-dropdown1 {
   position: relative;
-  width: 300px; /* Adjust as necessary */
+  width: 300px; 
   border: 1px solid rgba(3, 169, 244, 0.5); 
   cursor: pointer;
   

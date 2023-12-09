@@ -574,10 +574,16 @@ padding-top: 4.1rem;
 
 }
 
-
-
-
+@media (max-width: 460px) {
+  .items-start{
+   align-items: center !important;
+}
+.plavi-text {
+   text-align: center;
+}
+}
 @media (max-width: 550px) {
+
   .border-l {
    /* Hide the border div */
    border-left-width: 0px;
@@ -612,10 +618,7 @@ padding-top: 4.1rem;
 .grid-cols-profile {
     grid-template-columns: 90% auto;
   }
-  .container {
-    padding-right: 4%; /* Adjust as needed */
-    
-  }
+
   .pt-5{
   padding-top: 0rem !important;
 }

@@ -699,14 +699,14 @@ width: 80px;
   }
 }
   @media (max-width: 400px) {
+    .plavi-text {
+   text-align: center;
+}
   .sakrij {
     /*  display: none; This will hide the element on small screens */
 width: 66px;
   }
-  .px-6 {
-    /*  display: none; This will hide the element on small screens */
-padding-left: 0.5rem !important;
-  }
+
   .p-6 {
     /*  display: none; This will hide the element on small screens */
 padding: 0.5rem !important;

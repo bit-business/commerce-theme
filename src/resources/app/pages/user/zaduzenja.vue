@@ -1394,6 +1394,9 @@ padding-left: 24px;
     }
   }
   @media screen and (max-width: 460px) {
+    .plavi-text {
+   text-align: center;
+}
     .popis-lanova-hzuts-a {
     left: 2.8rem;
   }
@@ -1957,6 +1960,10 @@ overflow: visible;
 
 
   @media screen and (max-width: 460px) {
+
+    .container {
+    padding-right: 3%; 
+  }
 
       .naslovosnovneinfo {
     gap: 66px;
