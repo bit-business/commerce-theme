@@ -153,7 +153,7 @@
     <div class="w-full h-full flex-col flex p-6 items-center justify-center text-gray-500">
   
 
-<svg width="auto" height="auto" viewBox="0 0 408 280" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg style="max-width: 400px; width: auto; height: auto;"  viewBox="0 0 408 280" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g opacity="0.4" filter="url(#filter0_f_369_641)">
 <rect x="40" y="40" width="328" height="200" rx="24" fill="url(#paint0_linear_369_641)"/>
 </g>
@@ -589,7 +589,7 @@ line-height: normal;
 font-family: Inter;
 }
 .plavi-text {
-   
+   padding: 1rem;
   color: #03A9F4;
 font-family: Inter;
 font-size: 32px;
