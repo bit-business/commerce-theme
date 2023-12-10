@@ -282,7 +282,7 @@ Ovdje će se nalaziti sva plaćanja koje izvršite preko web stranice ili mobiln
     </div>
 
 
-
+<!-- tablica za placanje ODKOMENTIRATI KASNIJE!! TODO
     <div class="px-6 ml-18 mr-4 mt-3">
           <div class=" velikigrid grid-cols-6 bg-white rounded-xl mb-3 tablicaplacanja">
             <div @click="isActive = index" :class="['py-4 cursor-pointer text-center hover:text-primary transition-colors border-b-2 first:rounded-l-xl last:rounded-r-xl text-sm lg:text-base', isActive === index ? 'border-primary text-primary' : 'border-gray-200 text-gray-700']" v-for="(tab, index) in tabs" :key="index">{{ tab }}</div>
@@ -314,7 +314,7 @@ Ovdje će se nalaziti sva plaćanja koje izvršite preko web stranice ili mobiln
                   </div>
                   <div class="text-sm text-gray-500 border-r pr-2 cursor-default select-none" v-else-if="order.status == 'cancel' && order.cancelMessage">{{ order.cancelMessage }}</div>
                   <div class="flex ml-3 items-center divide-x">
-                    <!-- <tooltip class="pr-2 flex items-center justify-center" placement="right" popoverBaseClass="top-arrow-center top-arrow-center mr-2 arrow-right" trigger="hover">
+                    <-- <tooltip class="pr-2 flex items-center justify-center" placement="right" popoverBaseClass="top-arrow-center top-arrow-center mr-2 arrow-right" trigger="hover">
                       <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 tooltip-target text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -322,12 +322,12 @@ Ovdje će se nalaziti sva plaćanja koje izvršite preko web stranice ili mobiln
                       <template slot="popover">
                         <p class="tooltip-content">Terakhir Di Update Pada 29-07-2021 17:40</p>
                       </template>
-                    </tooltip> -->
-                    <!-- <div v-tooltip.bottom="'Terakhir Di Update Pada 29-07-2021 17:40'" class="pr-2"> -->
+                    </tooltip> ->
+                    <-- <div v-tooltip.bottom="'Terakhir Di Update Pada 29-07-2021 17:40'" class="pr-2"> ->
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" v-if="['process', 'delivering', 'done'].includes(order.status)">
                       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
-                    <!-- </div> -->
+                    <-- </div> ->
                     <span :class="['process', 'delivering', 'done'].includes(order.status) ? 'pl-2' : ''" class="text-sm text-primary tracking-wide uppercase">{{ formatStatus(order.status, order.expiredAt) }}</span>
                   </div>
                 </div>
@@ -359,8 +359,8 @@ Ovdje će se nalaziti sva plaćanja koje izvršite preko web stranice ili mobiln
                     <div class="text-2xl text-primary">{{ $currency(parseInt(order.payed)) }}</div>
                   </div>
                   <div class="flex items-center space-x-2">
-                   <!-- <button @click="review(order.id)" class="text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Ocjena</button>
-                     <button class="text-sm bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border">Hubungi Penjual</button> -->
+                   <-- <button @click="review(order.id)" class="text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Ocjena</button>
+                     <button class="text-sm bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border">Hubungi Penjual</button> ->
                     <Link class="text-sm block text-center bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border" :href="route('skijasi.commerce-theme.detalji', order.orderDetails[0].productDetail.product.slug)">Kupi ponovo</Link>
                     <button class="text-sm bg-primary hover:bg-opacity-90 text-white py-2 rounded-md w-40 border" v-if="order.status === 'waitingBuyerPayment'">
                       <component
@@ -375,7 +375,7 @@ Ovdje će se nalaziti sva plaćanja koje izvršite preko web stranice ili mobiln
             </div>
           </div>
         </div>
-
+      -->
 
       </div>
 
@@ -647,7 +647,7 @@ padding-left: 12px;
 
 @media (max-width: 767px) {
 .mojgrid-cols-profile{
-  grid-template-columns: 90px 1fr;
+  grid-template-columns: 80px 1fr;
 
 }
 
@@ -814,6 +814,7 @@ width: 80px;
 
 
 @media (max-width: 550px) {
+
 
   .navbar {
     padding-top: 0rem; 

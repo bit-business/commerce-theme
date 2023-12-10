@@ -57,6 +57,7 @@
               <img class="user-icon" alt="" src="/storage/slike/user-icon.svg" />
             </div>
             <div class="ime">Ime</div>
+  
           </div>
           <div class="frameprezime">
             <div class="imebackground">
@@ -66,7 +67,12 @@
             </div>
             <div class="ime">Prezime</div>
           </div>
+     
+
+
+
         </div>
+        
         <div class="frameemail">
           <div class="framezaemail">
             <div class="containerzaemail" />
@@ -87,6 +93,15 @@
           </div>
           <div class="ime">Datum rođenja</div>
         </div>
+
+   
+              <!-- Error messages container -->
+              <div v-if="firstErrorMessage" class="error-message">
+  {{ firstErrorMessage }}
+</div>
+
+
+
       </div>
     </div>
   </transition>
@@ -244,7 +259,17 @@
             <div class="broj-mobitela">Poštanski broj</div>
           </div>
         </div>
+
+
+            <!-- Error messages container -->
+            <div v-if="firstErrorMessage" class="error-message">
+  {{ firstErrorMessage }}
+</div>
+
       </div>
+
+
+
     </div>
 
      
@@ -813,6 +838,76 @@ export default {
         return this.$_.find(state.themeConfigurations, { key: "logoTheme" }).value;
       },
     }),
+
+
+
+    firstErrorMessage() {
+    if (this.$v.name.$dirty && !this.$v.name.required) {
+      return 'Ime je obavezno.';
+    } else if (this.$v.name.$dirty && !this.$v.name.minLength) {
+      return 'Ime mora sadržavati najmanje 3 znaka.';
+    } else if (this.$v.name.$dirty && !this.$v.name.maxLength) {
+      return 'Ime ne smije biti duže od 35 znakova.';
+    }
+
+    if (this.$v.username.$dirty && !this.$v.username.required) {
+      return 'Prezime je obavezno.';
+    } else if (this.$v.username.$dirty && !this.$v.username.minLength) {
+      return 'Prezime mora sadržavati najmanje 3 znaka.';
+    } else if (this.$v.username.$dirty && !this.$v.username.maxLength) {
+      return 'Prezime ne smije biti duže od 35 znakova.';
+    }
+
+    if (this.$v.email.$dirty && !this.$v.email.required) {
+      return 'Email je obavezan.';
+    } else if (this.$v.email.$dirty && !this.$v.email.email) {
+      return 'Neispravna email adresa.';
+    } else if (this.$v.email.$dirty && !this.$v.email.minLength) {
+      return 'Email mora sadržavati najmanje 4 znaka.';
+    } else if (this.$v.email.$dirty && !this.$v.email.maxLength) {
+      return 'Email ne smije biti duži od 55 znakova.';
+    }
+
+
+     // Checks for the second screen
+     if (this.showSecondFrame) {
+      if (this.$v.brojmobitela.$dirty && !this.$v.brojmobitela.minLength) {
+        return 'Broj mobitela mora sadržavati najmanje 5 znamenki.';
+      } else if (this.$v.brojmobitela.$dirty && !this.$v.brojmobitela.maxLength) {
+        return 'Broj mobitela ne smije biti duži od 25 znamenki.';
+      }
+
+      if (this.$v.drzava.$dirty && !this.$v.drzava.minLength) {
+        return 'Država mora sadržavati najmanje 3 znaka.';
+      } else if (this.$v.drzava.$dirty && !this.$v.drzava.maxLength) {
+        return 'Država ne smije biti duža od 20 znakova.';
+      }
+
+      if (this.$v.adresa.$dirty && !this.$v.adresa.minLength) {
+        return 'Adresa mora sadržavati najmanje 3 znaka.';
+      } else if (this.$v.adresa.$dirty && !this.$v.adresa.maxLength) {
+        return 'Adresa ne smije biti duža od 100 znakova.';
+      }
+
+      if (this.$v.grad.$dirty && !this.$v.grad.minLength) {
+        return 'Grad mora sadržavati najmanje 3 znaka.';
+      } else if (this.$v.grad.$dirty && !this.$v.grad.maxLength) {
+        return 'Grad ne smije biti duži od 20 znakova.';
+      }
+
+      if (this.$v.postanskibroj.$dirty && !this.$v.postanskibroj.minLength) {
+        return 'Poštanski broj mora sadržavati najmanje 1 znak.';
+      } else if (this.$v.postanskibroj.$dirty && !this.$v.postanskibroj.maxLength) {
+        return 'Poštanski broj ne smije biti duži od 20 znakova.';
+      }
+    }
+
+
+    return null; // No errors
+  },
+
+
+
   },
   mounted() {
     if (this.isAuthenticated) {
@@ -878,6 +973,7 @@ export default {
     },
 
     toggleContent() {
+    this.$v.$touch(); 
   if (this.showCurrentFrame) {
     // 1
     if (!this.$v.name.$invalid && !this.$v.username.$invalid && !this.$v.email.$invalid) {
@@ -911,6 +1007,7 @@ export default {
 
 
 }, // za prikaz 1-4 screenova za registraciju
+
 
 
     register() {
@@ -964,6 +1061,19 @@ export default {
 
 
 <style scoped>
+
+.error-message {
+  color: red; /* Set the color to red */
+  font-size: 11px; /* Adjust font size as needed */
+    border: none;
+    padding: 0;
+    position: absolute;
+    top: 28rem;
+    left: calc(50% - 197.5px);
+    border-radius: 20px;
+    width: 25rem;
+    height: 8.13rem;
+}
 
 .dodavanjelinkova {
     position: absolute;
