@@ -438,7 +438,16 @@
           </div>
           <div class="oib">OIB</div>
         </div>
-      </div>
+
+
+  
+
+      </div> 
+
+      <!-- Error messages container -->
+<div v-if="firstErrorMessage" class="error-message">
+  {{ firstErrorMessage }}
+</div>
  
     </div>
   </transition>
@@ -743,6 +752,15 @@ export default {
       sameAsPassword: sameAs("password"),
     },
 
+    avatar: {
+    fileSelected(value) {
+      // Assuming avatar is null by default and set to the file data upon file selection
+      return !!value; // returns true if a file has been selected, false otherwise
+    }
+  },
+
+
+
     checkboxValue: {
       required
     }
@@ -902,6 +920,29 @@ export default {
       }
     }
 
+      if (this.showThirdFrame) {
+      if (this.$v.password.$dirty && !this.$v.password.minLength) {
+        return 'Lozinka mora sadržavati najmanje 4 znaka.';
+      } else if (this.$v.password.$dirty && !this.$v.password.maxLength) {
+        return 'Lozinka ne smije biti duža od 50 znakova.';
+      }
+
+      if (this.$v.passwordConfirmation.$dirty && !this.$v.passwordConfirmation.minLength) {
+        return 'Potvrda lozinke mora sadržavati najmanje 4 znaka.';
+      } else if (this.$v.passwordConfirmation.$dirty && !this.$v.passwordConfirmation.maxLength) {
+        return 'Potvrda lozinke ne smije biti duža od 50 znakova.';
+      }
+
+      if (this.$v.oib.$dirty && !this.$v.oib.minLength) {
+        return 'OIB mora sadržavati 11 znakova.';
+      } 
+
+   
+    }
+
+
+    
+
 
     return null; // No errors
   },
@@ -1047,8 +1088,17 @@ export default {
           this.$inertia.visit(this.route('skijasi.commerce-theme.verification', this.email))
         })
         .catch((error) => {
-          this.$helper.displayErrors(error)
-        })
+          console.log("TEST2",error); 
+      if (error.errors.email.includes("validation.unique")) {
+       
+        alert("Ovaj email je već u upotrebi. Molimo koristite drugi email ili odite na zaboravljena lozinka.");
+
+    } else {
+      console.log("TEST1",error); 
+      console.log("TEST11",error.response); 
+      this.$helper.displayErrors(error); // Handle other types of errors
+    }
+  })
         .finally(() => {
           this.loading = false
         });
@@ -1068,7 +1118,7 @@ export default {
     border: none;
     padding: 0;
     position: absolute;
-    top: 28rem;
+    top: 82%;
     left: calc(50% - 197.5px);
     border-radius: 20px;
     width: 25rem;
@@ -1151,8 +1201,8 @@ export default {
   }
   .tekstdiv {
     position: absolute;
-    top: calc(50% - 9px);
-    left: calc(50% - 5px);
+    top: calc(50% - 14px);
+    left: calc(50% - 8px);
     font-weight: 600;
   }
   .framebroj4 {
@@ -1203,8 +1253,8 @@ export default {
   }
   .tekstdiv2 {
     position: absolute;
-    top: calc(50% - 10px);
-    left: calc(50% - 4px);
+    top: calc(50% - 13px);
+    left: calc(50% - 6px);
     font-weight: 600;
   }
   .framebroj1 {
@@ -1216,8 +1266,8 @@ export default {
   }
   .tekstdiv3 {
     position: absolute;
-    top: calc(50% - 9px);
-    left: calc(50% - 5px);
+    top: calc(50% - 14px);
+    left: calc(50% - 7px);
     font-weight: 600;
   }
   .framebroj2 {
@@ -1753,8 +1803,8 @@ export default {
   }
   .framenatrag {
     position: absolute;
-    top: 34.13rem;
-    left: 5.25rem;
+    top: 34.63rem;
+    left: 7.25rem;
     width: 18.38rem;
     bottom: 1rem;
     height: 1.06rem;
@@ -2648,7 +2698,7 @@ export default {
     text-decoration: none;
     position: absolute;
     top: 26.5rem;
-    left: 5.44rem;
+    left: 4.4rem;
     width: 17.38rem;
     height: 1.06rem;
     font-size: 0.88rem;
@@ -2693,7 +2743,27 @@ export default {
   }
 
   }
+
+
   @media screen and (max-width: 600px) {
+  .tekstdiv2 {
+    top: calc(50% - 9px);
+    left: calc(50% - 4px);
+  }
+  .tekstdiv3 {
+    top: calc(50% - 9px);
+    left: calc(50% - 5px);
+  }
+  .tekstdiv {
+    top: calc(50% - 9px);
+    left: calc(50% - 5px);
+  }
+
+  .error-message {
+  font-size: 10px;
+}
+
+
     .hzuts-registration-desktop {
       max-width: 600px;
     }
@@ -2706,13 +2776,6 @@ export default {
     top: 0rem;
     z-index: 100;
   }
-
-
-
-
-
-
-
 
 
 

@@ -247,7 +247,7 @@ export default {
   },
   mounted() {
     if (this.isAuthenticated) {
-      this.$inertia.visit(this.route("skijasi.commerce-theme.home"))
+      this.$inertia.visit(this.route("skijasi.commerce-theme.profile"))
     };
 
     window.addEventListener('resize', () => {
@@ -760,7 +760,7 @@ export default {
   }
   .registrirajsetekst {
     position: absolute;
-    top: 96.11%;
+    top: 100%;
     left: calc(50% - 66.3px);
     text-align: left;
   }
@@ -853,9 +853,9 @@ export default {
   }
   
   .logohzuts-icon {
-    position: absolute;
+   
     margin: 0 !important;
-    top: 29.3%;
+    top: 31.3%;
     left: calc(50% - 40px);
     width: 5rem;
     height: 5rem;
