@@ -1,10 +1,9 @@
 <template>
 
 
+<div>
 
-  
-
-      <template v-if="isWideScreen>
+      <template v-if="isWideScreen">
       
       <Head title="Prijava" />
         <div class="hzuts-login-desktop">
@@ -94,6 +93,8 @@
   <div class="hzuts-login-desktop-mob360">
     <img class="backgroundslika-icon" alt="" src="/storage/slike/hzuts-login-desktop@3x.png" />
     <div class="srednjiframe">
+      <img class="logohzuts-icon" alt="" src="/storage/slike/logohzuts.svg" />
+
       <div class="pozadinasrednjiframe" />
       <div class="srednjipodframe">
         <div class="prijavi-se">Prijavi se</div>
@@ -154,13 +155,14 @@
     <div class="footertext">
       Copyright © 2023 Sva prava pridržana od strane HZUTS-a.
     </div>
-    <img class="logohzuts-icon" alt="" src="/storage/slike/logohzuts.svg" />
-    <a class="backgumb">
+
+    <Link :href="route('skijasi.commerce-theme.home')" class="backgumb">
       <img class="vector-icon2" alt="" src="/storage/slike/vectornazad1.svg" />
       <img class="vector-icon2" alt="" src="/storage/slike/vectornazad2.svg" />
-    </a>
+    </Link>
   </div>
 </template>
+</div>
 </template>
 
 <script>
@@ -190,6 +192,11 @@ export default {
       loading: false,
       showPassword: true,
       rememberMe: false,
+
+
+
+    windowWidth: window.innerWidth,
+  
     };
   },
   validations: {
@@ -212,12 +219,14 @@ export default {
     }
   },
   destroyed() {
-    window.removeEventListener('resize', this.updateWidth);
+    window.removeEventListener('resize', this.handleResize);
   },
   computed: {
     isWideScreen() {
-      return window.innerWidth > 460;
-    },
+    const wide = window.innerWidth > 460;
+    console.log('Window width:', window.innerWidth, 'Is wide screen:', wide);
+    return wide;
+  },
 
 
     buttonClasses() {
@@ -250,12 +259,16 @@ export default {
       this.$inertia.visit(this.route("skijasi.commerce-theme.profile"))
     };
 
-    window.addEventListener('resize', () => {
-      this.$root.windowWidth = window.innerWidth;
-    });
+    window.addEventListener('resize', this.handleResize);
+
 
   },
   methods: {
+
+    handleResize() {
+    this.windowWidth = window.innerWidth;
+  },
+
     back() {
       window.history.back();
     },
@@ -600,14 +613,15 @@ export default {
 
 
   .logohzuts-icon {
-    position: absolute;
-    width: 13.89%;
-    top: 2.38rem;
-    right: 82.64%;
-    left: 3.47%;
-    max-width: 100%;
-    overflow: hidden;
-    height: 12.5rem;
+    position: relative !important;
+    width: 13.89% !important;
+    top: 2.34rem !important;
+    right: 82.64% !important;
+  
+    max-width: 100% !important;
+    overflow: hidden !important;
+    height: 12.5rem !important;
+    z-index: 2 !important;
   }
   .hzuts-login-desktop {
     position: relative;
@@ -620,6 +634,17 @@ export default {
     color: #000;
     font-family: Inter;
   }
+
+  @media screen and (min-width: 461px) {
+    .hzuts-login-desktop {
+      position: absolute !important;
+    }
+    .logohzuts-icon {
+    position: absolute !important;
+  }
+  }
+
+
   @media screen and (max-width: 1200px) {
     .hzuts-login-desktop {
       max-width: 1200px;
@@ -631,9 +656,9 @@ export default {
     }
 
     .logohzuts-icon {
-    top: 1rem;
-    left: 43%;
-    height: 5.5rem;
+    top: 1rem !important;
+    left: 43% !important;
+    height: 5rem !important;
   }
 
   }
@@ -845,24 +870,28 @@ export default {
   .srednjipodframe {
     position: absolute;
     margin: 0 !important;
-    top: 3.28rem;
+    top: 13%;
     left: calc(50% - 135px);
     width: 16.81rem;
     height: 17.81rem;
     z-index: 1;
   }
   
+
   .logohzuts-icon {
-   
-    margin: 0 !important;
-    top: 31.3%;
-    left: calc(50% - 40px);
-    width: 5rem;
-    height: 5rem;
-    z-index: 2;
-  }
+  position: absolute !important;
+  left: 38.6% !important;
+  top: -3rem !important;
+  bottom: -5rem !important; /* Half the height of the logo */
+  width: 5rem !important; /* Set the width of your logo */
+  height: 5rem !important; /* Set the height of your logo */
+  /* other styling as needed */
+  z-index: 2;
+}
+
+ 
   .footertext {
-    position: absolute;
+   
     margin: 0 !important;
     font-weight: 500;
     font-size: 0.56rem;
@@ -871,7 +900,7 @@ export default {
   
 
   .hzuts-login-desktop-child {
-    position: absolute;
+
     height: 7.13%;
     width: 100%;
     top: 92.87%;
@@ -907,7 +936,7 @@ export default {
     z-index: 4;
   }
   .hzuts-login-desktop-mob360 {
-    position: relative;
+
     background-color: #fff;
     width: 100%;
     display: flex;
@@ -932,6 +961,9 @@ export default {
     flex-shrink: 0;
     object-fit: cover;
     z-index: 0;
+    top: 0rem;
+    left: 0rem;
+
     
   }
   .pozadinasrednjiframe {
@@ -942,15 +974,19 @@ export default {
     z-index: 0;
   }
   .srednjiframe {
-    width: 100%;
+    width: 100% !important;
     max-height: 80%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    position: relative;
-    top:35%;
+    position: relative !important;
+    transform: initial !important;
+    top:30%;
     z-index: 1;
+left: auto;
+height: 34.5rem;
+ max-height: 50rem;
   }
 
   .zaboravljenalozinka {

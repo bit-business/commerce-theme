@@ -5,7 +5,16 @@
     
 
     <div class="navbar ">
-      
+        <!-- Floating Action Button -->
+  <div v-if="!isSidebarExpanded" class="fab" :class="{ open: isSidebarOpen }" @click="toggleSidebar">
+    <span class="fab-icon" :class="{ 'icon-active': isSidebarOpen }">
+      <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="20" y="30" width="60" height="8" fill="black"/>
+        <rect x="20" y="46" width="60" height="8" fill="black"/>
+        <rect x="20" y="62" width="60" height="8" fill="black"/>
+      </svg>
+    </span>
+  </div>
     
 
 
@@ -13,7 +22,7 @@
 <!--1-->
         <div class="Moj-pr-8">
 
-          <div :class="{'h-22 flex items-center': true, 'border-b': isSidebarExpanded, 'border-plava-200': !isSidebarExpanded, 'sakrij': true}">
+          <div :class="{'h-18 flex items-center': true, 'border-b': isSidebarOpen, 'border-plava-200': !isSidebarOpen, 'sakrij': true}">
 
             <div v-if="isSidebarExpanded" class="border-plava-200 border-2 rounded-full"> <!-- New container with border -->
             <div class="h-14 w-14 items-center justify-center clip-circle sidebar-item sidebar-icon">
@@ -25,12 +34,12 @@
             </div>
           </div>
 
-          <div :class="['sidebar', { 'sidebar-open': isSidebarOpen, 'sidebar-closed': !isSidebarOpen }]">
+          <div :class="['sidebar', { 'sidebar-open': !isSidebarOpen, 'sidebar-closed': isSidebarOpen }]">
 
           <div class="mt-4 flex items-center gap-y-3 flex-wrap sidebarClasses ">
 
-            <div v-if="!isSidebarExpanded" class="h-10 w-10 items-center justify-center clip-circle sidebar-icon sidebar-avatar">
-              <img :src="user.avatar" alt="User's avatar" class="object-cover h-10 w-10">
+            <div v-if="!isSidebarExpanded" class="object-cover items-center justify-center clip-circle sidebar-icon sidebar-avatar">
+              <img :src="user.avatar" alt="User's avatar" class="object-cover">
             </div> 
           
             <Link :href="route('skijasi.commerce-theme.profile')" class="w-full inline-flex items-center group sidebar-item">
@@ -473,14 +482,20 @@ yearDifference() {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     };
 
-
+   this.handleResize();
+    window.addEventListener('resize', this.handleResize);
 
   },
 
 
 
-
+  beforeDestroy() {
+    window.removeEventListener('resize', this.handleResize);
+},
   methods: {
+    handleResize() {
+        this.isSidebarExpanded = window.innerWidth > 768;
+    },
 
     async ucitajClanove() {
       console.log("TEST PODACI111", this.idmember);
@@ -681,8 +696,10 @@ console.log ("TEST EVENTI", response.data);
     },
 
     
-    toggleSidebarExpansion() {
-      this.isSidebarExpanded = !this.isSidebarExpanded;
+
+
+    toggleSidebar() {
+      this.isSidebarOpen = !this.isSidebarOpen;
     },
 
 
@@ -798,6 +815,92 @@ console.log ("TEST EVENTI", response.data);
 </script>
 
 <style scoped>
+.sidebar-closed .sidebar-text {
+    display: none;
+  }
+
+ 
+
+
+  .sidebar-open .sidebar-text {
+    display: none;
+    opacity: 1;
+    transition: opacity 0.3s ease-in-out;
+  }
+.fab {
+    position: fixed;
+    top: 10%;
+    left: 10px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Optional: add a subtle shadow if needed */
+
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: transform 0.3s ease-in-out, background-color 0.3s;
+  }
+
+
+  .fab-icon {
+    /* Center the icon in the button */
+    display: none;
+
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease-in-out;
+    position: relative;
+  }
+
+  /* Rotate the SVG to form an "X" when the sidebar is open */
+ /* Initial state for the SVG lines */
+.fab-icon svg rect {
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+  .fab-icon.icon-active svg rect:nth-child(1) {
+  transform: translateY(-16px) rotate(45deg);
+}
+
+/* Hide the middle bar */
+.fab-icon.icon-active svg rect:nth-child(2) {
+  opacity: 0;
+  transition: opacity 0s ease; /* This will make the middle bar disappear immediately */
+}
+
+/* Transform the bottom bar */
+.fab-icon.icon-active svg rect:nth-child(3) {
+  transform: translateY(16px) rotate(-45deg);
+}
+
+
+  /* Sidebar styles with transition for animation */
+  .sidebar {
+    transition: transform 0.3s ease-in-out;
+  }
+
+  /* Translate the sidebar off-screen when it is not open */
+  .sidebar-closed {
+    transform: translateX(-140%);
+  }
+
+  /* Ensure the sidebar is visible when it's open */
+  .sidebar-open {
+    transform: translateX(0);
+    display: inline; /* Show the text */
+  opacity: 1; /* Make text fully opaque */
+  transition: opacity 0.9s ease;
+  white-space: nowrap; /* Prevent text wrapping */
+  border-radius: 2%;
+
+  padding: 4px;
+  }
+
+
   .navbar {
     padding-top: 3rem; 
     padding-bottom: 3.15rem; 
@@ -869,6 +972,11 @@ padding-left: 12px;
 }
 
 @media (max-width: 767px) {
+
+  .fab-icon {
+    /* Center the icon in the button */
+    display: flex;
+  }
   
 
   .sidebar:hover {
@@ -934,9 +1042,6 @@ position: fixed;
 height: auto;
 transition: width 0.3s ease;  /* Smooth transition */
   z-index: 2210; /* Above other content */
-  background-color: #ffffff; /* Add a white background */
-  border-radius: 1rem; /* Add rounded corners */
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06); /* Optional: add a subtle shadow */
 
 
 }
@@ -946,14 +1051,23 @@ transition: width 0.3s ease;  /* Smooth transition */
 }
 
 .sidebar-open {
-  width: 150px;/* Show sidebar */
-  transition: width 0.4s ease;
+ left: -1%;
+ top: 17%;
+
+  transition: width 0.7s ease;
+
+  width: 200px; /* Adjust the width as needed to fit the text */
+  background-color: #ffffff; /* Or any color you want for the hover background */
+  box-shadow: 2px 4px 6px -1px rgba(0, 0, 0, 0.14), 2px 2px 4px -1px rgba(0, 0, 0, 0.09); /* Optional: add a subtle shadow if needed */
+  display: flex-start;
+  justify-content: center;
+  align-items: center;
 }
 
 .sidebar-closed {
   width: 60px; /* Allow the sidebar to shrink to fit the icons */
   padding: 0.3rem; /* Provide some padding around the icons */
-  transition: width 0.4s ease;
+  transition: width 0.7s ease;
 }
 
 
@@ -967,7 +1081,8 @@ width: 80px;
     grid-template-columns: 90% auto;
   }
   .container {
-    padding-right: 10%; /* Adjust as needed */
+   /* Adjust as needed */
+   width: 93% !important;
   }
 
   .user-info {
@@ -977,7 +1092,8 @@ width: 80px;
 
 
   .navbar .container {
-    grid-template-columns: max-content 1fr;
+   /* grid-template-columns: max-content 1fr; */
+   margin-left: 5%;
   }
 
 }
@@ -985,6 +1101,8 @@ width: 80px;
   .moj-pr-8 {
   padding-right: 0rem/* 32px */;
 }
+
+
 
 .sidebar-closed {
     background: none; /* Remove background */
@@ -1130,76 +1248,6 @@ margin-top: 5%;
 
 
 }
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  padding-top: 3.6rem;
-}
-
-.pagination button {
-  cursor: pointer;
-  border-radius: 50%; /* Circular buttons */
-  width: 40px;
-  height: 40px;
-  margin: 0 5px;
-  border: 1px solid #03a9f4; /* Blue border */
-  background-color: #fff;
-  color: #03a9f4; /* Blue text */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.pagination button:hover,
-.pagination button.active {
-  background-color: #03a9f4; /* Blue background for active/hover state */
-  color: #fff; /* White text for active/hover state */
-}
-
-.pagination button:disabled {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.pagination button.separator {
-  pointer-events: none;
-  cursor: default;
-  background: transparent;
-  color: #aaa;
-}
-
-/* Arrow buttons styling */
-.pagination button.prev,
-.pagination button.next {
-  border-radius: 5px; /* Slightly rounded for arrows */
-}
-
-/* Hide the default arrows and use custom ones */
-.pagination button.prev::before,
-.pagination button.next::after {
-  content: '';
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-}
-
-.pagination button.prev::before {
-  transform: rotate(-135deg);
-  margin-right: 5px;
-}
-
-.pagination button.next::after {
-  transform: rotate(45deg);
-  margin-left: 5px;
-}
-
-
 
 
 
@@ -2534,107 +2582,6 @@ top:6%
 
   }
 
-
-
-
-.custom-dropdown1 {
-  position: relative;
-  width: 300px; 
-  border: 1px solid rgba(3, 169, 244, 0.5); 
-  cursor: pointer;
-  
-}
-.custom-dropdown2 {
-  position: relative;
-  width: 120px; /* Adjust as necessary */
-  border: 1px solid rgba(3, 169, 244, 0.5); 
-  cursor: pointer;
-
-}
-.custom-dropdown3 {
-  position: relative;
-  width: 120px; /* Adjust as necessary */
-  border: 1px solid rgba(3, 169, 244, 0.5); 
-  cursor: pointer;
-
-}
-.custom-dropdown4 {
-  position: relative;
-  width: 120px; /* Adjust as necessary */
-  border: 1px solid rgba(3, 169, 244, 0.5); 
-  cursor: pointer;
- 
-}
-
-.dropdown-label {
-  padding: 10px; /* Adjust as necessary */
-  background-color: white;
-  border: 1px solid rgba(3, 169, 244, 0.5); 
- 
-}
-
-
-
-
-
-.dropdown-content {
-/* Initially hide the dropdown content */
-  position: absolute; /* Position it absolutely within the relative container */
-  background-color: #ffffff; /* Set background color */
-  min-width: 170px; /* Minimum width of the dropdown content */
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow for depth */
-  z-index: 2010; /* Ensure it's above other content */
-  top: 100%;
-  border-bottom-left-radius: 5px;  
-  border-bottom-right-radius: 5px; 
-}
-.dropdown-contentAZ {
-/* Initially hide the dropdown content */
-  position: absolute; /* Position it absolutely within the relative container */
-  background-color: #ffffff; /* Set background color */
-  min-width: 5.25rem; /* Minimum width of the dropdown content */
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Add some shadow for depth */
-  z-index: 2010; /* Ensure it's above other content */
-  top: 100%;
-right: 0%;
-border-bottom-left-radius: 5px;  
-  border-bottom-right-radius: 5px; 
-
-}
-
-
-
-.dropdown-item label {
-  padding: 10px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  width: 100%;
-}
-
-.dropdown-item label:hover {
-  background-color: #e6e6e6; /* Slight color change on hover */
-}
-
-
-.dropdown-item {
-  padding: 10px;
-  border-bottom: 1px solid #f0f0f0;
-  display: flex;
-  align-items: center;
-  z-index: 1000;
-}
-
-.dropdown-item:last-child {
-  border-bottom: none;
-}
-
-.dropdown-item input[type="checkbox"] {
-  margin-right: 10px;
-}
-.dropdown-item:hover {
-  background-color:  rgba(3, 169, 244, 1);  /* Color change on hover */
-}
 
 
 

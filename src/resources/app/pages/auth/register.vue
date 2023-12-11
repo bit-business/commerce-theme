@@ -752,13 +752,13 @@ export default {
       sameAsPassword: sameAs("password"),
     },
 
-    avatar: {
+   /* avatar: {
     fileSelected(value) {
       // Assuming avatar is null by default and set to the file data upon file selection
       return !!value; // returns true if a file has been selected, false otherwise
     }
   },
-
+*/
 
 
     checkboxValue: {
@@ -821,7 +821,7 @@ export default {
     return this.password && 
            this.passwordConfirmation && 
            this.oib &&
-           this.avatar && // Check if avatar is added
+          // this.avatar && // Check if avatar is added
            this.password.length >= 4 && // Assuming minimum length is 4
            this.password === this.passwordConfirmation; // Check if passwords match
   },
@@ -1070,7 +1070,7 @@ export default {
           brojmobitela: this.brojmobitela,
           password: this.password,
           passwordConfirmation: this.passwordConfirmation,
-          avatar: this.avatar,
+          new_avatar: this.avatar,
         //  urlinstagram: this.urlinstagram,
         //  urltwitter: this.urltwitter,
         //  urllinkedin: this.urllinkedin,
