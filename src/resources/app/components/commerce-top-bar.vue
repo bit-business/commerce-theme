@@ -17,10 +17,12 @@
   </div>
       </div>
     </nav>
-    <Link class="logoframe" :href="route('skijasi.commerce-theme.home')">
+    <div class="logoframe">
+      <Link :href="route('skijasi.commerce-theme.home')">
       <img class="vector-icon" alt="" src="/storage/slike/logonovi.svg" />
     </Link>
-    
+    </div>
+
     <div class="ikonedesnoframe">
       <button class="drzavaikona" @click="toggleDropdownjezik">
         <img class="croatia-icon" alt="" src="/storage/slike/croatia.svg" />

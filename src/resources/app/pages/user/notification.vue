@@ -12,6 +12,7 @@
       </svg>
     </span>
   </div>
+  <!-- Floating Action Button -->
 
     <div class="pt-5 container container2 grid grid-cols-1 md:grid-cols-profile" @wheel="handleScrollAttempt">  
      <!--1-->
@@ -194,6 +195,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
 
 
      <!--1-->
+     <transition name="fade">
      <div class="Moj-pr-8" v-if="isGridVisible && !isSidebarExpanded">
 
 <div :class="{'h-22 flex items-center': true, 'border-b': isSidebarExpanded, 'border-plava-200': !isSidebarExpanded, 'sakrij': true}">
@@ -313,6 +315,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
   </div>
 </div>
 </div>  </div>
+</transition>
 <!--1-->
 
 
@@ -398,12 +401,16 @@ export default {
 
     this.fetchNotifications();
 
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.handleScrollAttempt);
+    window.addEventListener('touchstart', this.handleScrollAttempt);
+    
   },
 
   beforeDestroy() {
     // Remove event listener when component is destroyed
-    window.removeEventListener('scroll', this.handleScroll);
+    window.removeEventListener('scroll', this.handleScrollAttempt);
+    window.removeEventListener('touchstart', this.handleScrollAttempt);
+
   },
   methods: {
 
@@ -506,6 +513,13 @@ export default {
 
 <style scoped>
 
+/* fab gumb */
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active in <2.1.8 */ {
+  opacity: 0;
+}
 
 .fab {
     position: fixed;
@@ -590,7 +604,7 @@ export default {
   transform: rotate(45deg) translate(24px, -60px);
 }
 
-
+/* fab gumb kraj */
 
 
 

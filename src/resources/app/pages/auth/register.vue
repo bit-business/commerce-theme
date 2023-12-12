@@ -219,7 +219,7 @@
           <div class="adresa">Adresa</div>
         </div>
         <div class="framenatrag">
-          <button @click="switchToFirstFrame" class="tekstnatragnaprethodnigrad">Natrag na prethodni korak</button>
+          <button @click="switchToFirstFrame" class="tekstnatragnaprethodnigrad2">Natrag na prethodni korak</button>
           <img
             class="ikona-reg-strelicazanazad-icon"
             alt=""
@@ -262,7 +262,7 @@
 
 
             <!-- Error messages container -->
-            <div v-if="firstErrorMessage" class="error-message">
+            <div v-if="firstErrorMessage" class="error-message2">
   {{ firstErrorMessage }}
 </div>
 
@@ -406,7 +406,7 @@
               class="ikona-zagumbaddphoto-icon selected-image-preview"
               alt=""
               :src="avatar ? avatar : '/storage/slike/ikona-zagumbaddphoto.svg'"
-            />
+            /> 
           </button>
      
          
@@ -445,7 +445,7 @@
       </div> 
 
       <!-- Error messages container -->
-<div v-if="firstErrorMessage" class="error-message">
+<div v-if="firstErrorMessage" class="error-message3">
   {{ firstErrorMessage }}
 </div>
  
@@ -463,7 +463,7 @@
         :style="{ backgroundColor: isFourthFormValid ? '#03a9f4' : 'rgba(152, 208, 241, 0.6)' }"
         class="screen4gumbregistrirajseframe" 
         @click="register">
-  <div class="screen4tekstregistrirajsezagumb">Registriraj se</div>
+  <div class="sljedee4">Registriraj se</div>
 </button>
         <div class="screen4reg4-frame1do4brojevi">
           <div class="screen4frame-parent">
@@ -574,7 +574,7 @@
         </div>
 
    
-        <a class="framezanatrag">
+        <a class="framezanatragnaprethodnikorak4">
           <button @click="switchToThirdFrame" class="tekstnatragnaprethodnigrad">Natrag na prethodni korak</button>
           <img class="arrow-left-1-icon" alt="" src="/storage/slike/arrowleft-1.svg" />
         </a>
@@ -953,7 +953,13 @@ export default {
   mounted() {
     if (this.isAuthenticated) {
       this.$inertia.visit(this.route('skijasi.commerce-theme.home'))
-    }
+    };
+
+    document.addEventListener('focusout', function() {
+    window.scrollTo(0, 0);
+});
+
+
   },
   methods: {
 
@@ -1125,6 +1131,30 @@ export default {
     height: 8.13rem;
 }
 
+.error-message2 {
+  color: red; /* Set the color to red */
+  font-size: 11px; /* Adjust font size as needed */
+    border: none;
+    padding: 0;
+    position: absolute;
+    top: 80%;
+    left: calc(50% - 197.5px);
+    border-radius: 20px;
+    width: 25rem;
+}
+
+.error-message3 {
+  color: red; /* Set the color to red */
+  font-size: 11px; /* Adjust font size as needed */
+    border: none;
+    padding: 0;
+    position: absolute;
+    top: 75%;
+    left: calc(50% - 197.5px);
+    border-radius: 20px;
+    width: 25rem;
+}
+
 .dodavanjelinkova {
     position: absolute;
     height: 49.44%;
@@ -1157,11 +1187,11 @@ export default {
     height: 1.13rem;
   }
   .registracijatekst {
-    position: absolute;
+    
     top: 0rem;
     left: calc(50% - 104.5px);
-    font-size: 2.25rem;
-    text-align: left;
+    font-size: 1.7rem;
+    text-align: center;
   }
   .sljedee {
     position: absolute;
@@ -1177,6 +1207,23 @@ export default {
     align-items: center;
     justify-content: center;
     width: 5.67rem;
+  }
+
+
+  .sljedee4 {
+    position: absolute;
+    top: calc(50% - 9px);
+    left: calc(50% - 50px);
+    font-size: 1rem;
+    letter-spacing: -0.17px;
+    font-weight: 600;
+    font-family: Inter;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 6.67rem;
   }
   .gumbsljedece {
     cursor: pointer;
@@ -1310,6 +1357,11 @@ export default {
     width: 15.63rem;
     height: 3.13rem;
   }
+
+  .poljezaupisime:focus {
+    outline: 1px solid #03a9f4; /* Change to your desired color */
+}
+
   .poljezaupisime {
     border: 2px solid #03a9f4;
     background-color: transparent;
@@ -1321,6 +1373,8 @@ export default {
     width: 12.38rem;
     height: 3.13rem;
     padding-left: 14px; 
+
+  
   }
   .user-icon {
     position: absolute;
@@ -1374,6 +1428,10 @@ export default {
     width: 32.94rem;
     height: 3.13rem;
   }
+
+  .poljezaupisemaila:focus {
+    outline: 1px solid #03a9f4; /* Change to your desired color */
+}
   .poljezaupisemaila {
     border: 2px solid #03a9f4;
     background-color: transparent;
@@ -1385,6 +1443,7 @@ export default {
     width: 29.69rem;
     height: 3.13rem;
     padding-left: 14px; 
+
   }
   .framezaemail {
     position: absolute;
@@ -1684,6 +1743,9 @@ export default {
     width: 12.38rem;
     padding-left: 14px; 
   }
+  .poljezaunosbrojmobitela:focus {
+    outline: 1px solid #03a9f4; /* Change to your desired color */
+}
   .ikonareg-mobitel-icon {
     position: absolute;
     height: 48%;
@@ -1752,7 +1814,14 @@ export default {
     box-sizing: border-box;
     width: 29.69rem;
     padding-left: 14px; 
+    
+    font-size: 0.88rem; 
   }
+  .poljezaupisadresa:focus {
+    outline: 1px solid #03a9f4; /* Change to your desired color */
+}
+
+
   .registracija-ikonaadresa-icon {
     position: absolute;
     height: 48%;
@@ -1783,11 +1852,11 @@ export default {
     width: 32.94rem;
     height: 4.56rem;
   }
-  .tekstnatragnaprethodnigrad {
+  .tekstnatragnaprethodnigrad2 {
     text-decoration: none;
     position: absolute;
     top: 0%;
-    left: calc(50% - 66px);
+    left: calc(50% - 46px) !important;
     font-weight: 600;
     color: inherit;
   }
@@ -1796,7 +1865,7 @@ export default {
     height: 94.12%;
     top: 5.88%;
     bottom: 0%;
-    left: calc(50% - 99px);
+    left: calc(50% - 76px);
     max-height: 100%;
     width: 1rem;
     overflow: hidden;
@@ -1804,7 +1873,7 @@ export default {
   .framenatrag {
     position: absolute;
     top: 34.63rem;
-    left: 7.25rem;
+    left: 5.55rem;
     width: 18.38rem;
     bottom: 1rem;
     height: 1.06rem;
@@ -2040,6 +2109,10 @@ export default {
     width: 12.38rem;
     padding-left: 14px; 
   }
+  .poljezaunoslozinka-treciscreen:focus {
+    outline: 1px solid #03a9f4; /* Change to your desired color */
+}
+
   .password-icon {
     position: absolute;
     height: 48%;
@@ -2121,7 +2194,7 @@ export default {
     text-decoration: none;
     position: absolute;
     top: 0%;
-    left: calc(50% - 66px);
+    left: calc(50% - 66px) !important;
     font-weight: 600;
     color: inherit;
   }
@@ -2139,6 +2212,15 @@ export default {
     position: absolute;
     top: 37.58rem;
     left: 8.51rem;
+    width: 14.38rem;
+    height: 1.06rem;
+    font-size: 0.88rem;
+    color: #21231e;
+  }
+  .framezanatragnaprethodnikorak4 {
+    position: absolute;
+    top: 25.58rem;
+    left: 5.51rem;
     width: 14.38rem;
     height: 1.06rem;
     font-size: 0.88rem;
@@ -2168,6 +2250,9 @@ export default {
     width: 29.69rem;
     padding-left: 14px; 
   }
+  .poljezunosoib:focus {
+    outline: 1px solid #03a9f4; /* Change to your desired color */
+}
   .ikonareg-oib-icon {
     position: absolute;
     height: 48%;
@@ -2746,6 +2831,11 @@ export default {
 
 
   @media screen and (max-width: 600px) {
+    .tekstnatragnaprethodnigrad {
+left: calc(50% - 46px) !important;
+}
+
+
   .tekstdiv2 {
     top: calc(50% - 9px);
     left: calc(50% - 4px);
@@ -2762,6 +2852,16 @@ export default {
   .error-message {
   font-size: 10px;
 }
+.error-message2 {
+  font-size: 10px;
+}
+.error-message3 {
+  font-size: 10px;
+}
+
+.w-6 {
+ width: 1rem !important;
+}
 
 
     .hzuts-registration-desktop {
@@ -2773,7 +2873,7 @@ export default {
       height: 4rem;
   }
   .backgumb {
-    top: 0rem;
+    top: 0.3rem;
     z-index: 100;
   }
 
@@ -2791,7 +2891,7 @@ export default {
   .sljedee {
     position: absolute;
     top: calc(50% - 5.25px);
-    left: calc(50% - 26.15px);
+    left: calc(50% - 27.15px);
     font-size: 9.32px;
     letter-spacing: -0.1px;
     font-weight: 600;
@@ -2801,7 +2901,22 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 52.8px;
+    width: 59.8px;
+  }
+  .sljedee4 {
+    position: absolute;
+    top: calc(50% - 5.25px);
+    left: calc(50% - 27.15px);
+    font-size: 9.32px;
+    letter-spacing: -0.1px;
+    font-weight: 600;
+    font-family: Inter;
+    color: #fff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 59.8px;
   }
   .gumbsljedece {
     cursor: pointer;
@@ -2945,6 +3060,8 @@ export default {
     box-sizing: border-box;
     width: 115.3px;
     height: 29.1px;
+
+    font-size: 0.68rem; 
   }
   .user-icon {
     position: absolute;
@@ -3008,6 +3125,12 @@ export default {
     box-sizing: border-box;
     width: 276.6px;
     height: 29.1px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    outline: none;
+
+    font-size: 0.68rem; 
   }
   .framezaemail {
     position: absolute;
@@ -3043,11 +3166,11 @@ export default {
     width: 350px;
     height: 357.6px;
     text-align: center;
-    font-size: 6.99px;
+    font-size: 8px;
     color: #000;
     font-family: Inter;
       flex-direction: column;
-      gap: 10px;
+     
       align-items: center;
       justify-content: space-between;
       padding-left: 0px;
@@ -3216,6 +3339,8 @@ export default {
     border-radius: 0px 11.65px 11.65px 0px;
     box-sizing: border-box;
     width: 115.3px;
+
+    font-size: 0.68rem; 
   }
   .ikonareg-mobitel-icon {
     position: absolute;
@@ -3284,6 +3409,8 @@ export default {
     border-radius: 0px 11.65px 11.65px 0px;
     box-sizing: border-box;
     width: 276.6px;
+
+    font-size: 0.68rem; 
   }
   .registracija-ikonaadresa-icon {
     position: absolute;
@@ -3567,6 +3694,9 @@ export default {
     border-radius: 0px 11.65px 11.65px 0px;
     box-sizing: border-box;
     width: 115.3px;
+
+
+    font-size: 0.68rem; 
   }
   .password-icon {
     position: absolute;
@@ -3707,6 +3837,15 @@ export default {
     font-size: 8.15px;
     color: #21231e;
   }
+  .framezanatragnaprethodnikorak4 {
+    position: absolute;
+    top: 247.6px;
+    left: 69.1px;
+    width: 115.3px;
+    height: 9.9px;
+    font-size: 8.15px;
+    color: #21231e;
+  }
   .containerzaoib {
     position: absolute;
     height: 100%;
@@ -3729,6 +3868,8 @@ export default {
     border-radius: 0px 11.65px 11.65px 0px;
     box-sizing: border-box;
     width: 276.6px;
+
+    font-size: 0.68rem; 
   }
   .ikonareg-oib-icon {
     position: absolute;
@@ -3787,8 +3928,8 @@ export default {
 
   .screen4registriraj-se {
     position: absolute;
-    top: 31.96%;
-    left: calc(50% - 29.05px);
+    top: calc(50% - 5.25px);
+    left: calc(50% - 26.15px);
     font-size: 9.32px;
     letter-spacing: -0.1px;
     font-weight: 600;
@@ -3798,7 +3939,7 @@ export default {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 57.7px;
+    width: 52.8px;
   }
   .screen4gumbregistrirajseframe {
     cursor: pointer;
@@ -4078,7 +4219,7 @@ export default {
     left: 2.3px;
     width: 238.8px;
     height: 39px;
-    font-size: 6.99px;
+    font-size: 8.2px;
   }
   .screen4uvjete-koritenja-i {
     color: #03a9f4;
@@ -4088,12 +4229,13 @@ export default {
     position: absolute;
     top: 10.34%;
     left: calc(50% - 116px);
-    letter-spacing: -0.1px;
+  
     font-weight: 300;
-    font-size: 5px;
-    display: flex;
+    font-size: 8.2px !important;
+
     align-items: center;
     width: 253px;
+    font-size: 0.68rem; 
   }
   .screen4kvadratzacheckmark {
     position: absolute;
@@ -4203,7 +4345,7 @@ export default {
     background-color: #fff;
     width: 350px;
     height: 296.4px;
-    text-align: left;
+    text-align: center;
     font-size: 20.97px;
     color: #000;
     font-family: Inter;

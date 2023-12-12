@@ -582,8 +582,23 @@ export default {
 left: 43%;
 height: 5.5rem;
   }
+
+
+  .footertext {
+    position: absolute;
+    top: 95%;
+    left: calc(50% - 158px);
+    font-size: 0.7rem;
+    color: #fff;
+    text-align: center;
+  }
+
   }
   @media screen and (max-width: 420px) {
+
+ 
+
+
     .hzuts-reset-password-desktop {
       max-width: 420px;
     }
