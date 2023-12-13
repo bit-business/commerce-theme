@@ -3,8 +3,9 @@
     <Head :title="$page.props.name" />
 
       <!-- Floating Action Button -->
-  <div v-if="!isSidebarExpanded" class="fab" :class="{ open: isGridVisible }" @click="toggleGridVisibility">
-    <span class="fab-icon" :class="{ 'icon-active': isGridVisible }">
+      <div v-if="!isSidebarExpanded" class="fab" :class="{ open: isGridVisible }" 
+     @touchend="toggleGridVisibility" @click="toggleGridVisibility">
+         <span class="fab-icon" :class="{ 'icon-active': isGridVisible }">
       <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="30" width="60" height="8" fill="black"/>
         <rect x="20" y="46" width="60" height="8" fill="black"/>
@@ -122,7 +123,7 @@
 </svg></div>
               <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zaduženja</span>
             </Link>
-            <Link :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
+            <Link v-if="user.user_type !== 'Običan korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -384,7 +385,7 @@
 </svg></div>
     <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zaduženja</span>
   </Link>
-  <Link :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
+  <Link v-if="user.user_type !== 'Običan korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
@@ -511,14 +512,12 @@ export default {
     }
 
     window.addEventListener('scroll', this.handleScrollAttempt);
-    window.addEventListener('touchstart', this.handleScrollAttempt);
     
   },
 
   beforeDestroy() {
     // Remove event listener when component is destroyed
     window.removeEventListener('scroll', this.handleScrollAttempt);
-    window.removeEventListener('touchstart', this.handleScrollAttempt);
 
   },
   methods: {
@@ -529,9 +528,19 @@ export default {
       }
     },
 
-    toggleGridVisibility() {
-      this.isGridVisible = !this.isGridVisible; // Toggle the grid visibility
-    },
+    toggleGridVisibility(event) {
+    if (event.type === 'touchend') {
+      this.touchHandled = true;
+      this.isGridVisible = !this.isGridVisible;
+    } else if (event.type === 'click' && !this.touchHandled) {
+      this.isGridVisible = !this.isGridVisible;
+    }
+    // Reset the flag after the click event is processed
+    if (event.type === 'click') {
+      this.touchHandled = false;
+    }
+  },
+
 
     toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;

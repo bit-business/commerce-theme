@@ -464,6 +464,7 @@
         class="screen4gumbregistrirajseframe" 
         @click="register">
   <div class="sljedee4">Registriraj se</div>
+  <div v-if="loading" class="loader"></div>
 </button>
         <div class="screen4reg4-frame1do4brojevi">
           <div class="screen4frame-parent">
@@ -681,6 +682,7 @@ export default {
       loading: false,
       showPassword: true,
       showPasswordConfirmation: true,
+
     };
   },
   validations: {
@@ -1064,32 +1066,32 @@ export default {
 
         return;
       }
- 
 
       this.loading = true
-      this.$api.skijasiAuth
-        .register({
-          name: this.name,
-          username: this.username,
-          datumrodjenja: this.datumrodjenja,
-          email: this.email,
-          brojmobitela: this.brojmobitela,
-          password: this.password,
-          passwordConfirmation: this.passwordConfirmation,
-          new_avatar: this.avatar,
-        //  urlinstagram: this.urlinstagram,
-        //  urltwitter: this.urltwitter,
-        //  urllinkedin: this.urllinkedin,
-        //  urlfacebook: this.urlfacebook,
-          drzava: this.drzava,
-          grad: this.grad,
-          postanskibroj: this.postanskibroj,
-          adresa: this.adresa,
-          oib: this.oib,
-          spol: this.spol,
-          user_type: this.user_type
 
-        })
+
+      let payload = {
+    name: this.name,
+    username: this.username,
+    datumrodjenja: this.datumrodjenja,
+    email: this.email,
+    brojmobitela: this.brojmobitela,
+    password: this.password,
+    passwordConfirmation: this.passwordConfirmation,
+    // Conditional addition of new_avatar
+    ...(this.avatar ? { new_avatar: this.avatar } : {}),
+    drzava: this.drzava,
+    grad: this.grad,
+    postanskibroj: this.postanskibroj,
+    adresa: this.adresa,
+    oib: this.oib,
+    spol: this.spol,
+    user_type: this.user_type
+  };
+ 
+
+      this.$api.skijasiAuth
+        .register(payload)
         .then((response) => {
           this.$inertia.visit(this.route('skijasi.commerce-theme.verification', this.email))
         })
@@ -1117,6 +1119,21 @@ export default {
 
 
 <style scoped>
+
+.loader {
+  border: 4px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 4px solid #3498db;
+  padding-left: 2px;
+  width: 15px;
+  height: 15px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .error-message {
   color: red; /* Set the color to red */
@@ -1149,7 +1166,7 @@ export default {
     border: none;
     padding: 0;
     position: absolute;
-    top: 75%;
+    padding-top: 86%;
     left: calc(50% - 197.5px);
     border-radius: 20px;
     width: 25rem;

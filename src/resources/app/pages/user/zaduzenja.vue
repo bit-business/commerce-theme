@@ -7,7 +7,7 @@
     <div class="navbar ">
       
       <!-- Floating Action Button -->
-  <div v-if="!isSidebarExpanded" class="fab" :class="{ open: isGridVisible }" @click="toggleGridVisibility">
+      <div v-if="!isSidebarExpanded" class="fab" :class="{ open: isGridVisible }" @touchend="toggleGridVisibility" @click="toggleGridVisibility">
     <span class="fab-icon" :class="{ 'icon-active': isGridVisible }">
       <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="30" width="60" height="8" fill="black"/>
@@ -398,14 +398,12 @@ export default {
 
     this.getStaraPlacanja(); 
     window.addEventListener('scroll', this.handleScrollAttempt);
-    window.addEventListener('touchstart', this.handleScrollAttempt);
     
   },
 
   beforeDestroy() {
     // Remove event listener when component is destroyed
     window.removeEventListener('scroll', this.handleScrollAttempt);
-    window.removeEventListener('touchstart', this.handleScrollAttempt);
 
   },
   methods: {
@@ -416,12 +414,22 @@ export default {
       }
     },
 
-    toggleGridVisibility() {
-      this.isGridVisible = !this.isGridVisible; // Toggle the grid visibility
-    },
+    toggleGridVisibility(event) {
+    if (event.type === 'touchend') {
+      this.touchHandled = true;
+      this.isGridVisible = !this.isGridVisible;
+    } else if (event.type === 'click' && !this.touchHandled) {
+      this.isGridVisible = !this.isGridVisible;
+    }
+    // Reset the flag after the click event is processed
+    if (event.type === 'click') {
+      this.touchHandled = false;
+    }
+  },
 
     toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;
+      console.log('isSidebarOpen:', this.isSidebarOpen);
     },
 
 
