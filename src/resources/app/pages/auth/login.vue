@@ -261,6 +261,10 @@ export default {
 
     window.addEventListener('resize', this.handleResize);
 
+    document.addEventListener('focusout', function() {
+    window.scrollTo(0, 0);
+});
+
 
   },
   methods: {
@@ -663,6 +667,10 @@ export default {
 
   }
   @media screen and (max-width: 460px) {
+
+    .backgroundslika-icon {
+ margin-bottom: -20%;
+  }
  
    
   .prijavi-se {
@@ -880,11 +888,11 @@ export default {
 
   .logohzuts-icon {
   position: absolute !important;
-  left: 38.6% !important;
-  top: -3rem !important;
-  bottom: -5rem !important; /* Half the height of the logo */
-  width: 5rem !important; /* Set the width of your logo */
-  height: 5rem !important; /* Set the height of your logo */
+  left: calc(50% - 1.5rem) !important;
+  top: 0.5rem !important;
+  bottom: -3rem !important; /* Half the height of the logo */
+  width: 3rem !important; /* Set the width of your logo */
+  height: 3rem !important; /* Set the height of your logo */
   /* other styling as needed */
   z-index: 2;
 }
@@ -1002,6 +1010,9 @@ height: 34.5rem;
 
 
 }
+
+
+
 
 </style>
 
