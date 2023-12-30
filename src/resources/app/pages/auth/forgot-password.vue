@@ -13,16 +13,18 @@
     <div class="srednjiframeglavni">
       <div class="srednjiframeglavni-child" />
       <div class="srednjiframepodgrupa">
-        <b class="zaboravljena-lozinka">Zaboravljena lozinka</b>
 
       
         
-        <div class="bez-brige-poslat">
-          Bez brige, poslat ćemo Vam upute za ponovno postavljanje.
-        </div>
+      
 
 
         <template v-if="!isVerify">
+          <b class="zaboravljena-lozinka">Zaboravljena lozinka</b>
+          <div class="bez-brige-poslat">
+          Bez brige, poslat ćemo Vam upute za ponovno postavljanje.
+        </div>
+        
           <div class="upisemaila">
           <div class="email-label">
             <div class="background-container" />
@@ -41,17 +43,13 @@
             </button>
     
         </template>
+
+
         <template v-else>
-          
-            <div class="text-xl w-full text-center relative">
-              <Link :href="route('skijasi.commerce-theme.login')" class="absolute left-0 top-1/2 transform -translate-y-1/2">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
-                </svg>
-              </Link>
-              Verificiraj
-            </div>
-            <alert color="primary" closeable>
+      
+            <b class="zaboravljena-lozinka2">Verificiraj</b>
+            <div class="">
+            <alert color="primary popup2 absolute" closeable>
               <template slot="icon">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -62,14 +60,19 @@
             <pin
               v-model="token"
               :length="6"
-              class="mt-4"
-              label="Enter your token"
+              class="mt-4 tokenpozicija"
+              label="Upišite token dobiven na email"
               @keypress.enter="verify"
             />
             <button :class="tokenButtonClasses" @click="verify">
               <commerce-loading v-if="loading" />
-              <span v-else>RESETIRAJ</span>
+              <div v-else class="posaljigumbzaboravljenalozinka2">
+          <div class="posaljigumbzaboravljenalozinka-child" />
+          <span class="poalji">Pošalji</span>
+        </div>
+              
             </button>
+          </div>
           
         </template>
 
@@ -92,9 +95,8 @@
         </div>
       </div>
     </div>
-    <div class="footer">
-      <div class="backgroundfooter" />
-    </div>
+
+    <div class="hzuts-login-desktop-child" />
     <div class="footertext">
       Copyright © 2023 Sva prava pridržana od strane HZUTS-a.
     </div>
@@ -376,6 +378,15 @@ export default {
 
 
 <style scoped>
+
+.popup2{
+top: 74% ;
+position: absolute;
+}
+.tokenpozicija {
+top: 33% ;
+position: absolute;
+}
   .backgroundzaboravljenalozinka-icon {
     position: absolute;
     top: 0rem;
@@ -406,6 +417,13 @@ export default {
     position: absolute;
     top: 21.3%;
     left: calc(50% - 183px);
+    font-size: 2.25rem;
+    text-align: left;
+  }
+  .zaboravljena-lozinka2 {
+    position: absolute;
+    top: 17.3%;
+    left: calc(50% - 83px);
     font-size: 2.25rem;
     text-align: left;
   }
@@ -512,6 +530,16 @@ export default {
     font-size: 1rem;
     color: #fff;
   }
+  .posaljigumbzaboravljenalozinka2 {
+    position: absolute;
+    height: 10.14%;
+    top: 55%;
+    bottom: 10.55%;
+    left: calc(50% - 200px);
+    width: 25rem;
+    font-size: 1rem;
+    color: #fff;
+  }
   .ikonasrednjiframetop-icon {
     position: absolute;
     height: 14.2%;
@@ -542,8 +570,8 @@ export default {
     height: 3.45%;
     top: 96.55%;
     bottom: 0%;
-    left: calc(50% - 71px);
-    width: 8.88rem;
+    left: calc(50% - 91px);
+    width: 10rem;
     color: #21231e;
   }
   .e-mail-adresa-nije {
@@ -591,7 +619,7 @@ export default {
   }
 
   .hzuts-login-desktop-child {
-    position: absolute;
+    position: fixed;
     height: 7.13%;
     width: 100%;
     top: 92.87%;
@@ -601,13 +629,15 @@ export default {
     background-color: #03a9f4;
   }
   .footertext {
-    position: absolute;
-    top: calc(50% + 326px);
-    left: calc(50% - 200px);
-    font-size: 0.9rem;
+    position: fixed;
+    top: 95.43%;
+    height: 3.56%;
+  width: 100%;
+    bottom: 0%;
+    font-size: 0.82rem;
     font-weight: 500;
     color: #fff;
-    text-align: left;
+    text-align: center;
   }
   .logoprijava-icon {
     position: absolute;
@@ -656,5 +686,25 @@ height: 5.5rem;
 left: 43%;
 height: 5.5rem;
   }
+  .footertext {
+   
+   margin: 0 !important;
+   font-weight: 500;
+   font-size: 0.56rem;
+   z-index: 2;
+ }
+
+ .hzuts-login-desktop-child {
+
+height: 7.13%;
+width: 100%;
+top: 92.87%;
+right: 0%;
+bottom: 0%;
+left: 0%;
+background-color: #03a9f4;
+z-index: 2;
+}
+
   }
 </style>

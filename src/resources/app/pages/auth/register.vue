@@ -401,7 +401,17 @@
           />
           <!-- Custom button -->
           <button @click="$refs.file.click()">
-            <div class="ikona-reg-treciekran-elipsa" />
+            <div class="ikona-reg-treciekran-elipsa" >
+              <svg width="100%" height="100%" viewBox="0 30 150 75">
+  <path id="semi-circle-path" d="M 10,75 A 65,65 0 0 1 140,75" fill="transparent" />
+  <text>
+    <textPath xlink:href="#semi-circle-path" startOffset="50%" text-anchor="middle" style="fill: white; font-weight: 600; font-size: 12px;">
+      Slika Profila
+    </textPath>
+  </text>
+</svg>
+
+    </div>
             <img
               class="ikona-zagumbaddphoto-icon selected-image-preview"
               alt=""
@@ -712,6 +722,10 @@ export default {
       required,
       minLength: minLength(5),
       maxLength: maxLength(25),
+      regexPattern(value) {
+        const pattern = /^[\+]?[0-9\s\-]+$/; 
+        return pattern.test(value);
+      }
     },
     grad: {
       required,
@@ -895,6 +909,9 @@ export default {
         return 'Broj mobitela mora sadržavati najmanje 5 znamenki.';
       } else if (this.$v.brojmobitela.$dirty && !this.$v.brojmobitela.maxLength) {
         return 'Broj mobitela ne smije biti duži od 25 znamenki.';
+      }
+      else if (this.brojmobitela && this.$v.brojmobitela.minLength && this.$v.brojmobitela.$dirty && !this.$v.brojmobitela.regexPattern) {
+        return 'Broj mobitela ima neispravne znakove.';
       }
 
       if (this.$v.drzava.$dirty && !this.$v.drzava.minLength) {
@@ -2294,6 +2311,13 @@ export default {
     left: calc(50% - 263.5px);
     font-weight: 500;
   }
+  .slikaprofila {
+    position: relative;
+    top: 80%;
+    font-weight: 600;
+    color: white;
+  }
+
   .framepoib {
     position: absolute;
     top: 20.44rem;
@@ -3761,6 +3785,7 @@ left: calc(50% - 46px) !important;
     height: 42.5px;
   }
   .ikona-reg-treciekran-elipsa {
+    
     position: absolute;
     height: 100%;
     top: 0%;

@@ -33,7 +33,7 @@
     left: 15.75%;
     letter-spacing: 2px;
   }
-  .frame-child {
+  .clanarine-frame-child {
     position: absolute;
     top: 0rem;
     left: calc(50% - 100px);
@@ -123,7 +123,7 @@
     background-color: #03a9f4;
     height: 12.5rem;
   }
-  .div1 {
+  .clanarine-div1 {
     position: absolute;
     top: calc(50% - 38.6px);
     left: 18%;
@@ -206,7 +206,7 @@
     left: calc(50% - 361px);
     letter-spacing: 2px;
   }
-  .div2 {
+  .clanarine-div2 {
     position: absolute;
     top: 3.81rem;
     left: 2.19rem;
@@ -360,7 +360,7 @@
     align-items: center;
     justify-content: center;
   }
-  .frame-container {
+  .clanarine-frame-container {
     position: absolute;
     width: 16.36%;
     top: calc(50% - 92.5px);
@@ -505,7 +505,7 @@
     font-size: 4rem;
     color: #fff;
   }
-  .frame-parent {
+  .clanarine-frame-parent {
     align-self: stretch;
     height: 91.94rem;
     display: flex;
@@ -895,7 +895,7 @@
     align-items: center;
     font-family: Inter;
   }
-  .parent {
+  .clanarine-parent {
     align-self: stretch;
     position: relative;
     height: 18.75rem;
@@ -925,7 +925,7 @@
     display: flex;
     align-items: center;
   }
-  .group {
+  .clanarine-group {
     align-self: stretch;
     position: relative;
     height: 16.18rem;
@@ -1229,7 +1229,7 @@
     color: inherit;
     opacity: 0%;
   }
-  .glavnipodframe {
+  .clanarine-glavnipodframe {
     align-self: stretch;
     height: 494.99rem;
     display: flex;
@@ -1409,7 +1409,7 @@
     }
   }
   @media screen and (max-width: 600px) {
-    .frame-parent {
+    .clanarine-frame-parent {
       align-self: stretch;
       width: auto;
       flex: 1;

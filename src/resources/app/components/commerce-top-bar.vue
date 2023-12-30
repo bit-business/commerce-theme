@@ -8,9 +8,19 @@
       <Link class="poetna"  :class="{ 'active-link': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
       <Link class="dogaanja"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kategorija') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja</Link>
       <Link class="pretraivanje" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">Naši članovi</Link>
-      <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')">Informacije</Link> 
+      <button 
+  class="dogaanja" 
+  @mouseenter="toggleDropdownInformacije(true)" 
+  @click="toggleDropdownInformacije" 
+  :class="{ 'active-link': showDropdowninformacije }">
+  Informacije
+</button>
+
+
+
       <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija</Link>
       <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt</Link>
+
 
 
 
@@ -122,8 +132,50 @@
     </div>
 
 
+
+
+
+
+    <div class="podmeniclanarine" v-if="showDropdowninformacije"
+     @mouseenter="toggleDropdownInformacije(true)"
+     @mouseleave="toggleDropdownInformacije(false)"
+     @click="toggleDropdownInformacije">
+  <!-- Dropdown content -->
+      <div class="osnovne-informacije">Osnovne informacije</div>
+      <div class="djelatnost-hzuts-a">Djelatnost HZUTS-a</div>
+      <div class="status-lanova-hzuts-a">Status članova HZUTS-a</div>
+      <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')">Članarine</Link> 
+      <div class="izrada-lanske-iskaznice">Izrada članske iskaznice</div>
+      <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')">Područni zborovi</Link>
+      <div class="dokumenti-hzuts-a">Dokumenti HZUTS-a</div>
+ 
+</div>
+
+
+<div class="mobilnimeniglavniInfo" v-if="showDropdowninformacijeMob">
+<div class="pozadinamobilnimeni" />
+      <button class="ikonax" @click="closeDropdown">
+          <img class="vector-icon2" alt="" src="/storage/slike/menivector2.svg" />
+          <img class="vector-icon2" alt="" src="/storage/slike/menivector3.svg" />
+        </button>
+        <div class="infolista">
+
+  <!-- Dropdown content -->
+      <div class="osnovne-informacije">Osnovne informacije</div>
+      <div class="djelatnost-hzuts-a">Djelatnost HZUTS-a</div>
+      <div class="status-lanova-hzuts-a">Status članova HZUTS-a</div>
+      <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')">Članarine</Link> 
+      <div class="izrada-lanske-iskaznice">Izrada članske iskaznice</div>
+      <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')">Područni zborovi</Link>
+      <div class="dokumenti-hzuts-a">Dokumenti HZUTS-a</div>
+    </div>
+</div>
+
+
+
+
     
-    <div class="mobilnimeniglavni" v-if="showDropdownmeni" @click="toggleDropdownmeni" >
+    <div class="mobilnimeniglavni" v-if="showDropdownmeni" @click="toggleDropdownmeni">
       <div class="pozadinamobilnimeni" />
       <button class="ikonax" @click="closeDropdown">
           <img class="vector-icon2" alt="" src="/storage/slike/menivector2.svg" />
@@ -135,7 +187,13 @@
       <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">Početna <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
       <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.kategorija') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
       <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">Naši članovi <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
-      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')">Informacije <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <button 
+  class="pocetnamobile" 
+  @click="toggleDropdownInformacijeMob" 
+  :class="{ 'active-linkmobile': showDropdowninformacijeMob }">
+  Informacije<img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" />
+</button>
+
       <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
       <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
     
@@ -170,6 +228,8 @@ export default {
       showDropdownmeni: false,
       showDropdownjezik: false,
       showDropdownprijavljen: false,
+      showDropdowninformacije: false,
+      showDropdowninformacijeMob: false,
     }
   },
   watch: {
@@ -257,7 +317,28 @@ beforeDestroy() {
     this.showDropdownmeni = false;
     this.showDropdownjezik = false;
     this.showDropdownprijavljen = false;
+    this.showDropdowninformacije = false;
+    this.showDropdowninformacijeMob = false;
     this.$forceUpdate();
+  },
+
+  toggleDropdownInformacije(value) {
+    // For mouse events, pass true or false directly.
+    // For click events, toggle the current state.
+    if (typeof value === 'boolean') {
+      this.showDropdowninformacije = value;
+    } else {
+      this.showDropdowninformacije = !this.showDropdowninformacije;
+    }
+  },
+  toggleDropdownInformacijeMob(value) {
+    // For mouse events, pass true or false directly.
+    // For click events, toggle the current state.
+    if (typeof value === 'boolean') {
+      this.showDropdowninformacijeMob = value;
+    } else {
+      this.showDropdowninformacijeMob = !this.showDropdowninformacijeMob;
+    }
   },
 
  
@@ -306,6 +387,84 @@ beforeDestroy() {
 </script>
 
 <style scoped>
+
+.osnovne-informacije:hover,
+.djelatnost-hzuts-a:hover,
+.status-lanova-hzuts-a:hover,
+.lanarineInfo:hover,
+.izrada-lanske-iskaznice:hover,
+.podruni-zboroviMeni:hover,
+.dokumenti-hzuts-a:hover {
+    color: #03a9f4;
+    cursor: pointer;
+}
+
+
+.infolista {
+    position: absolute;
+    display: flex;
+    top: 96px;
+    left: 20px;
+    font-weight: 500;
+    gap: 2rem;
+    width: 100%;
+  }
+
+.osnovne-informacije {
+    position: absolute;
+    top: 15px;
+    left: 20px;
+    font-weight: 500;
+  }
+  .djelatnost-hzuts-a {
+    position: absolute;
+    top: 42px;
+    left: 20px;
+    font-weight: 500;
+  }
+  .status-lanova-hzuts-a {
+    position: absolute;
+    top: 69px;
+    left: 20px;
+    font-weight: 500;
+  }
+  .lanarineInfo {
+    position: absolute;
+    top: 96px;
+    left: 20px;
+    font-weight: 500;
+
+  }
+  .izrada-lanske-iskaznice {
+    position: absolute;
+    top: 123px;
+    left: 20px;
+    font-weight: 500;
+  }
+  .podruni-zboroviMeni {
+    position: absolute;
+    top: 150px;
+    left: 20px;
+    font-weight: 500;
+  }
+  .dokumenti-hzuts-a {
+    position: absolute;
+    top: 177px;
+    left: 20px;
+    font-weight: 500;
+  }
+  .podmeniclanarine {
+    position: absolute;
+    top: 60px;
+    right: 568px;
+    background-color: #fff;
+    width: 220px;
+    height: 209px;
+    font-size: 14px;
+  }
+
+
+
 
 .white-bg {
   background-color: white;
@@ -1177,8 +1336,30 @@ top: 0%;
     gap: 1.3rem;
 
   }
+  .mobilnimeniInfo {
+    position: absolute;
+    padding-top: 6rem;
+    left: 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 1.3rem;
+
+  }
   .mobilnimeniglavni {
     position: absolute;
+    height: 1000%;
+    width: 100%;
+    top: 0%;
+    right: 44.44%;
+    bottom: -646.67%;
+    left: 0%;
+    display: none;
+    font-size: 1.5rem;
+  }
+  .mobilnimeniglavniInfo {
+    position: flex;
     height: 1000%;
     width: 100%;
     top: 0%;
@@ -1234,6 +1415,14 @@ top: 0%;
 
 
   @media screen and (max-width: 420px) {
+
+    .vector-icon1 {
+    position: relative;
+    top: calc(50% - 7.5px);
+    right: -0.3rem;
+    width: 0.81rem;
+    height: 0.81rem;
+  }
     .navbartekstoviframe {
       display: none;
     }
@@ -1281,6 +1470,9 @@ top: 0%;
     }
 
     .mobilnimeniglavni {
+      display: flex;
+    }
+    .mobilnimeniglavniInfo {
       display: flex;
     }
 

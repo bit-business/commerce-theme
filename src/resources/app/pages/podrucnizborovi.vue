@@ -5,6 +5,70 @@
     <div class="slikanavrhupodrucnihzborova">
       <div class="podruni-zborovi">PODRUČNI ZBOROVI</div>
     </div>
+
+
+    <div class="novopostupakuclanjivanjaframe">
+      <div class="novolijeviframeglavni">
+        <img
+          class="novovectorpozadina-icon"
+          alt=""
+          src="/storage/slike/podrucnizborovi/novovectorpozadina@2x.png"
+        />
+        <b class="novopostupak-ulanjivanja">POSTUPAK UČLANJIVANJA</b>
+        <div class="novojavite-se-tajniku-container">
+          <span class="novojavite-se-tajniku-container1">
+            <p class="javite-se-tajniku">
+              Javite se tajniku željenog područnog zbora prema podacima koji se
+              nalaze u nastavku i zatražite primitak u članstvo. Nakon toga će
+              vas tajnik područnog zbora uputiti u daljnje korake oko plaćanja
+              članarine i ostalih obveza.
+            </p>
+            <p class="javite-se-tajniku">&nbsp;</p>
+            <p class="javite-se-tajniku">
+              Članovi u područnim zborovima preuzimaju sezonske markice (licenca
+              i hologram) i ostvaruju ostala prava stoga je preporuka odabrati
+              Područni zbor koji se nalazi u blizini mjesta stanovanja.
+            </p>
+          </span>
+        </div>
+      </div>
+      <div class="novodesniframetekst">
+        <div class="novopodframedesnitekst">
+          <div class="novonaslovdesnitekst">
+            <b class="novopromjena-podrunog-zbora">PROMJENA PODRUČNOG ZBORA</b>
+          </div>
+          <div class="novoza-promjenu-podrunog-container">
+            <p class="javite-se-tajniku">
+              Za promjenu područnog zbora potrebno je:
+            </p>
+            <p class="javite-se-tajniku">
+              1. Zatražiti ispisnicu iz sadašnjeg zbora
+            </p>
+            <p class="javite-se-tajniku">
+              <span
+                >2. Predati zahtjev za članstvo u novi zbor najkasnije
+              </span>
+              <span class="do-01-rujna">do 01. rujna tekuće</span>
+              <span class="span"> </span>
+              <span class="do-01-rujna">godine</span>
+            </p>
+            <p class="javite-se-tajniku">&nbsp;</p>
+            <p class="podruni-zbor-je">
+              Područni zbor je moguće promijeniti isključivo u periodu od 01.06.
+              do 01.09. tekuće godine (radi rasporeda licenci i holograma).
+            </p>
+            <p class="podruni-zbor-je">
+              Za sva pitanja slobodno se javite tajnicima zborova.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+
+
+
     <div class="podrucnizbor1">
       <div class="frame-parent">
         <div class="zuts-istra-parent">
@@ -70,7 +134,7 @@
           <b class="b">1</b>
         </div>
         <div class="frame3">
-          <iframe class="map-group" src="https://google.maps/nekiurl" />
+          <a class="map-group" target="_blank" href="https://maps.app.goo.gl/QonU1FyXbPfoqmHF9"></a>
         </div>
       </div>
     </div>
@@ -81,7 +145,7 @@
           <b class="predsjednik">2</b>
         </div>
         <div class="frame5">
-          <iframe class="map-group" src="http://google.maps/nekiurl" />
+          <a class="map-group" target="_blank" href="https://maps.app.goo.gl/8hWmXf1R76WXrxk98"></a>
         </div>
       </div>
       <div class="frame-div">
@@ -197,23 +261,24 @@
         </div>
       </div>
       <div class="slika3zbor-parent">
-        <img class="slika3zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined7.png" />
+        <img class="slika3zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor3.jpg" />
         <div class="frame11">
           <b class="predsjednik">3</b>
         </div>
         <div class="frame12">
-          <iframe class="map-group" />
+          <a class="map-group" target="_blank" href="https://maps.app.goo.gl/zCAVA8eHTQW6UiXo8"></a>
         </div>
       </div>
     </div>
     <div class="podrucnizbor4">
       <div class="slika4zbor-parent">
-        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined8.png" />
+        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor4.jpg" />
         <div class="frame13">
           <b class="predsjednik">4</b>
         </div>
         <div class="frame5">
-          <iframe class="map-group" />
+          <a class="map-group" target="_blank" href="https://maps.app.goo.gl/jPDczuHzSaJK3F5k6"></a>
+
         </div>
       </div>
       <div class="frame-group">
@@ -333,23 +398,25 @@
         </div>
       </div>
       <div class="slika5zbor-parent">
-        <img class="slika5zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined7.png" />
+        <img class="slika5zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor5.jpg" />
         <div class="frame19">
           <b class="predsjednik">5</b>
         </div>
         <div class="frame20">
-          <iframe class="map-group" />
+          <a class="map-group" target="_blank" href="https://maps.app.goo.gl/dtnKLDMXwbxQY1MU9"></a>
+
         </div>
       </div>
     </div>
     <div class="podrucnizbor4">
       <div class="slika6zbor-parent">
-        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/undefined8.png" />
+        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor6.png" />
         <div class="frame21">
           <b class="predsjednik">6</b>
         </div>
         <div class="frame5">
-          <iframe class="map-group" />
+          <a class="map-group" target="_blank" href="https://maps.app.goo.gl/SNXSTDcnUgAmnFxg6"></a>
+
         </div>
       </div>
       <div class="frame-group">
@@ -507,6 +574,128 @@ export default {
 </script>
 
 <style scoped>
+  .novovectorpozadina-icon {
+    align-self: stretch;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    height: 24.81rem;
+    flex-shrink: 0;
+    z-index: 0;
+  }
+.novopostupak-ulanjivanja {
+    position: absolute;
+    margin: 0 !important;
+    width: 61.88%;
+    top: calc(50% - 129.5px);
+    left: 12.8%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
+  .javite-se-tajniku {
+    margin: 0;
+  }
+  .novojavite-se-tajniku-container1 {
+    width: 100%;
+  }
+  .novojavite-se-tajniku-container {
+    position: absolute;
+    margin: 0 !important;
+    width: 62.6%;
+    top: calc(50% - 49.5px);
+    left: 10.65%;
+    font-size: 1rem;
+    font-weight: 500;
+    text-align: left;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+  }
+  .novolijeviframeglavni {
+    width: 49.94rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    position: relative;
+    gap: 0.63rem;
+  }
+  .novopromjena-podrunog-zbora {
+    align-self: stretch;
+    position: relative;
+  }
+  .novonaslovdesnitekst {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 0;
+  }
+  .do-01-rujna {
+    font-weight: 800;
+    font-family: Inter;
+  }
+  .span {
+    font-family: Inter;
+  }
+  .podruni-zbor-je {
+    margin: 0;
+    font-weight: 800;
+  }
+  .novoza-promjenu-podrunog-container {
+    align-self: stretch;
+    position: absolute;
+    margin: 0 !important;
+    width: 91.05%;
+    top: calc(50% - 50px);
+    left: 3.1%;
+    font-size: 1rem;
+    text-align: left;
+    display: inline-block;
+    z-index: 1;
+  }
+  .novopodframedesnitekst {
+    align-self: stretch;
+    height: 18.06rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.19rem 0.19rem 3.56rem 1.13rem;
+    box-sizing: border-box;
+    position: relative;
+    gap: 2.25rem;
+  }
+  .novodesniframetekst {
+    width: 37.06rem;
+    height: 19.31rem;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0.63rem 1.31rem;
+    box-sizing: border-box;
+    color: #000;
+  }
+  .novopostupakuclanjivanjaframe {
+    align-self: stretch;
+    background-color: #fff;
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-start;
+    color: #fff;
+    object-fit: initial !important;
+  }
+
+
+
+
+
   .podruni-zborovi {
     position: relative;
     letter-spacing: 3px;
@@ -744,6 +933,9 @@ export default {
     position: relative;
     width: 3.75rem;
     height: 3.75rem;
+    background-image: url("/storage/slike/podrucnizborovi/map_group.png");
+    cursor: pointer;
+    z-index: 5;
   }
   .frame3 {
     margin: 0 !important;
@@ -988,7 +1180,7 @@ export default {
     position: absolute;
     top: 1.81rem;
     left: 0.03rem;
-    width: 13.94rem;
+    width: 19.94rem;
     height: 1.19rem;
     overflow: hidden;
     display: flex;
@@ -1010,7 +1202,7 @@ export default {
   .frame-parent3 {
     position: relative;
     width: 20.81rem;
-    height: 7.25rem;
+    height: 10.25rem;
     text-align: left;
   }
   .mail-icon-container {
@@ -1160,7 +1352,7 @@ export default {
   .frame-parent6 {
     position: relative;
     width: 21.25rem;
-    height: 10.94rem;
+    height: 12.94rem;
     text-align: right;
     font-size: 2rem;
     color: #21231e;
@@ -1232,7 +1424,7 @@ export default {
   }
   .adresa2-container {
     position: absolute;
-    top: 6.38rem;
+    top: 8.38rem;
     left: 0rem;
     width: 14.56rem;
     height: 6.06rem;
@@ -1243,7 +1435,7 @@ export default {
   .frame-parent7 {
     position: relative;
     width: 35.38rem;
-    height: 10.94rem;
+    height: 14.94rem;
     text-align: left;
   }
   .slika5zbor-icon {
@@ -1420,6 +1612,8 @@ export default {
     font-size: 2rem;
     color: #21231e;
     font-family: Inter;
+    overflow: hidden;
+    padding-bottom: 5rem;
   }
 
   @media screen and (max-width: 1200px) {
@@ -1441,6 +1635,15 @@ export default {
       padding-right: 0rem;
       box-sizing: border-box;
     }
+    .novopostupakuclanjivanjaframe {
+      height: auto;
+      flex-direction: row;
+      flex-wrap: wrap;
+      gap: 0rem;
+      align-items: center;
+      justify-content: flex-start;
+    }
+
 
     .slikaframe {
       flex: 1;
@@ -1477,7 +1680,190 @@ export default {
  padding-bottom: 5rem;
     }
   }
+
+
+  @media screen and (max-width: 600px) {
+
+    .novojavite-se-tajniku-container{
+    top: 9rem;
+  }
+  .novopostupak-ulanjivanja{
+    top: 3rem;
+  }
+
+    .novopromjena-podrunog-zbora {
+    font-size: 1.4rem; 
+  }
+  .novopostupak-ulanjivanja {
+  font-size: 1.4rem; 
+  }
+  .novodesniframetekst {
+    height: 26.31rem;
+    padding: 3rem;
+  }
+  .novovectorpozadina-icon {
+    height: 31.81rem;
+  }
+  .slikaframe {
+      align-self: stretch;
+      width: 100%;
+      order: -1;
+    }
+    .slika2zbor-parent {
+      width: 100%;
+    }
+    .frame4 {
+      width: 100%;
+    }
+    .slika3zbor-parent {
+      width: 100%;
+    }
+    .slika3zbor-icon{
+      left: auto;
+    }
+    .slika4zbor-parent {
+      width: 100%;
+    }
+    .frame13 {
+      width: 100%;
+    }
+    .slika5zbor-parent {
+      width: 100%;
+    }
+    .slika5zbor-icon {
+     
+      left: auto;
+    }
+    .slika6zbor-parent {
+      width: 100%;
+    }
+    .frame21 {
+      width: 100%;
+      left: auto;
+    }
+ .podruni-zborovi {
+  font-size: 1.52rem ;
+}
+
+.slika6zbor-parent{
+  top: 1.52rem ;
+}
+
+
+.zuts-slavonije-i {
+letter-spacing: 0;
+}
+.zuts-sjeverozapadna-hrvatska {
+letter-spacing: 0;
+}
+.zuts-primorsko-goranske-upani {
+letter-spacing: 0;
+}
+.zuts-ogulin {
+letter-spacing: 0;
+}
+.zutss-nik-krmar {
+letter-spacing: 0;
+}
+.zuts-istra{
+letter-spacing: 0;
+}
+
+.frame-parent10 {
+    order: -1;
+    margin-bottom: 2rem;
+    text-align: left;
+  }
+
+  .frame-parent1 {
+      order: -1;
+  }
+  .frame-parent {
+      order: -1;
+  }
+  .frame-parent3 {
+      order: -1;
+  }
+  .frame-parent6 {
+      order: -1; 
+  }
+  .frame-parent5 {
+      order: -1;
+  }
+  .frame-parent7 {
+      order: -1;
+  }
+
+  .zuts-sjeverozapadna-hrvatska  {
+    width: 80%;
+    height: auto;
+  }
+
+  .adresa2-group  {
+left: 0;
+  }
+  .frame-parent2 {
+left: 0;
+  }
+  .frame23 {
+justify-content: flex-start;
+left: 0;
+  }
+  .frame24 {
+justify-content: flex-start;
+left: 0;
+  }
+  .adresa1 {
+justify-content: flex-start;
+left: 0;
+  }
+  .adresa6 {
+justify-content: flex-start;
+left: 0;
+  }
+  .tajnik5 {
+justify-content: flex-start;
+left: 0;
+  }
+
+}
+
   @media screen and (max-width: 420px) {
+    .zuts-sjeverozapadna-hrvatska  {
+    width: 60%;
+    height: auto;
+  }
+  .adresa2-container {
+  top: 9.38rem;
+  }
+ 
+  .frame-group{
+  padding: 4.75rem 0rem;
+}
+
+
+
+    .adresa2-group {
+    left: 0rem;
+  }
+  .frame-parent2 {
+    left: 0rem;
+  }
+
+
+
+    .frame-parent10 {
+    margin: 0rem;
+  }
+
+    .novodesniframetekst {
+    height: 30.31rem;
+  }
+  .novovectorpozadina-icon {
+    height: 36.81rem;
+  }
+
+
     .slikanavrhupodrucnihzborova {
       align-items: center;
       justify-content: center;
@@ -1486,11 +1872,7 @@ export default {
       box-sizing: border-box;
     }
 
-    .slikaframe {
-      align-self: stretch;
-      width: auto;
-      order: -1;
-    }
+  
     .slika3zbor-parent {
     order: -1;
   }
@@ -1498,12 +1880,16 @@ export default {
     order: -1;
   }
 
+  .slika6zbor-parent {
+    top: 3.52rem ;
+  }
+
     .podrucnizbor1 {
       flex-direction: column;
     }
 
     .slika2zbor-parent {
-      width: 32.13rem;
+  
       height: 25rem;
     }
 
@@ -1522,9 +1908,7 @@ export default {
     .frame-group{
       order: +1;
   }
-  .frame-div{
-      order: +1;
-  }
+
 
     .podrucnizbor5 {
       flex-direction: column;

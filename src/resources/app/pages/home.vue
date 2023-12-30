@@ -84,8 +84,14 @@
 
 --> 
 <div class="dogadajitrecired">
+  <div class="pogledajvisecontainer">
+  <Link :href="route('skijasi.commerce-theme.arhivavijesti')" class="view-more-button">
+    Pogledaj više <span class="pogledajarrow">→</span>
+  </Link>
+</div>
+
     
-      <ssr-carousel  v-if="slides.length > 0" class="dogadajipodgrupa"
+      <ssr-carousel  v-if="limitedSlides.length > 0" class="dogadajipodgrupa"
       overflow-visible
       show-arrows
   :slides-per-page='3'
@@ -111,7 +117,7 @@
       }
   ]'>
 <template>
-  <div class="dogadajipodgrupa-child" v-for="(slide, i) in slides" :index="i" :key="i">
+  <div class="dogadajipodgrupa-child" v-for="(slide, i) in limitedSlides" :index="i" :key="i">
 
     <a v-if="slide.link" :href="slide.link" style="text-decoration: none; color: #3498db;">
       <!-- Slide content -->
@@ -665,6 +671,10 @@ this.fetchTotalUsers();
 
   },
   computed: {
+    limitedSlides() {
+      return this.slides.slice(0, 3); // This will take the first 3 slides
+    },
+
     computedSpace() {
     // Check if window width is less than 500
     if (window.innerWidth < 500) {
@@ -1019,6 +1029,56 @@ async getThumbnails() {
 
 }
 
+
+
+.pogledajvisecontainer {
+  position: relative;
+  align-self: flex-end; /* Aligns the container to the right */
+  width: auto; /* Adjust this as needed */
+  margin-top: auto; /* Pushes the container to the top */
+}
+
+.view-more-button {
+  position: relative;
+  top: 5%; /* Adjust as needed */
+  padding-bottom: 20px;
+  padding-right: 10px;
+  color: #000;
+  text-decoration: none; /* Removes underline from links */
+  font-weight: bold; /* Makes the text bold */
+  border-radius: 6px; /* Slight rounding of corners */
+  display: flex; /* Aligns the text and the arrow nicely */
+  align-items: center; /* Centers items vertically */
+  gap: 3px; /* Spacing between text and arrow */
+  font-size: 15px;
+  cursor: pointer; /* Changes the cursor to a pointer on hover */
+
+font-family: Inter;
+font-size: 15px;
+font-style: normal;
+font-weight: 700;
+line-height: normal;
+
+transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+
+
+}
+
+.view-more-button:hover {
+  transform: scale(1.05); /* Slightly increase size on hover */
+  color: #3498db; 
+}
+
+.pogledajarrow {
+  display: block;
+  font-size: 16px;
+  color: #03a9f4;
+  transition: transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.view-more-button:hover .arrow {
+  transform: translateX(5px); /* Moves the arrow to the right on hover */
+}
 
 
 .vijestinaslov{
@@ -2086,7 +2146,7 @@ line-height: normal;
     }
 
     .objavljeno-20032023 {
-      font-size: 0.94rem;
+      font-size: 0.74rem;
     }
 
  
@@ -2233,7 +2293,7 @@ line-height: normal;
     }
 
     .objavljeno-20032023 {
-      font-size: 0.81rem;
+      font-size: 0.71rem !important;
     }
 
     .srednjibannerdogadaji {

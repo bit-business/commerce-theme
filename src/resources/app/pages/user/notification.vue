@@ -137,9 +137,10 @@
 </div>  </div>
 <!--1-->
 
+
       <div class="bg-white shadow-sm rounded-xl flex flex-wrap ml-16 mr-4">
 
-        <div class="flex flex-col w-full px-6 justify-center items-start border-plava-200 border-b">
+        <div class="flex flex-col w-full px-6 justify-center items-start border-plava-200 border-b p-4">
             <span class="text-lg font-medium plavi-text">Obavijesti</span>
           </div>
  

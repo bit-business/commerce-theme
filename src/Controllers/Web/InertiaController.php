@@ -109,6 +109,13 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
+    public function arhivavijesti()
+    {
+        return Inertia::render('arhivavijesti', [
+            'name' => 'Arhiva Vijesti',
+        ], 'commerce-theme:app');
+    }
+
     public function infoclanarine()
     {
         return Inertia::render('infoclanarine', [

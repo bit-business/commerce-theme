@@ -33,6 +33,8 @@ Route::prefix($commerce_route_prefix)
         Route::get('/list', HelpersRoute::getController('InertiaController@productList'))->name('product-list');
         Route::get('/search', HelpersRoute::getController('InertiaController@search'))->name('search');
 
+        Route::get('/arhivavijesti', HelpersRoute::getController('InertiaController@arhivavijesti'))->name('arhivavijesti');
+
         /**
          * Auth route.
          */
