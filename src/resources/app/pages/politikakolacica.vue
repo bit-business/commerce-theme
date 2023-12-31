@@ -548,5 +548,18 @@ export default {
   text-align: left;
   font-size: large;
 }
+
+
+
+
+@media screen and (max-width: 460px) {
+
+  .osnovneinformacije-inner {
+    padding: 10.88rem 5.38rem;
+  }
+
+}
+
+
 </style>
 

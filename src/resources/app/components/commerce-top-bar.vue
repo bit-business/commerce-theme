@@ -142,11 +142,11 @@
      @click="toggleDropdownInformacije">
   <!-- Dropdown content -->
       <div class="osnovne-informacije">Osnovne informacije</div>
-      <div class="djelatnost-hzuts-a">Djelatnost HZUTS-a</div>
-      <div class="status-lanova-hzuts-a">Status članova HZUTS-a</div>
-      <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')">Članarine</Link> 
-      <div class="izrada-lanske-iskaznice">Izrada članske iskaznice</div>
-      <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')">Područni zborovi</Link>
+      <Link class="djelatnost-hzuts-a" :href="route('skijasi.commerce-theme.djelatnostihzutsa')" @click.stop="closeDropdown">Djelatnost HZUTS-a</Link>
+      <Link class="status-lanova-hzuts-a" :href="route('skijasi.commerce-theme.nasiclanovi')" @click.stop="closeDropdown">Status članova HZUTS-a</Link>
+      <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')" @click.stop="closeDropdown">Članarine</Link> 
+      <Link class="izrada-lanske-iskaznice" :href="route('skijasi.commerce-theme.izradaiskaznice')" @click.stop="closeDropdown">Izrada članske iskaznice</Link>
+      <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')" @click.stop="closeDropdown">Područni zborovi</Link>
       <div class="dokumenti-hzuts-a">Dokumenti HZUTS-a</div>
  
 </div>
@@ -162,11 +162,11 @@
 
   <!-- Dropdown content -->
       <div class="osnovne-informacije">Osnovne informacije</div>
-      <div class="djelatnost-hzuts-a">Djelatnost HZUTS-a</div>
-      <div class="status-lanova-hzuts-a">Status članova HZUTS-a</div>
-      <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')">Članarine</Link> 
-      <div class="izrada-lanske-iskaznice">Izrada članske iskaznice</div>
-      <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')">Područni zborovi</Link>
+      <Link class="djelatnost-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.djelatnostihzutsa') }" :href="route('skijasi.commerce-theme.djelatnostihzutsa')" @click="closeDropdown">Djelatnost HZUTS-a</Link>
+      <Link class="status-lanova-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')" @click="closeDropdown">Status članova HZUTS-a</Link>
+      <Link class="lanarineInfo" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')" @click="closeDropdown">Članarine</Link> 
+      <Link class="izrada-lanske-iskaznice" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.izradaiskaznice') }" :href="route('skijasi.commerce-theme.izradaiskaznice')" @click="closeDropdown">Izrada članske iskaznice</Link>
+      <Link class="podruni-zboroviMeni" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.podrucnizborovi') }" :href="route('skijasi.commerce-theme.podrucnizborovi')" @click="closeDropdown">Područni zborovi</Link>
       <div class="dokumenti-hzuts-a">Dokumenti HZUTS-a</div>
     </div>
 </div>
@@ -415,6 +415,7 @@ beforeDestroy() {
     top: 15px;
     left: 20px;
     font-weight: 500;
+    color: grey;
   }
   .djelatnost-hzuts-a {
     position: absolute;
@@ -452,6 +453,7 @@ beforeDestroy() {
     top: 177px;
     left: 20px;
     font-weight: 500;
+    color: grey;
   }
   .podmeniclanarine {
     position: absolute;
@@ -1327,8 +1329,8 @@ top: 0%;
 
   .mobilnimeni {
     position: absolute;
-    padding-top: 6rem;
-    left: 2rem;
+    padding-top: 6.37rem;
+    left: 2.26rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1339,7 +1341,7 @@ top: 0%;
   .mobilnimeniInfo {
     position: absolute;
     padding-top: 6rem;
-    left: 2rem;
+    left: 2.2rem;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1446,6 +1448,37 @@ top: 0%;
 
   }
   @media screen and (max-width: 800px) {
+
+    .osnovne-informacije {
+        top: 15px; /* starting position */
+        font-weight: 600;
+    }
+    .djelatnost-hzuts-a {
+        top: 60px; /* increase gap */
+        font-weight: 600;
+    }
+    .status-lanova-hzuts-a {
+        top: 105px; /* increase gap */
+        font-weight: 600;
+    }
+    .lanarineInfo {
+        top: 150px; /* increase gap */
+        font-weight: 600;
+    }
+    .izrada-lanske-iskaznice {
+        top: 195px; /* increase gap */
+        font-weight: 600;
+    }
+    .podruni-zboroviMeni {
+        top: 240px; /* increase gap */
+        font-weight: 600;
+    }
+    .dokumenti-hzuts-a {
+        top: 285px; /* increase gap */
+        font-weight: 600;
+    }
+
+
 
 
     .navbartekstoviframe {

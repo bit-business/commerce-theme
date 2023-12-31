@@ -136,6 +136,19 @@ class InertiaController extends Controller
             'name' => 'Politika Privatnosti',
         ], 'commerce-theme:app');
     }
+    public function izradaiskaznice()
+    {
+        return Inertia::render('izradaiskaznice', [
+            'name' => 'Izrada Članske Iskaznice',
+        ], 'commerce-theme:app');
+    }
+
+    public function djelatnostihzutsa()
+    {
+        return Inertia::render('djelatnostihzutsa', [
+            'name' => 'Djelatnosti Hzuts-a',
+        ], 'commerce-theme:app');
+    }
 
     public function politikakolacica()
     {

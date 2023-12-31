@@ -567,5 +567,29 @@ export default {
   text-align: left;
   font-size: large;
 }
+
+
+
+
+@media screen and (max-width: 460px) {
+  .osnovneinformacije {
+
+    height: 246.5rem;
+
+  }
+.g14-parent {
+ 
+    top: 10%;
+    bottom: 5.5%;
+
+  }
+
+  .osnovneinformacije-inner {
+    padding: 10.88rem 5.38rem;
+  }
+
+}
+
+
 </style>
 

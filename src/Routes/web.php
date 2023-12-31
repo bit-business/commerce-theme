@@ -34,6 +34,8 @@ Route::prefix($commerce_route_prefix)
         Route::get('/search', HelpersRoute::getController('InertiaController@search'))->name('search');
 
         Route::get('/arhivavijesti', HelpersRoute::getController('InertiaController@arhivavijesti'))->name('arhivavijesti');
+        Route::get('/djelatnostihzutsa', HelpersRoute::getController('InertiaController@djelatnostihzutsa'))->name('djelatnostihzutsa');
+        Route::get('/izradaiskaznice', HelpersRoute::getController('InertiaController@izradaiskaznice'))->name('izradaiskaznice');
 
         /**
          * Auth route.
