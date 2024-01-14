@@ -142,7 +142,7 @@ export default {
   }
   .djelatnosti-hzuts-a-wrapper {
     align-self: stretch;
-    height: 33rem;
+    height: 30rem;
     display: flex;
     flex-direction: column;
     align-items: center;

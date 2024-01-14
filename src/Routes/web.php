@@ -36,6 +36,8 @@ Route::prefix($commerce_route_prefix)
         Route::get('/arhivavijesti', HelpersRoute::getController('InertiaController@arhivavijesti'))->name('arhivavijesti');
         Route::get('/djelatnostihzutsa', HelpersRoute::getController('InertiaController@djelatnostihzutsa'))->name('djelatnostihzutsa');
         Route::get('/izradaiskaznice', HelpersRoute::getController('InertiaController@izradaiskaznice'))->name('izradaiskaznice');
+        Route::get('/prijavazaclanstvo', HelpersRoute::getController('InertiaController@prijavazaclanstvo'))->name('prijavazaclanstvo');
+
 
         /**
          * Auth route.

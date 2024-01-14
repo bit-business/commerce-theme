@@ -142,11 +142,11 @@
      @click="toggleDropdownInformacije">
   <!-- Dropdown content -->
       <div class="osnovne-informacije">Osnovne informacije</div>
-      <Link class="djelatnost-hzuts-a" :href="route('skijasi.commerce-theme.djelatnostihzutsa')" @click.stop="closeDropdown">Djelatnost HZUTS-a</Link>
-      <Link class="status-lanova-hzuts-a" :href="route('skijasi.commerce-theme.nasiclanovi')" @click.stop="closeDropdown">Status članova HZUTS-a</Link>
-      <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')" @click.stop="closeDropdown">Članarine</Link> 
-      <Link class="izrada-lanske-iskaznice" :href="route('skijasi.commerce-theme.izradaiskaznice')" @click.stop="closeDropdown">Izrada članske iskaznice</Link>
-      <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')" @click.stop="closeDropdown">Područni zborovi</Link>
+      <Link class="djelatnost-hzuts-a" :href="route('skijasi.commerce-theme.djelatnostihzutsa')">Djelatnost HZUTS-a</Link>
+      <Link class="status-lanova-hzuts-a" :href="route('skijasi.commerce-theme.nasiclanovi')" >Status članova HZUTS-a</Link>
+      <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')" >Članarine</Link> 
+      <Link class="izrada-lanske-iskaznice" :href="route('skijasi.commerce-theme.izradaiskaznice')" >Izrada članske iskaznice</Link>
+      <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')" >Područni zborovi</Link>
       <div class="dokumenti-hzuts-a">Dokumenti HZUTS-a</div>
  
 </div>

@@ -3,7 +3,9 @@
   <div class="hzuts-podrucni-zborovi-screen-">
     <Head :title="$page.props.name" />
     <div class="slikanavrhupodrucnihzborova">
-      <div class="podruni-zborovi">PODRUČNI ZBOROVI</div>
+      <div class="info-podruni-zborovi">PODRUČNI ZBOROVI</div>
+      <div class="info-podruni-zborovi-podtekst">Da bi osoba postala član HZUTS-a prethodno se mora učlaniti u 
+područni zbor prema vlastitom izboru.</div>
     </div>
 
 
@@ -70,10 +72,10 @@
 
 
     <div class="podrucnizbor1">
-      <div class="frame-parent">
+      <div class="podzbo-frame-parent">
         <div class="zuts-istra-parent">
           <b class="zuts-istra">{{ zborovi && zborovi[2] ? zborovi[2].ime : '' }}</b>
-          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
+          <img class="podzbo-plavacrta" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
         <div class="tekstovi1">
           <div class="frame">
@@ -92,7 +94,7 @@
           </div>
         </div>
       </div>
-      <div class="frame-group">
+      <div class="podzbo-frame-group">
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].depphone : '' }}</div>
@@ -114,10 +116,11 @@
 </a>
 
         </div>
+        <!--
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].depfax : '' }}</div>
-        </div>
+        </div>-->
         <div class="dollar-sign-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].clanarina : '' }}</div>
@@ -168,10 +171,11 @@
    {{ zborovi && zborovi[3] && zborovi[3].depwww ? zborovi[3].depwww : '' }}
 </a>
         </div>
+        <!--
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].depfax: '' }}</div>
-        </div>
+        </div>-->
         <div class="dollar-sign-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].clanarina: '' }}</div>
@@ -181,12 +185,12 @@
           <div class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].ziroracun: '' }}</div>
         </div>
       </div>
-      <div class="frame-parent1">
+      <div class="podzbo-frame-parent1">
         <div class="frame6">
           <b class="zutss-nik-krmar">{{ zborovi && zborovi[3] ? zborovi[3].ime : '' }}</b>
-          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
+          <img class="podzbo-plavacrta" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
-        <div class="frame-parent2">
+        <div class="podzbo-frame-parent2">
           <div class="frame7">
             <div class="predsjednik">Predsjednik:</div>
             <b class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].predsjednik : '' }}</b>
@@ -205,10 +209,10 @@
       </div>
     </div>
     <div class="podrucnizbor3">
-      <div class="frame-parent3">
+      <div class="podzbo-frame-parent3">
         <div class="zuts-ogulin-parent">
           <b class="zuts-ogulin">{{ zborovi && zborovi[4] ? zborovi[4].ime : '' }}</b>
-          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
+          <img class="podzbo-plavacrta" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
         <div class="adresa2-parent">
           <div class="adresa21">
@@ -227,7 +231,7 @@
           </div>
         </div>
       </div>
-      <div class="frame-group">
+      <div class="podzbo-frame-group">
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].depphone : '' }}</div>
@@ -247,10 +251,11 @@
    {{ zborovi && zborovi[4] && zborovi[4].depwww ? zborovi[4].depwww : '' }}
 </a>
         </div>
+        <!--
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].depfax : '' }}</div>
-        </div>
+        </div>-->
         <div class="dollar-sign-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].clanarina : '' }}</div>
@@ -281,7 +286,7 @@
 
         </div>
       </div>
-      <div class="frame-group">
+      <div class="podzbo-frame-group">
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].depphone : '' }}</div>
@@ -301,10 +306,11 @@
    {{ zborovi && zborovi[5] && zborovi[5].depwww ? zborovi[5].depwww : '' }}
 </a>
         </div>
+        <!--
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].depfax : '' }}</div>
-        </div>
+        </div>-->
         <div class="dollar-sign-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].clanarina : '' }}</div>
@@ -314,12 +320,12 @@
           <div class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].ziroracun : '' }}</div>
         </div>
       </div>
-      <div class="frame-parent6">
+      <div class="podzbo-frame-parent6">
         <div class="zuts-primorsko-goranske-upani-parent">
           <b class="zuts-primorsko-goranske-upani"
             >{{ zborovi && zborovi[5] ? zborovi[5].ime : '' }}</b
           >
-          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
+          <img class="podzbo-plavacrta" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
         <div class="adresa2-group">
           <div class="adresa22">
@@ -340,12 +346,12 @@
       </div>
     </div>
     <div class="podrucnizbor5">
-      <div class="frame-parent7">
+      <div class="podzbo-frame-parent7">
         <div class="zuts-sjeverozapadna-hrvatska-parent">
           <b class="zuts-sjeverozapadna-hrvatska"
             >{{ zborovi && zborovi[6] ? zborovi[6].ime : '' }}</b
           >
-          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
+          <img class="podzbo-plavacrta" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
         <div class="adresa2-container">
           <div class="adresa23">
@@ -364,7 +370,7 @@
           </div>
         </div>
       </div>
-      <div class="frame-group">
+      <div class="podzbo-frame-group">
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-11.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].depphone : '' }}</div>
@@ -384,10 +390,11 @@
    {{ zborovi && zborovi[6] && zborovi[6].depwww ? zborovi[6].depwww : '' }}
 </a>
         </div>
+        <!--
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-11.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].depfax : '' }}</div>
-        </div>
+        </div>-->
         <div class="dollar-sign-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-11.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].clanarina : '' }}</div>
@@ -419,7 +426,7 @@
 
         </div>
       </div>
-      <div class="frame-group">
+      <div class="podzbo-frame-group">
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/phone-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].depphone : '' }}</div>
@@ -439,10 +446,11 @@
    {{ zborovi && zborovi[7] && zborovi[7].depwww ? zborovi[7].depwww : '' }}
 </a>
         </div>
+        <!--
         <div class="phone-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/printer-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].depfax : '' }}</div>
-        </div>
+        </div>-->
         <div class="dollar-sign-1-parent">
           <img class="phone-1-icon" alt="" src="/storage/slike/podrucnizborovi/dollarsign-1.svg" />
           <div class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].clanarina : '' }}</div>
@@ -452,12 +460,12 @@
           <div class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].ziroracun : '' }}</div>
         </div>
       </div>
-      <div class="frame-parent10">
+      <div class="podzbo-frame-parent10">
         <div class="zuts-slavonije-i-baranje-parent">
           <b class="zuts-slavonije-i">{{ zborovi && zborovi[7] ? zborovi[7].ime : '' }}</b>
-          <img class="frame-child" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
+          <img class="podzbo-plavacrta" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
-        <div class="frame-parent11">
+        <div class="podzbo-frame-parent11">
           <div class="frame23">
             <div class="predsjednik">Predsjednik:</div>
             <b class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].predsjednik : '' }}</b>
@@ -696,15 +704,34 @@ export default {
 
 
 
-  .podruni-zborovi {
+  .info-podruni-zborovi {
     position: relative;
     letter-spacing: 3px;
     font-weight: 600;
+    white-space: nowrap;
+  }
+  .info-podruni-zborovi-podtekst {
+    position: relative;
+    color: #FFF;
+text-align: center;
+font-family: Inter;
+font-size: 20px;
+font-style: normal;
+font-weight: 500;
+line-height: normal;
+top: 70px;
+
+align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    white-space: normal;
   }
   .slikanavrhupodrucnihzborova {
     align-self: stretch;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
     justify-content: flex-start;
     padding: 15rem 31rem;
@@ -723,7 +750,7 @@ export default {
     align-items: center;
     width: 21.31rem;
   }
-  .frame-child {
+  .podzbo-plavacrta {
     position: relative;
     width: 18.75rem;
     height: 0.13rem;
@@ -805,7 +832,7 @@ export default {
     font-size: 1rem;
     color: #000;
   }
-  .frame-parent {
+  .podzbo-frame-parent {
     position: relative;
     width: 18rem;
     height: 10.5rem;
@@ -887,7 +914,7 @@ export default {
     justify-content: flex-start;
     gap: 1.19rem;
   }
-  .frame-group {
+  .podzbo-frame-group {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -1089,7 +1116,7 @@ export default {
     align-items: flex-start;
     justify-content: flex-start;
   }
-  .frame-parent2 {
+  .podzbo-frame-parent2 {
     position: absolute;
     top: 3.88rem;
     left: 6.34rem;
@@ -1102,7 +1129,7 @@ export default {
     font-size: 1rem;
     color: #000;
   }
-  .frame-parent1 {
+  .podzbo-frame-parent1 {
     position: relative;
     width: 23.75rem;
     height: 10.5rem;
@@ -1199,7 +1226,7 @@ export default {
     font-size: 1rem;
     color: #000;
   }
-  .frame-parent3 {
+  .podzbo-frame-parent3 {
     position: relative;
     width: 20.81rem;
     height: 10.25rem;
@@ -1349,7 +1376,7 @@ export default {
     font-size: 1rem;
     color: #000;
   }
-  .frame-parent6 {
+  .podzbo-frame-parent6 {
     position: relative;
     width: 21.25rem;
     height: 12.94rem;
@@ -1432,7 +1459,7 @@ export default {
     font-size: 1rem;
     color: #000;
   }
-  .frame-parent7 {
+  .podzbo-frame-parent7 {
     position: relative;
     width: 35.38rem;
     height: 14.94rem;
@@ -1578,7 +1605,7 @@ export default {
     justify-content: flex-start;
     z-index: 2;
   }
-  .frame-parent11 {
+  .podzbo-frame-parent11 {
     align-self: stretch;
     height: 3.31rem;
     display: flex;
@@ -1590,7 +1617,7 @@ export default {
     font-size: 1rem;
     color: #000;
   }
-  .frame-parent10 {
+  .podzbo-frame-parent10 {
     height: 9.81rem;
     display: flex;
     flex-direction: column;
@@ -1616,7 +1643,7 @@ export default {
     padding-bottom: 5rem;
   }
 
-  @media screen and (max-width: 1200px) {
+  
     .slikanavrhupodrucnihzborova {
       flex-direction: column;
       align-items: center;
@@ -1626,7 +1653,7 @@ export default {
       padding-right: 0rem;
       box-sizing: border-box;
     }
-  }
+  
   @media screen and (max-width: 960px) {
     .slikanavrhupodrucnihzborova {
       align-items: center;
@@ -1741,10 +1768,12 @@ export default {
       width: 100%;
       left: auto;
     }
- .podruni-zborovi {
+ .info-podruni-zborovi {
   font-size: 1.52rem ;
 }
-
+.info-podruni-zborovi-podtekst {
+  font-size: 19px;
+}
 .slika6zbor-parent{
   top: 1.52rem ;
 }
@@ -1769,28 +1798,28 @@ letter-spacing: 0;
 letter-spacing: 0;
 }
 
-.frame-parent10 {
+.podzbo-frame-parent10 {
     order: -1;
     margin-bottom: 2rem;
     text-align: left;
   }
 
-  .frame-parent1 {
+  .podzbo-frame-parent1 {
       order: -1;
   }
-  .frame-parent {
+  .podzbo-frame-parent {
       order: -1;
   }
-  .frame-parent3 {
+  .podzbo-frame-parent3 {
       order: -1;
   }
-  .frame-parent6 {
+  .podzbo-frame-parent6 {
       order: -1; 
   }
-  .frame-parent5 {
+  .podzbo-frame-parent5 {
       order: -1;
   }
-  .frame-parent7 {
+  .podzbo-frame-parent7 {
       order: -1;
   }
 
@@ -1802,7 +1831,7 @@ letter-spacing: 0;
   .adresa2-group  {
 left: 0;
   }
-  .frame-parent2 {
+  .podzbo-frame-parent2 {
 left: 0;
   }
   .frame23 {
@@ -1829,6 +1858,12 @@ left: 0;
 }
 
   @media screen and (max-width: 420px) {
+    .podzbo-plavacrta {
+    position: relative;
+    width: 22.75rem;
+    height: 0.13rem;
+  }
+
     .zuts-sjeverozapadna-hrvatska  {
     width: 60%;
     height: auto;
@@ -1837,7 +1872,7 @@ left: 0;
   top: 9.38rem;
   }
  
-  .frame-group{
+  .podzbo-frame-group{
   padding: 4.75rem 0rem;
 }
 
@@ -1846,13 +1881,13 @@ left: 0;
     .adresa2-group {
     left: 0rem;
   }
-  .frame-parent2 {
+  .podzbo-frame-parent2 {
     left: 0rem;
   }
 
 
 
-    .frame-parent10 {
+    .podzbo-frame-parent10 {
     margin: 0rem;
   }
 
@@ -1905,7 +1940,7 @@ left: 0;
       flex-direction: column;
  padding-bottom: 5rem;
     }
-    .frame-group{
+    .podzbo-frame-group{
       order: +1;
   }
 

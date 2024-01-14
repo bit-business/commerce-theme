@@ -139,7 +139,7 @@
                       href="mailto:info@hzuts.hr"
                       target="_blank"
                     >
-                      <span class="infohzutshr1">info@hzuts.hr</span>
+                      <span class="infohzutshr1">&#105;&#110;&#102;&#111;&#64;&#104;&#122;&#117;&#116;&#115;&#46;&#104;&#114;</span>
                     </a>
                   </b>
                 </div>

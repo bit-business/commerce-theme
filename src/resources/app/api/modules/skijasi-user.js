@@ -11,6 +11,10 @@ export default {
     let ep = apiPrefix + "/v1/user/public/edit";
     return resource.put(ep, data);
   },
+  prijavnicaedit(data) {
+    let ep = apiPrefix + "/v1/user/public/prijavnicaedit";
+    return resource.put(ep, data);
+  },
 
   changePassword(data) {
     let ep = apiPrefix + "/v1/user/public/change";
