@@ -141,7 +141,7 @@
      @mouseleave="toggleDropdownInformacije(false)"
      @click="toggleDropdownInformacije">
   <!-- Dropdown content -->
-      <div class="osnovne-informacije">Osnovne informacije</div>
+      <Link class="osnovne-informacije" :href="route('skijasi.commerce-theme.osnovneinformacije')">Osnovne informacije</Link>
       <Link class="djelatnost-hzuts-a" :href="route('skijasi.commerce-theme.djelatnostihzutsa')">Djelatnost HZUTS-a</Link>
       <Link class="status-lanova-hzuts-a" :href="route('skijasi.commerce-theme.nasiclanovi')" >Status članova HZUTS-a</Link>
       <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')" >Članarine</Link> 
@@ -161,7 +161,7 @@
         <div class="infolista">
 
   <!-- Dropdown content -->
-      <div class="osnovne-informacije">Osnovne informacije</div>
+      <Link class="osnovne-informacije" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')" @click="closeDropdown">Osnovne informacije</Link>
       <Link class="djelatnost-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.djelatnostihzutsa') }" :href="route('skijasi.commerce-theme.djelatnostihzutsa')" @click="closeDropdown">Djelatnost HZUTS-a</Link>
       <Link class="status-lanova-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')" @click="closeDropdown">Status članova HZUTS-a</Link>
       <Link class="lanarineInfo" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')" @click="closeDropdown">Članarine</Link> 
@@ -415,7 +415,7 @@ beforeDestroy() {
     top: 15px;
     left: 20px;
     font-weight: 500;
-    color: grey;
+   
   }
   .djelatnost-hzuts-a {
     position: absolute;

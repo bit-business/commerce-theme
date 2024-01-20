@@ -113,7 +113,7 @@
             <div v-if="!isEventActive(product)" class="inactive-overlay">
                               NIJE AKTIVNO
             </div>
-            <div v-if="index > 2" class="inactive-overlay">
+            <div v-if="index > 3" class="inactive-overlay">
     UBRZO DETALJI
 </div>
 
@@ -1033,7 +1033,7 @@ computeCountdown() {
   position: relative;
   background-color: #f8f7f5;
   width: 100%;
-  height: 130.49rem;
+  height: 160.49rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1126,7 +1126,7 @@ computeCountdown() {
  
 
     .dogadanja {
-  height: 190rem;
+  height: 230rem;
 
 }
  

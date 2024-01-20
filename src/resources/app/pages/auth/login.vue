@@ -266,6 +266,7 @@ export default {
 });
 
 
+
   },
   methods: {
 
@@ -280,6 +281,10 @@ export default {
     login() {
       this.$v.email.$touch(); 
       this.loading = true
+
+          // Retrieve the previous route from session storage from prijavnice
+          const fromRoute = sessionStorage.getItem('previousRoute');
+
       this.$api.skijasiAuth
         .loginweb({
           email: this.email,
@@ -288,11 +293,23 @@ export default {
         })
         .then((response) => {
           if (response.data.accessToken) {
-            this.$inertia.visit(this.route("skijasi.commerce-theme.profile"))
+          // this.$inertia.visit(this.route("skijasi.commerce-theme.profile"))
+
+          const previousRoute = sessionStorage.getItem('previousRoute');
+        if (previousRoute) {
+          this.$inertia.visit(previousRoute);
+          sessionStorage.removeItem('previousRoute'); // Clear the stored route
+        } else {
+          this.$inertia.visit(this.route("skijasi.commerce-theme.profile"));
+        }
+
             this.$store.dispatch("SET_IS_AUTHENTICATED", true);
             this.$store.dispatch("SET_USER", response.data.user);
             this.$store.dispatch('FETCH_CARTS')
             this.$store.dispatch('FETCH_NOTIFICATIONS')
+
+   
+
           } else {
             this.$inertia.visit(this.route("skijasi.commerce-theme.verification", this.email))
           }

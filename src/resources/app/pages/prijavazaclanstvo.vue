@@ -241,9 +241,9 @@ export default {
     Link,
     Head
   },
+  
   data() {
     return {
-   
       
       uploadedFilesCount: 0,
     uploadedFiles: [],
@@ -352,7 +352,10 @@ export default {
     }),
   },
   mounted() {
+
     if (!this.isAuthenticated) {
+      sessionStorage.setItem('previousRoute', this.route('skijasi.commerce-theme.prijavazaclanstvo'));
+
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     }
 

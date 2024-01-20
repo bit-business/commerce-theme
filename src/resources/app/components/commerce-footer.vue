@@ -2,16 +2,16 @@
   <div class="footerdesktop">
     <footer class="velikifooterkvadrat">
       <div class="bijelapozadina" />
-      <img class="slikaframe-icon" alt="" src="/storage/slike/footer/slikaframe.svg" />
+      <img class="slikaframe-icon" alt="" src="/storage/slike/footer/footerslika.svg" />
       <div class="glavnagrupakontakt">
         <div class="kontakt">Kontakt</div>
         <div class="kontainerzakontakttekstove">
           <div class="text-input">
-            <img class="container-icon" alt="" src="/storage/slike/footer/container.svg" />
+            <img class="container-icon" alt="" src="/storage/slike/footer/containerfooter.svg" />
             <a href="tel:+38512399950" class="divbrojmob">+385 1 23 999 50</a>
           </div>
           <a class="text-input1">
-            <img class="container-icon1" alt="" src="/storage/slike/footer/container1.svg" />
+            <img class="container-icon1" alt="" src="/storage/slike/footer/containerfooter1.svg" />
             <a class="infohzutshr" href="mailto:info@hzuts.hr">info@hzuts.hr</a>
           </a>
           <!--
