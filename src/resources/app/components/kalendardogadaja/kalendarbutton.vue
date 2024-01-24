@@ -2,7 +2,13 @@
   <section class="button9">
     <img class="crta1-icon" loading="eager" alt="" src="/storage/slike/kalendardogadaja/crta1.svg" />
     <div class="prvisaliste cursor-pointer">
-      <li v-for="(product, index) in products" :key="product.id" class="product-item">
+      <template v-for="(product, index) in products">
+        <Link 
+          v-if="isFutureDate(product.datumPocetka)" 
+          :key="'link-' + product.id" 
+          class="product-item" 
+          :href="route('skijasi.commerce-theme.detalji', product.slug)"
+        >
         <div class="text">
           <div class="rednibroj">{{ index + 1 }}</div>
         </div>
@@ -13,30 +19,54 @@
           </div>
         </div>
         <img class="g14-icon6" loading="eager" alt="" src="/storage/slike/kalendardogadaja/g14.svg" />
-      </li>
+      </Link>
+      <div 
+          v-else 
+          :key="'div-' + product.id" 
+          class="product-item"
+        >  <div class="text">
+          <div class="rednibroj">{{ index + 1 }}</div>
+        </div>
+        <div class="text1">
+          <div class="frame-with-children">
+            <div class="text2">{{ formatDateRange(product.datumPocetka, product.datumKraja) }}</div>
+            <div class="seminar-hzuts-a-">{{ product.name }} - {{ product.mjesto }}</div>
+          </div>
+        </div>
+        <img class="g14-icon6" loading="eager" alt="" src="/storage/slike/kalendardogadaja/g14.svg" />
+      </div>
+      </template>
     </div>
   </section>
 </template>
 <script>
   import { defineComponent } from "vue";
+  import { Link, Head } from '@inertiajs/inertia-vue'
 
   export default defineComponent({
     name: "Kalendarbutton",
-    props: {
-  products: {
-    type: Array,
-    default: () => []
+    components: {
+    Link,
+    Head
   },
-  formatDateRange: Function
-},
-mounted() {
-  console.log(this.products); // Check if the products are received
-},
+  props: {
+    products: {
+      type: Array,
+      default: () => []
+    },
+    formatDateRange: Function
+  },
+  methods: {
+    isFutureDate(date) {
+      const today = new Date();
+      today.setHours(0, 0, 0, 0);
+      const startDate = new Date(date);
+      return startDate >= today;
+    }
+  },
 
+});
 
-
-  
-  });
 </script>
 <style scoped>
   .crta1-icon {
@@ -173,7 +203,13 @@ mounted() {
   border-radius: 10px;
     background-color: #f8f7f5;
     padding: 0px 15px 0px 22px;
+    transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
 }
+
+.product-item:hover {
+  transform: scale(1.02); /* Slightly larger on hover */
+}
+
 
 
   @media screen and (max-width: 675px) {
