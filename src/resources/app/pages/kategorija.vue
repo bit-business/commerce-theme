@@ -1,7 +1,17 @@
 <template>    
   <div class="dogadanja">
     <Head :title="$page.props.name" />
-       
+    <div class="blurbackground" v-if="showKalendarFrame" @click="closeKalendarFrame"></div>
+    <transition name="slide-fade">
+      <Kalendar 
+    v-if="showKalendarFrame && products.data.length > 0" 
+    ref="myScrollableElement" 
+    @close="handleKalendarClose" 
+    :products="sortedAndFilteredProducts"
+    :formatDateRange="formatDateRange">
+  </Kalendar>
+</transition>
+
     
     <carousel-item-single 
     v-if="nextEvent"
@@ -63,7 +73,12 @@
          
         
         <div class="dogadanjatekst">
-         <div class="dogaanja">Događanja</div>
+         <div class="dogaanja">Događanja</div>  <div class="dogaanja2 cursor-pointer"  @click="handleKalendarOpen"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.5833 4.33337H5.41667C4.22005 4.33337 3.25 5.30342 3.25 6.50004V21.6667C3.25 22.8633 4.22005 23.8334 5.41667 23.8334H20.5833C21.78 23.8334 22.75 22.8633 22.75 21.6667V6.50004C22.75 5.30342 21.78 4.33337 20.5833 4.33337Z" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.3333 2.16663V6.49996" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.66675 2.16663V6.49996" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.25 10.8333H22.75" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>Cijeli popis događaja</div>
        </div>
 
 
@@ -151,6 +166,8 @@ import CarouselItem from '../components/carousel/carousel-item.vue'
 import CommerceLogo from "../components/commerce-logo.vue";
 import CommerceSearchInput from "../components/commerce-search-input.vue";
 
+import Kalendar from '../components/kalendardogadaja/kalendar.vue'
+
 
 import { mapState } from 'vuex'
 import { Link, Head } from '@inertiajs/inertia-vue'
@@ -168,6 +185,7 @@ export default {
     Link,
     Head,
    
+    Kalendar,
     Card,
     CardHeader,
     CardAction,
@@ -180,6 +198,10 @@ export default {
   inject: ["goBack"],
   data() {
     return {
+      showKalendarFrame: false, 
+
+
+
       currentPage: 1,
       products: {
         data: []
@@ -200,6 +222,16 @@ export default {
     }
   },
   computed: {
+
+    sortedAndFilteredProducts() {
+    return this.products.data.sort((a, b) => {
+      return new Date(a.datumPocetka) - new Date(b.datumPocetka);
+    });
+  },
+
+
+
+
     reversedProducts() {
         return this.products.data.slice().reverse();
     },
@@ -310,7 +342,6 @@ return sortedEvents.length > 0 ? sortedEvents[0] : {};
     this.getProducts();
     this.getCategories();
     this.setQueryParams();
-
 
 
   setInterval(() => {
@@ -561,6 +592,37 @@ computeCountdown() {
         })
     },
 
+
+    scrollToTop() {
+    if (this.$refs.myScrollableElement) {
+      this.$refs.myScrollableElement.scrollTop = 0;
+    }
+  },
+  closeKalendarFrame() {
+    this.showKalendarFrame = false;
+  },
+  handleKalendarClose() {
+    this.showKalendarFrame = false;
+  },
+
+  handleKalendarOpen() {
+    if (this.products.data.length > 0) {
+      this.showKalendarFrame = true;
+    } else {
+      console.log("No product data available");
+    }
+  },
+
+  // Close frame if clicked outside
+  handleClickOutside(event) {
+    if (this.showKalendarFrame && !this.$refs.detailsFrame.contains(event.target)) {
+      this.closeKalendarFrame();
+    }
+  },
+
+
+
+
   }
 }
 </script>
@@ -568,6 +630,31 @@ computeCountdown() {
 
 
 <style scoped>
+
+
+.slide-fade-enter-active, .slide-fade-leave-active {
+  transition: all 0.5s ease;
+}
+.slide-fade-enter, .slide-fade-leave-to {
+  transform: translateX(100%);
+  opacity: 0.8;
+}
+
+.blurbackground {
+    flex: 1;
+    position: absolute;
+    margin: 0 !important;
+    top: 0rem;
+    left: 0rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(10px);
+    height: 100%;
+    width: 100%;
+    z-index: 1000;
+  }
+
+
+
 /*
 .products-grid {
     display: grid;
@@ -811,10 +898,39 @@ computeCountdown() {
   font-weight: 600;
   display: flex;
   align-items: center;
-  width: 13rem;
+
   flex-shrink: 0;
-  
 }
+
+  .dogaanja2 {
+  /* Styles for right-aligned div with SVG */
+  position: relative;
+  display: flex;
+  align-items: center; /* Align SVG and text vertically */
+  color: #03A9F4;
+  font-family: Inter;
+  font-size: 0.9rem;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-right: 2.7%;
+  transform: scale(1); /* Original size */
+  transition: color 0.3s ease, transform 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.dogaanja2:hover {
+  color: #05BFF6; /* Lighter color on hover */
+  transform: scale(1.03); /* Slightly larger on hover */
+}
+
+.dogaanja2 svg {
+  display: inline;
+  vertical-align: middle;
+  margin-right: 10px;
+}
+
+
+
 .dogadanjatekst {
   align-self: stretch;
   height: 3rem;
@@ -822,8 +938,8 @@ computeCountdown() {
   flex-direction: row;
   padding: 0rem 3.13rem;
   box-sizing: border-box;
-  align-items: flex-start;
-  justify-content: flex-start;
+  align-items: center; /* Change from flex-start to center for vertical alignment */
+  justify-content: space-between;
   text-align: left;
   font-size: 2.5rem;
   color: #000;
@@ -1133,8 +1249,30 @@ computeCountdown() {
 
 }
 
+@media screen and (max-width: 500px) {
+
+
+.dogaanja {
+font-size: 1.5rem;
+align-items: left;
+}
+.dogaanja2 {
+font-size:0.8rem;
+align-items: right;
+}
+.dogadanjatekst{
+gap: 2.4rem;
+padding: 0 rem 2.4rem;
+}
+}
+
 
 @media screen and (max-width: 480px) {
+
+
+
+
+
     .prvireddesni {
         max-width: 80vw;
         height: auto;  
@@ -1202,6 +1340,8 @@ margin-top: -10%;
 
 
   @media screen and (max-width: 400px) {
+
+
   .countdown{
 font-size: 2rem;
   }
@@ -1211,7 +1351,7 @@ font-size: 0.5rem;
   }
   .frame3 {
     left: 50%;     
-    top: 2.2rem;           /* Move the left edge to the center of the parent */
+    top: 2.2rem;         
   }
 
 }

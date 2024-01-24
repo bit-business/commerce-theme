@@ -1653,6 +1653,18 @@ align-self: stretch;
       padding-right: 0rem;
       box-sizing: border-box;
     }
+
+
+    @media screen and (min-width: 1500px) {
+    .novolijeviframeglavni {
+ width: 50%;
+    }
+.novodesniframetekst {
+ width: 48%;
+    }
+
+
+  }
   
   @media screen and (max-width: 960px) {
     .slikanavrhupodrucnihzborova {

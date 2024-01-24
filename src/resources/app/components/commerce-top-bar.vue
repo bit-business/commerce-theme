@@ -458,7 +458,7 @@ beforeDestroy() {
   .podmeniclanarine {
     position: absolute;
     top: 60px;
-    right: 568px;
+    left: 53%;
     background-color: #fff;
     width: 220px;
     height: 209px;
@@ -1413,6 +1413,9 @@ top: 0%;
     top: 1.67%;
     right: 44.44%;
   }
+
+
+
 
 
 

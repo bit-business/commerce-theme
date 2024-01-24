@@ -1385,7 +1385,8 @@ showNextImage() {
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 5rem;
+
+   /* gap: 5rem; ovo odkomentirati kada se doda dodatan gumb za placanje */
     font-size: 1.25rem;
   }
   .glavnipodframe {

@@ -2378,7 +2378,6 @@ overflow: visible;
 
    
 
-
   }
 
   @media screen and (max-width: 600px) {
