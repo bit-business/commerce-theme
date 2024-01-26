@@ -2,7 +2,7 @@
   <div class="footerdesktop">
     <footer class="velikifooterkvadrat">
       <div class="bijelapozadina" />
-      <img class="slikaframe-icon" alt="" src="/storage/slike/footer/footerslika.svg" />
+      <img class="slikaframe-icon" alt="" loading="eager" src="/storage/slike/footer/footerslika.svg" />
       <div class="glavnagrupakontakt">
         <div class="kontakt">Kontakt</div>
         <div class="kontainerzakontakttekstove">
@@ -39,7 +39,7 @@
           <div class="paragraph-container">
             <a class="politika-privatnosti" href="https://hzuts.hr/politikaprivatnosti">Politika privatnosti</a>
             <a class="politika-o-kolaiima" href="https://hzuts.hr/politikakolacica">Politika o kolačićima</a>
-            <a class="osnovne-informacije">Osnovne informacije</a>
+            <Link  :href="route('skijasi.commerce-theme.osnovneinformacije')" class="osnovne-informacije">Osnovne informacije</Link>
            <a class="povijest">Popusti za članove</a>
             <a class="bilteni-hzuts-a" href="https://hzuts.hr/infoclanarine">Članarine</a>
             <a class="podruni-zborovi">Dokumenti</a>
@@ -110,8 +110,13 @@
 
 
 <script>
+import { Link, Head } from '@inertiajs/inertia-vue'
 import { mapState } from 'vuex';
 export default {
+  components: {
+    Link,
+    Head,
+  },
   data() {
     return {
       footerData: {

@@ -1,7 +1,7 @@
 <template>
   <div class="hzuts-join-screen-desktop">
     <Head :title="$page.props.name" />
-    <div class="glavnipodframe">
+    <div class="uclanise-glavnipodframe">
       <div class="gornjiblokframe">
         <img class="gornjiblokframe-child" alt="" src="/storage/slike/uclanise/rectangle-200@2x.png" />
         <div class="gornjiblokframe-item" />
@@ -21,10 +21,10 @@
             </div>
             <div class="imati-zvanje-uitelja">navršiti minimalno 18 godina</div>
           </div>
-          <div class="drugired">
-            <div class="ellipse-group">
-              <div class="group-item" />
-              <div class="div1">2</div>
+          <div class="drugired-uclanise">
+            <div class="ellipse-group-uclanise">
+              <div class="group-item-uclanise" />
+              <div class="div1-uclanise">2</div>
             </div>
             <div class="imati-zvanje-uitelja">
               imati zvanje učitelja ili trenera sportova na snijegu (za učitelja
@@ -34,8 +34,8 @@
             </div>
           </div>
           <div class="prvired">
-            <div class="ellipse-container">
-              <div class="group-inner" />
+            <div class="ellipse-container-uclanise">
+              <div class="group-inner-uclanise" />
               <div class="div">3</div>
             </div>
             <div class="imati-zvanje-uitelja">
@@ -46,18 +46,18 @@
             </div>
           </div>
           <div class="prvired">
-            <div class="ellipse-container">
-              <div class="group-inner" />
+            <div class="ellipse-container-uclanise">
+              <div class="group-inner-uclanise" />
               <div class="div">4</div>
             </div>
             <div class="prethodno-se-ulaniti-container">
-              <span>prethodno se učlaniti u jedan od </span>
-              <span class="podrunih-zborova">Područnih zborova</span>
+              <span>prethodno se učlaniti u jedan od </span>     
+              <Link :href="route('skijasi.commerce-theme.podrucnizborovi')" class="podrunih-zborova">Područnih zborova</Link>
             </div>
           </div>
           <div class="prvired">
-            <div class="ellipse-container">
-              <div class="group-inner" />
+            <div class="ellipse-container-uclanise">
+              <div class="group-inner-uclanise" />
               <div class="div">5</div>
             </div>
             <div class="imati-zvanje-uitelja">ispuniti obrazac za prijavu</div>
@@ -75,9 +75,8 @@
                 >) poslati fotografiju u digitalnom obliku - više informacija
                 potražite pod linkom
               </span>
-              <span class="izrada-lanske-iskaznice"
-                >Izrada članske iskaznice</span
-              >
+              <Link :href="route('skijasi.commerce-theme.izradaiskaznice')" class="izrada-lanske-iskaznice"
+                >Izrada članske iskaznice</Link>
             </div>
           </div>
           <div class="prvired">
@@ -114,7 +113,7 @@
           <div class="gumbiframeglavni">
             <div class="lijevigumbframe">
               <a class="pozadinalijevoggumba" href="https://docs.google.com/forms/d/e/1FAIpQLSeqSOqOlZ5W5EprcXO1Ic-a03P4r3sGhOnKMta-cIRNTVj2uQ/viewform?usp=send_form" >
-              <b class="prijavnica-za-lanstvo">PRIJAVNICA ZA ČLANSTVO</b>
+                <Link :href="route('skijasi.commerce-theme.prijavazaclanstvo')" class="prijavnica-za-lanstvo font-bold">PRIJAVNICA ZA ČLANSTVO</Link>
               </a>
             </div>
             <div class="desnigumbframe">
@@ -299,7 +298,7 @@ export default {
     justify-content: flex-start;
     gap: 1.88rem;
   }
-  .group-item {
+  .group-item-uclanise {
     position: absolute;
     top: 0rem;
     left: 0rem;
@@ -308,7 +307,7 @@ export default {
     width: 4.26rem;
     height: 4.38rem;
   }
-  .div1 {
+  .div1-uclanise {
     position: absolute;
     top: calc(50% - 26.6px);
     left: calc(50% - 10.2px);
@@ -319,7 +318,7 @@ export default {
     width: 1.32rem;
     height: 3.37rem;
   }
-  .ellipse-group {
+  .ellipse-group-uclanise {
     position: relative;
     width: 4.26rem;
     height: 4.38rem;
@@ -331,7 +330,7 @@ export default {
     color: #000;
     text-align: left;
   }
-  .drugired {
+  .drugired-uclanise {
     align-self: stretch;
     display: flex;
     flex-direction: row;
@@ -339,7 +338,7 @@ export default {
     justify-content: flex-start;
     gap: 1.81rem;
   }
-  .group-inner {
+  .group-inner-uclanise {
     position: absolute;
     top: 0rem;
     left: 0rem;
@@ -348,7 +347,7 @@ export default {
     width: 4.38rem;
     height: 4.38rem;
   }
-  .ellipse-container {
+  .ellipse-container-uclanise {
     position: relative;
     width: 4.38rem;
     height: 4.38rem;
@@ -526,7 +525,7 @@ export default {
     position: relative;
     gap: 0.63rem;
   }
-  .glavnipodframe {
+  .uclanise-glavnipodframe {
     align-self: stretch;
     display: flex;
     flex-direction: column;
@@ -710,7 +709,7 @@ export default {
       align-self: stretch;
     }
 
-    .drugired {
+    .drugired-uclanise {
       flex-direction: column;
     }
 
