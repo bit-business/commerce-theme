@@ -15,9 +15,9 @@
             >Za učlanjenje u HZUTS potrebno je ispuniti sljedeće uvjete:</b
           >
           <div class="prvired">
-            <div class="ellipse-parent">
-              <div class="group-child" />
-              <div class="div">1</div>
+            <div class="ellipse-parent-uclanise">
+              <div class="group-child-uclanise" />
+              <div class="div-uclanise">1</div>
             </div>
             <div class="imati-zvanje-uitelja">navršiti minimalno 18 godina</div>
           </div>
@@ -36,7 +36,7 @@
           <div class="prvired">
             <div class="ellipse-container-uclanise">
               <div class="group-inner-uclanise" />
-              <div class="div">3</div>
+              <div class="div-uclanise">3</div>
             </div>
             <div class="imati-zvanje-uitelja">
               dostaviti svu dokumentaciju za dokaz statusa prethodne točke
@@ -48,7 +48,7 @@
           <div class="prvired">
             <div class="ellipse-container-uclanise">
               <div class="group-inner-uclanise" />
-              <div class="div">4</div>
+              <div class="div-uclanise">4</div>
             </div>
             <div class="prethodno-se-ulaniti-container">
               <span>prethodno se učlaniti u jedan od </span>     
@@ -58,14 +58,14 @@
           <div class="prvired">
             <div class="ellipse-container-uclanise">
               <div class="group-inner-uclanise" />
-              <div class="div">5</div>
+              <div class="div-uclanise">5</div>
             </div>
             <div class="imati-zvanje-uitelja">ispuniti obrazac za prijavu</div>
           </div>
           <div class="prvired">
-            <div class="ellipse-parent2">
-              <div class="group-child2" />
-              <div class="div5">6</div>
+            <div class="ellipse-container-uclanise">
+              <div class="group-inner-uclanise" />
+              <div class="div-uclanise">6</div>
             </div>
             <div class="uz-prijavu-ili-container">
               <span class="uz-prijavu-ili">uz prijavu (ili na </span>
@@ -80,9 +80,9 @@
             </div>
           </div>
           <div class="prvired">
-            <div class="ellipse-parent2">
-              <div class="group-child2" />
-              <div class="div5">7</div>
+            <div class="ellipse-container-uclanise">
+              <div class="group-inner-uclanise" />
+              <div class="div-uclanise">7</div>
             </div>
             <div class="imati-zvanje-uitelja">
               uplatiti članarinu HZUTS-u i članarinu područnom zboru na račun
@@ -265,7 +265,7 @@ export default {
     color: #03a9f4;
     text-align: left;
   }
-  .group-child {
+  .group-child-uclanise {
     position: absolute;
     top: 0rem;
     left: 0rem;
@@ -274,7 +274,7 @@ export default {
     width: 4.38rem;
     height: 4.38rem;
   }
-  .div {
+  .div-uclanise {
     position: absolute;
     top: calc(50% - 26.6px);
     left: calc(50% - 10.5px);
@@ -285,7 +285,7 @@ export default {
     width: 1.36rem;
     height: 3.37rem;
   }
-  .ellipse-parent {
+  .ellipse-parent-uclanise {
     position: relative;
     width: 4.38rem;
     height: 4.38rem;
@@ -363,7 +363,7 @@ export default {
     text-align: left;
     color: #000;
   }
-  .group-child2 {
+  .group-child2-uclanise {
     position: absolute;
     top: 0rem;
     left: 0rem;
@@ -372,7 +372,7 @@ export default {
     width: 4.92rem;
     height: 4.38rem;
   }
-  .div5 {
+  .div5-uclanise {
     position: absolute;
     top: calc(50% - 26.6px);
     left: calc(50% - 11.85px);
@@ -383,9 +383,9 @@ export default {
     width: 1.53rem;
     height: 3.37rem;
   }
-  .ellipse-parent2 {
+  .ellipse-parent2-uclanise {
     position: relative;
-    width: 4.92rem;
+    width: 4.38rem;
     height: 4.38rem;
   }
   .uz-prijavu-ili {
@@ -597,11 +597,11 @@ export default {
       font-size: 1.13rem;
     }
 
-    .group-child {
+    .group-child-uclanise {
       height: 4.5rem;
     }
 
-    .ellipse-parent {
+    .ellipse-parent-uclanise {
       height: 4.5rem;
     }
 

@@ -5,21 +5,21 @@
    
   <div class="hzuts-memebrship-screen-mobile">
     <div class="clanarine-glavniframe">
-      <div class="gornjaslikaframe">
-        <div class="lanarine">ČLANARINE</div>
+      <div class="gornjaslikaframee">
+        <div class="lanarinee">ČLANARINE</div>
       </div>
       <div class="glavniframekvadratimob">
-        <div class="lanarine-parent">
-          <img class="lanarine-icon" alt="" src="/storage/slike/infoclanarine/desktop/lanarine.svg" />
-          <div class="clanarine-frame-child" />
+        <div class="lanarinee-parentt">
+          <img class="lanarinee-icon" alt="" src="/storage/slike/infoclanarine/desktop/lanarine.svg" />
+          <div class="clanarine-framee-chilkd" />
           <b class="voditelj-skijanja-iaess"
             >Voditelj skijanja (IAESS licenca)</b
           >
-          <div class="dravna-lanarina-parent">
+          <div class="dravna-lanarina-parentt">
             <div class="dravna-lanarina">Državna članarina:</div>
-            <div class="ellipse-parent">
-              <div class="frame-item" />
-              <div class="div">20€</div>
+            <div class="ellipsee-parentt">
+              <div class="framee-item" />
+              <div class="ddivv">20€</div>
             </div>
           </div>
           <button class="dodajukosaricu1mob">
@@ -27,8 +27,8 @@
             <div class="dodaj-u-koaricu">Dodaj u košaricu</div>
           </button>
         </div>
-        <div class="clanarine-frame-parent">
-          <div class="uitelj-skijanjadaskanja-ivs-parent">
+        <div class="clanarine-framee-parentt">
+          <div class="uitelj-skijanjadaskanja-ivs-parentt">
             <b class="uitelj-skijanjadaskanja-ivs"
               >Učitelj skijanja/daskanja (IVSI licenca)</b
             >
@@ -36,10 +36,10 @@
               >Treneri skijanja/daskanja na snijegu</b
             >
           </div>
-          <div class="dravna-lanarina-group">
+          <div class="dravna-lanarina-groupp">
             <div class="dravna-lanarina">Državna članarina:</div>
-            <div class="ellipse-parent">
-              <div class="frame-item" />
+            <div class="ellipsee-parentt">
+              <div class="framee-item" />
               <div class="clanarine-div1">27€</div>
             </div>
           </div>
@@ -48,8 +48,8 @@
             <div class="dodaj-u-koaricu">Dodaj u košaricu</div>
           </button>
         </div>
-        <div class="frame-group">
-          <div class="isia-uitelj-skijanjadaskanja-parent">
+        <div class="framee-groupp">
+          <div class="isia-uitelj-skijanjadaskanja-parentt">
             <b class="isia-uitelj-skijanjadaskanja"
               >ISIA učitelj skijanja/daskanja</b
             >
@@ -62,8 +62,8 @@
           </div>
           <div class="dravna-lanarina-container">
             <div class="dravna-lanarina2">Državna članarina:</div>
-            <div class="ellipse-container">
-              <div class="ellipse-div" />
+            <div class="ellipsee-container">
+              <div class="ellipsee-div" />
               <div class="clanarine-div2">27€</div>
             </div>
           </div>
@@ -71,13 +71,13 @@
             <img class="shopping-bag-1-1" alt="" src="/storage/slike/infoclanarine/mobile/shoppingbag-1-1.svg" />
             <div class="dodaj-u-koaricu">Dodaj u košaricu</div>
           </button>
-          <img class="line-icon" alt="" src="/storage/slike/infoclanarine/mobile/line-41.svg" />
-          <div class="meunarodna-isia-lanarina-parent">
+          <img class="linee-icon" alt="" src="/storage/slike/infoclanarine/mobile/line-41.svg" />
+          <div class="meunarodna-isia-lanarina-parentt">
             <div class="meunarodna-isia-lanarina">
               Međunarodna ISIA članarina:
             </div>
-            <div class="frame-div">
-              <div class="ellipse-div" />
+            <div class="framee-div">
+              <div class="ellipsee-div" />
               <div class="clanarine-div3">27€</div>
             </div>
           </div>
@@ -86,66 +86,66 @@
             <div class="dodaj-u-koaricu">Dodaj u košaricu</div>
           </button>
         </div>
-        <div class="clanarine-frame-container">
-          <button class="shopping-bag-1-1-parent">
+        <div class="clanarine-framee-container">
+          <button class="shopping-bag-1-1-parentt">
             <img class="shopping-bag-1-1" alt="" src="/storage/slike/infoclanarine/mobile/shoppingbag-1-1.svg" />
             <div class="dodaj-u-koaricu">Dodaj u košaricu</div>
           </button>
-          <div class="isia-card-lanarina-parent">
+          <div class="isia-card-lanarina-parentt">
             <div class="isia-card-lanarina">ISIA Card članarina:</div>
-            <div class="ellipse-container">
-              <div class="ellipse-div" />
-              <div class="div4">13€</div>
+            <div class="ellipsee-container">
+              <div class="ellipsee-div" />
+              <div class="ddiv4">13€</div>
             </div>
           </div>
-          <button class="shopping-bag-1-1-group">
+          <button class="shopping-bag-1-1-groupp">
             <img class="shopping-bag-1-1" alt="" src="/storage/slike/infoclanarine/mobile/shoppingbag-1-1.svg" />
             <div class="dodaj-u-koaricu">Dodaj u košaricu</div>
           </button>
-          <div class="frame">
+          <div class="framee">
             <b class="demonstrator-skijanja-s"
               >Demonstrator skijanja s ISIA Card-om</b
             >
           </div>
-          <div class="frame1">
+          <div class="framee1">
             <div class="dravna-lanarina-parent1">
               <div class="dravna-lanarina2">Državna članarina:</div>
-              <div class="ellipse-container">
-                <div class="ellipse-div" />
-                <div class="div5">27€</div>
+              <div class="ellipsee-container">
+                <div class="ellipsee-div" />
+                <div class="ddiv5">27€</div>
               </div>
             </div>
           </div>
-          <img class="frame-child4" alt="" src="/storage/slike/infoclanarine/mobile/line-411.svg" />
-          <div class="frame2">
+          <img class="framee-child4" alt="" src="/storage/slike/infoclanarine/mobile/line-411.svg" />
+          <div class="framee2">
             <button class="shopping-bag-1-1-container">
               <img class="shopping-bag-1-1" alt="" src="/storage/slike/infoclanarine/mobile/shoppingbag-1-1.svg" />
               <div class="dodaj-u-koaricu">Dodaj u košaricu</div>
             </button>
           </div>
           <div class="frame3">
-            <div class="meunarodna-isia-lanarina-group">
+            <div class="meunarodna-isia-lanarina-groupp">
               <div class="meunarodna-isia-lanarina">
                 Međunarodna ISIA članarina:
               </div>
-              <div class="ellipse-parent3">
-                <div class="ellipse-div" />
-                <div class="div6">27€</div>
+              <div class="ellipsee-parentt3">
+                <div class="ellipsee-div" />
+                <div class="ddiv6">27€</div>
               </div>
             </div>
           </div>
-          <img class="group-icon" alt="" src="/storage/slike/infoclanarine/mobile/group.svg" />
+          <img class="groupp-icon" alt="" src="/storage/slike/infoclanarine/mobile/group.svg" />
         </div>
       </div>
-      <div class="dodatne-lanarine-parent">
+      <div class="dodatne-lanarine-parentt">
         <img class="dodatne-lanarine-icon" alt="" src="/storage/slike/infoclanarine/desktop/dodatne-lanarine.svg" />
 
-        <div class="frame-parent1">
-          <img class="frame-icon" alt="" src="/storage/slike/infoclanarine/mobile/frame.svg" />
+        <div class="framee-parent1">
+          <img class="framee-icon" alt="" src="/storage/slike/infoclanarine/mobile/frame.svg" />
           <div class="frame4">
-            <div class="izdavanje-iskaznice-parent">
+            <div class="izdavanje-iskaznice-parentt">
               <b class="izdavanje-iskaznice">Izdavanje iskaznice</b>
-              <div class="uitelj-skijanjadaskanja-parent">
+              <div class="uitelj-skijanjadaskanja-parentt">
                 <div class="uitelj-skijanjadaskanja">
                   <li class="uitelj-skijanjadaskanja1">
                     učitelj skijanja/daskanja
@@ -165,13 +165,13 @@
             </div>
           </div>
           <div class="frame5">
-            <div class="ellipse-parent4">
-              <div class="frame-child6" />
-              <div class="div7">8€</div>
+            <div class="ellipsee-parent4">
+              <div class="framee-child6" />
+              <div class="ddiv7">8€</div>
             </div>
           </div>
           <div class="clanarine-frame6">
-            <button class="frame-button">
+            <button class="framee-button">
               <img
                 class="shopping-bag-1-1"
                 alt=""
@@ -181,15 +181,15 @@
             </button>
           </div>
         </div>
-        <div class="frame-parent2">
-          <img class="frame-icon1" alt="" src="/storage/slike/infoclanarine/mobile/frame1.svg" />
+        <div class="framee-parent2">
+          <img class="framee-icon1" alt="" src="/storage/slike/infoclanarine/mobile/frame1.svg" />
           <b class="amblem">Amblem</b>
-          <div class="ellipse-parent5">
-            <div class="frame-child7" />
-            <div class="div8">10€</div>
+          <div class="ellipsee-parent5">
+            <div class="framee-child7" />
+            <div class="ddiv8">10€</div>
           </div>
           <div class="frame7">
-            <button class="frame-button">
+            <button class="framee-button">
               <img
                 class="shopping-bag-1-1"
                 alt=""
@@ -199,17 +199,17 @@
             </button>
           </div>
         </div>
-        <div class="frame-parent2">
-          <img class="frame-icon1" alt="" src="/storage/slike/infoclanarine/mobile/frame2.svg" />
+        <div class="framee-parent2">
+          <img class="framee-icon1" alt="" src="/storage/slike/infoclanarine/mobile/frame2.svg" />
           <b class="potvrda">Potvrda</b>
           <div class="frame8">
-            <div class="ellipse-parent6">
-              <div class="ellipse-div" />
-              <div class="div9">5€</div>
+            <div class="ellipsee-parent6">
+              <div class="ellipsee-div" />
+              <div class="ddiv9">5€</div>
             </div>
           </div>
           <div class="frame7">
-            <button class="frame-button">
+            <button class="framee-button">
               <img
                 class="shopping-bag-1-1"
                 alt=""
@@ -224,7 +224,7 @@
         <img class="pravila-icon" alt="" src="/storage/slike/infoclanarine/desktop/pravila-stroke1.svg" />
         <div class="pravilabrojeviframeglavni">
           <img
-            class="pravilabrojeviframeglavni-child"
+            class="pravilabrojeviframeglavni-chilkd"
             alt=""
             src="/storage/slike/infoclanarine/mobile/rectangle-266@2x.png"
           />
@@ -239,8 +239,8 @@
             src="/storage/slike/infoclanarine/mobile/rectangle-267@2x.png"
           />
           <div class="pravilo1">
-            <div class="clanarine-parent">
-              <div class="div10">1</div>
+            <div class="clanarine-parentt">
+              <div class="ddiv10">1</div>
               <div class="tijekom-prvog-ulanjivanja-container">
                 <span class="dodatne-lanarine-txt-container">
                   <p class="dodatne">
@@ -265,8 +265,8 @@
             </div>
           </div>
           <div class="pravilo2">
-            <div class="group">
-              <div class="div11">2</div>
+            <div class="groupp">
+              <div class="ddiv11">2</div>
               <div class="tijekom-slijedeih-godina">
                 Tijekom slijedećih godina članarina se uplaćuje prema statusu
                 kojeg član posjeduje.
@@ -274,8 +274,8 @@
             </div>
           </div>
           <div class="pravilo3">
-            <div class="container">
-              <div class="div12">3</div>
+            <div class="containerr">
+              <div class="ddiv12">3</div>
               <div class="seniori-lanice-starije-container">
                 <span class="dodatne-lanarine-txt-container">
                   <b>Seniori </b>
@@ -289,8 +289,8 @@
             </div>
           </div>
           <div class="pravilo4">
-            <div class="parent1">
-              <div class="div13">4</div>
+            <div class="parentt1">
+              <div class="ddiv13">4</div>
               <div class="lanarina-podrunom-zboru-container">
                 <span class="dodatne-lanarine-txt-container">
                   <span
@@ -306,8 +306,8 @@
             </div>
           </div>
           <div class="pravilo5">
-            <div class="parent2">
-              <div class="div14">5</div>
+            <div class="parentt2">
+              <div class="ddiv14">5</div>
               <div class="potvrda-o-plaenoj">
                 Potvrda o plaćenoj članarini (hologram) i licenca (markica)
                 dobit će se samo nakon plaćene članarine Područnom zboru i
@@ -317,8 +317,8 @@
             </div>
           </div>
           <div class="pravilo6">
-            <div class="parent3">
-              <div class="div15">6</div>
+            <div class="parentt3">
+              <div class="ddiv15">6</div>
               <div class="licence-i-hologrami">
                 Licence i hologrami podižu se isključivo u vrijeme dežurstva
                 Vašeg područnog zbora koje možete saznati na web stranicama
@@ -327,7 +327,7 @@
             </div>
           </div>
           <div class="pravilo7">
-            <div class="div16">7</div>
+            <div class="ddiv16">7</div>
             <div class="prilikom-podizanja-holograma">
               Prilikom podizanja holograma i markice u Područnom zboru, potrebno
               je na uvid donijeti potvrdu o plaćenoj godišnjoj državnoj
@@ -336,8 +336,8 @@
             </div>
           </div>
           <div class="pravilo8">
-            <div class="parent4">
-              <div class="div17">8</div>
+            <div class="parentt4">
+              <div class="ddiv17">8</div>
               <div class="markicu-i-hologram">
                 Markicu i hologram za tekuću godinu potrebno je zalijepiti na
                 iskaznicu. Ako član nema važeću iskaznicu sa zalijepljenim
@@ -347,8 +347,8 @@
             </div>
           </div>
           <div class="pravilo9">
-            <div class="parent5">
-              <div class="div18">9</div>
+            <div class="parentt5">
+              <div class="ddiv16">9</div>
               <div class="vrijeme-izrade-iskaznice">
                 Vrijeme izrade iskaznice je minimalno tjedan dana od zaprimanja
                 svih materijala. Nakon izrade iskaznicu i amblem možete pruzeti
@@ -359,7 +359,7 @@
           </div>
         </div>
       </div>
-      <div class="podacizauplatuframe-parent">
+      <div class="podacizauplatuframe-parentt">
         <div class="podacizauplatuframe">
           <div class="ime-primatelja-hrvatski-container">
             <span class="dodatne-lanarine-txt-container">
@@ -458,21 +458,21 @@
 
   <div class="clanarine-desktop-radi">
     <div class="clanarine-glavnipodframe">
-      <div class="lanarine-wrapper">
-        <div class="lanarine">ČLANARINE</div>
+      <div class="lanarinee-wrapper">
+        <div class="lanarinee">ČLANARINE</div>
       </div>
-      <img class="lanarine-icon" alt="" src="/storage/slike/infoclanarine/desktop/lanarine.svg" />
+      <img class="lanarinee-icon" alt="" src="/storage/slike/infoclanarine/desktop/lanarine.svg" />
       <div class="prvidiogdjesukrugovi">
-        <div class="clanarine-frame-parent">
-          <div class="frame-group">
-            <div class="voditelj-skijanja-iaess-licen-parent">
+        <div class="clanarine-framee-parentt">
+          <div class="framee-groupp">
+            <div class="voditelj-skijanja-iaess-licen-parentt">
               <b class="voditelj-skijanja-iaess"
                 >Voditelj skijanja (IAESS licenca)</b
               >
               <div class="krug1">
-                <div class="ellipse-parent">
-                  <div class="clanarine-frame-child" />
-                  <div class="div">20€</div>
+                <div class="ellipsee-parentt">
+                  <div class="clanarine-framee-chilkd" />
+                  <div class="ddivv">20€</div>
                 </div>
                 <div class="dravna-lanarina">Državna članarina:</div>
               </div>
@@ -485,13 +485,13 @@
                 <div class="dodaj-u-koaricu">Dodaj u košaricu</div>
               </button>
             </div>
-            <div class="krug2-parent">
+            <div class="krug2-parentt">
               <div class="krug2">
-                <div class="krug2-child" />
+                <div class="krug2-chilkd" />
                 <div class="clanarine-div1">27€</div>
               </div>
               <div class="dravna-lanarina1">Državna članarina:</div>
-              <div class="uitelj-skijanjadaskanja-ivs-parent">
+              <div class="uitelj-skijanjadaskanja-ivs-parentt">
                 <b class="uitelj-skijanjadaskanja-ivs"
                   >Učitelj skijanja/daskanja (IVSI licenca)</b
                 >
@@ -509,7 +509,7 @@
               </button>
             </div>
           </div>
-          <div class="isia-uitelj-skijanjadaskanja-parent">
+          <div class="isia-uitelj-skijanjadaskanja-parentt">
             <b class="isia-uitelj-skijanjadaskanja"
               >ISIA učitelj skijanja/daskanja</b
             >
@@ -519,23 +519,23 @@
             <b class="treneri-skijanjadaskanja-na1"
               >Treneri skijanja/daskanja na snijegu sa ISIA licencom</b
             >
-            <div class="krug3-parent">
-              <div class="ellipse-parent">
-                <div class="clanarine-frame-child" />
+            <div class="krug3-parentt">
+              <div class="ellipsee-parentt">
+                <div class="clanarine-framee-chilkd" />
                 <div class="clanarine-div2">27€</div>
               </div>
               <div class="dravna-lanarina2">Državna članarina:</div>
             </div>
-            <div class="krug4-parent">
+            <div class="krug4-parentt">
               <div class="krug4">
-                <div class="clanarine-frame-child" />
+                <div class="clanarine-framee-chilkd" />
                 <div class="clanarine-div2">27€</div>
               </div>
               <div class="meunarodna-isia-lanarina">
                 Međunarodna ISIA članarina:
               </div>
             </div>
-            <img class="frame-item" alt="" src="/storage/slike/infoclanarine/desktop/line-41.svg" />
+            <img class="framee-item" alt="" src="/storage/slike/infoclanarine/desktop/line-41.svg" />
             <button class="dodajukosaricu3">
               <img
                 class="dodajukosaricu1-icon"
@@ -553,20 +553,20 @@
               <div class="dodaj-u-koaricu2">Dodaj u košaricu</div>
             </button>
           </div>
-          <div class="demonstrator-skijanja-s-isia-c-parent">
+          <div class="demonstrator-skijanja-s-isia-c-parentt">
             <b class="demonstrator-skijanja-s"
               >Demonstrator skijanja s ISIA Card-om</b
             >
-            <div class="clanarine-frame-container">
-              <div class="ellipse-parent">
-                <div class="frame-inner" />
+            <div class="clanarine-framee-container">
+              <div class="ellipsee-parentt">
+                <div class="framee-inner" />
                 <div class="clanarine-div2">27€</div>
               </div>
               <div class="dravna-lanarina3">Državna članarina:</div>
             </div>
-            <div class="frame-div">
-              <div class="ellipse-container">
-                <div class="frame-inner" />
+            <div class="framee-div">
+              <div class="ellipsee-container">
+                <div class="framee-inner" />
                 <div class="clanarine-div2">27€</div>
               </div>
               <div class="meunarodna-isia-lanarina1">
@@ -581,15 +581,15 @@
               />
               <div class="dodaj-u-koaricu2">Dodaj u košaricu</div>
             </button>
-            <img class="line-icon" alt="" src="/storage/slike/infoclanarine/desktop/line-41111.svg" />
-            <div class="frame-parent1">
-              <div class="ellipse-parent">
-                <div class="frame-inner" />
-                <div class="div6">13€</div>
+            <img class="linee-icon" alt="" src="/storage/slike/infoclanarine/desktop/line-41111.svg" />
+            <div class="framee-parent1">
+              <div class="ellipsee-parentt">
+                <div class="framee-inner" />
+                <div class="ddiv6">13€</div>
               </div>
               <div class="isia-card-lanarina">ISIA Card članarina:</div>
             </div>
-            <img class="frame-child2" alt="" src="/storage/slike/infoclanarine/desktop/line-42.svg" />
+            <img class="framee-child2" alt="" src="/storage/slike/infoclanarine/desktop/line-42.svg" />
             <button class="dodajukosaricu5">
               <img
                 class="dodajukosaricu1-icon"
@@ -616,12 +616,12 @@
       </div>
       <img class="dodatne-lanarine-icon" alt="" src="/storage/slike/infoclanarine/desktop/dodatne-lanarine.svg" />
       <div class="dodatneclanarinebadgevi">
-        <div class="frame-parent2">
-          <div class="id-card-1-1-parent">
+        <div class="framee-parent2">
+          <div class="id-card-1-1-parentt">
             <img class="id-card-1-1" alt="" src="/storage/slike/infoclanarine/desktop/idcard-1-11.svg" />
-            <div class="izdavanje-iskaznice-parent">
+            <div class="izdavanje-iskaznice-parentt">
               <b class="izdavanje-iskaznice">Izdavanje iskaznice</b>
-              <div class="uitelj-skijanjadaskanja-parent">
+              <div class="uitelj-skijanjadaskanja-parentt">
                 <div class="uitelj-skijanjadaskanja">
                   <li class="uitelj-skijanjadaskanja1">
                     učitelj skijanja/daskanja
@@ -639,11 +639,11 @@
                 </div>
               </div>
             </div>
-            <div class="ellipse-parent2">
-              <div class="frame-child3" />
-              <div class="div7">8€</div>
+            <div class="ellipsee-parent2">
+              <div class="framee-child3" />
+              <div class="ddiv7">8€</div>
             </div>
-            <button class="shopping-bag-1-1-parent">
+            <button class="shopping-bag-1-1-parentt">
               <img
                 class="shopping-bag-1-14"
                 alt=""
@@ -652,14 +652,14 @@
               <div class="dodaj-u-koaricu7">Dodaj u košaricu</div>
             </button>
           </div>
-          <div class="badge-1-parent">
+          <div class="badge-1-parentt">
             <img class="badge-1-icon" alt="" src="/storage/slike/infoclanarine/desktop/badge-11.svg" />
-            <div class="ellipse-parent3">
-              <div class="frame-child3" />
-              <div class="div8">10€</div>
+            <div class="ellipsee-parentt3">
+              <div class="framee-child3" />
+              <div class="ddiv8">10€</div>
             </div>
             <b class="amblem">Amblem</b>
-            <button class="shopping-bag-1-1-parent">
+            <button class="shopping-bag-1-1-parentt">
               <img
                 class="shopping-bag-1-14"
                 alt=""
@@ -668,14 +668,14 @@
               <div class="dodaj-u-koaricu7">Dodaj u košaricu</div>
             </button>
           </div>
-          <div class="confirmation-1-parent">
+          <div class="confirmation-1-parentt">
             <img class="badge-1-icon" alt="" src="/storage/slike/infoclanarine/desktop/confirmation-11.svg" />
             <b class="potvrda">Potvrda</b>
-            <div class="ellipse-parent4">
-              <div class="frame-child3" />
-              <div class="div9">5€</div>
+            <div class="ellipsee-parent4">
+              <div class="framee-child3" />
+              <div class="ddiv9">5€</div>
             </div>
-            <button class="shopping-bag-1-1-parent">
+            <button class="shopping-bag-1-1-parentt">
               <img
                 class="shopping-bag-1-14"
                 alt=""
@@ -688,7 +688,7 @@
       </div>
       <div class="pravilaglavniframe">
         <img
-          class="pravilaglavniframe-child"
+          class="pravilaglavniframe-chilkd"
           alt=""
           src="/storage/slike/infoclanarine/desktop/rectangle-266@2x.png"
         />
@@ -704,9 +704,9 @@
         />
         <div class="pravilaglavniframe-child1" />
         <img class="pravila-stroke-icon" alt="" src="/storage/slike/infoclanarine/desktop/pravila-stroke1.svg" />
-        <div class="frame-parent3">
-          <div class="clanarine-parent">
-            <div class="div10">1</div>
+        <div class="framee-parentt3">
+          <div class="clanarine-parentt">
+            <div class="ddiv10">1</div>
             <div class="tijekom-prvog-ulanjivanja-container">
               <span class="tijekom-prvog-ulanjivanja-container1">
                 <p class="tijekom-prvog-ulanjivanja-upl">
@@ -729,15 +729,15 @@
               </span>
             </div>
           </div>
-          <div class="clanarine-group">
-            <div class="div11">2</div>
+          <div class="clanarine-groupp">
+            <div class="ddiv11">2</div>
             <div class="tijekom-slijedeih-godina">
               Tijekom slijedećih godina članarina se uplaćuje prema statusu
               kojeg član posjeduje.
             </div>
           </div>
-          <div class="clanarine-group">
-            <div class="div12">3</div>
+          <div class="clanarine-groupp">
+            <div class="ddiv12">3</div>
             <div class="seniori-lanice-starije-container">
               <span class="tijekom-prvog-ulanjivanja-container1">
                 <b>Seniori </b>
@@ -749,8 +749,8 @@
               </span>
             </div>
           </div>
-          <div class="clanarine-group">
-            <div class="div13">4</div>
+          <div class="clanarine-groupp">
+            <div class="ddiv13">4</div>
             <div class="lanarina-podrunom-zboru-container">
               <span class="tijekom-prvog-ulanjivanja-container1">
                 <span
@@ -764,8 +764,8 @@
               </span>
             </div>
           </div>
-          <div class="clanarine-group">
-            <div class="div14">5</div>
+          <div class="clanarine-groupp">
+            <div class="ddiv14">5</div>
             <div class="potvrda-o-plaenoj">
               Potvrda o plaćenoj članarini (hologram) i licenca (markica) dobit
               će se samo nakon plaćene članarine Područnom zboru i plaćene
@@ -773,16 +773,16 @@
               tekuću sezonu).
             </div>
           </div>
-          <div class="parent3">
-            <div class="div15">6</div>
+          <div class="parentt3">
+            <div class="ddiv15">6</div>
             <div class="licence-i-hologrami">
               Licence i hologrami podižu se isključivo u vrijeme dežurstva Vašeg
               područnog zbora koje možete saznati na web stranicama područnih
               zborova ili kontaktiranjem tajnika područnog zbora
             </div>
           </div>
-          <div class="clanarine-group">
-            <div class="div16">7</div>
+          <div class="clanarine-groupp">
+            <div class="ddiv16">7</div>
             <div class="prilikom-podizanja-holograma">
               Prilikom podizanja holograma i markice u Područnom zboru, potrebno
               je na uvid donijeti potvrdu o plaćenoj godišnjoj državnoj
@@ -790,8 +790,8 @@
               bankarstva...)
             </div>
           </div>
-          <div class="clanarine-group">
-            <div class="div17">8</div>
+          <div class="clanarine-groupp">
+            <div class="ddiv17">8</div>
             <div class="markicu-i-hologram">
               Markicu i hologram za tekuću godinu potrebno je zalijepiti na
               iskaznicu. Ako član nema važeću iskaznicu sa zalijepljenim
@@ -799,8 +799,8 @@
               rada licenca se smatra nevažećom.
             </div>
           </div>
-          <div class="clanarine-group">
-            <div class="div18">9</div>
+          <div class="clanarine-groupp">
+            <div class="ddiv18">9</div>
             <div class="vrijeme-izrade-iskaznice">
               Vrijeme izrade iskaznice je minimalno tjedan dana od zaprimanja
               svih materijala. Nakon izrade iskaznicu i amblem možete pruzeti u
@@ -980,9 +980,9 @@ beforeDestroy() {
   },
   updateStyles() {
       if (this.windowWidth >= 801) {
-        require('../assets/scss/infoclanarine_desktop.scss');
+        require('../assets/infoclanarine/infoclanarine_desktop.scss');
       } else if (this.windowWidth >= 0 && this.windowWidth <= 800) {
-        require('../assets/scss/infoclanarine_mobile.scss');
+        require('../assets/infoclanarine/infoclanarine_mobile.scss');
       }
     },
 

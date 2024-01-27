@@ -154,11 +154,20 @@
     multiple
   />
 
+  <div class="dokumentitekst">
+
+             Dodajte svu dokumentaciju za dokaz statusa.<br>
+              (Uvjerenje o osposobljavanju, diploma Kineziološkog fakulteta
+              za osobe koje su diplomirale i usmjerile skijanje – zvanje:
+              Sveučilišni magistar kineziologije u edukaciji i skijanju)
+</div>
+
 
   <button @click="$refs.dokument.click()" class="gumbOK">
   UPLOAD DOKUMENTA 
   <span v-if="uploadedFilesCount > 0" class="upload-count">{{ uploadedFilesCount }}</span>
 </button>
+
 
  
             
@@ -171,19 +180,15 @@
   <label for="gdpr" class="gdpr-label">
     Potvrđujem da sam suglasan s navedenim:<span class="asterisk">*</span><br><br>
     Zaštita i privatnost osobnih podataka (GDPR 2016/679) Prema novom zakonu vezanom uz zaštitu i privatnost podataka (GDPR 2016/679) svi navedeni podaci služe isključivo za potrebe upisa u naš registar članova te se ne koriste u druge svrhe. Zaprimljene podatke čuvamo i obrađujemo korištenjem najsigurnijih metoda zaštite u skladu s navedenim propisima te ih brišemo poštujući propise koji su navedeni u zakonu vezanom uz zaštitu i privatnost podataka. Korisnik u bilo kojem trenutku može zatražiti uklanjanje svojih podataka iz našeg sustava slanjem e-mail poruke na adresu info@hzuts.hr 
-    <!-- additional text -->
   </label>
 </div>
 <span v-if="errors.gdpr" class="error-message">{{ errors.gdpr }}</span>
 
 <div class="gdpr-text">
 
-  <!-- Rest of your GDPR text -->
+  <!-- Rest of GDPR text -->
   
    
-
-
-
         
       </div>
 
@@ -673,6 +678,8 @@ else {
     closeConfirmation() {
       // Set showConfirmation to false to close the dialog
       this.showConfirmation = false;
+
+      this.$inertia.visit(this.route('skijasi.commerce-theme.home'))
     },
 
 
@@ -1034,6 +1041,14 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
   font-size: 19px;
 }
 
+.dokumentitekst {
+  display: block;
+  padding-top: 4rem;
+  font-weight: 300;
+  font-size: 14px;
+
+}
+
 
 /* Ensure the form-group class has the correct margin and padding */
 /* Custom Dropdown Styles */
@@ -1279,8 +1294,8 @@ white-space: nowrap;
 
 .gumbOK {
   position: relative;
-margin-top: 34px; 
-
+margin-bottom: 34px; 
+margin-top: 16px; 
 background-color: #00aaff;
 color: white;
 padding: 15px 15px;
