@@ -308,6 +308,7 @@ export default {
 
         avatar: null,
         avatar_approved: null,
+        zahtjev_approved: null,
       },
 
 
@@ -613,7 +614,7 @@ prefillData(user) {
       oib: this.form.oib,
       spol: this.form.spol,
       avatar: this.form.avatar,
-      avatar_approved: '2',
+      zahtjev_approved: '1',
 
       email: this.form.email,
       podrucnizbor: this.form.podrucnizbor,
