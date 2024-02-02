@@ -454,25 +454,26 @@ leftArrow.style.lineHeight = '1';
 
 showNextImage() {
     if (this.fullscreenImageIndex < this.images.length - 1) {
-      this.fullscreenImageIndex++;
+        this.fullscreenImageIndex++;
     } else {
-      this.fullscreenImageIndex = 0; // loop back to the first image
+        this.fullscreenImageIndex = 0; // loop back to the first image
     }
     const overlay = document.getElementById('fullscreen-overlay');
     const img = overlay.querySelector('img');
-    img.src = this.images[this.fullscreenImageIndex].original;
-  },
+    img.src = this.images[this.fullscreenImageIndex]; // Access URL directly
+},
 
-  showPreviousImage() {
+showPreviousImage() {
     if (this.fullscreenImageIndex > 0) {
-      this.fullscreenImageIndex--;
+        this.fullscreenImageIndex--;
     } else {
-      this.fullscreenImageIndex = this.images.length - 1; // loop back to the last image
+        this.fullscreenImageIndex = this.images.length - 1; // loop back to the last image
     }
     const overlay = document.getElementById('fullscreen-overlay');
     const img = overlay.querySelector('img');
-    img.src = this.images[this.fullscreenImageIndex].original;
-  },
+    img.src = this.images[this.fullscreenImageIndex]; // Access URL directly
+},
+
 
   
 
