@@ -998,22 +998,78 @@ export default {
     },
 
 
-    filesChange(e) {
-      const file = e.target.files[0]
-      const fileSize = Math.round((file.size / 1024))
-      if (fileSize > 4048) {
-        this.$alert('Maksimalna veličina slike je 4MB!')
-        return
+    filesChange(event) {
+  const file = event.target.files[0];
+  if (!file) {
+    return;
+  }
+  const reader = new FileReader();
+  reader.onload = (e) => {
+    const img = new Image();
+    img.onload = () => {
+      // Calculate the target dimensions while maintaining the 2:3 aspect ratio
+      let targetWidth, targetHeight;
+      if (img.width / img.height > 2 / 3) {
+        // If the image is wider than a 2:3 aspect ratio, calculate the target height and match the width accordingly
+        targetHeight = img.height;
+        targetWidth = targetHeight * (2 / 3);
+      } else {
+        // If the image is narrower than a 2:3 aspect ratio, calculate the target width and match the height accordingly
+        targetWidth = img.width;
+        targetHeight = targetWidth * (3 / 2);
       }
-      const fileReader = new FileReader()
-      fileReader.readAsDataURL(file)
-      fileReader.onload = () => {
-        this.avatar = fileReader.result
+
+      // If the target height is greater than 2000px, scale it down
+      if (targetHeight > 1800) {
+        targetHeight = 1800;
+        targetWidth = targetHeight * (2 / 3);
       }
-      fileReader.onerror = (error) => {
-        this.$alert(error)
-      };
-    },
+
+      // Calculate the centering position for cropping
+      const startX = (img.width - targetWidth) / 2;
+      const startY = (img.height - targetHeight) / 2;
+
+      // Create a canvas element to draw the cropped image
+      const canvas = document.createElement('canvas');
+      canvas.width = targetWidth;
+      canvas.height = targetHeight;
+      const ctx = canvas.getContext('2d');
+      
+      // Draw the image on the canvas with the correct cropping
+      ctx.drawImage(img, startX, startY, targetWidth, targetHeight, 0, 0, targetWidth, targetHeight);
+      
+      // Convert the canvas to a Blob and then to a File for uploading
+      canvas.toBlob((blob) => {
+        const resizedImage = new File([blob], file.name, {
+          type: 'image/jpeg',
+          lastModified: Date.now(),
+        });
+
+        this.avatar = URL.createObjectURL(resizedImage);
+        // Now you can pass this resizedImage to your upload method
+        this.uploadAvatar(resizedImage);
+      }, 'image/jpeg');
+    };
+    img.src = e.target.result;
+  };
+  reader.readAsDataURL(file);
+},
+
+uploadAvatar(resizedImage) {
+    const reader = new FileReader();
+    reader.onloadend = () => {
+      // Here we get the Base64 string
+      const base64String = reader.result;
+
+      // Now you can add this string to your form data, which you will send to the server
+      // Assuming you have a form object in your data
+      this.avatar = base64String;
+
+      // You can also set a flag that indicates the avatar is ready to be uploaded
+   //   this.avatarReadyToUpload = true;
+    };
+    reader.readAsDataURL(resizedImage);
+  },
  
 
     openFileInput() {
