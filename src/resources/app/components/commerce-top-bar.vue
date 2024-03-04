@@ -5,11 +5,11 @@
       <div class="navbartekstoviframe-inner">
         <div class="poetna-parent">
        
-      <Link class="poetna"  :class="{ 'active-link': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
-      <Link class="dogaanja"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kategorija') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja</Link>
-      <Link class="pretraivanje" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">Naši članovi</Link>
+      <Link class="poetna animation-link"  :class="{ 'active-link': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
+      <Link class="dogaanja animation-link"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kategorija') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja</Link>
+      <Link class="pretraivanje animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">Naši članovi</Link>
       <button 
-  class="dogaanja" 
+  class="dogaanja animation-link" 
   @mouseenter="toggleDropdownInformacije(true)" 
   @click="toggleDropdownInformacije" 
   :class="{ 'active-link': showDropdowninformacije }">
@@ -18,8 +18,8 @@
 
 
 
-      <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija</Link>
-      <Link class="dogaanja" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt</Link>
+      <Link class="dogaanja animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija</Link>
+      <Link class="dogaanja animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt</Link>
 
 
 
@@ -80,7 +80,8 @@
 
     <transition name="fade">
     <div v-if="showDropdown" class="dropdownnavglavni">
-      <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}"/>
+      
+     <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}"/>
     <Link :href="route('skijasi.commerce-theme.login')" class="prvigumbprijavise">
         <div class="prijavi-se">Prijavi se</div>
         <div class="prvigumbprijavise-child" />
@@ -108,8 +109,9 @@
 
 
 
+ <!-- <div v-if="showDropdownjezik"  class="dropdownjezikglavni" :class="{'transparent-bg': isHomePage}"> -->
 
-    <div v-if="showDropdownjezik"  class="dropdownjezikglavni" :class="{'transparent-bg': isHomePage}">
+    <div v-if="showDropdownjezik"  class="dropdownjezikglavni">
       <div class="izaberi-jezik">IZABERI JEZIK</div>
       <div class="listajezika">
         <button class="talijanskiframe">
@@ -594,8 +596,36 @@ beforeDestroy() {
   z-index: 2000;
 }
 
-.active-link:hover::after,
-.active-link:focus::after {
+
+
+.animation-link {
+  position: relative; /* Needed for absolute positioning of pseudo-element */
+  padding-bottom: 8px !important; 
+}
+
+.animation-link:hover::after,
+.animation-link:focus::after {
+  transform: scaleX(1);
+}
+
+
+/* Add styles for the animated line */
+.animation-link::after {
+  content: "";
+  position: absolute;
+  left: 12%;
+  bottom: 0px; /* Adjust this value for the line's position */
+  width: 84%;
+  height: 2px; /* Adjust this value for the line's thickness */
+  background-color: #03a9f4; /* Customize this line color */
+  transform: scaleX(0);
+  transform-origin: center bottom;
+  transition: transform 0.3s ease-in-out;
+  z-index: 2000;
+}
+
+.animation-link:hover::after,
+.animation-link:focus::after {
   transform: scaleX(1);
 }
 
@@ -636,7 +666,7 @@ beforeDestroy() {
 
   }
   .pretraivanje:active {
-    border-bottom: 5 pix;
+    border-bottom: 5px;
   }
   .poetna-parent {
     margin: 0;
@@ -888,7 +918,7 @@ beforeDestroy() {
     display: inline-block;
   }
   .pretraivanje:active {
-    border-bottom: 5 pix;
+    border-bottom: 5px;
   }
   .kontakt {
     cursor: pointer;

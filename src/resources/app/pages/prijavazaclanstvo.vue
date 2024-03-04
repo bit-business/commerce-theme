@@ -118,11 +118,33 @@
         <span v-if="errors.ustanova" class="error-message">{{ errors.ustanova }}</span>
       </div>
 
+  <!-- Zbor -->
+      <div class="form-group" v-for="(options, model) in dropdownOptionsZbor" :key="model" required>
+  <label class="selektortekst" :for="model">{{ labelsZbor[model] }} <span class="asterisk">*</span></label>
+  <div class="dropdown" @click="toggleDropdown(model)">
+    <div class="dropdown-select">
+      <span>{{ form[model] || 'Izaberite' }}</span>
+      <i class="arrow" :class="{ 'arrow-up': activeDropdown === model }"></i>
+    </div>
+    <transition name="fade">
+      <div class="dropdown-list" v-if="activeDropdown === model">
+        <div v-for="option in options" class="dropdown-list-item" @click.stop="selectOption(option, model)">
+          {{ option }}
+        </div>
+      </div>
+    </transition>
+  </div>
+  <span v-if="errors[model]" class="error-message">{{ errors[model] }}</span>
+
+</div>
+
+
+
       <div class="form-groupAvatar">
         <input type="file" @change="filesChangeAvatar" accept="image/png, image/jpeg, image/jpg" ref="avatarslika" class="hidden">
               <button @click.prevent="$refs.avatarslika.click()" class="gumbSlika">
                 Odaberite svoju sliku
-              </button> 
+              </button>  <span class="asterisk-top">*</span>
      
               
               <!-- Check if avatar is approved 
@@ -137,7 +159,8 @@
   </div>
          
               <!-- Conditional overlay based on avatar approval status -->
-          
+              <span v-if="errors.avatar" class="error-message">{{ errors.avatar }}</span>
+
        
      </div>
 
@@ -166,11 +189,10 @@
   <button @click="$refs.dokument.click()" class="gumbOK">
   UPLOAD DOKUMENTA 
   <span v-if="uploadedFilesCount > 0" class="upload-count">{{ uploadedFilesCount }}</span>
-</button>
+</button> <span class="asterisk-top">*</span>
 
+<span v-if="errors.uploadedFiles" class="error-message">{{ errors.uploadedFiles }}</span>
 
- 
-            
             </div>
 
       <!-- GDPR Agreement -->
@@ -261,15 +283,18 @@ export default {
       activeDropdown: null,
     dropdownOptions: {
       spol: ['Muško', 'Žensko'],
-      podrucnizbor: ['HZUTS', 'ZUTS "Nik Krčmar"', 'ZUTS "Istra"', 'ZUTS Primorsko-goranske županije', 'ZUTS Slavonije i Baranje', 'ZUTS Ogulin', 'ZUTS Sjeverozapadna Hrvatska'],
-      ostvarenistatus: ['Voditelj skijanja', 'Učitelj skijanja', 'Trener skijanja', 'Učitelj daskanja na snijegu'],
+      ostvarenistatus: ['Voditelj skijanja', 'Učitelj skijanja', 'Trener skijanja', 'Učitelj daskanja na snijegu', 'Trener daskanja'],
      
+    },
+    dropdownOptionsZbor: {
+      podrucnizbor: ['HZUTS', 'ZUTS "Nik Krčmar"', 'ZUTS "Istra"', 'ZUTS Primorsko-goranske županije', 'ZUTS Slavonije i Baranje', 'ZUTS Ogulin', 'ZUTS Sjeverozapadna Hrvatska'],     
     },
     labels: {
       spol: 'Spol',
-      podrucnizbor: 'Područni zbor u koji ste se učlanili',
       ostvarenistatus: 'Ostvareni status s kojim se učlanjujete u HZUTS',
-      // ... other labels ...
+    },
+    labelsZbor: {
+      podrucnizbor: 'U koji područni zbor bi se htjeli učlaniti?',
     },
 
     initialState: {},
@@ -325,7 +350,6 @@ export default {
     },
 
     errors: {},
-    
 
 
     }
@@ -410,6 +434,18 @@ export default {
       this.errors.gdpr = 'Morate prihvatiti uvjete privatnosti i korištenja';
       valid = false; // Mark form as invalid
     }
+
+    if (!this.form.avatar) {
+    this.errors.avatar = 'Molimo dodajte avatar.';
+    valid = false; // Mark form as invalid
+  }
+
+  // Check for document upload
+  if (this.uploadedFilesCount === 0) {
+    this.errors.uploadedFiles = 'Molimo dodajte potrebnu dokumentaciju.';
+    valid = false; // Mark form as invalid
+  }
+
 
     // Return true if the form is valid, otherwise false
     return valid;
@@ -1044,8 +1080,8 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
 .dokumentitekst {
   display: block;
   padding-top: 4rem;
-  font-weight: 300;
-  font-size: 14px;
+  font-weight: 400;
+  font-size: 19px;
 
 }
 
@@ -1124,7 +1160,12 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
 .asterisk {
   color: red;
 }
-
+.asterisk-top {
+  color: red;
+  position: absolute;
+  padding-top: 3px;
+  padding-left: 3px;
+}
 
 /* Hide the default checkbox *//* Hide the default checkbox */
 .hidden-checkbox {

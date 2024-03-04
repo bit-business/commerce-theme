@@ -50,13 +50,13 @@
 
 
         </div>
-        <div class="frame1">
+        <div class="dogadajiframe1">
           <b class="teaj-za-uitelja">{{ nextEvent.name }} </b>
           <div class="frame-group">
-            <div class="frame2">
+            <div class="dogadajiframe2">
               <div class="countdown">{{ countdownTime }}</div>
             </div>
-            <div class="frame3">
+            <div class="dogadajiframe3">
               <div class="frame4">
                 <b class="dana">DANA</b>
                 <b class="dana">SATI</b>
@@ -95,7 +95,7 @@
     <div 
         class="product-item animacijakvadrati"
 
-        v-for="(product, index) in reversedProducts"
+        v-for="(product, index) in sortedAndFilteredProducts"
 
         :key="product.id"
     >
@@ -128,9 +128,9 @@
             <div v-if="!isEventActive(product)" class="inactive-overlay">
                               NIJE AKTIVNO
             </div>
-            <div v-if="index > 3" class="inactive-overlay">
+        <!--    <div v-if="index > 3" class="inactive-overlay">
     UBRZO DETALJI
-</div>
+</div>-->
 
         </div>
     </div>
@@ -790,7 +790,7 @@ computeCountdown() {
   font-weight: 800;
   gap: 10rem;
 }
-.frame2 {
+.dogadajiframe2 {
   flex: 1;
   height: 8.31rem;
   overflow: hidden;
@@ -826,7 +826,7 @@ computeCountdown() {
   justify-content: flex-start;
   gap: 7.94rem;
 }
-.frame3 {
+.dogadajiframe3 {
   margin: 0 !important;
   position: absolute;
   top: 7.28rem;
@@ -851,7 +851,7 @@ computeCountdown() {
   font-size: 6rem;
   color: #fff;
 }
-.frame1 {
+.dogadajiframe1 {
   height: 25.06rem;
   display: flex;
   flex-direction: column;
@@ -1200,7 +1200,7 @@ computeCountdown() {
         white-space: nowrap;
         font-size: calc(2px + (40 - 20) * ((100vw - 320px) / (720 - 320)));
     }
-    .frame3 {
+    .dogadajiframe3 {
     left: 52%;               
     transform: translateX(-50%); 
     top: 4.6rem;
@@ -1216,6 +1216,16 @@ computeCountdown() {
   }
 
 
+
+
+  .teaj-za-uitelja{
+font-size: 1.8rem;
+  }
+
+
+  .teaj-za-uitelje{
+font-size: 2rem;
+  }
 
 
 
@@ -1281,7 +1291,7 @@ padding: 0 rem 2.4rem;
         max-width: 80vw;
         height: auto; 
     }
-    .frame1 {
+    .dogadajiframe1 {
         max-width: 80vw;
         height: auto; 
     }
@@ -1306,7 +1316,7 @@ padding: 0 rem 2.4rem;
         overflow: visible;
         bottom: 5rem;
               }
-        .frame3 {
+        .dogadajiframe3 {
             left: 52%;           
             transform: translateX(-50%); 
             top: 3.3rem;
@@ -1341,6 +1351,19 @@ margin-top: -10%;
 
   @media screen and (max-width: 400px) {
 
+    .teaj-za-uitelja{
+font-size: 1.2rem;
+  }
+
+  .login-with-email-button{
+height: 4.6rem;
+  }
+
+
+  .teaj-za-uitelje{
+font-size: 1.2rem;
+  }
+
 
   .countdown{
 font-size: 2rem;
@@ -1349,7 +1372,7 @@ font-size: 2rem;
 font-size: 0.5rem;
     
   }
-  .frame3 {
+  .dogadajiframe3 {
     left: 50%;     
     top: 2.2rem;         
   }

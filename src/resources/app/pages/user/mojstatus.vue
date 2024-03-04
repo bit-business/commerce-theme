@@ -204,7 +204,7 @@
                   <div class="grad">Status</div>
                 </div>
                 <div class="zagreb-wrapper">
-                  <div class="osnovne-informacije">  {{ korisnik.statusString }}</div>
+                  <div class="osnovne-informacije">{{ getStatusWithLicenseCheck(korisnik) }}</div>
                 </div>
               </div>
               <div class="licenceframe">
@@ -265,7 +265,7 @@
                   <div class="grad">Datum seminara:</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ getEventDetails(korisnik.idevent).eventdate }}</div>
+                  <div class="osnovne-informacije">{{formatEuropeanDate (getEventDetails(korisnik.idevent).eventdate) }}</div>
                 </div>
               </div>
               <div class="mjestoseminaraframe">
@@ -591,14 +591,22 @@ yearDifference() {
 
       const endDate = new Date(endStatusDate);
       const today = new Date();
+
+      if (endDate < today) {
+    return 'Istekla'; // Return "0 godina" if endDate is before today
+  }
       const diffTime = Math.abs(endDate - today);
       const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365); // Convert milliseconds to years
 
+      console.log("TEST DULJINA:", diffYears);
+      console.log("TEST DULJINA2:", endDate);
       if (diffYears < 1) {
         return '<1 godine';
       } else if (diffYears >= 1 && diffYears < 2) {
         return '2 godine';
       } else if (diffYears >= 2 && diffYears < 3) {
+        return '3 godine';
+      } else if (diffYears >= 3 && diffYears < 4) {
         return '3 godine';
       } else if (diffYears >= 4) {
         return 'Doživotna';
@@ -628,6 +636,20 @@ yearDifference() {
 
 
   methods: {
+    getStatusWithLicenseCheck(korisnik) {
+    const today = new Date();
+    today.setHours(0, 0, 0, 0); // Normalize today to midnight
+
+    // Assuming korisnik.endstatusdate is in 'YYYY-MM-DD' format
+    const endStatusDate = new Date(korisnik.endstatusdate);
+    endStatusDate.setHours(0, 0, 0, 0); // Normalize endStatusDate to midnight for accurate comparison
+
+    if (korisnik.statusString === "Demonstrator skijanja" && endStatusDate < today) {
+      return "Demonstrator skijanja bez licence";
+    }
+
+    return korisnik.statusString;
+  },
 
     handleScrollAttempt(event) {
       if (event.deltaY !== 0) { // deltaY is non-zero if there's an attempt to scroll

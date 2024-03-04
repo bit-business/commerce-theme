@@ -38,7 +38,7 @@
       <button :class="{ 'active': activeSection === 'prijevoz' }" class="o-skijalitu" @click="activeSection = 'prijevoz'">Prijevoz</button>
       <img class="framezakategorije-inner" alt="" src="/storage/slike/detail/line-39.svg" />
       
-      <button :class="{ 'active': activeSection === 'cijene' }" class="o-skijalitu" @click="activeSection = 'cijene'">Plaćanje i cijene</button>
+      <button :class="{ 'active': activeSection === 'cijene' }" class="o-skijalitu" @click="activeSection = 'cijene'">Prijava i plaćanje</button>
     </div>
   </div>
 </div>
@@ -177,12 +177,12 @@
 </div>
 
 <div v-if="activeSection === 'cijene'" class="smjestajpodframe">
-  <!-- Content for Plaćanje i cijene -->
+  <!-- Content for Prijava i plaćanje -->
   <div class="smjestajglavniframe">
   <div class="smjestajpodframe">
           <div class="tekstovipodpodframe">
             <div class="titleglavninatekstu">
-              <b class="sexten">Plaćanje i cijene</b>
+              <b class="sexten">Prijava i plaćanje</b>
             </div>
             <div class="adminsadrzajframe">
               <div class="sudionici-seminara-bit-e-smje-parent">
@@ -217,7 +217,7 @@
         </a>-->
       </div>
 
-    <!-- Content for Plaćanje i cijene -->
+    <!-- Content for Prijava i plaćanje -->
 
 </div>
 
@@ -321,6 +321,7 @@ export default {
         '/storage/slike/dogadaj2/galerija20.jpg',
       ],
       photos3: [
+      '/storage/slike/dogadaj3/galerija0.jpg',
         '/storage/slike/dogadaj3/galerija1.jpg',
         '/storage/slike/dogadaj3/galerija2.jpg',
         '/storage/slike/dogadaj3/galerija3.jpg',
@@ -331,6 +332,11 @@ export default {
         '/storage/slike/dogadaj3/galerija8.jpg',
         '/storage/slike/dogadaj3/galerija9.jpg',
         '/storage/slike/dogadaj3/galerija10.jpg',
+        '/storage/slike/dogadaj3/galerija11.jpg',
+        '/storage/slike/dogadaj3/galerija12.jpg',
+        '/storage/slike/dogadaj3/galerija13.jpg',
+        '/storage/slike/dogadaj3/galerija14.jpg',
+        '/storage/slike/dogadaj3/galerija15.jpg',
       ],
       currentIndex: 0,
       fullscreenImageIndex: null,
@@ -414,7 +420,10 @@ export default {
       return this.photos2;
     } else if (this.product.name == "ISIA SEMINAR") {
       return this.photos3;
-    } else {
+    } else if (this.product.name == "DEMONSTRATORSKI SEMINAR") {
+      return this.photos3;
+    } 
+    else {
       return this.photos;
     }
   },
@@ -530,7 +539,7 @@ export default {
 
     showFullscreen(index) {
     // Use the index directly to get the image URL from the photos array
-    const imageURL = this.photos[index];
+    const imageURL = this.photos3[index];
     this.fullscreenImageIndex = index;
 
 
@@ -627,25 +636,25 @@ export default {
 
 
 showNextImage() {
-    if (this.fullscreenImageIndex < this.photos.length - 1) {
+    if (this.fullscreenImageIndex < this.photos3.length - 1) {
       this.fullscreenImageIndex++;
     } else {
       this.fullscreenImageIndex = 0; // loop back to the first image
     }
     const overlay = document.getElementById('fullscreen-overlay');
     const img = overlay.querySelector('img');
-    img.src = this.photos[this.fullscreenImageIndex];
+    img.src = this.photos3[this.fullscreenImageIndex];
   },
 
   showPreviousImage() {
     if (this.fullscreenImageIndex > 0) {
       this.fullscreenImageIndex--;
     } else {
-      this.fullscreenImageIndex = this.photos.length - 1; // loop back to the last image
+      this.fullscreenImageIndex = this.photos3.length - 1; // loop back to the last image
     }
     const overlay = document.getElementById('fullscreen-overlay');
     const img = overlay.querySelector('img');
-    img.src = this.photos[this.fullscreenImageIndex];
+    img.src = this.photos3[this.fullscreenImageIndex];
   },
 
 

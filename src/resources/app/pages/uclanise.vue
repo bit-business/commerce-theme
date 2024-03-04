@@ -112,7 +112,7 @@
           </div>
           <div class="gumbiframeglavni">
             <div class="lijevigumbframe">
-              <a class="pozadinalijevoggumba" href="https://docs.google.com/forms/d/e/1FAIpQLSeqSOqOlZ5W5EprcXO1Ic-a03P4r3sGhOnKMta-cIRNTVj2uQ/viewform?usp=send_form" >
+              <a class="pozadinalijevoggumba">
                 <Link :href="route('skijasi.commerce-theme.prijavazaclanstvo')" class="prijavnica-za-lanstvo font-bold">PRIJAVNICA ZA ČLANSTVO</Link>
               </a>
             </div>

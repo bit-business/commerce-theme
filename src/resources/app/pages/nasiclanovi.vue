@@ -186,7 +186,7 @@
       <div class="sviframeoviizaduzenje">
         <div class="frameimeistatus">
           <b class="imeclana">{{ selectedUser?.name }} {{ selectedUser?.username }}</b>
-          <b class="statusclanaaktivan">{{ selectedUser?.statusAktivan }}</b>
+          <b :class="{'red-text': selectedUser?.statusAktivan === 'Istekla licenca'}" class="statusclanaaktivan">{{ selectedUser?.statusAktivan }}</b>
         </div>
       </div>
       <div class="framesvekartice" v-if="!viewingPaymentsList">
@@ -234,7 +234,7 @@
                   <div class="grad">Status</div>
                 </div>
                 <div class="zagreb-wrapper">
-                  <div class="osnovne-informacije">  {{ selectedUser?.statusString }}</div>
+                  <div class="osnovne-informacije">{{ displayedStatus }}</div>
                 </div>
               </div>
               <div class="licenceframe">
@@ -250,7 +250,7 @@
                   <div class="grad">Licenca vrijedi do:</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
-                  <div class="osnovne-informacije">{{ formatEuropeanDate(selectedUser?.endstatusdate) }}</div>
+                  <div :class="{'red-text': selectedUser?.statusAktivan === 'Istekla licenca'}" class="osnovne-informacije">{{ formatEuropeanDate(selectedUser?.endstatusdate) }}</div>
                 </div>
               </div>
               <div class="valjanostlicenceframe">
@@ -295,7 +295,7 @@
                   <div class="grad">Datum seminara:</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ getEventDetails(selectedUser?.idevent)?.eventdate }}</div>
+                  <div class="osnovne-informacije">{{ formatEuropeanDate(getEventDetails(selectedUser?.idevent)?.eventdate) }} </div>
                 </div>
               </div>
               <div class="mjestoseminaraframe">
@@ -544,8 +544,13 @@ export default {
   },
   
 
-
-
+  displayedStatus() {
+    if (this.selectedUser?.statusString === "Demonstrator skijanja" && this.selectedUser?.statusAktivan === 'Istekla licenca') {
+      return "Demonstrator skijanja bez licence";
+    } else {
+      return this.selectedUser?.statusString;
+    }
+  },
 
 
   activeLicences() {
@@ -605,26 +610,33 @@ export default {
 
 
   yearDifference() {
-      const endStatusDate = this.selectedUser?.endstatusdate;
-      if (!endStatusDate) return '';
+  const endStatusDate = this.selectedUser?.endstatusdate;
+  if (!endStatusDate) return '';
 
-      const endDate = new Date(endStatusDate);
-      const today = new Date();
-      const diffTime = Math.abs(endDate - today);
-      const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365); // Convert milliseconds to years
+  const endDate = new Date(endStatusDate);
+  const today = new Date();
+  // Check if endDate is before today
+  if (endDate < today) {
+    return 'Istekla'; // Return "0 godina" if endDate is before today
+  }
+  
+  const diffTime = Math.abs(endDate - today);
+  const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365); // Convert milliseconds to years
+  console.log("TEST GODINE2:", diffYears);
+  if (diffYears < 1) {
+    return '<1 godine';
+  } else if (diffYears >= 1 && diffYears < 2) {
+    return '2 godine';
+  } else if (diffYears >= 2 && diffYears < 3) {
+    return '3 godine';
+  }  else if (diffYears >= 3 && diffYears < 4) {
+    return '3 godine';
+  } else if (diffYears >= 4) {
+    return 'Doživotna';
+  }
 
-      if (diffYears < 1) {
-        return '<1 godine';
-      } else if (diffYears >= 1 && diffYears < 2) {
-        return '2 godine';
-      } else if (diffYears >= 2 && diffYears < 3) {
-        return '3 godine';
-      } else if (diffYears >= 4) {
-        return 'Doživotna';
-      }
-
-      return ''; // Default return value if none of the conditions are met
-    },
+  return ''; // Default return value if none of the conditions are met
+},
 
 
 
@@ -2735,6 +2747,9 @@ padding-left: 1rem;
 
 .payment-status.unpaid {
   background-color: #f44336; /* Red background for unpaid status */
+}
+.red-text {
+  color: #f44336;
 }
 
 
