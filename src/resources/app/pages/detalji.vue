@@ -338,6 +338,24 @@ export default {
         '/storage/slike/dogadaj3/galerija14.jpg',
         '/storage/slike/dogadaj3/galerija15.jpg',
       ],
+      photos4: [
+      '/storage/dogadajislike/dogadaj1/galerija10.jpg',
+      '/storage/dogadajislike/dogadaj1/galerija11.jpg',
+      '/storage/dogadajislike/dogadaj1/galerija12.jpg',
+      '/storage/dogadajislike/dogadaj1/galerija13.jpg',
+      '/storage/dogadajislike/dogadaj1/galerija14.jpg',
+      '/storage/dogadajislike/dogadaj1/galerija1.jpeg',
+      '/storage/dogadajislike/dogadaj1/galerija2.jpeg',
+      '/storage/dogadajislike/dogadaj1/galerija3.jpeg',
+      '/storage/dogadajislike/dogadaj1/galerija4.jpeg',
+      '/storage/dogadajislike/dogadaj1/galerija5.jpeg',
+      '/storage/dogadajislike/dogadaj1/galerija6.jpeg',
+      '/storage/dogadajislike/dogadaj1/galerija7.jpeg',
+      '/storage/dogadajislike/dogadaj1/galerija8.jpeg',
+      '/storage/dogadajislike/dogadaj1/galerija9.jpg',
+      '/storage/dogadajislike/dogadaj1/galerija15.jpg',
+      '/storage/dogadajislike/dogadaj1/galerija16.jpg',
+      ],
       currentIndex: 0,
       fullscreenImageIndex: null,
 
@@ -418,13 +436,19 @@ export default {
  //   return this.product.mjesto === "SEXTEN" ? this.photos2 : this.photos;
     if (this.product.name == "DRŽAVNI SEMINAR") {
       return this.photos2;
-    } else if (this.product.name == "ISIA SEMINAR") {
+    } else if (this.product.name == "ISIA SEMINAR-STARI") {
       return this.photos3;
     } else if (this.product.name == "DEMONSTRATORSKI SEMINAR") {
       return this.photos3;
     } 
+    else if (this.product.name == "SEMINAR HZUTS-a") {
+      return this.photos4;
+    } 
+    else if (this.product.name == "ISIA SEMINAR") {
+      return this.photos4;
+    } 
     else {
-      return this.photos;
+      return this.photos4;
     }
   },
 
@@ -539,7 +563,7 @@ export default {
 
     showFullscreen(index) {
     // Use the index directly to get the image URL from the photos array
-    const imageURL = this.photos3[index];
+    const imageURL = this.photos4[index];
     this.fullscreenImageIndex = index;
 
 
@@ -636,25 +660,25 @@ export default {
 
 
 showNextImage() {
-    if (this.fullscreenImageIndex < this.photos3.length - 1) {
+    if (this.fullscreenImageIndex < this.photos4.length - 1) {
       this.fullscreenImageIndex++;
     } else {
       this.fullscreenImageIndex = 0; // loop back to the first image
     }
     const overlay = document.getElementById('fullscreen-overlay');
     const img = overlay.querySelector('img');
-    img.src = this.photos3[this.fullscreenImageIndex];
+    img.src = this.photos4[this.fullscreenImageIndex];
   },
 
   showPreviousImage() {
     if (this.fullscreenImageIndex > 0) {
       this.fullscreenImageIndex--;
     } else {
-      this.fullscreenImageIndex = this.photos3.length - 1; // loop back to the last image
+      this.fullscreenImageIndex = this.photos4.length - 1; // loop back to the last image
     }
     const overlay = document.getElementById('fullscreen-overlay');
     const img = overlay.querySelector('img');
-    img.src = this.photos3[this.fullscreenImageIndex];
+    img.src = this.photos4[this.fullscreenImageIndex];
   },
 
 

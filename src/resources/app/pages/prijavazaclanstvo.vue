@@ -146,6 +146,31 @@
                 Odaberite svoju sliku
               </button>  <span class="asterisk-top">*</span>
      
+              <div v-if="showCropperModal" class="cropper-modal">
+  <Cropper
+    ref="cropper"
+    :src="imageSrc"
+    :aspectRatio="2/3"
+    :guides="true"
+    :viewMode="2"
+    :autoCropArea="0.97"
+    :dragMode="'move'"
+    :movable="true"
+    :zoomable="true"
+    :rotatable="true"
+    :scalable="true"
+    :cropBoxMovable="true"
+    :cropBoxResizable="true"
+    :showClose="false"
+    :showResetCrop="false"
+    :showConfirmCrop="false"
+    @cropped="cropImage"
+  />
+      <div class="button-group">
+    <button @click="cancelCrop" class="cancel-button">Odustani</button>
+    <button @click="confirmCrop" class="confirm-button">Potvrdi</button>
+  </div>
+    </div>
               
               <!-- Check if avatar is approved 
               <img
@@ -256,6 +281,9 @@ import { mapState } from 'vuex'
 import { Link, Head } from '@inertiajs/inertia-vue'
 import _ from "lodash";
 
+import Cropper from 'vue-cropperjs';
+import 'cropperjs/dist/cropper.css';
+
 
 import osobnidosje from '../../../../../core/src/resources/js/api/modules/skijasi-memberfiles.js';
 import apiuploaddokumenta from '../../../../../core/src/resources/js/api/modules/skijasi-file.js';
@@ -266,7 +294,8 @@ export default {
   layout: [appLayout, galerijaLayout],
   components: {
     Link,
-    Head
+    Head,
+    Cropper
   },
   
   data() {
@@ -352,6 +381,15 @@ export default {
     errors: {},
 
 
+
+    imageSrc: null,
+      showCropperModal: false,
+      croppedImage: null,
+      avatar: null,
+      avatarReadyToUpload: false,
+      file: null
+
+
     }
   },
 
@@ -391,8 +429,8 @@ export default {
 
     if (this.user) {
       this.prefillData(this.user);
-    
     }
+
    
   },
 
@@ -451,62 +489,95 @@ export default {
     return valid;
   },
 
-    filesChangeAvatar(event) {
-  const file = event.target.files[0];
-  if (!file) {
-    return;
+  filesChangeAvatar(event) {
+    const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
+      this.file = event.target.files[0];
+      if (this.file) {
+        this.imageSrc = URL.createObjectURL(this.file);
+        this.showCropperModal = true;
+      }
+    
+    },
+
+
+    cropImage(data) {
+      this.croppedImage = data;
+      this.showCropperModal = false;
+
+      const croppedImageBlob = this.dataURItoBlob(this.croppedImage);
+      const croppedImageFile = new File([croppedImageBlob], 'cropped_image.jpg', { type: 'image/jpeg' });
+      this.uploadCroppedImage(croppedImageFile);
+    },
+ 
+    dataURItoBlob(dataURI) {
+  if (!dataURI || dataURI === '') {
+    return null; // Return null if dataURI is null or an empty string
   }
-  const reader = new FileReader();
-  reader.onload = (e) => {
-    const img = new Image();
-    img.onload = () => {
-      // Calculate the target dimensions while maintaining the 2:3 aspect ratio
-      let targetWidth, targetHeight;
-      if (img.width / img.height > 2 / 3) {
-        // If the image is wider than a 2:3 aspect ratio, calculate the target height and match the width accordingly
-        targetHeight = img.height;
-        targetWidth = targetHeight * (2 / 3);
-      } else {
-        // If the image is narrower than a 2:3 aspect ratio, calculate the target width and match the height accordingly
-        targetWidth = img.width;
-        targetHeight = targetWidth * (3 / 2);
-      }
 
-      // If the target height is greater than 2000px, scale it down
-      if (targetHeight > 1800) {
-        targetHeight = 1800;
-        targetWidth = targetHeight * (2 / 3);
-      }
-
-      // Calculate the centering position for cropping
-      const startX = (img.width - targetWidth) / 2;
-      const startY = (img.height - targetHeight) / 2;
-
-      // Create a canvas element to draw the cropped image
-      const canvas = document.createElement('canvas');
-      canvas.width = targetWidth;
-      canvas.height = targetHeight;
-      const ctx = canvas.getContext('2d');
-      
-      // Draw the image on the canvas with the correct cropping
-      ctx.drawImage(img, startX, startY, targetWidth, targetHeight, 0, 0, targetWidth, targetHeight);
-      
-      // Convert the canvas to a Blob and then to a File for uploading
-      canvas.toBlob((blob) => {
-        const resizedImage = new File([blob], file.name, {
-          type: 'image/jpeg',
-          lastModified: Date.now(),
-        });
-
-        this.form.avatar = URL.createObjectURL(resizedImage);
-        // Now you can pass this resizedImage to your upload method
-        this.uploadAvatar(resizedImage);
-      }, 'image/jpeg');
-    };
-    img.src = e.target.result;
-  };
-  reader.readAsDataURL(file);
+  const byteString = atob(dataURI.split(',')[1]);
+  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+  const ab = new ArrayBuffer(byteString.length);
+  const ia = new Uint8Array(ab);
+  for (let i = 0; i < byteString.length; i++) {
+    ia[i] = byteString.charCodeAt(i);
+  }
+  return new Blob([ab], { type: mimeString });
 },
+
+confirmCrop() {
+  if (!this.file) {
+    return; // No file selected
+  }
+
+  // Get the cropped canvas from the cropper component
+  const croppedCanvas = this.$refs.cropper.getCroppedCanvas();
+
+  // Convert the cropped canvas to a blob
+  croppedCanvas.toBlob((blob) => {
+    const croppedImageFile = new File([blob], 'cropped_image.jpg', { type: 'image/jpeg' });
+
+    // Upload the cropped image or perform any other necessary action
+    this.uploadCroppedImage(croppedImageFile);
+
+    // Hide the cropper modal
+    this.showCropperModal = false;
+  }, 'image/jpeg');
+  
+},
+
+
+
+  cancelCrop() {
+    this.showCropperModal = false;
+    this.croppedImage = null;
+    this.form.avatar = null;
+    this.avatarReadyToUpload = false;
+  },
+  uploadCroppedImage(croppedImageFile) {
+  // Create a new FileReader instance to read the cropped image file
+  const reader = new FileReader();
+  
+  // Set up the onload event handler to handle when the FileReader has finished loading the file
+  reader.onload = () => {
+    // Retrieve the Base64 encoded data URI of the cropped image
+    const base64String = reader.result;
+
+    // Now you can add this string to your form data, which you will send to the server
+    // Assuming you have a form object in your data, you can set the avatar property with the base64String
+    this.form.avatar = base64String;
+
+    // Set a flag to indicate that the avatar is ready to be uploaded
+    this.avatarReadyToUpload = true;
+
+    // Alternatively, you can directly initiate the upload process here
+    // Example: this.$api.uploadAvatar(base64String);
+  };
+
+  // Read the cropped image file as a data URL
+  reader.readAsDataURL(croppedImageFile);
+},
+
+
 
 
 
@@ -1474,6 +1545,50 @@ text-align: center;
 }
 
 }
+
+
+
+.cropper-modal {
+  position: relative;
+
+
+  z-index: 9999;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  opacity: 1;
+
+
+}
+
+.button-group {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+
+.confirm-button,
+.cancel-button {
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.confirm-button {
+  background-color: #03A9F4;
+  color: white;
+  
+}
+
+.cancel-button {
+  background-color: #676767;
+  color: white;
+  margin-right: 6px;
+}
+
 
 </style>
 

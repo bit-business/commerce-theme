@@ -137,6 +137,13 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
+    public function popustizaclanove()
+    {
+        return Inertia::render('popustizaclanove', [
+            'name' => 'Popusti za članove',
+        ], 'commerce-theme:app');
+    }
+
     public function prijavazaclanstvo()
     {
         return Inertia::render('prijavazaclanstvo', [

@@ -222,7 +222,7 @@
     <div class="framesadrzaji">
       <div class="prviredframeova">
        
-    <!--Link-->      <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">
+    <!--Link-->      <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.popustizaclanove')">
 
           <img
             class="img-5449-photoroom-1-icon"
@@ -285,10 +285,10 @@
 </a>
   <a class="rostsport-1-icon" href="https://www.kotanyi.com/en/">
   <img src="/storage/slike/sponzori/sponzor5.jpg" />
-</a>
+</a><!--
   <a class="rostsport-1-icon" href="https://www.oryx-osiguranje.hr">
   <img src="/storage/slike/sponzori/sponzor6.png" />
-</a>
+</a>-->
   <a class="rostsport-1-icon" href="https://staklorez-buric.hr">
   <img src="/storage/slike/sponzori/sponzor7.jpg" />
 </a>
@@ -306,10 +306,10 @@
 </a>
 <a class="rostsport-1-icon" href="https://klara.hr">
   <img src="/storage/slike/sponzori/sponzor12.jpg" />
-</a>
+</a><!--
 <a class="rostsport-1-icon" href="https://www.oryx-asistencija.hr">
   <img src="/storage/slike/sponzori/sponzor13.png" />
-</a>
+</a>-->
 <a class="rostsport-1-icon" href="https://www.seat.hr">
   <img src="/storage/slike/sponzori/sponzor14.jpg" />
 </a>
@@ -340,7 +340,7 @@
           Saznajte pogodnosti za članove HZUTS-a
         </div>
         <div class="popustisaznajvise">
-          <!--Link-->     <div class="saznaj-vie4" :href="route('skijasi.commerce-theme.uclanise')">SAZNAJ VIŠE</div>
+          <!--Link-->     <Link class="saznaj-vie4" :href="route('skijasi.commerce-theme.popustizaclanove')">SAZNAJ VIŠE</Link>
         </div>
       </div>
     </div>
@@ -2195,9 +2195,7 @@ line-height: normal;
       height: 35rem;
     }
 
-    .obavijestitraka {
-
-    }
+  
 
     .kako-postati-uitelj {
       font-size: 1.5rem;

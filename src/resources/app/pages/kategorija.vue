@@ -95,7 +95,7 @@
     <div 
         class="product-item animacijakvadrati"
 
-        v-for="(product, index) in sortedAndFilteredProducts"
+        v-for="(product, index) in sortedAndFilteredProductsKvadrati"
 
         :key="product.id"
     >
@@ -228,6 +228,26 @@ export default {
       return new Date(a.datumPocetka) - new Date(b.datumPocetka);
     });
   },
+
+
+  sortedAndFilteredProductsKvadrati() {
+        const today = new Date(); // Get the current date
+
+        return this.products.data.sort((a, b) => {
+            // First, sort by whether datumPocetka is after or before today
+            const aAfterToday = new Date(a.datumPocetka) >= today;
+            const bAfterToday = new Date(b.datumPocetka) >= today;
+
+            if (aAfterToday && !bAfterToday) {
+                return -1; // a comes before b
+            } else if (!aAfterToday && bAfterToday) {
+                return 1; // b comes before a
+            }
+
+            // If both are after or before today, sort by datumPocetka
+            return new Date(a.datumPocetka) - new Date(b.datumPocetka);
+        });
+    },
 
 
 
@@ -1149,7 +1169,7 @@ computeCountdown() {
   position: relative;
   background-color: #f8f7f5;
   width: 100%;
-  height: 160.49rem;
+  height: 196.49rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1252,7 +1272,7 @@ font-size: 2rem;
  
 
     .dogadanja {
-  height: 230rem;
+  height: 286rem;
 
 }
  
