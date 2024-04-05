@@ -6,13 +6,13 @@
         <div class="poetna-parent">
        
       <Link class="poetna animation-link"  :class="{ 'active-link': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
-      <Link class="dogaanja animation-link"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kategorija') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja</Link>
+      <Link class="dogaanja animation-link"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kategorija/dogadanja') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja</Link>
       <Link class="pretraivanje animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">Naši članovi</Link>
       <button 
   class="dogaanja animation-link" 
   @mouseenter="toggleDropdownInformacije(true)" 
   @click="toggleDropdownInformacije" 
-  :class="{ 'active-link': showDropdowninformacije }">
+  :class="{ 'active-link': showDropdowninformacije || isRouteActive('skijasi.commerce-theme.osnovneinformacije') || isRouteActive('skijasi.commerce-theme.djelatnostihzutsa') || isRouteActive('skijasi.commerce-theme.infoclanarine') || isRouteActive('skijasi.commerce-theme.izradaiskaznice') || isRouteActive('skijasi.commerce-theme.podrucnizborovi') || isRouteActive('skijasi.commerce-theme.dokumenti') }">
   Informacije
 </button>
 

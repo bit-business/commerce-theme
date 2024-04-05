@@ -29,6 +29,9 @@ Route::prefix($commerce_route_prefix)
         Route::get('/politikaprivatnosti', HelpersRoute::getController('InertiaController@politikaprivatnosti'))->name('politikaprivatnosti');
 
         Route::get('/popustizaclanove', HelpersRoute::getController('InertiaController@popustizaclanove'))->name('popustizaclanove');
+        Route::get('/savjetizaclanove', HelpersRoute::getController('InertiaController@savjetizaclanove'))->name('savjetizaclanove');
+        Route::get('/dokumenti', HelpersRoute::getController('InertiaController@dokumenti'))->name('dokumenti');
+
 
         Route::get('/podrucnizborovi', HelpersRoute::getController('InertiaController@podrucnizborovi'))->name('podrucnizborovi');
         Route::get('/infoclanarine', HelpersRoute::getController('InertiaController@infoclanarine'))->name('infoclanarine');
