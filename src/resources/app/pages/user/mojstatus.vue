@@ -67,11 +67,12 @@
 
             <Link :href="route('skijasi.commerce-theme.notification')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"   :class="{ 'has-unread': hasUnreadMessages }"
+    class="bell-icon">
   <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Obavijesti</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
             </Link>
 
 
@@ -377,11 +378,32 @@
 
   <Link :href="route('skijasi.commerce-theme.notification')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-<path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Obavijesti</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    :class="{ 'has-unread': hasUnreadMessages }"
+    class="bell-icon"
+  >
+    <path
+      d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z"
+      stroke="black"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21"
+      stroke="black"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</div>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
   </Link>
 
 
@@ -474,6 +496,8 @@ import statususera from '../../../../../../core/src/resources/js/api/modules/ski
 import skijasitrainersts from '../../../../../../core/src/resources/js/api/modules/skijasi-trainersts.js';
 import skijasiLicence from '../../../../../../core/src/resources/js/api/modules/skijasi-licence.js';
 import skijasiTblevents from '../../../../../../core/src/resources/js/api/modules/skijasi-tblevents.js';
+import poruke from  '../../../../../../core/src/resources/js/api/modules/skijasi-poruke.js';
+
 
 export default {
   layout: [appLayout, profileLayout],
@@ -485,6 +509,7 @@ export default {
     return {
       avatar_approved: 0,
       idmember: 0,
+      id: 0,
       name: '',
       username: '',
       datumrodjenja: '',
@@ -497,6 +522,11 @@ export default {
       spol: '',
       email: '',
       avatar: null,
+
+
+      adminMessages: [],
+      currentUser: null,
+      users: [], 
  
 
      isSidebarExpanded: window.innerWidth > 768, // Initialize based on screen width
@@ -553,8 +583,21 @@ export default {
       'items-center': !this.isSidebarExpanded,
       'justify-center': !this.isSidebarExpanded,
       };
-  },
+    },
 
+
+      hasUnreadMessages() {
+  if (this.adminMessages.length === 0) {
+    return false; // Return false if no admin messages are available
+  }
+
+  // Check if there are any messages where the current user's ID is not in the 'is_read' array
+  return this.adminMessages.some(message => {
+    const currentUserId = this.user.id;
+    return !message.is_read || !message.is_read.includes(String(this.user.id));
+  });
+},
+  
 
 
   activeLicences() {
@@ -618,6 +661,10 @@ yearDifference() {
 
 
 },
+created() {
+    this.fetchAdminMessages();
+  },
+
  mounted() {
     if (!this.isAuthenticated) {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
@@ -636,6 +683,28 @@ yearDifference() {
 
 
   methods: {
+    fetchAdminMessages() {
+      poruke.getMessages()
+      .then((response) => {
+      console.log("API Response:", response);
+      if (response) {
+        console.log("Response Data:", response);
+        // Filter messages where message.sent_to contains this user.id or "svi"
+        const filteredMessages = response.filter(message => {
+          return message.sent_to.includes(String(this.user.id)) || message.sent_to.includes("svi");
+        });
+        this.adminMessages = filteredMessages;
+        console.log("Messages:", this.adminMessages);
+      } else {
+        console.error("No data received from API");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching user messages:", error);
+    });
+},
+
+
     getStatusWithLicenseCheck(korisnik) {
     const today = new Date();
     today.setHours(0, 0, 0, 0); // Normalize today to midnight
@@ -682,13 +751,13 @@ yearDifference() {
 
 
     async ucitajClanove() {
-      console.log("TEST PODACI111", this.idmember);
+      console.log("TEST PODACI111", this.id);
 
   try {
-    this.number = Number(this.idmember);
+    this.number = Number(this.id);
   
     const response = await podaciusera.readmojstatus({
-        id: this.idmember,
+        id: this.id,
     });
     console.log("TEST PODACI1", response.data.user);
     
@@ -746,7 +815,7 @@ getTrainerstsLabel(trainerstsid) {
 
 getStatusString(user) {
     // Assuming `record.statusData` holds the relevant status information for this row
-    console.log(`Status data for record with ID ${user.idmember}:`, user.statusData);
+    console.log(`Status data for record with ID ${user.id}:`, user.statusData);
 
     if (!user.statusData) {
     return "Nema status?"; // or return an empty string
@@ -815,7 +884,7 @@ getEventDetails(idevent) {
         return;
     }
 
-    this.number = Number(this.korisnik.idmember);
+    this.number = Number(this.korisnik.id);
     try {
         const response = await skijasiLicence.citanjenasiclanovi({ slug: "tbl-licence", idmember: this.number });
         console.log("Response Data Licence:", response);
@@ -884,7 +953,7 @@ console.log ("TEST EVENTI", response.data);
     prefillData(user) {
      
       if (user) {
-      
+        this.id = user.id || null;
         this.idmember = user.idmember || null;
         this.name = user.name || '';
         this.username = user.username || '';
@@ -900,7 +969,7 @@ console.log ("TEST EVENTI", response.data);
         this.avatar = user.avatar || null;
         this.avatar_approved = user.avatarApproved ? 1 : 0;   
 
-        if (this.idmember) {
+        if (this.id) {
          this.ucitajClanove();
       }
       }
@@ -2973,6 +3042,32 @@ padding-right: 0.5rem !important;
 padding-top: 0rem !important;
   }
 }
-  
+.bell-icon.has-unread path {
+  stroke: orange;
+}
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.bell-icon.has-unread {
+  animation: swing 0.5s ease-in-out infinite;
+}
+.has-unread svg {
+  stroke: orange;
+}
 
 </style>

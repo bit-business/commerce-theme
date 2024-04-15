@@ -135,7 +135,7 @@
   </div>
 </div>
 </div>  </div>
-<!--1-->
+
 
 
       <div class="bg-white shadow-sm rounded-xl flex flex-wrap ml-16 mr-4">
@@ -145,25 +145,58 @@
           </div>
  
         <div class="flex flex-wrap w-full">
-       <!--   <div class="text-sm text-gray-400 cursor-pointer py-2" @click="readAll">Označi kao pročitano</div> -->
 
-          <template v-if="notifications.data.length > 0">
-            <div class="w-full flex p-6 space-x-4 items-start last:rounded-b-xl hover:bg-gray-50 cursor-pointer" :class="[notification.isRead == 0 ? 'bg-primary bg-opacity-10' : 'bg-white']" @click="notificationDetail(notification)" v-for="notification, index in notifications.data" :key="index">
-              <div class="w-1/12">
-                <img :src="logoTheme" class="w-full h-auto" alt="">
-              </div>
-              <div class="flex flex-col w-6/12">
-                <div class="text-gray-700 mb-2">{{ notification.title }}</div>
-                <div class="text-sm text-gray-400">{{ notification.content }}</div>
-                <div class="text-sm text-gray-400 mt-2">{{ $moment(notification.createdAt).format('DD-MM-YYYY H:mm:ss') }}</div>
-              </div>
-              <div class="w-5/12">
-                <button 
-                  class="py-2 px-8 float-right bg-white hover:border-primary hover:text-primary text-xs border rounded-md" 
-                  v-if="notification.type === 'orderNotification'"
-                >Prikaži detalje plaćanja</button>
-              </div>
-            </div>
+          <template v-if="notifications.length > 0">
+            <div
+  class="w-full flex p-6 space-x-4 items-start last:rounded-b-xl hover:bg-gray-50 cursor-pointer relative fade-out"
+  :class="{
+    fade: notification.shouldFadeOut,
+    'bg-primary bg-opacity-10': notification.isRead === 0,
+    'bg-white': notification.isRead !== 0
+  }"
+ 
+  v-for="notification, index in notifications"
+  :key="index"
+  @mouseover="hoveredNotification = notification"
+  @mouseleave="hoveredNotification = null"
+><!-- obrisao ovo za url prema narudzbi @click="notificationDetail(notification)"-->
+
+  <div class="">
+    <div class="h-24 w-24">
+      <img :src="notification.slika ? notification.slika : logoTheme" class="w-full h-full object-cover rounded" alt="">
+    </div>
+  </div>
+
+  <div class="flex flex-col">
+    <a v-if="notification.url" :href="notification.url">
+      <div class="text-gray-500" style="max-width: 46vw; word-wrap: break-word;">
+        {{ notification.message }}
+      </div>
+      <div class="text-sm text-black text-bold mt-2" style="font-weight: 500;">Objavljeno: {{ $moment(notification.created_at).format('DD.MM.YYYY') }}</div>
+    </a>
+
+    <div v-else class="text-gray-500" style="max-width: 46vw; word-wrap: break-word;">
+      {{ notification.message }}
+      <div class="text-sm text-black text-bold mt-2" style="font-weight: 500;">Objavljeno: {{ $moment(notification.created_at).format('DD.MM.YYYY') }}</div>
+    </div>
+  </div>
+
+  <div class="w-5/12">
+    <button
+      class="py-2 px-8 float-right bg-white hover:border-primary hover:text-primary text-xs border rounded-md"
+      v-if="notification.type === 'orderNotification'">
+      Prikaži detalje plaćanja
+    </button>
+  </div>
+
+  <button @click="deleteNotification(notification.id)" 
+          class="absolute top-6 right-7 text-gray-400 hover:text-gray-600 delete-button" 
+          v-if="hoveredNotification === notification">
+    <svg class="h-5 w-5" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" stroke="currentColor">
+      <path d="M6 18L18 6M6 6l12 12"></path>
+    </svg>
+  </button>
+</div>
           </template>
           <template v-else>
             <div class="w-full h-full flex-col flex p-6 items-center justify-center text-gray-500">
@@ -351,6 +384,9 @@ import appLayout from '../../layouts/app.vue'
 import profileLayout from '../../layouts/profile.vue'
 import { Link, Head } from '@inertiajs/inertia-vue'
 
+import poruke from  '../../../../../../core/src/resources/js/api/modules/skijasi-poruke.js';
+
+
 export default {
   layout: [appLayout, profileLayout],
   components: {
@@ -367,6 +403,20 @@ export default {
      isSidebarOpen: false,
 
      isGridVisible: true, 
+
+     hoveredNotification: null,
+
+      subject: "",
+      message: "",
+      sentAt: null,
+      users: [], // Replace with your actual list of users
+      messages: [], // Replace with your actual list of messages
+
+      dummymessageid: {
+        data: ["0"]
+      },
+
+
     }
   },
   computed: {
@@ -400,11 +450,18 @@ export default {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     }
 
-    this.fetchNotifications();
+   // this.fetchNotifications();
+
+    this.fetchUserMessages();
 
     window.addEventListener('scroll', this.handleScrollAttempt);
     
+
   },
+
+  created() {
+    this.markread(this.dummymessageid);
+},
 
   beforeDestroy() {
     // Remove event listener when component is destroyed
@@ -441,7 +498,106 @@ export default {
       this.isSidebarExpanded = !this.isSidebarExpanded;
     },
 
+    fetchUserMessages() {
+  poruke.getMessages()
+    .then((response) => {
+      console.log("API Response:", response);
+      if (response) {
+        console.log("Response Data:", response);
+        const userMessages = response.filter(message => {
+          return message.sent_to.includes(String(this.user.id)) || message.sent_to.includes("svi");
+        });
+        // Filter messages where message.sent_to contains this user.id
+        // Filter messages where message.is_hidden array does not contain this user.id
+        const filteredMessages = userMessages.filter(message => {
+          if (Array.isArray(message.is_hidden)) {
+            return !message.is_hidden.includes(String(this.user.id));
+          }
+          return true; // If is_hidden is null or not an array, include the message
+        });
+        // Update recipient information for each message
+        filteredMessages.forEach((message) => {
+          message.shouldFadeOut = false;
+          // Check if message.sent_to is not null and is an array
+          if (Array.isArray(message.sent_to)) {
+            // Convert string IDs to integers for message.sent_to
+            const sentToIds = message.sent_to.map(id => parseInt(id));
+            message.recipients = sentToIds.map((userId) => {
+              const user = this.users.find((user) => user.id === userId);
+              return user ? { id: user.id, name: user.name, username: user.username } : null;
+            });
+          } else {
+            // If message.sent_to is null or not an array, set recipients as an empty array
+            message.recipients = [];
+          }
+          // Convert string IDs to integers for message.is_read
+          let isReadIds = [];
+          if (Array.isArray(message.is_read)) {
+            isReadIds = message.is_read.map(id => parseInt(id));
+          }
+          message.readers = isReadIds.map((userId) => {
+            const user = this.users.find((user) => user.id === userId);
+            return user ? { id: user.id, name: user.name, username: user.username } : null;
+          });
+          // Set the hovered property of the message to false
+          message.hovered = false;
+        });
+        this.notifications = filteredMessages; // Assign filteredMessages to this.notifications
+        console.log("Messages:", this.messages);
+      } else {
+        console.error("No data received from API");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching user messages:", error);
+    });
+},
 
+deleteNotification(notificationId) {
+    const notification = this.notifications.find(notification => notification.id === notificationId);
+    if (notification) {
+      if (!notification.is_hidden) {
+        notification.is_hidden = []; // Initialize is_hidden as an empty array if it's null
+      }
+      const userIdString = this.user.id.toString(); // Convert user ID to string
+      if (!notification.is_hidden.includes(userIdString)) {
+        notification.is_hidden.push(userIdString);
+        // Make a request to your API to update the is_hidden property
+        poruke.hidenotification(notificationId, { userId: userIdString })
+          .then(() => {
+            // If the request is successful, fetch updated user messages
+            notification.shouldFadeOut = true; 
+            setTimeout(() => {
+              this.fetchUserMessages();
+            }, 500); 
+       
+          })
+          .catch(err => {
+            // Handle errors
+            this.$helper.displayErrors(err);
+          });
+      }
+    }
+  },
+
+  markread(notificationId) {
+    const userIdString = this.user.id.toString(); // Convert user ID to string
+
+
+    poruke.markread(notificationId, { userId: userIdString })
+        .then(() => {
+            // If the request is successful, fetch updated user messages
+        })
+        .catch(err => {
+            // Handle errors
+            this.$helper.displayErrors(err);
+        });
+},
+
+
+
+
+/*
     fetchNotifications() {
       this.$api.skijasiFcm
         .getMessages()
@@ -452,6 +608,8 @@ export default {
           this.$helper.displayErrors(err)
         })
     },
+
+    */
     getOrderId(message) {
       if (message.split("#").length < 2) return null
       return message.split("#")[1].split(" ")[0]
@@ -472,6 +630,7 @@ export default {
         this.$inertia.visit(this.route('skijasi.commerce-theme.order-detail', this.getOrderId(notification.content)))
       }
     },
+    /*
     readAll() {
       this.$api.skijasiNotification
         .readAll()
@@ -482,7 +641,7 @@ export default {
           this.$helper.displayErrors(err)
         })
     },
-
+*/
 
     logout() {
       this.$api.skijasiAuth
@@ -908,8 +1067,20 @@ padding-top: 4.1rem;
   }
 
 
+}
 
+.my-button:hover svg path {
+    stroke-width: 1.5;
+    stroke: rgba(49, 49, 49, 0.576);
+  }
 
+  .fade-out {
+  opacity: 1;
+  transition: opacity 0.5s ease-out;
+}
+
+.fade-out.fade {
+  opacity: 0;
 }
 
   </style>

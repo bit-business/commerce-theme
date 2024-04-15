@@ -876,13 +876,13 @@ async getStaraPlacanja() {
 
 
     async ucitajLICENCEPodatke() {
-    console.log("Selected User ID for Licence:", this.selectedUser?.idmember);
-    if (!this.selectedUser?.idmember) {
+    console.log("Selected User ID for Licence:", this.selectedUser?.id);
+    if (!this.selectedUser?.id) {
         console.error('No selected user ID for licence data');
         return;
     }
 
-    this.number = Number(this.selectedUser.idmember);
+    this.number = Number(this.selectedUser.id);
     try {
         const response = await skijasiLicence.citanjenasiclanovi({ slug: "tbl-licence", idmember: this.number });
         console.log("Response Data Licence:", response);

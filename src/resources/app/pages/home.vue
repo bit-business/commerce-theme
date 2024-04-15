@@ -222,7 +222,7 @@
     <div class="framesadrzaji">
       <div class="prviredframeova">
        
-    <!--Link-->      <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.popustizaclanove')">
+    <!--Link-->      <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.savjetizaclanove')">
 
           <img
             class="img-5449-photoroom-1-icon"

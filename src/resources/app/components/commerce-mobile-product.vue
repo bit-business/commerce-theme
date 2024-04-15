@@ -18,7 +18,7 @@
           {{ getProductPrice }}
         </div>
         <div class="text-xs text-gray-400 mt-1 whitespace-nowrap text-right">
-          {{ getProductSold }} Terjual
+          {{ getProductSold }} broj prodanih
         </div>
       </div>
 

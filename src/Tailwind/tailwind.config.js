@@ -111,4 +111,7 @@ module.exports = {
     require('tailwindcss-tooltip-arrow-after')(),
     require('tailwindcss-important')(),
   ],
+
+
+
 }

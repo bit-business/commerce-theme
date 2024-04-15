@@ -4,7 +4,7 @@
     <div class="blurbackground" v-if="showKalendarFrame" @click="closeKalendarFrame"></div>
     <transition name="slide-fade">
       <Kalendar 
-    v-if="showKalendarFrame && products.data.length > 0" 
+    v-if="showKalendarFrame && kalendar.data.length > 0" 
     ref="myScrollableElement" 
     @close="handleKalendarClose" 
     :products="sortedAndFilteredProducts"
@@ -206,6 +206,9 @@ export default {
       products: {
         data: []
       },
+      kalendar: {
+        data: []
+      },
       productCategories: [],
       minPrice: null,
       maxPrice: null,
@@ -224,30 +227,30 @@ export default {
   computed: {
 
     sortedAndFilteredProducts() {
-    return this.products.data.sort((a, b) => {
+    return this.kalendar.data.sort((a, b) => {
       return new Date(a.datumPocetka) - new Date(b.datumPocetka);
     });
   },
 
 
   sortedAndFilteredProductsKvadrati() {
-        const today = new Date(); // Get the current date
+  const today = new Date(); // Get the current date
 
-        return this.products.data.sort((a, b) => {
-            // First, sort by whether datumPocetka is after or before today
-            const aAfterToday = new Date(a.datumPocetka) >= today;
-            const bAfterToday = new Date(b.datumPocetka) >= today;
+  return [...this.products.data].sort((a, b) => {
+    // First, sort by whether datumPocetka is after or before today
+    const aAfterToday = new Date(a.datumPocetka) >= today;
+    const bAfterToday = new Date(b.datumPocetka) >= today;
 
-            if (aAfterToday && !bAfterToday) {
-                return -1; // a comes before b
-            } else if (!aAfterToday && bAfterToday) {
-                return 1; // b comes before a
-            }
+    if (aAfterToday && !bAfterToday) {
+      return -1; // a comes before b
+    } else if (!aAfterToday && bAfterToday) {
+      return 1; // b comes before a
+    }
 
-            // If both are after or before today, sort by datumPocetka
-            return new Date(a.datumPocetka) - new Date(b.datumPocetka);
-        });
-    },
+    // If both are after or before today, sort by datumPocetka
+    return new Date(a.datumPocetka) - new Date(b.datumPocetka);
+  });
+},
 
 
 
@@ -256,27 +259,26 @@ export default {
         return this.products.data.slice().reverse();
     },
 
-    nextEvent() {
-      const now = new Date();
-const filteredEvents = this.products.data.filter(product => {
-    // Use the correct property name
-    const productDate = new Date(Date.parse(product.datumPocetka));
-    const isAfterNow = productDate > now;
-    console.log(`Is ${product.name} after now?`, isAfterNow);
-    return isAfterNow;
-});
+    filteredEvents() {
+    const now = new Date();
+    return this.products.data.filter(product => {
+      const productDate = new Date(Date.parse(product.datumPocetka));
+      return productDate > now;
+    });
+  },
 
-const sortedEvents = filteredEvents.sort((a, b) => {
-    const dateA = new Date(Date.parse(a.datumPocetka));
-    const dateB = new Date(Date.parse(b.datumPocetka));
-    return dateA - dateB;
-});
+  sortedEvents() {
+    return this.filteredEvents.sort((a, b) => {
+      const dateA = new Date(Date.parse(a.datumPocetka));
+      const dateB = new Date(Date.parse(b.datumPocetka));
+      return dateA - dateB;
+    });
+  },
 
-console.log("Sorted Events:", sortedEvents);
-return sortedEvents.length > 0 ? sortedEvents[0] : {};
+  nextEvent() {
+    return this.sortedEvents.length > 0 ? this.sortedEvents[0] : {};
+  },
 
-
-    },
 
 
 
@@ -366,7 +368,7 @@ return sortedEvents.length > 0 ? sortedEvents[0] : {};
 
   setInterval(() => {
     this.updateCountdown();
-  }, 1000);
+  }, 100000);
 
 
   },
@@ -512,7 +514,8 @@ computeCountdown() {
       this.$api.skijasiProduct
         .browseByCategorySlug(this.queryParams())
         .then(res => {
-          this.products = res.data.products
+          this.products = res.data.products;
+          this.kalendar = res.data.products;
           this.updateCountdown(); 
        //   this.setMaxPrice();
         //  this.setMinPrice();
@@ -626,7 +629,7 @@ computeCountdown() {
   },
 
   handleKalendarOpen() {
-    if (this.products.data.length > 0) {
+    if (this.kalendar.data.length > 0) {
       this.showKalendarFrame = true;
     } else {
       console.log("No product data available");

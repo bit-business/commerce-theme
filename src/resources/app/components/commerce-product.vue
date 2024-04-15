@@ -22,7 +22,7 @@
             {{ getProductPrice }}
           </div>
           <div class="text-xs text-gray-400 mt-1 whitespace-nowrap">
-            {{ getProductSold }} Terjual
+            {{ getProductSold }} broj prodanih
           </div>
         </div>
         <div class="flex items-start justify-between mt-1">

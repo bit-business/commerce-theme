@@ -82,11 +82,12 @@
 
             <Link :href="route('skijasi.commerce-theme.notification')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"   :class="{ 'has-unread': hasUnreadMessages }"
+    class="bell-icon">
   <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Obavijesti</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
             </Link>
 
 
@@ -395,11 +396,32 @@
 
   <Link :href="route('skijasi.commerce-theme.notification')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
-    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-<path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-</svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Obavijesti</span>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
+    viewBox="0 0 24 24"
+    fill="none"
+    :class="{ 'has-unread': hasUnreadMessages }"
+    class="bell-icon"
+  >
+    <path
+      d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z"
+      stroke="black"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21"
+      stroke="black"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</div>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
   </Link>
 
 
@@ -483,6 +505,9 @@ import { Link, Head } from '@inertiajs/inertia-vue'
 import Cropper from 'vue-cropperjs';
 import 'cropperjs/dist/cropper.css';
 
+import poruke from  '../../../../../../core/src/resources/js/api/modules/skijasi-poruke.js';
+
+
 export default {
   layout: [appLayout, profileLayout],
   components: {
@@ -524,8 +549,11 @@ export default {
       croppedImage: null,
       avatar: null,
       avatarReadyToUpload: false,
-      file: null
- 
+      file: null,
+
+      adminMessages: [],
+      currentUser: null,
+      users: [], 
     }
   },
   watch: {
@@ -538,6 +566,7 @@ export default {
       deep: true // Watch for nested changes in the user object
     }
   },
+  
   computed: {
   
     ...mapState({
@@ -565,8 +594,25 @@ export default {
       };
   },
 
+
+  hasUnreadMessages() {
+  if (this.adminMessages.length === 0) {
+    return false; // Return false if no admin messages are available
+  }
+
+  // Check if there are any messages where the current user's ID is not in the 'is_read' array
+  return this.adminMessages.some(message => {
+    const currentUserId = this.user.id;
+    return !message.is_read || !message.is_read.includes(String(this.user.id));
+  });
+},
   
 },
+created() {
+    this.fetchAdminMessages();
+  },
+
+
   mounted() {
     if (!this.isAuthenticated) {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
@@ -582,6 +628,29 @@ export default {
 
   },
   methods: {
+
+    fetchAdminMessages() {
+      poruke.getMessages()
+      .then((response) => {
+      console.log("API Response:", response);
+      if (response) {
+        console.log("Response Data:", response);
+        // Filter messages where message.sent_to contains this user.id or "svi"
+        const filteredMessages = response.filter(message => {
+          return message.sent_to.includes(String(this.user.id)) || message.sent_to.includes("svi");
+        });
+        this.adminMessages = filteredMessages;
+        console.log("Messages:", this.adminMessages);
+      } else {
+        console.error("No data received from API");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching user messages:", error);
+    });
+},
+
+
 
     handleScrollAttempt(event) {
       if (event.deltaY !== 0) { // deltaY is non-zero if there's an attempt to scroll
@@ -1264,5 +1333,33 @@ padding-top: 0rem !important;
   margin-right: 6px;
 }
 
+
+.bell-icon.has-unread path {
+  stroke: orange;
+}
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.bell-icon.has-unread {
+  animation: swing 0.5s ease-in-out infinite;
+}
+.has-unread svg {
+  stroke: orange;
+}
 
   </style>

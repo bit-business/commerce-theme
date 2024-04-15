@@ -11,7 +11,9 @@
       
              <div class="frame3">
                <b class="franjo-ml-jardas">{{ user.name }} {{ user.username }} </b>
-               <b class="demostrator-skijanja">{{ user.statusString }}</b>
+               <b class="demostrator-skijanja">
+  {{ user.statusString === 'Demonstrator skijanja' && user.statusAktivan === 'Istekla licenca' ? 'Demonstrator skijanja bez licence' : user.statusString }}
+</b>
                         
                <div class="aktivnaframe">
     <!-- Render this span only if user.statusPlacanja is 'Nije plaćeno' or 'Djelomično plaćeno' -->

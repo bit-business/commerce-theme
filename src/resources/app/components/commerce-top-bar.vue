@@ -34,9 +34,44 @@
     </div>
 
     <div class="ikonedesnoframe">
+
+      <template v-if="showNotification">
+             <Link :href="route('skijasi.commerce-theme.notification')" class="w-full inline-flex items-center obavijestikona"
+        @click="handleLinkClick"
+      >
+    <div class="sidebar-icon">
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    width="16"
+    height="16"
+    viewBox="0 0 24 24"
+    fill="none"
+    :class="{ 'has-unread': hasUnreadMessages }"
+    class="bell-icon"
+  >
+    <path
+      d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z"
+      stroke="black"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+    <path
+      d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21"
+      stroke="black"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+    />
+  </svg>
+</div>
+  </Link></template>
+
       <button class="drzavaikona" @click="toggleDropdownjezik">
         <img class="croatia-icon" alt="" src="/storage/slike/croatia.svg" />
       </button>
+
+
       <template v-if="!isAuthenticated">
       <button class="profilikona" id="login" @click="toggleDropdown">
         <div class="avatar-container"> <img
@@ -215,12 +250,22 @@
 <script>
 import { mapActions, mapState } from 'vuex'
 import { Link } from '@inertiajs/inertia-vue'
+
+import poruke from  '../../../../../core/src/resources/js/api/modules/skijasi-poruke.js';
+
+
 export default {
   components: {
     Link
   },
   data() {
     return {
+
+      adminMessages: [],
+      currentUser: null,
+      users: [], 
+      showNotificationTemplate: true,
+
 
       hasScrolled: false,
 
@@ -248,6 +293,7 @@ export default {
 
   mounted() {
   window.addEventListener('scroll', this.handleScroll);
+  this.fetchAdminMessages();
 },
 beforeDestroy() {
   window.removeEventListener('scroll', this.handleScroll);
@@ -270,6 +316,9 @@ beforeDestroy() {
       userName(state) {
         return state.user.name
       },
+      userId(state) {
+        return state.user.id
+      },
       notifications(state) {
         return this.$_.take(state.notifications.data, 5)
       },
@@ -279,9 +328,56 @@ beforeDestroy() {
       userAvatar(state) {
         return state.user.avatar;
       },
-    })
+    }),
+
+    hasUnreadMessages() {
+  if (this.adminMessages.length === 0) {
+    return false; // Return false if no admin messages are available
+  }
+
+  // Check if there are any messages where the current user's ID is not in the 'is_read' array
+  return this.adminMessages.some(message => {
+    return !message.is_read || !message.is_read.includes(String(this.userId));
+  });
+},
+
+showNotification() {
+    return this.showNotificationTemplate && this.hasUnreadMessages && this.isAuthenticated;
+  }
+
+
   },
+
+
   methods: {
+    handleLinkClick() {
+    this.fetchAdminMessages();
+    this.showNotificationTemplate = false;
+  },
+
+    fetchAdminMessages() {
+      poruke.getMessages()
+      .then((response) => {
+      console.log("API Response:", response);
+      if (response) {
+        console.log("Response Data:", response);
+        // Filter messages where message.sent_to contains this user.id or "svi"
+        const filteredMessages = response.filter(message => {
+          return message.sent_to.includes(String(this.userId)) || message.sent_to.includes("svi");
+        });
+        this.adminMessages = filteredMessages;
+        console.log("Messages:", this.adminMessages);
+      } else {
+        console.error("No data received from API");
+      }
+    })
+    .catch((error) => {
+      console.error("Error fetching user messages:", error);
+    });
+},
+
+
+
     handleScroll() {
     this.hasScrolled = window.scrollY > 0;
   },
@@ -999,6 +1095,18 @@ beforeDestroy() {
     height: 1rem;
     overflow: hidden;
   }
+  .obavijestikona {
+    cursor: pointer;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+    position: absolute;
+    top: calc(50% - 7px);
+    right: 8rem;
+    width: 1rem;
+    height: 1rem;
+    overflow: hidden;
+  }
 
   .profilikona {
     cursor: pointer;
@@ -1547,8 +1655,34 @@ top: 0%;
 }
 
 
-
-
-
   }
+
+  .bell-icon.has-unread path {
+  stroke: #21231e;
+}
+@keyframes swing {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-15deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.bell-icon.has-unread {
+  animation: swing 0.5s ease-in-out infinite;
+}
+.has-unread svg {
+  stroke: #21231e;
+}
+
 </style>

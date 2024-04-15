@@ -5082,5 +5082,12 @@ animation: slideUp 0.6s ease-in-out;
       padding-bottom: 40px;
       box-sizing: border-box;
     }
+
   }
+
+
+  
+  ul {
+  list-style-type: disc; /* Add bullet points */
+}
 </style>

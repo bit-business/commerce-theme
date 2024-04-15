@@ -6,7 +6,7 @@
         :key="index"
         :pdfName="pdfFile.name"
         :pdfDate="pdfFile.date"
-        :pdfUrl="'/storage/slike/' + pdfFile.name"
+        :pdfUrl="'/storage/dokumenti-web-hzuts/' + pdfFile.name + '.pdf'"
       />
     </div>
   </section>
