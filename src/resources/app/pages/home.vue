@@ -362,8 +362,8 @@
           <img class="group-icon1" alt="" src="/storage/slike/pocetna/group1.svg" />
         </div>
         <div class="analitika1">
-          <b class="b3">51</b>
-          <b class="demostratora-skijanja">Demostratora skijanja</b>
+          <b class="b3">61</b>
+          <b class="demostratora-skijanja">Demonstratora skijanja</b>
           <img class="clip-path-group" alt="" src="/storage/slike/pocetna/clip-path-group.svg" />
         </div>
       </div>

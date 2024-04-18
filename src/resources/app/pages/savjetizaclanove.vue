@@ -3959,7 +3959,7 @@ animation: slideUp 0.6s ease-in-out;
     z-index: 1;
   }
   .rectangle-parent53 {
-    align-self: stretch;
+ align-self: stretch;
     height: 63px;
     background-color: #03a9f4;
     display: flex;
@@ -3981,7 +3981,7 @@ animation: slideUp 0.6s ease-in-out;
   .dropdown6 {
     align-self: stretch;
     background-color: #fff;
-    display: flex;
+ 
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
@@ -4013,7 +4013,7 @@ animation: slideUp 0.6s ease-in-out;
 }
   .frame-parent17 {
     flex: 1;
-    display: flex;
+  
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-start;
