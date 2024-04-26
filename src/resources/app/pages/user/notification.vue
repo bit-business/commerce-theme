@@ -505,8 +505,12 @@ export default {
       if (response) {
         console.log("Response Data:", response);
         const userMessages = response.filter(message => {
-          return message.sent_to.includes(String(this.user.id)) || message.sent_to.includes("svi");
+          if (message.sent_to.includes("svi2") && this.user.userType !== "Hzuts član") {
+            return false; // Exclude messages sent to "svi2" if user_type is not "član"
+          }
+          return message.sent_to.includes(String(this.user.id)) || message.sent_to.includes("svi") || message.sent_to.includes("svi2");
         });
+        console.log("TESTTT:",this.user);
         // Filter messages where message.sent_to contains this user.id
         // Filter messages where message.is_hidden array does not contain this user.id
         const filteredMessages = userMessages.filter(message => {
