@@ -1264,7 +1264,7 @@ export default {
    
     ],
     items7: [
-      { id: 1, name: 'Blašković Damir', image: '/storage/slike/interski/demo/norveska/blaškovic damir.JPG' },
+      { id: 1, name: 'Blašković Damir', image: '/storage/slike/interski/demo/norveska/blaskovic damir.JPG' },
       { id: 2, name: 'Danijel Jurković', image: '/storage/slike/interski/demo/norveska/Danijel Jurkovic.JPG' },
       { id: 3, name: 'Danko', image: '/storage/slike/interski/demo/norveska/Danko.JPG' },
       { id: 4, name: 'Ivica Franjko', image: '/storage/slike/interski/demo/norveska/Ivica Franjko.png' },
