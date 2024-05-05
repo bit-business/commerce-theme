@@ -691,13 +691,14 @@
                     <b class="vrijeme-i-mjesto3"
                       >Vrijeme i mjesto održavanja:</b
                     >
+                    <div class="godina-st-anton">2011. godina, St. Anton</div>
                   </div>
                   <div class="icon-set7">
                     <b class="demo-team9">DEMO TEAM:</b>
                   </div>
               
                 </div>
-                <div class="godina-st-anton">2011. godina, St. Anton</div>
+            
               </div>
 
               
@@ -2295,6 +2296,8 @@ toggleDropdown7() {
     max-width: 100%;
     font-size: 16px;
 
+    padding-top: 30px;
+
     transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out;
 
 overflow: hidden; 
@@ -2927,6 +2930,8 @@ text-align: left;
     box-sizing: border-box;
     gap: 89px;
     max-width: 100%;
+
+    padding-top: 30px;
   }
   .interski-kongresi-inner1 {
     align-self: stretch;
@@ -3236,10 +3241,10 @@ text-align: left;
     justify-content: flex-start;
     gap: 15px;
     min-width: 146px;
-    padding: 0px 30px;
+
   }
   .godina-ushuaia {
-    width: 167px;
+ 
     position: relative;
     display: flex;
     align-items: center;
@@ -3301,6 +3306,7 @@ text-align: left;
     justify-content: space-between;
     max-width: 100%;
     gap: 20px;
+    padding: 0px 30px;
   }
   .link-cluster-child {
     align-self: stretch;
@@ -3691,7 +3697,7 @@ text-align: left;
     display: none;
   }
   .vrijeme-i-mjesto3 {
-    width: 222px;
+   text-align: left;
     position: relative;
     display: inline-block;
     z-index: 1;
@@ -3788,7 +3794,7 @@ text-align: left;
     min-width: 146px;
   }
   .godina-st-anton {
-    width: 173px;
+  text-align: left;
     position: relative;
     display: flex;
     align-items: center;
