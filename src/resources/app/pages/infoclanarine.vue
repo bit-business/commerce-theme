@@ -349,7 +349,7 @@
           <div class="pravilo9">
             <div class="parentt5">
               <div class="ddiv16">9</div>
-              <div class="vrijeme-izrade-iskaznice">
+              <div class="vrijeme-izrade-iskaznice-info">
                 Vrijeme izrade iskaznice je minimalno tjedan dana od zaprimanja
                 svih materijala. Nakon izrade iskaznicu i amblem možete pruzeti
                 u uredovno vrijeme u HZUTS-u ili iste možemo poslati na vašu
@@ -801,7 +801,7 @@
           </div>
           <div class="clanarine-groupp">
             <div class="ddiv18">9</div>
-            <div class="vrijeme-izrade-iskaznice">
+            <div class="vrijeme-izrade-iskaznice-info">
               Vrijeme izrade iskaznice je minimalno tjedan dana od zaprimanja
               svih materijala. Nakon izrade iskaznicu i amblem možete pruzeti u
               uredovno vrijeme u HZUTS-u ili iste možemo poslati na vašu kućnu
