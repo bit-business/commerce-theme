@@ -4,7 +4,7 @@
 
     
 
-    <div class="navbar ">
+    <div class="navbar">
       
       <!-- Floating Action Button -->
       <div v-if="!isSidebarExpanded" class="fab" :class="{ open: isGridVisible }" @touchend="toggleGridVisibility" @click="toggleGridVisibility">
@@ -75,6 +75,28 @@
             </Link>
 
 
+
+
+            <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+              <div class="sidebar-icon">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1341_5428)">
+<path d="M17.4349 10.3894V5.84746C17.4349 5.71746 17.3749 5.59734 17.2899 5.50231L12.1977 0.15509C12.1027 0.0551147 11.9676 0 11.8326 0H3.75915C2.26868 0 1.07812 1.21545 1.07812 2.70611V17.9725C1.07812 19.4632 2.26868 20.6587 3.75915 20.6587H10.1319C11.3373 22.6595 13.5284 24 16.0243 24C19.8158 24 22.9121 20.9187 22.9121 17.1222C22.9173 13.8058 20.5362 11.0347 17.4349 10.3894ZM12.3329 1.7558L15.7492 5.35217H13.5333C12.873 5.35217 12.3329 4.80706 12.3329 4.14678V1.7558ZM3.75915 19.6582C2.82385 19.6582 2.07861 18.9078 2.07861 17.9725V2.70611C2.07861 1.76568 2.82385 1.00049 3.75915 1.00049H11.3324V4.14678C11.3324 5.36224 12.3179 6.35265 13.5333 6.35265H16.4344V10.2592C16.2845 10.2543 16.1643 10.2392 16.0343 10.2392C14.2886 10.2392 12.683 10.9096 11.4725 11.9601H5.11981C4.8446 11.9601 4.61956 12.1851 4.61956 12.4601C4.61956 12.7353 4.8446 12.9604 5.11981 12.9604H10.5421C10.1869 13.4606 9.89171 13.9609 9.66173 14.5111H5.11981C4.8446 14.5111 4.61956 14.7361 4.61956 15.0113C4.61956 15.2864 4.8446 15.5116 5.11981 15.5116H9.33654C9.21148 16.0118 9.14647 16.567 9.14647 17.1222C9.14647 18.0225 9.32152 18.9129 9.63665 19.6633H3.75915V19.6582ZM16.0294 23.0046C12.7881 23.0046 10.1519 20.3684 10.1519 17.1271C10.1519 13.8858 12.7829 11.2496 16.0294 11.2496C19.2757 11.2496 21.9067 13.8858 21.9067 17.1271C21.9067 20.3684 19.2707 23.0046 16.0294 23.0046Z" fill="black"/>
+<path d="M5.11938 10.4536H10.1865C10.4617 10.4536 10.6867 10.2284 10.6867 9.95337C10.6867 9.67816 10.4617 9.45312 10.1865 9.45312H5.11938C4.84418 9.45312 4.61914 9.67816 4.61914 9.95337C4.61914 10.2284 4.84418 10.4536 5.11938 10.4536Z" fill="black"/>
+<path d="M16.3846 13.4354C16.2896 13.3354 16.1596 13.2754 16.0195 13.2754C15.8794 13.2754 15.7494 13.3354 15.6544 13.4354L12.723 16.5817C12.533 16.7819 12.548 17.1019 12.7481 17.287C12.9483 17.4771 13.2733 17.4621 13.4633 17.2621L15.5342 15.0462V20.5084C15.5342 20.7836 15.7593 21.0087 16.0345 21.0087C16.3095 21.0087 16.5347 20.7836 16.5347 20.5084V15.0462L18.5905 17.2621C18.6906 17.3671 18.8206 17.4222 18.9558 17.4222C19.0757 17.4222 19.1958 17.3771 19.2958 17.287C19.4959 17.097 19.5109 16.7819 19.3209 16.5817L16.3846 13.4354Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="clip0_1341_5428">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</div>
+  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+</Link>
+
+
+
             <Link :href="route('skijasi.commerce-theme.order')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
@@ -90,6 +112,11 @@
 </svg></div>
               <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Povijest plaćanja</span>
             </Link>
+
+
+
+
+
 
 
 
@@ -140,13 +167,304 @@
         </div>  </div>
 <!--1-->
 
-        <div class="bg-white shadow-sm px-6 rounded-xl ml-16">
+
+
+
+        <div class="bg-white shadow-sm px-6 rounded-xl ml-16 pb-8">
           <!--2-->
           <div class="h-22 flex flex-col py-4 justify-center border-plava-200 border-b">
             <span class="text-lg font-medium plavi-text">Zaduženja</span>
           </div>
 
 
+            <!--      POČETAK CART           -->
+
+
+
+
+  <div class="container hidden pt-8 gap-4 auto-rows-min sm:grid navbarpraznina">
+      <div class="bg-gray-100 px-8 py-4 grid grid-cols-5 gap-4 shadow-sm rounded-xl">
+        <div class="col-span-2 text-sm text-gray-700 font-medium">Opis plaćanja</div>
+        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Jedinična cijena</div>
+          <div class="col-span-1 text-sm text-gray-700 text-center font-medium" v-if="filteredCarts.length > 0">Broj ljudi</div>
+        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Ukupna cijena</div>
+   <!---    <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Odustani</div> -->
+      </div>
+
+  <div></div>
+
+      <div class=" px-8 py-8 flex shadow-sm rounded-xl flex-wrap gap-4">
+        <template v-if="carts.length > 0">
+          <div class="grid grid-cols-5 gap-4 w-full" v-for="cart, index in carts" :key="index">
+            <div class="col-span-2 flex gap-4 items-center">
+              <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm text-primary form-checkbox">
+              <div class="text-sm text-gray-700 w-24 h-24">
+                <img :src="cart.productDetail.productImage" class="w-full h-full">
+              </div>
+              <div class=" flex-1 text-sm">
+                <Link :to="{ name: 'DetailProduct', params: { slug: cart.productDetail.product.slug } }" class="line-clamp-2">{{ cart.productDetail.product.name }}</Link>
+                <div class="text-sm mt-2">
+                  <span class="border border-gray-300 px-1.5 py-1 cursor-pointer ml-2 rounded-md text-gray-500 text-xs">{{ $voca.titleCase(cart.productDetail.name) }}</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-span-1 text-sm text-gray-700 text-center flex items-center">
+              <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
+                <span class="line-through text-gray-400">{{ $currency(cart.productDetail.price) }}</span>&nbsp;{{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount)) }}
+              </template>
+              <template v-else>
+                <span class="text-gray-700">{{ $currency(cart.productDetail.price) }}</span>
+              </template>
+            </div>
+
+            <div class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center" v-if="filteredCarts.length > 0">
+  <counter
+    v-for="cart in filteredCarts"
+    :key="cart.id"
+    @input="changeQuantity($event, cart.id)"
+    v-model="cart.quantity"
+    :min="1"
+    text-disabled
+    :disabled="loading"
+  />
+</div>
+
+            <div class="col-span-1 text-sm text-primary text-center justify-center flex items-center">
+              <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
+                {{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount) * parseInt(cart.quantity)) }}
+              </template>
+              <template v-else>
+                {{ $currency(cart.productDetail.price * cart.quantity) }}
+              </template>
+            </div>
+
+            <!-- <div class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center">
+              <button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-1.5 text-red-500 rounded hover:bg-red-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                  <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                </svg>
+              </button>
+            </div> -->
+
+            <div class="col-span-full" v-if="index !== carts.length - 1">
+              <div class="h-px w-full bg-gray-300" />
+            </div>
+          </div>
+        </template>
+        <template v-else>
+          <div class="p-2 h-40 w-full flex justify-center gap-2 items-center flex-col text-gray-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span class="text-sm">Niste dodali nijedan događaj</span>
+          </div>
+        </template>
+      </div>
+
+      <div></div>
+      
+      <div class="bg-gray-100 px-8 py-4 flex gap-4 shadow-sm rounded-xl justify-end">
+        <div class="flex flex-wrap items-center float-right gap-1">
+          <div class="flex items-center gap-4 w-full float-right justify-end">
+           Ukupno ({{ checkboxModel.length }} odabrano):
+            <span class="text-2xl text-primary">{{ $currency(getTotal) }}</span>
+          </div>
+          <div class="flex items-center gap-4 text-sm w-full float-right justify-end">
+           Popust:
+            <span class="text-primary"> -{{ $currency(getSaving) }}</span>
+          </div>
+        </div>
+        <div class="flex items-center w-48">
+          <button @click="checkout" class="font-medium bg-primary text-white p-2 font-sm w-full rounded-md">
+           NA PLAĆANJE
+          </button>
+        </div>
+      </div>
+
+
+      <!-- možda ti se svidi kod
+      <div class="flex gap-2 w-full mt-8 flex-wrap">
+        <div class="text-gray-400 font-medium w-full">
+          MOŽDA TI SE TAKOĐER SVIDI
+        </div>
+        <carousel class="container hidden lg:flex" show="6">
+          <carousel-item v-for="product, index in similarProducts.data" :key="index">
+            <commerce-product-alt :product="product" />
+          </carousel-item>
+        </carousel>
+        <carousel class="container hidden md:flex lg:hidden" show="4">
+          <carousel-item v-for="product, index in similarProducts.data" :key="index">
+            <commerce-product-alt :product="product" />
+          </carousel-item>
+        </carousel>
+      </div>
+          -->
+
+    </div>
+
+
+
+
+
+
+
+        <div class="sm:hidden relative">
+      <transition
+        enter-active-class="transition-all ease-out duration-100"
+        leave-active-class="transition-all ease-in duration-100"
+        enter-class="opacity-0"
+        enter-to-class="opacity-100"
+        leave-class="opacity-100"
+        leave-to-class="opacity-0"
+      >
+        <div key="background" v-if="variationDialog" class="fixed inset-0 w-screen h-screen bg-black z-80 bg-opacity-50" @click="closeVariationDialog" />
+      </transition>
+
+      <transition
+        enter-active-class="transition-all ease-out duration-100"
+        leave-active-class="transition-all ease-in duration-100"
+        enter-class="opacity-40 translate-y-full"
+        enter-to-class="opacity-100 translate-y-0"
+        leave-class="opacity-100 translate-y-0"
+        leave-to-class="opacity-40 translate-y-full"
+      >
+        <div key="content" class="fixed bottom-0 p-3 transform origin-bottom right-0 left-0 w-full z-90 bg-white rounded-t-md" v-if="variationDialog">
+          <div class="flex flex-col gap-2">
+
+            <div class="w-full flex gap-2 pb-3 border-b">
+              <div class="w-1/3">
+                <img :src="getImageSource">
+              </div>
+              <div class="w-2/3 flex flex-col">
+                <div class="w-full flex justify-end text-gray-400" @click="closeVariationDialog">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+                <div class="flex-grow" />
+                <div v-if="hasActiveDiscount">
+                  <div class="text-normal text-gray-400 line-through">
+                    {{ $currency(activePrice) }}
+                  </div>
+                  <div class="text-lg text-primary font-semibold">
+                    {{ getDiscountedPrice(activePrice, activeDiscount) }}
+                  </div>
+                </div>
+                <div class="text-lg text-primary font-semibold" v-else>
+                  {{ $currency(activePrice) }}
+                </div>
+            
+              </div>
+            </div>
+
+            <div class="w-full flex gap-2 flex-col border-b pb-3">
+              <div class="text-sm">Status člana</div>
+
+              <div class="w-full flex flex-row flex-wrap gap-4">
+                <div v-for="productDetail, index in product.productDetails" :key="index" class="py-1.5 gap-2 rounded-md bg-gray-100 flex items-center px-3" @click="clickProductDetail(index)" :class="[index == productDetailSelectedIndex ? 'border-primary border' : '']">
+                  <img :src="productDetail.productImage" class="h-6 w-6">
+                  <div class="text-sm">{{ productDetail.name }}</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="w-full flex gap-2 justify-between items-center">
+              <div class="text-sm">Količina</div>
+              <counter v-model="variationQuantity" :min="1" :max="product.productDetails[productDetailSelectedIndex].quantity" />
+            </div>
+
+            <div class="w-full flex gap-4 justify-center items-center mt-2">
+              <div class="w-full h-10 flex items-center justify-center text-white text-sm rounded-md uppercase py-2 px-4 text-center bg-primary" @click="confirmVariationDialog">Potvrdi</div>
+            </div>
+          </div>
+        </div>
+      </transition>
+    </div>
+
+    <div class="block sm:hidden pb-8">
+      <template v-if="carts.length > 0">
+        <div class="p-3 grid bg-white grid-cols-12 gap-2 items-center" v-for="cart, index in carts" :key="index">
+       
+          <div class="col-span-3">
+            <img :src="cart.productDetail.productImage" class="w-full h-full">
+          </div>
+          <div class="col-span-1 relative text-center">
+            <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm text-primary form-checkbox ">
+          </div>
+          <div class="col-span-8 flex flex-col gap-3">
+            <div class="line-clamp-1 text-sm w-full text-center">
+              {{ cart.productDetail.product.name }}
+            </div>
+            <div class="w-full p-2 bg-gray-100 text-sm flex text-gray-600 items-center" @click="openVariationDialog(cart)">
+              <div class="flex-grow text-center">Status: {{ cart.productDetail.name }}</div>
+              <div class="flex-shrink">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="text-sm col-start-5 col-end-13 text-center mt-4">
+            <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
+              <span class="line-through text-gray-400">{{ $currency(cart.productDetail.price) }}</span>&nbsp;<span class="text-primary">{{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount)) }}</span>
+            </template>
+            <template v-else>
+              <span class="text-gray-700">{{ $currency(cart.productDetail.price) }}</span>
+            </template>
+            <div class="mt-2 items-center justify-center flex">
+              <counter class="jusitfy-center" @subtract="openDeleteDialog($event, cart, index)" @input="changeQuantity($event, cart.id)" v-model="cart.quantity" text-disabled :disabled="loading" />
+            </div>
+          </div>
+        </div>
+      </template>
+      <template v-else>
+        <div class="p-3 bg-white h-40 w-full flex justify-center gap-2 items-center flex-col text-gray-500">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+          </svg>
+          <span class="text-sm">Nema zaduženja</span>
+        </div>
+      </template>
+
+
+    </div>
+
+    <div class="block sm:hidden">
+      <div class="bottom-0 left-0 right-0 bg-white grid grid-cols-12 gap-4 items-center  h-21">
+        <div class="col-span-3 inline-flex flex-row gap-2 text-xs">
+          <input type="checkbox" @input="checkAll" :checked="checkboxModel.length === this.carts.length" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm text-primary form-checkbox">
+          <div class="line-clamp-1">Izaberi sve</div>
+        </div>
+        <div class="col-span-5 text-sm">
+          <div class="flex items-center gap-2 w-full float-right justify-end" v-if="checkboxModel.length > 0">
+            Popust:
+            <span class="text-primary">{{ $currency(getSaving) }}</span>
+          </div>
+          <div class="flex items-center gap-4 w-full float-right justify-end">
+            Ukupno:
+            <span class=" text-primary">{{ $currency(getTotal) }}</span>
+          </div>
+        </div>
+        <div class="col-span-4">
+          <button @click="checkout" class="font-medium mt-6 bg-primary text-white p-2 text-sm w-full rounded-md">
+            NA PLAĆANJE
+          </button>
+        </div>
+      </div>
+    </div>
+
+
+
+
+  </div>
+
+
+  <!--KRAJ CART-->
+ 
+<div></div>
+
+
+  <div class="bg-white shadow-sm px-6 rounded-xl ml-16 mt-5 mb-5">
        <!-- New payments list view -->
        <div class="payments-list">
   <template v-if="staraPlacanjaArray && staraPlacanjaArray.length">
@@ -258,6 +576,28 @@
     <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
   </Link>
 
+  
+
+
+  <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+    <div class="sidebar-icon">
+  <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g clip-path="url(#clip0_1341_5428)">
+<path d="M17.4349 10.3894V5.84746C17.4349 5.71746 17.3749 5.59734 17.2899 5.50231L12.1977 0.15509C12.1027 0.0551147 11.9676 0 11.8326 0H3.75915C2.26868 0 1.07812 1.21545 1.07812 2.70611V17.9725C1.07812 19.4632 2.26868 20.6587 3.75915 20.6587H10.1319C11.3373 22.6595 13.5284 24 16.0243 24C19.8158 24 22.9121 20.9187 22.9121 17.1222C22.9173 13.8058 20.5362 11.0347 17.4349 10.3894ZM12.3329 1.7558L15.7492 5.35217H13.5333C12.873 5.35217 12.3329 4.80706 12.3329 4.14678V1.7558ZM3.75915 19.6582C2.82385 19.6582 2.07861 18.9078 2.07861 17.9725V2.70611C2.07861 1.76568 2.82385 1.00049 3.75915 1.00049H11.3324V4.14678C11.3324 5.36224 12.3179 6.35265 13.5333 6.35265H16.4344V10.2592C16.2845 10.2543 16.1643 10.2392 16.0343 10.2392C14.2886 10.2392 12.683 10.9096 11.4725 11.9601H5.11981C4.8446 11.9601 4.61956 12.1851 4.61956 12.4601C4.61956 12.7353 4.8446 12.9604 5.11981 12.9604H10.5421C10.1869 13.4606 9.89171 13.9609 9.66173 14.5111H5.11981C4.8446 14.5111 4.61956 14.7361 4.61956 15.0113C4.61956 15.2864 4.8446 15.5116 5.11981 15.5116H9.33654C9.21148 16.0118 9.14647 16.567 9.14647 17.1222C9.14647 18.0225 9.32152 18.9129 9.63665 19.6633H3.75915V19.6582ZM16.0294 23.0046C12.7881 23.0046 10.1519 20.3684 10.1519 17.1271C10.1519 13.8858 12.7829 11.2496 16.0294 11.2496C19.2757 11.2496 21.9067 13.8858 21.9067 17.1271C21.9067 20.3684 19.2707 23.0046 16.0294 23.0046Z" fill="black"/>
+<path d="M5.11938 10.4536H10.1865C10.4617 10.4536 10.6867 10.2284 10.6867 9.95337C10.6867 9.67816 10.4617 9.45312 10.1865 9.45312H5.11938C4.84418 9.45312 4.61914 9.67816 4.61914 9.95337C4.61914 10.2284 4.84418 10.4536 5.11938 10.4536Z" fill="black"/>
+<path d="M16.3846 13.4354C16.2896 13.3354 16.1596 13.2754 16.0195 13.2754C15.8794 13.2754 15.7494 13.3354 15.6544 13.4354L12.723 16.5817C12.533 16.7819 12.548 17.1019 12.7481 17.287C12.9483 17.4771 13.2733 17.4621 13.4633 17.2621L15.5342 15.0462V20.5084C15.5342 20.7836 15.7593 21.0087 16.0345 21.0087C16.3095 21.0087 16.5347 20.7836 16.5347 20.5084V15.0462L18.5905 17.2621C18.6906 17.3671 18.8206 17.4222 18.9558 17.4222C19.0757 17.4222 19.1958 17.3771 19.2958 17.287C19.4959 17.097 19.5109 16.7819 19.3209 16.5817L16.3846 13.4354Z" fill="black"/>
+</g>
+<defs>
+<clipPath id="clip0_1341_5428">
+<rect width="24" height="24" fill="white"/>
+</clipPath>
+</defs>
+</svg>
+</div>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+  </Link>
+
+
 
   <Link :href="route('skijasi.commerce-theme.order')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
@@ -274,6 +614,14 @@
 </svg></div>
     <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Povijest plaćanja</span>
   </Link>
+
+
+
+
+
+
+
+
 
 
 
@@ -324,8 +672,10 @@
 </div>  </div> </transition>
 <!--1-->
 
- 
+
+
     </div>
+    
   
 </template>
 
@@ -334,6 +684,13 @@ import appLayout from '../../layouts/app.vue'
 import profileLayout from '../../layouts/profile.vue'
 import { mapState } from 'vuex'
 import { Link, Head } from '@inertiajs/inertia-vue'
+
+import Checkbox from './../../components/form/checkbox.vue'
+import Counter from './../../components/counter/counter.vue'
+import Carousel from '../../components/carousel/carousel.vue'
+import CarouselItem from '../../components/carousel/carousel-item.vue'
+import CommerceProductAlt from '../../components/commerce-product-alt.vue'
+import CommerceMobileProductAlt from '../../components/commerce-mobile-product-alt.vue'
 
 
 import skijasiStaraplacanja from '../../../../../../core/src/resources/js/api/modules/skijasi-staraplacanja.js';
@@ -344,11 +701,42 @@ import poruke from  '../../../../../../core/src/resources/js/api/modules/skijasi
 export default {
   layout: [appLayout, profileLayout],
   components: {
+    Checkbox,
+    Counter,
+    Carousel,
+    CarouselItem,
+    CommerceProductAlt,
+    CommerceMobileProductAlt,
     Link,
     Head
   },
   data() {
     return {
+      checkboxModel: [],
+      quantity: 1,
+      carts: [],
+      similarProducts: {
+        data: []
+      },
+      loading: false,
+      deleteDialog: false,
+      deleteId: null,
+      deleteQuantity: null,
+      deleteIndex: null,
+      variationDialog: false,
+      variationId: null,
+      variationQuantity: null,
+      product: {
+        productDetails: []
+      },
+      productDetailSelectedIndex: 0,
+    
+
+
+
+
+
+
       avatar_approved: 0,
       name: '',
       username: '',
@@ -430,6 +818,61 @@ export default {
     return !message.is_read || !message.is_read.includes(String(this.user.id));
   });
 },
+
+
+
+
+
+
+filteredCarts() {
+    return this.carts.filter(cart => cart.productDetail.product.slug !== 'dogadanja');
+  },
+
+    getTotal() {
+      if (this.checkboxModel.length <= 0) return 0
+      let price = 0
+      this.checkboxModel.forEach(val => {
+        let cart = this.$_.find(this.carts, { id: val })
+        let p = cart.productDetail.discount !== null && cart.productDetail.discount.active == 1
+          ? this.getDiscount(cart.productDetail.price, cart.productDetail.discount)
+          : cart.productDetail.price
+        price += p * cart.quantity
+      });
+      return price
+    },
+    getSaving() {
+      if (this.checkboxModel.length <= 0) return 0
+      let price = 0
+      this.checkboxModel.forEach(val => {
+        let cart = this.$_.find(this.carts, { id: val })
+        let p = cart.productDetail.discount !== null && cart.productDetail.discount.active == 1
+          ? this.getDiscount(cart.productDetail.price, cart.productDetail.discount)
+          : cart.productDetail.price
+        price += cart.productDetail.price - p
+      });
+      return Math.ceil(price / 1000)
+    },
+    hasActiveDiscount() {
+      return this.product.productDetails[this.productDetailSelectedIndex].discount !== null
+        ? this.product.productDetails[this.productDetailSelectedIndex].discount.active === 1
+        : false
+    },
+    getImageSource() {
+      return this.product.productDetails[this.productDetailSelectedIndex].productImage || null
+    },
+    activePrice() {
+      return this.product.productDetails[this.productDetailSelectedIndex].price || 0
+    },
+    activeDiscount() {
+      return this.product.productDetails[this.productDetailSelectedIndex].discount.active === 1
+        ? this.product.productDetails[this.productDetailSelectedIndex].discount
+        : null
+    },
+    activeStock() {
+      return this.product.productDetails[this.productDetailSelectedIndex].quantity || 0
+    }
+
+
   
 },
 created() {
@@ -444,6 +887,8 @@ created() {
     this.getStaraPlacanja(); 
     window.addEventListener('scroll', this.handleScrollAttempt);
     
+
+    this.getCarts();
   },
 
   beforeDestroy() {
@@ -582,57 +1027,6 @@ console.log ("TEST ZADUZENJA:",this.staraPlacanjaArray );
       }
     },
 
-    filesChange(e) {
-      const file = e.target.files[0]
-      const fileSize = Math.round((file.size / 1024))
-      if (fileSize > 4048) {
-        this.$alert('Maksimalna veličina slike je 4MB!')
-        return
-      }
-      const fileReader = new FileReader()
-      fileReader.readAsDataURL(file)
-      fileReader.onload = () => {
-        this.avatar = fileReader.result
-      }
-      fileReader.onerror = (error) => {
-        this.$alert(error)
-      };
-    },
-
-    save() {
-
-      console.log("Data being sent:", {
-        name: this.name,
-        email: this.email,
-        brojmobitela: this.brojmobitela,
-        grad: this.grad,
-        drzava: this.drzava,
-        adresa: this.adresa,
-        avatar: this.avatar
-    // ... other fields ...
-  });
-      this.$api.skijasiUser
-        .edit({
-        name: this.name,
-        email: this.email,
-        brojmobitela: this.brojmobitela,
-        grad: this.grad,
-        drzava: this.drzava,
-        adresa: this.adresa,
-        avatar: this.avatar
-        //spremanje u new_avatar 
-   
-
-        })
-        .then(res => {
-          console.log("API response:", res.data);
-          this.$store.dispatch('SET_USER', res.data.user)
-          this.$alert('Uspješno pohranjeno!')
-        })
-        .catch(err => {
-          this.$alert('Neuspješno! Provjerite da li ste unijeli sve dobro')
-        })
-    },
     logout() {
       this.$api.skijasiAuth
         .logout()
@@ -663,7 +1057,188 @@ console.log ("TEST ZADUZENJA:",this.staraPlacanjaArray );
           });
           this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
         })
+    },
+
+
+
+
+
+
+    checkout() {
+      if (this.checkboxModel.length <= 0) {
+        this.$helper.alert('Molimo odaberite barem jedan od artikala!')
+        return
+      }
+
+      this.$openLoading()
+      let carts = []
+
+      this.checkboxModel.forEach(val => {
+        carts.push({ ...this.$_.find(this.carts, { id: val }) })
+      });
+
+      this.$store.dispatch('SET_CHECKOUT', carts)
+
+      this.$closeLoading()
+      this.$inertia.visit(this.route('skijasi.commerce-theme.checkout'))
+    },
+    getCarts() {
+      this.$api.skijasiCart
+        .browse()
+        .then(res => {
+          this.carts = res.data.carts
+          this.checkboxModel = this.carts.map(cart => cart.id);
+
+          if (this.carts.length > 0) {
+            this.fetchSimilar(this.$_.take(res.data.carts)[0])
+          }
+        })
+        .catch(err => {
+          localStorage.removeItem('token')
+          this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+          this.$helper.displayErrors(err)
+        })
+    },
+    fetchSimilar(cart) {
+      this.$api.skijasiProduct
+        .browseByCategorySlug({
+          slug:  cart.productDetail.product.productCategory.slug
+        })
+        .then(res => {
+          this.similarProducts = res.data.products
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+    },
+    deleteCart(id) {
+      this.$api.skijasiCart
+        .delete({
+          id
+        })
+        .then(res => {
+          this.getCarts()
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+    },
+    deleteCartUsingState() {
+      this.$api.skijasiCart
+        .delete({
+          id: this.deleteId
+        })
+        .then(res => {
+          this.getCarts()
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+        .finally(() => {
+          this.deleteDialog = false
+        })
+    },
+    openDeleteDialog($event, { id, quantity }, index) {
+      if ($event <= 1) {
+        this.deleteDialog = true
+        this.deleteId = id
+        this.deleteQuantity = quantity
+        this.deleteIndex = index
+      }
+    },
+    closeDeleteDialog() {
+      this.carts[this.deleteIndex].quantity = this.deleteQuantity
+      this.deleteDialog = false
+    },
+    changeQuantity(val, id) {
+      if (val && val > 0) {
+        this.loading = true
+        this.$api.skijasiCart
+          .edit({
+            id,
+            quantity: val
+          })
+          .then(res => {
+            this.getCarts()
+          })
+          .catch(err => {
+            this.$helper.displayErrors(err)
+          })
+          .finally(() => {
+            this.loading = false
+          })
+      }
+    },
+    getDiscount(price, discount) {
+      let d = 0
+      if (discount.discountType === 'fixed') {
+        d = discount.discountFixed;
+      } else {
+        d = discount.discountPercent * price / 100
+      }
+      return parseInt(price - d)
+    },
+    checkAll($event) {
+      if ($event.target.checked) {
+        this.carts.forEach(cart => {
+          if (!this.checkboxModel.includes(cart.id)) {
+            this.checkboxModel.push(cart.id)
+          }
+        });
+      } else {
+        this.checkboxModel = []
+      }
+    },
+    openVariationDialog({ id, quantity, productDetail: { productId }, productDetailId }) {
+      this.$api.skijasiProduct
+        .readByCart({ id: productId })
+        .then(res => {
+          this.product = res.data.product
+          this.variationDialog = true
+          this.variationId = id
+          this.variationQuantity = quantity
+          this.productDetailSelectedIndex = this.product.productDetails.indexOf(this.$_.find(this.product.productDetails, { id: productDetailId }))
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+    },
+    confirmVariationDialog() {
+      this.loading = true
+      this.$api.skijasiCart
+        .editCart({
+          id: this.variationId,
+          productDetailId: this.product.productDetails[this.productDetailSelectedIndex].id,
+          quantity: this.variationQuantity
+        })
+        .then(res => {
+          this.getCarts()
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+        .finally(() => {
+          this.loading = false
+          this.variationDialog = false
+        })
+    },
+    closeVariationDialog() {
+      this.variationDialog = false
+    },
+    getDiscountedPrice(price, discount) {
+      let d = 0
+      if (discount.discountType === 'fixed') {
+        d = discount.discountFixed;
+      } else {
+        d = discount.discountPercent * price / 100
+      }
+      return this.$currency(price - d)
+    },
+    clickProductDetail(index) {
+      this.productDetailSelectedIndex = index
     }
+
+
   }
 }
 </script>
@@ -969,9 +1544,9 @@ width: 80px;
 
 }
 @media (min-width: 768px) {
-  .navbar .container {
+  /* .navbar .container {
     grid-template-columns: max-content 1fr;
-  }
+  } */
 
   .mojgrid-cols-profile{
   grid-template-columns: 200px 1fr;
@@ -1010,6 +1585,9 @@ width: 80px;
 
 
 @media (max-width: 550px) {
+.grid {
+display: block;
+}
   .border-l {
    /* Hide the border div */
    border-left-width: 0px;
@@ -2277,7 +2855,7 @@ overflow: visible;
   @media screen and (max-width: 460px) {
 
     .container {
-    padding-right: 3%; 
+    padding-right: 5%; 
   }
 
       .naslovosnovneinfo {

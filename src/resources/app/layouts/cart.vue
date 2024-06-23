@@ -1,7 +1,7 @@
 <template>
   <div>
-    <commerce-top-bar class="hidden sm:flex" />
-    <nav class="relative bg-white items-stretch w-full h-20 shadow-md hidden sm:flex">
+    <commerce-top-bar/>
+    <!-- <nav class="relative bg-white items-stretch w-full h-20 shadow-md hidden sm:flex">
       <div class="container flex items-center gap-16 justify-between">
         <div class="flex flex-shrink-0 items-center">
           <Link :href="route('skijasi.commerce-theme.home')" class="flex flex-nowrap items-center divide-x">
@@ -11,8 +11,8 @@
         </div>
       
       </div>
-    </nav>
-
+    </nav> -->
+<!-- 
     <nav class="flex flex-nowrap bg-gray-50 shadow-md px-4 sm:hidden relative z-50 w-full h-14 gap-6 items-center">
       <div @click="goBack">
         <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -20,8 +20,8 @@
         </svg>
       </div>
       <div class="text-lg text-center mr-6 font-medium">{{ $page.props.name }}</div>
-    </nav>
-
+    </nav> -->
+    <!-- <commerce-footer/> -->
     <slot />
    <!--<commerce-footer class="hidden sm:block" />--> 
   </div>

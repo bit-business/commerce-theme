@@ -2,13 +2,13 @@
   <div>
     <Head :title="$page.props.name" />
 
-    <div class="container pt-8 hidden gap-4 auto-rows-min sm:grid">
+    <div class="container pt-8 hidden gap-4 auto-rows-min sm:grid navbarpraznina">
       <div class="bg-white px-8 py-4 grid grid-cols-6 gap-4 shadow-sm rounded-xl">
-        <div class="col-span-2 text-sm text-gray-700 font-medium">Događaj</div>
+        <div class="col-span-2 text-sm text-gray-700 font-medium">Opis plaćanja</div>
         <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Jedinična cijena</div>
-        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Broj ljudi</div>
+          <div class="col-span-1 text-sm text-gray-700 text-center font-medium" v-if="filteredCarts.length > 0">Broj ljudi</div>
         <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Ukupna cijena</div>
-        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Odustani</div>
+   <!---    <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Odustani</div> -->
       </div>
       <div class="bg-white px-8 py-8 flex shadow-sm rounded-xl flex-wrap gap-4">
         <template v-if="carts.length > 0">
@@ -20,7 +20,7 @@
               </div>
               <div class=" flex-1 text-sm">
                 <Link :to="{ name: 'DetailProduct', params: { slug: cart.productDetail.product.slug } }" class="line-clamp-2">{{ cart.productDetail.product.name }}</Link>
-                <div class="text-sm mt-2">Član:
+                <div class="text-sm mt-2">Status člana:
                   <span class="border border-gray-300 px-1.5 py-1 cursor-pointer ml-2 rounded-md text-gray-500 text-xs">{{ $voca.titleCase(cart.productDetail.name) }}</span>
                 </div>
               </div>
@@ -33,9 +33,19 @@
                 <span class="text-gray-700">{{ $currency(cart.productDetail.price) }}</span>
               </template>
             </div>
-            <div class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center">
-              <counter @input="changeQuantity($event, cart.id)" v-model="cart.quantity" :min="1" text-disabled :disabled="loading" />
-            </div>
+
+            <div class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center" v-if="filteredCarts.length > 0">
+  <counter
+    v-for="cart in filteredCarts"
+    :key="cart.id"
+    @input="changeQuantity($event, cart.id)"
+    v-model="cart.quantity"
+    :min="1"
+    text-disabled
+    :disabled="loading"
+  />
+</div>
+
             <div class="col-span-1 text-sm text-primary text-center justify-center flex items-center">
               <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
                 {{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount) * parseInt(cart.quantity)) }}
@@ -44,13 +54,15 @@
                 {{ $currency(cart.productDetail.price * cart.quantity) }}
               </template>
             </div>
-            <div class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center">
+
+            <!-- <div class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center">
               <button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-1.5 text-red-500 rounded hover:bg-red-50">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                   <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
                 </svg>
               </button>
-            </div>
+            </div> -->
+
             <div class="col-span-full" v-if="index !== carts.length - 1">
               <div class="h-px w-full bg-gray-300" />
             </div>
@@ -189,7 +201,7 @@
             </div>
 
             <div class="w-full flex gap-2 flex-col border-b pb-3">
-              <div class="text-sm">Variasi</div>
+              <div class="text-sm">Status člana</div>
 
               <div class="w-full flex flex-row flex-wrap gap-4">
                 <div v-for="productDetail, index in product.productDetails" :key="index" class="py-1.5 gap-2 rounded-md bg-gray-100 flex items-center px-3" @click="clickProductDetail(index)" :class="[index == productDetailSelectedIndex ? 'border-primary border' : '']">
@@ -205,7 +217,7 @@
             </div>
 
             <div class="w-full flex gap-4 justify-center items-center mt-2">
-              <div class="w-full h-10 flex items-center justify-center text-white text-sm rounded-md uppercase py-2 px-4 text-center bg-primary" @click="confirmVariationDialog">Confirmation</div>
+              <div class="w-full h-10 flex items-center justify-center text-white text-sm rounded-md uppercase py-2 px-4 text-center bg-primary" @click="confirmVariationDialog">Potvrdi</div>
             </div>
           </div>
         </div>
@@ -226,7 +238,7 @@
               {{ cart.productDetail.product.name }}
             </div>
             <div class="w-full p-1 bg-gray-100 text-sm flex text-gray-600 items-center" @click="openVariationDialog(cart)">
-              <div class="flex-grow">Variasi: {{ cart.productDetail.name }}</div>
+              <div class="flex-grow">Status člana: {{ cart.productDetail.name }}</div>
               <div class="flex-shrink">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -252,7 +264,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
           </svg>
-          <span class="text-sm">Još nema proizvoda</span>
+          <span class="text-sm">Nema zaduženja</span>
         </div>
       </template>
 
@@ -279,7 +291,7 @@
           </div>
           <div class="flex items-center gap-2 w-full float-right justify-end" v-if="checkboxModel.length > 0">
             Popust
-            <span class="text-primary">{{ $currency(getSaving) }}RB</span>
+            <span class="text-primary">{{ $currency(getSaving) }}EUR</span>
           </div>
         </div>
         <div class="col-span-4">
@@ -289,6 +301,7 @@
         </div>
       </div>
     </div>
+    
   </div>
 </template>
 
@@ -338,6 +351,11 @@ export default {
     }
   },
   computed: {
+
+    filteredCarts() {
+    return this.carts.filter(cart => cart.productDetail.product.slug !== 'dogadanja');
+  },
+
     getTotal() {
       if (this.checkboxModel.length <= 0) return 0
       let price = 0
@@ -383,6 +401,13 @@ export default {
     }
   },
   mounted() {
+    if (!this.isAuthenticated) {
+        this.$helper.alert("Molimo prvo se prijavite. Niste prijavljeni.")
+        this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+        return
+      }
+
+
     this.getCarts()
   },
   methods: {
@@ -562,3 +587,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+  .navbarpraznina {
+    padding-top: 5.75rem; 
+    overflow: hidden;
+  }
+  </style>

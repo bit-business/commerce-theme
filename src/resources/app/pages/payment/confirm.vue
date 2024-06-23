@@ -352,7 +352,7 @@ export default {
           })
           .catch(err => {
             this.$helper.displayErrors(err)
-            this.$inertia.visit(this.route('skijasi.commerce-theme.order'))
+            this.$inertia.visit(this.route('skijasi.commerce-theme.cart'))
           })
           .finally(() => {
             this.$closeLoading()
@@ -371,12 +371,12 @@ export default {
           this.order = res.data.order
           this.total = parseInt(res.data.order.payed)
           if (res.data.order.status != 'waitingBuyerPayment' || res.data.order.orderPayment.paymentType != 'manual-transfer') {
-            this.$inertia.visit(this.route('skijasi.commerce-theme.order'))
+          //  this.$inertia.visit(this.route('skijasi.commerce-theme.order'))
           }
         })
         .catch(err => {
           this.$helper.displayErrors(err)
-          this.$inertia.visit(this.route('skijasi.commerce-theme.order'))
+          this.$inertia.visit(this.route('skijasi.commerce-theme.cart'))
         })
         .finally(() => {
           this.$closeLoading()

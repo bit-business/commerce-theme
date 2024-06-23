@@ -212,12 +212,12 @@
 <vs-popup :title="'Privremeno zatvorene prijave'" :active.sync="showPopup" @close="showPopup = false">
 
     </vs-popup>
-       <!-- <a class="desnigumb">      https://forms.gle/z95LVJdJV6Lr8jyh7
+        <a class="desnigumb" @click="buyNow()">  
           <b class="uplatite-lanarinu-hzuts-u">UPLATITE ČLANARINU HZUTS-U</b>
-        </a>-->
+        </a>
       </div>
 
-    <!-- Content for Prijava i plaćanje -->
+    <!-- Content for Prijava i plaćanje     https://forms.gle/z95LVJdJV6Lr8jyh7-->
 
 </div>
 

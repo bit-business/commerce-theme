@@ -23,5 +23,14 @@ export default {
   pay(data) {
     let ep = apiPrefix + "/v1/order/public/pay";
     return resource.post(ep, data);
+  },
+
+
+
+
+  stvoriuplatnicu(data = {}) {
+    let ep = apiPrefix + "/v1/order/public/stvoriuplatnicu";
+    return resource.post(ep, data);
   }
+
 };

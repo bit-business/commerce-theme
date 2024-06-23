@@ -25,6 +25,11 @@ export default {
     return resource.post(ep, data);
   },
 
+  addplacanja(data) {
+    let ep = apiPrefix + "/v1/cart/public/addplacanja";
+    return resource.post(ep, data);
+  },
+
   edit(data) {
     let ep = apiPrefix + "/v1/cart/public/edit";
     return resource.put(ep, data);

@@ -2,12 +2,12 @@
   <div>
     <Head :title="$page.props.name" />
 
-    <div class="navbar ">
-      
     
 
-          <!-- Floating Action Button -->
-          <div v-if="!isSidebarExpanded" class="fab" :class="{ open: isGridVisible }" @touchend="toggleGridVisibility" @click="toggleGridVisibility">
+    <div class="navbar">
+      
+      <!-- Floating Action Button -->
+      <div v-if="!isSidebarExpanded" class="fab" :class="{ open: isGridVisible }" @touchend="toggleGridVisibility" @click="toggleGridVisibility">
     <span class="fab-icon" :class="{ 'icon-active': isGridVisible }">
       <svg width="30" height="30" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
         <rect x="20" y="30" width="60" height="8" fill="black"/>
@@ -19,10 +19,9 @@
   <!-- Floating Action Button -->
 
 
-      <div class="pt-5 container container2 grid grid-cols-1 md:grid-cols-profile" @wheel="handleScrollAttempt">  
-<!--1-->
-<transition name="fade">
-  <div v-if="isSidebarExpanded" class="Moj-pr-8">
+  <div class="pt-5 container grid mojgrid-cols-profile pr-5"  @wheel="handleScrollAttempt">  
+     <!--1-->
+     <div v-if="isSidebarExpanded" class="Moj-pr-8">
 
           <div :class="{'h-22 flex items-center': true, 'border-b': isSidebarExpanded, 'border-plava-200': !isSidebarExpanded, 'sakrij': true}">
 
@@ -76,13 +75,14 @@
             </Link>
 
 
+
             <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
-<path d="M17.4349 10.3894V5.84746C17.4349 5.71746 17.3749 5.59734 17.2899 5.50231L12.1977 0.15509C12.1027 0.0551147 11.9676 0 11.8326 0H3.75915C2.26868 0 1.07812 1.21545 1.07812 2.70611V17.9725C1.07812 19.4632 2.26868 20.6587 3.75915 20.6587H10.1319C11.3373 22.6595 13.5284 24 16.0243 24C19.8158 24 22.9121 20.9187 22.9121 17.1222C22.9173 13.8058 20.5362 11.0347 17.4349 10.3894ZM12.3329 1.7558L15.7492 5.35217H13.5333C12.873 5.35217 12.3329 4.80706 12.3329 4.14678V1.7558ZM3.75915 19.6582C2.82385 19.6582 2.07861 18.9078 2.07861 17.9725V2.70611C2.07861 1.76568 2.82385 1.00049 3.75915 1.00049H11.3324V4.14678C11.3324 5.36224 12.3179 6.35265 13.5333 6.35265H16.4344V10.2592C16.2845 10.2543 16.1643 10.2392 16.0343 10.2392C14.2886 10.2392 12.683 10.9096 11.4725 11.9601H5.11981C4.8446 11.9601 4.61956 12.1851 4.61956 12.4601C4.61956 12.7353 4.8446 12.9604 5.11981 12.9604H10.5421C10.1869 13.4606 9.89171 13.9609 9.66173 14.5111H5.11981C4.8446 14.5111 4.61956 14.7361 4.61956 15.0113C4.61956 15.2864 4.8446 15.5116 5.11981 15.5116H9.33654C9.21148 16.0118 9.14647 16.567 9.14647 17.1222C9.14647 18.0225 9.32152 18.9129 9.63665 19.6633H3.75915V19.6582ZM16.0294 23.0046C12.7881 23.0046 10.1519 20.3684 10.1519 17.1271C10.1519 13.8858 12.7829 11.2496 16.0294 11.2496C19.2757 11.2496 21.9067 13.8858 21.9067 17.1271C21.9067 20.3684 19.2707 23.0046 16.0294 23.0046Z" fill="black"/>
-<path d="M5.11938 10.4536H10.1865C10.4617 10.4536 10.6867 10.2284 10.6867 9.95337C10.6867 9.67816 10.4617 9.45312 10.1865 9.45312H5.11938C4.84418 9.45312 4.61914 9.67816 4.61914 9.95337C4.61914 10.2284 4.84418 10.4536 5.11938 10.4536Z" fill="black"/>
-<path d="M16.3846 13.4354C16.2896 13.3354 16.1596 13.2754 16.0195 13.2754C15.8794 13.2754 15.7494 13.3354 15.6544 13.4354L12.723 16.5817C12.533 16.7819 12.548 17.1019 12.7481 17.287C12.9483 17.4771 13.2733 17.4621 13.4633 17.2621L15.5342 15.0462V20.5084C15.5342 20.7836 15.7593 21.0087 16.0345 21.0087C16.3095 21.0087 16.5347 20.7836 16.5347 20.5084V15.0462L18.5905 17.2621C18.6906 17.3671 18.8206 17.4222 18.9558 17.4222C19.0757 17.4222 19.1958 17.3771 19.2958 17.287C19.4959 17.097 19.5109 16.7819 19.3209 16.5817L16.3846 13.4354Z" fill="black"/>
+<path d="M17.4349 10.3894V5.84746C17.4349 5.71746 17.3749 5.59734 17.2899 5.50231L12.1977 0.15509C12.1027 0.0551147 11.9676 0 11.8326 0H3.75915C2.26868 0 1.07812 1.21545 1.07812 2.70611V17.9725C1.07812 19.4632 2.26868 20.6587 3.75915 20.6587H10.1319C11.3373 22.6595 13.5284 24 16.0243 24C19.8158 24 22.9121 20.9187 22.9121 17.1222C22.9173 13.8058 20.5362 11.0347 17.4349 10.3894ZM12.3329 1.7558L15.7492 5.35217H13.5333C12.873 5.35217 12.3329 4.80706 12.3329 4.14678V1.7558ZM3.75915 19.6582C2.82385 19.6582 2.07861 18.9078 2.07861 17.9725V2.70611C2.07861 1.76568 2.82385 1.00049 3.75915 1.00049H11.3324V4.14678C11.3324 5.36224 12.3179 6.35265 13.5333 6.35265H16.4344V10.2592C16.2845 10.2543 16.1643 10.2392 16.0343 10.2392C14.2886 10.2392 12.683 10.9096 11.4725 11.9601H5.11981C4.8446 11.9601 4.61956 12.1851 4.61956 12.4601C4.61956 12.7353 4.8446 12.9604 5.11981 12.9604H10.5421C10.1869 13.4606 9.89171 13.9609 9.66173 14.5111H5.11981C4.8446 14.5111 4.61956 14.7361 4.61956 15.0113C4.61956 15.2864 4.8446 15.5116 5.11981 15.5116H9.33654C9.21148 16.0118 9.14647 16.567 9.14647 17.1222C9.14647 18.0225 9.32152 18.9129 9.63665 19.6633H3.75915V19.6582ZM16.0294 23.0046C12.7881 23.0046 10.1519 20.3684 10.1519 17.1271C10.1519 13.8858 12.7829 11.2496 16.0294 11.2496C19.2757 11.2496 21.9067 13.8858 21.9067 17.1271C21.9067 20.3684 19.2707 23.0046 16.0294 23.0046Z" fill="#03A9F4"/>
+<path d="M5.11938 10.4536H10.1865C10.4617 10.4536 10.6867 10.2284 10.6867 9.95337C10.6867 9.67816 10.4617 9.45312 10.1865 9.45312H5.11938C4.84418 9.45312 4.61914 9.67816 4.61914 9.95337C4.61914 10.2284 4.84418 10.4536 5.11938 10.4536Z" fill="#03A9F4"/>
+<path d="M16.3846 13.4354C16.2896 13.3354 16.1596 13.2754 16.0195 13.2754C15.8794 13.2754 15.7494 13.3354 15.6544 13.4354L12.723 16.5817C12.533 16.7819 12.548 17.1019 12.7481 17.287C12.9483 17.4771 13.2733 17.4621 13.4633 17.2621L15.5342 15.0462V20.5084C15.5342 20.7836 15.7593 21.0087 16.0345 21.0087C16.3095 21.0087 16.5347 20.7836 16.5347 20.5084V15.0462L18.5905 17.2621C18.6906 17.3671 18.8206 17.4222 18.9558 17.4222C19.0757 17.4222 19.1958 17.3771 19.2958 17.287C19.4959 17.097 19.5109 16.7819 19.3209 16.5817L16.3846 13.4354Z" fill="#03A9F4"/>
 </g>
 <defs>
 <clipPath id="clip0_1341_5428">
@@ -91,8 +91,9 @@
 </defs>
 </svg>
 </div>
-  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Zahtjevi</span>
 </Link>
+
 
 
             <Link :href="route('skijasi.commerce-theme.order')" class="w-full inline-flex items-center group sidebar-item">
@@ -131,11 +132,11 @@
             <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M12 16V12" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M12 8H12.01" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 16V12" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M12 8H12.01" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Moj Status</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Status</span>
             </Link>
          
 
@@ -158,193 +159,74 @@
             </div>
           </div>
         </div>  </div>
-        </transition>
 <!--1-->
 
-        <div class="bg-white shadow-sm px-6 rounded-xl ml-16">
+
+
+
+<div class="bg-white shadow-sm px-6 rounded-xl ml-16 pb-8">
           <!--2-->
-        <!-- DETALJI pocetak-->
-
+          <div class="h-22 flex flex-col py-4 justify-center border-plava-200 border-b">
+            <span class="text-lg font-medium plavi-text">Zahtjevi</span>
+          </div>
+       
  
-<div class="detaljiclanaframeglavni" ref="myScrollableElement">
-    <div class="glavnipodframedetalji ">
-      <div class="framedetalji">
 
 
+
+
+          <template>
+  <div class="zahtjevi-root">
+    <div class="badge-1-parent">
+      <div class="badge-1">
+        <img class="group-icon1" loading="lazy" alt="" src="/storage/slike/zahtjeviprofil/zahtjevi-group.svg" />
       </div>
-      <div class="sviframeoviizaduzenje">
-        <div class="frameimeistatus">
-          <b class="imeclana">{{ korisnik.name }} {{ korisnik.username }}</b>
-         
-        </div>
-        <b class="statusclanaaktivan">{{ korisnik.statusAktivan }}</b>
+      <a class="amblem">Amblem</a>
+      <div class="zatrai-zahtjev-za text-center">Zatraži zahtjev za amblem</div>
+      <button class="zatrai-wrapper" @click="dodajkupnju(10)">
+        <div class="zatrai">Zatraži</div>
+      </button>
+    </div>
+    <div class="credit-card-1-parent">
+      <div class="credit-card-1">
+        <img class="vector-icon5" alt="" src="/storage/slike/zahtjeviprofil/zahtjevi-vector1.svg" />
+        <img class="vector-icon6" alt="" src="/storage/slike/zahtjeviprofil/zahtjevi-vector-1.svg" />
       </div>
-      <div class="framesvekartice">
-        <div class="prviframedetalji border-plava-200 border-2">
-          <div class="naslovosnovneinfo">
-            <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/info-icon.svg" />
-            <div class="osnovne-informacije">Osnovne informacije</div>
-          </div>
-          <div class="kvadrat">
-            <div class="gradframe">
-              <div class="grad-wrapper">
-                <div class="grad">Grad:</div>
-              </div>
-              <div class="zagreb-wrapper">
-                <div class="osnovne-informacije">{{ korisnik.grad }}</div>
-              </div>
-            </div>
-            <div class="podrucnizborframe">
-              <div class="podruni-zbor-wrapper">
-                <div class="grad">Područni zbor:</div>
-              </div>
-              <div class="zagreb-wrapper">
-                <div class="osnovne-informacije">{{ korisnik.department }}</div>
-              </div>
-            </div>
-            <div class="clanskibrojframe">
-              <div class="lanski-broj-wrapper">
-                <div class="grad">Članski broj:</div>
-              </div>
-              <div class="zagreb-wrapper">
-                <div class="osnovne-informacije">{{ korisnik.idmember }}</div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="drugiframe border-plava-200 border-2">
-          <div class="kvadrat1">
-            <div class="naslovstatus">
-              <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/user-icon.svg" />
-              <div class="statusdetalji">Status</div>
-            </div>
-            <div class="kvadrat">
-              <div class="statusframedetalji">
-                <div class="status-wrapperdetalji">
-                  <div class="grad">Status</div>
-                </div>
-                <div class="zagreb-wrapper">
-                  <div class="osnovne-informacije">{{ getStatusWithLicenseCheck(korisnik) }}</div>
-                </div>
-              </div>
-              <div class="licenceframe">
-                <div class="licenca-wrapper">
-                  <div class="grad">Licenca:</div>
-                </div>
-                <div class="isia-br-7654-ivsi-wrapper">
-                  <div class="osnovne-informacije">{{ activeLicences }}</div>
-                </div>
-              </div>
-              <div class="licencavrijediframe">
-                <div class="licenca-vrijedi-do-wrapper">
-                  <div class="grad">Licenca vrijedi do:</div>
-                </div>
-                <div class="isia-br-7654-ivsi-wrapper">
-                  <div class="osnovne-informacije">{{ formatEuropeanDate(korisnik.endstatusdate) }}</div>
-                </div>
-              </div>
-              <div class="valjanostlicenceframe">
-                <div class="valjanost-licence-wrapper">
-                  <div class="grad">Valjanost licence:</div>
-                </div>
-                <div class="zagreb-wrapper">
-                  <div class="osnovne-informacije">{{ yearDifference }}</div>
-                </div>
-              </div>
-              <div class="clanskaiskaznicaframe">
-                <div class="lanska-iskaznica-wrapper">
-                  <div class="grad">Članska iskaznica:</div>
-                </div>
-                <div class="isia-br-7654-ivsi-wrapper">
-
-                  <div class="osnovne-informacije">
-    {{ korisnik.carddate === null ? 'Nije izdana' : 'Izdana' }}
-  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="kvadrat2">
-            <div class="naslovseminar">
-              <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/trending-icon.svg" />
-              <div class="osnovne-informacije">Seminar</div>
-            </div>
-            <div class="kvadrat">
-              <div class="statusstecenframe">
-                <div class="status-steen-wrapper">
-                  <div class="grad">Status stečen:</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">
-                    {{ getEventDetails(korisnik.idevent).label }}
-                  </div>
-                </div>
-              </div>
-              <div class="datumseminaraframe">
-                <div class="datum-seminara-wrapper">
-                  <div class="grad">Datum seminara:</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{formatEuropeanDate (getEventDetails(korisnik.idevent).eventdate) }}</div>
-                </div>
-              </div>
-              <div class="mjestoseminaraframe">
-                <div class="mjesto-seminara-wrapper">
-                  <div class="mjesto-seminara">Mjesto seminara:</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ getEventDetails(korisnik.idevent).eventplace }}</div>
-                </div>
-              </div>
-              <div class="drzavaframe">
-                <div class="drava-wrapper">
-                  <div class="grad">Država:</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ getEventDetails(korisnik.idevent).eventstate }}</div>
-                </div>
-              </div>
-              <div class="organizatorframe">
-                <div class="organizator-wrapper">
-                  <div class="grad">Organizator:</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="hzuts-i-nik">{{ getEventDetails(korisnik.idevent).eventorganisation }}</div>
-                </div>
-              </div>
-              <div class="licencaframe">
-                <div class="licenca-wrapper">
-                  <div class="grad">Licenca:</div>
-                </div>
-                <div class="isia-br-7654-ivsi-wrapper">
-                  <div class="osnovne-informacije">{{ korisnik.statusAktivan === 'Aktivan' ? 'Važeća' : 'Nije važeća' }} </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+      <a class="iskaznica">Iskaznica</a>
+      <div class="zatrai-zahtjev-za1 text-center">
+        Zatraži zahtjev za izdavanje iskaznice
       </div>
-
-
-
-
+      <button class="zatrai-container" @click="dodajkupnju(11)">
+        <div class="zatrai1">Zatraži</div>
+      </button>
+    </div>
+    <div class="frame-parent46">
+      <div class="frame1">
+        <img class="vector-icon7" alt="" src="/storage/slike/zahtjeviprofil/zahtjevi-vector-2.svg" />
+        <img class="vector-icon8" loading="lazy" alt="" src="/storage/slike/zahtjeviprofil/zahtjevi-vector-3.svg" />
+        <img class="vector-icon9" loading="lazy" alt="" src="/storage/slike/zahtjeviprofil/zahtjevi-vector-4.svg" />
+      </div>
+      <a class="potvrda">Potvrda</a>
+      <div class="zatrai-zahtjev-za2 text-center">Zatraži zahtjev za izdavanje potvrde</div>
+      <button class="zatrai-frame"  @click="dodajkupnju(12)">
+        <div class="zatrai2">Zatraži</div>
+      </button>
     </div>
   </div>
+</template>
 
-<!-- DETALJI kraj-->
-      <!--2-->
 
-        
-      
-        </div>
+
+ </div>
+
+
+
 
 
 
 
       </div>
-
-
+    </div>
 
 
   <!--1-->
@@ -352,8 +234,6 @@
      <div class="Moj-pr-8" v-if="isGridVisible && !isSidebarExpanded">
 
 <div :class="{'h-22 flex items-center': true, 'border-b': isSidebarExpanded, 'border-plava-200': !isSidebarExpanded, 'sakrij': true}">
-
-
 
 
   <div v-if="isSidebarExpanded" class="border-plava-200 border-2 rounded-full"> <!-- New container with border -->
@@ -425,14 +305,13 @@
     <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
   </Link>
 
-
   <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
-<path d="M17.4349 10.3894V5.84746C17.4349 5.71746 17.3749 5.59734 17.2899 5.50231L12.1977 0.15509C12.1027 0.0551147 11.9676 0 11.8326 0H3.75915C2.26868 0 1.07812 1.21545 1.07812 2.70611V17.9725C1.07812 19.4632 2.26868 20.6587 3.75915 20.6587H10.1319C11.3373 22.6595 13.5284 24 16.0243 24C19.8158 24 22.9121 20.9187 22.9121 17.1222C22.9173 13.8058 20.5362 11.0347 17.4349 10.3894ZM12.3329 1.7558L15.7492 5.35217H13.5333C12.873 5.35217 12.3329 4.80706 12.3329 4.14678V1.7558ZM3.75915 19.6582C2.82385 19.6582 2.07861 18.9078 2.07861 17.9725V2.70611C2.07861 1.76568 2.82385 1.00049 3.75915 1.00049H11.3324V4.14678C11.3324 5.36224 12.3179 6.35265 13.5333 6.35265H16.4344V10.2592C16.2845 10.2543 16.1643 10.2392 16.0343 10.2392C14.2886 10.2392 12.683 10.9096 11.4725 11.9601H5.11981C4.8446 11.9601 4.61956 12.1851 4.61956 12.4601C4.61956 12.7353 4.8446 12.9604 5.11981 12.9604H10.5421C10.1869 13.4606 9.89171 13.9609 9.66173 14.5111H5.11981C4.8446 14.5111 4.61956 14.7361 4.61956 15.0113C4.61956 15.2864 4.8446 15.5116 5.11981 15.5116H9.33654C9.21148 16.0118 9.14647 16.567 9.14647 17.1222C9.14647 18.0225 9.32152 18.9129 9.63665 19.6633H3.75915V19.6582ZM16.0294 23.0046C12.7881 23.0046 10.1519 20.3684 10.1519 17.1271C10.1519 13.8858 12.7829 11.2496 16.0294 11.2496C19.2757 11.2496 21.9067 13.8858 21.9067 17.1271C21.9067 20.3684 19.2707 23.0046 16.0294 23.0046Z" fill="black"/>
-<path d="M5.11938 10.4536H10.1865C10.4617 10.4536 10.6867 10.2284 10.6867 9.95337C10.6867 9.67816 10.4617 9.45312 10.1865 9.45312H5.11938C4.84418 9.45312 4.61914 9.67816 4.61914 9.95337C4.61914 10.2284 4.84418 10.4536 5.11938 10.4536Z" fill="black"/>
-<path d="M16.3846 13.4354C16.2896 13.3354 16.1596 13.2754 16.0195 13.2754C15.8794 13.2754 15.7494 13.3354 15.6544 13.4354L12.723 16.5817C12.533 16.7819 12.548 17.1019 12.7481 17.287C12.9483 17.4771 13.2733 17.4621 13.4633 17.2621L15.5342 15.0462V20.5084C15.5342 20.7836 15.7593 21.0087 16.0345 21.0087C16.3095 21.0087 16.5347 20.7836 16.5347 20.5084V15.0462L18.5905 17.2621C18.6906 17.3671 18.8206 17.4222 18.9558 17.4222C19.0757 17.4222 19.1958 17.3771 19.2958 17.287C19.4959 17.097 19.5109 16.7819 19.3209 16.5817L16.3846 13.4354Z" fill="black"/>
+<path d="M17.4349 10.3894V5.84746C17.4349 5.71746 17.3749 5.59734 17.2899 5.50231L12.1977 0.15509C12.1027 0.0551147 11.9676 0 11.8326 0H3.75915C2.26868 0 1.07812 1.21545 1.07812 2.70611V17.9725C1.07812 19.4632 2.26868 20.6587 3.75915 20.6587H10.1319C11.3373 22.6595 13.5284 24 16.0243 24C19.8158 24 22.9121 20.9187 22.9121 17.1222C22.9173 13.8058 20.5362 11.0347 17.4349 10.3894ZM12.3329 1.7558L15.7492 5.35217H13.5333C12.873 5.35217 12.3329 4.80706 12.3329 4.14678V1.7558ZM3.75915 19.6582C2.82385 19.6582 2.07861 18.9078 2.07861 17.9725V2.70611C2.07861 1.76568 2.82385 1.00049 3.75915 1.00049H11.3324V4.14678C11.3324 5.36224 12.3179 6.35265 13.5333 6.35265H16.4344V10.2592C16.2845 10.2543 16.1643 10.2392 16.0343 10.2392C14.2886 10.2392 12.683 10.9096 11.4725 11.9601H5.11981C4.8446 11.9601 4.61956 12.1851 4.61956 12.4601C4.61956 12.7353 4.8446 12.9604 5.11981 12.9604H10.5421C10.1869 13.4606 9.89171 13.9609 9.66173 14.5111H5.11981C4.8446 14.5111 4.61956 14.7361 4.61956 15.0113C4.61956 15.2864 4.8446 15.5116 5.11981 15.5116H9.33654C9.21148 16.0118 9.14647 16.567 9.14647 17.1222C9.14647 18.0225 9.32152 18.9129 9.63665 19.6633H3.75915V19.6582ZM16.0294 23.0046C12.7881 23.0046 10.1519 20.3684 10.1519 17.1271C10.1519 13.8858 12.7829 11.2496 16.0294 11.2496C19.2757 11.2496 21.9067 13.8858 21.9067 17.1271C21.9067 20.3684 19.2707 23.0046 16.0294 23.0046Z" fill="#03A9F4"/>
+<path d="M5.11938 10.4536H10.1865C10.4617 10.4536 10.6867 10.2284 10.6867 9.95337C10.6867 9.67816 10.4617 9.45312 10.1865 9.45312H5.11938C4.84418 9.45312 4.61914 9.67816 4.61914 9.95337C4.61914 10.2284 4.84418 10.4536 5.11938 10.4536Z" fill="#03A9F4"/>
+<path d="M16.3846 13.4354C16.2896 13.3354 16.1596 13.2754 16.0195 13.2754C15.8794 13.2754 15.7494 13.3354 15.6544 13.4354L12.723 16.5817C12.533 16.7819 12.548 17.1019 12.7481 17.287C12.9483 17.4771 13.2733 17.4621 13.4633 17.2621L15.5342 15.0462V20.5084C15.5342 20.7836 15.7593 21.0087 16.0345 21.0087C16.3095 21.0087 16.5347 20.7836 16.5347 20.5084V15.0462L18.5905 17.2621C18.6906 17.3671 18.8206 17.4222 18.9558 17.4222C19.0757 17.4222 19.1958 17.3771 19.2958 17.287C19.4959 17.097 19.5109 16.7819 19.3209 16.5817L16.3846 13.4354Z" fill="#03A9F4"/>
 </g>
 <defs>
 <clipPath id="clip0_1341_5428">
@@ -441,7 +320,7 @@
 </defs>
 </svg>
 </div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Zahtjevi</span>
   </Link>
 
 
@@ -481,11 +360,11 @@
   <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
-<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 16V12" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M12 8H12.01" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 16V12" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M12 8H12.01" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Moj Status</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Status</span>
   </Link>
 
 
@@ -506,19 +385,14 @@
 </defs>
 </svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Odjavi se</span>
   </div>
-</div>
-</div>  </div>
-</transition>
+</div> 
+</div>  </div> </transition>
+<!--1-->
 
 
 
     </div>
-
-
-
-
- 
-    </div>
+    
   
 </template>
 
@@ -528,26 +402,58 @@ import profileLayout from '../../layouts/profile.vue'
 import { mapState } from 'vuex'
 import { Link, Head } from '@inertiajs/inertia-vue'
 
+import Checkbox from './../../components/form/checkbox.vue'
+import Counter from './../../components/counter/counter.vue'
+import Carousel from '../../components/carousel/carousel.vue'
+import CarouselItem from '../../components/carousel/carousel-item.vue'
+import CommerceProductAlt from '../../components/commerce-product-alt.vue'
+import CommerceMobileProductAlt from '../../components/commerce-mobile-product-alt.vue'
 
-import podaciusera from '../../../../../../core/src/resources/js/api/modules/skijasi-user.js';
-import statususera from '../../../../../../core/src/resources/js/api/modules/skijasi-statusclanova.js';
-import skijasitrainersts from '../../../../../../core/src/resources/js/api/modules/skijasi-trainersts.js';
-import skijasiLicence from '../../../../../../core/src/resources/js/api/modules/skijasi-licence.js';
-import skijasiTblevents from '../../../../../../core/src/resources/js/api/modules/skijasi-tblevents.js';
+
+
 import poruke from  '../../../../../../core/src/resources/js/api/modules/skijasi-poruke.js';
 
 
 export default {
   layout: [appLayout, profileLayout],
   components: {
+    Checkbox,
+    Counter,
+    Carousel,
+    CarouselItem,
+    CommerceProductAlt,
+    CommerceMobileProductAlt,
     Link,
     Head
   },
   data() {
     return {
+      checkboxModel: [],
+      quantity: 1,
+      carts: [],
+      similarProducts: {
+        data: []
+      },
+      loading: false,
+      deleteDialog: false,
+      deleteId: null,
+      deleteQuantity: null,
+      deleteIndex: null,
+      variationDialog: false,
+      variationId: null,
+      variationQuantity: null,
+      product: {
+        productDetails: []
+      },
+      productDetailSelectedIndex: 0,
+    
+
+
+
+
+
+
       avatar_approved: 0,
-      idmember: 0,
-      id: 0,
       name: '',
       username: '',
       datumrodjenja: '',
@@ -560,29 +466,24 @@ export default {
       spol: '',
       email: '',
       avatar: null,
-
+ 
 
       adminMessages: [],
       currentUser: null,
       users: [], 
- 
 
      isSidebarExpanded: window.innerWidth > 768, // Initialize based on screen width
      isSidebarOpen: false,
      isGridVisible: true, 
 
+     paymentOptions: [
+      { value: 'Sve plaćeno', text: 'Plaćena' },
+      { value: 'Nije plaćeno', text: 'Nije plaćena' },
+      // ... other payment options ...
+    ],
+    staraPlacanjaArray: [],
+    viewingPaymentsList: false, 
 
-     korisnik: [],
-
-     relationDataTRAINERSTS: {
-      tblTrainersts: [], 
-    },
-
-    dataLICENCE: [], 
-    relationDataTBLEVENTS: {
-      tblEvents: []
-    },
- 
     }
   },
   watch: {
@@ -590,7 +491,6 @@ export default {
     user: {
       handler(newValue) {
         this.prefillData(newValue);
-     
       },
       immediate: true, // Trigger handler immediately with the current value of the expression
       deep: true // Watch for nested changes in the user object
@@ -614,17 +514,16 @@ export default {
     sidebarClasses() {
       return {
         'w-64': this.isSidebarExpanded,
-      'w-20': !this.isSidebarExpanded,
+        'w-20': !this.isSidebarExpanded,
         'flex': true,
         'flex-col': true,
         'flex': !this.isSidebarExpanded,
       'items-center': !this.isSidebarExpanded,
       'justify-center': !this.isSidebarExpanded,
       };
-    },
+  },
 
-
-      hasUnreadMessages() {
+  hasUnreadMessages() {
   if (this.adminMessages.length === 0) {
     return false; // Return false if no admin messages are available
   }
@@ -635,82 +534,77 @@ export default {
     return !message.is_read || !message.is_read.includes(String(this.user.id));
   });
 },
-  
 
 
-  activeLicences() {
-  // Define the allowed idpaygroup values
-  const allowedIdPayGroups = [2, 7, 8, 9, 10, 11, 12, 13, 14];
-
-  if (!Array.isArray(this.dataLICENCE)) {
-    console.error('dataLICENCE is not an array', this.dataLICENCE);
-    return '';
-  }
-
-  return this.dataLICENCE
-    .filter(licence => licence.aktivna && allowedIdPayGroups.includes(licence.idpaygroup))
-    .map(licence => {
-      if (licence.nazivlicence.includes("ISIA Skijanje")) {
-        // Check if selectedUser and isiaBroj are valid and not null
-        const isiaNumber = (this.korisnik && this.korisnik.isiaBroj && this.korisnik.isiaBroj.idisia) 
-                           ? this.korisnik.isiaBroj.idisia 
-                           : '';
-        return `ISIA${isiaNumber ? ' (br. ' + isiaNumber + ')' : ''}`;
-      }
-      if (licence.nazivlicence.includes("IVSI Skijanje")) {
-        return `IVSI`;
-      }
-      return licence.nazivlicence;
-    })
-    .join(', ');
-},
 
 
-yearDifference() {
-      const endStatusDate = this.korisnik.endstatusdate;
-      if (!endStatusDate) return '';
 
-      const endDate = new Date(endStatusDate);
-      const today = new Date();
 
-      if (endDate < today) {
-    return 'Istekla'; // Return "0 godina" if endDate is before today
-  }
-      const diffTime = Math.abs(endDate - today);
-      const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365); // Convert milliseconds to years
+filteredCarts() {
+    return this.carts.filter(cart => cart.productDetail.product.slug !== 'dogadanja');
+  },
 
-      console.log("TEST DULJINA:", diffYears);
-      console.log("TEST DULJINA2:", endDate);
-      if (diffYears < 1) {
-        return '<1 godine';
-      } else if (diffYears >= 1 && diffYears < 2) {
-        return '2 godine';
-      } else if (diffYears >= 2 && diffYears < 3) {
-        return '3 godine';
-      } else if (diffYears >= 3 && diffYears < 4) {
-        return '3 godine';
-      } else if (diffYears >= 4) {
-        return 'Doživotna';
-      }
-
-      return ''; // Default return value if none of the conditions are met
+    getTotal() {
+      if (this.checkboxModel.length <= 0) return 0
+      let price = 0
+      this.checkboxModel.forEach(val => {
+        let cart = this.$_.find(this.carts, { id: val })
+        let p = cart.productDetail.discount !== null && cart.productDetail.discount.active == 1
+          ? this.getDiscount(cart.productDetail.price, cart.productDetail.discount)
+          : cart.productDetail.price
+        price += p * cart.quantity
+      });
+      return price
     },
+    getSaving() {
+      if (this.checkboxModel.length <= 0) return 0
+      let price = 0
+      this.checkboxModel.forEach(val => {
+        let cart = this.$_.find(this.carts, { id: val })
+        let p = cart.productDetail.discount !== null && cart.productDetail.discount.active == 1
+          ? this.getDiscount(cart.productDetail.price, cart.productDetail.discount)
+          : cart.productDetail.price
+        price += cart.productDetail.price - p
+      });
+      return Math.ceil(price / 1000)
+    },
+    hasActiveDiscount() {
+      return this.product.productDetails[this.productDetailSelectedIndex].discount !== null
+        ? this.product.productDetails[this.productDetailSelectedIndex].discount.active === 1
+        : false
+    },
+    getImageSource() {
+      return this.product.productDetails[this.productDetailSelectedIndex].productImage || null
+    },
+    activePrice() {
+      return this.product.productDetails[this.productDetailSelectedIndex].price || 0
+    },
+    activeDiscount() {
+      return this.product.productDetails[this.productDetailSelectedIndex].discount.active === 1
+        ? this.product.productDetails[this.productDetailSelectedIndex].discount
+        : null
+    },
+    activeStock() {
+      return this.product.productDetails[this.productDetailSelectedIndex].quantity || 0
+    }
 
 
-
+  
 },
 created() {
     this.fetchAdminMessages();
   },
 
- mounted() {
+  mounted() {
     if (!this.isAuthenticated) {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     };
 
-
+    this.getStaraPlacanja(); 
     window.addEventListener('scroll', this.handleScrollAttempt);
     
+
+    this.getCarts();
   },
 
   beforeDestroy() {
@@ -718,9 +612,28 @@ created() {
     window.removeEventListener('scroll', this.handleScrollAttempt);
 
   },
-
-
   methods: {
+
+dodajkupnju(zahtjevid) {
+
+
+      this.$api.skijasiCart
+        .add({
+          id: zahtjevid,
+          quantity: 1,
+        })
+        .then(res => {
+          // this.$store.dispatch('FETCH_CARTS')
+           this.$helper.alert(res.message)
+           this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+        })
+        .catch(err => {
+          // this.$helper.displayErrors(err)
+        });
+
+},
+
+
     fetchAdminMessages() {
       poruke.getMessages()
       .then((response) => {
@@ -743,20 +656,6 @@ created() {
 },
 
 
-    getStatusWithLicenseCheck(korisnik) {
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Normalize today to midnight
-
-    // Assuming korisnik.endstatusdate is in 'YYYY-MM-DD' format
-    const endStatusDate = new Date(korisnik.endstatusdate);
-    endStatusDate.setHours(0, 0, 0, 0); // Normalize endStatusDate to midnight for accurate comparison
-
-    if (korisnik.statusString === "Demonstrator skijanja" && endStatusDate < today) {
-      return "Demonstrator skijanja bez licence";
-    }
-
-    return korisnik.statusString;
-  },
 
     handleScrollAttempt(event) {
       if (event.deltaY !== 0) { // deltaY is non-zero if there's an attempt to scroll
@@ -779,6 +678,7 @@ created() {
 
     toggleSidebar() {
       this.isSidebarOpen = !this.isSidebarOpen;
+      console.log('isSidebarOpen:', this.isSidebarOpen);
     },
 
 
@@ -788,32 +688,7 @@ created() {
 
 
 
-    async ucitajClanove() {
-      console.log("TEST PODACI111", this.id);
-
-  try {
-    this.number = Number(this.id);
-  
-    const response = await podaciusera.readmojstatus({
-        id: this.id,
-    });
-    console.log("TEST PODACI1", response.data.user);
-    
-        this.korisnik = response.data.user;
-    //  await this.loadAllStatusData();
-
-  
-    await   this.ucitajLICENCEPodatke();
-
-  await this.fetchRelationDataTBLEVENTS();
-     
-      } catch (error) {
-      // this.$closeLoader();
-   
-  }
-},
-
-    formatDate(dateString) {
+formatDate(dateString) {
     if (!dateString) return ''; // Handle null, undefined, or empty strings
     const date = new Date(dateString);
     const day = date.getDate().toString().padStart(2, '0');
@@ -824,175 +699,16 @@ created() {
 
 
 
-getTrainerstsLabel(trainerstsid) {
-    // Find the item in the array where item.value matches trainerstsid
-    const item = this.relationDataTRAINERSTS.tblTrainersts.find(item => item.value == trainerstsid);
-
-    // If an item was found, return its label. Otherwise, return an empty string or some default value.
-    return item ? item.label : null;
-  },
-
-  async fetchRelationDataTRAINERSTS() {
-  try {
-    const response = await skijasitrainersts.all();
-    if (Array.isArray(response.data.data)) {
-      this.relationDataTRAINERSTS.tblTrainersts = response.data.data.map(item => ({
-        label: item.statusname, // the label to be displayed in the dropdown
-  value: item.id // , // the value to be emitted when an option is selected
- // membershipfee: item.membershipfee
-}));
-    } else {
-      console.error('Unexpected response data:', response.data);
-    }
-  } catch (error) {
-    console.error('Failed to fetch relation data:', error);
-  }
-},
 
 
 
-getStatusString(user) {
-    // Assuming `record.statusData` holds the relevant status information for this row
-    console.log(`Status data for record with ID ${user.id}:`, user.statusData);
-
-    if (!user.statusData) {
-    return "Nema status?"; // or return an empty string
-  }
-
-    if (!Array.isArray(user.statusData)) {
-      console.error('statusData is not an array for record:', user);
-      return "";
-    }
-
-    const labels = user.statusData
-      .filter(item => item.statusdefault == 1)
-      .map(item => this.getTrainerstsLabel(item.trainerstsid))
-      .filter(Boolean) // Ensure that only valid labels are included
-      .join(', ');
-
-    console.log("Generated Status Labels for record:", labels);
-    return labels;
-  },
-
-  getStatusAktivan(user) {
-    // Assuming `record.statusData` holds the relevant status information for this row
-    if (!Array.isArray(user.statusData)) {
-      console.error('statusData is not an array for record:', user);
-      return "";
-    }
-
-    const today = new Date();
-    today.setHours(0, 0, 0, 0); // Set to midnight for comparison
-
-    const status = user.statusData
-      .filter(item => item.statusdefault === 1)
-      .map(item => {
-        const endDate = item.endstatusdate ? new Date(item.endstatusdate) : null;
-        return (!endDate || endDate < today) ? "Istekla licenca" : "Aktivan";
-      })
-      .join(', ');
-
-    console.log("Generated Active Status for record:", status);
-    return status;
-  },
-
-
-getEventDetails(idevent) {
-  const event = this.relationDataTBLEVENTS.tblEvents.find(item => item.value == idevent);
-  if (event) {
-    return event;
-  }
-  // Return a default object to avoid errors when properties are accessed
-  return {
-    label: '',
-    eventdate: '',
-    eventplace: '',
-    eventstate: '',
-    eventorganisation: ''
-  };
-},
-
-    
-
-
-    async ucitajLICENCEPodatke() {
-    console.log("Selected User ID for Licence:", this.korisnik);
-    if (!this.korisnik.id) {
-        console.error('No selected user ID for licence data');
-        return;
-    }
-
-    this.number = Number(this.korisnik.id);
-    try {
-        const response = await skijasiLicence.citanjenasiclanovi({ slug: "tbl-licence", idmember: this.number });
-        console.log("Response Data Licence:", response);
-        if (response.data) {
-      // Check if data is an array
-      if (Array.isArray(response.data)) {
-        this.dataLICENCE = response.data;
-      } else {
-        this.dataLICENCE = [response.data];
-      }
-    } else {
-       this.dataLICENCE = [];
-      // or display a message to the user
-    }
-        // ... rest of your code ...
-    } catch (error) {
-        console.error("An error occurred while fetching licence data:", error);
-    }
-},
-
-    async fetchRelationDataTBLEVENTS() {
-  try {
-    const response = await skijasiTblevents.allnasiclanovi();
-    if (Array.isArray(response.data.data)) {
-      this.relationDataTBLEVENTS.tblEvents = response.data.data.map(item => ({
-        label: item.eventname,
-        eventdate: item.eventdate,
-        eventplace: item.eventplace,
-        eventstate: item.eventstate,
-        eventorganisation: item.eventorganisation,
-        value: item.id, // add this line
-      }));
-
-console.log ("TEST EVENTI", response.data);
-
-    } else {
-      console.error('Unexpected response data:', response.data);
-    }
-  } catch (error) {
-    console.error('Failed to fetch relation data:', error);
-  }
-},
-
-
-    formatEuropeanDate(dateString) {
-      if (!dateString) return ''; // Handle null, undefined, or empty string
-
-
-      const date = new Date(dateString);
-      const year = date.getFullYear();
-        // Check if the year is 2030 or greater
-        if (year >= 2030) {
-        return 'Doživotno';
-      }
-
-  
-      const day = date.getDate().toString().padStart(2, '0');
-      const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 because months are 0-indexed
-  
-
-      return `${day}.${month}.${year}.`;
+    toggleSidebarExpansion() {
+      this.isSidebarExpanded = !this.isSidebarExpanded;
     },
 
 
-
     prefillData(user) {
-     
       if (user) {
-        this.id = user.id || null;
-        this.idmember = user.idmember || null;
         this.name = user.name || '';
         this.username = user.username || '';
         this.email = user.email || '';
@@ -1007,63 +723,9 @@ console.log ("TEST EVENTI", response.data);
         this.avatar = user.avatar || null;
         this.avatar_approved = user.avatarApproved ? 1 : 0;   
 
-        if (this.id) {
-         this.ucitajClanove();
-      }
       }
     },
 
-    filesChange(e) {
-      const file = e.target.files[0]
-      const fileSize = Math.round((file.size / 1024))
-      if (fileSize > 4048) {
-        this.$alert('Maksimalna veličina slike je 4MB!')
-        return
-      }
-      const fileReader = new FileReader()
-      fileReader.readAsDataURL(file)
-      fileReader.onload = () => {
-        this.avatar = fileReader.result
-      }
-      fileReader.onerror = (error) => {
-        this.$alert(error)
-      };
-    },
-
-    save() {
-
-      console.log("Data being sent:", {
-        name: this.name,
-        email: this.email,
-        brojmobitela: this.brojmobitela,
-        grad: this.grad,
-        drzava: this.drzava,
-        adresa: this.adresa,
-        avatar: this.avatar
-    // ... other fields ...
-  });
-      this.$api.skijasiUser
-        .edit({
-        name: this.name,
-        email: this.email,
-        brojmobitela: this.brojmobitela,
-        grad: this.grad,
-        drzava: this.drzava,
-        adresa: this.adresa,
-        avatar: this.avatar
-        //spremanje u new_avatar 
-   
-
-        })
-        .then(res => {
-          console.log("API response:", res.data);
-          this.$store.dispatch('SET_USER', res.data.user)
-          this.$alert('Uspješno pohranjeno!')
-        })
-        .catch(err => {
-          this.$alert('Neuspješno! Provjerite da li ste unijeli sve dobro')
-        })
-    },
     logout() {
       this.$api.skijasiAuth
         .logout()
@@ -1094,12 +756,261 @@ console.log ("TEST EVENTI", response.data);
           });
           this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
         })
+    },
+
+
+
+
+
+
+    checkout() {
+      if (this.checkboxModel.length <= 0) {
+        this.$helper.alert('Molimo odaberite barem jedan od artikala!')
+        return
+      }
+
+      this.$openLoading()
+      let carts = []
+
+      this.checkboxModel.forEach(val => {
+        carts.push({ ...this.$_.find(this.carts, { id: val }) })
+      });
+
+      this.$store.dispatch('SET_CHECKOUT', carts)
+
+      this.$closeLoading()
+      this.$inertia.visit(this.route('skijasi.commerce-theme.checkout'))
+    },
+    getCarts() {
+      this.$api.skijasiCart
+        .browse()
+        .then(res => {
+          this.carts = res.data.carts
+          this.checkboxModel = this.carts.map(cart => cart.id);
+
+          if (this.carts.length > 0) {
+            this.fetchSimilar(this.$_.take(res.data.carts)[0])
+          }
+        })
+        .catch(err => {
+          localStorage.removeItem('token')
+          this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+          this.$helper.displayErrors(err)
+        })
+    },
+    fetchSimilar(cart) {
+      this.$api.skijasiProduct
+        .browseByCategorySlug({
+          slug:  cart.productDetail.product.productCategory.slug
+        })
+        .then(res => {
+          this.similarProducts = res.data.products
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+    },
+    deleteCart(id) {
+      this.$api.skijasiCart
+        .delete({
+          id
+        })
+        .then(res => {
+          this.getCarts()
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+    },
+    deleteCartUsingState() {
+      this.$api.skijasiCart
+        .delete({
+          id: this.deleteId
+        })
+        .then(res => {
+          this.getCarts()
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+        .finally(() => {
+          this.deleteDialog = false
+        })
+    },
+    openDeleteDialog($event, { id, quantity }, index) {
+      if ($event <= 1) {
+        this.deleteDialog = true
+        this.deleteId = id
+        this.deleteQuantity = quantity
+        this.deleteIndex = index
+      }
+    },
+    closeDeleteDialog() {
+      this.carts[this.deleteIndex].quantity = this.deleteQuantity
+      this.deleteDialog = false
+    },
+    changeQuantity(val, id) {
+      if (val && val > 0) {
+        this.loading = true
+        this.$api.skijasiCart
+          .edit({
+            id,
+            quantity: val
+          })
+          .then(res => {
+            this.getCarts()
+          })
+          .catch(err => {
+            this.$helper.displayErrors(err)
+          })
+          .finally(() => {
+            this.loading = false
+          })
+      }
+    },
+    getDiscount(price, discount) {
+      let d = 0
+      if (discount.discountType === 'fixed') {
+        d = discount.discountFixed;
+      } else {
+        d = discount.discountPercent * price / 100
+      }
+      return parseInt(price - d)
+    },
+    checkAll($event) {
+      if ($event.target.checked) {
+        this.carts.forEach(cart => {
+          if (!this.checkboxModel.includes(cart.id)) {
+            this.checkboxModel.push(cart.id)
+          }
+        });
+      } else {
+        this.checkboxModel = []
+      }
+    },
+    openVariationDialog({ id, quantity, productDetail: { productId }, productDetailId }) {
+      this.$api.skijasiProduct
+        .readByCart({ id: productId })
+        .then(res => {
+          this.product = res.data.product
+          this.variationDialog = true
+          this.variationId = id
+          this.variationQuantity = quantity
+          this.productDetailSelectedIndex = this.product.productDetails.indexOf(this.$_.find(this.product.productDetails, { id: productDetailId }))
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+    },
+    confirmVariationDialog() {
+      this.loading = true
+      this.$api.skijasiCart
+        .editCart({
+          id: this.variationId,
+          productDetailId: this.product.productDetails[this.productDetailSelectedIndex].id,
+          quantity: this.variationQuantity
+        })
+        .then(res => {
+          this.getCarts()
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+        .finally(() => {
+          this.loading = false
+          this.variationDialog = false
+        })
+    },
+    closeVariationDialog() {
+      this.variationDialog = false
+    },
+    getDiscountedPrice(price, discount) {
+      let d = 0
+      if (discount.discountType === 'fixed') {
+        d = discount.discountFixed;
+      } else {
+        d = discount.discountPercent * price / 100
+      }
+      return this.$currency(price - d)
+    },
+    clickProductDetail(index) {
+      this.productDetailSelectedIndex = index
     }
+
+
   }
 }
 </script>
 
 <style scoped>
+  .navbar {
+    padding-top: 3rem; 
+    padding-bottom: 3.15rem; 
+    font-family: Inter;
+  }
+
+
+  .border-plava-200 {
+
+    --tw-border-opacity: 1;
+    border-color: rgba(3, 169, 244, var(--tw-border-opacity));
+}
+
+.inter{
+font-family: Inter;
+}
+.plavi-text {
+   
+  color: #03A9F4;
+font-family: Inter;
+font-size: 32px;
+font-style: normal;
+font-weight: 600;
+line-height: normal;
+}
+
+.plava-boja {
+   color: #03A9F4;
+ }
+ .bg-plava-boja {
+   background-color: #03A9F4;
+ }
+
+ .bg-primary1{
+  --tw-bg-opacity: 1;
+  background-color: rgba(3, 169, 244, var(--tw-border-opacity));
+}
+
+.border-transparent {
+  border-color: transparent;
+}
+
+
+.avatardesni{
+    height: 10rem;
+    width: 10rem;
+}
+
+.tekstzainpute {
+  color: #000;
+text-align: left;
+font-family: Inter;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: normal; 
+padding-left: 12px;
+}
+
+.no-payments {
+  /* Add your styles here */
+  text-align: center;
+  padding: 20px;
+  font-size: 1rem;
+  color: #666;
+}
+
+
 /* fab gumb */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
@@ -1193,66 +1104,6 @@ console.log ("TEST EVENTI", response.data);
 
 /* fab gumb kraj */
 
-  .navbar {
-    padding-top: 3rem; 
-    padding-bottom: 3.15rem; 
-    font-family: Inter;
-  }
-
-
-  .border-plava-200 {
-    --tw-border-opacity: 1;
-    border-color: rgba(3, 169, 244, var(--tw-border-opacity));
-}
-
-.inter{
-font-family: Inter;
-}
-.plavi-text {
-   
-  color: #03A9F4;
-font-family: Inter;
-font-size: 32px;
-font-style: normal;
-font-weight: 600;
-line-height: normal;
-}
-
-.plava-boja {
-   color: #03A9F4;
- }
- .bg-plava-boja {
-   background-color: #03A9F4;
- }
-
- .bg-primary1{
-  --tw-bg-opacity: 1;
-  background-color: rgba(3, 169, 244, var(--tw-border-opacity));
-}
-
-.border-transparent {
-  border-color: transparent;
-}
-
-
-.avatardesni{
-    height: 10rem;
-    width: 10rem;
-}
-
-.tekstzainpute {
-  color: #000;
-text-align: left;
-font-family: Inter;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: normal; 
-padding-left: 12px;
-}
-
-
-
 
 
 @media (max-width: 1024px) {
@@ -1264,7 +1115,26 @@ padding-left: 12px;
 }
 
 @media (max-width: 767px) {
+  .moj-pr-8 {
+  top: 25% !important;
+}
+
+.sidebar-closed {
+  top: 25% !important;
+  position: fixed !important;
+}
+.container2{
+top: 10% !important;
+}
+.ml-16{
+  margin-left: 1rem !important;
+   margin-top: 12% !important;
+}
   
+  .navbar {
+    padding-top: 0rem; 
+  }
+
 
   .sidebar:hover {
   width: 200px; /* Adjust the width as needed to fit the text */
@@ -1361,7 +1231,7 @@ width: 80px;
 .grid-cols-profile {
     grid-template-columns: 90% auto;
   }
-
+  
 
   .user-info {
     display: none;
@@ -1369,8 +1239,17 @@ width: 80px;
   
 
 
+  
+
 }
 @media (min-width: 768px) {
+  /* .navbar .container {
+    grid-template-columns: max-content 1fr;
+  } */
+
+  .mojgrid-cols-profile{
+  grid-template-columns: 200px 1fr;
+}
   .moj-pr-8 {
   padding-right: 0rem/* 32px */;
 }
@@ -1437,16 +1316,6 @@ width: 80px;
 
 
 
-
-
-
-
-
-
-
-
-
-
 .slide-fade-enter-active, .slide-fade-leave-active {
   transition: all 0.5s ease;
 }
@@ -1456,119 +1325,36 @@ width: 80px;
 }
 
 
+.pagination button.active {
+  background-color: #03a9f4;
+  color: white;
+}
+.pagination button.separator {
+  background: none;
+  border: none;
+  pointer-events: none;
+}
 
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
+  grid-gap: 60px;
+  grid-row-gap: 90px;
+  width: 100%;
+
+
+max-width: 1500px;
+
+  justify-content: center;
+  align-items: stretch;
+
+
+}
 .grid-wrapper {
   display: flex;
   justify-content: center;
   padding: 0 4%; /* Adjust padding as needed */
     margin-bottom: 5.9%;
-}
-
-
-
-@media (max-width: 992px) {
-
-  .grid-wrapper {
-margin-top: 5%;
-    margin-bottom: 5.9%;
-}
-
-
-
-}
-
-@media (max-width: 768px) {
-
-  .grid-wrapper {
-    margin-top: 5%;
-    margin-bottom: 5.9%;
-}
-.container2{
-top: 10% !important;
-}
-.ml-16{
-  margin-left: 1rem !important;
- 
-   margin-right: 1rem !important;
-}
-.moj-pr-8 {
-  top: 25% !important;
-}
-
-.sidebar-closed {
-  top: 25% !important;
-  position: fixed !important;
-}
-
-
-}
-.pagination {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  list-style: none;
-  padding: 0;
-  padding-top: 3.6rem;
-}
-
-.pagination button {
-  cursor: pointer;
-  border-radius: 50%; /* Circular buttons */
-  width: 40px;
-  height: 40px;
-  margin: 0 5px;
-  border: 1px solid #03a9f4; /* Blue border */
-  background-color: #fff;
-  color: #03a9f4; /* Blue text */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background-color 0.3s, color 0.3s;
-}
-
-.pagination button:hover,
-.pagination button.active {
-  background-color: #03a9f4; /* Blue background for active/hover state */
-  color: #fff; /* White text for active/hover state */
-}
-
-.pagination button:disabled {
-  cursor: default;
-  opacity: 0.5;
-}
-
-.pagination button.separator {
-  pointer-events: none;
-  cursor: default;
-  background: transparent;
-  color: #aaa;
-}
-
-/* Arrow buttons styling */
-.pagination button.prev,
-.pagination button.next {
-  border-radius: 5px; /* Slightly rounded for arrows */
-}
-
-/* Hide the default arrows and use custom ones */
-.pagination button.prev::before,
-.pagination button.next::after {
-  content: '';
-  display: inline-block;
-  width: 10px;
-  height: 10px;
-  border-top: 2px solid currentColor;
-  border-right: 2px solid currentColor;
-}
-
-.pagination button.prev::before {
-  transform: rotate(-135deg);
-  margin-right: 5px;
-}
-
-.pagination button.next::after {
-  transform: rotate(45deg);
-  margin-left: 5px;
 }
 
 
@@ -2128,6 +1914,11 @@ top: 10% !important;
   }
 
   @media screen and (max-width: 600px) {
+    .zahtjevi-root {
+    grid-template-columns: auto !important;
+  }
+
+
 
     .placeholder-image {
     content: url('/storage/slike/nasiclanovi/placeholderclanovi_mobile.jpg');
@@ -2181,18 +1972,7 @@ padding-left: 24px;
 
   @media screen and (max-width: 350px) {
 
-    .pretrazivanjepoimenu {
 
-
-width: calc(100% - 28%) !important; /* Subtract left and right padding from 100% */
-padding-left: 4%;
-padding-right: 4%;
-margin-left: 8%;
-margin-right: 8%;
-height: auto;
-
-
-}
   
     .popis-lanova-hzuts-a {
     left: 3.05rem;
@@ -2271,6 +2051,10 @@ overflow: visible;
 
 
   @media screen and (max-width: 675px) {
+
+
+
+
     .filteriframeglavni-child {
     height: 24.81rem;
   }
@@ -2328,10 +2112,11 @@ overflow: visible;
     color: #68c471;
   }
   .frameimeistatus {
-   
+    align-self: stretch;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
     gap: 5px;
   }
   .sviframeoviizaduzenje {
@@ -2339,10 +2124,10 @@ overflow: visible;
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
+    align-items: flex-start;
+    justify-content: flex-start;
     font-size: 32px;
-   
+    margin-left: 24%;
     margin-top: 6%;
   }
   .info-icon {
@@ -2432,7 +2217,7 @@ overflow: visible;
   .prviframedetalji {
     align-self: stretch;
     border-radius: 10px;
-    
+    background-color: #f8f7f5;
     height: 200px;
     display: flex;
     flex-direction: column;
@@ -2540,7 +2325,7 @@ overflow: visible;
   .kvadrat1 {
     align-self: stretch;
     border-radius: 10px 10px 0px 0px;
- 
+    background-color: #f8f7f5;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -2652,7 +2437,7 @@ overflow: visible;
   .kvadrat2 {
     align-self: stretch;
     border-radius: 0px 0px 10px 10px;
-
+    background-color: #f8f7f5;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
@@ -2666,9 +2451,23 @@ overflow: visible;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
-    border-radius: 10px;
   }
-
+  .zaduenja {
+    position: relative;
+    font-weight: 600;
+  }
+  .gumbzaduzenja {
+    align-self: stretch;
+    border-radius: 10px;
+    background-color: #03a9f4;
+    height: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+  }
   .framesvekartice {
     align-self: stretch;
     display: flex;
@@ -2684,22 +2483,27 @@ overflow: visible;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: center;
+    justify-content: flex-end;
     padding: 0px 1px 0px 0px;
   
   }
   .detaljiclanaframeglavni {
 
     flex: 1;
-    width: 600px;
+    min-width: 600px;
     height: 100%; 
-    margin: auto;
-    margin-bottom: 3rem;
+    overflow-y: scroll; 
 
+    margin: 0 !important;
+    position: fixed; 
+    top: 0rem;
+    right: 0.06rem;
     background-color: #fff;
     display: flex;
     flex-direction: column;
-  
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 1.75rem 1.81rem;
     gap: 1.5rem;
     z-index: 2003;
     font-size: 1.25rem;
@@ -2713,7 +2517,7 @@ overflow: visible;
 
     .detaljiclanaframeglavni {
       min-width: auto; 
-    width: 90%;
+    width: 100%;
 }
 
     .imeclana {
@@ -2755,46 +2559,50 @@ overflow: visible;
 
   @media screen and (max-width: 460px) {
 
+    .container {
+    padding-right: 3%; 
+  }
+
       .naslovosnovneinfo {
-    gap: 20px;
+    gap: 66px;
   }
   .gradframe {
-    gap: 6px;
+    gap: 121px;
   }
 
   .podrucnizborframe {
-    gap: 6px;
+    gap: 93px;
   }
   .clanskibrojframe {
-    gap: 6px;
+    gap: 70px;
   }
 
 
 .naslovstatus {
-    gap: 47px;
+    gap: 104px;
   }
 
   .statusframedetalji {
 
-    gap: 6px;
+    gap: 112px;
   }
 
 
 
   .licenceframe {
-    gap: 6px;
+    gap: 98px;
   }
   .licencavrijediframe {
-    gap: 6px;
+    gap: 24px;
   }
 
   .valjanostlicenceframe {
-    gap: 6px;
+    gap: 29px;
   }
 
   .clanskaiskaznicaframe {
 
-    gap: 6px;
+    gap: 22px;
   }
 
 
@@ -2810,7 +2618,11 @@ overflow: visible;
 }
 
 
-    
+      .sviframeoviizaduzenje {
+
+    margin-left: 30%;
+    margin-top: 5%;
+  }
 
     .placeholderzaslike-icon {
         width: 70px; /* Set the desired size */
@@ -2824,48 +2636,35 @@ top:6%
 
  
      .statusdetalji {
-    font-size: 10px;
+    font-size: 12px;
   }
  .statusstecenframe {
 
-  gap: 6px;
+    gap: 30px;
   }
   .drzavaframe {
 
-    gap: 6px;
+    gap: 104px;
   }
   .organizatorframe {
-    gap: 6px;
+    gap: 67px;
   }
   .licencaframe {
-    gap: 6px;
+    gap: 98px;
   }
       .datumseminaraframe {
-        gap: 6px;
+    gap: 33px;
   }
-
-  .lanska-iskaznica-wrapper {
-    gap: 6px;
-    width: 90px;
-  }
-  .licenca-vrijedi-do-wrapper {
-    width: 90px;
-  }
-  .valjanost-licence-wrapper {
-    width: 90px;
-  }
-
-
   .mjestoseminaraframe {
-    gap: 6px;
+    gap: 32px;
   }
     .imeclana {
-      font-size: 20px;
+      font-size: 26px;
     }
 
     .naslovseminar {
-      font-size: 10px;
-      gap: 43px;
+      font-size: 12px;
+     gap: 105px;
     }
     
     .frameimeistatus {
@@ -2874,34 +2673,30 @@ top:6%
       padding-top: 20px;
       padding-bottom: 0px;
       box-sizing: border-box;
-        font-size: 10px;
+        font-size: 12px;
     }
 
     .osnovne-informacije {
-      font-size: 10px;
+      font-size: 12px;
     }
 
     .grad {
-      font-size: 10px;
+      font-size: 12px;
     }
 
     .status {
-      font-size: 10px;
+      font-size: 12px;
     }
 
     .mjesto-seminara {
-      font-size: 10px;
-    
+      font-size: 12px;
+      text-align: left;
     }
 
     .hzuts-i-nik {
-      font-size: 10px;
-  
+      font-size: 12px;
+      text-align: left;
     }
-    .container {
-    padding-right: 3%; 
-  }
-
   }
 
 
@@ -2909,7 +2704,7 @@ top:6%
 
 .custom-dropdown1 {
   position: relative;
-  width: 300px; 
+  width: 300px; /* Adjust as necessary */
   border: 1px solid rgba(3, 169, 244, 0.5); 
   cursor: pointer;
   
@@ -3023,6 +2818,62 @@ overflow-y: scroll;
 
 }
 
+.payment-separator {
+  height: 2px;
+  background-color: #03A9F4; /* blue separator line */
+  margin-top: 3px; /* space between the info and the line */
+}
+
+.payment-title {
+  display: block; /* ensures the title is on its own line */
+  font-weight: bold;
+  font-size: medium;
+  margin-top: 8px; /* Space between title and details */
+}
+
+
+.payment-name {
+  font-weight: bold;
+}
+
+.payment-date {
+  font-size: 0.9rem;
+  margin-top: auto;
+margin-right: auto;
+padding-left: 1rem;
+}
+
+.payment-status {
+  background-color: #67C371; /* green background */
+  color: white; /* white text */
+  padding: 5px 5px; /* padding inside the status tag */
+
+  font-weight: bold;
+  font-size: 0.9rem !important;
+}
+.payment-info {
+  /* styles for the container of status, date, and price */
+  display: flex;
+  justify-content: space-between; /* adjust as needed */
+  align-items: flex-start;
+  padding: 8px 0; /* spacing above and below the info line */
+}
+
+.payment-price {
+  margin-left: 10px; /* Space between the status and the price */
+  font-size: 0.9rem;
+  margin-top: auto;
+}
+
+/* Adjust the background-color and color properties to match your actual 'paidstatus' values */
+.payment-status.paid {
+  background-color: #67C371; /* Green background for paid status */
+}
+
+.payment-status.unpaid {
+  background-color: #f44336; /* Red background for unpaid status */
+}
+
 
 .placeholderzaslike-icon {
         width: 100px; /* Set the desired size */
@@ -3037,7 +2888,24 @@ overflow-y: scroll;
     }
 
 
- 
+    .selected-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 24px;
+  height: 24px;
+ /* This will help in case the numbers have two digits or more */
+  border-radius: 50%; /* circle */
+  background-color: #03a9f4; /* any color you want */
+  color: white; /* text color */
+  position: absolute;
+  top: -10px; /* half of the height to ensure it's centered on the y-axis */
+  left: -10px; /* half of the width to ensure it's centered on the x-axis */
+  font-size: 0.75rem;
+  font-weight: bold;
+  z-index: 2;
+  border: 2px solid white; /* match the background color of .custom-dropdown */
+}
 
  /* Placeholder container styling */
  .placeholder-container {
@@ -3061,26 +2929,8 @@ overflow-y: scroll;
     transform: translate(-50%, -50%);
     font-size: 20px; /* Adjust font size as needed */
   }
-
-
-  @media (max-width: 400px) {
-  .sakrij {
-    /*  display: none; This will hide the element on small screens */
-width: 66px;
-  }
-  .px-6 {
-    /*  display: none; This will hide the element on small screens */
-padding-left: 0.5rem !important;
-padding-right: 0.5rem !important;
-  }
-
-  .pt-5
-  {
-    /*  display: none; This will hide the element on small screens */
-padding-top: 0rem !important;
-  }
-}
-.bell-icon.has-unread path {
+  
+  .bell-icon.has-unread path {
   stroke: orange;
 }
 @keyframes swing {
@@ -3107,5 +2957,321 @@ padding-top: 0rem !important;
 .has-unread svg {
   stroke: orange;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+.group-icon1 {
+    height: 64px;
+    width: 51.2px;
+    position: relative;
+  }
+  .badge-1 {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 6px;
+  }
+  .amblem {
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    color: inherit;
+    display: inline-block;
+    min-width: 65px;
+  }
+  .zatrai-zahtjev-za {
+    align-self: stretch;
+    position: relative;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2;
+  }
+  .zatrai {
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Inter;
+  
+    text-align: center;
+    display: inline-block;
+    min-width: 40px;
+  }
+  .zatrai-wrapper {
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    padding: 7px 49px;
+    background-color: #03a9f4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #03a9f4;
+  }
+  .zatrai-wrapper:hover {
+    background-color: #ffffff;
+    color: #03a9f4 !important;
+    border: 1px solid #03a9f4;
+  }
+  .badge-1-parent {
+    flex: 1;
+    border-radius: 15px;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 8px;
+    gap: 15px;
+    min-width: 149px;
+  }
+  .vector-icon5 {
+    width: 58.7px;
+    height: 42.7px;
+    position: relative;
+  }
+  .vector-icon6 {
+    width: 91.65%;
+    height: 4.64%;
+    position: absolute;
+    margin: 0 !important;
+    top: 41.58%;
+    right: 4.17%;
+    bottom: 53.79%;
+    left: 4.17%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    z-index: 1;
+  }
+  .credit-card-1 {
+    width: 64.7px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 2px;
+    box-sizing: border-box;
+    position: relative;
+    gap: 10px;
+  }
+  .iskaznica {
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    color: inherit;
+    display: inline-block;
+    min-width: 73px;
+  }
+  .zatrai-zahtjev-za1 {
+    align-self: stretch;
+    position: relative;
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .zatrai1 {
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Inter;
+
+    text-align: center;
+    display: inline-block;
+    min-width: 40px;
+  }
+  .zatrai-container {
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    padding: 7px 49px;
+    background-color: #03a9f4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #03a9f4;
+  }
+  .zatrai-container:hover {
+    background-color: #ffffff;
+    color: #03a9f4 !important;
+    border: 1px solid #03a9f4;
+  }
+  .credit-card-1-parent {
+    flex: 1;
+    border-radius: 15px;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 8px;
+    gap: 15px;
+    min-width: 149px;
+  }
+  .vector-icon7 {
+    height: 64px;
+    width: 64px;
+    position: relative;
+  }
+  .vector-icon8 {
+    height: 5.94%;
+    width: 18.08%;
+    position: absolute;
+    margin: 0 !important;
+    top: 14.69%;
+    right: 40.58%;
+    bottom: 79.38%;
+    left: 41.35%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    z-index: 1;
+  }
+  .vector-icon9 {
+    height: 39.69%;
+    width: 28.94%;
+    position: absolute;
+    margin: 0 !important;
+    top: 37.66%;
+    right: 26.15%;
+    bottom: 22.66%;
+    left: 44.9%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    z-index: 1;
+  }
+  .frame1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+    position: relative;
+    gap: 10px;
+  }
+  .potvrda {
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    color: inherit;
+    display: inline-block;
+    min-width: 61px;
+  }
+  .zatrai-zahtjev-za2 {
+    align-self: stretch;
+    position: relative;
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .zatrai2 {
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Inter;
+
+    text-align: center;
+    display: inline-block;
+    min-width: 40px;
+  }
+  .zatrai-frame {
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    padding: 7px 49px;
+    background-color: #03a9f4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #03a9f4;
+  }
+  .zatrai-frame:hover {
+    background-color: #ffffff;
+    color: #03a9f4 !important;
+    border: 1px solid #03a9f4;
+  }
+  .frame-parent46 {
+    flex: 1;
+    border-radius: 15px;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 8px;
+    gap: 15px;
+    min-width: 149px;
+  }
+  .zahtjevi-root {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+
+  width: 100%;
+  max-width: 1000px; /* Adjust this value as needed */
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  line-height: normal;
+  letter-spacing: normal;
+  font-size: 16px;
+  color: #000;
+  font-family: Inter;
+}
+
+  @media screen and (max-width: 450px) {
+    .zatrai-wrapper {
+      width: calc(100% - 40px);
+    }
+
+    /* .badge-1-parent {
+      width: calc(100% - 40px);
+    } */
+
+    .zatrai-container {
+      width: calc(100% - 40px);
+    }
+
+    /* .credit-card-1-parent {
+      width: calc(100% - 40px);
+    } */
+
+    .zatrai-frame {
+      width: calc(100% - 40px);
+    }
+
+    /* .frame-parent46 {
+      width: calc(100% - 40px);
+    } */
+
+    .zahtjevi-root {
+      gap: 30px;
+    }
+  }
+
+
+  
+
 
 </style>
