@@ -38,4 +38,45 @@ export default {
     };
     return resource.delete(apiPrefix + "/v1/configurations/delete", paramData);
   },
+
+  getFormFields(formId) {
+    let ep = `${apiPrefix}/v1/forms/${formId}/fields`;
+    return resource.get(ep);
+  },
+
+  getUserData(userId) {
+    let ep = `${apiPrefix}/v1/users/${userId}`;
+    return resource.get(ep);
+  },
+
+  saveFormEntry(formId, data) {
+    let ep = `${apiPrefix}/v1/forms/${formId}/entries`;
+    return resource.post(ep, data);
+  },
+
+  saveForm(data) {
+    let ep = `${apiPrefix}/v1/forms`;
+    return resource.post(ep, data);
+  },
+
+
+  browseForm() {
+    let ep = apiPrefix + "/v1/forms";
+    return resource.get(ep);
+  },
+  getForm(formId) {
+    let ep = `${apiPrefix}/v1/forms/${formId}`;
+    return resource.get(ep);
+  },
+
+  editForm(formId, data) {
+    let ep = `${apiPrefix}/v1/forms/${formId}`;
+    return resource.put(ep, data);
+  },
+
+  updateForm(formId, data) {
+    let ep = `${apiPrefix}/v1/forms/${formId}`;
+    return resource.put(ep, data);
+  },
+
 };

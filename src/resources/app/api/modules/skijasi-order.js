@@ -31,6 +31,12 @@ export default {
   stvoriuplatnicu(data = {}) {
     let ep = apiPrefix + "/v1/order/public/stvoriuplatnicu";
     return resource.post(ep, data);
+  },
+
+  // New method to get order status
+  getOrderStatus(data = {}) {
+    let ep = apiPrefix + "/v1/order/public/orderstatus";
+    return resource.post(ep, data);
   }
 
 };

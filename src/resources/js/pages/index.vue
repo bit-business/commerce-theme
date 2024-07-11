@@ -9,11 +9,13 @@
 <script>
 import CommerceThemeConfiguration from "./site-management/browse";
 import CommerceThemeConfigurationAdd from "./site-management/add";
+import CommerceThemeConfigurationPrijavnice from "./site-management/prijavnice";
 
 export default {
   components: {
     CommerceThemeConfiguration,
-    CommerceThemeConfigurationAdd
+    CommerceThemeConfigurationAdd,
+    CommerceThemeConfigurationPrijavnice
   },
   name: "CommerceThemeEntryIndex",
   data: () => ({

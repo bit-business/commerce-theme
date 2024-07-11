@@ -1,7 +1,7 @@
 <template>
   <div>
     <Head :title="$page.props.name" />
-
+    <div class="navbar">
         <!-- Floating Action Button -->
         <div v-if="!isSidebarExpanded" class="fab" :class="{ open: isGridVisible }" @touchend="toggleGridVisibility" @click="toggleGridVisibility">
     <span class="fab-icon" :class="{ 'icon-active': isGridVisible }">
@@ -72,7 +72,7 @@
   </Link>
 
 
-  <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+  <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
@@ -157,12 +157,11 @@
 
 
 
-      <div class="bg-white shadow-sm rounded-xl flex flex-wrap ml-16 mr-4">
-
-        <div class="flex flex-col w-full px-6 justify-center items-start border-plava-200 border-b p-4">
+<div class="bg-white shadow-sm px-6 rounded-xl ml-16 pb-8">
+          <!--2-->
+          <div class="h-22 flex flex-col py-4 justify-center border-plava-200 border-b">
             <span class="text-lg font-medium plavi-text">Obavijesti</span>
           </div>
- 
         <div class="flex flex-wrap w-full">
 
           <template v-if="notifications.length > 0">
@@ -244,7 +243,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
 
 
 
-
+  </div>
 
 
      <!--1-->
@@ -304,7 +303,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
     <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Obavijesti</span>
   </Link>
 
-  <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+  <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
@@ -830,10 +829,11 @@ line-height: normal;
 
 
 .navbar {
-    padding-top: 4.2rem; 
+    padding-top: 3rem; 
     padding-bottom: 3.15rem; 
     font-family: Inter;
   }
+
 
 
   .border-plava-200 {
@@ -1031,9 +1031,7 @@ width: 80px;
   padding-right: 0rem/* 32px */;
 }
 
-.pt-5{
-padding-top: 4.1rem;
-}
+
 
 .sidebar-closed {
     background: none; /* Remove background */

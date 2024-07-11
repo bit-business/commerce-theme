@@ -205,7 +205,7 @@
 
 </div>
       <div class="framegumbi">
-        <a class="lijevigumb" :href="product.prijavnicalink"  @click="handleClick">
+        <a class="lijevigumb"  :href="route('skijasi.commerce-theme.prijavanadogadaj', { id:  product.formId })"  @click="handleClick">
   <b class="prijavnica-za-dogaaj">PRIJAVNICA ZA DOGAĐAJ</b>
 </a>
 
@@ -257,6 +257,9 @@ import CarouselItemSingle from '../components/carousel-single/carousel-item.vue'
 import { mapState } from 'vuex'
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
+import podaciusera from '../../../../../core/src/resources/js/api/modules/skijasi-user.js';
+
+
 export default {
   layout: [appLayout, detailLayout],
   components: {
@@ -275,6 +278,9 @@ export default {
       showPopup: true,
 
       activeSection: 'skijaliste',
+
+
+      korisnik: [],
 
 
       backgroundImage: null,
@@ -386,6 +392,7 @@ export default {
       },
       product: {
         closed: 1, 
+        form_id: null,
 
         desc: null,
         desc2: null,
@@ -498,7 +505,14 @@ export default {
       isAuthenticated(state) {
         return state.isAuthenticated
       },
-    })
+      user(state) {
+        return state.user
+      },
+      appName(state) {
+        return this.$_.find(state.themeConfigurations, { key: "appName" }).value;
+      },
+    }),
+
   },
   watch: {
     '$page.props': {
@@ -529,10 +543,27 @@ export default {
 
   },
   mounted() {
-    this.getProduct()
-
+    this.getProduct();
+    this.ucitajClanove();
   },
   methods: {
+    async ucitajClanove() {
+            console.log("TEST ID ucitaj clanove:", this.user.id);
+        try {
+          this.number = this.user.id;
+        
+          const response = await podaciusera.readmojstatus({
+              id: this.number,
+          });
+              this.korisnik = response.data.user;
+              console.log("TEST STATUS ucitaj clanove:", this.korisnik.statusString);
+
+            } catch (error) {
+            // this.$closeLoader();
+        
+        }
+      },
+
     handleClick() {
       if (this.product.closed === 1) {
         this.showPopup = true; // Show the popup
@@ -791,28 +822,37 @@ showNextImage() {
         })
     },
     getProduct() {
-      this.$api.skijasiProduct
-        .read({
-          slug: this.$page.props.slug
-        })
-        .then(res => {
-          this.product = res.data.product
-          this.product.reviewAvgRating = parseFloat(res.data.product.reviewAvgRating) || 0
-          this.activeImageSource = res.data.product.productDetails[0].productImage
-          this.activePrice = res.data.product.productDetails[0].price
-          this.activeStock = res.data.product.productDetails[0].quantity
-          this.selectedProduct.id = res.data.product.productDetails[0].id
-          this.activeDiscount = res.data.product.productDetails[0].discount
-         // this.getSimilarProduct()
-         // this.getReviews()
-         console.log('Active Image Source:', this.activeImageSource);
+  this.$api.skijasiProduct
+    .read({ slug: this.$page.props.slug })
+    .then(res => {
+      this.product = res.data.product;
+      this.product.reviewAvgRating = parseFloat(res.data.product.reviewAvgRating) || 0;
+      this.activeImageSource = res.data.product.productDetails[0].productImage;
+      this.activePrice = res.data.product.productDetails[0].price;
+      this.activeStock = res.data.product.productDetails[0].quantity;
+      this.activeDiscount = res.data.product.productDetails[0].discount;
+// this.getSimilarProduct() // this.getReviews() 
+      // Find matching product or "Nije član"
+      const matchingProduct = res.data.product.productDetails.find(
+        detail => detail.name === this.korisnik.statusString
+      );
 
-        })
-        .catch(err => {
-          this.$helper.displayErrors(err)
-          this.$inertia.visit(this.route('skijasi.commerce-theme.404'))
-        })
-    },
+      if (matchingProduct) {
+        this.selectedProduct.id = matchingProduct.id;
+      } else {
+        const nijeclanProduct = res.data.product.productDetails.find(
+          detail => detail.name === "Nije član"
+        );
+        this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : res.data.product.productDetails[0].id;
+      }
+
+      console.log('Active Image Source:', this.activeImageSource);
+    })
+    .catch(err => {
+      this.$helper.displayErrors(err);
+      this.$inertia.visit(this.route('skijasi.commerce-theme.404'));
+    });
+},
     getSimilarProduct() {
       this.$api.skijasiProduct
         .browseSimilar({
@@ -835,10 +875,10 @@ showNextImage() {
       return this.$currency(price - d)
     },
     addToCart() {
-      if (this.selectedProduct.id === null) {
-        this.$helper.alert("Morate odabrati opciju!")
-        return
-      }
+      // if (this.selectedProduct.id === null) {
+      //   this.$helper.alert("Morate odabrati opciju!")
+      //   return
+      // }
 
       if (!this.isAuthenticated) {
         this.$helper.alert("Morate se prijaviti prvo!")
@@ -860,10 +900,10 @@ showNextImage() {
         })
     },
     buyNow() {
-      if (this.selectedProduct.id === null) {
-        this.$helper.alert("Potrebno je odabrati barem jednu vrstu!")
-        return
-      }
+      // if (this.selectedProduct.id === null) {
+      //   this.$helper.alert("Potrebno je odabrati barem jednu vrstu!")
+      //   return
+      // }
 
       if (!this.isAuthenticated) {
         this.$helper.alert("Morate se prijaviti prvo. Niste logirani!")
@@ -878,7 +918,7 @@ showNextImage() {
         })
         .then(res => {
           this.$store.dispatch('FETCH_CARTS')
-          this.$inertia.visit(this.route('skijasi.commerce-theme.cart'))
+          this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
           this.$helper.alert(res.message)
         })
         .catch(err => {

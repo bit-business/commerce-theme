@@ -6,6 +6,8 @@ use NadzorServera\Skijasi\Middleware\SkijasiAuthenticate;
 use NadzorServera\Skijasi\Middleware\SkijasiCheckPermissions;
 use NadzorServera\Skijasi\Theme\CommerceTheme\Helpers\Route as HelpersRoute;
 
+use NadzorServera\Skijasi\Theme\CommerceTheme\Controllers\ConfigurationController;
+
 $api_route_prefix = \config('skijasi.api_route_prefix');
 
 Route::group(['prefix' => $api_route_prefix, 'as' => 'skijasi.', 'middleware' => [ApiRequest::class]], function () {
@@ -21,5 +23,27 @@ Route::group(['prefix' => $api_route_prefix, 'as' => 'skijasi.', 'middleware' =>
             Route::get('/', HelpersRoute::getApiController('ConfigurationController@browse'));
             Route::get('/read', HelpersRoute::getApiController('ConfigurationController@read'));
         });
+
+
+
+  
+
+        Route::get('/forms/{formId}/fields', [ConfigurationController::class, 'getFormFields']);
+        Route::get('/users/{userId}', [ConfigurationController::class, 'getUserData']);
+        Route::post('/forms/{formId}/entries', [ConfigurationController::class, 'saveFormEntry']);
+
+
+
+        Route::post('/forms', [ConfigurationController::class, 'saveForm']);
+
+        Route::get('/forms', [ConfigurationController::class, 'browseForms']);
+        Route::get('/forms/{formId}', [ConfigurationController::class, 'readForm']);
+        Route::put('/forms/{formId}', [ConfigurationController::class, 'updateForm']);
+
+        Route::post('/forms/{formId}/entries', [ConfigurationController::class, 'saveFormEntry']);
+        Route::get('/users/{userId}', [ConfigurationController::class, 'getUserData']);
+
+        
+
     });
 });

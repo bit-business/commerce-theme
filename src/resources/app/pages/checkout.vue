@@ -72,7 +72,7 @@ class="bell-icon">
   </Link>
 
 
-  <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+  <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
@@ -232,7 +232,7 @@ class="bell-icon">
   </Link>
 
 
-  <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+  <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
@@ -318,24 +318,22 @@ class="bell-icon">
 
 
 
-      
+<div class="flex flex-col">
       <!-- upravljanje adresom desktop-->
-      <div class="bg-white hidden sm:block rounded-xl shadow-md">
+      <div class="bg-white hidden sm:block rounded-xl shadow-md mb-4 ">
+
         <div class="p-6">
-          <div class="flex text-primary items-center text-lg justify-between">
+          <div class="flex plava-boja items-center text-lg justify-between">
             <span class="flex items-center gap-2">
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                class="h-5 w-5"
-                viewBox="0 0 20 20"
-                fill="currentColor"
-              >
-                <path
-                  fill-rule="evenodd"
-                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                  clip-rule="evenodd"
-                />
-              </svg>
+  xmlns="http://www.w3.org/2000/svg"
+  class="h-5 w-5"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+>
+  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+  <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+</svg>
               Plaćanje za osobu:
             </span>
             <template v-if="isAddState">
@@ -346,7 +344,7 @@ class="bell-icon">
               >
             </template>
           </div>
-          <template v-if="userAddress.length > 0">
+          <template>
             <template v-if="isAddState">
               <div class="flex flex-wrap gap-2 mt-2 items-center p-4">
                 <div
@@ -388,9 +386,11 @@ class="bell-icon">
                     >
                     <span class="flex-grow"
                       >{{ user.adresa
-                      }}{{
+                      }}
+                      <!-- {{
                         address.addressLine2 ? " " + address.addressLine2 : ""
-                      }}, {{ user.postanskibroj }} {{ user.grad }},
+                      }} -->
+                      , {{ user.postanskibroj }} {{ user.grad }},
                       
                       {{ user.drzava }} </span
                     >
@@ -404,7 +404,7 @@ class="bell-icon">
                 </div>
                 <div class="flex gap-4 items-center mt-4">
                   <button
-                    class="bg-primary px-3 py-1 w-24 text-white rounded"
+                    class="bg-primary1 px-3 py-1 w-24 text-white rounded"
                     @click="isAddState = false"
                   >
                     Potvrdi
@@ -419,11 +419,13 @@ class="bell-icon">
                 </div>
                 <div class="flex-grow">
                   {{ user.adresa
-                  }}{{
+                  }}
+                  <!-- {{
                     addressSelected.addressLine2
                       ? " " + addressSelected.addressLine2
                       : ""
-                  }}, {{ user.postanskibroj }} {{ user.grad }},
+                  }} -->
+                  , {{ user.postanskibroj }} {{ user.grad }},
            
                   {{ user.drzava }} 
                 </div>
@@ -434,7 +436,7 @@ class="bell-icon">
                 Glavna osoba
                 </div>
                 <div
-                  class="text-sm font-medium text-primary cursor-pointer"
+                  class="text-sm font-medium plava-boja cursor-pointer"
                   @click="isAddState = true"
                 >
                 PROMIJENI
@@ -442,7 +444,7 @@ class="bell-icon">
               </div>
             </template>
           </template>
-          <template v-else>
+          <!-- <template v-else>
             <div
               class="
                 flex flex-nowrap
@@ -472,11 +474,13 @@ class="bell-icon">
               >
               <Link
                 :href="route('skijasi.commerce-theme.address')"
-                class="bg-primary text-white px-3 text-sm py-1 rounded"
+                class="bg-primary1 text-white px-3 text-sm py-1 rounded"
                 >Izmjena adrese</Link
               >
             </div>
-          </template>
+          </template> -->
+
+
         </div>
       </div>
       <div></div>
@@ -599,7 +603,7 @@ class="bell-icon">
               Ukupni iznos:
               <!-- Ukupni iznos (odabrano {{ items.length }}): -->
             </div>
-            <div class="text-lg text-primary">
+            <div class="text-lg plava-boja">
               {{ $currency(getTotalCost + parseInt(shippingCost)) }}
             </div>
           </div>
@@ -636,7 +640,7 @@ class="bell-icon">
                 text-sm
                 font-medium
                 rounded-md
-                text-primary
+               plava-boja
                 relative
               "
               @click="setPaymentTab(p)"
@@ -659,7 +663,7 @@ class="bell-icon">
                   />
                 </svg>
                 <svg
-                  class="h-5 w-5 rounded-br-3 text-primary"
+                  class="h-5 w-5 rounded-br-3 plava-boja"
                   viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
@@ -730,9 +734,9 @@ class="bell-icon">
               class="md:w-1/2 lg:w-1/3 flex justify-between items-center flex-1"
             >
               <div class="text-sm text-gray-500 text-left">
-                Ukupno Plaćanje:
+                Ukupno Za Platiti:
               </div>
-              <div class="text-3xl text-primary">
+              <div class="text-3xl plava-boja">
                 {{ $currency(getTotalCost + parseInt(shippingCost)) }}
               </div>
             </div>
@@ -755,14 +759,14 @@ class="bell-icon">
             <button
    
                      @click="checkout"
-              class="bg-primary px-12 py-2 text-white rounded-lg font-medium"
+              class="bg-primary1 px-12 py-2 text-white rounded-lg font-medium"
             >
               Na plaćanje
             </button>
           </div>
         </div>
       </div>
-
+    </div>
 
 
       <div class="block sm:hidden pb-16 pt-16 w-screen">
@@ -771,7 +775,7 @@ class="bell-icon">
         class="flex bg-white flex-row items-center gap-2 p-3"
         @click="openAddressDialog"
       >
-        <div class="flex-shrink text-primary self-start">
+        <div class="flex-shrink plava-boja self-start">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-6 w-6"
@@ -826,9 +830,11 @@ class="bell-icon">
                     >
                     <span class="flex-grow"
                       >{{ address.addressLine1
-                      }}{{
+                      }}
+                      <!-- {{
                         address.addressLine2 ? " " + address.addressLine2 : ""
-                      }}, {{ address.city }},
+                      }} -->
+                      , {{ address.city }},
                       {{ getMainAddressCountry(address.country) }},
                       {{ address.country }} {{ address.postalCode }}</span
                     >
@@ -841,7 +847,7 @@ class="bell-icon">
                 </div>
                 <div class="flex gap-4 items-center mt-4">
                   <button
-                    class="bg-primary px-3 py-1 w-24 text-white rounded"
+                    class="bg-primary1 px-3 py-1 w-24 text-white rounded"
                     @click="isAddState = false"
                   >
                     Potvrdi
@@ -856,11 +862,12 @@ class="bell-icon">
               </div>
               <div class="text-xs">
                 {{ addressSelected.addressLine1
-                }}{{
+                }}
+                <!-- {{
                   addressSelected.addressLine2
                     ? `, ${addressSelected.addressLine2}`
                     : ""
-                }}
+                }} -->
               </div>
               <div class="text-xs">
                 {{ addressSelected.city }} - {{ addressSelected.country }}
@@ -890,7 +897,7 @@ class="bell-icon">
                   Utama
                 </div>
                 <div
-                  class="text-sm font-medium text-primary cursor-pointer"
+                  class="text-sm font-medium plava-boja cursor-pointer"
                   @click="isAddState = true"
                 >
                   UBAH
@@ -928,7 +935,7 @@ class="bell-icon">
               >
               <Link
                 :href="route('skijasi.commerce-theme.address')"
-                class="bg-primary text-white px-3 text-sm py-1 rounded"
+                class="bg-primary1 text-white px-3 text-sm py-1 rounded"
                 >Izmjena adrese</Link
               >
             </div>
@@ -1006,7 +1013,7 @@ class="bell-icon">
           <div>Iznos narudžbe
              (odabrano {{ items.length }}):
             </div>
-          <div class="font-medium text-primary">
+          <div class="font-medium plava-boja">
             {{ $currency(getTotalCost) }}
           </div>
         </div>
@@ -1019,7 +1026,7 @@ class="bell-icon">
         <div class="text-sm flex items-center gap-1">
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-primary"
+            class="h-6 w-6 plava-boja"
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -1034,10 +1041,10 @@ class="bell-icon">
           <span class="text-gray-500">Odaberite način plaćanja</span>
         </div>
         <div class="1/4 text-sm flex items-center">
-          <span class="text-primary" v-if="!option"
+          <span class="plava-boja" v-if="!option"
             >Odaberite</span
           >
-          <span class="text-primary text-right" v-else>{{
+          <span class="plava-boja text-right" v-else>{{
             selectedPaymentOption
           }}</span>
           <svg
@@ -1068,7 +1075,7 @@ class="bell-icon">
         </div>-->  
         <div class="flex justify-between items-center">
           <div class="text-gray-700">Ukupno sve:</div>
-          <div class="text-primary">
+          <div class="plava-boja">
             {{ $currency(getTotalCost + parseInt(shippingCost)) }}
           </div>
         </div>
@@ -1080,7 +1087,7 @@ class="bell-icon">
       <div class="p-2 bg-white h-14 bottom-0 left-0 right-0">
         <div
           class="
-            bg-primary
+            bg-primary1
             text-white
             flex
             w-full
@@ -1091,29 +1098,12 @@ class="bell-icon">
             uppercase
             text-sm
           "
-          v-if="option && addressSelected.id"
+       
           @click="checkout"
         >
           Na plaćanje
         </div>
 
-        <div
-          class="
-            bg-gray-200
-            text-gray-400
-            flex
-            w-full
-            items-center
-            justify-center
-            h-full
-            rounded-md
-            uppercase
-            text-sm
-          "
-          v-else
-        >
-          Na plaćanje
-        </div>
       </div>
     </div>
 
@@ -1173,7 +1163,8 @@ class="bell-icon">
               </div>
               <div class="text-xs">
                 {{ address.addressLine1
-                }}{{ address.addressLine2 ? `, ${address.addressLine2}` : "" }}
+                }}
+                <!-- {{ address.addressLine2 ? `, ${address.addressLine2}` : "" }} -->
               </div>
               <div class="text-xs">
                 {{ address.city }} - {{ address.country }}
@@ -1334,6 +1325,7 @@ class="bell-icon">
     </div>
 
   <!-- Info Modal -->
+   
   <info-modala v-if="showModal && orderId" :isOpen="showModal" @close="closeModal" :id="orderId" />
 </div>
 </template>
@@ -1350,7 +1342,7 @@ import { Link, Head } from "@inertiajs/inertia-vue";
 
 
 import Checkbox from './../components/form/checkbox.vue'
-import Counter from './../components/counter/counter.vue'
+
 import Carousel from '../components/carousel/carousel.vue'
 import CarouselItem from '../components/carousel/carousel-item.vue'
 import CommerceProductAlt from '../components/commerce-product-alt.vue'
@@ -1365,9 +1357,7 @@ export default {
     Link,
     Head,
     InfoModala,
-
     Checkbox,
-    Counter,
     Carousel,
     CarouselItem,
     CommerceProductAlt,
@@ -1673,7 +1663,7 @@ export default {
       this.$api.skijasiCheckout
       .finish({
                 items: this.items.map((val) => ({ id: val.id, quantity: val.quantity })),
-                userAddressId: this.addressSelected.id,
+                // userAddressId: this.user.id,
                 message: this.message,
                 paymentType: this.option,
             })

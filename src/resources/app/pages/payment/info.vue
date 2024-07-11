@@ -12,23 +12,23 @@
           {{ $page.props.title }}
         </span>
         <div class="absolute left-4 cursor-pointer" @click="closeModal">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6  text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6  plava-boja" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg> 
-        </div><button class="text-primary font-bold items-start">Plaćanje</button>
+        </div><button class="plava-boja font-bold items-start">Plaćanje</button>
       </div>
     </div>
     <div class="lg:max-w-xl w-full">
       <div class="flex w-full flex-wrap justify-center select-none">
         <div class="w-full bg-white p-4 border-b border-gray-300">
           <p>Iznos za plaćanje:
-          <p class="text-3xl text-primary">{{ separator }}<span class=" font-medium">{{ last }}{{ first }}</span></p></p>
-          <div class="mt-4 text-sm text-white p-1 px-2 bg-primary bg-opacity-80 border-l border-r border-dotted">
+          <p class="text-3xl plava-boja">{{ separator }}<span class=" font-medium">{{ last }}{{ first }}</span></p></p>
+          <div class="mt-4 text-sm text-white p-1 px-2 bg-plava-boja bg-opacity-80 border-l border-r border-dotted">
             Platite narudžbu prema gore navedenom iznosu.
           </div>
 
           <div class="w-full gap-2 flex bg-white border-t border-b p-4 border-gray-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 plava-boja" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
           <div class="flex-grow flex flex-col w-full">
@@ -60,7 +60,7 @@
 
         <div class="w-full flex flex-nowrap gap-2 p-2">
           <div class="w-6 h-6">
-            <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6 text-primary flex-grow" viewBox="0, 0, 400,400" version="1.1">
+            <svg id="svg" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6 plava-boja flex-grow" viewBox="0, 0, 400,400" version="1.1">
               <path d="M143.037 41.161 C 3.999 92.696,-5.971 287.174,127.083 352.339 C 186.443 381.411,271.324 366.663,318.993 318.993 C 443.452 194.535,307.671 -19.861,143.037 41.161 M220.833 191.941 C 220.833 258.944,217.966 275.000,206.000 275.000 C 195.621 275.000,191.667 255.910,191.667 205.798 L 191.667 157.973 176.189 159.195 C 164.626 160.108,160.360 158.711,159.322 153.672 C 158.134 147.901,202.341 126.367,217.708 125.231 C 219.427 125.104,220.833 155.123,220.833 191.941 " stroke="none" fill="currentColor" fill-rule="evenodd">
               </path>
             </svg>
@@ -72,7 +72,7 @@
 
           <div class="flex gap-2">
             <div class="w-6 h-6">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6 text-primary flex-grow" viewBox="0, 0, 400,400" version="1.1">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6 plava-boja flex-grow" viewBox="0, 0, 400,400" version="1.1">
                 <path id="path0" d="M137.778 49.836 C 33.422 89.851,5.497 232.941,86.278 313.722 C 188.849 416.294,360.000 345.186,360.000 200.000 C 360.000 84.104,247.198 7.880,137.778 49.836 M222.311 140.046 C 253.193 156.015,250.268 177.904,212.073 216.667 L 184.701 244.444 214.573 244.444 C 243.473 244.444,244.444 244.806,244.444 255.556 L 244.444 266.667 200.000 266.667 C 144.280 266.667,143.777 264.427,188.889 217.209 C 207.222 198.020,222.222 178.441,222.222 173.700 C 222.222 151.410,192.006 143.275,179.591 162.222 C 172.004 173.801,155.556 177.520,155.556 167.656 C 155.556 141.869,194.605 125.718,222.311 140.046 " stroke="none" fill="currentColor" fill-rule="evenodd">
                 </path>
               </svg>
@@ -83,7 +83,7 @@
           </div>
           <div class="flex flex-nowrap gap-2">
             <div class="w-6 h-6">
-              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6 text-primary" viewBox="0, 0, 400,400" version="1.1">
+              <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="w-6 h-6 plava-boja" viewBox="0, 0, 400,400" version="1.1">
                 <path id="path0" d="M137.778 49.836 C 33.422 89.851,5.497 232.941,86.278 313.722 C 188.849 416.294,360.000 345.186,360.000 200.000 C 360.000 84.104,247.198 7.880,137.778 49.836 M231.453 146.325 C 247.767 162.639,247.801 171.076,231.611 186.200 L 218.777 198.189 231.688 205.599 C 254.954 218.951,254.119 243.121,229.881 257.899 C 203.731 273.843,160.506 263.854,154.386 240.453 C 151.135 228.019,165.519 227.741,177.778 240.000 C 196.968 259.190,233.725 243.471,223.278 220.542 C 220.055 213.469,213.254 209.030,202.573 207.026 C 185.400 203.804,180.036 191.111,195.848 191.111 C 218.121 191.111,230.750 170.305,216.889 156.444 C 208.585 148.140,187.424 150.125,178.969 160.000 C 164.554 176.835,147.817 168.133,161.252 150.788 C 177.986 129.187,212.144 127.016,231.453 146.325 " stroke="none" fill="currentColor" fill-rule="evenodd"></path>
               </svg>
             </div>
@@ -91,16 +91,16 @@
           </div>
         </div>
         <div class="w-full flex flex-wrap gap-2 my-2 px-3 sm:px-0">
-         <Link class="w-full p-4 bg-primary text-white font-bold rounded text-center text-sm" :href="route('skijasi.commerce-theme.payment-confirm', id)">
+         <Link class="w-full p-4 bg-plava-boja text-white font-bold rounded text-center text-sm" @click="potvrdaplacanjabezdokaza">
             Potvrdi da je uplaćeno
           </Link>
           <!-- <div class="w-full text-center ">ili</div> -->
-          <button class="w-full p-4 bg-primary font-bold text-white rounded text-center text-sm" @click="showUploadProofContent">
+          <button class="w-full p-4 bg-plava-boja font-bold text-white rounded text-center text-sm" @click="showUploadProofContent">
            Potvrdi da je uplaćeno i učitaj dokaz plaćanja za bržu obradu
           </button>
    
           <Link 
-            class="w-full p-2 bg-transparent  text-primary border border-primary rounded text-center text-sm" 
+            class="w-full p-2 bg-transparent  plava-boja border border-primary rounded text-center text-sm" 
             :href="route('skijasi.commerce-theme.zaduzenja')"
           >
           Odustani
@@ -128,7 +128,7 @@
     Spremi uplatnicu
   </button>
 </div>
-  <iframe ref="pdfViewer" class="pdf-iframe" frameborder="0"></iframe>
+<iframe v-if="pdfUrl" ref="pdfViewer" :src="pdfUrl" class="pdf-iframe" frameborder="0"></iframe>
 </div>
   </div>
       </div>
@@ -149,17 +149,17 @@
           {{ $page.props.title }}
         </span>
         <div class="absolute left-4 cursor-pointer" @click="contentMode = 'default'">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6  text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6  plava-boja" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg> 
-        </div><button class="text-primary font-bold items-start">Slanje potvrde plaćanja</button>
+        </div><button class="plava-boja font-bold items-start">Slanje potvrde plaćanja</button>
       </div>
     </div>
     <div class="lg:max-w-xl w-full">
       <div class="flex w-full flex-wrap justify-center select-none">
         <div class="w-full flex text-sm bg-white p-3 border-b border-gray-300 justify-between">
           <p>Ukupno za platiti</p>
-          <span class="text-primary font-medium">{{ last }}{{ first }}</span>
+          <span class="plava-boja font-medium">{{ last }}{{ first }}</span>
         </div>
         <div 
           class="w-full flex text-sm bg-white p-3 border-b border-gray-300 justify-between cursor-pointer items-center" 
@@ -176,7 +176,7 @@
           class="w-full gap-2 bg-white border-b p-4 border-gray-300 origin-top transform transition-transform duration-300 ease-in-out" 
           :class="[openAccordion ? 'flex' : 'hidden']"
         >
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 plava-boja" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
           </svg>
           <div class="flex-grow flex flex-col w-full">
@@ -238,14 +238,14 @@
                 :href="sampleProofOfTransaction"
                 download="transaction.png"
                 target="_blank"
-                class="py-2 bg-primary text-white w-full rounded text-sm text-center"
+                class="py-2 bg-plava-boja text-white w-full rounded text-sm text-center"
               >
               Spremi 
               </a>
               <iframe ref="pdfViewer" class="pdf-iframe" frameborder="0"></iframe>
               <button 
                 @click="openDialog = false"
-                class="py-2 bg-white border border-primary hover:bg-primary hover:bg-opacity-10 text-primary w-full rounded text-sm"
+                class="py-2 bg-white border border-primary hover:bg-plava-boja hover:bg-opacity-10 plava-boja w-full rounded text-sm"
               >
                Zatvori
               </button>
@@ -357,7 +357,7 @@
         </div> -->
 
         <div class="w-full flex flex-wrap gap-2 p-2 border-t border-gray-300  max-w-xl bg-white">
-          <button @click="send" class="w-full p-4 font-bold bg-primary text-white rounded text-center text-sm" :to="{ name: 'PaymentConfirm' }">
+          <button @click="send" class="w-full p-4 font-bold bg-plava-boja text-white rounded text-center text-sm" :to="{ name: 'PaymentConfirm' }">
            POTVRDI DA JE PLAĆENO
           </button>
         </div>
@@ -524,6 +524,38 @@ export default {
   }
 },
   methods: {
+
+    potvrdaplacanjabezdokaza() {
+      console.log('Sending data:', {
+    orderId: this.id,
+    ...this.selected,
+    destinationBank: this.selected.destinationBank.name,
+    sourceBank: this.selected.sourceBank.key,
+  });
+   
+        this.$openLoading()
+        this.$api.skijasiOrder
+          .pay({
+  
+            orderId: this.id,
+            ...this.selected,
+            destinationBank: this.selected.destinationBank.name,
+            sourceBank: this.selected.sourceBank.key,
+          })
+          .then(res => {
+            this.$helper.alert(res.message)
+            this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+          })
+          .catch(err => {
+            this.$helper.displayErrors(err)
+            this.$inertia.visit(this.route('skijasi.commerce-theme.cart'))
+          })
+          .finally(() => {
+            this.$closeLoading()
+          })
+
+  },
+
     printPDF() {
     if (this.$refs.pdfViewer && this.$refs.pdfViewer.contentWindow) {
       this.$refs.pdfViewer.contentWindow.print();
@@ -573,7 +605,18 @@ export default {
 
       const opis = this.getProductNames() + "," + this.user.name + " " + this.user.username;
       const ime = this.user.name + " " + this.user.username;
-      const pozivnabroj = this.user.idmember.toString();
+
+    // Initialize pozivnabroj with an empty string or null to avoid errors
+    let pozivnabroj = this.user.idmember ? this.user.idmember.toString() : '';
+
+    // Check if user.idmember is empty and format datumrodjenja if necessary
+    if (!pozivnabroj) {
+        const datumrodjenja = new Date(this.user.datumrodjenja);
+        const dd = String(datumrodjenja.getDate()).padStart(2, '0');
+        const mm = String(datumrodjenja.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+        const yyyy = datumrodjenja.getFullYear();
+        pozivnabroj = `${dd}${mm}${yyyy}`;
+    }
 
       console.log ("TEST:", pozivnabroj)
 
@@ -609,9 +652,13 @@ export default {
 
         // Ensure response contains PDF URL
         if (response.pdfUrl) {
-        this.pdfUrl = response.pdfUrl;
+    this.pdfUrl = response.pdfUrl;
+    this.$nextTick(() => {
+      if (this.$refs.pdfViewer) {
         this.$refs.pdfViewer.src = this.pdfUrl;
-      }  else {
+      }
+    });
+  } else {
           console.error("PDF URL not found in response:", response);
      
         }
@@ -781,5 +828,27 @@ switchToDefaultView() {
 .action-button svg {
   margin-right: 8px;
 }
+
+
+.plava-boja {
+   color: #03A9F4;
+ }
+ .bg-plava-boja {
+   background-color: #03A9F4;
+ }
+
+@media (max-width: 760px) {
+.modal {
+  max-height: 90%; 
+  max-width: 94%;
+  min-width: 50%;
+}
+.pdf-iframe {
+  width: 100%;
+}
+
+
+}
+
 
 </style>

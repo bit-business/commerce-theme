@@ -74,7 +74,7 @@
             </Link>
 
 
-            <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+            <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
@@ -277,7 +277,7 @@
     <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
   </Link>
 
-  <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+  <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
@@ -883,7 +883,7 @@ width: 80px;
 }
 
 .pt-5{
-padding-top: 4.1rem;
+  padding-top: 4.24rem; 
 }
 .sidebar-closed {
     background: none; /* Remove background */

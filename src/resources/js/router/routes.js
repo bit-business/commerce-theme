@@ -23,4 +23,13 @@ export default [
       useComponent: "AdminContainer"
     },
   },
+  {
+    path: prefix + "/prijavnice",
+    name: "CommerceThemeConfigurationPrijavnice",
+    component: Pages,
+    meta: {
+      title: "Prijavnice",
+      useComponent: "AdminContainer"
+    },
+  },
 ];

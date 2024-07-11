@@ -197,7 +197,7 @@
         <template v-if="carts.length > 0">
           <div class="grid grid-cols-5 gap-4 w-full" v-for="cart, index in carts" :key="index">
             <div class="col-span-2 flex gap-4 items-center">
-              <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm text-primary form-checkbox">
+              <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox">
               <div class="text-sm text-gray-700 w-24 h-24">
                 <img :src="cart.productDetail.productImage" class="w-full h-full">
               </div>
@@ -229,7 +229,7 @@
   />
 </div>
 
-            <div class="col-span-1 text-sm text-primary text-center justify-center flex items-center">
+            <div class="col-span-1 text-sm plava-boja text-center justify-center flex items-center">
               <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
                 {{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount) * parseInt(cart.quantity)) }}
               </template>
@@ -238,13 +238,32 @@
               </template>
             </div>
 
-            <!-- <div class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center">
-              <button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-1.5 text-red-500 rounded hover:bg-red-50">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-                  <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-                </svg>
-              </button>
-            </div> -->
+            <div v-if="cart.productDetail.product.productCategory.slug != 'licence'" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center"> 
+              <div v-if="cart.cekapotvrdu == 1"> 
+    <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span> 
+</div><button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-1.5 text-red-500 rounded hover:bg-red-50"> 
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"> 
+            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /> 
+        </svg>
+    </button> 
+</div> 
+<div v-else-if="cart.cekapotvrdu == 1"> 
+
+     
+            <template>
+          
+              <div class="flex flex-col items-center justify-center">
+                <div class="flex flex-col rounded-full w-12 items-center justify-center h-12  bg-primary1 text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 23 23" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+              </div>    <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span> 
+            </template>
+
+
+</div>
+
 
             <div class="col-span-full" v-if="index !== carts.length - 1">
               <div class="h-px w-full bg-gray-300" />
@@ -256,7 +275,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
             </svg>
-            <span class="text-sm">Niste dodali nijedan događaj</span>
+            <span class="text-sm">Niste dodali nijedno plaćanje</span>
           </div>
         </template>
       </div>
@@ -267,15 +286,15 @@
         <div class="flex flex-wrap items-center float-right gap-1">
           <div class="flex items-center gap-4 w-full float-right justify-end">
            Ukupno ({{ checkboxModel.length }} odabrano):
-            <span class="text-2xl text-primary">{{ $currency(getTotal) }}</span>
+            <span class="text-2xl plava-boja">{{ $currency(getTotal) }}</span>
           </div>
-          <div class="flex items-center gap-4 text-sm w-full float-right justify-end">
+          <div class="flex items-center gap-4 text-sm w-full float-right justify-end" v-if="Number(getSaving) !== 0" >
            Popust:
-            <span class="text-primary"> -{{ $currency(getSaving) }}</span>
+            <span class="plava-boja"> -{{ $currency(getSaving) }}</span>
           </div>
         </div>
         <div class="flex items-center w-48">
-          <button @click="checkout" class="font-medium bg-primary text-white p-2 font-sm w-full rounded-md">
+          <button @click="checkout" class="font-medium bg-primary1 text-white p-2 font-sm w-full rounded-md">
            NA PLAĆANJE
           </button>
         </div>
@@ -346,11 +365,11 @@
                   <div class="text-normal text-gray-400 line-through">
                     {{ $currency(activePrice) }}
                   </div>
-                  <div class="text-lg text-primary font-semibold">
+                  <div class="text-lg plava-boja font-semibold">
                     {{ getDiscountedPrice(activePrice, activeDiscount) }}
                   </div>
                 </div>
-                <div class="text-lg text-primary font-semibold" v-else>
+                <div class="text-lg plava-boja font-semibold" v-else>
                   {{ $currency(activePrice) }}
                 </div>
             
@@ -368,13 +387,21 @@
               </div>
             </div>
 
-            <div class="w-full flex gap-2 justify-between items-center">
+            <div class="w-full flex gap-2 justify-between items-center"   v-if="filteredCarts.length > 0">
               <div class="text-sm">Količina</div>
-              <counter v-model="variationQuantity" :min="1" :max="product.productDetails[productDetailSelectedIndex].quantity" />
+              <!-- <counter v-model="variationQuantity" :min="1" :max="product.productDetails[productDetailSelectedIndex].quantity" /> -->
+              <counter
+        
+               v-model="variationQuantity"
+                :min="1"
+                :max="product.productDetails[productDetailSelectedIndex].quantity"
+              />
+
+              
             </div>
 
             <div class="w-full flex gap-4 justify-center items-center mt-2">
-              <div class="w-full h-10 flex items-center justify-center text-white text-sm rounded-md uppercase py-2 px-4 text-center bg-primary" @click="confirmVariationDialog">Potvrdi</div>
+              <div class="w-full h-10 flex items-center justify-center text-white text-sm rounded-md uppercase py-2 px-4 text-center bg-primary1" @click="confirmVariationDialog">Potvrdi</div>
             </div>
           </div>
         </div>
@@ -389,7 +416,7 @@
             <img :src="cart.productDetail.productImage" class="w-full h-full">
           </div>
           <div class="col-span-1 relative text-center">
-            <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm text-primary form-checkbox ">
+            <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox ">
           </div>
           <div class="col-span-8 flex flex-col gap-3">
             <div class="line-clamp-1 text-sm w-full text-center">
@@ -406,13 +433,25 @@
           </div>
           <div class="text-sm col-start-5 col-end-13 text-center mt-4">
             <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
-              <span class="line-through text-gray-400">{{ $currency(cart.productDetail.price) }}</span>&nbsp;<span class="text-primary">{{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount)) }}</span>
+              <span class="line-through text-gray-400">{{ $currency(cart.productDetail.price) }}</span>&nbsp;<span class="plava-boja">{{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount)) }}</span>
             </template>
             <template v-else>
               <span class="text-gray-700">{{ $currency(cart.productDetail.price) }}</span>
             </template>
-            <div class="mt-2 items-center justify-center flex">
-              <counter class="jusitfy-center" @subtract="openDeleteDialog($event, cart, index)" @input="changeQuantity($event, cart.id)" v-model="cart.quantity" text-disabled :disabled="loading" />
+            <div class="mt-2 items-center justify-center flex" v-if="filteredCarts.length > 0">
+              <counter
+              class="jusitfy-center"
+              @subtract="openDeleteDialog($event, cart, index)"
+                v-for="cart in filteredCarts"
+                :key="cart.id"
+                @input="changeQuantity($event, cart.id)"
+                v-model="cart.quantity"
+                :min="1"
+                text-disabled
+                :disabled="loading"
+              />
+
+
             </div>
           </div>
         </div>
@@ -432,21 +471,21 @@
     <div class="block sm:hidden">
       <div class="bottom-0 left-0 right-0 bg-white grid grid-cols-12 gap-4 items-center  h-21">
         <div class="col-span-3 inline-flex flex-row gap-2 text-xs">
-          <input type="checkbox" @input="checkAll" :checked="checkboxModel.length === this.carts.length" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm text-primary form-checkbox">
+          <input type="checkbox" @input="checkAll" :checked="checkboxModel.length === this.carts.length" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox">
           <div class="line-clamp-1">Izaberi sve</div>
         </div>
         <div class="col-span-5 text-sm">
-          <div class="flex items-center gap-2 w-full float-right justify-end" v-if="checkboxModel.length > 0">
+          <div class="flex items-center gap-2 w-full float-right justify-end" v-if="checkboxModel.length > 0 &&  Number(getSaving) !== 0">
             Popust:
-            <span class="text-primary">{{ $currency(getSaving) }}</span>
+            <span class="plava-boja">{{ $currency(getSaving) }}</span>
           </div>
           <div class="flex items-center gap-4 w-full float-right justify-end">
             Ukupno:
-            <span class=" text-primary">{{ $currency(getTotal) }}</span>
+            <span class=" plava-boja">{{ $currency(getTotal) }}</span>
           </div>
         </div>
         <div class="col-span-4">
-          <button @click="checkout" class="font-medium mt-6 bg-primary text-white p-2 text-sm w-full rounded-md">
+          <button @click="checkout" class="font-medium mt-6 bg-primary1 text-white p-2 text-sm w-full rounded-md">
             NA PLAĆANJE
           </button>
         </div>
@@ -732,8 +771,8 @@ export default {
       productDetailSelectedIndex: 0,
     
 
-
-
+      orders: [], // Assuming this is where your order data is stored
+     
 
 
 
@@ -822,10 +861,8 @@ export default {
 
 
 
-
-
 filteredCarts() {
-    return this.carts.filter(cart => cart.productDetail.product.slug !== 'dogadanja');
+    return this.carts.filter(cart => cart.productDetail.product.slug == 'dogadanja');
   },
 
     getTotal() {
@@ -849,8 +886,14 @@ filteredCarts() {
           ? this.getDiscount(cart.productDetail.price, cart.productDetail.discount)
           : cart.productDetail.price
         price += cart.productDetail.price - p
+
+        console.log("Cart:", cart);
+console.log("Discounted Price:", p);
+console.log("Original Price:", cart.productDetail.price);
+console.log("Accumulated Savings:", price);
+
       });
-      return Math.ceil(price / 1000)
+      return Math.ceil(price)
     },
     hasActiveDiscount() {
       return this.product.productDetails[this.productDetailSelectedIndex].discount !== null
@@ -886,9 +929,9 @@ created() {
 
     this.getStaraPlacanja(); 
     window.addEventListener('scroll', this.handleScrollAttempt);
-    
-
     this.getCarts();
+
+ 
   },
 
   beforeDestroy() {
@@ -897,6 +940,9 @@ created() {
 
   },
   methods: {
+
+
+
     fetchAdminMessages() {
       poruke.getMessages()
       .then((response) => {
@@ -1089,9 +1135,10 @@ console.log ("TEST ZADUZENJA:",this.staraPlacanjaArray );
           this.carts = res.data.carts
           this.checkboxModel = this.carts.map(cart => cart.id);
 
-          if (this.carts.length > 0) {
-            this.fetchSimilar(this.$_.take(res.data.carts)[0])
-          }
+          // if (this.carts.length > 0) {
+          //   this.fetchSimilar(this.$_.take(res.data.carts)[0])
+          // }
+
         })
         .catch(err => {
           localStorage.removeItem('token')
@@ -2909,7 +2956,7 @@ overflow: visible;
 .payments-list {
   
     padding-top: 3.4rem;
-
+ 
 }
 
 
@@ -3108,6 +3155,7 @@ border-bottom-left-radius: 5px;
     justify-content: flex-start;
     gap: 30px;
     padding-top: 1.9rem;
+    padding-bottom: 1.9rem;
     max-height: 100%;
 overflow-y: scroll;
 

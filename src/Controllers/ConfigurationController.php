@@ -13,6 +13,13 @@ use NadzorServera\Skijasi\Helpers\ApiResponse;
 use NadzorServera\Skijasi\Models\Configuration;
 use NadzorServera\Skijasi\Traits\FileHandler;
 
+
+
+use NadzorServera\Skijasi\Theme\CommerceTheme\Models\Form;
+use NadzorServera\Skijasi\Theme\CommerceTheme\Models\FormField;
+use NadzorServera\Skijasi\Theme\CommerceTheme\Models\FormEntry;
+use NadzorServera\Skijasi\Models\User;
+
 class ConfigurationController extends Controller
 {
     use FileHandler;
@@ -194,4 +201,185 @@ class ConfigurationController extends Controller
             return ApiResponse::failed($e);
         }
     }
+
+
+
+
+
+
+    // New methods for form handling
+
+    public function getFormFields($formId)
+    {
+        try {
+            $formFields = FormField::where('form_id', $formId)->get();
+            $form = Form::find($formId); // Ensure you get the form details too
+    
+            if (!$form) {
+                throw new Exception('Form not found');
+            }
+    
+            return ApiResponse::success([
+                'name' => $form->name,
+                'description' => $form->description,
+                'fields' => $formFields
+            ]);
+        } catch (Exception $e) {
+            return ApiResponse::failed($e);
+        }
+    }
+    
+
+    public function getUserData($userId)
+    {
+        try {
+            $user = User::find($userId);
+
+            if (!$user) {
+                throw new SingleException('User not found');
+            }
+
+            return ApiResponse::success(['user' => $user]);
+        } catch (Exception $e) {
+            return ApiResponse::failed($e);
+        }
+    }
+
+    public function saveFormEntry(Request $request, $formId)
+    {
+        DB::beginTransaction();
+    
+        try {
+            $form = Form::findOrFail($formId);
+    
+            // Validate the form data
+            $formFields = $form->fields;
+            $rules = [];
+            foreach ($formFields as $field) {
+                $rules[$field->label] = $field->required ? 'required' : 'nullable';
+                if ($field->field_type === 'email') {
+                    $rules[$field->label] .= '|email';
+                }
+            }
+
+                // Add validation rule for "Status člana"
+        $rules['Status člana'] = 'required|string';
+
+        $validatedData = $request->validate($rules);
+
+        // Include "Status člana" in the entry data
+        $entryData = $validatedData;
+        $entryData['Status člana'] = $request->input('Status člana');
+    
+            $entry = new FormEntry();
+            $entry->form_id = $formId;
+            $entry->data = json_encode($validatedData);
+            $entry->save();
+    
+            DB::commit();
+    
+            return ApiResponse::success(['entry' => $entry]);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return ApiResponse::failed($e);
+        }
+    }
+
+    public function saveForm(Request $request)
+    {
+        DB::beginTransaction();
+    
+        try {
+            $form = new Form();
+            $form->name = $request->name;
+            $form->description = $request->description;
+            $form->save();
+    
+            foreach ($request->fields as $fieldData) {
+                $field = new FormField();
+                $field->form_id = $form->id;
+                $field->label = $fieldData['label'];
+                $field->field_type = $fieldData['field_type'];
+                $field->required = $fieldData['required'] ? 1 : 0; 
+                $field->options = !empty($fieldData['options']) ? json_encode($fieldData['options']) : null;
+                $field->save();
+            }
+    
+            DB::commit();
+    
+            return ApiResponse::success(['form' => $form]);
+        } catch (Exception $e) {
+            DB::rollBack();
+    
+            return ApiResponse::failed($e);
+        }
+    }
+    
+
+
+
+
+
+    public function browseForms()
+    {
+        try {
+            $forms = Form::all();
+            return ApiResponse::success(['forms' => $forms]);
+        } catch (Exception $e) {
+            return ApiResponse::failed($e);
+        }
+    }
+
+    // Method to read a specific form
+    public function readForm($formId)
+    {
+        try {
+            $form = Form::with('fields')->find($formId);
+            if (!$form) {
+                throw new SingleException('Form not found');
+            }
+            return ApiResponse::success(['form' => $form]);
+        } catch (Exception $e) {
+            return ApiResponse::failed($e);
+        }
+    }
+
+    public function updateForm(Request $request, $formId)
+    {
+        DB::beginTransaction();
+    
+        try {
+            $form = Form::findOrFail($formId);
+            $form->name = $request->name;
+            $form->description = $request->description;
+            $form->save();
+    
+            // Delete existing fields
+            FormField::where('form_id', $formId)->delete();
+    
+            // Add new fields
+            foreach ($request->fields as $fieldData) {
+                $field = new FormField();
+                $field->form_id = $form->id;
+                $field->label = $fieldData['label'];
+                $field->field_type = $fieldData['field_type'];
+                $field->options = isset($fieldData['options']) ? json_encode($fieldData['options']) : null;
+                $field->required = $fieldData['required'] ?? false;
+                $field->save();
+            }
+    
+            DB::commit();
+    
+            return ApiResponse::success(['form' => $form]);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return ApiResponse::failed($e);
+        }
+    }
+
 }
+
+
+
+
+

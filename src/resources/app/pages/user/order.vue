@@ -76,7 +76,7 @@
             </Link>
 
 
-            <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+            <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
@@ -166,6 +166,100 @@
 
 
 
+<!-- tablica za placanje ODKOMENTIRATI KASNIJE!! TODO
+    <div class="px-6 ml-18 mr-4 mt-3">
+          <div class=" velikigrid grid-cols-6 bg-white rounded-xl mb-3 tablicaplacanja">
+            <div @click="isActive = index" :class="['py-4 cursor-pointer text-center hover:text-primary transition-colors border-b-2 first:rounded-l-xl last:rounded-r-xl text-sm lg:text-base', isActive === index ? 'border-primary text-primary' : 'border-gray-200 text-gray-700']" v-for="(tab, index) in tabs" :key="index">{{ tab }}</div>
+          </div>
+          <div class="flex flex-wrap items-center mb-3">
+            <div class="relative w-full">
+              <input type="text" placeholder="Pretraživanje po nazivu" class="w-full py-2 text-sm focus:outline-none rounded-xl pl-12 bg-gray-200 pr-1">
+              <div class="absolute left-3 h-5 w-5 top-1/2 -translate-y-1/2 transform">
+                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </div>
+            </div>
+          </div>
+          <div class="velikigrid tablicaplacanja gap-y-4">
+            <div v-for="order, index in filteredOrders" :key="index">
+              <div class="flex flex-wrap bg-white rounded-xl p-4">
+                <div class="flex w-full justify-end items-center pb-4">
+                  <div class="flex space-x-2 items-center" v-if="['process', 'delivering', 'done'].includes(order.status)">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
+                    </svg>
+                    <Link :href="route('skijasi.commerce-theme.order-detail', order.id)" class="text-sm text-gray-500">
+                      <template v-if="order.status == 'process'">Procesuira se</template>
+                      <template v-if="order.status == 'delivering'">U procesu dostave</template>
+                      <template v-if="order.status == 'done'">Završena kupnja</template>
+                    </Link>
+                  </div>
+                  <div class="text-sm text-gray-500 border-r pr-2 cursor-default select-none" v-else-if="order.status == 'cancel' && order.cancelMessage">{{ order.cancelMessage }}</div>
+                  <div class="flex ml-3 items-center divide-x">
+                    <-- <tooltip class="pr-2 flex items-center justify-center" placement="right" popoverBaseClass="top-arrow-center top-arrow-center mr-2 arrow-right" trigger="hover">
+                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 tooltip-target text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+
+                      <template slot="popover">
+                        <p class="tooltip-content">Terakhir Di Update Pada 29-07-2021 17:40</p>
+                      </template>
+                    </tooltip> ->
+                    <-- <div v-tooltip.bottom="'Terakhir Di Update Pada 29-07-2021 17:40'" class="pr-2"> ->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" v-if="['process', 'delivering', 'done'].includes(order.status)">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <-- </div> ->
+                    <span :class="['process', 'delivering', 'done'].includes(order.status) ? 'pl-2' : ''" class="text-sm text-primary tracking-wide uppercase">{{ formatStatus(order.status, order.expiredAt) }}</span>
+                  </div>
+                </div>
+                <Link :href="route('skijasi.commerce-theme.order-detail', order.id)" class="flex w-full flex-col">
+                  <div class="flex space-x-4 w-full py-4 first:border-t border-b last:border-b-0 last:pb-0 items-start" v-for="orderDetail, index in order.orderDetails" :key="index">
+                    <img :src="orderDetail.productDetail.productImage" class="border" width="80">
+                    <div class="flex flex-col">
+                      <div class="text-gray-700 line-clamp-2">{{ orderDetail.productDetail.product.name }}</div>
+                      <div class="flex">
+                        <div class="px-2 my-2 py-1 text-sm border rounded-md cursor-pointer text-gray-500 border-gray-300">{{ orderDetail.productDetail.name }}</div>
+                      </div>
+                      <div class="text-sm text-gray-600">x{{ orderDetail.quantity }}</div>
+                    </div>
+                    <div class="flex-grow" />
+                    <div class="self-center text-primary flex items-center">
+                      <div class="text-gray-300 mr-2 text-sm line-through" v-if="orderDetail.discounted > 0">{{ $currency(orderDetail.price) }}</div>
+                      {{ $currency(parseInt(orderDetail.price - orderDetail.discounted)) }}
+                    </div>
+                  </div>
+                </Link>
+              </div>
+              <div class="bg-white border-t border-dotted p-6 rounded-xl shadow-sm flex flex-nowrap justify-between">
+                <div class="flex self-end">
+                  <div class="text-xs text-gray-500">Nema primljenih ocjena</div>
+                </div>
+                <div class="flex flex-col space-y-4 items-end">
+                  <div class="flex space-x-3 items-center">
+                    <div class="text-sm">Ukupno za platiti:</div>
+                    <div class="text-2xl text-primary">{{ $currency(parseInt(order.payed)) }}</div>
+                  </div>
+                  <div class="flex items-center space-x-2">
+                   <-- <button @click="review(order.id)" class="text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Ocjena</button>
+                     <button class="text-sm bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border">Hubungi Penjual</button> ->
+                    <Link class="text-sm block text-center bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border" :href="route('skijasi.commerce-theme.detalji', order.orderDetails[0].productDetail.product.slug)">Kupi ponovo</Link>
+                    <button class="text-sm bg-primary hover:bg-opacity-90 text-white py-2 rounded-md w-40 border" v-if="order.status === 'waitingBuyerPayment'">
+                      <component
+                        :is="`${order.orderPayment.paymentType}-pay`"
+                        :order="order"
+                        @click="pay"
+                      >Plati</component>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      -->
 
 
         
@@ -173,17 +267,15 @@
 
 
 
-  <div class="bg-white shadow-sm rounded-xl flex flex-wrap ml-16">
-
-<div class="flex flex-col w-full px-6 justify-center items-start border-plava-200 border-b">
-    <span class="text-lg font-medium plavi-text">Povijest Plaćanja</span>
-  </div>
-
-<div class="flex flex-wrap w-full">
-<!--   <div class="text-sm text-gray-400 cursor-pointer py-2" @click="readAll">Označi kao pročitano</div> -->
-
-  <template>
-    <div class="w-full h-full flex-col flex p-6 items-center justify-center text-gray-500">
+  <div class="povijest-placanja-container  bg-white shadow-sm rounded-xl  ml-16 pb-8 px-6">
+    <div class="h-22 flex flex-col py-4 justify-center border-plava-200 border-b">
+            <span class="text-lg font-medium plavi-text">Zahtjevi</span>
+          </div>
+    
+    <div class="content-wrapper pt-12">
+      <!-- Card section -->
+      <div class="card-section">
+        <div class="credit-card">
   
 
 <svg style="max-width: 400px; width: auto; height: auto;"  viewBox="0 0 408 280" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -305,110 +397,50 @@
 
 
 
-      <span class ="tekstnemaobavijesti">Trenutno nemate plaćanja preko web stranice. 
-Ovdje će se nalaziti sva plaćanja koje izvršite preko web stranice ili mobilne aplikacije.  </span>
-    </div>
-  </template>
+ 
+</div>   </div>
+
+
+
+  <!-- Blue line separator -->
+  <div class="separator"></div>
+
+<!-- Orders section -->
+<div class="orders-section">
+  <h2 class="orders-title">Transakcije</h2>
+
+
+  <span v-if="filteredOrderDetails.length == 0" class ="tekstnemaobavijesti">Trenutno nemate plaćanja preko web stranice. 
+    Ovdje će se nalaziti sva plaćanja koje izvršite preko web stranice ili mobilne aplikacije.  </span>
+    <div v-if="filteredOrderDetails.length > 0" class="order-list">
+    <div v-for="(detail, index) in filteredOrderDetails" :key="index" class="order-item">
+      <div class="order-price">{{ detail.price }} EUR</div>
+      <div class="order-details">
+        <div class="order-name">{{ detail.productDetail.name }}</div>
+        <div class="order-date">{{ formatDate(detail.order.orderPayment.createdAt) }}</div>
+
+
+  </div>
 </div>
-</div>
+
+</div></div>
+
+
+    </div>
+   </div>
+
+
+
+
+
+
+
+  
+
 
     </div>
 
 
-<!-- tablica za placanje ODKOMENTIRATI KASNIJE!! TODO
-    <div class="px-6 ml-18 mr-4 mt-3">
-          <div class=" velikigrid grid-cols-6 bg-white rounded-xl mb-3 tablicaplacanja">
-            <div @click="isActive = index" :class="['py-4 cursor-pointer text-center hover:text-primary transition-colors border-b-2 first:rounded-l-xl last:rounded-r-xl text-sm lg:text-base', isActive === index ? 'border-primary text-primary' : 'border-gray-200 text-gray-700']" v-for="(tab, index) in tabs" :key="index">{{ tab }}</div>
-          </div>
-          <div class="flex flex-wrap items-center mb-3">
-            <div class="relative w-full">
-              <input type="text" placeholder="Pretraživanje po nazivu" class="w-full py-2 text-sm focus:outline-none rounded-xl pl-12 bg-gray-200 pr-1">
-              <div class="absolute left-3 h-5 w-5 top-1/2 -translate-y-1/2 transform">
-                <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5 text-gray-800" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-                </svg>
-              </div>
-            </div>
-          </div>
-          <div class="velikigrid tablicaplacanja gap-y-4">
-            <div v-for="order, index in filteredOrders" :key="index">
-              <div class="flex flex-wrap bg-white rounded-xl p-4">
-                <div class="flex w-full justify-end items-center pb-4">
-                  <div class="flex space-x-2 items-center" v-if="['process', 'delivering', 'done'].includes(order.status)">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-                    </svg>
-                    <Link :href="route('skijasi.commerce-theme.order-detail', order.id)" class="text-sm text-gray-500">
-                      <template v-if="order.status == 'process'">Procesuira se</template>
-                      <template v-if="order.status == 'delivering'">U procesu dostave</template>
-                      <template v-if="order.status == 'done'">Završena kupnja</template>
-                    </Link>
-                  </div>
-                  <div class="text-sm text-gray-500 border-r pr-2 cursor-default select-none" v-else-if="order.status == 'cancel' && order.cancelMessage">{{ order.cancelMessage }}</div>
-                  <div class="flex ml-3 items-center divide-x">
-                    <-- <tooltip class="pr-2 flex items-center justify-center" placement="right" popoverBaseClass="top-arrow-center top-arrow-center mr-2 arrow-right" trigger="hover">
-                      <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 tooltip-target text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                      </svg>
-
-                      <template slot="popover">
-                        <p class="tooltip-content">Terakhir Di Update Pada 29-07-2021 17:40</p>
-                      </template>
-                    </tooltip> ->
-                    <-- <div v-tooltip.bottom="'Terakhir Di Update Pada 29-07-2021 17:40'" class="pr-2"> ->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-gray-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" v-if="['process', 'delivering', 'done'].includes(order.status)">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.228 9c.549-1.165 2.03-2 3.772-2 2.21 0 4 1.343 4 3 0 1.4-1.278 2.575-3.006 2.907-.542.104-.994.54-.994 1.093m0 3h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                    <-- </div> ->
-                    <span :class="['process', 'delivering', 'done'].includes(order.status) ? 'pl-2' : ''" class="text-sm text-primary tracking-wide uppercase">{{ formatStatus(order.status, order.expiredAt) }}</span>
-                  </div>
-                </div>
-                <Link :href="route('skijasi.commerce-theme.order-detail', order.id)" class="flex w-full flex-col">
-                  <div class="flex space-x-4 w-full py-4 first:border-t border-b last:border-b-0 last:pb-0 items-start" v-for="orderDetail, index in order.orderDetails" :key="index">
-                    <img :src="orderDetail.productDetail.productImage" class="border" width="80">
-                    <div class="flex flex-col">
-                      <div class="text-gray-700 line-clamp-2">{{ orderDetail.productDetail.product.name }}</div>
-                      <div class="flex">
-                        <div class="px-2 my-2 py-1 text-sm border rounded-md cursor-pointer text-gray-500 border-gray-300">{{ orderDetail.productDetail.name }}</div>
-                      </div>
-                      <div class="text-sm text-gray-600">x{{ orderDetail.quantity }}</div>
-                    </div>
-                    <div class="flex-grow" />
-                    <div class="self-center text-primary flex items-center">
-                      <div class="text-gray-300 mr-2 text-sm line-through" v-if="orderDetail.discounted > 0">{{ $currency(orderDetail.price) }}</div>
-                      {{ $currency(parseInt(orderDetail.price - orderDetail.discounted)) }}
-                    </div>
-                  </div>
-                </Link>
-              </div>
-              <div class="bg-white border-t border-dotted p-6 rounded-xl shadow-sm flex flex-nowrap justify-between">
-                <div class="flex self-end">
-                  <div class="text-xs text-gray-500">Nema primljenih ocjena</div>
-                </div>
-                <div class="flex flex-col space-y-4 items-end">
-                  <div class="flex space-x-3 items-center">
-                    <div class="text-sm">Ukupno za platiti:</div>
-                    <div class="text-2xl text-primary">{{ $currency(parseInt(order.payed)) }}</div>
-                  </div>
-                  <div class="flex items-center space-x-2">
-                   <-- <button @click="review(order.id)" class="text-sm bg-primary text-white py-2 rounded-md w-40 font-medium hover:brightness-90 bg-blend-darken filter" v-if="order.status === 'done' && !isReviewIsNull(order.orderDetails)">Ocjena</button>
-                     <button class="text-sm bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border">Hubungi Penjual</button> ->
-                    <Link class="text-sm block text-center bg-primary bg-opacity-0 hover:bg-opacity-5 text-gray-700 py-2 rounded-md w-40 border" :href="route('skijasi.commerce-theme.detalji', order.orderDetails[0].productDetail.product.slug)">Kupi ponovo</Link>
-                    <button class="text-sm bg-primary hover:bg-opacity-90 text-white py-2 rounded-md w-40 border" v-if="order.status === 'waitingBuyerPayment'">
-                      <component
-                        :is="`${order.orderPayment.paymentType}-pay`"
-                        :order="order"
-                        @click="pay"
-                      >Plati</component>
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      -->
 
       </div>
 
@@ -492,7 +524,7 @@ Ovdje će se nalaziti sva plaćanja koje izvršite preko web stranice ili mobiln
   </Link>
 
 
-  <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+  <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
@@ -614,7 +646,9 @@ export default {
          'Otkazano',
          'Završeno'
       ],
-      orders: [],
+   orders: [
+
+    ],
       search: 'ab',
 
 
@@ -628,20 +662,10 @@ export default {
     }
   },
   computed: {
-    filteredOrders() {
-      if (this.isActive === 0) {
-        return this.orders
-      } else if (this.isActive === 1) {
-        return this.$_.filter(this.orders, { status: 'waitingBuyerPayment' })
-      } else if (this.isActive === 2) {
-        return this.$_.filter(this.orders, function(o) { return o.status === 'waitingSellerConfirmation' || o.status === 'process'; })
-      } else if (this.isActive === 3) {
-        return this.$_.filter(this.orders, { status: 'delivering' })
-      } else if (this.isActive === 4) {
-        return this.$_.filter(this.orders, { status: 'done' })
-      } else {
-        return this.$_.filter(this.orders, { status: 'cancel' })
-      }
+    filteredOrderDetails() {
+      return this.orders
+        .filter(order => order.status === 'done')
+        .flatMap(order => order.orderDetails.map(detail => ({ ...detail, order })));
     },
     ...mapState({
       isAuthenticated(state) {
@@ -752,7 +776,14 @@ created() {
       console.log("usertest:", this.user)
     },
 
-
+    formatDate(dateString) {
+    if (!dateString) return ''; // Handle null, undefined, or empty strings
+    const date = new Date(dateString);
+    const day = date.getDate().toString().padStart(2, '0');
+    const month = (date.getMonth() + 1).toString().padStart(2, '0'); // +1 because months are 0-indexed
+    const year = date.getFullYear();
+    return `${day}.${month}.${year}.`;
+  },
 
     isReviewIsNull(orderDetails) {
       return this.$_.every(orderDetails, 'review')
@@ -780,6 +811,7 @@ created() {
         .browse()
         .then(res => {
           this.orders = res.data.orders
+          console.log("TEST ORDERS:", this.orders);
         })
         .catch(err => {
           localStorage.removeItem('token')
@@ -1255,5 +1287,110 @@ top: 10% !important;
 }
 .has-unread svg {
   stroke: orange;
+}
+
+
+
+@media (max-width: 768px) {
+  .flex-col {
+    flex-direction: column;
+  }
+  
+  .md\:flex-row {
+    flex-direction: column;
+  }
+  
+  .md\:w-1\/2 {
+    width: 100%;
+  }
+  
+  .hidden.md\:block {
+    display: none;
+  }
+}
+
+.povijest-placanja-container {
+
+}
+
+.povijest-placanja-title {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #2196F3;
+}
+
+.content-wrapper {
+  display: flex;
+  gap: 20px;
+}
+
+.card-section {
+  flex: 1;
+}
+
+.separator {
+  width: 1px;
+  background-color: #2196F3;
+}
+
+.orders-section {
+  flex: 1;
+}
+
+.orders-title {
+  font-size: 18px;
+  margin-bottom: 15px;
+  text-align: center;
+  font-weight: 600;
+  color: #000;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-item {
+  background-color: #2196F3;
+  color: white;
+  padding: 11px;
+  padding-left: 34px;
+  padding-right: 34px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: auto;
+  align-items: center;
+  gap: 20%;
+}
+
+.order-price {
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.order-details {
+  text-align: left;
+  font-weight: bold;
+}
+
+.order-name {
+  font-size: 12px;
+  font-weight: bold;
+}
+
+.order-date {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+@media (max-width: 768px) {
+  .content-wrapper {
+    flex-direction: column;
+  }
+
+  .separator {
+    display: none;
+  }
 }
   </style>

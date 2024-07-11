@@ -738,47 +738,47 @@ prefillData(user) {
 
 
   submitForm() {
-    if (this.validateForm()) {
-  //  if (!this.form.name.trim()) {
-  //      alert('Polje "Ime" je obavezno.');
-  //      return;
-  //    }
+              if (this.validateForm()) {
+            //  if (!this.form.name.trim()) {
+            //      alert('Polje "Ime" je obavezno.');
+            //      return;
+            //    }
 
-      const changedData = this.getChangedData();
+                const changedData = this.getChangedData();
 
-// Check if there are changes
-    if (Object.keys(changedData).length === 0) {
-  this.$alert('Nema promjena.');
-  return;
-    }
+          // Check if there are changes
+              if (Object.keys(changedData).length === 0) {
+            this.$alert('Nema promjena.');
+            return;
+              }
 
-    console.log("TEST prije submita changeddata:",changedData)
-
-
-  this.$api.skijasiUser.prijavnicaedit(changedData)
-        .then(res => {
-          console.log("API response:", res.data);
-          this.$store.dispatch('SET_USER', res.data.user)
+              console.log("TEST prije submita changeddata:",changedData)
 
 
-          this.dodavanjeFILES();
-          this.uploadFilesAndAddDatoteke(); 
-         // this.$alert('Uspješno poslana prijavnica!')
+            this.$api.skijasiUser.prijavnicaedit(changedData)
+                  .then(res => {
+                    console.log("API response:", res.data);
+                    this.$store.dispatch('SET_USER', res.data.user)
 
-          this.showConfirmation = true; 
-        })
-        .catch((error) => {
-    console.error("Error submitting form:", error);
-    this.$alert('Neuspješno! Provjerite da li ste unijeli sve dobro i da Vam internet radi.');
-});
 
-}
-else {
-      // If validation fails, handle accordingly
-      // For example, you can scroll to the top or focus the first input with an error
-      console.error('Validation failed');
-      // Additional logic for handling validation failure
-    }
+                    this.dodavanjeFILES();
+                    this.uploadFilesAndAddDatoteke(); 
+                  // this.$alert('Uspješno poslana prijavnica!')
+
+                    this.showConfirmation = true; 
+                  })
+                  .catch((error) => {
+              console.error("Error submitting form:", error);
+              this.$alert('Neuspješno! Provjerite da li ste unijeli sve dobro i da Vam internet radi.');
+          });
+
+          }
+          else {
+                // If validation fails, handle accordingly
+                // For example, you can scroll to the top or focus the first input with an error
+                console.error('Validation failed');
+                // Additional logic for handling validation failure
+              }
     },
 
 

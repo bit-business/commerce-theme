@@ -29,6 +29,11 @@ export default {
     let ep = apiPrefix + "/v1/cart/public/addplacanja";
     return resource.post(ep, data);
   },
+  addplacanjazahtjevi(data) {
+    let ep = apiPrefix + "/v1/cart/public/addplacanjazahtjevi";
+    return resource.post(ep, data);
+  },
+
 
   edit(data) {
     let ep = apiPrefix + "/v1/cart/public/edit";
@@ -50,5 +55,10 @@ export default {
   validateIds(data) {
     let ep = apiPrefix + "/v1/cart/public/validate";
     return resource.post(ep, data);
+  },
+
+  getTotalItemsCart() {
+    let url = apiPrefix + "/v1/cart/public/totalitems";
+    return resource.get(url);
   },
 };

@@ -196,7 +196,7 @@
       <div class="zatrai-zahtjev-za1 text-center">
         Zatraži zahtjev za izdavanje iskaznice
       </div>
-      <button class="zatrai-container" @click="dodajkupnju(11)">
+      <button class="zatrai-container" @click="dodajkupnju(15)">
         <div class="zatrai1">Zatraži</div>
       </button>
     </div>
@@ -208,7 +208,7 @@
       </div>
       <a class="potvrda">Potvrda</a>
       <div class="zatrai-zahtjev-za2 text-center">Zatraži zahtjev za izdavanje potvrde</div>
-      <button class="zatrai-frame"  @click="dodajkupnju(12)">
+      <button class="zatrai-frame"  @click="dodajkupnju(16)">
         <div class="zatrai2">Zatraži</div>
       </button>
     </div>
@@ -600,10 +600,9 @@ created() {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     };
 
-    this.getStaraPlacanja(); 
-    window.addEventListener('scroll', this.handleScrollAttempt);
-    
 
+    window.addEventListener('scroll', this.handleScrollAttempt);
+  
     this.getCarts();
   },
 
@@ -614,24 +613,28 @@ created() {
   },
   methods: {
 
-dodajkupnju(zahtjevid) {
+        dodajkupnju(zahtjevid) {
 
 
-      this.$api.skijasiCart
-        .add({
-          id: zahtjevid,
-          quantity: 1,
-        })
-        .then(res => {
-          // this.$store.dispatch('FETCH_CARTS')
-           this.$helper.alert(res.message)
-           this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
-        })
-        .catch(err => {
-          // this.$helper.displayErrors(err)
-        });
+              this.$api.skijasiCart
+                .add({
+                  id: zahtjevid,
+                  quantity: 1,
+                })
+                .then(res => {
+                  // this.$store.dispatch('FETCH_CARTS')
+                  this.$helper.alert(res.message)
+                  this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+                })
+                .catch(err => {
+                  // this.$helper.displayErrors(err)
+                });
 
-},
+        },
+
+
+
+
 
 
     fetchAdminMessages() {

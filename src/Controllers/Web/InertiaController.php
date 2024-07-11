@@ -164,6 +164,14 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
+    public function prijavanadogadaj($id)
+    {
+        return Inertia::render('prijavanadogadaj', [
+            'formId'   => $id,
+            'name' => 'Prijava Na Događaj',
+        ], 'commerce-theme:app');
+    }
+
     public function izradaiskaznice()
     {
         return Inertia::render('izradaiskaznice', [

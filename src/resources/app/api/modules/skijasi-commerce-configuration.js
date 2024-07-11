@@ -12,4 +12,5 @@ export default {
     let url = ep + qs;
     return resource.get(url);
   },
+
 };

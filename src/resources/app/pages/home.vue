@@ -83,7 +83,7 @@
 </carousel-3d>
 
 --> 
-<div class="dogadajitrecired">
+<div class="dogadajitrecired animate-on-scroll">
   <div class="pogledajvisecontainer">
   <Link :href="route('skijasi.commerce-theme.arhivavijesti')" class="view-more-button">
     Pogledaj više <span class="pogledajarrow">→</span>
@@ -200,7 +200,7 @@
     
           <div class="slikaframe4">
             <img
-              class="fullsizerender-3-photoroom-1-icon"
+              class="fullsizerender-3-photoroom-1-icon animate-on-scroll"
               alt=""
               src="/storage/slike/pocetna/fullsizerender-3photoroom-1@2x.png"
             />
@@ -225,7 +225,7 @@
     <!--Link-->      <Link class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.savjetizaclanove')">
 
           <img
-            class="img-5449-photoroom-1-icon"
+            class="img-5449-photoroom-1-icon animate-on-scroll"
             alt=""
             src="/storage/slike/pocetna/img-5449photoroom-1@2x.png"
           />
@@ -1442,19 +1442,9 @@ padding-right: 6%;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 1.95rem;
   }
-  .drugired {
-    align-self: stretch;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-items: center;
-    justify-content: center;
-    padding: 0rem 1.25rem;
-    box-sizing: border-box;
-    max-height: 375rem;
-  }
+
 
 
 
@@ -1525,14 +1515,14 @@ padding-right: 6%;
   }
   .img-7155-photoroom-1-icon {
     position: absolute;
-    height: 77.78%;
+    height: 89.78%;
     width: 50.14%;
-    top: 22.17%;
+    /* top: 22.17%; */
     right: 0.29%;
     bottom: 0.06%;
     left: 49.57%;
     max-width: 100%;
-    overflow: hidden;
+    overflow: visible;
     max-height: 100%;
     object-fit: cover;
   }
@@ -1567,6 +1557,19 @@ padding-right: 6%;
     justify-content: center;
     height: 3rem;
   }
+
+  .drugired {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    padding: 0rem 1.75rem;
+    box-sizing: border-box;
+    max-height: 375rem;
+  }
+
   .prviredframeova {
     flex: 1;
     display: flex;
@@ -1574,7 +1577,7 @@ padding-right: 6%;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 1.25rem;
+    gap: 1.95rem;
   }
   .framesadrzaji {
     align-self: stretch;
@@ -1583,7 +1586,7 @@ padding-right: 6%;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    padding: 0rem 1.25rem;
+    padding: 0rem 1.75rem;
     box-sizing: border-box;
     max-height: 375rem;
   }
@@ -1735,6 +1738,8 @@ line-height: normal;
 }
 
 
+
+
 .rostsport-1-icon {
     display: flex;
     align-items: center;
@@ -1744,7 +1749,11 @@ line-height: normal;
     object-fit: cover;
     background-color: #fff;
 }
+.rostsport-1-icon:hover {
 
+    box-shadow: 0 3px 10px rgba(118, 118, 118, 0.25); 
+
+}
 
 
   .img-4689-photoroom-1-icon {
@@ -2427,8 +2436,9 @@ opacity: 0; /* Set initial opacity to 50% */
 
 
 
+
 .animacijakvadrati:hover {
-  transform: scale(1.024); 
+  transform: scale(1.026); 
   transition: transform 0.4s; 
 }
 .animacijakvadrati:not(:hover) {
@@ -2443,7 +2453,7 @@ opacity: 0; /* Set initial opacity to 50% */
 
   .animate-on-scroll {
   opacity: 0;
-  transform: translateY(80px);
+  transform: translateY(130px);
   transition: opacity 1.1s ease, transform 1.1s ease;
 }
 
@@ -2455,8 +2465,18 @@ opacity: 0; /* Set initial opacity to 50% */
 
 
 
-
-
+@media (max-width: 480px) {
+  .arrow-overlay {
+    left: 0 !important;  /* Start from the very left edge */
+    right: 0 !important; /* Start from the very right edge */
+    width: 40px;
+  }
+}
+@media (max-width: 364px) {
+  .arrow-overlay {
+    width: 66px; 
+  }
+}
 
 
 
