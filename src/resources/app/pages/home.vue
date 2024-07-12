@@ -83,7 +83,7 @@
 </carousel-3d>
 
 --> 
-<div class="dogadajitrecired animate-on-scroll">
+<div class="dogadajitrecired ">
   <div class="pogledajvisecontainer">
   <Link :href="route('skijasi.commerce-theme.arhivavijesti')" class="view-more-button">
     Pogledaj više <span class="pogledajarrow">→</span>
@@ -380,67 +380,67 @@
         <img class="slider-arrow left-arrow" src="/storage/slike/pocetna/lijevastrelica.svg" @click="moveSlider(-1)">
       <div class="bilteni-slides">
      
-          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2020-v1.3.pdf">
-            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2020.png" />
+          <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2020-v1.3.pdf">
+            <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2020.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2019/2020</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2019-v1.3low.pdf">
-            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2019.png" />
+          <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2019-v1.3low.pdf">
+            <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2019.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2018/2019</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2018-v2.3-rgb-web.pdf">
-            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2018.png" />
+          <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2018-v2.3-rgb-web.pdf">
+            <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2018.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2017/2018</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2017-v1.2.1-150dpiR.pdf">
-            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2017.png" />
+          <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2017-v1.2.1-150dpiR.pdf">
+            <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2017.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2016/2017</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2016.pdf">
-            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2016.png" />
+          <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2016.pdf">
+            <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2016.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2015/2016</p>
             </b>
           </a>
         
-          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2015.pdf">
-            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2015.png" />
+          <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2015.pdf">
+            <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2015.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2014/2015</p>
             </b>
           </a>
 
-          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2014.pdf">
-            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2014.png" />
+          <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2014.pdf">
+            <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2014.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2013/2014</p>
             </b>
           </a>
 
-          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2013.pdf">
-            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2013.png" />
+          <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2013.pdf">
+            <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2013.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2012/2013</p>
             </b>
           </a>
-          <a class="rectangle-parent" href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2012.pdf">
-            <img class="frame-child" alt="" src="/storage/slike/pocetna/bilten2012.png" />
+          <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2012.pdf">
+            <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2012.png" />
             <b class="bilten-sezona-20192020-container">
               <p class="bilten-sezona">Bilten sezona</p>
               <p class="bilten-sezona">2011/2012</p>
@@ -1131,7 +1131,7 @@ line-height: normal;
 .dogadajipodgrupa-child:hover {
   transform: scale(1.15);
     z-index: 1000;  /* Ensures that the enlarged slide is above other elements */
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.4); 
+    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2); 
 }
 
 
@@ -1271,7 +1271,7 @@ padding-right: 6%;
 
 
 
-.rectangle-parent {
+.bilteni-rectangle-parent  {
   scroll-snap-align: start;
   flex: 0 0 auto;
   margin-right: 66px; /* Adjust this gap between slides if necessary */
@@ -1800,7 +1800,7 @@ line-height: normal;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    padding: 1.13rem 5.19rem;
+    padding: 1.13rem 5rem;
   }
   .okvirtekst {
     width: 43.75rem;
@@ -1975,7 +1975,7 @@ grid-column: span 1;
     top: 1.88rem;
     left: 2.5rem;
   }
-  .frame-child {
+  .bilteni-frame-child {
     position: absolute;
     top: 0rem;
     left: 0rem;
@@ -1992,7 +1992,7 @@ grid-column: span 1;
     top: 17.5rem;
     left: 1.06rem;
   }
-  .rectangle-parent {
+  .bilteni-rectangle-parent  {
     position: relative;
     width: 12.5rem;
     height: 21.13rem;
@@ -2440,15 +2440,19 @@ opacity: 0; /* Set initial opacity to 50% */
 .animacijakvadrati:hover {
   transform: scale(1.026); 
   transition: transform 0.4s; 
+  box-shadow: 0 3px 4px rgba(118, 118, 118, 0.22); 
 }
 .animacijakvadrati:not(:hover) {
   transform: scale(1); /* Original scale */
   transition: transform 0.3s; /* Add transition property */
+
 }
 
 .popustisaznajvise:hover {
     background-color: #03a9f4;
     color: #fff; 
+    border: 2px solid #68cefd;
+    cursor: pointer;
   }
 
   .animate-on-scroll {
