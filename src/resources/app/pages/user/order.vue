@@ -1046,10 +1046,7 @@ padding-left: 12px;
 }
 
 @media (max-width: 767px) {
-.mojgrid-cols-profile{
- /* grid-template-columns: 80px 1fr; */
 
-}
 
 
 .plavi-text {
@@ -1309,9 +1306,7 @@ top: 10% !important;
   }
 }
 
-.povijest-placanja-container {
 
-}
 
 .povijest-placanja-title {
   font-size: 24px;
@@ -1351,28 +1346,33 @@ top: 10% !important;
   gap: 10px;
 }
 
+
 .order-item {
   background-color: #2196F3;
   color: white;
-  padding: 11px;
-  padding-left: 34px;
-  padding-right: 34px;
+  padding: 11px 34px;
   border-radius: 12px;
   display: flex;
-  justify-content: auto;
+  justify-content: flex-start;
   align-items: center;
-  gap: 20%;
+  gap: 30px;
 }
 
 .order-price {
   font-size: 15px;
   font-weight: bold;
+  width: 80px;
+  text-align: left;
 }
 
 .order-details {
   text-align: left;
   font-weight: bold;
+  flex-grow: 1;
 }
+
+
+
 
 .order-name {
   font-size: 12px;

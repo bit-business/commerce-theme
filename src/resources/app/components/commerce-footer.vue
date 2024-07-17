@@ -40,7 +40,7 @@
             <a class="politika-privatnosti" href="https://hzuts.hr/politikaprivatnosti">Politika privatnosti</a>
             <a class="politika-o-kolaiima" href="https://hzuts.hr/politikakolacica">Politika o kolačićima</a>
             <Link  :href="route('skijasi.commerce-theme.osnovneinformacije')" class="osnovne-informacije">Osnovne informacije</Link>
-           <a class="povijest">Popusti za članove</a>
+           <Link :href="route('skijasi.commerce-theme.popustizaclanove')" class="povijest">Popusti za članove</Link>
             <a class="bilteni-hzuts-a" href="https://hzuts.hr/infoclanarine">Članarine</a>
             <a class="podruni-zborovi">Dokumenti</a>
           </div>

@@ -166,7 +166,7 @@
 
           <template v-if="notifications.length > 0">
             <div
-  class="w-full flex p-6 space-x-4 items-start last:rounded-b-xl hover:bg-gray-50 cursor-pointer relative fade-out"
+  class="w-full flex p-6 space-x-4 items-center rounded-xl obavijesthover cursor-pointer relative fade-out"
   :class="{
     fade: notification.shouldFadeOut,
     'bg-primary bg-opacity-10': notification.isRead === 0,
@@ -187,13 +187,13 @@
 
   <div class="flex flex-col">
     <a v-if="notification.url" :href="notification.url">
-      <div class="text-gray-500" style="max-width: 46vw; word-wrap: break-word;">
+      <div class="text-gray-500" style="max-width: 46vw; white-space: pre-line; word-wrap: break-word;">
         {{ notification.message }}
       </div>
       <div class="text-sm text-black text-bold mt-2" style="font-weight: 500;">Objavljeno: {{ $moment(notification.created_at).format('DD.MM.YYYY') }}</div>
     </a>
 
-    <div v-else class="text-gray-500" style="max-width: 46vw; word-wrap: break-word;">
+    <div v-else class="text-gray-500" style="max-width: 46vw; white-space: pre-line; word-wrap: break-word;">
       {{ notification.message }}
       <div class="text-sm text-black text-bold mt-2" style="font-weight: 500;">Objavljeno: {{ $moment(notification.created_at).format('DD.MM.YYYY') }}</div>
     </div>
@@ -1119,6 +1119,10 @@ width: 80px;
 
 .fade-out.fade {
   opacity: 0;
+}
+
+.obavijesthover:hover {
+background-color: #d8d8d839;
 }
 
   </style>

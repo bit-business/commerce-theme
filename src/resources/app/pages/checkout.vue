@@ -429,12 +429,12 @@ class="bell-icon">
            
                   {{ user.drzava }} 
                 </div>
-                <div
+                <!-- <div
                   v-if="addressSelected.isMain == 1"
                   class="text-sm font-medium text-gray-400"
                 >
                 Glavna osoba
-                </div>
+                </div> -->
                 <div
                   class="text-sm font-medium plava-boja cursor-pointer"
                   @click="isAddState = true"
@@ -838,11 +838,11 @@ class="bell-icon">
                       {{ getMainAddressCountry(address.country) }},
                       {{ address.country }} {{ address.postalCode }}</span
                     >
-                    <span
+                    <!-- <span
                       v-if="address.isMain == 1"
                       class="text-sm text-gray-500"
                       >Glavna adresa</span
-                    >
+                    > -->
                   </div>
                 </div>
                 <div class="flex gap-4 items-center mt-4">

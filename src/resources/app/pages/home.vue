@@ -94,13 +94,13 @@
       <ssr-carousel  v-if="limitedSlides.length > 0" class="dogadajipodgrupa"
       overflow-visible
       show-arrows
-  :slides-per-page='3'
+  :slides-per-page='4'
   gutter='40'
   :peek='40'
   :responsive='[
     {
-      maxWidth: 1280,
-      slidesPerPage: 3,
+      minWidth: 1280,
+      slidesPerPage: 4,
     },
     {
       maxWidth: 1024,
@@ -179,7 +179,7 @@
               >Kako postati učitelj sportova na snijegu</b
             >
             <div class="saznajvise">
-              <img class="vector-icon" alt="" src="/storage/slike/pocetna/vector2.svg" />
+              <img class="home-vector-icon" alt="" src="/storage/slike/pocetna/vector2.svg" />
               <div class="saznaj-vie">Saznaj više</div>
             </div>
             <div class="proitajte-kako-postati">
@@ -208,7 +208,7 @@
           <div class="tekstdrugireddesno">
             <b class="ulanite-se-u">Učlanite se u HZUTS</b>
             <div class="tekstdrugiredsaznajvise">
-              <img class="vector-icon" alt="" src="/storage/slike/pocetna/vector2.svg" />
+              <img class="home-vector-icon" alt="" src="/storage/slike/pocetna/vector2.svg" />
               <div class="saznaj-vie">Saznaj više</div>
             </div>
             <div class="saznajte-informacije-kako">
@@ -234,7 +234,7 @@
             Sve što trebate znati na jednom mjestu
           </div>
           <div class="vector-parent">
-            <img class="vector-icon2" alt="" src="/storage/slike/pocetna/vector.svg" />
+            <img class="home-vector-icon2" alt="" src="/storage/slike/pocetna/vector.svg" />
             <div class="saznaj-vie2">Saznaj više</div>
           </div>
      <!--Link-->   </Link>
@@ -248,7 +248,7 @@
           />
           <b class="interski-kongresi-i">Interski kongresi i Demo team</b>
           <div class="saznajvise1">
-            <img class="vector-icon" alt="" src="/storage/slike/pocetna/vector1.svg" />
+            <img class="home-vector-icon" alt="" src="/storage/slike/pocetna/vector1.svg" />
             <div class="saznaj-vie">Saznaj više</div>
           </div>
           <div class="saznajte-informacije-o1">
@@ -672,7 +672,10 @@ this.fetchTotalUsers();
   },
   computed: {
     limitedSlides() {
-      return this.slides.slice(0, 3); // This will take the first 3 slides
+      if (window.innerWidth < 800) {
+        return this.slides.slice(0, 3);
+      } else {
+      return this.slides.slice(0, 4); } // This will take the first 3 slides
     },
 
     computedSpace() {
@@ -1065,7 +1068,7 @@ transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover
 }
 
 .view-more-button:hover {
-  transform: scale(1.05); /* Slightly increase size on hover */
+  transform: scale(1.05); 
   color: #3498db; 
 }
 
@@ -1130,8 +1133,8 @@ line-height: normal;
 
 .dogadajipodgrupa-child:hover {
   transform: scale(1.15);
-    z-index: 1000;  /* Ensures that the enlarged slide is above other elements */
-    box-shadow: 0 7px 10px rgba(0, 0, 0, 0.2); 
+    z-index: 1000; 
+    box-shadow: 0 3px 4px rgba(0, 0, 0, 0.15); 
 }
 
 
@@ -1143,17 +1146,17 @@ line-height: normal;
 }
 
 .carousel-3d-controls-prev {
-    left: -90px; /* Adjust this value as needed */
+    left: -90px; 
 }
 
 .carousel-3d-controls-next {
-    right: -90px; /* Adjust this value as needed */
+    right: -90px; 
 }
 
 .slide-dots {
     display: flex;
     justify-content: center;
-    margin-top: 10px; /* adjust as needed */
+    margin-top: 10px; 
 }
 
 
@@ -1162,15 +1165,15 @@ line-height: normal;
 .slide-dots span {
     width: 10px;
     height: 10px;
-    background-color: gray; /* Default color is gray */
+    background-color: gray;
     border-radius: 50%;
     margin: 0 5px;
     cursor: pointer;
-    transition: background-color 0.3s ease; /* transition on background-color */
+    transition: background-color 0.3s ease;
 }
 
 .slide-dots .active-dot {
-    background-color: #03a9f4; /* Active dot is blue */
+    background-color: #03a9f4; 
 }
 
 
@@ -1213,7 +1216,7 @@ line-height: normal;
 
   .homepageglavnaslika-icon {
     align-self: stretch;
-    position: relative; /* make sure it's positioned relative or absolute */
+    position: relative; 
     top: -3.75rem;
     max-width: 100%;
     overflow: hidden;
@@ -1275,7 +1278,13 @@ padding-right: 6%;
   scroll-snap-align: start;
   flex: 0 0 auto;
   margin-right: 66px; /* Adjust this gap between slides if necessary */
+  transition: transform 0.3s ease;
 }
+
+.bilteni-rectangle-parent:hover {
+transform: scale(1.08); 
+}
+
 
 .slider-arrow {
   position: absolute;
@@ -1306,7 +1315,7 @@ padding-right: 6%;
     justify-content: center;
     height: 6rem;
   }
-  .vector-icon {
+  .home-vector-icon {
     position: absolute;
     height: 52.63%;
     width: 5.66%;
@@ -1482,7 +1491,7 @@ padding-right: 6%;
     justify-content: center;
     height: 3rem;
   }
-  .vector-icon2 {
+  .home-vector-icon2 {
     position: absolute;
     width: 5.69%;
     top: 0.31rem;
@@ -1881,7 +1890,7 @@ line-height: normal;
   .group-icon {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 76px);
+    left: calc(50% - 60px);
     width: 8.13rem;
     height: 8.13rem;
   }
@@ -1926,7 +1935,7 @@ line-height: normal;
   .clip-path-group {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 74px);
+    left: calc(50% - 80px);
     width: 8.13rem;
     height: 8.13rem;
   }
@@ -2026,7 +2035,7 @@ grid-column: span 1;
     height: 3.75rem;
     z-index: 0;
   }
-  .vector-icon4 {
+  .home-vector-icon4 {
     position: absolute;
     margin: 0 !important;
     top: calc(50% - 13.5px);

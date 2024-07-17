@@ -15,8 +15,8 @@ Route::prefix($commerce_route_prefix)
          */
         Route::get('/', HelpersRoute::getController('InertiaController@home'))->name('home');
         Route::get('/kategorija/{slug}', HelpersRoute::getController('InertiaController@kategorija'))->name('kategorija');
-        Route::get('/placanja', HelpersRoute::getController('InertiaController@cart'))->name('cart');
-        Route::get('/narudzbe', HelpersRoute::getController('InertiaController@checkout'))->name('checkout');
+        // Route::get('/placanja', HelpersRoute::getController('InertiaController@cart'))->name('cart');
+        // Route::get('/narudzbe', HelpersRoute::getController('InertiaController@checkout'))->name('checkout');
         Route::get('/detalji/{slug}', HelpersRoute::getController('InertiaController@detalji'))->name('detalji');
         Route::get('/dogadaji/{slug}', HelpersRoute::getController('InertiaController@dogadaji'))->name('dogadaji');
         Route::get('/galerija', HelpersRoute::getController('InertiaController@galerija'))->name('galerija');

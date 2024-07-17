@@ -575,8 +575,9 @@ computeCountdown() {
 .grid-container {
   display: grid;
   grid-template-columns: repeat(4, minmax(250px, 1fr)); /* Adjust for four items */
-  gap: 15px;
+  gap: 18px;
   padding: 15px;
+  padding-top: 35px;
   padding-left: 25px;
   padding-right: 25px ;
 }

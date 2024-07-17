@@ -126,10 +126,11 @@
               <img class="arrow-left" @click="prevPhoto" alt="" src="/storage/slike/detail/group-276.svg" />
               <img class="arrow-right" @click="nextPhoto" src="/storage/slike/detail/group-2761.svg"/>
 
-    <div class="gallery-container" ref="galleryContainer">
-      <div v-for="(photo, index) in currentPhotos" :key="index" class="photo" @click="showFullscreen(index)">
 
-        <img class="galerijaframe-item" :src="photo" alt="Photo">
+        <div class="gallery-container" ref="galleryContainer">
+    <div v-for="(photo, index) in currentPhotos" :key="index" class="photo" @click="showFullscreen(index)">
+      <img class="galerijaframe-item" :src="photo" alt="Photo">
+
         <div class="overlay">
                   <svg width="32"  class="eye-icon" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M31.7966 15.3772C31.5108 14.9861 24.6993 5.80176 15.9998 5.80176C7.30039 5.80176 0.488626 14.9861 0.203063 15.3768C-0.0676876 15.7478 -0.0676876 16.251 0.203063 16.622C0.488626 17.013 7.30039 26.1974 15.9998 26.1974C24.6993 26.1974 31.5108 17.013 31.7966 16.6223C32.0678 16.2513 32.0678 15.7478 31.7966 15.3772ZM15.9998 24.0875C9.59177 24.0875 4.0417 17.9917 2.39875 15.9988C4.03957 14.0043 9.57802 7.91164 15.9998 7.91164C22.4076 7.91164 27.9573 14.0064 29.6009 16.0003C27.9601 17.9948 22.4217 24.0875 15.9998 24.0875Z" fill="white"/>
@@ -205,6 +206,9 @@
 
 </div>
       <div class="framegumbi">
+        <a class="lijevigumb" @click="buyNow()">  
+          <b class="uplatite-lanarinu-hzuts-u">UPLATITE ČLANARINU HZUTS-U</b>
+        </a>
         <a class="lijevigumb"  :href="route('skijasi.commerce-theme.prijavanadogadaj', { id:  product.formId })"  @click="handleClick">
   <b class="prijavnica-za-dogaaj">PRIJAVNICA ZA DOGAĐAJ</b>
 </a>
@@ -212,9 +216,7 @@
 <vs-popup :title="'Privremeno zatvorene prijave'" :active.sync="showPopup" @close="showPopup = false">
 
     </vs-popup>
-        <a class="desnigumb" @click="buyNow()">  
-          <b class="uplatite-lanarinu-hzuts-u">UPLATITE ČLANARINU HZUTS-U</b>
-        </a>
+      
       </div>
 
     <!-- Content for Prijava i plaćanje     https://forms.gle/z95LVJdJV6Lr8jyh7-->
@@ -284,84 +286,7 @@ export default {
 
 
       backgroundImage: null,
-      photos: [
-        '/storage/slike/dogadaj1/galerija1.jpg',
-        '/storage/slike/dogadaj1/galerija2.png',
-        '/storage/slike/dogadaj1/galerija3.jpg',
-        '/storage/slike/dogadaj1/galerija4.jpg',
-        '/storage/slike/dogadaj1/galerija5.jpg',
-        '/storage/slike/dogadaj1/galerija6.jpg',
-        '/storage/slike/dogadaj1/galerija7.jpeg',
-        '/storage/slike/dogadaj1/galerija8.jpeg',
-        '/storage/slike/dogadaj1/galerija9.jpeg',
-        '/storage/slike/dogadaj1/galerija10.jpeg',
-        '/storage/slike/dogadaj1/galerija11.jpeg',
-        '/storage/slike/dogadaj1/galerija12.jpeg',
-        '/storage/slike/dogadaj1/galerija13.jpeg',
-        '/storage/slike/dogadaj1/galerija14.jpeg',
-        '/storage/slike/dogadaj1/galerija15.jpeg',
-        '/storage/slike/dogadaj1/galerija16.jpeg',
 
-      ],
-
-      photos2: [
-        '/storage/slike/dogadaj2/galerija1.jpg',
-        '/storage/slike/dogadaj2/galerija2.jpg',
-        '/storage/slike/dogadaj2/galerija3.jpg',
-        '/storage/slike/dogadaj2/galerija4.jpg',
-        '/storage/slike/dogadaj2/galerija5.jpg',
-        '/storage/slike/dogadaj2/galerija6.jpg',
-        '/storage/slike/dogadaj2/galerija7.jpg',
-        '/storage/slike/dogadaj2/galerija8.jpg',
-        '/storage/slike/dogadaj2/galerija9.jpg',
-        '/storage/slike/dogadaj2/galerija10.jpg',
-        '/storage/slike/dogadaj2/galerija11.jpg',
-        '/storage/slike/dogadaj2/galerija12.jpg',
-        '/storage/slike/dogadaj2/galerija13.jpg',
-        '/storage/slike/dogadaj2/galerija14.jpg',
-        '/storage/slike/dogadaj2/galerija15.jpg',
-        '/storage/slike/dogadaj2/galerija16.jpg',
-        '/storage/slike/dogadaj2/galerija17.jpg',
-        '/storage/slike/dogadaj2/galerija18.jpg',
-        '/storage/slike/dogadaj2/galerija19.jpg',
-        '/storage/slike/dogadaj2/galerija20.jpg',
-      ],
-      photos3: [
-      '/storage/slike/dogadaj3/galerija0.jpg',
-        '/storage/slike/dogadaj3/galerija1.jpg',
-        '/storage/slike/dogadaj3/galerija2.jpg',
-        '/storage/slike/dogadaj3/galerija3.jpg',
-        '/storage/slike/dogadaj3/galerija4.jpg',
-        '/storage/slike/dogadaj3/galerija5.jpg',
-        '/storage/slike/dogadaj3/galerija6.jpg',
-        '/storage/slike/dogadaj3/galerija7.jpg',
-        '/storage/slike/dogadaj3/galerija8.jpg',
-        '/storage/slike/dogadaj3/galerija9.jpg',
-        '/storage/slike/dogadaj3/galerija10.jpg',
-        '/storage/slike/dogadaj3/galerija11.jpg',
-        '/storage/slike/dogadaj3/galerija12.jpg',
-        '/storage/slike/dogadaj3/galerija13.jpg',
-        '/storage/slike/dogadaj3/galerija14.jpg',
-        '/storage/slike/dogadaj3/galerija15.jpg',
-      ],
-      photos4: [
-      '/storage/dogadajislike/dogadaj1/galerija10.jpg',
-      '/storage/dogadajislike/dogadaj1/galerija11.jpg',
-      '/storage/dogadajislike/dogadaj1/galerija12.jpg',
-      '/storage/dogadajislike/dogadaj1/galerija13.jpg',
-      '/storage/dogadajislike/dogadaj1/galerija14.jpg',
-      '/storage/dogadajislike/dogadaj1/galerija1.jpeg',
-      '/storage/dogadajislike/dogadaj1/galerija2.jpeg',
-      '/storage/dogadajislike/dogadaj1/galerija3.jpeg',
-      '/storage/dogadajislike/dogadaj1/galerija4.jpeg',
-      '/storage/dogadajislike/dogadaj1/galerija5.jpeg',
-      '/storage/dogadajislike/dogadaj1/galerija6.jpeg',
-      '/storage/dogadajislike/dogadaj1/galerija7.jpeg',
-      '/storage/dogadajislike/dogadaj1/galerija8.jpeg',
-      '/storage/dogadajislike/dogadaj1/galerija9.jpg',
-      '/storage/dogadajislike/dogadaj1/galerija15.jpg',
-      '/storage/dogadajislike/dogadaj1/galerija16.jpg',
-      ],
       currentIndex: 0,
       fullscreenImageIndex: null,
 
@@ -405,6 +330,8 @@ export default {
         mjesto: "",
         prijavnicalink: "",
 
+
+
         reviewAvgRating: 0,
         reviewCount: 0,
         productCategory: {
@@ -439,25 +366,25 @@ export default {
     }
   },
   computed: {
-    currentPhotos() {
- //   return this.product.mjesto === "SEXTEN" ? this.photos2 : this.photos;
-    if (this.product.name == "DRŽAVNI SEMINAR") {
-      return this.photos2;
-    } else if (this.product.name == "ISIA SEMINAR-STARI") {
-      return this.photos3;
-    } else if (this.product.name == "DEMONSTRATORSKI SEMINAR") {
-      return this.photos3;
-    } 
-    else if (this.product.name == "SEMINAR HZUTS-a") {
-      return this.photos4;
-    } 
-    else if (this.product.name == "ISIA SEMINAR") {
-      return this.photos4;
-    } 
-    else {
-      return this.photos4;
-    }
+  currentPhotos() {
+    if (!this.product.galleryimages) return [];
+    
+    // const baseUrl = process.env.APP_URL ?? '';
+    const baseUrl =  process.env.MIX_FRONTEND_URL || 'http://127.0.0.1:8000/storage/';
+    const images = JSON.parse(this.product.galleryimages);
+    
+    return images.map(path => {
+      // Check if the path is already a full URL
+      if (path.startsWith('http://') || path.startsWith('https://')) {
+        return path;
+      }
+      
+      // If it's a relative path, prepend the base URL
+      return `${baseUrl}/storage/${path.replace(/^\//, '')}`;
+    });
   },
+
+
 
 
 
@@ -594,7 +521,7 @@ export default {
 
     showFullscreen(index) {
     // Use the index directly to get the image URL from the photos array
-    const imageURL = this.photos4[index];
+    const imageURL = this.currentPhotos[index];
     this.fullscreenImageIndex = index;
 
 
@@ -691,26 +618,26 @@ export default {
 
 
 showNextImage() {
-    if (this.fullscreenImageIndex < this.photos4.length - 1) {
-      this.fullscreenImageIndex++;
-    } else {
-      this.fullscreenImageIndex = 0; // loop back to the first image
-    }
-    const overlay = document.getElementById('fullscreen-overlay');
-    const img = overlay.querySelector('img');
-    img.src = this.photos4[this.fullscreenImageIndex];
-  },
+  if (this.fullscreenImageIndex < this.currentPhotos.length - 1) {
+    this.fullscreenImageIndex++;
+  } else {
+    this.fullscreenImageIndex = 0;
+  }
+  const overlay = document.getElementById('fullscreen-overlay');
+  const img = overlay.querySelector('img');
+  img.src = this.currentPhotos[this.fullscreenImageIndex];
+},
 
-  showPreviousImage() {
-    if (this.fullscreenImageIndex > 0) {
-      this.fullscreenImageIndex--;
-    } else {
-      this.fullscreenImageIndex = this.photos4.length - 1; // loop back to the last image
-    }
-    const overlay = document.getElementById('fullscreen-overlay');
-    const img = overlay.querySelector('img');
-    img.src = this.photos4[this.fullscreenImageIndex];
-  },
+showPreviousImage() {
+  if (this.fullscreenImageIndex > 0) {
+    this.fullscreenImageIndex--;
+  } else {
+    this.fullscreenImageIndex = this.currentPhotos.length - 1;
+  }
+  const overlay = document.getElementById('fullscreen-overlay');
+  const img = overlay.querySelector('img');
+  img.src = this.currentPhotos[this.fullscreenImageIndex];
+},
 
 
 
@@ -1138,6 +1065,7 @@ showNextImage() {
   .lijevigumb:hover {
     color: #fff;
     background-color: #03a9f4;
+    cursor: pointer;
 }
 
   .dravni-seminar {
@@ -1459,7 +1387,7 @@ showNextImage() {
     align-items: center;
     justify-content: center;
 
-   /* gap: 5rem; ovo odkomentirati kada se doda dodatan gumb za placanje */
+    gap: 5rem; 
     font-size: 1.25rem;
   }
   .glavnipodframe {

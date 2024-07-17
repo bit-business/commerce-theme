@@ -29,7 +29,7 @@
     </nav>
     <div class="logoframe">
       <Link :href="route('skijasi.commerce-theme.home')">
-      <img class="vector-icon" alt="" src="/storage/slike/logonovi.svg" />
+      <img class="topbar-vector-icon" alt="" src="/storage/slike/logonovi.svg" :class="{'vecalogoikona': isHomePage && !hasScrolled }"/>
     </Link>
     </div>
 
@@ -83,7 +83,7 @@
           />
       
           <img
-            class="vector-icon1"
+            class="topbar-vector-icon1"
             alt=""
             v-else
             src="/storage/slike/vector1profilikona.svg"
@@ -192,8 +192,8 @@
 <div class="mobilnimeniglavniInfo" v-if="showDropdowninformacijeMob">
 <div class="pozadinamobilnimeni" />
       <button class="ikonax" @click="closeDropdown">
-          <img class="vector-icon2" alt="" src="/storage/slike/menivector2.svg" />
-          <img class="vector-icon2" alt="" src="/storage/slike/menivector3.svg" />
+          <img class="topbar-vector-icon2" alt="" src="/storage/slike/menivector2.svg" />
+          <img class="topbar-vector-icon2" alt="" src="/storage/slike/menivector3.svg" />
         </button>
         <div class="infolista">
 
@@ -215,8 +215,8 @@
     <div class="mobilnimeniglavni" v-if="showDropdownmeni" @click="toggleDropdownmeni">
       <div class="pozadinamobilnimeni" />
       <button class="ikonax" @click="closeDropdown">
-          <img class="vector-icon2" alt="" src="/storage/slike/menivector2.svg" />
-          <img class="vector-icon2" alt="" src="/storage/slike/menivector3.svg" />
+          <img class="topbar-vector-icon2" alt="" src="/storage/slike/menivector2.svg" />
+          <img class="topbar-vector-icon2" alt="" src="/storage/slike/menivector3.svg" />
         </button>
       <div class="mobilnimeni">
 
@@ -778,13 +778,7 @@ showNotification() {
     align-items: center;
     justify-content: space-between;
   }
-  .vector-icon {
-    position: absolute;
-    top: calc(50% - 40px);
-    left: 0rem;
-    width: 2.8rem;
-    height: 2.8rem;
-  }
+
   .g14 {
     text-decoration: none;
     position: absolute;
@@ -816,7 +810,7 @@ showNotification() {
     overflow: hidden;
     flex-shrink: 0;
   }
-  .vector-icon1 {
+  .topbar-vector-icon1 {
     position: relative;
     top: calc(50% - 6.5px);
     right: -0.03rem;
@@ -1058,12 +1052,20 @@ showNotification() {
     align-items: center;
     justify-content: center;
   }
-  .vector-icon {
+  .topbar-vector-icon {
     position: absolute;
     top: calc(50% - 60px);
-    left: 0rem;
+    left: -5px;
     width: 2.5rem;
     height: 2.5rem;
+  }
+
+  .vecalogoikona {
+    position: absolute;
+    top: calc(50% - 64px);
+    left: -10px;
+    width: 5.2rem;
+    height: 5.2rem;
   }
   .logoframe {
     text-decoration: none;
@@ -1367,7 +1369,7 @@ align-items: center;
 
 
 
-  .vector-icon2 {
+  .topbar-vector-icon2 {
     cursor: pointer;
     border: none;
     padding: 0;
@@ -1561,7 +1563,7 @@ top: 0%;
 
   @media screen and (max-width: 420px) {
 
-    .vector-icon1 {
+    .topbar-vector-icon1 {
     position: relative;
     top: calc(50% - 7.5px);
     right: -0.3rem;
@@ -1591,6 +1593,18 @@ top: 0%;
 
   }
   @media screen and (max-width: 800px) {
+
+    .vecalogoikona {
+      position: absolute;
+    top: calc(50% - 56px);
+    left: -5px;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  .topbar-vector-icon {
+  top: calc(50% - 56px);
+  left: -5px;
+}
 
     .osnovne-informacije {
         top: 15px; /* starting position */

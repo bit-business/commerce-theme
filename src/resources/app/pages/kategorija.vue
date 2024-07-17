@@ -23,7 +23,7 @@
 >
 
       <div class="frame-parent">
-        <div class="frame">
+        <div class="frame-kategorija">
           <div class="line-parent">
             <div class="frame-child" />
             <div class="sljedei-dogaaj">Sljedeći događaj</div>
@@ -36,7 +36,7 @@
     class="login-with-email-button cursor-pointer" 
     :href="route('skijasi.commerce-theme.detalji', nextEvent.slug)"
 >     
-    <div class="saznaj-vie">Saznaj više</div>
+    <div class="saznaj-vie-kategorija">Saznaj više</div>
 </Link>
 
 <!-- Render the button without a link when nextEvent.slug does not exist -->
@@ -44,7 +44,7 @@
     v-else
     class="login-with-email-button cursor-pointer"
 >     
-    <div class="saznaj-vie">Uskoro novi događaji</div>
+    <div class="saznaj-vie-kategorija">Uskoro novi događaji</div>
 </div>
 
 
@@ -697,13 +697,16 @@ computeCountdown() {
     display: grid;
     grid-template-columns: repeat(6, 1fr);
     gap: 20px;
+    padding: 4rem;
+}
+.product-item {
+    grid-column: span 2;
 }
 
-.product-item {
+.product-item:nth-child(1),
+.product-item:nth-child(2) {
     grid-column: span 3;
 }
-
-
 
 
 .inactive-overlay {
@@ -761,14 +764,14 @@ computeCountdown() {
   justify-content: center;
   gap: 1.19rem;
 }
-.saznaj-vie {
+.saznaj-vie-kategorija {
   position: relative;
   letter-spacing: -0.17px;
   font-weight: 600;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 5.67rem;
+ 
 }
 .login-with-email-button {
   text-decoration: none;
@@ -791,7 +794,7 @@ computeCountdown() {
   color: #fff;
 }
 
-.frame {
+.frame-kategorija {
   align-self: stretch;
   height: 29.69rem;
   overflow: hidden;
@@ -1076,7 +1079,7 @@ computeCountdown() {
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   gap: 19rem;
 }
 .teaj-za-uitelje {
@@ -1093,30 +1096,38 @@ computeCountdown() {
     rgba(3, 169, 244, 0.8),
     rgba(0, 0, 0, 0.8)
   );
-  width: 37.8rem;
-  height: 10.8rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  padding: 1.23rem 2.12rem;
-  box-sizing: border-box;
-  align-items: flex-start;
-  justify-content: flex-start;
-  gap: 1.75rem;
+  
+  width: 100%; /* Make it full width */
+    height: 100%; /* Adjust height as needed */
+    display: flex;
+    flex-direction: column; /* Change to column if needed */
+    padding: 1.23rem 2.12rem;
+    box-sizing: border-box;
+    align-items: stretch; /* This will make children stretch to full width */
+    justify-content: flex-start;
+    gap: 1.75rem;
 }
 .frame7 {
-  overflow: hidden;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
+    width: 100%; 
+    height: 10rem;
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
 }
 .prvireddesni {
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  min-height: 200px; /* Adjust as needed */
+
+
   text-decoration: none;
   border-radius: 20px;
-  width: 37.75rem;
-  height: 34.38rem;
+
+
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -1140,6 +1151,7 @@ computeCountdown() {
   align-items: center;
   justify-content: center;
 }
+
 .svikvadrtatiframe {
   flex: 1;
   height: 34.37rem;
@@ -1166,13 +1178,13 @@ computeCountdown() {
   margin-bottom: 3rem;
     height: 100%; 
   height: 100%;
-
+  overflow-y: auto;
 }
 .dogadanja {
   position: relative;
   background-color: #f8f7f5;
   width: 100%;
-  height: 196.49rem;
+  height: 220rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1183,7 +1195,6 @@ computeCountdown() {
   color: #fff;
   font-family: Inter;
   overflow: hidden;
-
 
   
 }
@@ -1242,20 +1253,17 @@ computeCountdown() {
 
 
   .teaj-za-uitelja{
-font-size: 1.8rem;
-  }
+font-size: 1.5rem;
 
+  }
 
   .teaj-za-uitelje{
-font-size: 2rem;
+font-size: 1.45rem;
+word-break: break-all;
   }
 
 
 
-  .prvireddesni {
-        max-width: 80vw;
-        height: auto;  
-    }
     .frame7 {
         max-width: 80vw;
         height: auto;  
@@ -1265,13 +1273,8 @@ font-size: 2rem;
         height: auto;  
     }
 
-    .products-grid {
-        grid-template-columns: repeat(1, 1fr);
-    }
 
-    .product-item {
-        grid-column: span 1;
-    }
+
  
 
     .dogadanja {
@@ -1325,10 +1328,10 @@ padding: 0 rem 2.4rem;
 
 
 
-    .frame {
+    .frame-kategorija {
   height: 33.69rem;
 
-  gap: 29.06rem;
+  padding-bottom: 29.06rem;
 }
     .login-with-email-button {
           width: 16rem;
@@ -1396,12 +1399,61 @@ font-size: 0.5rem;
     
   }
   .dogadajiframe3 {
-    left: 50%;     
-    top: 2.2rem;         
+        
+    top: 2.2rem;  
+    gap: 1.5rem !important;       
   }
+
+
+  .dogadajiframe1 {
+        max-width: 95vw;
+    }
+
+    .frame4, .frame5{
+              gap: 1.3rem !important;
+
+          }
+     .frame4 {
+
+              margin-left: 0.4rem;
+     }
 
 }
 
 
+
+
+@media screen and (max-width: 1200px) {
+    .products-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+    .product-item,
+    .product-item:nth-child(1),
+    .product-item:nth-child(2) {
+        grid-column: span 2;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .products-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .product-item,
+    .product-item:nth-child(1),
+    .product-item:nth-child(2) {
+        grid-column: span 1;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    .product-item,
+    .product-item:nth-child(1),
+    .product-item:nth-child(2) {
+        grid-column: span 1;
+    }
+}
 
 </style>

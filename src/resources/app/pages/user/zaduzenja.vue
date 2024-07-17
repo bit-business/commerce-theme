@@ -241,13 +241,13 @@
             <div v-if="cart.productDetail.product.productCategory.slug != 'licence'" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center"> 
               <div v-if="cart.cekapotvrdu == 1"> 
     <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span> 
-</div><button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-1.5 text-red-500 rounded hover:bg-red-50"> 
+</div><button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 text-red-500 rounded hover:bg-red-50"> 
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"> 
             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /> 
         </svg>
     </button> 
 </div> 
-<div v-else-if="cart.cekapotvrdu == 1"> 
+<div v-else-if="cart.cekapotvrdu == 1" class="text-center"> 
 
      
             <template>
@@ -282,23 +282,23 @@
 
       <div></div>
       
-      <div class="bg-gray-100 px-8 py-4 flex gap-4 shadow-sm rounded-xl justify-end">
-        <div class="flex flex-wrap items-center float-right gap-1">
-          <div class="flex items-center gap-4 w-full float-right justify-end">
-           Ukupno ({{ checkboxModel.length }} odabrano):
-            <span class="text-2xl plava-boja">{{ $currency(getTotal) }}</span>
-          </div>
-          <div class="flex items-center gap-4 text-sm w-full float-right justify-end" v-if="Number(getSaving) !== 0" >
-           Popust:
-            <span class="plava-boja"> -{{ $currency(getSaving) }}</span>
-          </div>
-        </div>
-        <div class="flex items-center w-48">
-          <button @click="checkout" class="font-medium bg-primary1 text-white p-2 font-sm w-full rounded-md">
-           NA PLAĆANJE
-          </button>
-        </div>
-      </div>
+      <div class="bg-gray-100 px-8 py-4 flex justify-between gap-4 shadow-sm rounded-xl">
+  <div class="flex flex-wrap items-center gap-1">
+    <div class="flex items-center gap-4 w-full">
+      Ukupno ({{ checkboxModel.length }} odabrano):
+      <span class="text-2xl plava-boja">{{ $currency(getTotal) }}</span>
+    </div>
+    <div class="flex items-center gap-4 text-sm w-full" v-if="Number(getSaving) !== 0">
+      Popust:
+      <span class="plava-boja"> -{{ $currency(getSaving) }}</span>
+    </div>
+  </div>
+  <div class="flex items-center w-48 justify-end">
+    <button @click="checkout" class="font-medium bg-primary1 text-white p-2 font-sm w-full rounded-md">
+      NA PLAĆANJE
+    </button>
+  </div>
+</div>
 
 
       <!-- možda ti se svidi kod
