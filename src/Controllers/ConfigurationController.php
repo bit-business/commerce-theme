@@ -274,6 +274,12 @@ class ConfigurationController extends Controller
             $entry = new FormEntry();
             $entry->form_id = $formId;
             $entry->data = json_encode($validatedData);
+
+            
+            $user = auth()->user();
+            // Add the "ispunio" field with user's name and username
+            $entry->ispunio = $user->name . '  ' . $user->username . '';
+
             $entry->save();
     
             DB::commit();

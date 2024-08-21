@@ -14,15 +14,15 @@
     @endphp
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="{{ "https://www.googletagmanager.com/gtag/js?id={$measurement_id}" }}"></script>
-    <script>
-        window.measurement_id = '{{ $measurement_id }}'
-        window.dataLayer = window.dataLayer || [];
-
-        function gtag() {
-            dataLayer.push(arguments);
-        }
-    </script>
+<script async src="{{ "https://www.googletagmanager.com/gtag/js?id={$measurement_id}" }}"></script>
+<script>
+window.measurement_id = '{{ $measurement_id }}';
+window.dataLayer = window.dataLayer || [];
+function gtag() {
+  dataLayer.push(arguments);
+}
+// Don't initialize GA here, it will be done based on cookie consent
+</script>
     <!-- End Google Analytics -->
 
     <!-- Favicon -->

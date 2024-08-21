@@ -149,6 +149,12 @@ class InertiaController extends Controller
             'name' => 'Savjeti za članove',
         ], 'commerce-theme:app');
     }
+    public function stranicastatusiclanova()
+    {
+        return Inertia::render('stranicastatusiclanova', [
+            'name' => 'Statusi Članova',
+        ], 'commerce-theme:app');
+    }
     public function dokumenti()
     {
         return Inertia::render('dokumenti', [

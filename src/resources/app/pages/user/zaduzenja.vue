@@ -199,16 +199,16 @@
             <div class="col-span-2 flex gap-4 items-center">
               <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox">
               <div class="text-sm text-gray-700 w-24 h-24">
-                <img :src="cart.productDetail.productImage" class="w-full h-full">
+                <img :src="cart.productDetail.productImage" class="w-full h-full rounded-lg">
               </div>
-              <div class=" flex-1 text-sm">
+              <div class="flex-1 text-sm">
                 <Link :to="{ name: 'DetailProduct', params: { slug: cart.productDetail.product.slug } }" class="line-clamp-2">{{ cart.productDetail.product.name }}</Link>
                 <div class="text-sm mt-2">
-                  <span class="border border-gray-300 px-1.5 py-1 cursor-pointer ml-2 rounded-md text-gray-500 text-xs">{{ $voca.titleCase(cart.productDetail.name) }}</span>
+                  <span class="border border-gray-300 px-1.5 py-1 cursor-pointer  rounded-md text-gray-500 text-xs">{{ $voca.titleCase(cart.productDetail.name) }}</span>
                 </div>
               </div>
             </div>
-            <div class="col-span-1 text-sm text-gray-700 text-center flex items-center">
+            <div class="col-span-1 text-sm text-gray-700 text-center flex items-center  justify-center">
               <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
                 <span class="line-through text-gray-400">{{ $currency(cart.productDetail.price) }}</span>&nbsp;{{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount)) }}
               </template>
@@ -294,9 +294,15 @@
     </div>
   </div>
   <div class="flex items-center w-48 justify-end">
-    <button @click="checkout" class="font-medium bg-primary1 text-white p-2 font-sm w-full rounded-md">
-      NA PLAĆANJE
-    </button>
+    <button 
+  @click="checkout"
+  class="checkout-btn bg-primary1 px-12 py-3 text-white rounded-lg font-medium flex items-center justify-center"
+>
+  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+  </svg>
+  Na plaćanje
+</button>
   </div>
 </div>
 
@@ -1112,7 +1118,7 @@ console.log ("TEST ZADUZENJA:",this.staraPlacanjaArray );
 
     checkout() {
       if (this.checkboxModel.length <= 0) {
-        this.$helper.alert('Molimo odaberite barem jedan od artikala!')
+        this.$helper.alert('Molimo odaberite barem jedno zaduženje!')
         return
       }
 
@@ -1133,7 +1139,13 @@ console.log ("TEST ZADUZENJA:",this.staraPlacanjaArray );
         .browse()
         .then(res => {
           this.carts = res.data.carts
-          this.checkboxModel = this.carts.map(cart => cart.id);
+
+          // ova linija sve stavlja checkbox kvacicu pa sam stavio ispod da unchecka koji cekaju potvrdu
+          // this.checkboxModel = this.carts.map(cart => cart.id);
+          this.checkboxModel = this.carts
+        .filter(cart => cart.cekapotvrdu !== 1)
+        .map(cart => cart.id);
+
 
           // if (this.carts.length > 0) {
           //   this.fetchSimilar(this.$_.take(res.data.carts)[0])
@@ -1604,13 +1616,13 @@ width: 80px;
 
 .sidebar-closed {
     background: none; /* Remove background */
-    width: 250px; /* Adjust width as needed */
+    width: 250px; 
     justify-content: left;
   align-items: left;
   }
 
   .sidebar-closed .sidebar-icon {
-    display: inline-block; /* Display icons inline with text */
+    display: inline-block; 
     margin-right: 8px; /* Space between icon and text */
   }
 
@@ -1619,11 +1631,15 @@ width: 80px;
     white-space: nowrap; /* Prevent text wrapping */
   }
   
-  /* You may need to adjust the hover effect to change the text color correctly */
+
   .sidebar-closed .sidebar-item:hover .sidebar-text {
     color: #03A9F4; /* Change text color on hover */
   }
   
+  .sidebar-closed .sidebar-item:hover .sidebar-icon {
+    display: inline-block; 
+    margin-right: 8px; /* Space between icon and text */
+  }
 
 
 }
@@ -3299,6 +3315,46 @@ padding-left: 1rem;
 }
 .has-unread svg {
   stroke: orange;
+}
+
+
+
+.checkout-btn {
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  padding: 0.75rem 2rem;
+}
+
+.checkout-btn:hover {
+  background-color: #0288d1;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: pulse 1.5s infinite;
+}
+
+.checkout-btn:active {
+
+  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(3, 169, 244, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(3, 169, 244, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(3, 169, 244, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .checkout-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
 }
 
 </style>

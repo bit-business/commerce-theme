@@ -269,7 +269,7 @@
 
   <div class="povijest-placanja-container  bg-white shadow-sm rounded-xl  ml-16 pb-8 px-6">
     <div class="h-22 flex flex-col py-4 justify-center border-plava-200 border-b">
-            <span class="text-lg font-medium plavi-text">Zahtjevi</span>
+            <span class="text-lg font-medium plavi-text">Povijest Plaćanja</span>
           </div>
     
     <div class="content-wrapper pt-12">

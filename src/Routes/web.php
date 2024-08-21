@@ -32,6 +32,7 @@ Route::prefix($commerce_route_prefix)
         Route::get('/savjetizaclanove', HelpersRoute::getController('InertiaController@savjetizaclanove'))->name('savjetizaclanove');
         Route::get('/dokumenti', HelpersRoute::getController('InertiaController@dokumenti'))->name('dokumenti');
 
+        Route::get('/stranicastatusiclanova', HelpersRoute::getController('InertiaController@stranicastatusiclanova'))->name('stranicastatusiclanova');
 
         Route::get('/podrucnizborovi', HelpersRoute::getController('InertiaController@podrucnizborovi'))->name('podrucnizborovi');
         Route::get('/infoclanarine', HelpersRoute::getController('InertiaController@infoclanarine'))->name('infoclanarine');

@@ -15,7 +15,7 @@
           <span >
             <p><b>Politika kolačića Hrvatskog zbora učitelja i trenera sportova na snijegu</b></p>
 <p></p><br>
-<p>Ova politika kolačića (u daljnjem tekstu "Politika") odnosi se na web stranicu i aplikaciju Hrvatskog zbora učitelja i trenera sportova na snijegu (u daljnjem tekstu "Zbor", "mi", "nas", ili "na&scaron;"). Kori&scaron;tenjem na&scaron;e web stranice <span><b>staviti link stranice</b> </span>i aplikacije, pristajete na upotrebu kolačića i drugih tehnologija kako je opisano u ovoj Politici.</p>
+<p>Ova politika kolačića (u daljnjem tekstu "Politika") odnosi se na web stranicu i aplikaciju Hrvatskog zbora učitelja i trenera sportova na snijegu (u daljnjem tekstu "Zbor", "mi", "nas", ili "na&scaron;"). Kori&scaron;tenjem na&scaron;e web stranice <span><a href="https://hzuts.hr">hzuts.hr</a> </span> i aplikacije, pristajete na upotrebu kolačića i drugih tehnologija kako je opisano u ovoj Politici.</p>
 <p></p><br>
 <p><b>1. &Scaron;to su kolačići?</b></p>
 <p></p><br>
@@ -25,8 +25,8 @@
 <p></p><br>
 <p>2.1. Obavezni kolačići: Ovi kolačići su neophodni za ispravno funkcioniranje web stranice i aplikacije, uvijek su aktivni. Bez njih, neke funkcionalnosti ne bi bile dostupne. Obavezni kolačići ne pohranjuju podatke koji bi vas mogli identificirati.<span class="Apple-converted-space">&nbsp;</span></p>
 <p></p><br>
-<p>2.2. Statistički kolačići: Koristimo statističke kolačiće kako bismo prikupljali informacije o načinu kori&scaron;tenja na&scaron;e web stranice i aplikacije u svrhu mjerenja i pobolj&scaron;anja na&scaron;e web stranice i aplikacije, mogu se isključiti.<span class="Apple-converted-space">&nbsp;</span></p>
-<p></p><br>
+<!-- <p>2.2. Statistički kolačići: Koristimo statističke kolačiće kako bismo prikupljali informacije o načinu kori&scaron;tenja na&scaron;e web stranice i aplikacije u svrhu mjerenja i pobolj&scaron;anja na&scaron;e web stranice i aplikacije, mogu se isključiti.<span class="Apple-converted-space">&nbsp;</span></p>
+<p></p><br> -->
 <p><b>3. Upravljanje kolačićima</b></p>
 <p></p><br>
 <p>3.1. Većina web preglednika omogućuje vam upravljanje postavkama kolačića. Možete blokirati ili izbrisati kolačiće prema svojim željama. Opcije za upravljanje kolačićima obično se nalaze u postavkama preglednika pod "Privatnost" ili "Sigurnost".</p>
@@ -51,7 +51,7 @@
 <p></p><br>
 <p>Povjerenik: Helena Gaube; e-mail: <a href="mailto:helenagaube5@gmail.com"><span>&#104;&#101;&#108;&#101;&#110;&#97;&#103;&#97;&#117;&#98;&#101;&#53;&#64;&#103;&#109;&#97;&#105;&#108;&#46;&#99;&#111;&#109;</span></a> ; tel.: 00385981973625</p>
 <p></p><br>
-<p>Posljednje ažuriranje: 13. studeni 2023.<span class="Apple-converted-space">&nbsp;</span></p>
+<p>Posljednje ažuriranje: 25. srpanj 2024.<span class="Apple-converted-space">&nbsp;</span></p>
 <br>
 </span>
             

@@ -1,42 +1,52 @@
 <template>
   <div class="form-creator">
     <div class="header">
-      <h1>{{ selectedFormId ? 'Mijenjanje postojeće prijavnice' : 'Administracija Prijavnica' }}</h1>
+      <h1>{{ selectedFormId ? 'Mijenjanje Postojeće rijavnice' : 'Administracija Prijavnica' }}</h1>
     </div>
 
- <vs-card class="form-list paddinzi">
-  <vs-button class="" @click="createNewForm">Nova Prijavnica</vs-button>
+ <vs-card class="form-list paddinzi"> 
+  <div class="button-wrapper">
+  <vs-button class="nova-prijavnica-btn" @click="createNewForm">Nova Prijavnica</vs-button></div>
   <h2>Postojeće Prijavnice ({{ availableForms.length }})</h2>
      <!-- Use flexbox for horizontal layout -->
-     <ul class="horizontal-list" v-if="availableForms.length > 0">
-        <li v-for="form in availableForms" :key="form.id" @click="selectForm(form.id)">
-          {{ form.name }}
-        </li>
-      </ul>
+
+     <transition-group name="slide" tag="ul" class="horizontal-list" v-if="availableForms.length > 0">
+  <li v-for="form in availableForms" :key="form.id" @click="selectForm(form.id)">
+    {{ form.name }}
+  </li>
+</transition-group>
+  
   <p v-else>Nema prijavnica...</p>
+
 </vs-card>
 
 <div v-if="selectedFormId || isCreatingNewForm">
   <vs-card>
-  <h2>{{ selectedFormId ? 'Mijenjanje postojeće prijavnice:' : 'Nova prijavnica:' }} {{ form.name || 'prijavnica nema naziv' }}</h2>
+  <h2>{{ selectedFormId ? 'Naziv spremljene prijavnice:' : 'Nova prijavnica:' }} {{ form.name || 'prijavnica nema naziv' }}</h2>
   <form @submit.prevent="saveForm" class="form-container" ref="form">
-    <div class="form-group paddinzi">
-      <label for="formName">Naziv Prijavnice</label>
-      <input
-        type="text"
-        id="formName"
-        v-model="form.name"
-        required
-      />
-    </div>
+      <div class="form-group">
+    <label for="formName" class="form-label">Naziv prijavnice</label>
+    <input
+      type="text"
+      id="formName"
+      v-model="form.name"
+      required
+      class="form-input"
+      placeholder="Unesite naziv prijavnice"
+    />
+  </div>
 
-    <div class="form-group paddinzi">
-      <label for="formDescription">Opis ili napomene za prijavnicu (interno)</label>
-      <textarea
-        id="formDescription"
-        v-model="form.description"
-      ></textarea>
-    </div>
+  <div class="form-group">
+    <label for="formDescription" class="form-label">Interna napomena (opcionalno)</label>
+    <textarea
+      id="formDescription"
+      v-model="form.description"
+      class="form-input"
+      rows="3"
+      placeholder="Unesite interne napomene ili opis prijavnice (neće biti vidljivo kandidatima)"
+    ></textarea>
+  </div>
+
 
     <h3 class="paddinzi">Pitanja za prijavitelje ({{ form.fields.length }}):</h3>
     <div class="form-fields paddinzi">
@@ -68,7 +78,8 @@
         <button type="button" @click="removeField(index)" class="remove-btn">Obriši</button>
 
 
-<div v-if="field.label === 'Na seminaru želim'" class="seminar-options">
+<div v-if="field.label === 'Na seminaru želim'" class="seminar-options-container">
+  <div class="seminar-options">
   <h4>Opcije za "Odabir seminara za status"</h4>
   <div v-for="(options, status) in field.options" :key="status" class="status-options">
     <label>{{ status }}</label>   
@@ -86,16 +97,27 @@
     />
   </div>
 </div>
-
+</div>
 
       </div>
     </div>
 
+    <div class="button-group">
     <vs-button @click="addField" class="add-btn">Dodaj pitanje</vs-button>
     <button type="submit" class="save-btn">Spremi prijavnicu</button>
+  </div>
   </form></vs-card>
 </div>
+
+
+<transition name="fade">
+  <div v-if="saveSuccess" class="success-message">
+    Prijavnica je uspješno spremljena!
   </div>
+</transition>
+  </div>
+
+  
 </template>
 
 <script>
@@ -110,6 +132,7 @@ export default {
   },
   data() {
     return {
+      saveSuccess: false,
       isCreatingNewForm: false,
       loading: true,
       forms: {
@@ -270,7 +293,13 @@ export default {
     };
     this.selectedFormId = null;
     this.isCreatingNewForm = false;
-    alert('Uspješno napravljena prijavnica!');
+
+
+    this.saveSuccess = true;
+    setTimeout(() => {
+      this.saveSuccess = false;
+    }, 3000);
+
     this.fetchForms();
   } catch (error) {
     console.error('Error saving form:', error);
@@ -378,119 +407,347 @@ export default {
 };
 </script>
 
-
 <style scoped>
+/* Global styles */
+* {
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+.button-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 1rem; /* Add some space below the button */
+}
+
+.nova-prijavnica-btn {
+  /* You can adjust these styles as needed */
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
 .form-creator {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
-
-  border-radius: 5px;
-  background-color: #fefefe;
+  padding: 3rem;
+  background-color: #f8f9fa;
+  border-radius: 12px;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
 
 .paddinzi {
-padding: 1.5rem;
+  padding: 2rem;
 }
 
 .header {
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  color: #333;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .form-list {
-  margin-bottom: 20px;
+  margin-bottom: 3rem;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  border-radius: 12px;
+  padding: 2rem;
 }
 
-.form-list ul {
+.horizontal-list {
+  display: flex;
+  flex-wrap: wrap;
   list-style-type: none;
   padding: 0;
+  margin: 1rem 0;
 }
 
-.form-list li {
+.horizontal-list li {
+  margin: 0.75rem 1rem 0.75rem 0;
+  padding: 0.75rem 1.5rem;
+  background-color: #e9ecef;
+  border-radius: 25px;
   cursor: pointer;
-  margin-bottom: 5px;
-  color: #007bff;
+  transition: all 0.3s ease;
 }
 
-.form-list li:hover {
-  text-decoration: underline;
+.horizontal-list li:hover {
+  background-color: #007bff;
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
 .form-container {
   display: flex;
   flex-direction: column;
+  animation: fadeIn 0.5s ease-out;
 }
 
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 2rem;
+  margin-top: 1rem;
 }
+
 
 .field-row {
-  display: flex;
-  align-items: center;
+  display: grid;
+  grid-template-columns: auto 1fr auto auto auto;
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+  transition: all 0.3s ease;
 }
 
-.field-row input,
+.field-row:hover {
+  background-color: #e9ecef;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.field-row input[type="checkbox"] {
+  margin-right: 0.75rem;
+}
+
+.field-row input[type="text"],
 .field-row select {
-  margin-right: 10px;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
 }
 
 .add-btn,
-.save-btn {
-  margin-top: 20px;
+.save-btn,
+.remove-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: bold;
 }
+
+.add-btn {
+  background-color: #28a745;
+  color: white;
+}
+
 .save-btn {
-  margin-top: 20px;
-  padding: 1rem;
-  background-color:deepskyblue;
+  background-color: #007bff;
   color: white;
 }
 
 .remove-btn {
-  background-color: #7a7a7a5e;
+  background-color: #dc3545;
   color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  border-radius: 4px;
 }
 
+.add-btn:hover,
+.save-btn:hover,
 .remove-btn:hover {
-  background-color: #f3513f;
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
 }
 
-
-.horizontal-list {
-    display: flex;
-    list-style-type: none;
-    padding: 0;
-  }
-
-  .horizontal-list li {
-    margin-right: 10px; /* Adjust spacing between items as needed */
-    cursor: pointer; /* Optional: Change cursor on hover */
-  }
-
-
-  .seminar-options {
-  margin-top: 20px;
-  border: 1px solid #ccc;
-  padding: 10px;
-  border-radius: 5px;
+.seminar-options {
+  margin: 2rem auto;
+  border: 1px solid #ced4da;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  width: 100%; /* Take full width of the container */
+  max-width: none; /* Remove max-width constraint */
+}
+.seminar-options-container {
+  grid-column: 1 / -1;
+  width: 100%;
 }
 
-.status-options {
-  margin-bottom: 20px;
+.seminar-options {
+  margin: 2rem 0;
+  border: 1px solid #ced4da;
+  padding: 1.5rem;
+  border-radius: 8px;
+  background-color: #f8f9fa;
+  width: 100%;
 }
 
 .status-options label {
   display: block;
-  margin-bottom: 5px;
+  margin-bottom: 0.75rem;
+  font-weight: bold;
+  color: #333;
 }
 
 .status-options input[type="text"] {
   width: 100%;
-  margin-bottom: 5px;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+
+
+.button-group {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.add-btn,
+.save-btn {
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1rem;
+  font-weight: bold;
+  min-width: 200px;
+  margin-bottom: 1rem;  /* Add vertical space between buttons */
+}
+
+.add-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+.save-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.add-btn:hover,
+.save-btn:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.form-header {
+  background-color: #f0f4f8;
+  padding: 1.5rem;
+  border-radius: 8px;
+  margin-bottom: 2rem;
+}
+
+.form-header h2 {
+  color: #2c3e50;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ced4da;
+  border-radius: 6px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease;
+}
+
+.form-input:focus {
+  border-color: #007bff;
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.25);
+}
+
+.form-label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #495057;
+}
+
+/* Modify existing styles */
+.save-btn {
+  background-color: #28a745;
+  color: white;
+  transition: all 0.3s ease;
+}
+
+.save-btn:hover {
+  background-color: #218838;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Add a success message style */
+.success-message {
+  background-color: #d4edda;
+  color: #155724;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-top: 1rem;
+  text-align: center;
+  font-weight: bold;
+  animation: fadeIn 0.5s ease-out;
+}
+
+@media (max-width: 768px) {
+  .seminar-options {
+    width: 95%;  /* Slightly reduced for mobile to ensure some margin */
+  }
+}
+
+
+@media (max-width: 768px) {
+ 
+
+  .form-creator {
+    padding: 1.5rem;
+  }
+  
+  .paddinzi {
+    padding: 1rem;
+  }
+
+  .field-row {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .field-row > * {
+    width: 100%;
+  }
+
+  .seminar-options-container,
+  .seminar-options {
+    width: 100%;
+  }
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity 0.5s ease;
+}
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+
+.slide-enter-active, .slide-leave-active {
+  transition: all 0.3s ease;
+}
+.slide-enter, .slide-leave-to {
+  transform: translateX(-20px);
+  opacity: 0;
 }
 </style>

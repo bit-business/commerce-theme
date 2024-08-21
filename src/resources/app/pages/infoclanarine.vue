@@ -183,7 +183,7 @@
         </div>
         <div class="framee-parent2">
           <img class="framee-icon1" alt="" src="/storage/slike/infoclanarine/mobile/frame1.svg" />
-          <b class="amblem">Amblem</b>
+          <b class="info-amblem">Amblem</b>
           <div class="ellipsee-parent5">
             <div class="framee-child7" />
             <div class="ddiv8">10€</div>
@@ -201,7 +201,7 @@
         </div>
         <div class="framee-parent2">
           <img class="framee-icon1" alt="" src="/storage/slike/infoclanarine/mobile/frame2.svg" />
-          <b class="potvrda">Potvrda</b>
+          <b class="info-potvrda">Potvrda</b>
           <div class="frame8">
             <div class="ellipsee-parent6">
               <div class="ellipsee-div" />
@@ -308,7 +308,7 @@
           <div class="pravilo5">
             <div class="parentt2">
               <div class="ddiv14">5</div>
-              <div class="potvrda-o-plaenoj">
+              <div class="info-potvrda-o-plaenoj">
                 Potvrda o plaćenoj članarini (hologram) i licenca (markica)
                 dobit će se samo nakon plaćene članarine Područnom zboru i
                 plaćene državne članarine HZUTS-u (uz preduvjet produžene
@@ -658,7 +658,7 @@
               <div class="framee-child3" />
               <div class="ddiv8">10€</div>
             </div>
-            <b class="amblem">Amblem</b>
+            <b class="info-amblem">Amblem</b>
             <button class="shopping-bag-1-1-parentt">
               <img
                 class="shopping-bag-1-14"
@@ -670,7 +670,7 @@
           </div>
           <div class="confirmation-1-parentt">
             <img class="badge-1-icon" alt="" src="/storage/slike/infoclanarine/desktop/confirmation-11.svg" />
-            <b class="potvrda">Potvrda</b>
+            <b class="info-potvrda">Potvrda</b>
             <div class="ellipsee-parent4">
               <div class="framee-child3" />
               <div class="ddiv9">5€</div>
@@ -766,7 +766,7 @@
           </div>
           <div class="clanarine-groupp">
             <div class="ddiv14">5</div>
-            <div class="potvrda-o-plaenoj">
+            <div class="info-potvrda-o-plaenoj">
               Potvrda o plaćenoj članarini (hologram) i licenca (markica) dobit
               će se samo nakon plaćene članarine Područnom zboru i plaćene
               državne članarine HZUTS-u (uz preduvjet produžene licence za

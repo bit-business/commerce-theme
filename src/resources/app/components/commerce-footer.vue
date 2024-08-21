@@ -39,7 +39,7 @@
           <div class="paragraph-container">
             <a class="politika-privatnosti" href="https://hzuts.hr/politikaprivatnosti">Politika privatnosti</a>
             <a class="politika-o-kolaiima" href="https://hzuts.hr/politikakolacica">Politika o kolačićima</a>
-            <Link  :href="route('skijasi.commerce-theme.osnovneinformacije')" class="osnovne-informacije">Osnovne informacije</Link>
+            <Link  :href="route('skijasi.commerce-theme.osnovneinformacije')" class="osnovne-informacije-footer">Osnovne informacije</Link>
            <Link :href="route('skijasi.commerce-theme.popustizaclanove')" class="povijest">Popusti za članove</Link>
             <a class="bilteni-hzuts-a" href="https://hzuts.hr/infoclanarine">Članarine</a>
             <a class="podruni-zborovi">Dokumenti</a>
@@ -67,6 +67,7 @@
         Copyright © 2023 Sva prava pridržana od strane HZUTS-a.
       </div>
     </footer>
+    <cookie-consent />
   </div>
 </template>
 
@@ -110,12 +111,14 @@
 
 
 <script>
+import CookieConsent from './cookieconsent.vue';
 import { Link, Head } from '@inertiajs/inertia-vue'
 import { mapState } from 'vuex';
 export default {
   components: {
     Link,
     Head,
+    CookieConsent,
   },
   data() {
     return {
@@ -337,7 +340,7 @@ export default {
     font-weight: 500;
     color: inherit;
   }
-  .osnovne-informacije {
+  .osnovne-informacije-footer {
     text-decoration: none;
     position: absolute;
     top: 0rem;
@@ -373,7 +376,7 @@ export default {
     position: absolute;
     top: 3.4rem;
     left: 0rem;
-    width: 8.63rem;
+    width: 8.93rem;
     height: 13.25rem;
     font-size: 0.88rem;
     color: #000;
@@ -685,7 +688,7 @@ export default {
     font-weight: 500;
     color: inherit;
   }
-  .osnovne-informacije {
+  .osnovne-informacije-footer {
     text-decoration: none;
     position: absolute;
     top: 0rem;
@@ -1040,7 +1043,7 @@ export default {
     font-weight: 500;
     color: inherit;
   }
-  .osnovne-informacije {
+  .osnovne-informacije-footer {
     text-decoration: none;
     position: absolute;
     top: 0rem;
@@ -1259,7 +1262,7 @@ export default {
       font-size: 0.69rem;
     }
 
-    .osnovne-informacije {
+    .osnovne-informacije-footer {
       font-size: 0.69rem;
     }
 
@@ -1297,7 +1300,7 @@ export default {
     }
 
     .copyright-2023 {
-      font-size: 0.70rem;
+      font-size: 0.6rem;
     }
 
     .footerdesktop-mobitel {

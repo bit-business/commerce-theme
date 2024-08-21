@@ -425,12 +425,12 @@ export default {
 
 
     statusOptions: [
-      { value: 'Demostrator skijanja', text: 'Demostrator skijanja' },
+      { value: 'Demonstrator skijanja', text: 'Demonstrator skijanja' },
       { value: 'Voditelj skijanja', text: 'Voditelj skijanja' },
       { value: 'Učitelj skijanja', text: 'Učitelj skijanja' },
       { value: 'ISIA učitelj', text: 'ISIA učitelj' },
       { value: 'Snowboard učitelj', text: 'Snowboard učitelj' },
-      { value: 'Snowboard demostrator', text: 'Snowboard demostrator' },
+      { value: 'Snowboard demonstrator', text: 'Snowboard demonstrator' },
     ],
     paymentOptions: [
       { value: 'Sve plaćeno', text: 'Plaćena' },

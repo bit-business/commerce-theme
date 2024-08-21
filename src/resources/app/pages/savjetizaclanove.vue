@@ -672,7 +672,7 @@
             <div class="licence-renewal-item" />
             <div class="image-upload1">
               <div class="data-streaming">
-                <div class="savjeti-isia-card">isia card</div>
+                <div class="savjeti-isia-card">ISIA CARD</div>
                 <div class="data-aggregator-x">
                   <div class="savjeti-isia-uitelj-skijanjadaskanja-container1">
                     <p class="savjeti-isia-uitelj-skijanjadaskanja1">
@@ -1659,7 +1659,7 @@ toggleDropdown6() {
     max-width: 100%;
   }
   .saznaj-vie {
-    width: 243px;
+    width: 283px;
     position: relative;
     font-size: 20px;
     letter-spacing: 10px;
@@ -2030,7 +2030,8 @@ toggleDropdown6() {
     max-width: 100%;
     text-align: center;
     font-size: 40px;
-    font-family: "Luckiest Guy";
+    font-family: Inter;
+    font-weight: 700;
   }
   .condition-splitter {
     flex: 1;
@@ -2135,7 +2136,7 @@ toggleDropdown6() {
     max-width: 100%;
   }
   .saznaj-vie1 {
-    width: 243px;
+    width: 283px;
     position: relative;
     font-size: 20px;
     letter-spacing: 10px;
@@ -2554,7 +2555,7 @@ toggleDropdown6() {
     max-width: 100%;
   }
   .saznaj-vie2 {
-    width: 243px;
+    width: 283px;
     position: relative;
     font-size: 20px;
     letter-spacing: 10px;
@@ -2991,7 +2992,8 @@ toggleDropdown6() {
     text-align: center;
     font-size: 40px;
     color: #000;
-    font-family: "Luckiest Guy";
+    font-family: Inter;
+    font-weight: 700;
   }
   .data-integrity-child {
     align-self: stretch;
@@ -3072,7 +3074,7 @@ toggleDropdown6() {
     max-width: 100%;
   }
   .saznaj-vie3 {
-    width: 243px;
+    width: 283px;
     position: relative;
     font-size: 20px;
     letter-spacing: 10px;
@@ -3395,7 +3397,7 @@ animation: slideUp 0.6s ease-in-out;
     max-width: 100%;
   }
   .saznaj-vie4 {
-    width: 243px;
+    width: 283px;
     position: relative;
     font-size: 20px;
     letter-spacing: 10px;
@@ -3762,7 +3764,7 @@ animation: slideUp 0.6s ease-in-out;
     max-width: 100%;
   }
   .saznaj-vie5 {
-    width: 243px;
+    width: 283px;
     position: relative;
     font-size: 20px;
     letter-spacing: 10px;
@@ -4197,7 +4199,8 @@ animation: slideUp 0.6s ease-in-out;
     text-align: center;
     font-size: 40px;
     color: #000;
-    font-family: "Luckiest Guy";
+    font-family: Inter;
+    font-weight: 700;
   }
   .savjeti-za-clanove {
     width: 100%;

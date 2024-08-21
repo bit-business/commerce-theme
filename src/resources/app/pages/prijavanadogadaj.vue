@@ -143,18 +143,19 @@
     </div>
 
      <!-- Confirmation dialog -->
- <div v-if="showConfirmation" class="confirmation-overlay">
+     <div v-if="showConfirmation" class="confirmation-overlay">
   <div class="confirmation-dialog">
-    <div class="checkmark-circle">
-      <span class="checkmark">&check;</span>
-      <span class="stars">&#10022;</span> <!-- This is a star character -->
+    <div class="confirmation-content">
+      <div class="checkmark-circle">
+        <span class="checkmark">&#10004;</span>
+      </div>
+      <h2 class="confirmation-title">Uspjeh!</h2>
+      <p class="confirmation-message">Prijavnica je uspješno poslana!</p>
     </div>
-    <p>Prijavnica je uspješno poslana!</p>
-    <button class="gumbOK" @click="closeConfirmation">OK</button>
+    <button class="gumbOK" @click="closeConfirmation">U redu</button>
   </div>
 </div>
   </div>
-
 
 
 
@@ -811,46 +812,104 @@ padding-top: 10px;
   width: 20%;
   height: 20%;
 }
-
 .confirmation-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
   z-index: 1000;
-}
-.gumbOK {
-  position: relative;
-margin-top: 41px; 
-background-color: #00aaff;
-color: white;
-padding: 15px 15px;
-border: none;
-border-radius: 8px;
-cursor: pointer;
-font-size: 1.2rem;
-font-weight: 600;
-min-width: 50%;
-text-transform: uppercase;
-outline: none;
-border: 2px solid transparent;
-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
 }
 
 .confirmation-dialog {
-
-  background: white;
-  padding: 50px;
-  border-radius: 12px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 30px;
   text-align: center;
-  transform: scale(0.9); /* start smaller */
-  opacity: 0; /* start transparent */
-  animation: dialog-appear 0.5s ease forwards; /* animate in */
+  max-width: 400px;
+  width: 90%;
+}
+
+.confirmation-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.checkmark-circle {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background-color: #4CAF50;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0.7);
+  }
+  70% {
+    transform: scale(1.1);
+    box-shadow: 0 0 0 10px rgba(76, 175, 80, 0);
+  }
+  100% {
+    transform: scale(1);
+    box-shadow: 0 0 0 0 rgba(76, 175, 80, 0);
+  }
+}
+
+.checkmark {
+  color: white;
+  font-size: 40px;
+  animation: bounce 1s infinite;
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.confirmation-title {
+  font-size: 24px;
+  font-weight: bold;
+  margin-top: 10px;
+  margin-bottom: 12px;
+  color: #333;
+}
+
+.confirmation-message {
+  font-size: 18px;
+  margin-bottom: 20px;
+  color: #666;
+}
+
+.gumbOK {
+  background-color: #00aaff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.gumbOK:hover {
+  background-color: #0796de;
 }
 
 @keyframes dialog-appear {

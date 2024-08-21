@@ -756,13 +756,15 @@ class="bell-icon">
               border-t border-gray-300
             "
           >
-            <button
-   
-                     @click="checkout"
-              class="bg-primary1 px-12 py-2 text-white rounded-lg font-medium"
-            >
-              Na plaćanje
-            </button>
+          <button 
+  @click="checkout"
+  class="checkout-btn bg-primary1 px-12 py-3 text-white rounded-lg font-medium flex items-center justify-center"
+>
+  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
+  </svg>
+  NA PLAĆANJE
+</button>
           </div>
         </div>
       </div>
@@ -3689,6 +3691,46 @@ padding-left: 1rem;
         border: 2px solid #03A9F4; /* Adds a blue stroke. Change the color as needed */
         object-fit: cover; /* Ensures the image covers the area without distortion */
     }
+
+
+
+    .checkout-btn {
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  padding: 0.65rem 2.2rem;
+}
+
+.checkout-btn:hover {
+  background-color: #0288d1;
+
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  animation: pulse 1.5s infinite;
+}
+
+.checkout-btn:active {
+
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(3, 169, 244, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(3, 169, 244, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(3, 169, 244, 0);
+  }
+}
+
+@media (max-width: 640px) {
+  .checkout-btn {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    font-size: 1rem;
+  }
+}
 
 
     .selected-count {

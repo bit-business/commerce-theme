@@ -180,7 +180,7 @@
   <!-- Dropdown content -->
       <Link class="osnovne-informacije" :href="route('skijasi.commerce-theme.osnovneinformacije')">Osnovne informacije</Link>
       <Link class="djelatnost-hzuts-a" :href="route('skijasi.commerce-theme.djelatnostihzutsa')">Djelatnost HZUTS-a</Link>
-      <Link class="status-lanova-hzuts-a" :href="route('skijasi.commerce-theme.nasiclanovi')" >Status članova HZUTS-a</Link>
+      <Link class="status-lanova-hzuts-a" :href="route('skijasi.commerce-theme.stranicastatusiclanova')" >Status članova HZUTS-a</Link>
       <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')" >Članarine</Link> 
       <Link class="izrada-lanske-iskaznice" :href="route('skijasi.commerce-theme.izradaiskaznice')" >Izrada članske iskaznice</Link>
       <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')" >Područni zborovi</Link>
@@ -200,7 +200,7 @@
   <!-- Dropdown content -->
       <Link class="osnovne-informacije" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')" @click="closeDropdown">Osnovne informacije</Link>
       <Link class="djelatnost-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.djelatnostihzutsa') }" :href="route('skijasi.commerce-theme.djelatnostihzutsa')" @click="closeDropdown">Djelatnost HZUTS-a</Link>
-      <Link class="status-lanova-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')" @click="closeDropdown">Status članova HZUTS-a</Link>
+      <Link class="status-lanova-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.stranicastatusiclanova') }" :href="route('skijasi.commerce-theme.stranicastatusiclanova')" @click="closeDropdown">Status članova HZUTS-a</Link>
       <Link class="lanarineInfo" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')" @click="closeDropdown">Članarine</Link> 
       <Link class="izrada-lanske-iskaznice" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.izradaiskaznice') }" :href="route('skijasi.commerce-theme.izradaiskaznice')" @click="closeDropdown">Izrada članske iskaznice</Link>
       <Link class="podruni-zboroviMeni" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.podrucnizborovi') }" :href="route('skijasi.commerce-theme.podrucnizborovi')" @click="closeDropdown">Područni zborovi</Link>
