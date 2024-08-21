@@ -196,7 +196,7 @@
       <div class="zatrai-zahtjev-za1 text-center">
         Zatraži zahtjev za izdavanje iskaznice
       </div>
-      <button class="zatrai-container" @click="dodajkupnju(15)">
+      <button class="zatrai-container" @click="dodajkupnju(12)">
         <div class="zatrai1">Zatraži</div>
       </button>
     </div>
@@ -208,7 +208,7 @@
       </div>
       <a class="potvrda">Potvrda</a>
       <div class="zatrai-zahtjev-za2 text-center">Zatraži zahtjev za izdavanje potvrde</div>
-      <button class="zatrai-frame"  @click="dodajkupnju(16)">
+      <button class="zatrai-frame"  @click="dodajkupnju(11)">
         <div class="zatrai2">Zatraži</div>
       </button>
     </div>

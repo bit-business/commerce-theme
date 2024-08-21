@@ -1969,7 +1969,7 @@ toggleDropdown6() {
     background-color: #fff;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     justify-content: flex-start;
     padding: 40px 0px 0px 1px;
     box-sizing: border-box;
@@ -2025,7 +2025,7 @@ toggleDropdown6() {
     align-self: stretch;
     display: flex;
     flex-direction: column;
-    align-items: flex-start;
+    /* align-items: flex-start; */
     justify-content: flex-start;
     max-width: 100%;
     text-align: center;
@@ -2513,7 +2513,7 @@ toggleDropdown6() {
   .korak-demonstrator-skijanja {
     align-self: stretch;
     position: relative;
-    white-space: nowrap;
+
     z-index: 1;
   }
   .savjeti-isia-uitelj-skijanjadaskanja {
@@ -5088,6 +5088,58 @@ animation: slideUp 0.6s ease-in-out;
 
   }
 
+  @media screen and (min-width: 1350px) {
+  .rectangle-parent32 {
+    max-width: 50%;
+  }
+  .rectangle-parent36 {
+    max-width: 50%;
+  }
+  .interface-icon {
+    max-width: 50%;
+  }
+  .frame-child67 {
+    max-width: 50%;
+  }
+  .lifetime-i-s-i-a {
+    max-width: 50%;
+  }
+  .licence-renewal-inner {
+    max-width: 50%;
+  }
+  .frame-child75 {
+    max-width: 50%;
+  }
+  .frame-wrapper9 {
+    justify-content: center;
+    width: 50%;
+  }
+  .trainer-profile {
+    justify-content: center;
+    width: 50%;
+  }
+  .image-upload {
+    justify-content: center;
+    width: 50%;
+  }
+  .button-component {
+    justify-content: center;
+    width: 50%;
+  }
+  .image-upload1 {
+    justify-content: center;
+    width: 50%;
+  }
+  .image-upload2 {
+    justify-content: center;
+    width: 50%;
+  }
+  .frame-wrapper13 {
+    justify-content: center;
+    width: 50%;
+  }
+
+}
 
   
   ul {

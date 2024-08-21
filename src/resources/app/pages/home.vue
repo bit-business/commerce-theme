@@ -239,7 +239,7 @@
           </div>
      <!--Link-->   </Link>
  
-          <Link  class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">
+          <Link  class="drugireddesno animacijakvadrati" :href="route('skijasi.commerce-theme.interskikongres')">
 
           <img
             class="img-7155-photoroom-1-icon animate-on-scroll"
