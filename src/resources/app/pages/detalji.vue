@@ -237,7 +237,7 @@
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Odaberite vrstu skijanja</h2>
     <div class="space-y-4">
       <button @click="selectSkiingType('Samostalno skijanje')" 
-       v-if="korisnik.additional_info !== 'KIF'"
+       v-if="korisnik.additionalInfo !== 'KIF'"
       class="w-full py-3 bg-blue-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
         <span>Samostalno skijanje</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Samostalno skijanje')) }}</span>
@@ -500,17 +500,6 @@ export default {
       console.log('New image value:', newVal);
       this.backgroundImage = newVal ? `url(${newVal})` : 'none';
       console.log('Background image:', this.backgroundImage);
-    },
-  },
-'korisnik.additional_info': {
-    immediate: true, // Trigger immediately with the current value
-    handler(newVal, oldVal) {
-      if (newVal !== undefined) {
-        console.log('additional_info loaded:', newVal);
-        if (newVal === 'KIF') {
-          console.log('KIF detected, hiding "Samostalno skijanje" button.');
-        }
-      }
     },
   },
 
