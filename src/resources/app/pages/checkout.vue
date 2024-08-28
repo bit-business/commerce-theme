@@ -775,42 +775,36 @@ class="bell-icon">
       <!-- mobilna verzija -->
       <div
         class="flex bg-white flex-row items-center gap-2 p-3"
-        @click="openAddressDialog"
+      
       >
+      <!--OBRISAT GORNJI I STAVIT OVAJ KADA BUDE PUNO ADRESA MOGUCE 
+      <div
+        class="flex bg-white flex-row items-center gap-2 p-3"
+        @click="openAddressDialog"
+      > -->
         <div class="flex-shrink plava-boja self-start">
           <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-            />
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-          </svg>
+  xmlns="http://www.w3.org/2000/svg"
+  class="h-5 w-5"
+  viewBox="0 0 20 20"
+  fill="currentColor"
+>
+  <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+  <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
+</svg>
         </div>
         <div class="flex-grow flex flex-col">
           <div class="text-sm mb-1">
-            Plaćanje za osobu
+            Plaćanje za osobu:
           </div>
-            <template v-if="isAddState">
+            <!-- <template v-if="isAddState">
               <Link
                 :href="route('skijasi.commerce-theme.address')"
                 class="text-sm text-gray-500 px-2 py-1 border rounded"
                 >Promijeni</Link
               >
-            </template>
-          <template v-if="userAddress.length > 0">
+            </template> -->
+          <template>
             <template v-if="isAddState">
               <div class="flex flex-wrap gap-2 mt-2 items-center p-4">
                 <div
@@ -860,8 +854,7 @@ class="bell-icon">
             <template v-else>
               <div class="text-xs">
                 {{ user.name }}  {{ user.username }}
-              </div>
-              <div class="text-xs">
+     
                 {{ user.adresa
                   }}
                 <!-- {{
@@ -869,10 +862,7 @@ class="bell-icon">
                     ? `, ${addressSelected.addressLine2}`
                     : ""
                 }} -->
-              </div>
-              <div class="text-xs">
                 , {{ user.postanskibroj }} {{ user.grad }},
-           
            {{ user.drzava }} 
               </div>
             <!-- <div class="flex flex-nowrap gap-8 mt-2 items-center">
@@ -943,7 +933,8 @@ class="bell-icon">
             </div>
           </template> -->
         </div>
-        <div class="flex-shrink text-gray-400">
+        <!-- odkomentirat ovo za znak za dodavanje kada bude puno adresa
+         <div class="flex-shrink text-gray-400">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="h-5 w-5"
@@ -958,7 +949,7 @@ class="bell-icon">
               d="M9 5l7 7-7 7"
             />
           </svg>
-        </div>
+        </div> -->
       </div>
 
       <div class="flex bg-white flex-col justify-center items-start my-3">
@@ -1040,12 +1031,15 @@ class="bell-icon">
               d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span class="text-gray-500">Odaberite način plaćanja</span>
+          <span class="text-gray-500">Način plaćanja</span>
         </div>
         <div class="1/4 text-sm flex items-center">
           <span class="plava-boja" v-if="!option"
-            >Odaberite</span
+            >Uplatnica/Internet Bankarstvo</span
           >
+          <!-- <span class="plava-boja" v-if="!option"
+            >Promijeni</span
+          > -->
           <span class="plava-boja text-right" v-else>{{
             selectedPaymentOption
           }}</span>
