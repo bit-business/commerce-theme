@@ -807,7 +807,7 @@ class="bell-icon">
               <Link
                 :href="route('skijasi.commerce-theme.address')"
                 class="text-sm text-gray-500 px-2 py-1 border rounded"
-                >Izmjena adrese</Link
+                >Promijeni</Link
               >
             </template>
           <template v-if="userAddress.length > 0">
@@ -826,25 +826,25 @@ class="bell-icon">
                   />
                   <div class="flex gap-8 items-center w-full">
                     <b
-                      >{{ address.recipientName }}<br />{{
-                        address.phoneNumber
+                      >{{ user.name }} {{ user.username }}<br />{{
+                        user.brojmobitela
                       }}</b
                     >
                     <span class="flex-grow"
-                      >{{ address.addressLine1
+                      >{{ user.adresa
                       }}
                       <!-- {{
                         address.addressLine2 ? " " + address.addressLine2 : ""
                       }} -->
-                      , {{ address.city }},
-                      {{ getMainAddressCountry(address.country) }},
-                      {{ address.country }} {{ address.postalCode }}</span
+                      , {{ user.postanskibroj }} {{ user.grad }},
+                      
+                      {{ user.drzava }} </span
                     >
-                    <!-- <span
+                    <span
                       v-if="address.isMain == 1"
                       class="text-sm text-gray-500"
-                      >Glavna adresa</span
-                    > -->
+                      >Glavna</span
+                    >
                   </div>
                 </div>
                 <div class="flex gap-4 items-center mt-4">
@@ -859,12 +859,11 @@ class="bell-icon">
             </template>
             <template v-else>
               <div class="text-xs">
-                {{ addressSelected.recipientName }} |
-                {{ addressSelected.phoneNumber }}
+                {{ user.name }}  {{ user.username }}
               </div>
               <div class="text-xs">
-                {{ addressSelected.addressLine1
-                }}
+                {{ user.adresa
+                  }}
                 <!-- {{
                   addressSelected.addressLine2
                     ? `, ${addressSelected.addressLine2}`
@@ -872,8 +871,9 @@ class="bell-icon">
                 }} -->
               </div>
               <div class="text-xs">
-                {{ addressSelected.city }} - {{ addressSelected.country }}
-                {{ addressSelected.postalCode }}
+                , {{ user.postanskibroj }} {{ user.grad }},
+           
+           {{ user.drzava }} 
               </div>
             <!-- <div class="flex flex-nowrap gap-8 mt-2 items-center">
                 <div class="text-xs">
@@ -907,7 +907,7 @@ class="bell-icon">
               </div> -->
             </template>
           </template>
-          <template v-else>
+          <!-- <template v-else>
             <div
               class="
                 flex flex-nowrap
@@ -941,7 +941,7 @@ class="bell-icon">
                 >Izmjena adrese</Link
               >
             </div>
-          </template>
+          </template> -->
         </div>
         <div class="flex-shrink text-gray-400">
           <svg

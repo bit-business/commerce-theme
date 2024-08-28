@@ -7,7 +7,7 @@
     v-if="showKalendarFrame && kalendar.data.length > 0" 
     ref="myScrollableElement" 
     @close="handleKalendarClose" 
-    :products="sortedAndFilteredProducts"
+    :products="sortedAndFilteredProductsKALENDAR"
     :formatDateRange="formatDateRange">
   </Kalendar>
 </transition>
@@ -209,6 +209,44 @@ export default {
       kalendar: {
         data: []
       },
+
+      kalendarDUMMY: {
+      data: [
+        {
+          id: 1,
+          datumPocetka: "2024-11-28",
+          datumKraja: "2024-12-01",
+          name: "Seminar HZUTS-a",
+          mjesto: "OBERTAUERN",
+          slug: "ski-training-camp"
+        },
+        {
+          id: 2,
+          datumPocetka: "2024-12-12",
+          datumKraja: "2024-12-15",
+          name: "Državni seminar I",
+          mjesto: "SEXTEN",
+          slug: "mountain-adventure"
+        },
+        {
+          id: 3,
+          datumPocetka: "2024-12-15", 
+          datumKraja: "2024-12-19",
+          name: "ISIA seminar",
+          mjesto: "SEXTEN",
+          slug: "summer-glacier-skiing"
+        },
+        {
+          id: 4,
+          datumPocetka: "2024-12-19",
+          datumKraja: "2024-12-22",
+          name: "Državni seminar II",
+          mjesto: "SEXTEN",
+          slug: "ski-technique-workshop"
+        }
+      ]
+    },
+
       productCategories: [],
       minPrice: null,
       maxPrice: null,
@@ -228,6 +266,14 @@ export default {
 
     sortedAndFilteredProducts() {
     return this.kalendar.data.sort((a, b) => {
+      return new Date(a.datumPocetka) - new Date(b.datumPocetka);
+    });
+  },
+
+  sortedAndFilteredProductsKALENDAR() {
+
+    // OVO MAKNUTI KASNIJE I TREBA UCITAVATI OVAJ IZNAD BEZ KALENDARA...OVDJE RUCNO STAVILI TO UNAPRIJED.. OBRISAT OVAJ...GORE PROMIJENIT I U DATA MAKNUT DUMMY KALENDAR
+    return this.kalendarDUMMY.data.sort((a, b) => {
       return new Date(a.datumPocetka) - new Date(b.datumPocetka);
     });
   },
@@ -385,19 +431,22 @@ export default {
     },
 
     formatDateRange(datumPocetka, datumKraja) {
-        const startDate = new Date(datumPocetka);
-        const endDate = new Date(datumKraja);
+    const startDate = new Date(datumPocetka);
+    const endDate = new Date(datumKraja);
 
-        const startDay = startDate.getDate().toString().padStart(2, '0');
-        const startMonth = (startDate.getMonth() + 1).toString().padStart(2, '0');
+    // Ensure startDate is always the earlier date
+    const [earlierDate, laterDate] = startDate <= endDate ? [startDate, endDate] : [endDate, startDate];
 
-        const endDay = endDate.getDate().toString().padStart(2, '0');
-        const endMonth = (endDate.getMonth() + 1).toString().padStart(2, '0');
+    const startDay = earlierDate.getDate().toString().padStart(2, '0');
+    const startMonth = (earlierDate.getMonth() + 1).toString().padStart(2, '0');
 
-        const year = endDate.getFullYear();
+    const endDay = laterDate.getDate().toString().padStart(2, '0');
+    const endMonth = (laterDate.getMonth() + 1).toString().padStart(2, '0');
 
-        return `${startDay}.${startMonth}.-${endDay}.${endMonth}.${year}.`;
-    },
+    const year = laterDate.getFullYear();
+
+    return `${startDay}.${startMonth}.-${endDay}.${endMonth}.${year}.`;
+},
 
 
     updateCountdown() {
@@ -516,6 +565,7 @@ computeCountdown() {
         .then(res => {
           this.products = res.data.products;
           this.kalendar = res.data.products;
+          console.log("PODACI KALENDARA:" ,this.kalendar);
           this.updateCountdown(); 
        //   this.setMaxPrice();
         //  this.setMinPrice();

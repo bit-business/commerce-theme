@@ -605,6 +605,7 @@ export default {
 
       const opis = this.getProductNames() + "," + this.user.name + " " + this.user.username;
       const ime = this.user.name + " " + this.user.username;
+      const postbrojgrad = this.user.postanskibroj + " " + this.user.grad;
 
     // Initialize pozivnabroj with an empty string or null to avoid errors
     let pozivnabroj = this.user.idmember ? this.user.idmember.toString() : '';
@@ -633,8 +634,8 @@ export default {
                  "valuta_placanja": "EUR",
                
                  "ime_i_prezime_platitelja": ime,
-                 "ulica_i_broj_platitelja": "Ilica 1",
-                 "postanski_i_grad_platitelja": "grad",
+                 "ulica_i_broj_platitelja": this.user.adresa,
+                 "postanski_i_grad_platitelja": postbrojgrad,
                  "naziv_primatelja": "Hrvatski zbor učitelja i trenera sportova na snijegu(HZUTS)",
                  "ulica_i_broj_primatelja": "Maksimirska 51a",
                  "postanski_i_grad_primatelja": "10 000 Zagreb,Hrvatska",

@@ -114,7 +114,7 @@
     <section class="interski-kongresi-child">
       <div class="error-handler-parent">
         <div class="error-handler">
-          <h1 class="hrvatska-na-interski">hrvatska na interski kongresima</h1>
+          <h1 class="hrvatska-na-interski">HRVATSKA NA INTERSKI KONGRESIMA</h1>
         </div>
         <div class="frame-parent21">
           <div class="rectangle-parent58">
@@ -176,7 +176,7 @@
                         </div>
                        
                         <div class="icon-set1">
-                          <b class="demo-team3">DEMO TEAM:</b>
+                          <b class="demo-team3">PREDSTAVNICI:</b>
                         </div>
 
 
@@ -375,7 +375,7 @@
                   </div>
                   
                   <div class="icon-set3">
-                    <b class="demo-team5">DEMO TEAM:</b>
+                    <b class="demo-team5">PREDSTAVNICI:</b>
                   </div>
                  
                 </div>
@@ -537,7 +537,7 @@
                       <div class="godina-ushuaia">2015. godina, Ushuaia</div>
                     </div>
                     <div class="icon-set5">
-                      <b class="demo-team7">DEMO TEAM:</b>
+                      <b class="demo-team7">PREDSTAVNICI:</b>
                     </div>
                 
                   </div>
@@ -694,7 +694,7 @@
                     <div class="godina-st-anton">2011. godina, St. Anton</div>
                   </div>
                   <div class="icon-set7">
-                    <b class="demo-team9">DEMO TEAM:</b>
+                    <b class="demo-team9">PREDSTAVNICI:</b>
                   </div>
               
                 </div>
@@ -867,7 +867,7 @@
                     </div>
                 
                     <div class="icon-set9">
-                      <b class="demo-team11">DEMO TEAM:</b>
+                      <b class="demo-team11">PREDSTAVNICI:</b>
                     </div>
                   
                   </div>
@@ -979,7 +979,7 @@
                     >
                   </div>
                   <div class="icon-set11">
-                    <b class="demo-team13">DEMO TEAM:</b>
+                    <b class="demo-team13">PREDSTAVNICI:</b>
                   </div>
                  
                 </div>
@@ -1091,7 +1091,7 @@ Uz odlične show nastupe Demo teama, imali smo vrlo zapažena i posjećena preda
                   <div class="godina-beitostlen">1999. godina, Beitostølen</div>
                 </div>
                 <div class="icon-set13">
-                  <b class="demo-team15">DEMO TEAM:</b>
+                  <b class="demo-team15">PREDSTAVNICI:</b>
                 </div>
             
               </div>
@@ -1177,21 +1177,24 @@ export default {
 
 
     items: [
-      { id: 1, name: 'Bor', image: '/storage/slike/interski/demo/finska/Bor.jpg' },
+      { id: 1, name: 'Bor Oreb', image: '/storage/slike/interski/demo/finska/Bor.jpg' },
       { id: 2, name: 'Dag Modrić', image: '/storage/slike/interski/demo/finska/Dag.jpg' },
       { id: 3, name: 'Edin Sarač', image: '/storage/slike/interski/demo/finska/Edin.jpg' },
-      { id: 4, name: 'Filip', image: '/storage/slike/interski/demo/finska/Filip.jpeg' },
-      { id: 5, name: 'Franjo', image: '/storage/slike/interski/demo/finska/Franjo.jpg' },
-      { id: 6, name: 'Helena', image: '/storage/slike/interski/demo/finska/Helena.jpg' },
-      { id: 7, name: 'Iva', image: '/storage/slike/interski/demo/finska/Iva.jpg' },
-      { id: 8, name: 'Leo', image: '/storage/slike/interski/demo/finska/Leo.jpg' },
-      { id: 9, name: 'Luka', image: '/storage/slike/interski/demo/finska/luka.jpg' },
-      { id: 10, name: 'Maja', image: '/storage/slike/interski/demo/finska/Maja.jpeg' },
-      { id: 11, name: 'Mateo', image: '/storage/slike/interski/demo/finska/Mateo.jpg' },
-      { id: 12, name: 'Pavušek', image: '/storage/slike/interski/demo/finska/Pavusek.jpg' },
-      { id: 13, name: 'Petljak', image: '/storage/slike/interski/demo/finska/petljak.jpg' },
-      { id: 14, name: 'Puhak', image: '/storage/slike/interski/demo/finska/puhak.jpg' },
-      { id: 15, name: 'Vjeran', image: '/storage/slike/interski/demo/finska/Vjeran.jpg' },
+      { id: 4, name: 'Filip Tudor', image: '/storage/slike/interski/demo/finska/Filip.jpeg' },
+      { id: 5, name: 'Franjo Jardas', image: '/storage/slike/interski/demo/finska/Franjo.jpg' },
+      { id: 6, name: 'Helena Gaube', image: '/storage/slike/interski/demo/finska/Helena.jpg' },
+      { id: 7, name: 'Iva Mišak', image: '/storage/slike/interski/demo/finska/Iva.jpg' },
+      { id: 8, name: 'Leo Martinović', image: '/storage/slike/interski/demo/finska/Leo.jpg' },
+      { id: 9, name: 'Luka Dobrinić', image: '/storage/slike/interski/demo/finska/luka.jpg' },
+      { id: 10, name: 'Maja Fućak', image: '/storage/slike/interski/demo/finska/Maja.jpeg' },
+      { id: 11, name: 'Mateo Rački', image: '/storage/slike/interski/demo/finska/Mateo.jpg' },
+      { id: 12, name: 'Davor Pavušek', image: '/storage/slike/interski/demo/finska/Pavusek.jpg' },
+      { id: 13, name: 'Boris Petljak', image: '/storage/slike/interski/demo/finska/petljak.jpg' },
+      { id: 14, name: 'Davor Puhak', image: '/storage/slike/interski/demo/finska/puhak.jpg' },
+      { id: 15, name: 'Vjeran Švaić', image: '/storage/slike/interski/demo/finska/Vjeran.jpg' },
+      { id: 16, name: 'Ivan Oreb', image: '/storage/slike/interski/demo/bugarska/Ivan Oreb.jpg' },
+      { id: 17, name: 'Davide Erba', image: '/storage/slike/interski/demo/finska/erba.jpg' },
+      { id: 17, name: 'Maxime Riviera', image: '/storage/slike/interski/demo/finska/Riviera_Maxime.jpg' },
     ],
 
     items2: [
@@ -1206,72 +1209,76 @@ export default {
       { id: 9, name: 'Ivica Franjko', image: '/storage/slike/interski/demo/bugarska/Ivica Franjko.jpg' },
       { id: 10, name: 'Luka Dobrinić', image: '/storage/slike/interski/demo/bugarska/Luka Dobrinic.jpg' },
       { id: 11, name: 'Nino Ružička', image: '/storage/slike/interski/demo/bugarska/Nino Ruzicka.jpg' },
+      { id: 12, name: 'Lana Kostić', image: '/storage/slike/interski/demo/bugarska/lanakostic.jpg' },
+      { id: 13, name: 'Danijel Jurković', image: '/storage/slike/interski/demo/norveska/Danijel Jurkovic.JPG' },
+      { id: 14, name: 'Ivan Vučinić', image: '/storage/slike/interski/demo/argentina/Ivan Vucinic.jpg' },
+      { id: 15, name: 'Dino Sokolović', image: '/storage/slike/interski/demo/bugarska/dinosokolovic.jpg' },
 
     ],
     items3: [
-      { id: 1, name: 'Ana maria', image: '/storage/slike/interski/demo/argentina/Ana maria.jpg' },
+      { id: 1, name: 'Ana-Maria Vučinić', image: '/storage/slike/interski/demo/argentina/Ana maria.jpg' },
       { id: 2, name: 'Boris Petljak', image: '/storage/slike/interski/demo/argentina/Boris Petljak.jpg' },
       { id: 3, name: 'Dag Modrić', image: '/storage/slike/interski/demo/argentina/Dag.jpg' },
-      { id: 4, name: 'Daniel', image: '/storage/slike/interski/demo/argentina/Daniel.jpg' },
-      { id: 5, name: 'Filip', image: '/storage/slike/interski/demo/argentina/Filip.jpg' },
-      { id: 6, name: 'Franjo', image: '/storage/slike/interski/demo/argentina/Franjo.jpg' },
+      { id: 4, name: 'Danijel Jurković', image: '/storage/slike/interski/demo/argentina/Daniel.jpg' },
+      { id: 5, name: 'Filip Tudor', image: '/storage/slike/interski/demo/argentina/Filip.jpg' },
+      { id: 6, name: 'Franjo Jardas', image: '/storage/slike/interski/demo/argentina/Franjo.jpg' },
       { id: 7, name: 'Ivan Oreb', image: '/storage/slike/interski/demo/argentina/Ivan Oreb.jpg' },
-      { id: 8, name: 'Ivan Vucinic', image: '/storage/slike/interski/demo/argentina/Ivan Vucinic.jpg' },
+      { id: 8, name: 'Ivan Vučinić', image: '/storage/slike/interski/demo/argentina/Ivan Vucinic.jpg' },
       { id: 9, name: 'Ivica Franjko', image: '/storage/slike/interski/demo/argentina/Ivica Franjko.jpg' },
-      { id: 10, name: 'Kecerin', image: '/storage/slike/interski/demo/argentina/Kecerin.jpg' },
-      { id: 11, name: 'Luka', image: '/storage/slike/interski/demo/argentina/Luka.jpg' },
-      { id: 12, name: 'Puhak', image: '/storage/slike/interski/demo/argentina/Puhak.jpg' },
+      { id: 10, name: 'Igor Kecerin', image: '/storage/slike/interski/demo/argentina/Kecerin.jpg' },
+      { id: 11, name: 'Luka Dobrinić', image: '/storage/slike/interski/demo/argentina/Luka.jpg' },
+      { id: 12, name: 'Davor Puhak', image: '/storage/slike/interski/demo/argentina/Puhak.jpg' },
     ],
     items4: [
-      { id: 1, name: 'Dobrinic Luka', image: '/storage/slike/interski/demo/austrija/Dobrinic_Luka_1410.jpg' },
-      { id: 2, name: 'Franjko Ivica', image: '/storage/slike/interski/demo/austrija/Franjko_Ivica_1714.jpg' },
-      { id: 3, name: 'Jardas Franjo', image: '/storage/slike/interski/demo/austrija/Jardas_Franjo ml._2126.jpg' },
-      { id: 4, name: 'Kecerin Igor', image: '/storage/slike/interski/demo/austrija/Kecerin_Igor_2206.jpg' },
-      { id: 5, name: 'Miki Toskic', image: '/storage/slike/interski/demo/austrija/Miki Toskic.jpg' },
+      { id: 1, name: 'Luka Dobrinić', image: '/storage/slike/interski/demo/austrija/Dobrinic_Luka_1410.jpg' },
+      { id: 2, name: 'Ivica Franjko', image: '/storage/slike/interski/demo/austrija/Franjko_Ivica_1714.jpg' },
+      { id: 3, name: 'Franjo Jardas', image: '/storage/slike/interski/demo/austrija/Jardas_Franjo ml._2126.jpg' },
+      { id: 4, name: 'Igor Kecerin', image: '/storage/slike/interski/demo/austrija/Kecerin_Igor_2206.jpg' },
+      { id: 5, name: 'Miodrag Toskić', image: '/storage/slike/interski/demo/austrija/Miki Toskic.jpg' },
       { id: 6, name: 'Dag Modrić', image: '/storage/slike/interski/demo/austrija/Modric_Dag_2439.jpg' },
-      { id: 7, name: 'Pavusek Davor', image: '/storage/slike/interski/demo/austrija/Pavusek_Davor_2712.jpg' },
-      { id: 8, name: 'Petljak Boris', image: '/storage/slike/interski/demo/austrija/Petljak_Boris_2718.jpg' },
-      { id: 9, name: 'Radenovic Ozren', image: '/storage/slike/interski/demo/austrija/Radenovic_Ozren_2810.jpg' },
-      { id: 10, name: 'Sepic Tomislav', image: '/storage/slike/interski/demo/austrija/Sepic_Tomislav_3008.jpg' },
-      { id: 11, name: 'Vrus Vedran', image: '/storage/slike/interski/demo/austrija/Vrus_Vedran_3327.jpg' },
-      { id: 12, name: 'Zobundzija Pavle', image: '/storage/slike/interski/demo/austrija/Zobundzija_Pavle_3503.jpg' },
+      { id: 7, name: 'Davor Pavušek', image: '/storage/slike/interski/demo/austrija/Pavusek_Davor_2712.jpg' },
+      { id: 8, name: 'Boris Petljak', image: '/storage/slike/interski/demo/austrija/Petljak_Boris_2718.jpg' },
+      { id: 9, name: 'Ozren Rađenović', image: '/storage/slike/interski/demo/austrija/Radenovic_Ozren_2810.jpg' },
+      { id: 10, name: 'Tomislav Šepić', image: '/storage/slike/interski/demo/austrija/Sepic_Tomislav_3008.jpg' },
+      { id: 11, name: 'Vedran Vrus', image: '/storage/slike/interski/demo/austrija/Vrus_Vedran_3327.jpg' },
+      { id: 12, name: 'Pavle Zobundžija ', image: '/storage/slike/interski/demo/austrija/Zobundzija_Pavle_3503.jpg' },
     ],
     items5: [
       { id: 1, name: 'Boris Petljak', image: '/storage/slike/interski/demo/koreja/Boris Petljak.JPG' },
       { id: 2, name: 'Dag Modrić', image: '/storage/slike/interski/demo/koreja/Dag.JPG' },
-      { id: 3, name: 'Danko Strbac', image: '/storage/slike/interski/demo/koreja/Danko Strbac.JPG' },
-      { id: 4, name: 'Davor Pavusek', image: '/storage/slike/interski/demo/koreja/Davor Pavusek.JPG' },
+      { id: 3, name: 'Danko Štrbac', image: '/storage/slike/interski/demo/koreja/Danko Strbac.JPG' },
+      { id: 4, name: 'Davor Pavušek', image: '/storage/slike/interski/demo/koreja/Davor Pavusek.JPG' },
       { id: 5, name: 'Goran Lanc', image: '/storage/slike/interski/demo/koreja/Goran Lanc.JPG' },
       { id: 6, name: 'Igor Kecerin', image: '/storage/slike/interski/demo/koreja/Igor Kecerin.png' },
       { id: 7, name: 'Ivica Franjko', image: '/storage/slike/interski/demo/koreja/Ivica Franjko.png' },
-      { id: 8, name: 'Leon Greguric', image: '/storage/slike/interski/demo/koreja/Leon Greguric.JPG' },
-      { id: 9, name: 'Luka Dobrinic', image: '/storage/slike/interski/demo/koreja/Luka Dobrinic.png' },
+      { id: 8, name: 'Leon Gregurić', image: '/storage/slike/interski/demo/koreja/Leon Greguric.JPG' },
+      { id: 9, name: 'Luka Dobrinić', image: '/storage/slike/interski/demo/koreja/Luka Dobrinic.png' },
       { id: 10, name: 'Nikola Androšević', image: '/storage/slike/interski/demo/koreja/Nikola Androsevic.JPG' },
-      { id: 11, name: 'Ozren', image: '/storage/slike/interski/demo/koreja/Ozren.JPG' },
-      { id: 12, name: 'Pavle', image: '/storage/slike/interski/demo/koreja/Pavle.png' },
+      { id: 11, name: 'Ozren Rađenović', image: '/storage/slike/interski/demo/koreja/Ozren.JPG' },
+      { id: 12, name: 'Pavle Zubundžija', image: '/storage/slike/interski/demo/koreja/Pavle.png' },
     ],
     items6: [
-      { id: 1, name: 'Ana', image: '/storage/slike/interski/demo/svicarska/Ana.JPG' },
-      { id: 2, name: 'Blašković Damir', image: '/storage/slike/interski/demo/svicarska/blaskovic damir.JPG' },
-      { id: 3, name: 'Jurkovic', image: '/storage/slike/interski/demo/svicarska/Jurkovic.JPG' },
-      { id: 4, name: 'Krčmar Majda', image: '/storage/slike/interski/demo/svicarska/krcmar majda.JPG' },
-      { id: 5, name: 'Lanc', image: '/storage/slike/interski/demo/svicarska/Lanc.JPG' },
-      { id: 6, name: 'Leon', image: '/storage/slike/interski/demo/svicarska/Leon.JPG' },
-      { id: 7, name: 'Modrić Dag', image: '/storage/slike/interski/demo/svicarska/modric dag.JPG' },
-      { id: 8, name: 'Ozren', image: '/storage/slike/interski/demo/svicarska/Ozren.JPG' },
-      { id: 9, name: 'Štrbac', image: '/storage/slike/interski/demo/svicarska/Strbac.JPG' },
-      { id: 10, name: 'Tea', image: '/storage/slike/interski/demo/svicarska/Tea.JPG' },
+      { id: 1, name: 'Ana Jurković', image: '/storage/slike/interski/demo/svicarska/Ana.JPG' },
+      { id: 2, name: 'Damir Blašković', image: '/storage/slike/interski/demo/svicarska/blaskovic damir.JPG' },
+      { id: 3, name: 'Ana Jurković', image: '/storage/slike/interski/demo/svicarska/Jurkovic.JPG' },
+      { id: 4, name: 'Majda Krčmar', image: '/storage/slike/interski/demo/svicarska/krcmar majda.JPG' },
+      { id: 5, name: 'Goran Lanc', image: '/storage/slike/interski/demo/svicarska/Lanc.JPG' },
+      { id: 6, name: 'Leon Gregurić', image: '/storage/slike/interski/demo/svicarska/Leon.JPG' },
+      { id: 7, name: 'Dag Modrić', image: '/storage/slike/interski/demo/svicarska/modric dag.JPG' },
+      { id: 8, name: 'Ozren Rađenović', image: '/storage/slike/interski/demo/svicarska/Ozren.JPG' },
+      { id: 9, name: 'Danko Štrbac', image: '/storage/slike/interski/demo/svicarska/Strbac.JPG' },
+      { id: 10, name: 'Tea Đurek', image: '/storage/slike/interski/demo/svicarska/Tea.JPG' },
    
     ],
     items7: [
-      { id: 1, name: 'Blašković Damir', image: '/storage/slike/interski/demo/norveska/blaskovic damir.JPG' },
+      { id: 1, name: 'Damir Blašković', image: '/storage/slike/interski/demo/norveska/blaskovic damir.JPG' },
       { id: 2, name: 'Danijel Jurković', image: '/storage/slike/interski/demo/norveska/Danijel Jurkovic.JPG' },
-      { id: 3, name: 'Danko', image: '/storage/slike/interski/demo/norveska/Danko.JPG' },
+      { id: 3, name: 'Danko Štrbac', image: '/storage/slike/interski/demo/norveska/Danko.JPG' },
       { id: 4, name: 'Ivica Franjko', image: '/storage/slike/interski/demo/norveska/Ivica Franjko.png' },
-      { id: 5, name: 'Lanc', image: '/storage/slike/interski/demo/norveska/Lanc.JPG' },
-      { id: 6, name: 'Modrić Dag', image: '/storage/slike/interski/demo/norveska/modric dag.JPG' },
-      { id: 7, name: 'Ozren', image: '/storage/slike/interski/demo/norveska/Ozren.JPG' },
-      { id: 8, name: 'Saks Radovan', image: '/storage/slike/interski/demo/norveska/saks radovan.JPG' },
+      { id: 5, name: 'Goran Lanc', image: '/storage/slike/interski/demo/norveska/Lanc.JPG' },
+      { id: 6, name: 'Dag Modrić', image: '/storage/slike/interski/demo/norveska/modric dag.JPG' },
+      { id: 7, name: 'Ozren Rađenović', image: '/storage/slike/interski/demo/norveska/Ozren.JPG' },
+      { id: 8, name: 'Radovan Saks', image: '/storage/slike/interski/demo/norveska/saks radovan.JPG' },
   
 
     ],
@@ -1699,10 +1706,10 @@ toggleDropdown7() {
   }
   .demo-team1 {
     margin: 0;
-    width: 205px;
+    width: 255px;
     position: relative;
     font-size: inherit;
-    font-weight: 400;
+    font-weight: 800;
     font-family: inherit;
     display: inline-block;
     z-index: 1;
@@ -1785,14 +1792,15 @@ toggleDropdown7() {
     text-align: center;
     font-size: 40px;
     color: #000;
-    font-family: "Luckiest Guy";
+    font-family: Inter;
+    font-weight: 700;
   }
   .hrvatska-na-interski {
     margin: 0;
-    width: 665px;
+    width: 795px;
     position: relative;
     font-size: inherit;
-    font-weight: 400;
+    font-weight: 800;
     font-family: inherit;
     display: inline-block;
   }
@@ -2372,7 +2380,8 @@ overflow: hidden;
     text-align: center;
     font-size: 40px;
     color: #000;
-    font-family: "Luckiest Guy";
+    font-family: Inter;
+    font-weight: 700;
   }
   .frame-child95 {
     align-self: stretch;

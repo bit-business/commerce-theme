@@ -247,18 +247,22 @@
 
 
 
- <!-- Confirmation dialog -->
- <div v-if="showConfirmation" class="confirmation-overlay">
+
+
+<!-- Confirmation dialog -->
+<div v-if="showConfirmation" class="confirmation-overlay">
   <div class="confirmation-dialog">
     <div class="checkmark-circle">
       <span class="checkmark">&check;</span>
-      <span class="stars">&#10022;</span> <!-- This is a star character -->
+      <span class="stars">&#10022;</span>
+      <span class="stars">&#10022;</span>
+      <span class="stars">&#10022;</span>
+      <span class="stars">&#10022;</span>
     </div>
     <p>Prijavnica je uspješno poslana!</p>
-    <button class="gumbOK" @click="closeConfirmation">OK</button>
+    <button class="gumbOK" @click="closeConfirmation">U redu</button>
   </div>
 </div>
-
 
 
 
@@ -1309,6 +1313,7 @@ white-space: nowrap;
 }
 
 /* Styles for the confirmation dialog */
+/* Styles for the enhanced confirmation dialog */
 .confirmation-overlay {
   position: fixed;
   top: 0;
@@ -1323,14 +1328,16 @@ white-space: nowrap;
 }
 
 .confirmation-dialog {
-
   background: white;
-  padding: 50px;
-  border-radius: 12px;
+
+  border-radius: 16px;
   text-align: center;
-  transform: scale(0.9); /* start smaller */
-  opacity: 0; /* start transparent */
-  animation: dialog-appear 0.5s ease forwards; /* animate in */
+  transform: scale(0.9);
+  opacity: 0;
+  animation: dialog-appear 0.5s ease forwards;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  max-width: 90%;
+  width: 300px;
 }
 
 @keyframes dialog-appear {
@@ -1345,32 +1352,37 @@ white-space: nowrap;
 }
 
 .checkmark-circle {
-  width: 100px;
-  height: 100px;
-  background-color: #00aaff; /* green background */
+  width: 120px;
+  height: 120px;
+  background-color: #00aaff;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto 20px;
+  margin: 0 auto 30px;
   position: relative;
+  overflow: hidden;
 }
 
 .checkmark {
   color: white;
-  font-size: 50px;
-  animation: checkmark-appear 0.5s ease forwards;
+  font-weight: 900;
+  font-size: 60px;
+  animation: checkmark-appear 1s ease forwards;
 }
 
 .stars {
   color: white;
   position: absolute;
-  font-size: 20px;
-  animation: stars-appear 1s ease infinite;
-  opacity: 0; /* initially hidden */
+  font-size: 24px;
+  animation: stars-animate 2s ease-in-out infinite;
 }
 
-/* Keyframes for checkmark appearance */
+.stars:nth-child(2) { top: 20%; left: 20%; animation-delay: 0.2s; }
+.stars:nth-child(3) { top: 20%; right: 20%; animation-delay: 0.4s; }
+.stars:nth-child(4) { bottom: 20%; left: 20%; animation-delay: 0.6s; }
+.stars:nth-child(5) { bottom: 20%; right: 20%; animation-delay: 0.8s; }
+
 @keyframes checkmark-appear {
   0% {
     transform: scale(0);
@@ -1385,43 +1397,92 @@ white-space: nowrap;
   }
 }
 
-/* Keyframes for stars animation */
-@keyframes stars-appear {
+@keyframes stars-animate {
   0%, 100% {
-    transform: translate(0, 0);
+    transform: scale(1);
     opacity: 1;
   }
   50% {
-    transform: translate(20px, -20px);
-    opacity: 0;
+    transform: scale(1.5);
+    opacity: 0.7;
   }
 }
 
+.confirmation-dialog p {
+  font-size: 1.7rem;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 30px;
+  animation: text-appear 0.5s ease forwards 0.3s;
+  opacity: 0;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
 
 
-
-
-
-
+@keyframes text-appear {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
 
 .gumbOK {
-  position: relative;
-margin-bottom: 34px; 
-margin-top: 16px; 
-background-color: #00aaff;
-color: white;
-padding: 15px 15px;
-border: none;
-border-radius: 8px;
-cursor: pointer;
-font-size: 1.2rem;
-font-weight: 600;
-min-width: 50%;
-text-transform: uppercase;
-outline: none;
-border: 2px solid transparent;
-transition: background-color 0.3s ease-in-out, border-color 0.3s ease-in-out;
+  background-color: #00aaff;
+  color: white;
+  padding: 15px 30px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 1.2rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+  animation: button-appear 0.5s ease forwards 0.5s;
+  opacity: 0;
 }
+
+.gumbOK:hover {
+  background-color: #0088cc;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 170, 255, 0.3);
+}
+
+@keyframes button-appear {
+  0% {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Add a subtle background animation */
+.confirmation-dialog::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  background: linear-gradient(45deg, #f3f3f3, #e6e6e6, #f3f3f3);
+  z-index: -1;
+}
+
+
+
+
+
+
+
+
+
 .upload-count {
   display: flex;
   align-items: center;

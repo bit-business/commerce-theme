@@ -1,7 +1,7 @@
 <template>
   <div class="form-creator">
     <div class="header">
-      <h1>{{ selectedFormId ? 'Mijenjanje Postojeće rijavnice' : 'Administracija Prijavnica' }}</h1>
+      <h1>{{ selectedFormId ? 'Mijenjanje Postojeće Prijavnice' : 'Administracija Prijavnica' }}</h1>
     </div>
 
  <vs-card class="form-list paddinzi"> 
@@ -48,7 +48,9 @@
   </div>
 
 
-    <h3 class="paddinzi">Pitanja za prijavitelje ({{ form.fields.length }}):</h3>
+  <vs-button v-if="selectedFormId" @click="navigateToPrijava()" class="link-btn">Link na ovu prijavnicu (za kontrolu kako izgleda) </vs-button>
+
+    <h3 class="paddinzi">Pitanja za prijavitelje ({{ form.fields.length }} pitanja):</h3>
     <div class="form-fields paddinzi">
     <div class="form-group field-row" v-for="(field, index) in form.fields" :key="index">
       <input
@@ -78,9 +80,9 @@
         <button type="button" @click="removeField(index)" class="remove-btn">Obriši</button>
 
 
-<div v-if="field.label === 'Na seminaru želim'" class="seminar-options-container">
+<div v-if="field.label === 'Na seminaru:'" class="seminar-options-container">
   <div class="seminar-options">
-  <h4>Opcije za "Odabir seminara za status"</h4>
+  <h4>Opcije za "Na seminaru:"</h4>
   <div v-for="(options, status) in field.options" :key="status" class="status-options">
     <label>{{ status }}</label>   
     <!-- <label>
@@ -122,13 +124,16 @@
 
 <script>
 import api from "../../../js/api/modules/skijasi-commerce-theme-configuration.js";
+import PrijavaNaDogadaj from '../../../app/pages/prijavanadogadaj.vue';
 
 import { Link, Head } from '@inertiajs/inertia-vue'
+import { Inertia } from '@inertiajs/inertia'
 export default {
 
   components: {
     Link,
     Head,
+    PrijavaNaDogadaj,
   },
   data() {
     return {
@@ -156,8 +161,8 @@ export default {
           { label: 'Email', field_type: 'email', required: true },
           { label: 'brojmobitela', field_type: 'text', required: true },
           { 
-          label: 'Na seminaru želim', 
-          displayLabel: 'Odabir opcija seminara za status', 
+          label: 'Na seminaru:', 
+          displayLabel: 'Na seminaru:', 
           field_type: 'radio', 
           required: true, 
           fixed: true,
@@ -188,6 +193,10 @@ export default {
    
   },
   methods: {
+    navigateToPrijava() {
+  Inertia.visit(`/prijavanadogadaj/${this.selectedFormId}`);
+},
+
     async fetchForms() {
       try {
         const response = await api.browseForm();
@@ -258,7 +267,7 @@ export default {
 
         let options = '';
         if (field.options) {
-            if (field.label === 'Na seminaru želim') {
+            if (field.label === 'Na seminaru:') {
             options = JSON.stringify(field.options);
           } else if (field.field_type === 'radio' || field.field_type === 'select') {
               options = field.options; // Assuming options is already a string for these fields
@@ -324,11 +333,11 @@ export default {
             field_type: field.fieldType,
             required: field.required === '1' || field.required === 1 || field.required === true,
             options: field.options ? JSON.parse(field.options) : [],
-            fixed: ['name', 'username', 'OIB', 'Adresa', 'Grad', 'Email', 'brojmobitela', 'Na seminaru želim'].includes(field.label)
+            fixed: ['name', 'username', 'OIB', 'Adresa', 'Grad', 'Email', 'brojmobitela', 'Na seminaru:'].includes(field.label)
           };
 
           
-          if (field.label === 'Na seminaru želim') {
+          if (field.label === 'Na seminaru:') {
   try {
     let parsedOptions = JSON.parse(field.options);
     if (typeof parsedOptions === 'string') {
@@ -337,7 +346,7 @@ export default {
     processedField.options = parsedOptions;
     processedField.showForStatus = field.showForStatus || {};
   } catch (e) {
-    console.error('Error parsing Na seminaru želim options:', e);
+    console.error('Error parsing Na seminaru: options:', e);
     processedField.options = {};
     processedField.showForStatus = {};
   }
@@ -374,28 +383,34 @@ export default {
           { label: 'Email', displayLabel: 'Email', field_type: 'email', required: true, fixed: true },
           { label: 'brojmobitela', displayLabel: this.fixedDisplayLabels.brojmobitela, field_type: 'text', required: true, fixed: true },
           { 
-          label: 'Na seminaru želim', 
-          displayLabel: 'Odabir seminara za status', 
+          label: 'Na seminaru:', 
+          displayLabel: 'Na seminaru:', 
           field_type: 'radio', 
           required: true, 
           fixed: true,
           options: {
             "Demonstrator skijanja": "",
             "Učitelj skijanja": "",
-            "Trener skijanja": "",
+            "Voditelj skijanja": "",
             "ISIA učitelj": "",
             "IVSI učitelj": "",
-            "Počasni član": "",
-            "Nije član": ""
+            "Nije član": "",
+            "Počasni član": "", 
+            "Podupirući član": "",
+            "Snowboard Trener": "",
+            "Trener skijanja": "",
           },
           showForStatus: {
             "Demonstrator skijanja": true,
             "Učitelj skijanja": true,
-            "Trener skijanja": true,
+            "Voditelj skijanja": true,
             "ISIA učitelj": true,
             "IVSI učitelj": true,
+            "Nije član": true,
             "Počasni član": true,
-            "Nije član": true
+            "Podupirući član": true,
+            "Snowboard Trener": true,
+            "Trener skijanja": true
           }
         }
         ]
@@ -749,5 +764,18 @@ export default {
 .slide-enter, .slide-leave-to {
   transform: translateX(-20px);
   opacity: 0;
+}
+
+
+
+.link-btn {
+  background-color: #17a2b8;
+  color: white;
+}
+
+.link-btn:hover {
+  background-color: #138496;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 </style>

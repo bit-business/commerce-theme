@@ -186,7 +186,7 @@
       <div class="bg-gray-100 px-8 py-4 grid grid-cols-5 gap-4 shadow-sm rounded-xl">
         <div class="col-span-2 text-sm text-gray-700 font-medium">Opis plaćanja</div>
         <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Jedinična cijena</div>
-          <div class="col-span-1 text-sm text-gray-700 text-center font-medium" v-if="filteredCarts.length > 0">Broj ljudi</div>
+          <!-- <div class="col-span-1 text-sm text-gray-700 text-center font-medium" v-if="filteredCarts.length > 0">Broj ljudi</div> -->
         <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Ukupna cijena</div>
    <!---    <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Odustani</div> -->
       </div>
@@ -217,17 +217,7 @@
               </template>
             </div>
 
-            <div class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center" v-if="filteredCarts.length > 0">
-  <counter
-    v-for="cart in filteredCarts"
-    :key="cart.id"
-    @input="changeQuantity($event, cart.id)"
-    v-model="cart.quantity"
-    :min="1"
-    text-disabled
-    :disabled="loading"
-  />
-</div>
+      
 
             <div class="col-span-1 text-sm plava-boja text-center justify-center flex items-center">
               <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
@@ -241,11 +231,29 @@
             <div v-if="cart.productDetail.product.productCategory.slug != 'licence'" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center"> 
               <div v-if="cart.cekapotvrdu == 1"> 
     <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span> 
-</div><button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 text-red-500 rounded hover:bg-red-50"> 
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"> 
-            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /> 
+</div>
+<div class="col-span-1 flex flex-col items-center justify-center">
+    <div v-if="filteredCarts.some(c => c.id === cart.id)" class="mb-2">
+      <counter
+        :key="cart.id"
+        @input="changeQuantity($event, cart.id)"
+        v-model="cart.quantity"
+        :min="1"
+        text-disabled
+        :disabled="loading"
+      />
+    </div>
+    <div v-if="cart.productDetail.product.productCategory.slug != 'licence'">
+      <div v-if="cart.cekapotvrdu == 1">
+        <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span>
+      </div>
+      <button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 text-red-500 rounded hover:bg-red-50">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+          <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
         </svg>
-    </button> 
+      </button>
+    </div>
+  </div>
 </div> 
 <div v-else-if="cart.cekapotvrdu == 1" class="text-center"> 
 
@@ -444,11 +452,43 @@
             <template v-else>
               <span class="text-gray-700">{{ $currency(cart.productDetail.price) }}</span>
             </template>
+
+
+
+            <div v-if="cart.productDetail.product.productCategory.slug != 'licence'" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center mt-6 bg-gray-200"> 
+              <div v-if="cart.cekapotvrdu == 1"> 
+    <span class="text-sm font-bold">Uspješno ste poslali potvrdu plaćanja! Poslat ćemo Vam email kada primimo uplatu.</span> 
+</div><button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 text-red-500 rounded hover:bg-red-50"> 
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"> 
+            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /> 
+        </svg>
+    </button> 
+</div> 
+<div v-else-if="cart.cekapotvrdu == 1" class="text-center mt-6 bg-gray-200 p-4 rounded-lg"> 
+
+     
+            <template>
+          
+              <div class="flex flex-col items-center justify-center">
+                <div class="flex flex-col rounded-full w-12 items-center justify-center h-12  bg-primary1 text-white">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 23 23" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                  </svg>
+                </div>
+              </div>    <span class="text-sm font-bold">Uspješno ste poslali potvrdu plaćanja! Poslat ćemo Vam email kada primimo uplatu.</span> 
+            </template>
+
+
+</div>
+
+
             <div class="mt-2 items-center justify-center flex" v-if="filteredCarts.length > 0">
+
+              
               <counter
               class="jusitfy-center"
               @subtract="openDeleteDialog($event, cart, index)"
-                v-for="cart in filteredCarts"
+         
                 :key="cart.id"
                 @input="changeQuantity($event, cart.id)"
                 v-model="cart.quantity"
@@ -868,7 +908,7 @@ export default {
 
 
 filteredCarts() {
-    return this.carts.filter(cart => cart.productDetail.product.slug == 'dogadanja');
+    return this.carts.filter(cart => cart.productDetail.product.productCategory.slug == 'dogadanja');
   },
 
     getTotal() {
