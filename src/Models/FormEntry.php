@@ -8,7 +8,7 @@ class FormEntry extends Model
 {
     protected $table = 'skijasi_form_entries'; 
 
-    protected $fillable = ['form_id', 'data', 'ispunio'];
+    protected $fillable = ['form_id', 'data', 'hzutsid', 'ispunio', 'placeno', 'brojnarudzbe'];
 
     public function form()
     {

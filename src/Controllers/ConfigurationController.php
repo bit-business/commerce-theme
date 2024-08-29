@@ -264,21 +264,25 @@ class ConfigurationController extends Controller
 
                 // Add validation rule for "Status člana"
         $rules['Status člana'] = 'required|string';
+        
 
         $validatedData = $request->validate($rules);
 
         // Include "Status člana" in the entry data
         $entryData = $validatedData;
         $entryData['Status člana'] = $request->input('Status člana');
+
     
             $entry = new FormEntry();
             $entry->form_id = $formId;
             $entry->data = json_encode($validatedData);
 
-            
+
+     
             $user = auth()->user();
             // Add the "ispunio" field with user's name and username
             $entry->ispunio = $user->name . '  ' . $user->username . '';
+            $entry->hzutsid = $request->input('Hzuts ID');
 
             $entry->save();
     

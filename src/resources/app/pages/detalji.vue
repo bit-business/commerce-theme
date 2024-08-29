@@ -247,7 +247,7 @@
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Grupno skijanje')) }}</span>
       </button>
     </div>
-    <button @click="showSkiingTypePopup = false" class="text-lg mt-6 w-3/4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out">
+    <button @click="showSkiingTypePopup = false" class="text-nazad mt-6 w-3/4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out">
       Nazad
     </button>
   </div>
@@ -805,7 +805,7 @@ showPreviousImage() {
     });
 },
 setSelectedProduct() {
-  if (this.korisnik.statusString === "Nije član") {
+  if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
     const nijeclanProduct = this.product.productDetails.find(
       detail => detail.name === "Nije član"
     );
@@ -912,7 +912,8 @@ getSkiingTypePrice(type) {
       this.isLoading = true; // Start loading
 
 // Check if the user is "Nije član"
-if (this.korisnik.statusString === "Nije član") {
+if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
+
   // Set the product for "Nije član" without showing the popup
   const nijeclanProduct = this.product.productDetails.find(
     detail => detail.name === "Nije član"
@@ -1516,6 +1517,12 @@ selectSkiingType(type) {
     font-size: 3rem;
     color: #000;
     font-family: Inter;
+  }
+
+
+  .text-nazad {
+    font-size: medium;
+    line-height: 2rem;
   }
 
   @media screen and (max-width: 550px) {

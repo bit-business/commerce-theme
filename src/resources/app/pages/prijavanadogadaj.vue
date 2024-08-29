@@ -413,6 +413,7 @@ this.ucitajClanove();
     const submissionData = { ...this.formData };
 
     submissionData['Status člana'] = this.userStatus;
+    submissionData['Hzuts ID'] = this.korisnik.id.toString();
     // Submit the form with the updated data
     const response = await api.saveFormEntry(this.formId, submissionData);
       this.$refs.form.reset();

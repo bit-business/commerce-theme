@@ -229,11 +229,11 @@
             </div>
 
             <div v-if="cart.productDetail.product.productCategory.slug != 'licence'" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center"> 
-              <div v-if="cart.cekapotvrdu == 1"> 
+              <!-- <div v-if="cart.cekapotvrdu == 1"> 
     <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span> 
-</div>
-<div class="col-span-1 flex flex-col items-center justify-center">
-    <div v-if="filteredCarts.some(c => c.id === cart.id)" class="mb-2">
+</div> -->
+<div class="col-span-1 flex flex-row items-center justify-center">
+    <!-- <div v-if="filteredCarts.some(c => c.id === cart.id)" class="mb-2">
       <counter
         :key="cart.id"
         @input="changeQuantity($event, cart.id)"
@@ -242,7 +242,7 @@
         text-disabled
         :disabled="loading"
       />
-    </div>
+    </div> -->
     <div v-if="cart.productDetail.product.productCategory.slug != 'licence'">
       <div v-if="cart.cekapotvrdu == 1">
         <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span>
@@ -402,14 +402,13 @@
             </div>
 
             <div class="w-full flex gap-2 justify-between items-center"   v-if="filteredCarts.length > 0">
-              <div class="text-sm">Količina</div>
-              <!-- <counter v-model="variationQuantity" :min="1" :max="product.productDetails[productDetailSelectedIndex].quantity" /> -->
-              <counter
+              <!-- <div class="text-sm">Količina</div> -->
+              <!-- <counter
         
                v-model="variationQuantity"
                 :min="1"
                 :max="product.productDetails[productDetailSelectedIndex].quantity"
-              />
+              /> -->
 
               
             </div>
@@ -482,7 +481,7 @@
 </div>
 
 
-            <div class="mt-2 items-center justify-center flex" v-if="filteredCarts.length > 0">
+            <!-- <div class="mt-2 items-center justify-center flex" v-if="filteredCarts.length > 0">
 
               
               <counter
@@ -498,7 +497,7 @@
               />
 
 
-            </div>
+            </div> -->
           </div>
         </div>
       </template>
@@ -1210,18 +1209,25 @@ console.log ("TEST ZADUZENJA:",this.staraPlacanjaArray );
           this.$helper.displayErrors(err)
         })
     },
+
     deleteCart(id) {
+    // Show confirmation dialog
+    if (window.confirm("Da li ste sigurni da želite obrisati?")) {
+      // User confirmed, proceed with deletion
       this.$api.skijasiCart
-        .delete({
-          id
-        })
+        .delete({ id })
         .then(res => {
-          this.getCarts()
+          this.getCarts(); // Refresh the cart list after deletion
         })
         .catch(err => {
-          this.$helper.displayErrors(err)
-        })
-    },
+          this.$helper.displayErrors(err); // Handle errors
+        });
+    } else {
+      // User cancelled the deletion, do nothing
+      console.log("Deletion cancelled");
+    }
+  },
+
     deleteCartUsingState() {
       this.$api.skijasiCart
         .delete({
