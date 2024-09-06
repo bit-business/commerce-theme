@@ -8,18 +8,16 @@
         </div>
 
         <form @submit.prevent="submitForm" class="form-container" ref="form">
-          <div
-            v-if="field.required"
-            v-for="field in formFields"
-            :key="field.id"
-            class="form-group" 
-       
-          >
-  
-          
+      <div
+        v-for="field in formFields"
+        :key="field.id"
+        class="form-group"
+        v-if="shouldShowField(field)"
+      >
           <label>
-  {{ getDisplayLabel(field.label) }}<span class="asterisk">*</span>
-</label>
+          {{ getDisplayLabel(field.label) }}<span v-if="isFieldRequired(field)" class="asterisk">*</span>
+        </label>
+          
             <div class="input-wrapper">
               <input
                 v-if="field.fieldType === 'text' || field.fieldType === 'email'"
@@ -181,6 +179,7 @@ const fixedDisplayLabels = {
   name: 'Ime',
   username: 'Prezime',
   brojmobitela: 'Broj Mobitela'
+  
 };
 
 export default {
@@ -244,31 +243,48 @@ export default {
     if (!this.isAuthenticated) {
       sessionStorage.setItem('previousRoute', this.route('skijasi.commerce-theme.prijavanadogadaj'));
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+    } else {
+      this.ucitajClanove();
     }
-
-this.ucitajClanove();
-
   },
   methods: {
 
 
-    shouldShowStatus(field, status) {
-    if (field.label !== 'Na seminaru:') {
-      return true; // Show all options for non-OdabirSeminara fields
-    }
-
-    // For OdabirSeminara field
-    if (this.userStatus === status) {
-      return true; // Show options for the user's status
-    }
-
-    // If user's status doesn't match any option, show "Nije član"
-    if (status === "Nije član" && !this.getOptions(field.options)[this.userStatus]) {
+    shouldShowField(field) {
+      if (field.label === 'Na seminaru:') {
+        return this.shouldShowStatus(field, this.userStatus);
+      }
       return true;
-    }
+    },
 
-    return false; // Hide other options
-  },
+    isFieldRequired(field) {
+      // If the field label is 'Napomena', it should not be required
+      if (field.label === 'Napomena') {
+        return false;
+      }
+
+      // Check if the field is 'Na seminaru:' and the status does not require showing it
+      if (field.label === 'Na seminaru:' && !this.shouldShowStatus(field, this.userStatus)) {
+        return false;
+      }
+
+      // General condition to check if the field is required
+      return field.required === '1' || field.required === true || field.required === 1;
+    },
+
+
+    shouldShowStatus(field, status) {
+      if (field.label !== 'Na seminaru:') {
+        return true;
+      }
+      if (this.userStatus === status) {
+        return true;
+      }
+      if (status === "Nije član" && !this.getOptions(field.options)[this.userStatus]) {
+        return false; // Hide for "Nije član" status
+      }
+      return false;
+    },
 
   getOptions(optionsString) {
     try {
@@ -409,20 +425,38 @@ this.ucitajClanove();
       if (!this.formId) {
         throw new Error('Form ID is not set');
       }
+
+      // Validate required fields
+      const errors = {};
+        this.formFields.forEach(field => {
+          if (this.isFieldRequired(field) && !this.formData[field.label]) {
+            errors[field.label] = 'Ovo polje niste ispunili';
+          }
+        });
+
+        if (Object.keys(errors).length > 0) {
+          this.errors = errors;
+          alert('Molimo ispunite sva polja prijavnice.');
+          return;
+        }
+
+   
         // Create a copy of the form data
     const submissionData = { ...this.formData };
 
-    submissionData['Status člana'] = this.userStatus;
-    submissionData['Hzuts ID'] = this.korisnik.id.toString();
-    // Submit the form with the updated data
-    const response = await api.saveFormEntry(this.formId, submissionData);
-      this.$refs.form.reset();
-      this.showConfirmation = true; 
-    } catch (error) {
-      console.error(error);
-      alert('Niste ispunili sve. Molimo pokušajte opet');
-    }
-  },
+
+        // Safely add user status and ID
+        submissionData['Status člana'] = this.userStatus || 'Nepoznato';
+        submissionData['Hzuts ID'] = this.korisnik && this.korisnik.id ? this.korisnik.id.toString() : 'Nepoznato/greska';
+        
+        // Submit the form with the updated data
+        const response = await api.saveFormEntry(this.formId, submissionData);
+        this.$refs.form.reset();
+        this.showConfirmation = true; 
+      } catch (error) {
+        alert(error.message || 'Greška prilikom slanja prijavnice. Pokušajte ponovo ili nas kontaktirajte.');
+      }
+    },
 
 
 

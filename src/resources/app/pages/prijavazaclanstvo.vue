@@ -204,7 +204,8 @@
 
   <div class="dokumentitekst">
 
-             Dodajte svu dokumentaciju za dokaz statusa.<br>
+    Molimo dodajte potvrdu učlanjenja u područni zbor,<br>
+             te dodajte svu dokumentaciju za dokaz statusa.<br>
               (Uvjerenje o osposobljavanju, diploma Kineziološkog fakulteta
               za osobe koje su diplomirale i usmjerile skijanje – zvanje:
               Sveučilišni magistar kineziologije u edukaciji i skijanju)
@@ -327,7 +328,7 @@ export default {
       ostvarenistatus: 'Ostvareni status s kojim se učlanjujete u HZUTS',
     },
     labelsZbor: {
-      podrucnizbor: 'U koji područni zbor bi se htjeli učlaniti?',
+      podrucnizbor: 'U koji područni zbor ste se učlanili?',
     },
 
     initialState: {},
@@ -795,13 +796,17 @@ prefillData(user) {
 
 
     uploadFilesAndAddDatoteke() {
-  this.uploadedFiles.forEach(file => {
+  this.uploadedFiles.forEach((file, index) => {
     const formData = new FormData();
     formData.append("file", file);
+    formData.append("filename", file.name);
+    formData.append("chunkIndex", index);
+    formData.append("totalChunks", this.uploadedFiles.length);
+
     apiuploaddokumenta.customuploadfiledokumenti(formData)
       .then(response => {
-        const filePath = response.data.path; // Assuming 'path' is the key where the file URL is stored
-        this.dodavanjeDATOTEKE(filePath); // Call the method for each file path
+        const filePath = response.data.path;
+        this.dodavanjeDATOTEKE(filePath);
       })
       .catch(error => {
         console.error(error);
@@ -936,6 +941,7 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
 .form-groupUpload {
   margin: 30px;
   text-align: center;
+  padding-bottom: 42px;
 }
 .form-groupAvatar{
   position: relative;
@@ -1157,7 +1163,7 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
   padding-top: 4rem;
   font-weight: 400;
   font-size: 19px;
-
+padding-bottom: 5px;
 }
 
 

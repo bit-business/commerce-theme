@@ -251,44 +251,52 @@ class ConfigurationController extends Controller
     
         try {
             $form = Form::findOrFail($formId);
+            $user = auth()->user();
+    
+            // Check if the user has already submitted this form
+            $existingEntry = FormEntry::where('form_id', $formId)
+                ->where('ispunio', $user->name . '  ' . $user->username)
+                ->first();
+    
+            if ($existingEntry) {
+                DB::rollBack();
+                return ApiResponse::failed(new Exception('Već ste prijavljeni na ovaj seminar! Ukoliko mislite da je to greška ili ste krivo ispunili, molimo kontaktirajte nas.'), 400);
+            }
     
             // Validate the form data
             $formFields = $form->fields;
             $rules = [];
+    
             foreach ($formFields as $field) {
-                $rules[$field->label] = $field->required ? 'required' : 'nullable';
+                if ($field->label === 'Napomena') {
+                    $rules[$field->label] = 'nullable';
+                } else {
+                    $rules[$field->label] = $field->required ? 'required' : 'nullable';
+                }
+                
                 if ($field->field_type === 'email') {
                     $rules[$field->label] .= '|email';
                 }
             }
-
-                // Add validation rule for "Status člana"
-        $rules['Status člana'] = 'required|string';
-        
-
-        $validatedData = $request->validate($rules);
-
-        // Include "Status člana" in the entry data
-        $entryData = $validatedData;
-        $entryData['Status člana'] = $request->input('Status člana');
-
+    
+            $rules['Status člana'] = 'required|string';
+    
+            $validatedData = $request->validate($rules);
+    
+            $entryData = $validatedData;
+            $entryData['Status člana'] = $request->input('Status člana');
     
             $entry = new FormEntry();
             $entry->form_id = $formId;
             $entry->data = json_encode($validatedData);
-
-
-     
-            $user = auth()->user();
-            // Add the "ispunio" field with user's name and username
-            $entry->ispunio = $user->name . '  ' . $user->username . '';
+            $entry->ispunio = $user->name . '  ' . $user->username;
             $entry->hzutsid = $request->input('Hzuts ID');
-
+    
             $entry->save();
     
             DB::commit();
     
-            return ApiResponse::success(['entry' => $entry]);
+            return ApiResponse::success(['entry' => $entry, 'message' => 'Form submitted successfully.']);
         } catch (Exception $e) {
             DB::rollBack();
             return ApiResponse::failed($e);

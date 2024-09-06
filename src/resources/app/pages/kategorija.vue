@@ -280,23 +280,21 @@ export default {
 
 
   sortedAndFilteredProductsKvadrati() {
-  const today = new Date(); // Get the current date
+    const today = new Date();
 
-  return [...this.products.data].sort((a, b) => {
-    // First, sort by whether datumPocetka is after or before today
-    const aAfterToday = new Date(a.datumPocetka) >= today;
-    const bAfterToday = new Date(b.datumPocetka) >= today;
+    // Separate active and non-active products
+    const activeProducts = this.products.data.filter(product => new Date(product.datumPocetka) >= today);
+    const nonActiveProducts = this.products.data.filter(product => new Date(product.datumPocetka) < today);
 
-    if (aAfterToday && !bAfterToday) {
-      return -1; // a comes before b
-    } else if (!aAfterToday && bAfterToday) {
-      return 1; // b comes before a
-    }
+    // Sort active products by closest date to today
+    activeProducts.sort((a, b) => new Date(a.datumPocetka) - new Date(b.datumPocetka));
 
-    // If both are after or before today, sort by datumPocetka
-    return new Date(a.datumPocetka) - new Date(b.datumPocetka);
-  });
-},
+    // Sort non-active products by latest to oldest
+    nonActiveProducts.sort((a, b) => new Date(b.datumPocetka) - new Date(a.datumPocetka));
+
+    // Return combined list: active first, then non-active
+    return [...activeProducts, ...nonActiveProducts];
+  },
 
 
 

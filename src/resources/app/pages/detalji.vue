@@ -1433,7 +1433,7 @@ selectSkiingType(type) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: center;
     padding: 1rem 1rem;
     gap: 1.88rem;
 
