@@ -811,10 +811,10 @@ setSelectedProduct() {
     );
     this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : this.product.productDetails[0].id;
   } else if (this.selectedSkiingType === 'Samostalno skijanje') {
-    const matchingProduct = this.product.productDetails.find(
-      detail => detail.name === this.korisnik.statusString
+    const hzutsProduct = this.product.productDetails.find(
+      detail => detail.name === "HZUTS član"
     );
-    this.selectedProduct.id = matchingProduct ? matchingProduct.id : this.product.productDetails[0].id;
+    this.selectedProduct.id = hzutsProduct ? hzutsProduct.id : this.product.productDetails[0].id;
   } else if (this.selectedSkiingType === 'Grupno skijanje') {
     const grupnoProduct = this.product.productDetails.find(
       detail => detail.name === "Grupno skijanje"
@@ -837,10 +837,14 @@ setSelectedProduct() {
 
 getSkiingTypePrice(type) {
       if (type === 'Samostalno skijanje') {
-        const matchingProduct = this.product.productDetails.find(
-          detail => detail.name === this.korisnik.statusString
-        );
-        return matchingProduct ? matchingProduct.price : 0;
+        const hzutsProduct = this.product.productDetails.find(
+      detail => detail.name === "HZUTS član"
+    );
+    return hzutsProduct ? hzutsProduct.price : 0;
+        // const matchingProduct = this.product.productDetails.find(
+        //   detail => detail.name === this.korisnik.statusString
+        // );
+        // return matchingProduct ? matchingProduct.price : 0;
       } else if (type === 'Grupno skijanje') {
         const grupnoProduct = this.product.productDetails.find(
           detail => detail.name === "Grupno skijanje"
