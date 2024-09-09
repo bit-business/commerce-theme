@@ -212,13 +212,13 @@ export default {
 
       kalendarDUMMY: {
       data: [
-        {
+      {
           id: 1,
-          datumPocetka: "2024-11-28",
-          datumKraja: "2024-12-01",
+          datumPocetka: "2024-11-07",
+          datumKraja: "2024-11-10",
           name: "Seminar HZUTS-a",
-          mjesto: "OBERTAUERN",
-          slug: "ski-training-camp"
+          mjesto: "STUBAI",
+          slug: "ski-hzuts-seminar2024-11"
         },
         {
           id: 2,
