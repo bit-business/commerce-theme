@@ -811,7 +811,6 @@ created() {
         .browse()
         .then(res => {
           this.orders = res.data.orders
-          console.log("TEST ORDERS:", this.orders);
         })
         .catch(err => {
           localStorage.removeItem('token')

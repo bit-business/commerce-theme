@@ -623,7 +623,8 @@ created() {
                 })
                 .then(res => {
                   // this.$store.dispatch('FETCH_CARTS')
-                  this.$helper.alert(res.message)
+                  this.$helper.alert('Uspješno dodano u plaćanje')
+                  
                   this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
                 })
                 .catch(err => {

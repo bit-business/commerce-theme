@@ -374,7 +374,54 @@
   </div> 
   </div>
 
-</div>
+
+
+    <!-- Success Modal -->
+    <transition
+      enter-active-class="transition-all duration-300 ease-in-out"
+      leave-active-class="transition-all duration-300 ease-in-out"
+      enter-class="opacity-0"
+      leave-to-class="opacity-0"
+    >
+      <div v-if="showSuccessModal" class="fixed z-50 inset-0 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen pt-4 px-4 pb-20 text-center sm:block sm:p-0">
+          <div class="fixed inset-0 transition-opacity" aria-hidden="true">
+            <div class="absolute inset-0 bg-gray-500 opacity-75"></div>
+          </div>
+          <span class="hidden sm:inline-block sm:align-middle sm:h-screen" aria-hidden="true">&#8203;</span>
+          <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full">
+            <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
+              <div class="sm:flex sm:flex-col sm:items-center">
+                <div class="mx-auto flex-shrink-0 flex items-center justify-center h-24 w-24 rounded-full bg-blue-100 sm:mx-0 sm:h-32 sm:w-32 mb-4">
+                  <svg class="checkmark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 52 52">
+                    <circle class="checkmark__circle" cx="26" cy="26" r="25" fill="none"/>
+                    <path class="checkmark__check" fill="none" d="M14.1 27.2l7.1 7.2 16.7-16.8"/>
+                  </svg>
+                </div>
+                <div class="mt-3 text-center sm:mt-0 sm:text-center">
+                  <h3 class="text-lg leading-6 font-medium text-gray-900">
+                    Uspješno plaćanje
+                  </h3>
+                  <div class="mt-2">
+                    <p class="text-sm text-gray-500">
+                      Uspješno ste završili plaćanje. Poslat ćemo Vam potvrdu na email tijekom idućih dana kada potvrdimo da je uplata sjela.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
+              <button @click="closeSuccessModal" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
+                Zatvori
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </transition>
+
+    
+  </div>
 </template>
 
 <script>
@@ -412,6 +459,8 @@ export default {
       contentMode: 'default',
       showCopiedMessage: false,
       pdfUrl: null,
+
+      showSuccessModal: true,
 
       order: {
       recipientName: "",
@@ -524,6 +573,11 @@ export default {
   }
 },
   methods: {
+    closeSuccessModal() {
+      this.showSuccessModal = false;
+      this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+    },
+
 
     potvrdaplacanjabezdokaza() {
       console.log('Sending data:', {
@@ -543,7 +597,7 @@ export default {
             sourceBank: this.selected.sourceBank.key,
           })
           .then(res => {
-            this.$helper.alert(res.message)
+            this.showSuccessModal = true;
             this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
           })
           .catch(err => {
@@ -758,6 +812,24 @@ switchToDefaultView() {
 </script>
 
 <style scoped>
+.fixed {
+  position: fixed;
+
+}
+
+.z-50 {
+  z-index: 50000;
+}
+
+.inset-0 {
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+
+
 /* Modal overlay styles */
 .modal-overlay {
   position: fixed;
@@ -847,9 +919,78 @@ switchToDefaultView() {
 .pdf-iframe {
   width: 100%;
 }
-
-
 }
+
+
+
+.checkmark__circle {
+  stroke-dasharray: 166;
+  stroke-dashoffset: 166;
+  stroke-width: 2;
+  stroke-miterlimit: 10;
+  stroke: #03A9F4;
+  fill: none;
+  animation: stroke 0.6s cubic-bezier(0.65, 0, 0.45, 1) forwards;
+}
+
+.checkmark {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: block;
+  stroke-width: 2;
+  stroke: #fff;
+  stroke-miterlimit: 10;
+  box-shadow: inset 0px 0px 0px #03A9F4;
+  animation: fill .4s ease-in-out .4s forwards, scale .3s ease-in-out .9s both;
+  
+}
+
+.checkmark__check {
+  transform-origin: 50% 50%;
+  stroke-dasharray: 48;
+  stroke-dashoffset: 48;
+  animation: stroke 0.3s cubic-bezier(0.65, 0, 0.45, 1) 0.8s forwards;
+}
+
+@keyframes stroke {
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes scale {
+  0%, 100% {
+    transform: none;
+  }
+  50% {
+    transform: scale3d(1.1, 1.1, 1);
+  }
+}
+
+@keyframes fill {
+  100% {
+    box-shadow: inset 0px 0px 0px 30px #03A9F4;
+  }
+}
+
+.bg-blue-100 {
+  background-color: #E1F5FE;
+}
+
+.bg-blue-500 {
+  background-color: #03A9F4;
+}
+
+.hover\:bg-blue-600:hover {
+  background-color: #039BE5;
+}
+
+.focus\:ring-blue-500:focus {
+  --tw-ring-color: #03A9F4;
+}
+
+
 
 
 </style>

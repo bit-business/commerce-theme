@@ -337,11 +337,11 @@ class="bell-icon">
               Plaćanje za osobu:
             </span>
             <template v-if="isAddState">
-              <Link
+              <!-- <Link
                 :href="route('skijasi.commerce-theme.profile')"
                 class="text-sm text-gray-500 px-2 py-1 border rounded"
                 >Promijeni</Link
-              >
+              > -->
             </template>
           </div>
           <template>
@@ -435,12 +435,12 @@ class="bell-icon">
                 >
                 Glavna osoba
                 </div> -->
-                <div
+                <!-- <div
                   class="text-sm font-medium plava-boja cursor-pointer"
                   @click="isAddState = true"
                 >
                 PROMIJENI
-                </div>
+                </div> -->
               </div>
             </template>
           </template>

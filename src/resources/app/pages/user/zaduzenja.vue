@@ -1060,36 +1060,43 @@ formatDate(dateString) {
 
 
 
- async getStaraPlacanja() {
-      this.staraPlacanjaArray = [];
+  async getStaraPlacanja() {
+  this.staraPlacanjaArray = [];
 
-   
-   skijasiStaraplacanja
-    .citanjenasiclanovi({ slug: "tbl-payments", idmember: this.user.idmember })
-    .then((response) => {
-      // Check if response.data exists and is an array
-      if (response.data) {
-  if (Array.isArray(response.data)) {
-    // If data is an array, assign it directly to staraPlacanjaArray
-    this.staraPlacanjaArray = response.data;
-  } else {
-    // If data is an object, wrap it in an array before assigning it to staraPlacanjaArray
-    this.staraPlacanjaArray = [response.data];
-  }
- 
-} else {
-  console.error("Unexpected response format:", response);
-}
-console.log ("TEST ZADUZENJA:",this.staraPlacanjaArray );
-      this.sortDataDescending();
-    })
-    .catch((error) => {
-   
-      console.error("API Error:", error);
-      
+  try {
+    const response = await skijasiStaraplacanja.citanjenasiclanovi({
+      slug: "tbl-payments",
+      idmember: this.user.idmember
     });
 
-  },
+    if (response && response.data) {
+      if (Array.isArray(response.data)) {
+        this.staraPlacanjaArray = response.data;
+      } else if (typeof response.data === 'object') {
+        this.staraPlacanjaArray = [response.data];
+      } else {
+        console.warn("Unexpected data format:", response.data);
+        this.staraPlacanjaArray = [];
+      }
+
+      if (this.staraPlacanjaArray.length > 0) {
+        this.sortDataDescending();
+      } else {
+
+      }
+    } else {
+
+      this.staraPlacanjaArray = [];
+    }
+  } catch (error) {
+    if (error.response && error.response.status === 400 && error.response.data.errors.idmember) {
+      console.log("Invalid idmember. User might not have any payments yet.");
+      this.staraPlacanjaArray = [];
+    } else {
+
+    }
+  }
+},
 
 
 
