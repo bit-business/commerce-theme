@@ -91,9 +91,9 @@
           </div>
         </div>
         <div class="w-full flex flex-wrap gap-2 my-2 px-3 sm:px-0">
-         <Link class="w-full p-4 bg-plava-boja text-white font-bold rounded text-center text-sm" @click="potvrdaplacanjabezdokaza">
+         <button class="w-full p-4 bg-plava-boja text-white font-bold rounded text-center text-sm" @click="potvrdaplacanjabezdokaza">
             Potvrdi da je uplaćeno
-          </Link>
+         </button>
           <!-- <div class="w-full text-center ">ili</div> -->
           <button class="w-full p-4 bg-plava-boja font-bold text-white rounded text-center text-sm" @click="showUploadProofContent">
            Potvrdi da je uplaćeno i učitaj dokaz plaćanja za bržu obradu
@@ -205,21 +205,27 @@
           <label class="block text-center select-none max-w-full" for="receipt_file">
             <div class="inline-block mx-3 mt-3.5 w-24 h-24 border-2 border-gray-700 text-gray-700 border-dashed cursor-pointer">
               <template v-if="selected.proofOfTransaction === null">
-                <div class="flex justify-center flex-col items-center h-full">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
-                  </svg>
-                  <div class="text-center">Dodirnite za prijenos</div>
-                </div>
-              </template>
-              <template v-else>
-                <div class="flex justify-center items-center h-full w-full">
-                  <img :src="selected.proofOfTransaction">
-                </div>
-              </template>
+  <div class="flex justify-center flex-col items-center h-full">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+    </svg>
+    <div class="text-center">Dodirnite za prijenos</div>
+  </div>
+</template>
+<template v-else>
+  <div class="flex justify-center items-center h-full w-full">
+    <template v-if="selected.proofOfTransactionType === 'application/pdf'">
+      <div class="text-center">{{ selected.proofOfTransactionName }}</div>
+    </template>
+    <template v-else>
+      <img :src="selected.proofOfTransaction">
+    </template>
+  </div>
+</template>
+        
             </div>
           </label>
-          <input accept="image/*" type="file" class="w-full h-full absolute opacity-0 hidden" name="receipt_file" id="receipt_file" ref="image" @change="onFilePicked">
+          <input accept="image/*,application/pdf" type="file" class="w-full h-full absolute opacity-0 hidden" name="receipt_file" id="receipt_file" ref="image" @change="onFilePicked">
         </div>
    
 
@@ -515,7 +521,13 @@ export default {
 
   computed: {
 
-
+    displayProofOfTransaction() {
+    if (this.selected.proofOfTransactionType === 'application/pdf') {
+      return this.selected.proofOfTransactionName
+    } else {
+      return this.selected.proofOfTransaction
+    }
+  },
 
     last() {
       let string = `${parseInt(this.order.payed)}`
@@ -597,8 +609,8 @@ export default {
             sourceBank: this.selected.sourceBank.key,
           })
           .then(res => {
-            this.showSuccessModal = true;
-            this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+         
+         
           })
           .catch(err => {
             this.$helper.displayErrors(err)
@@ -606,6 +618,7 @@ export default {
           })
           .finally(() => {
             this.$closeLoading()
+            this.showSuccessModal = true;
           })
 
   },
@@ -637,9 +650,11 @@ export default {
       });
     },
     showUploadProofContent() {
-      this.contentMode = 'uploadProof'
-    },
-
+    this.contentMode = 'uploadProof'
+    this.selected.proofOfTransaction = null
+    this.selected.proofOfTransactionName = null
+    this.selected.proofOfTransactionType = null
+  },
 
     closeModal() {
       this.$emit('close');
@@ -760,21 +775,22 @@ switchToDefaultView() {
 
 
     onFilePicked(e) {
-      const files = e.target.files;
-      if (files[0] !== undefined) {
-        if (files[0].size > 5120000) {
-          this.$helper.alert("Prevelika datoteka!")
-          return;
-        }
-
-        let fr = new FileReader()
-        fr.readAsDataURL(files[0])
-        fr.addEventListener("load", () => {
-          this.selected.proofOfTransaction = fr.result
-        })
+    const files = e.target.files;
+    if (files[0] !== undefined) {
+      if (files[0].size > 5120000) {
+        this.$helper.alert("Prevelika datoteka!")
+        return;
       }
-      return
-    },
+
+      let fr = new FileReader()
+      fr.readAsDataURL(files[0])
+      fr.addEventListener("load", () => {
+        this.selected.proofOfTransaction = fr.result
+        this.selected.proofOfTransactionName = files[0].name
+        this.selected.proofOfTransactionType = files[0].type
+      })
+    }
+  },
     send() {
       console.log('Sending data:', {
     orderId: this.id,
@@ -793,8 +809,8 @@ switchToDefaultView() {
             sourceBank: this.selected.sourceBank.key,
           })
           .then(res => {
-            this.$helper.alert(res.message)
-            this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+            this.showSuccessModal = true;
+     
           })
           .catch(err => {
             this.$helper.displayErrors(err)
