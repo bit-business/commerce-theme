@@ -410,6 +410,7 @@ import CommerceProductAlt from '../../components/commerce-product-alt.vue'
 import CommerceMobileProductAlt from '../../components/commerce-mobile-product-alt.vue'
 
 
+import podaciusera from '../../../../../../core/src/resources/js/api/modules/skijasi-user.js';
 
 import poruke from  '../../../../../../core/src/resources/js/api/modules/skijasi-poruke.js';
 
@@ -471,6 +472,8 @@ export default {
       adminMessages: [],
       currentUser: null,
       users: [], 
+
+      korisnik: [],
 
      isSidebarExpanded: window.innerWidth > 768, // Initialize based on screen width
      isSidebarOpen: false,
@@ -593,6 +596,8 @@ filteredCarts() {
 },
 created() {
     this.fetchAdminMessages();
+
+    this.ucitajClanove();
   },
 
   mounted() {
@@ -613,8 +618,36 @@ created() {
   },
   methods: {
 
-        dodajkupnju(zahtjevid) {
 
+    async ucitajClanove() {
+            console.log("TEST ID ucitaj clanove:", this.user.id);
+        try {
+          this.number = this.user.id;
+        
+          const response = await podaciusera.readmojstatus({
+              id: this.number,
+          });
+              this.korisnik = response.data.user;
+              console.log("TEST STATUS ucitaj clanove:", this.korisnik.statusString);
+              console.log("TESTucitaj clanove:", this.korisnik);
+
+            } catch (error) {
+            // this.$closeLoader();
+        
+        }
+      },
+
+        dodajkupnju(zahtjevid) {
+          if (this.korisnik.statusString !== "HZUTS član" && zahtjevid == 10) {
+            zahtjevid = 37
+            }
+            if (this.korisnik.statusString !== "HZUTS član" && zahtjevid == 11) {
+            zahtjevid = 38
+            }
+            if (this.korisnik.statusString !== "HZUTS član" && zahtjevid == 12) {
+            zahtjevid = 39
+            }
+       
 
               this.$api.skijasiCart
                 .add({

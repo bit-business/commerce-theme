@@ -505,7 +505,7 @@ class="bell-icon">
                   {{ item.productDetail.product.name }}
                 </div>
               </div>
-              <div class="text-sm text-gray-400 pl-4">
+              <div class="text-xs text-gray-400 pl-2">
                 Status člana: {{ item.productDetail.name }}
               </div>
               <div
