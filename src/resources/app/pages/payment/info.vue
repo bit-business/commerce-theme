@@ -460,7 +460,7 @@ export default {
       showCopiedMessage: false,
       pdfUrl: null,
 
-      showSuccessModal: true,
+      showSuccessModal: false,
 
       order: {
       recipientName: "",

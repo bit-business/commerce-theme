@@ -416,7 +416,7 @@
     <div v-for="(detail, index) in filteredOrderDetails" :key="index" class="order-item">
       <div class="order-price">{{ detail.price }} EUR</div>
       <div class="order-details">
-        <div class="order-name">{{ detail.productDetail.name }}</div>
+        <div class="order-name">{{ detail.productDetail.product.name }}</div>
         <div class="order-date">{{ formatDate(detail.order.orderPayment.createdAt) }}</div>
 
 
