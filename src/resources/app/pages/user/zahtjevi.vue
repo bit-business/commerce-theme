@@ -609,6 +609,7 @@ created() {
     window.addEventListener('scroll', this.handleScrollAttempt);
   
     this.getCarts();
+    this.$store.dispatch('CLEAR_PURCHASE_ORIGIN');
   },
 
   beforeDestroy() {
@@ -647,7 +648,7 @@ created() {
             if (this.korisnik.statusString !== "HZUTS član" && zahtjevid == 12) {
             zahtjevid = 39
             }
-       
+        
 
               this.$api.skijasiCart
                 .add({

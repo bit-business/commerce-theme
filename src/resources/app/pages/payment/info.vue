@@ -459,6 +459,12 @@ export default {
       type: String, 
       required: true,
     },
+
+    purchaseOrigin: {
+      type: Object,
+      default: () => ({})
+    },
+  
   },
   data() {
     return {
@@ -586,10 +592,21 @@ export default {
 },
   methods: {
     closeSuccessModal() {
-      this.showSuccessModal = false;
-      this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
-    },
-
+  this.showSuccessModal = false;
+  if (this.purchaseOrigin && this.purchaseOrigin.from === 'detalji' && this.purchaseOrigin.seminarId) {
+    this.$store.dispatch('CLEAR_PURCHASE_ORIGIN');
+    // If the purchase originated from the 'detalji' page, navigate back to it
+    this.$inertia.visit(this.route('skijasi.commerce-theme.detalji', { 
+      slug: this.purchaseOrigin.seminarId,
+      returnToSection: this.purchaseOrigin.returnToSection
+    }));
+  } else {
+    this.$store.dispatch('CLEAR_PURCHASE_ORIGIN');
+    // For all other cases, navigate to the 'zaduzenja' page
+    this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'));
+  }
+  
+},
 
     potvrdaplacanjabezdokaza() {
       console.log('Sending data:', {

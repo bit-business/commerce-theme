@@ -124,6 +124,10 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    SET_PURCHASE_ORIGIN(state, origin) {
+      state.purchaseOrigin = origin;
+    },
+    
     UPDATE_LAYOUT(state, layout) {
       state.layout = layout;
     },
@@ -239,6 +243,14 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    SET_PURCHASE_ORIGIN({ commit }, origin) {
+      commit('SET_PURCHASE_ORIGIN', origin);
+    },
+    CLEAR_PURCHASE_ORIGIN({ commit }) {
+      commit('SET_PURCHASE_ORIGIN', null);
+    },
+
+
     UPDATE_LAYOUT({ commit }, layout) {
       commit('UPDATE_LAYOUT', layout)
     },

@@ -1322,7 +1322,14 @@ class="bell-icon">
 
   <!-- Info Modal -->
    
-  <info-modala v-if="showModal && orderId" :isOpen="showModal" @close="closeModal" :id="orderId" />
+  <info-modala 
+  v-if="showModal && orderId" 
+  :isOpen="showModal" 
+  @close="closeModal" 
+  :id="orderId"
+  :purchaseOrigin="purchaseOrigin"
+/>
+
 </div>
 </template>
 
@@ -1469,6 +1476,10 @@ export default {
         return state.user
       },
     }),
+
+    ...mapState(['purchaseOrigin']),
+
+
   },
 
   created() {
@@ -1651,6 +1662,8 @@ export default {
     },
     closeModal() {
       this.showModal = false;
+      const purchaseOrigin = this.$store.state.purchaseOrigin;
+      this.$inertia.visit(this.route('skijasi.commerce-theme.checkout', purchaseOrigin))
     },
     checkout() {
   
@@ -1683,6 +1696,8 @@ export default {
         .finally(() => {
           this.$closeLoading();
           this.openModal(); 
+
+   
          // this.$inertia.visit(this.route("skijasi.commerce-theme.zaduzenja"));
         });
     },

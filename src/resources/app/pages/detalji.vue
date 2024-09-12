@@ -939,7 +939,15 @@ if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString ==
     })
     .then(res => {
       this.$store.dispatch('FETCH_CARTS')
-      this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+
+      //spremanje povratka na ovu stranicu
+      const seminarId = this.product.slug; 
+  this.$store.dispatch('SET_PURCHASE_ORIGIN', {
+    from: 'detalji',
+    seminarId: seminarId
+  });
+  this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+
       this.$helper.alert(res.message)
     })
     .catch(err => {
