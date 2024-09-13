@@ -73,11 +73,11 @@
          
         
         <div class="dogadanjatekst">
-         <div class="dogaanja">Događanja</div>  <div class="dogaanja2 cursor-pointer"  @click="handleKalendarOpen"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M20.5833 4.33337H5.41667C4.22005 4.33337 3.25 5.30342 3.25 6.50004V21.6667C3.25 22.8633 4.22005 23.8334 5.41667 23.8334H20.5833C21.78 23.8334 22.75 22.8633 22.75 21.6667V6.50004C22.75 5.30342 21.78 4.33337 20.5833 4.33337Z" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M17.3333 2.16663V6.49996" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M8.66675 2.16663V6.49996" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M3.25 10.8333H22.75" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+         <div class="dogaanja">Događanja</div>  <div class="dogaanja2 cursor-pointer rounded-xl border-red-400 border-2 text-red-500 p-3"  @click="handleKalendarOpen"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M20.5833 4.33337H5.41667C4.22005 4.33337 3.25 5.30342 3.25 6.50004V21.6667C3.25 22.8633 4.22005 23.8334 5.41667 23.8334H20.5833C21.78 23.8334 22.75 22.8633 22.75 21.6667V6.50004C22.75 5.30342 21.78 4.33337 20.5833 4.33337Z" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M17.3333 2.16663V6.49996" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M8.66675 2.16663V6.49996" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M3.25 10.8333H22.75" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>Cijeli popis događaja</div>
        </div>
 
@@ -981,7 +981,7 @@ computeCountdown() {
   position: relative;
   display: flex;
   align-items: center; /* Align SVG and text vertically */
-  color: #03A9F4;
+  /* color: #03A9F4; */
   font-family: Inter;
   font-size: 0.9rem;
   font-style: normal;

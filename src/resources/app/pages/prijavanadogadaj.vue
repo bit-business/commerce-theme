@@ -8,7 +8,7 @@
         </div>
 
         <form @submit.prevent="submitForm" class="form-container" ref="form">
-      <div
+          <div
         v-for="field in formFields"
         :key="field.id"
         class="form-group"
@@ -83,35 +83,34 @@
                 />
                 <label :for="field.label">{{ field.label }}</label>
               </div>
-              <input
-                v-else-if="field.fieldType === 'date'"
-                type="date"
-                :id="field.label"
-                v-model="formData[field.label]"
-            
-                class="form-input"
-              />
+              <div
+                v-else-if="field.fieldType === 'date'" class="date-input-group">
+          <input
+            type="date"
+            :id="field.label"
+            v-model="formData[field.label]"
+            class="form-input"
+          />
+        </div>
 
               
-              <div v-if="field.label === 'Na seminaru:' && field.required" class="radio-group">
-  <label>{{ field.displayLabel }}</label>
-  <div v-for="(options, status) in getOptions(field.options)" :key="status">
-    <div v-if="shouldShowStatus(field, status) && getStatusOptions(getOptions(field.options), status).length > 0">
-          <!-- <label class="status-label">{{ status }}</label> -->
-      <div v-for="option in getStatusOptions(getOptions(field.options), status)" :key="option" class="radio-option">
-        <input 
-          type="radio" 
-          :id="`${field.label}-${option}`"
-          :name="field.label" 
-          :value="option" 
-       
-          v-model="formData[field.label]"
-        >
-        <label :for="`${field.label}-${option}`">{{ option }}</label>
-      </div>
-    </div>
-  </div>
-</div>
+              <div v-if="field.label === 'Na seminaru:' && isFieldRequired(field)" class="radio-group">
+          <label>{{ field.displayLabel }}</label>
+          <div v-for="(options, status) in getOptions(field.options)" :key="status">
+            <div v-if="status === userStatus && getStatusOptions(getOptions(field.options), status).length > 0">
+              <div v-for="option in getStatusOptions(getOptions(field.options), status)" :key="option" class="radio-option">
+                <input 
+                  type="radio" 
+                  :id="`${field.label}-${option}`"
+                  :name="field.label" 
+                  :value="option" 
+                  v-model="formData[field.label]"
+                >
+                <label :for="`${field.label}-${option}`">{{ option }}</label>
+              </div>
+            </div>
+          </div>
+        </div>
 
             </div>
           </div>
@@ -178,6 +177,8 @@ import appLayout from '../layouts/app.vue';
 const fixedDisplayLabels = {
   name: 'Ime',
   username: 'Prezime',
+  spol: 'Spol',
+  datumrodjenja: 'Datum Rođenja',
   brojmobitela: 'Broj Mobitela'
   
 };
@@ -252,7 +253,9 @@ export default {
 
     shouldShowField(field) {
       if (field.label === 'Na seminaru:') {
-        return this.shouldShowStatus(field, this.userStatus);
+        const options = this.getOptions(field.options);
+        const statusOptions = this.getStatusOptions(options, this.userStatus);
+        return statusOptions.length > 0;
       }
       return true;
     },
@@ -263,13 +266,36 @@ export default {
         return false;
       }
 
-      // Check if the field is 'Na seminaru:' and the status does not require showing it
-      if (field.label === 'Na seminaru:' && !this.shouldShowStatus(field, this.userStatus)) {
-        return false;
+      // Check if the field is 'Na seminaru:' and has no options for the current status
+      if (field.label === 'Na seminaru:') {
+        const options = this.getOptions(field.options);
+        const statusOptions = this.getStatusOptions(options, this.userStatus);
+        if (statusOptions.length === 0) {
+          return false;
+        }
       }
+         // General condition to check if the field is required
+         return field.required === '1' || field.required === true || field.required === 1;
+    },
 
-      // General condition to check if the field is required
-      return field.required === '1' || field.required === true || field.required === 1;
+    getOptions(optionsString) {
+      try {
+        // Parse the outer JSON string
+        const parsedOuter = JSON.parse(optionsString);
+        // Parse the inner JSON string
+        const parsedInner = JSON.parse(parsedOuter);
+        return parsedInner;
+      } catch (e) {
+        console.error('Error parsing options:', e);
+        return {};
+      }
+    },
+
+    getStatusOptions(options, status) {
+      if (typeof options[status] === 'string') {
+        return options[status].split(',').map(opt => opt.trim()).filter(opt => opt !== '');
+      }
+      return [];
     },
 
 
@@ -285,26 +311,6 @@ export default {
       }
       return false;
     },
-
-  getOptions(optionsString) {
-    try {
-      // Parse the outer JSON string
-      const parsedOuter = JSON.parse(optionsString);
-      // Parse the inner JSON string
-      const parsedInner = JSON.parse(parsedOuter);
-      return parsedInner;
-    } catch (e) {
-      console.error('Error parsing options:', e);
-      return {};
-    }
-  },
-
-  getStatusOptions(options, status) {
-    if (typeof options[status] === 'string') {
-      return options[status].split(',').map(opt => opt.trim()).filter(opt => opt !== '');
-    }
-    return [];
-  },
 
 
     parseOdabirSeminaraOptions(options) {
@@ -420,19 +426,34 @@ export default {
     this.$inertia.visit(this.route('skijasi.commerce-theme.profile'))
   },
 
-  async submitForm() {
-    try {
-      if (!this.formId) {
-        throw new Error('Form ID is not set');
-      }
 
-      // Validate required fields
-      const errors = {};
+  async submitForm() {
+      try {
+        if (!this.formId) {
+          throw new Error('Form ID is not set');
+        }
+
+        // Validate required fields
+        const errors = {};
         this.formFields.forEach(field => {
-          if (this.isFieldRequired(field) && !this.formData[field.label]) {
+          if (this.isFieldRequired(field) && this.shouldShowField(field) && !this.formData[field.label]) {
             errors[field.label] = 'Ovo polje niste ispunili';
           }
         });
+
+        // Special handling for "Na seminaru:" field
+        if (this.formFields.some(field => field.label === 'Na seminaru:')) {
+          const naSeminaruField = this.formFields.find(field => field.label === 'Na seminaru:');
+          const options = this.getOptions(naSeminaruField.options);
+          const statusOptions = this.getStatusOptions(options, this.userStatus);
+          
+          if (statusOptions.length === 0) {
+            // If there are no options for the user's status, remove any existing error for this field
+            delete errors['Na seminaru:'];
+            // Also remove the field from formData to prevent submitting an empty value
+            delete this.formData['Na seminaru:'];
+          }
+        }
 
         if (Object.keys(errors).length > 0) {
           this.errors = errors;
@@ -440,10 +461,8 @@ export default {
           return;
         }
 
-   
         // Create a copy of the form data
-    const submissionData = { ...this.formData };
-
+        const submissionData = { ...this.formData };
 
         // Safely add user status and ID
         submissionData['Status člana'] = this.userStatus || 'Nepoznato';
@@ -458,9 +477,17 @@ export default {
       }
     },
 
+    formatDateToCroatian(dateString) {
+      if (!dateString) return '';
+      const [year, month, day] = dateString.split('-');
+      return `${day}.${month}.${year}`;
+    },
 
-
-
+    parseCroatianDate(dateString) {
+      if (!dateString) return '';
+      const [day, month, year] = dateString.split('.');
+      return `${year}-${month}-${day}`;
+    },
 
 
   

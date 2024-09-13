@@ -270,6 +270,9 @@ class ConfigurationController extends Controller
             foreach ($formFields as $field) {
                 if ($field->label === 'Napomena') {
                     $rules[$field->label] = 'nullable';
+                } elseif ($field->label === 'Na seminaru:') {
+                    // Make "Na seminaru:" field optional
+                    $rules[$field->label] = 'nullable';
                 } else {
                     $rules[$field->label] = $field->required ? 'required' : 'nullable';
                 }
@@ -286,9 +289,14 @@ class ConfigurationController extends Controller
             $entryData = $validatedData;
             $entryData['Status člana'] = $request->input('Status člana');
     
+            // Handle "Na seminaru:" field
+            if (!isset($entryData['Na seminaru:']) || $entryData['Na seminaru:'] === '') {
+                $entryData['Na seminaru:'] = null;
+            }
+    
             $entry = new FormEntry();
             $entry->form_id = $formId;
-            $entry->data = json_encode($validatedData);
+            $entry->data = json_encode($entryData);
             $entry->ispunio = $user->name . '  ' . $user->username;
             $entry->hzutsid = $request->input('Hzuts ID');
     

@@ -147,6 +147,8 @@ export default {
       fixedDisplayLabels: {
         name: 'Ime',
         username: 'Prezime',
+        spol: 'Spol',
+        datumrodjenja: 'Datum rođenja',
         brojmobitela: 'Broj Mobitela'
       },
       form: {
@@ -155,6 +157,8 @@ export default {
         fields: [
           { label: 'name', field_type: 'text', required: true },
           { label: 'username', field_type: 'text', required: true },
+          { label: 'spol', field_type: 'text', required: true },
+          { label: 'datumrodjenja', field_type: 'date', required: true },
           { label: 'OIB', field_type: 'text', required: true },
           { label: 'Adresa', field_type: 'text', required: true },
           { label: 'Grad', field_type: 'text', required: true },
@@ -333,7 +337,7 @@ export default {
             field_type: field.fieldType,
             required: field.required === '1' || field.required === 1 || field.required === true,
             options: field.options ? JSON.parse(field.options) : [],
-            fixed: ['name', 'username', 'OIB', 'Adresa', 'Grad', 'Email', 'brojmobitela', 'Na seminaru:'].includes(field.label)
+            fixed: ['name', 'username', 'spol', 'datumrodjenja', 'OIB', 'Adresa', 'Grad', 'Email', 'brojmobitela', 'Na seminaru:'].includes(field.label)
           };
 
           
@@ -377,6 +381,8 @@ export default {
         fields: [
           { label: 'name', displayLabel: this.fixedDisplayLabels.name, field_type: 'text', required: true, fixed: true },
           { label: 'username', displayLabel: this.fixedDisplayLabels.username, field_type: 'text', required: true, fixed: true },
+          { label: 'spol', displayLabel: 'Spol', field_type: 'text', required: true, fixed: true },
+          { label: 'datumrodjenja', displayLabel: 'Datum rođenja', field_type: 'date', required: true, fixed: true },
           { label: 'OIB', displayLabel: 'OIB', field_type: 'text', required: true, fixed: true },
           { label: 'Adresa', displayLabel: 'Adresa', field_type: 'text', required: true, fixed: true },
           { label: 'Grad', displayLabel: 'Grad', field_type: 'text', required: true, fixed: true },
@@ -399,6 +405,7 @@ export default {
             "Podupirući član": "",
             "Snowboard Trener": "",
             "Trener skijanja": "",
+            "Nije član": "",
           },
           showForStatus: {
             "Demonstrator skijanja": true,
@@ -410,7 +417,8 @@ export default {
             "Počasni član": true,
             "Podupirući član": true,
             "Snowboard Trener": true,
-            "Trener skijanja": true
+            "Trener skijanja": true,
+            "Nije član": true
           }
         }
         ]
