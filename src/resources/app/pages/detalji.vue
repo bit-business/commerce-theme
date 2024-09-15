@@ -187,12 +187,14 @@
             </div>
             <div class="adminsadrzajframe">
               <div class="sudionici-seminara-bit-e-smje-parent">
-             
                 <div class="smjetaj-je-u-container">
-                  <div v-html="product.desc5" class="no-tailwindcss-base"></div>
+                  <div v-if="product.desc5" v-html="product.desc5" class="no-tailwindcss-base"></div>
+                  <div v-else class="coming-soon-container">
+                    <div class="coming-soon-text">Ubrzo više informacija! Provjerite idućih dana.</div>
+                  </div>
+                  </div>
                 </div>
-              </div>
-            </div>
+              </div>  </div>
           </div>
   
   
@@ -205,7 +207,7 @@
 
 
 </div>
-      <div class="framegumbi">
+       <div v-if="product.desc5" class="framegumbi">
         <a class="lijevigumb" @click="buyNow()">  
           <b class="uplatite-lanarinu-hzuts-u">UPLATITE ČLANARINU HZUTS-U</b>
         </a>
@@ -219,7 +221,6 @@
       
       </div>
 
-    <!-- Content for Prijava i plaćanje     https://forms.gle/z95LVJdJV6Lr8jyh7-->
 
 </div>
 
@@ -364,7 +365,7 @@ export default {
         datum_kraja: null,
         mjesto: "",
         prijavnicalink: "",
-
+        sakrij: null,
 
 
         reviewAvgRating: 0,
@@ -1638,4 +1639,34 @@ width: 100%;
 }
 
 
+.coming-soon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
+
+.coming-soon-text {
+  font-size: 28px;
+  font-weight: bold;
+  color: #03a9f4;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.7;
+    transform: scale(1.05);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
 </style>

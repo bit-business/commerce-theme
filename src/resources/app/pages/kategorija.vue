@@ -98,6 +98,7 @@
         v-for="(product, index) in sortedAndFilteredProductsKvadrati"
 
         :key="product.id"
+          v-if="product.sakrij !== 1"
     >
         <Link :href="route('skijasi.commerce-theme.detalji', product.slug)" class="prvireddesni">
           <div class="prvireddesni" :style="`background-image: url('${product.productImage}');`">
@@ -280,22 +281,26 @@ export default {
 
 
   sortedAndFilteredProductsKvadrati() {
-    const today = new Date();
+      const today = new Date();
 
-    // Separate active and non-active products
-    const activeProducts = this.products.data.filter(product => new Date(product.datumPocetka) >= today);
-    const nonActiveProducts = this.products.data.filter(product => new Date(product.datumPocetka) < today);
+      // Separate active and non-active products, excluding those with sakrij === 1
+      const activeProducts = this.products.data.filter(product => 
+        new Date(product.datumPocetka) >= today && product.sakrij !== 1
+      );
+      const nonActiveProducts = this.products.data.filter(product => 
+        new Date(product.datumPocetka) < today && product.sakrij !== 1
+      );
 
-    // Sort active products by closest date to today
-    activeProducts.sort((a, b) => new Date(a.datumPocetka) - new Date(b.datumPocetka));
+      // Sort active products by closest date to today
+      activeProducts.sort((a, b) => new Date(a.datumPocetka) - new Date(b.datumPocetka));
 
-    // Sort non-active products by latest to oldest
-    nonActiveProducts.sort((a, b) => new Date(b.datumPocetka) - new Date(a.datumPocetka));
+      // Sort non-active products by latest to oldest
+      nonActiveProducts.sort((a, b) => new Date(b.datumPocetka) - new Date(a.datumPocetka));
 
-    // Return combined list: active first, then non-active
-    return [...activeProducts, ...nonActiveProducts];
-  },
-
+      // Return combined list: active first, then non-active
+      return [...activeProducts, ...nonActiveProducts];
+    },
+  
 
 
 
@@ -955,6 +960,7 @@ computeCountdown() {
   background-repeat: no-repeat;
   background-position: center; /* Centers the image */
 
+  margin-top:3.5rem;
 }
 .vrhslikaitekst::before {
     content: "";
