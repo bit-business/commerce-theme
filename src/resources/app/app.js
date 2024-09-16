@@ -154,25 +154,30 @@ Vue.prototype.$alert = (
   });
 };
 Vue.prototype.$currency = (value) => {
-  let symbol = _.find(store.state.moduleConfigurations, { key: "currencySymbol" }).value;
-  
-  let formattedValue = currency(value, {
-    precision: _.find(store.state.moduleConfigurations, {
-      key: "currencyPrecision",
-    }).value,
-    decimal: _.find(store.state.moduleConfigurations, {
-      key: "currencyDecimal",
-    }).value,
-    separator: _.find(store.state.moduleConfigurations, {
-      key: "currencySeparator",
-    }).value,
-    symbol: symbol
+  const moduleConfigurations = store.state.moduleConfigurations;
+  const symbol = _.find(moduleConfigurations, { key: "currencySymbol" }).value;
+  const precision = parseInt(_.find(moduleConfigurations, { key: "currencyPrecision" }).value);
+  const decimal = _.find(moduleConfigurations, { key: "currencyDecimal" }).value;
+  const separator = _.find(moduleConfigurations, { key: "currencySeparator" }).value;
+
+  // Parse the input value as a float
+  const floatValue = parseFloat(value);
+
+  // Check if the parsed value is a valid number
+  if (isNaN(floatValue)) {
+    return ''; // Return empty string or some default value for invalid input
+  }
+
+  // Format the value using the currency.js library
+  let formattedValue = currency(floatValue, {
+    precision: precision,
+    decimal: decimal,
+    separator: separator,
+    symbol: ''  // We'll add the symbol manually at the end
   }).format();
 
-  // Move the symbol to the end
-  if (formattedValue.includes(symbol)) {
-    formattedValue = formattedValue.replace(symbol, "") + symbol;
-  }
+  // Add the currency symbol at the end
+  formattedValue = formattedValue + ' ' + symbol;
 
   return formattedValue;
 };

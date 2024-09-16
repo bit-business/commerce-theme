@@ -678,18 +678,25 @@ export default {
     },
 
     getProductNames() {
-    const productNames = this.order.orderDetails.map(
-      (orderDetail) => orderDetail.productDetail.product.name
-    );
-    return productNames.join(', ');
-  },
+  const productNames = this.order.orderDetails.map(
+    (orderDetail) => orderDetail.productDetail.product.name
+  );
+  const joinedNames = productNames.join(', ');
+  
+  // Check if the joined names contain "članar" (case-insensitive)
+  if (joinedNames.toLowerCase().includes('članarina')) {
+    return joinedNames;
+  } else {
+    return "Članarina";
+  }
+},
 
     async generatePaymentSlip() {
 
-      const iznos = `${parseFloat(this.order.payed).toFixed(0)}00`;
+      const iznos = Math.round(parseFloat(this.order.payed) * 100).toString();
 
 
-      const opis = this.getProductNames() + "," + this.user.name + " " + this.user.username;
+      const opis = this.getProductNames() + ", " + this.user.name + " " + this.user.username;
       const ime = this.user.name + " " + this.user.username;
       const postbrojgrad = this.user.postanskibroj + " " + this.user.grad;
 

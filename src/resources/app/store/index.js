@@ -17,22 +17,10 @@ export default new Vuex.Store({
         key: "allowedCountries",
         value: "[]"
       },
-      {
-        key: "currencyPrecision",
-        value: 0
-      },
-      {
-        key: "currencyDecimal",
-        value: "."
-      },
-      {
-        key: "currencySeparator",
-        value: ","
-      },
-      {
-        key: "currencySymbol",
-        value: "EUR"
-      },
+      { key: "currencyPrecision", value: "2" },
+      { key: "currencyDecimal", value: "," },
+      { key: "currencySeparator", value: "." },
+      { key: "currencySymbol", value: "€" },
       {
         key: "homeProductLimit",
         value: 0
