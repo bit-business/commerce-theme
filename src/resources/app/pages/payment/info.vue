@@ -20,39 +20,17 @@
     </div>
     <div class="lg:max-w-xl w-full">
       <div class="flex w-full flex-wrap justify-center select-none">
+          <!-- <p>Iznos za plaćanje:
+          <p class="text-3xl plava-boja">{{ separator }}<span class=" font-medium">{{ last }}{{ first }}</span></p></p> -->
         <div class="w-full bg-white p-4 border-b border-gray-300">
-          <p>Iznos za plaćanje:
-          <p class="text-3xl plava-boja">{{ separator }}<span class=" font-medium">{{ last }}{{ first }}</span></p></p>
-          <div class="mt-4 text-sm text-white p-1 px-2 bg-plava-boja bg-opacity-80 border-l border-r border-dotted">
-            Platite narudžbu prema gore navedenom iznosu.
-          </div>
-
-          <div class="w-full gap-2 flex bg-white border-t border-b p-4 border-gray-300">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 plava-boja" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-          </svg>
-          <div class="flex-grow flex flex-col w-full">
-            <div class="w-full">Podaci za plaćanje:</div>
-            <div class="flex w-full mt-2 text-gray-500 text-sm">
-              <div class="flex-grow">
-                Broj računa: {{ bank.accountNumber }} <br />
-                Ime računa: {{ bank.accountName }}<br />
-                Poziv na broj primatelja: {{ user.idmember }} 
-              </div>
-              <div 
-      class="cursor-pointer self-baseline text-gray-400"
-      @click="copyToClipboard(bank.accountNumber)"
-    >
-      Kopiraj
-    </div>
-    <div v-if="showCopiedMessage" class="text-green-500 ml-2">Broj računa kopiran!</div>
-            </div>
-          </div>
-        </div>
+        
+        <div class="mt-4 text-sm text-white p-1 px-2 bg-plava-boja bg-opacity-80 border-l border-r border-dotted">   </div>  
+            <!-- Platite narudžbu prema gore navedenom iznosu. -->
+       
 
 
-          <div class="text-sm mt-2 text-gray-500">Provjerite jeste li ispunili sve podatke dobro prije plaćanja. Uplata uobičajeno stiže u roku 24-72 sati. Mi ćemo Vam svakako poslati obavijest kada je potvrđena uplata.</div>
-        </div>
+
+  
 
           <div class="mt-4 text-sm p-1 px-2 border-l border-r border-dotted">
             Plaćanje možete izvršiti na sljedeće naćine:
@@ -90,14 +68,56 @@
             <div class="text-sm text-gray-500">Plaćanjem u pošti ili banci sa isprintanom uplatnicom ili podacima</div>
           </div>
         </div>
+
+
+        <div class="w-full flex text-sm flex-col bg-white p-3 border-t border-b border-gray-300 justify-between">
+          <p>Pošaljite nam potvrdu plaćanja za bržu obradu (opcionalno):</p>
+          <label class="block text-center select-none max-w-full" for="receipt_file">
+            <div class="inline-block mx-3 mt-3.5 w-24 h-24 border-2 border-gray-700 text-gray-700 border-dashed cursor-pointer">
+              <template v-if="selected.proofOfTransaction === null">
+  <div class="flex justify-center flex-col items-center h-full">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
+    </svg>
+    <div class="text-center">Dodirnite za prijenos</div>
+  </div>
+</template>
+<template v-else>
+  <div class="flex justify-center items-center h-full w-full">
+    <template v-if="selected.proofOfTransactionType === 'application/pdf'">
+      <div class="text-center">{{ selected.proofOfTransactionName }}</div>
+    </template>
+    <template v-else>
+      <img :src="selected.proofOfTransaction">
+    </template>
+  </div>
+</template>
+        
+            </div>
+          </label>
+          <input accept="image/*,application/pdf" type="file" class="w-full h-full absolute opacity-0 hidden" name="receipt_file" id="receipt_file" ref="image" @change="onFilePicked">
+        </div>
+   
+
+
+
+        <div class="text-sm mt-2 text-gray-500">Provjerite jeste li ispunili sve podatke dobro prije plaćanja. Uplata uobičajeno stiže u roku 24-72 sati. Mi ćemo Vam svakako poslati obavijest kada je potvrđena uplata.</div>
+
+     
+
+      </div>
+      
         <div class="w-full flex flex-wrap gap-2 my-2 px-3 sm:px-0">
-         <button class="w-full p-4 bg-plava-boja text-white font-bold rounded text-center text-sm" @click="potvrdaplacanjabezdokaza">
+         <!-- <button class="w-full p-4 bg-plava-boja text-white font-bold rounded text-center text-sm" @click="potvrdaplacanjabezdokaza">
             Potvrdi da je uplaćeno
-         </button>
+         </button> -->
           <!-- <div class="w-full text-center ">ili</div> -->
-          <button class="w-full p-4 bg-plava-boja font-bold text-white rounded text-center text-sm" @click="showUploadProofContent">
-           Potvrdi da je uplaćeno i učitaj dokaz plaćanja za bržu obradu
-          </button>
+          <!-- <button class="w-full p-4 bg-plava-boja font-bold text-white rounded text-center text-sm" @click="showUploadProofContent">
+           Potvrdi da je uplaćeno
+          </button> -->
+          <button @click="send" class="w-full p-4 font-bold bg-plava-boja text-white rounded text-center text-sm">
+  POTVRDI DA JE PLAĆENO
+</button>
    
           <Link 
             class="w-full p-2 bg-transparent  plava-boja border border-primary rounded text-center text-sm" 
@@ -111,7 +131,7 @@
 
     <div>
 
-
+    
      
 <div v-show="contentMode === 'default'">
   <div class="button-container">
@@ -130,6 +150,43 @@
 </div>
 <iframe v-if="pdfUrl" ref="pdfViewer" :src="pdfUrl" class="pdf-iframe" frameborder="0"></iframe>
 </div>
+
+<div 
+          class="w-full mb-8 mt-2 flex text-sm bg-white p-3 border-b border-gray-300 justify-between cursor-pointer items-center" 
+          @click="openAccordion = !openAccordion"
+        >
+          <p>Podaci za ručno plaćanje</p>
+          <div class="w-6 h-6 transform transition-transform duration-300 ease-in-out" :class="openAccordion ? '-rotate-180' : ''">
+            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </div>
+        </div>
+        <div 
+          class="w-full gap-2 bg-white border-b p-2 border-gray-300 origin-top transform transition-transform duration-300 ease-in-out" 
+          :class="[openAccordion ? 'flex' : 'hidden']"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 plava-boja" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <div class="flex-grow flex flex-col w-full">
+            <div class="w-full text-sm sm:text-base">{{ bank.displayName }}</div>
+            <div class="flex w-full mt-2 text-gray-500 text-xs sm:text-sm">
+    <div class="flex-grow">
+      Uplatite na broj računa: {{ bank.accountNumber }} <br />
+      Ime računa: {{ bank.accountName }} <br />
+      Poziv na broj primatelja: {{ user.idmember }} 
+    </div>
+    <div 
+      class="cursor-pointer self-baseline text-gray-400"
+      @click="copyToClipboard(bank.accountNumber)"
+    >
+      Kopiraj
+    </div>
+    <div v-if="showCopiedMessage" class="text-green-500 ml-2">Broj računa kopiran!</div>
+  </div>
+          </div>
+        </div>
   </div>
       </div>
     </div>
@@ -815,36 +872,46 @@ switchToDefaultView() {
       })
     }
   },
-    send() {
+  send() {
       console.log('Sending data:', {
-    orderId: this.id,
-    ...this.selected,
-    destinationBank: this.selected.destinationBank.name,
-    sourceBank: this.selected.sourceBank.key,
-  });
+        orderId: this.id,
+        ...this.selected,
+        destinationBank: this.selected.destinationBank.name,
+        sourceBank: this.selected.sourceBank.key,
+      });
    
-        this.$openLoading()
-        this.$api.skijasiOrder
-          .pay({
-  
-            orderId: this.id,
-            ...this.selected,
-            destinationBank: this.selected.destinationBank.name,
-            sourceBank: this.selected.sourceBank.key,
-          })
-          .then(res => {
-            this.showSuccessModal = true;
-     
-          })
-          .catch(err => {
-            this.$helper.displayErrors(err)
-            this.$inertia.visit(this.route('skijasi.commerce-theme.cart'))
-          })
-          .finally(() => {
-            this.$closeLoading()
-          })
+      this.$openLoading();
 
+      // Prepare the payload
+      const payload = {
+        order_id: this.id,
+        source_bank: this.selected.sourceBank.key,
+        destination_bank: this.selected.destinationBank.name,
+        account_number: this.selected.accountNumber,
+        total_transfered: this.selected.totalTransfered,
+      };
+
+      // Only include proof_of_transaction if it exists
+      if (this.selected.proofOfTransaction) {
+        payload.proof_of_transaction = this.selected.proofOfTransaction;
+      }
+
+      this.$api.skijasiOrder
+        .pay(payload)
+        .then(res => {
+          this.showSuccessModal = true;
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err);
+          // You might want to handle this error more gracefully,
+          // perhaps by showing an error message to the user instead of redirecting
+          // this.$inertia.visit(this.route('skijasi.commerce-theme.cart'));
+        })
+        .finally(() => {
+          this.$closeLoading();
+        });
     },
+
 
 
   }
@@ -919,6 +986,7 @@ switchToDefaultView() {
   margin-bottom: 10px;
 
   margin-top: 2.4rem;
+  translate: 0rem  4rem;
 }
 
 .action-button {
