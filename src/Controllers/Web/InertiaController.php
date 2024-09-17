@@ -170,10 +170,11 @@ class InertiaController extends Controller
         ], 'commerce-theme:app');
     }
 
-    public function prijavanadogadaj($id)
+    public function prijavanadogadaj($id, $slug)
     {
         return Inertia::render('prijavanadogadaj', [
             'formId'   => $id,
+            'slug' => $slug,
             'name' => 'Prijava Na Događaj',
         ], 'commerce-theme:app');
     }

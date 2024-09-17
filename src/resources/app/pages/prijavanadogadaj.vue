@@ -158,6 +158,42 @@
 
 
 
+
+
+<!-- Skiing Type Selection Popup -->
+<div v-if="showSkiingTypePopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+  <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Odaberite vrstu skijanja</h2>
+    <div class="space-y-4">
+      <button @click="selectSkiingType('Samostalno skijanje')" 
+       v-if="korisnik.additionalInfo !== 'KIF'"
+      class="w-full py-3 bg-blue-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
+        <span>Samostalno skijanje</span>
+        <span class="font-bold">{{ $currency(getSkiingTypePrice('Samostalno skijanje')) }}</span>
+      </button>
+      <button @click="selectSkiingType('Grupno skijanje')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
+        <span>Grupno skijanje</span>
+        <span class="font-bold">{{ $currency(getSkiingTypePrice('Grupno skijanje')) }}</span>
+      </button>
+    </div>
+    <button @click="showSkiingTypePopup = false" class="text-nazad mt-6 w-3/4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out">
+      Nazad
+    </button>
+  </div>
+</div>
+
+  <!-- Loading Overlay -->
+  <div v-if="isLoading" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+    <div class="bg-white p-5 rounded-full">
+      <svg class="animate-spin h-10 w-10 text-blue-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+      </svg>
+    </div>
+  </div>
+
+
+
   </div>
 
 
@@ -185,13 +221,71 @@ const fixedDisplayLabels = {
 
 export default {
   layout: [appLayout],
-  props: ['formId'],
+  props: {
+    formId: {
+      type: [Number, String],
+      required: true
+    },
+    slug: {
+      type: String,
+      required: true
+    },
+  },
   components: {
     Link,
     Head
   },
   data() {
     return {
+      selectedProduct: {
+        id: null
+      },
+      quantity: 1,
+      product: {
+        closed: 1, 
+        form_id: null,
+
+        desc: null,
+        desc2: null,
+        desc3: null,
+        desc4: null,
+        desc5: null,
+        name: "",
+        datum_pocetka: null,
+        datum_kraja: null,
+        mjesto: "",
+        prijavnicalink: "",
+        sakrij: null,
+
+
+        reviewAvgRating: 0,
+        reviewCount: 0,
+        productCategory: {
+          name: null,
+          slug: null,
+        },
+        productDetails: [
+          {
+            price: null,
+            quantity: 0,
+            discount: {
+              active: false,
+              discountFixed: 0,
+              discountPercent: 0,
+              discountType: 'fixed'
+            },
+            sold: 0
+          }
+        ],
+        productImage: null,
+        slug: null,
+        updatedAt: this.$moment.now(),
+      },
+
+      showSkiingTypePopup: false,
+      selectedSkiingType: null,
+      isLoading: false,
+
 
       formFields: [],
       formData: {},
@@ -237,18 +331,148 @@ export default {
       },
       immediate: true,
       deep: true
-    }
+    },
+    '$page.props': {
+      handler() {
+        this.getProduct()
+      },
+      deep: true
+    },
   },
 
   mounted() {
     if (!this.isAuthenticated) {
-      sessionStorage.setItem('previousRoute', this.route('skijasi.commerce-theme.prijavanadogadaj'));
+      sessionStorage.setItem('previousRoute', this.route('skijasi.commerce-theme.prijavanadogadaj', { 
+        id: this.formId, 
+        slug: this.slug 
+      }));
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     } else {
       this.ucitajClanove();
+      this.getProduct();
     }
+
+   
   },
   methods: {
+
+    buyNow() {
+              // if (this.selectedProduct.id === null) {
+              //   this.$helper.alert("Potrebno je odabrati barem jednu vrstu!")
+              //   return
+              // }
+
+              if (!this.isAuthenticated) {
+                this.$helper.alert("Morate se prijaviti prvo. Niste logirani!")
+                this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+                return
+              }
+          
+              this.isLoading = true; // Start loading
+
+        // Check if the user is "Nije član"
+        if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
+
+          // Set the product for "Nije član" without showing the popup
+          const nijeclanProduct = this.product.productDetails.find(
+            detail => detail.name === "Nije član"
+          );
+          this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : this.product.productDetails[0].id;
+          this.processOrder();
+        } else {
+          // Show the skiing type selection popup for other users
+          this.showSkiingTypePopup = true;
+          this.isLoading = false; // Stop loading as we're waiting for user input
+        }
+
+   },
+
+     processOrder() {
+                this.$api.skijasiCart
+                  .add({
+                    id: this.selectedProduct.id,
+                    quantity: this.quantity
+                  })
+                  .then(res => {
+                    this.$store.dispatch('FETCH_CARTS')
+
+                    //spremanje povratka na ovu stranicu
+                    const seminarId = this.product.slug; 
+                this.$store.dispatch('SET_PURCHASE_ORIGIN', {
+                  from: 'detalji',
+                  seminarId: seminarId
+                });
+                this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+
+                    this.$helper.alert(res.message)
+                  })
+                  .catch(err => {
+                    this.$helper.displayErrors(err)
+                  })
+                  .finally(() => {
+                    this.isLoading = false; // Stop loading
+                  })
+},
+selectSkiingType(type) {
+  this.selectedSkiingType = type;
+  this.setSelectedProduct();
+  if (this.selectedProduct.id) {
+    this.showSkiingTypePopup = false;
+    this.processOrder(); // Process the order after selection
+  }
+},
+
+getProduct() {
+  this.$api.skijasiProduct
+  .read({ slug: this.slug })
+    .then(res => {
+      this.product = res.data.product;
+      this.product.reviewAvgRating = parseFloat(res.data.product.reviewAvgRating) || 0;
+      this.activeImageSource = res.data.product.productDetails[0].productImage;
+      this.activePrice = res.data.product.productDetails[0].price;
+      this.activeStock = res.data.product.productDetails[0].quantity;
+      this.activeDiscount = res.data.product.productDetails[0].discount;
+// this.getSimilarProduct() // this.getReviews() 
+     
+
+     
+    })
+    .catch(err => {
+      this.$helper.displayErrors(err);
+      this.$inertia.visit(this.route('skijasi.commerce-theme.404'));
+    });
+},
+
+setSelectedProduct() {
+  if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
+    const nijeclanProduct = this.product.productDetails.find(
+      detail => detail.name === "Nije član"
+    );
+    this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : this.product.productDetails[0].id;
+  } else if (this.selectedSkiingType === 'Samostalno skijanje') {
+    const hzutsProduct = this.product.productDetails.find(
+      detail => detail.name === "HZUTS član"
+    );
+    this.selectedProduct.id = hzutsProduct ? hzutsProduct.id : this.product.productDetails[0].id;
+  } else if (this.selectedSkiingType === 'Grupno skijanje') {
+    const grupnoProduct = this.product.productDetails.find(
+      detail => detail.name === "Grupno skijanje"
+    );
+    if (grupnoProduct) {
+      this.selectedProduct.id = grupnoProduct.id;
+    } else {
+      // Handle case where "Grupno skijanje" is not found
+      this.$helper.alert("Opcija 'Grupno skijanje' nije dostupna. Molimo odaberite drugu opciju.");
+      this.showSkiingTypePopup = true; 
+      this.isLoading = false; 
+      // Show the popup again
+      return; // Exit the method without setting selectedProduct.id
+    }
+  }
+
+  // Log the selected product for debugging
+  console.log("Selected product ID:", this.selectedProduct.id);
+},
 
 
     shouldShowField(field) {
@@ -423,7 +647,8 @@ export default {
 
   closeConfirmation() {
     this.showConfirmation = false;
-    this.$inertia.visit(this.route('skijasi.commerce-theme.profile'))
+    // this.$inertia.visit(this.route('skijasi.commerce-theme.profile'))
+    this.buyNow();
   },
 
 

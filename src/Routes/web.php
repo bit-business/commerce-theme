@@ -45,7 +45,8 @@ Route::prefix($commerce_route_prefix)
         Route::get('/izradaiskaznice', HelpersRoute::getController('InertiaController@izradaiskaznice'))->name('izradaiskaznice');
         Route::get('/prijavazaclanstvo', HelpersRoute::getController('InertiaController@prijavazaclanstvo'))->name('prijavazaclanstvo');
 
-        Route::get('/prijavanadogadaj/{id}', HelpersRoute::getController('InertiaController@prijavanadogadaj'))->name('prijavanadogadaj');
+        Route::get('/prijava-na-dogadaj/{id}/{slug}', HelpersRoute::getController('InertiaController@prijavanadogadaj'))->name('prijavanadogadaj');
+   
 
         /**
          * Auth route.

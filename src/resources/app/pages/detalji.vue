@@ -188,7 +188,8 @@
             <div class="adminsadrzajframe">
               <div class="sudionici-seminara-bit-e-smje-parent">
                 <div class="smjetaj-je-u-container">
-                  <div v-if="product.desc5" v-html="product.desc5" class="no-tailwindcss-base"></div>
+                  <div v-if="product.zatvoriprijave == 1" class="no-tailwindcss-base text-center">  <div class="coming-soon-text">Prijave su zatvorene.</div></div>
+                  <div v-else-if="product.desc5" v-html="product.desc5" class="no-tailwindcss-base" > </div>
                   <div v-else class="coming-soon-container">
                     <div class="coming-soon-text">Ubrzo više informacija! Provjerite idućih dana.</div>
                   </div>
@@ -207,17 +208,19 @@
 
 
 </div>
-       <div v-if="product.desc5" class="framegumbi">
-        <a class="lijevigumb" @click="buyNow()">  
+       <div v-if="product.desc5 && product.zatvoriprijave !== 1" class="framegumbi">
+        <!-- <a class="lijevigumb" @click="buyNow()">  
           <b class="uplatite-lanarinu-hzuts-u">UPLATITE ČLANARINU HZUTS-U</b>
-        </a>
-        <a class="lijevigumb"  :href="route('skijasi.commerce-theme.prijavanadogadaj', { id:  product.formId })"  @click="handleClick">
-  <b class="prijavnica-za-dogaaj">PRIJAVNICA ZA DOGAĐAJ</b>
+        </a> -->
+        <!-- <a class="lijevigumb"  :href="route('skijasi.commerce-theme.prijavanadogadaj', { id:  product.formId })"  @click="handleClick"> -->
+          <a 
+    class="lijevigumb" 
+    @click.prevent="navigateToPrijava"
+  >
+  <b class="prijavnica-za-dogaaj">PRIJAVA NA DOGAĐAJ</b>
 </a>
 
-<vs-popup :title="'Privremeno zatvorene prijave'" :active.sync="showPopup" @close="showPopup = false">
 
-    </vs-popup>
       
       </div>
 
@@ -270,7 +273,7 @@
 
   
     </div>
-  </div>
+  
 </template>
 
 
@@ -313,7 +316,7 @@ export default {
       isLoading: false,
 
 
-      showPopup: true,
+      
 
       activeSection: 'skijaliste',
 
@@ -366,6 +369,7 @@ export default {
         mjesto: "",
         prijavnicalink: "",
         sakrij: null,
+        zatvoriprijave: null,
 
 
         reviewAvgRating: 0,
@@ -489,11 +493,11 @@ export default {
         document.title = `${val} - Hzuts.hr`
       }
     },
-    currentPage: {
-      handler() {
-        this.getReviews()
-      }
-    },
+    // currentPage: {
+    //   handler() {
+    //     this.getReviews()
+    //   }
+    // },
 
     'product.productImage': {
     immediate: true,
@@ -510,6 +514,14 @@ export default {
     this.ucitajClanove();
   },
   methods: {
+      navigateToPrijava() {
+      this.$inertia.visit(this.route('skijasi.commerce-theme.prijavanadogadaj', { 
+        id: this.product.formId,
+        slug: this.product.slug
+      }));
+
+    },
+
     async ucitajClanove() {
             console.log("TEST ID ucitaj clanove:", this.user.id);
         try {
@@ -528,13 +540,7 @@ export default {
         }
       },
 
-    handleClick() {
-      if (this.product.closed === 1) {
-        this.showPopup = true; // Show the popup
-      } else {
-        // Handle the normal click action if product is not closed
-      }
-    },
+
 
 
     prevPhoto() {
@@ -902,36 +908,36 @@ getSkiingTypePrice(type) {
           this.$helper.displayErrors(err)
         })
     },
-    buyNow() {
-      // if (this.selectedProduct.id === null) {
-      //   this.$helper.alert("Potrebno je odabrati barem jednu vrstu!")
-      //   return
-      // }
+            buyNow() {
+              // if (this.selectedProduct.id === null) {
+              //   this.$helper.alert("Potrebno je odabrati barem jednu vrstu!")
+              //   return
+              // }
 
-      if (!this.isAuthenticated) {
-        this.$helper.alert("Morate se prijaviti prvo. Niste logirani!")
-        this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
-        return
-      }
-   
-      this.isLoading = true; // Start loading
+              if (!this.isAuthenticated) {
+                this.$helper.alert("Morate se prijaviti prvo. Niste logirani!")
+                this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+                return
+              }
+          
+              this.isLoading = true; // Start loading
 
-// Check if the user is "Nije član"
-if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
+        // Check if the user is "Nije član"
+        if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
 
-  // Set the product for "Nije član" without showing the popup
-  const nijeclanProduct = this.product.productDetails.find(
-    detail => detail.name === "Nije član"
-  );
-  this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : this.product.productDetails[0].id;
-  this.processOrder();
-} else {
-  // Show the skiing type selection popup for other users
-  this.showSkiingTypePopup = true;
-  this.isLoading = false; // Stop loading as we're waiting for user input
-}
+          // Set the product for "Nije član" without showing the popup
+          const nijeclanProduct = this.product.productDetails.find(
+            detail => detail.name === "Nije član"
+          );
+          this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : this.product.productDetails[0].id;
+          this.processOrder();
+        } else {
+          // Show the skiing type selection popup for other users
+          this.showSkiingTypePopup = true;
+          this.isLoading = false; // Stop loading as we're waiting for user input
+        }
 
-    },
+            },
     processOrder() {
   this.$api.skijasiCart
     .add({
