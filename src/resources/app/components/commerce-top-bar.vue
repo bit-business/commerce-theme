@@ -18,7 +18,7 @@
 
 
 
-      <Link class="dogaanja animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija</Link>
+      <Link class="dogaanja animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">{{ $t('Galerija') }}</Link>
       <Link class="dogaanja animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt</Link>
 
 
@@ -146,28 +146,24 @@
 
  <!-- <div v-if="showDropdownjezik"  class="dropdownjezikglavni" :class="{'transparent-bg': isHomePage}"> -->
 
-    <div v-if="showDropdownjezik"  class="dropdownjezikglavni">
-      <div class="izaberi-jezik">IZABERI JEZIK</div>
+
+  <div class="dropdownjezikglavni" v-if="showDropdownjezik">
+      <div class="izaberi-jezik">{{ $t('izaberiJezik') }}</div>
       <div class="listajezika">
-        <button class="talijanskiframe">
-          <div class="talijanski-it">Talijanski (IT)</div>
-          <img
-            class="ikonattalijanska-icon"
-            alt=""
-            src="/storage/slike/ikonattalijanska.svg"
-          />
-        </button>
-        <button class="hrvatskiframe">
-          <div class="hrvatski-hr">Hrvatski (HR)</div>
+        <button class="hrvatskiframe" @click="changeLanguage('hr')">
+          <div class="hrvatski-hr">{{ $t('hrvatski') }}</div>
           <img class="ikonattalijanska-icon" alt="" src="/storage/slike/ikonahrvatska.svg" />
         </button>
-        <button class="engleskifframe">
-          <div class="engleski-uk">Engleski (UK)</div>
+        <button class="engleskifframe" @click="changeLanguage('en')">
+          <div class="engleski-uk">{{ $t('engleski') }}</div>
           <img class="ikonaengleska-icon" alt="" src="/storage/slike/ikonaengleska.svg" />
+        </button>
+        <button class="talijanskiframe" @click="changeLanguage('it')">
+          <div class="talijanski-it">{{ $t('talijanski') }}</div>
+          <img class="ikonattalijanska-icon" alt="" src="/storage/slike/ikonattalijanska.svg" />
         </button>
       </div>
     </div>
-
 
 
 
@@ -277,6 +273,8 @@ export default {
       showDropdownprijavljen: false,
       showDropdowninformacije: false,
       showDropdowninformacijeMob: false,
+
+      currentLanguage: 'hr', 
     }
   },
   watch: {
@@ -296,6 +294,12 @@ export default {
   if (this.isAuthenticated) {
   this.fetchAdminMessages();
 }
+
+const userLanguage = localStorage.getItem('userLanguage');
+    if (userLanguage) {
+      this.changeLanguage(userLanguage);
+    }
+
 },
 beforeDestroy() {
   window.removeEventListener('scroll', this.handleScroll);
@@ -352,6 +356,25 @@ showNotification() {
 
 
   methods: {
+    changeLanguage(lang) {
+      this.currentLanguage = lang;
+      this.$i18n.locale = lang;
+      // You might want to store the selected language in localStorage for persistence
+      localStorage.setItem('userLanguage', lang);
+    },
+
+    // Update your toggleDropdownjezik method
+    toggleDropdownjezik() {
+      if (this.showDropdownprijavljen) {
+        this.showDropdownprijavljen = false;
+      }
+      if (this.showDropdown) {
+        this.showDropdown = false;
+      }
+      this.showDropdownjezik = !this.showDropdownjezik;
+      this.$forceUpdate();
+    },
+
     handleLinkClick() {
     this.fetchAdminMessages();
     this.showNotificationTemplate = false;
@@ -399,16 +422,7 @@ showNotification() {
     this.showDropdownprijavljen = !this.showDropdownprijavljen;
     this.$forceUpdate();
   },
-  toggleDropdownjezik() {
-    if (this.showDropdownprijavljen) {
-      this.showDropdownprijavljen = false;
-    }
-    if (this.showDropdown) {
-      this.showDropdown = false;
-    }
-    this.showDropdownjezik = !this.showDropdownjezik;
-    this.$forceUpdate();
-  },
+
   toggleDropdownmeni() {
     this.showDropdownmeni = !this.showDropdownmeni;
     this.$forceUpdate();

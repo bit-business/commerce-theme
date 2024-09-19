@@ -65,7 +65,9 @@
               <div class="sudionici-seminara-bit-e-smje-parent">
              
                 <div class="smjetaj-je-u-container">
-                  <div v-html="product.desc" class="no-tailwindcss-base"></div>
+                  <div class="content-wrapper">
+  <div v-html="sanitizeHtml(product.desc)" class="custom-html-content"></div>
+</div>
                 </div>
               </div>
             </div>
@@ -89,7 +91,9 @@
               <div class="sudionici-seminara-bit-e-smje-parent">
              
                 <div class="smjetaj-je-u-container">
-                  <div v-html="product.desc2" class="no-tailwindcss-base"></div>
+                  <div class="content-wrapper">
+  <div v-html="sanitizeHtml(product.desc2)" class="custom-html-content"></div>
+</div>
                 </div>
               </div>
             </div>
@@ -115,7 +119,9 @@
               <div class="sudionici-seminara-bit-e-smje-parent">
              
                 <div class="smjetaj-je-u-container">
-                  <div v-html="product.desc3" class="no-tailwindcss-base"></div>
+                  <div class="content-wrapper">
+  <div v-html="sanitizeHtml(product.desc3)" class="custom-html-content"></div>
+</div>
                 </div>
               </div>
             </div>
@@ -164,7 +170,9 @@
               <div class="sudionici-seminara-bit-e-smje-parent">
              
                 <div class="smjetaj-je-u-container">
-                  <div v-html="product.desc4" class="no-tailwindcss-base"></div>
+                  <div class="content-wrapper">
+  <div v-html="sanitizeHtml(product.desc4)" class="custom-html-content"></div>
+</div>
                 </div>
               </div>
             </div>
@@ -189,7 +197,9 @@
               <div class="sudionici-seminara-bit-e-smje-parent">
                 <div class="smjetaj-je-u-container">
                   <div v-if="product.zatvoriprijave == 1" class="no-tailwindcss-base text-center">  <div class="coming-soon-text">Prijave su zatvorene.</div></div>
-                  <div v-else-if="product.desc5" v-html="product.desc5" class="no-tailwindcss-base" > </div>
+             <div  v-else-if="product.desc5" class="content-wrapper">
+  <div v-html="sanitizeHtml(product.desc5)" class="custom-html-content"></div>
+</div>
                   <div v-else class="coming-soon-container">
                     <div class="coming-soon-text">Ubrzo više informacija! Provjerite idućih dana.</div>
                   </div>
@@ -514,7 +524,43 @@ export default {
     this.ucitajClanove();
   },
   methods: {
+
+    sanitizeHtml(html) {
+
+     if (!html) return '';
+      const doc = new DOMParser().parseFromString(html, 'text/html');
+      
+      // Adjust table structure
+      doc.body.querySelectorAll('table').forEach(table => {
+        table.classList.add('w-full', 'max-w-full', 'overflow-x-auto');
+        table.style.display = 'block';
+      });
+
+      // Adjust images
+      doc.body.querySelectorAll('img').forEach(img => {
+        img.classList.add('max-w-full', 'h-auto');
+      });
+
+          // Remove all style attributes
+          doc.body.querySelectorAll('table').forEach(el => {
+        el.removeAttribute('style');
+      });
+           // Adjust table structure
+           doc.body.querySelectorAll('table').forEach(table => {
+        table.classList.add('w-full', 'max-w-full', 'overflow-y-auto', 'block');
+      });
+
+      return doc.body.innerHTML;
+    },
+
+
       navigateToPrijava() {
+
+      if (this.activeStock < 1) {
+        this.$helper.alert("Nažalost popunjena su sva trenutno raspoloživa mjesta.");
+        return
+      }
+
       this.$inertia.visit(this.route('skijasi.commerce-theme.prijavanadogadaj', { 
         id: this.product.formId,
         slug: this.product.slug
@@ -1673,6 +1719,75 @@ width: 100%;
   100% {
     opacity: 1;
     transform: scale(1);
+  }
+}
+
+
+
+
+
+
+.content-wrapper {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+.custom-html-content {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.custom-html-content :deep(*) {
+  max-width: 100%;
+}
+
+.custom-html-content :deep(table) {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1rem;
+  overflow-x: auto;
+  overflow-wrap: anywhere;
+  display: block;
+}
+
+.custom-html-content :deep(th),
+.custom-html-content :deep(td) {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
+}
+
+.custom-html-content :deep(th) {
+  background-color: #f2f2f2;
+  font-weight: bold;
+}
+
+.custom-html-content :deep(ul),
+.custom-html-content :deep(ol) {
+  padding-left: 20px;
+}
+
+.custom-html-content :deep(p),
+.custom-html-content :deep(h1),
+.custom-html-content :deep(h2),
+.custom-html-content :deep(h3),
+.custom-html-content :deep(h4),
+.custom-html-content :deep(h5),
+.custom-html-content :deep(h6) {
+  margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 600px) {
+  .custom-html-content {
+    font-size: 12px;
+  }
+  
+  .custom-html-content :deep(table) {
+    font-size: 10px;
   }
 }
 </style>

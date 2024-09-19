@@ -1,5 +1,9 @@
 import _ from "lodash";
 
+import hr from './modules//hr';
+import en from './modules/en';
+import it from './modules/it';
+
 let exported = {};
 let languages = [];
 
@@ -35,6 +39,16 @@ try {
 }
 
 export default {
-  languages,
-  i18n: exported,
+  languages: [
+    { label: "Hrvatski", key: "hr" },
+    { label: "English", key: "en" },
+    { label: "Italiano", key: "it" }
+  ],
+  i18n: {
+    hr,
+    en,
+    it
+  },
+  // languages,
+  // i18n: exported,
 };

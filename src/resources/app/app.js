@@ -32,6 +32,74 @@ import SsrCarousel from 'vue-ssr-carousel';
 import ssrCarouselCss from 'vue-ssr-carousel/index.css';
 
 
+// i18n.js
+
+import VueI18n from 'vue-i18n';
+
+Vue.use(VueI18n);
+
+const messages = {
+  en: {
+    home: 'Home',
+    events: 'Events',
+    ourMembers: 'Our members',
+    information: 'Information',
+    Galerija: 'Gallery',
+    Kontakt: 'Contact',
+    prijaviSe: 'Prijavi se',
+    registrirajSe: 'Registriraj se',
+    profile: 'Profil',
+    odjaviSe: 'Odjavi se',
+    izaberiJezik: 'Choose language',
+    hrvatski: 'Hrvatski',
+    engleski: 'English',
+    talijanski: 'Italian'
+  },
+  hr: {
+    home: 'Početna',
+  events: 'Događanja',
+  ourMembers: 'Naši članovi',
+  information: 'Informacije',
+  Galerija: 'Galerija',
+  Kontakt: 'Kontakt',
+  prijaviSe: 'Prijavi se',
+  registrirajSe: 'Registriraj se',
+  profile: 'Profil',
+  odjaviSe: 'Odjavi se',
+  izaberiJezik: 'Izaberi jezik',
+  hrvatski: 'Hrvatski',
+  engleski: 'English',
+  talijanski: 'Italian'
+  },
+  it: {
+    home: 'Početna',
+  events: 'Događanja',
+  ourMembers: 'Naši članovi',
+  information: 'Informacije',
+  Galerija: 'Galerija',
+  Kontakt: 'Kontakt',
+  prijaviSe: 'Prijavi se',
+  registrirajSe: 'Registriraj se',
+  profile: 'Profil',
+  odjaviSe: 'Odjavi se',
+  izaberiJezik: 'Izaberi jezik',
+  hrvatski: 'Hrvatski',
+  engleski: 'English',
+  talijanski: 'Talijanski'
+  },
+
+};
+
+const i18n = new VueI18n({
+  locale: 'hr', // Default language
+  messages,
+});
+
+export default i18n;
+
+
+
+
 Vue.config.productionTip = false;
 Vue.config.devtools = true;
 
@@ -212,31 +280,32 @@ const appName =
   window.document.getElementsByTagName("title")[0]?.innerText ||
   "Hzuts.hr";
 
-createInertiaApp({
-  title: (title) => `${title} - ${appName}`,
-  resolve: (name) => {
-    const isExists = require
-      .context(
-        "./../../../../../../resources/js/skijasi/theme/commerce-theme/pages",
-        false,
-        /\.vue$/
-      )
-      .keys()
-      .some((key) => key.includes(name));
-
-    if (isExists) {
-      return require(`./../../../../../../resources/js/skijasi/theme/commerce-theme/pages/${name}.vue`);
-    } else {
-      return require(`./pages/${name}.vue`);
-    }
-  },
-  setup({ el, App, props }) {
-    new Vue({
-      store,
-      render: (h) => h(App, props),
-    }).$mount(el);
-  },
-});
+  createInertiaApp({
+    title: (title) => `${title} - ${appName}`,
+    resolve: (name) => {
+      const isExists = require
+        .context(
+          "./../../../../../../resources/js/skijasi/theme/commerce-theme/pages",
+          false,
+          /\.vue$/
+        )
+        .keys()
+        .some((key) => key.includes(name));
+  
+      if (isExists) {
+        return require(`./../../../../../../resources/js/skijasi/theme/commerce-theme/pages/${name}.vue`);
+      } else {
+        return require(`./pages/${name}.vue`);
+      }
+    },
+    setup({ el, App, props }) {
+      new Vue({
+        store,
+        i18n, 
+        render: (h) => h(App, props),
+      }).$mount(el);
+    },
+  });
 
 
 

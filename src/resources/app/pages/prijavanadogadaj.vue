@@ -356,6 +356,26 @@ export default {
   },
   methods: {
 
+    getSkiingTypePrice(type) {
+      if (type === 'Samostalno skijanje') {
+        const hzutsProduct = this.product.productDetails.find(
+      detail => detail.name === "HZUTS član"
+    );
+    return hzutsProduct ? hzutsProduct.price : 0;
+        // const matchingProduct = this.product.productDetails.find(
+        //   detail => detail.name === this.korisnik.statusString
+        // );
+        // return matchingProduct ? matchingProduct.price : 0;
+      } else if (type === 'Grupno skijanje') {
+        const grupnoProduct = this.product.productDetails.find(
+          detail => detail.name === "Grupno skijanje"
+        );
+        return grupnoProduct ? grupnoProduct.price : 0;
+      }
+      return 0;
+    },
+
+
     buyNow() {
               // if (this.selectedProduct.id === null) {
               //   this.$helper.alert("Potrebno je odabrati barem jednu vrstu!")
@@ -387,31 +407,61 @@ export default {
 
    },
 
-     processOrder() {
-                this.$api.skijasiCart
-                  .add({
-                    id: this.selectedProduct.id,
-                    quantity: this.quantity
-                  })
-                  .then(res => {
-                    this.$store.dispatch('FETCH_CARTS')
+   processOrder() {
+  this.isLoading = true; // Start loading
 
-                    //spremanje povratka na ovu stranicu
-                    const seminarId = this.product.slug; 
-                this.$store.dispatch('SET_PURCHASE_ORIGIN', {
-                  from: 'detalji',
-                  seminarId: seminarId
-                });
-                this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+  // First, get the current cart quantity for this product
+  this.$api.skijasiCart.browse()
+    .then(cartResponse => {
+      const currentCartItem = cartResponse.data.carts.find(item => item.product_detail_id === this.selectedProduct.id);
+      const currentCartQuantity = currentCartItem ? currentCartItem.quantity : 0;
 
-                    this.$helper.alert(res.message)
-                  })
-                  .catch(err => {
-                    this.$helper.displayErrors(err)
-                  })
-                  .finally(() => {
-                    this.isLoading = false; // Stop loading
-                  })
+      // Now check if adding the new quantity would exceed the stock
+      this.$api.skijasiProduct.read({ slug: this.slug })
+        .then(productResponse => {
+          const productDetail = productResponse.data.product.productDetails.find(detail => detail.id === this.selectedProduct.id);
+          
+          if (!productDetail) {
+            throw new Error('Product detail not found');
+          }
+
+          const totalRequestedQuantity = currentCartQuantity + this.quantity;
+
+          if (totalRequestedQuantity > productDetail.quantity) {
+            throw new Error('skijasi_commerce::validation.stock_not_available');
+          }
+
+          // If we've made it here, we can proceed with adding to cart
+          return this.$api.skijasiCart.add({
+            id: this.selectedProduct.id,
+            quantity: this.quantity
+          });
+        })
+        .then(res => {
+          this.$store.dispatch('FETCH_CARTS');
+          const seminarId = this.product.slug; 
+          this.$store.dispatch('SET_PURCHASE_ORIGIN', {
+            from: 'detalji',
+            seminarId: seminarId
+          });
+          this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'));
+          this.$helper.alert(res.message);
+        })
+        .catch(err => {
+          if (err.message === 'skijasi_commerce::validation.stock_not_available') {
+            this.$helper.alert('Nažalost, nema dovoljno zaliha za ovu narudžbu.');
+          } else {
+            this.$helper.displayErrors(err);
+          }
+        })
+        .finally(() => {
+          this.isLoading = false; // Stop loading
+        });
+    })
+    .catch(err => {
+      this.$helper.displayErrors(err);
+      this.isLoading = false; // Stop loading
+    });
 },
 selectSkiingType(type) {
   this.selectedSkiingType = type;
