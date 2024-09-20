@@ -149,8 +149,8 @@
       <span class="stars">&#10022;</span>
       <span class="stars">&#10022;</span>
     </div>
-    <p>Prijavnica je uspješno poslana!   Prijavljeni ste na događaj!</p>
-    <button class="gumbOK" @click="closeConfirmation">U redu</button>
+    <p>Prijavnica je uspješno poslana!   <span>Prijavljeni ste na događaj!</span> <span>Sljedeći korak je plaćanje koje slijedi nakon ovoga.</span></p>
+    <button class="gumbOK" @click="closeConfirmation">Dalje</button>
   </div>
 </div>
 
@@ -171,7 +171,7 @@
         <span>Samostalno skijanje</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Samostalno skijanje')) }}</span>
       </button>
-      <button @click="selectSkiingType('Produženje licence')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
+      <button v-if = "korisnik.statusString !== ''" @click="selectSkiingType('Produženje licence')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
         <span>{{ korisnik.additionalInfo === 'KIF' ? 'Grupno skijanje' : 'Produženje licence' }}</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Produženje licence')) }}</span>
       </button>
