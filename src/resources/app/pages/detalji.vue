@@ -227,7 +227,7 @@
     class="lijevigumb" 
     @click.prevent="navigateToPrijava"
   >
-  <b class="prijavnica-za-dogaaj">PRIJAVA NA DOGAĐAJ</b>
+  <b class="prijavnica-za-dogaaj">PRIJAVA I PLAĆANJE</b>
 </a>
 
 

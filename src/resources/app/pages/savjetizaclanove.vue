@@ -1213,8 +1213,30 @@
                   >
                 </span>
               </p>
+
+
+              <p class="mukarci-nakon-navrenih-60-g pt-12">
+                <span>
+                  <span class="mukarci-nakon-navrenih"
+                    >        Molbe za produženje licence:
+Sukladno odluci Izvršnog odbora, donesenoj 04.04.2022.g. zamolbe za produženje licence moraju biti predane najkasnije mjesec dana prije isteka licence odnosno mjesec dana prije prvog sljedećeg seminara.
+Prije predavanje molbe, sve obveze prema HZUTS-u moraju biti podmirene.</span
+                  >
+                </span>
+              </p>
+
             </span>
+            
+
+
+
+
           </div>
+ 
+  
+
+
+
           <div class="isiacardoverview">
             <img
               class="maskota-final-2-11"
@@ -4131,7 +4153,7 @@ animation: slideUp 0.6s ease-in-out;
     width: 100%;
   }
   .da-bi-osoba-container {
-    height: 725px;
+    height: 925px;
     width: 85%;
     position: relative;
     display: flex;

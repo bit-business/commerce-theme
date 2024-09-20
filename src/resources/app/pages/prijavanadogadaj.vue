@@ -172,7 +172,7 @@
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Samostalno skijanje')) }}</span>
       </button>
       <button @click="selectSkiingType('Produženje licence')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
-        <span>Produženje licence</span>
+        <span>{{ korisnik.additionalInfo === 'KIF' ? 'Grupno skijanje' : 'Produženje licence' }}</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Produženje licence')) }}</span>
       </button>
     </div>
