@@ -199,7 +199,8 @@
             <div class="col-span-2 flex gap-4 items-center">
               <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox">
               <div class="text-sm text-gray-700 w-24 h-24">
-                <img :src="cart.productDetail.productImage" class="w-full h-full rounded-lg">
+                <img :src="cart.productDetail && cart.productDetail.productImage ? cart.productDetail.productImage : defaultImageUrl" class="w-full h-full rounded-lg">
+
               </div>
               <div class="flex-1 text-sm">
                 <Link :to="{ name: 'DetailProduct', params: { slug: cart.productDetail.product.slug } }" class="line-clamp-2">{{ cart.productDetail.product.name }}</Link>
@@ -390,6 +391,8 @@
               </div>
             </div>
 
+            <!--  
+            selektor za opciju/varijantu
             <div class="w-full flex gap-2 flex-col border-b pb-3">
               <div class="text-sm">Status člana</div>
 
@@ -399,7 +402,7 @@
                   <div class="text-sm">{{ productDetail.name }}</div>
                 </div>
               </div>
-            </div>
+            </div> -->
 
             <div class="w-full flex gap-2 justify-between items-center"   v-if="filteredCarts.length > 0">
               <!-- <div class="text-sm">Količina</div> -->
@@ -423,28 +426,30 @@
 
     <div class="block sm:hidden pb-8">
       <template v-if="carts.length > 0">
-        <div class="p-3 grid bg-white grid-cols-12 gap-2 items-center" v-for="cart, index in carts" :key="index">
+        <div class="p-3 grid border-b-2  border-gray-100 mb-6 mt-3 grid-cols-12 gap-2 items-center" v-for="cart, index in carts" :key="index">
        
           <div class="col-span-3">
-            <img :src="cart.productDetail.productImage" class="w-full h-full">
+            <img :src="cart.productDetail && cart.productDetail.productImage ? cart.productDetail.productImage : defaultImageUrl" class="w-full h-full">
+
           </div>
-          <div class="col-span-1 relative text-center">
+          <div class="col-span-1 relative text-center m-4">
             <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox ">
           </div>
           <div class="col-span-8 flex flex-col gap-3">
-            <div class="line-clamp-1 text-sm w-full text-center">
+            <div class="line-clamp-1 text-md font-semibold w-full text-center">
               {{ cart.productDetail.product.name }}
             </div>
-            <div class="w-full p-2 bg-gray-100 text-sm flex text-gray-600 items-center" @click="openVariationDialog(cart)">
+            <!-- <div class="w-full p-2 bg-gray-100 text-sm flex text-gray-600 items-center" @click="openVariationDialog(cart)"> -->
+              <div class="w-full rounded-md p-2 bg-gray-100 text-sm flex text-gray-600 items-center">
               <div class="flex-grow text-center">Status: {{ cart.productDetail.name }}</div>
-              <div class="flex-shrink">
+              <!-- <div class="flex-shrink">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
                 </svg>
-              </div>
+              </div> -->
             </div>
           </div>
-          <div class="text-sm col-start-5 col-end-13 text-center mt-4">
+          <div class="text-sm col-start-5 col-end-13 text-center mt-4 mb-2">
             <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
               <span class="line-through text-gray-400">{{ $currency(cart.productDetail.price) }}</span>&nbsp;<span class="plava-boja">{{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount)) }}</span>
             </template>
@@ -454,10 +459,10 @@
 
 
 
-            <div v-if="cart.productDetail.product.productCategory.slug != 'licence'" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center mt-6 bg-gray-200"> 
+            <div v-if="cart.productDetail.product.productCategory.slug != 'licence'" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center mt-6 bg-gray-100 rounded-md"> 
               <div v-if="cart.cekapotvrdu == 1"> 
     <span class="text-sm font-bold">Uspješno ste poslali potvrdu plaćanja! Poslat ćemo Vam email kada primimo uplatu.</span> 
-</div><button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 mt-2 text-red-500 rounded hover:bg-red-50"> 
+</div><button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 mt-2 mb-2 text-red-500 rounded hover:bg-red-50"> 
         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"> 
             <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /> 
         </svg>
@@ -818,7 +823,7 @@ export default {
 
       orders: [], // Assuming this is where your order data is stored
      
-
+    defaultImageUrl: '/storage/slike/zahtjeviprofil/zahtjevi-vector-1.svg',
 
 
       avatar_approved: 0,
@@ -1181,10 +1186,18 @@ formatDate(dateString) {
       this.$inertia.visit(this.route('skijasi.commerce-theme.checkout', { from: this.$page.props.from }))
     },
     getCarts() {
-      this.$api.skijasiCart
-        .browse()
-        .then(res => {
-          this.carts = res.data.carts
+  this.$api.skijasiCart
+    .browse()
+    .then(res => {
+      this.carts = res.data.carts.map(cart => {
+        if (!cart.productDetail || !cart.productDetail.productImage) {
+          console.warn('Missing product detail or image for cart item:', cart);
+          cart.productDetail = cart.productDetail || {};
+          cart.productDetail.productImage = this.defaultImageUrl;
+        }
+        return cart;
+      });
+
 
           // ova linija sve stavlja checkbox kvacicu pa sam stavio ispod da unchecka koji cekaju potvrdu
           // this.checkboxModel = this.carts.map(cart => cart.id);

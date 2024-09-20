@@ -971,7 +971,7 @@ class="bell-icon">
                 {{ item.productDetail.product.name }}
               </div>
               <div class="text-xs text-gray-500">
-                Opcije: {{ item.productDetail.name }}
+                Status: {{ item.productDetail.name }}
               </div>
               <div
                 class="
@@ -995,7 +995,7 @@ class="bell-icon">
             <input
               type="text"
               v-model="message"
-              class="outline-none focus:outline-none text-right"
+              class="outline-none focus:outline-none text-left pl-4"
            
             />
             <!-- placeholder="ostavite poruku ako želite" -->
@@ -1033,7 +1033,7 @@ class="bell-icon">
           </svg>
           <span class="text-gray-500">Način plaćanja</span>
         </div>
-        <div class="1/4 text-sm flex items-center">
+        <div class="1/4 text-sm flex items-center pt-1">
           <span class="plava-boja" v-if="!option"
             >Uplatnica/Internet Bankarstvo</span
           >

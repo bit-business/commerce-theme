@@ -256,9 +256,9 @@
         <span>Samostalno skijanje</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Samostalno skijanje')) }}</span>
       </button>
-      <button @click="selectSkiingType('Grupno skijanje')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
-        <span>Grupno skijanje</span>
-        <span class="font-bold">{{ $currency(getSkiingTypePrice('Grupno skijanje')) }}</span>
+      <button @click="selectSkiingType('Produženje licence')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
+        <span>Produženje licence</span>
+        <span class="font-bold">{{ $currency(getSkiingTypePrice('Produženje licence')) }}</span>
       </button>
     </div>
     <button @click="showSkiingTypePopup = false" class="text-nazad mt-6 w-3/4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out">
@@ -868,15 +868,15 @@ setSelectedProduct() {
       detail => detail.name === "HZUTS član"
     );
     this.selectedProduct.id = hzutsProduct ? hzutsProduct.id : this.product.productDetails[0].id;
-  } else if (this.selectedSkiingType === 'Grupno skijanje') {
+  } else if (this.selectedSkiingType === 'Produženje licence') {
     const grupnoProduct = this.product.productDetails.find(
-      detail => detail.name === "Grupno skijanje"
+      detail => detail.name === "Produženje licence"
     );
     if (grupnoProduct) {
       this.selectedProduct.id = grupnoProduct.id;
     } else {
-      // Handle case where "Grupno skijanje" is not found
-      this.$helper.alert("Opcija 'Grupno skijanje' nije dostupna. Molimo odaberite drugu opciju.");
+      // Handle case where "Produženje licence" is not found
+      this.$helper.alert("Opcija 'Produženje licence' nije dostupna. Molimo odaberite drugu opciju.");
       this.showSkiingTypePopup = true; 
       this.isLoading = false; 
       // Show the popup again
@@ -898,9 +898,9 @@ getSkiingTypePrice(type) {
         //   detail => detail.name === this.korisnik.statusString
         // );
         // return matchingProduct ? matchingProduct.price : 0;
-      } else if (type === 'Grupno skijanje') {
+      } else if (type === 'Produženje licence') {
         const grupnoProduct = this.product.productDetails.find(
-          detail => detail.name === "Grupno skijanje"
+          detail => detail.name === "Produženje licence"
         );
         return grupnoProduct ? grupnoProduct.price : 0;
       }

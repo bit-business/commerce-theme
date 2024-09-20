@@ -171,9 +171,9 @@
         <span>Samostalno skijanje</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Samostalno skijanje')) }}</span>
       </button>
-      <button @click="selectSkiingType('Grupno skijanje')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
-        <span>Grupno skijanje</span>
-        <span class="font-bold">{{ $currency(getSkiingTypePrice('Grupno skijanje')) }}</span>
+      <button @click="selectSkiingType('Produženje licence')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
+        <span>Produženje licence</span>
+        <span class="font-bold">{{ $currency(getSkiingTypePrice('Produženje licence')) }}</span>
       </button>
     </div>
     <button @click="showSkiingTypePopup = false" class="text-nazad mt-6 w-3/4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out">
@@ -297,6 +297,8 @@ export default {
       activeDropdown: null,
       errors: {},
       showConfirmation: false,
+
+      scrollPosition: 0,
     }
   },
   computed: {
@@ -322,7 +324,15 @@ export default {
   
   },
 
-
+  beforeDestroy() {
+  document.removeEventListener('click', this.closeAllDropdowns);
+    window.removeEventListener('scroll', this.handleScroll);
+  },
+  updated() {
+    this.$nextTick(() => {
+      window.scrollTo(0, this.scrollPosition);
+    });
+  },
 
   watch: {
     user: {
@@ -352,9 +362,20 @@ export default {
       this.getProduct();
     }
 
-   
+    document.addEventListener('click', this.closeAllDropdowns);
+    window.addEventListener('scroll', this.handleScroll);
   },
   methods: {
+
+    handleScroll() {
+      this.scrollPosition = window.pageYOffset;
+    },
+
+    closeAllDropdowns(event) {
+    if (!event.target.closest('.dropdown')) {
+      this.activeDropdown = null;
+    }
+  },
 
     getSkiingTypePrice(type) {
       if (type === 'Samostalno skijanje') {
@@ -366,9 +387,9 @@ export default {
         //   detail => detail.name === this.korisnik.statusString
         // );
         // return matchingProduct ? matchingProduct.price : 0;
-      } else if (type === 'Grupno skijanje') {
+      } else if (type === 'Produženje licence') {
         const grupnoProduct = this.product.productDetails.find(
-          detail => detail.name === "Grupno skijanje"
+          detail => detail.name === "Produženje licence"
         );
         return grupnoProduct ? grupnoProduct.price : 0;
       }
@@ -401,68 +422,62 @@ export default {
           this.processOrder();
         } else {
           // Show the skiing type selection popup for other users
+          this.isLoading = false; 
           this.showSkiingTypePopup = true;
-          this.isLoading = false; // Stop loading as we're waiting for user input
+         // Stop loading as we're waiting for user input
         }
 
    },
 
    processOrder() {
-  this.isLoading = true; // Start loading
+  this.isLoading = true;
+  let currentCartQuantity = 0;
+  let productDetail;
 
-  // First, get the current cart quantity for this product
   this.$api.skijasiCart.browse()
     .then(cartResponse => {
       const currentCartItem = cartResponse.data.carts.find(item => item.product_detail_id === this.selectedProduct.id);
-      const currentCartQuantity = currentCartItem ? currentCartItem.quantity : 0;
+      currentCartQuantity = currentCartItem ? currentCartItem.quantity : 0;
+      return this.$api.skijasiProduct.read({ slug: this.slug });
+    })
+    .then(productResponse => {
+      productDetail = productResponse.data.product.productDetails.find(detail => detail.id === this.selectedProduct.id);
+      
+      if (!productDetail) {
+        throw new Error('Product detail not found');
+      }
 
-      // Now check if adding the new quantity would exceed the stock
-      this.$api.skijasiProduct.read({ slug: this.slug })
-        .then(productResponse => {
-          const productDetail = productResponse.data.product.productDetails.find(detail => detail.id === this.selectedProduct.id);
-          
-          if (!productDetail) {
-            throw new Error('Product detail not found');
-          }
+      const totalRequestedQuantity = currentCartQuantity + this.quantity;
 
-          const totalRequestedQuantity = currentCartQuantity + this.quantity;
+      if (totalRequestedQuantity > productDetail.quantity) {
+        throw new Error('skijasi_commerce::validation.stock_not_available');
+      }
 
-          if (totalRequestedQuantity > productDetail.quantity) {
-            throw new Error('skijasi_commerce::validation.stock_not_available');
-          }
-
-          // If we've made it here, we can proceed with adding to cart
-          return this.$api.skijasiCart.add({
-            id: this.selectedProduct.id,
-            quantity: this.quantity
-          });
-        })
-        .then(res => {
-          this.$store.dispatch('FETCH_CARTS');
-          const seminarId = this.product.slug; 
-          this.$store.dispatch('SET_PURCHASE_ORIGIN', {
-            from: 'detalji',
-            seminarId: seminarId
-          });
-          this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'));
-          this.$helper.alert(res.message);
-        })
-        .catch(err => {
-          if (err.message === 'skijasi_commerce::validation.stock_not_available') {
-            this.$helper.alert('Nažalost, nema dovoljno zaliha za ovu narudžbu.');
-          } else {
-            this.$helper.displayErrors(err);
-          }
-        })
-        .finally(() => {
-          this.isLoading = false; // Stop loading
-        });
+      return this.$api.skijasiCart.add({
+        id: this.selectedProduct.id,
+        quantity: this.quantity
+      });
+    })
+    .then(addToCartResponse => {
+      this.$helper.alert(addToCartResponse.message);
+      return this.$store.dispatch('FETCH_CARTS');
+    })
+    .then(() => {
+      this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'));
     })
     .catch(err => {
-      this.$helper.displayErrors(err);
-      this.isLoading = false; // Stop loading
+      if (err.message === 'skijasi_commerce::validation.stock_not_available') {
+        this.$helper.alert('Nažalost, nema dovoljno zaliha za ovu narudžbu.');
+      } else {
+        console.error('Error in processOrder:', err);
+        this.$helper.displayErrors(err);
+      }
+    })
+    .finally(() => {
+      this.isLoading = false;
     });
 },
+
 selectSkiingType(type) {
   this.selectedSkiingType = type;
   this.setSelectedProduct();
@@ -504,15 +519,15 @@ setSelectedProduct() {
       detail => detail.name === "HZUTS član"
     );
     this.selectedProduct.id = hzutsProduct ? hzutsProduct.id : this.product.productDetails[0].id;
-  } else if (this.selectedSkiingType === 'Grupno skijanje') {
+  } else if (this.selectedSkiingType === 'Produženje licence') {
     const grupnoProduct = this.product.productDetails.find(
-      detail => detail.name === "Grupno skijanje"
+      detail => detail.name === "Produženje licence"
     );
     if (grupnoProduct) {
       this.selectedProduct.id = grupnoProduct.id;
     } else {
-      // Handle case where "Grupno skijanje" is not found
-      this.$helper.alert("Opcija 'Grupno skijanje' nije dostupna. Molimo odaberite drugu opciju.");
+      // Handle case where "Produženje licence" is not found
+      this.$helper.alert("Opcija 'Produženje licence' nije dostupna. Molimo odaberite drugu opciju.");
       this.showSkiingTypePopup = true; 
       this.isLoading = false; 
       // Show the popup again
@@ -741,7 +756,8 @@ setSelectedProduct() {
 
         // Safely add user status and ID
         submissionData['Status člana'] = this.userStatus || 'Nepoznato';
-        submissionData['Hzuts ID'] = this.korisnik && this.korisnik.id ? this.korisnik.id.toString() : 'Nepoznato/greska';
+        submissionData['Hzuts ID'] = this.korisnik && this.korisnik.idmember ? this.korisnik.idmember.toString() : null;
+
         
         // Submit the form with the updated data
         const response = await api.saveFormEntry(this.formId, submissionData);

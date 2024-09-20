@@ -1027,6 +1027,14 @@ switchToDefaultView() {
 .pdf-iframe {
   width: 100%;
 }
+
+
+.button-container {
+  margin-bottom: 10px;
+
+  margin-top: 2.4rem;
+  translate: 0rem  2rem;
+}
 }
 
 

@@ -277,7 +277,7 @@ područni zbor prema vlastitom izboru.</div>
     </div>
     <div class="podrucnizbor4">
       <div class="slika4zbor-parent">
-        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor4.jpg" />
+        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor5.jpg" />
         <div class="frame13">
           <b class="predsjednik">4</b>
         </div>
@@ -405,7 +405,7 @@ područni zbor prema vlastitom izboru.</div>
         </div>
       </div>
       <div class="slika5zbor-parent">
-        <img class="slika5zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor5.jpg" />
+        <img class="slika5zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor4.jpg" />
         <div class="frame19">
           <b class="predsjednik">5</b>
         </div>
@@ -1453,7 +1453,7 @@ align-self: stretch;
     position: absolute;
     top: 8.38rem;
     left: 0rem;
-    width: 14.56rem;
+    width: 15.56rem;
     height: 6.06rem;
     text-align: center;
     font-size: 1rem;
