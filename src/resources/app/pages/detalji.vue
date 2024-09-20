@@ -304,6 +304,7 @@ import { mapState } from 'vuex'
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 
 import podaciusera from '../../../../../core/src/resources/js/api/modules/skijasi-user.js';
+import api from "../../js/api/modules/skijasi-commerce-theme-configuration.js";
 
 
 export default {
@@ -554,17 +555,9 @@ export default {
     },
 
 
-      navigateToPrijava() {
-
-      if (this.activeStock < 1) {
-        this.$helper.alert("Nažalost popunjena su sva trenutno raspoloživa mjesta.");
-        return
-      }
-
-      this.$inertia.visit(this.route('skijasi.commerce-theme.prijavanadogadaj', { 
-        id: this.product.formId,
-        slug: this.product.slug
-      }));
+    navigateToPrijava() {
+      this.showSkiingTypePopup = true;
+      this.isLoading = false; 
 
     },
 
@@ -999,7 +992,12 @@ getSkiingTypePrice(type) {
     from: 'detalji',
     seminarId: seminarId
   });
-  this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+
+  this.$inertia.visit(this.route('skijasi.commerce-theme.prijavanadogadaj', { 
+        id: this.product.formId,
+        slug: this.product.slug
+      }));
+ 
 
       this.$helper.alert(res.message)
     })
@@ -1011,14 +1009,45 @@ getSkiingTypePrice(type) {
     })
 },
 
-selectSkiingType(type) {
-  this.selectedSkiingType = type;
-  this.setSelectedProduct();
-  if (this.selectedProduct.id) {
-    this.showSkiingTypePopup = false;
-    this.processOrder(); // Process the order after selection
-  }
+async selectSkiingType(type) {
+    this.selectedSkiingType = type;
+    this.setSelectedProduct();
+    
+    if (this.selectedProduct.id) {
+        const selectedProductDetail = this.product.productDetails.find(detail => detail.id === this.selectedProduct.id);
+        
+        if (selectedProductDetail) {
+            try {
+                const response = await api.checkUserFormEntry(this.product.formId, this.user.id);
+                console.log("API Response:", response);
+
+                if (response.hasEntry) {
+                    this.$helper.alert("Već ste prijavljeni na ovaj seminar. Ne možete se ponovno prijaviti.");
+                    this.showSkiingTypePopup = false;
+                    return;
+                }
+
+                if (selectedProductDetail.quantity > 0) {
+                    this.showSkiingTypePopup = false;
+                    this.processOrder();
+                } else {
+                    this.$helper.alert("Nažalost, nema raspoloživih mjesta za odabranu opciju.");
+                }
+            } catch (error) {
+                console.error("Error checking user form entry:", error);
+                this.$helper.alert("Došlo je do greške pri provjeri vaše prijave. Molimo pokušajte ponovno.");
+                this.showSkiingTypePopup = false;
+            }
+        } else {
+            this.$helper.alert("Došlo je do greške pri odabiru. Molimo pokušajte ponovno.");
+            this.showSkiingTypePopup = false;
+        }
+    } else {
+        this.$helper.alert("Molimo odaberite vrstu skijanja.");
+    }
 },
+
+
     clickProductDetail(productDetail, index) {
       this.selectedProduct = productDetail;
       this.quantity = 1;

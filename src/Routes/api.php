@@ -43,7 +43,7 @@ Route::group(['prefix' => $api_route_prefix, 'as' => 'skijasi.', 'middleware' =>
         Route::post('/forms/{formId}/entries', [ConfigurationController::class, 'saveFormEntry']);
         Route::get('/users/{userId}', [ConfigurationController::class, 'getUserData']);
 
-        
 
+        Route::get('/configurations/forms/{formId}/entries/check/{userId}', [ConfigurationController::class, 'checkUserFormEntry']);
     });
 });

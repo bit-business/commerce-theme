@@ -79,4 +79,21 @@ export default {
     return resource.put(ep, data);
   },
 
+  checkUserFormEntry(formId, userId) {
+    let ep = `${apiPrefix}/v1/configurations/forms/${formId}/entries/check/${userId}`;
+    return resource.get(ep)
+        .then(response => {
+            if (response.data && typeof response.data === 'object') {
+                return response.data;
+            } else {
+                console.error("Unexpected response format:", response);
+                throw new Error("Unexpected response format");
+            }
+        })
+        .catch(error => {
+            console.error("Error in checkUserFormEntry:", error);
+            throw error;
+        });
+},
+
 };

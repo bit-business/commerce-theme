@@ -423,7 +423,8 @@ export default {
         } else {
           // Show the skiing type selection popup for other users
           this.isLoading = false; 
-          this.showSkiingTypePopup = true;
+          // this.showSkiingTypePopup = true;
+          this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
          // Stop loading as we're waiting for user input
         }
 

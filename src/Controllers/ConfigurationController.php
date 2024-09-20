@@ -228,7 +228,22 @@ class ConfigurationController extends Controller
             return ApiResponse::failed($e);
         }
     }
+
+
+    public function checkUserFormEntry($formId, $userId)
+    {
+        try {
+            $user = User::findOrFail($userId);
+            
+            $existingEntry = FormEntry::where('form_id', $formId)
+                ->where('ispunio', $user->name . '  ' . $user->username)
+                ->first();
     
+            return ApiResponse::success(['hasEntry' => !!$existingEntry]);
+        } catch (\Exception $e) {
+            return ApiResponse::failed($e);
+        }
+    }
 
     public function getUserData($userId)
     {
