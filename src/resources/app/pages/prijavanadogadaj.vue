@@ -149,7 +149,7 @@
       <span class="stars">&#10022;</span>
       <span class="stars">&#10022;</span>
     </div>
-    <p>Prijavnica je uspješno poslana!   <span>Prijavljeni ste na događaj!</span> <span>Sljedeći korak je plaćanje koje slijedi nakon ovoga.</span></p>
+    <p>Prijavnica je uspješno poslana!  <br> <br><br>Prijavljeni ste na događaj!<br>Sljedeći korak je plaćanje koje slijedi nakon ovoga.</p>
     <button class="gumbOK" @click="closeConfirmation">Dalje</button>
   </div>
 </div>
@@ -1198,7 +1198,7 @@ padding-top: 10px;
   animation: dialog-appear 0.5s ease forwards;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
   max-width: 90%;
-  width: 300px;
+  width: 350px;
 }
 
 @keyframes dialog-appear {
@@ -1276,8 +1276,7 @@ padding-top: 10px;
   margin-bottom: 30px;
   animation: text-appear 0.5s ease forwards 0.3s;
   opacity: 0;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+
 }
 
 @keyframes text-appear {
@@ -1327,10 +1326,10 @@ padding-top: 10px;
 .confirmation-dialog::before {
   content: '';
   position: absolute;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
+  top: -30%;
+  left: -30%;
+  right: -30%;
+  bottom: -30%;
   background: linear-gradient(45deg, #f3f3f3, #e6e6e6, #f3f3f3);
   z-index: -1;
 }
