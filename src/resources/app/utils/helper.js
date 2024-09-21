@@ -24,7 +24,7 @@ export default {
     this.alert(error.message)
     return
   },
-  alert(message, timeout = 3000, backgroundColor = "gray-800", textColor = "white") {
+  alert(message, timeout = 3000, backgroundColor = "blue-500", textColor = "white") {
     store.dispatch("ADD_TOAST", {
       message,
       backgroundColor,

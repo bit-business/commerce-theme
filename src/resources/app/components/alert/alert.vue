@@ -5,7 +5,7 @@
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
       </svg>
     </div>
-    <div :class="['flex gap-2 flex-nowrap', `items-${align}`]">
+    <div :class="['flex gap-2 flex-nowrap', `items-center`]">
       <template v-if="!noIcon">
         <div v-if="$slots.icon" class="h-6 w-6">
           <slot name="icon" />
@@ -75,3 +75,4 @@ export default {
   }
 }
 </script>
+
