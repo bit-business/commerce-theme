@@ -1050,7 +1050,7 @@ created() {
     this.staraPlacanjaArray.sort((a, b) => {
       // Assuming 'opendate' is in a format that can be directly compared
       // Convert to Date objects if needed
-      return new Date(b.paydate) - new Date(a.paydate);
+      return new Date(b.opendate) - new Date(a.opendate);
     });
   },
 

@@ -639,14 +639,14 @@ created() {
       },
 
         dodajkupnju(zahtjevid) {
-          if (this.korisnik.statusString === "" && zahtjevid == 37) {
-            zahtjevid = 10
+          if (this.korisnik.statusString === "" && zahtjevid == 10) {
+            zahtjevid = 37
             }
-            if (this.korisnik.statusString === "" && zahtjevid == 38) {
-            zahtjevid = 11
+            if (this.korisnik.statusString === "" && zahtjevid == 11) {
+            zahtjevid = 38
             }
-            if (this.korisnik.statusString === "" && zahtjevid == 39) {
-            zahtjevid = 12
+            if (this.korisnik.statusString === "" && zahtjevid == 12) {
+            zahtjevid = 39
             }
         
 

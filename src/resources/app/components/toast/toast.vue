@@ -47,7 +47,7 @@ export default {
       return [
         "flex flex-nowrap transform transform transition-all",
         "rounded-md shadow-md p-3 items-center justify-between",
-        "duration-300 ease-in-out w-full",
+        "duration-300 ease-in-out w-full z-velik",
         this.bgColor === "bg-gray-800" ? 
         `bg-gray-800` : `bg-${this.bgColor}`,
         this.textColor === "text-white" ? 
@@ -70,3 +70,10 @@ export default {
   },
 };
 </script>
+
+
+<style scoped>
+.z-velik {
+  z-index: 99999;
+}
+</style>
