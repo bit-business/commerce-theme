@@ -314,6 +314,7 @@ class ConfigurationController extends Controller
             $entry->data = json_encode($entryData);
             $entry->ispunio = $user->name . '  ' . $user->username;
             $entry->hzutsid = $request->input('Hzuts ID');
+            $entry->userid = $request->input('User ID');
     
             $entry->save();
     

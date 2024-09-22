@@ -441,28 +441,7 @@ export default {
       currentCartQuantity = currentCartItem ? currentCartItem.quantity : 0;
       return this.$api.skijasiProduct.read({ slug: this.slug });
     })
-    .then(productResponse => {
-      productDetail = productResponse.data.product.productDetails.find(detail => detail.id === this.selectedProduct.id);
-      
-      if (!productDetail) {
-        throw new Error('Product detail not found');
-      }
 
-      const totalRequestedQuantity = currentCartQuantity + this.quantity;
-
-      if (totalRequestedQuantity > productDetail.quantity) {
-        throw new Error('skijasi_commerce::validation.stock_not_available');
-      }
-
-      return this.$api.skijasiCart.add({
-        id: this.selectedProduct.id,
-        quantity: this.quantity
-      });
-    })
-    .then(addToCartResponse => {
-      this.$helper.alert(addToCartResponse.message);
-      return this.$store.dispatch('FETCH_CARTS');
-    })
     .then(() => {
       this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'));
     })
@@ -758,6 +737,7 @@ setSelectedProduct() {
         // Safely add user status and ID
         submissionData['Status člana'] = this.userStatus || 'Nepoznato';
         submissionData['Hzuts ID'] = this.korisnik && this.korisnik.idmember ? this.korisnik.idmember.toString() : null;
+        submissionData['User ID'] = this.korisnik && this.korisnik.id ? this.korisnik.id.toString() : null;
 
         
         // Submit the form with the updated data
