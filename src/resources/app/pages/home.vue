@@ -292,15 +292,15 @@
   <a class="rostsport-1-icon" href="https://staklorez-buric.hr">
   <img src="/storage/slike/sponzori/sponzor7.jpg" />
 </a>
-<a class="rostsport-1-icon" href="https://lenovostore.hr">
+<!-- <a class="rostsport-1-icon" href="https://lenovostore.hr">
   <img src="/storage/slike/sponzori/sponzor8.png" />
-</a>
+</a> -->
 <a class="rostsport-1-icon" href="https://5th-element.com.hr">
   <img src="/storage/slike/sponzori/sponzor9.jpg" />
 </a>
-<a class="rostsport-1-icon" href="https://www.bolle.com">
+<!-- <a class="rostsport-1-icon" href="https://www.bolle.com">
   <img src="/storage/slike/sponzori/sponzor10.jpg" />
-</a>
+</a> -->
 <a class="rostsport-1-icon" href="https://www.jamnica.hr">
   <img src="/storage/slike/sponzori/sponzor11.jpg" />
 </a>

@@ -33,6 +33,11 @@ export default {
     let ep = apiPrefix + "/v1/cart/public/addplacanjazahtjevi";
     return resource.post(ep, data);
   },
+  
+  removeFromCart(data) {
+    let ep = apiPrefix + "/v1/cart/public/remove";
+    return resource.post(ep, data);
+  },
 
 
   edit(data) {

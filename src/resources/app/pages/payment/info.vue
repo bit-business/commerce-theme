@@ -516,7 +516,10 @@ export default {
       type: String, 
       required: true,
     },
-
+    items: {
+    type: Array,
+    required: true,
+  },
     purchaseOrigin: {
       type: Object,
       default: () => ({})
@@ -530,6 +533,7 @@ export default {
       pdfUrl: null,
 
       showSuccessModal: false,
+      selectedItems: [],
 
       order: {
       recipientName: "",
@@ -636,8 +640,10 @@ export default {
     })
   },
   mounted() {
-    this.fetchOrder()
-  },
+  this.$nextTick(() => {
+    this.fetchOrder();
+  });
+},
   watch: {
   contentMode(newMode) {
     if (newMode === 'default') {
@@ -665,37 +671,37 @@ export default {
   
 },
 
-    potvrdaplacanjabezdokaza() {
-      console.log('Sending data:', {
-    orderId: this.id,
-    ...this.selected,
-    destinationBank: this.selected.destinationBank.name,
-    sourceBank: this.selected.sourceBank.key,
-  });
+  //   potvrdaplacanjabezdokaza() {
+  //     console.log('Sending data:', {
+  //   orderId: this.id,
+  //   ...this.selected,
+  //   destinationBank: this.selected.destinationBank.name,
+  //   sourceBank: this.selected.sourceBank.key,
+  // });
    
-        this.$openLoading()
-        this.$api.skijasiOrder
-          .pay({
+  //       this.$openLoading()
+  //       this.$api.skijasiOrder
+  //         .pay({
   
-            orderId: this.id,
-            ...this.selected,
-            destinationBank: this.selected.destinationBank.name,
-            sourceBank: this.selected.sourceBank.key,
-          })
-          .then(res => {
+  //           orderId: this.id,
+  //           ...this.selected,
+  //           destinationBank: this.selected.destinationBank.name,
+  //           sourceBank: this.selected.sourceBank.key,
+  //         })
+  //         .then(res => {
          
          
-          })
-          .catch(err => {
-            this.$helper.displayErrors(err)
-            this.$inertia.visit(this.route('skijasi.commerce-theme.cart'))
-          })
-          .finally(() => {
-            this.$closeLoading()
-            this.showSuccessModal = true;
-          })
+  //         })
+  //         .catch(err => {
+  //           this.$helper.displayErrors(err)
+  //           this.$inertia.visit(this.route('skijasi.commerce-theme.cart'))
+  //         })
+  //         .finally(() => {
+  //           this.$closeLoading()
+  //           this.showSuccessModal = true;
+  //         })
 
-  },
+  // },
 
     printPDF() {
     if (this.$refs.pdfViewer && this.$refs.pdfViewer.contentWindow) {
@@ -889,6 +895,7 @@ switchToDefaultView() {
         destination_bank: this.selected.destinationBank.name,
         account_number: this.selected.accountNumber,
         total_transfered: this.selected.totalTransfered,
+        item_ids: this.items.map(item => item.id),
       };
 
       // Only include proof_of_transaction if it exists

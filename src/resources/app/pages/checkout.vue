@@ -1322,12 +1322,14 @@ class="bell-icon">
 
   <!-- Info Modal -->
    
-  <info-modala 
+
+<info-modala 
+  :key="Date.now()"
   v-if="showModal && orderId" 
   :isOpen="showModal" 
   @close="closeModal" 
   :id="orderId"
-  :purchaseOrigin="purchaseOrigin"
+  :items="items" 
 />
 
 </div>
@@ -1668,11 +1670,17 @@ export default {
     checkout() {
   
      this.$openLoading();
+
+
+     const selectedItems = this.items.map(item => ({
+    id: item.id,
+    quantity: item.quantity
+  }));
     
       this.$api.skijasiCheckout
       .finish({
-                items: this.items.map((val) => ({ id: val.id, quantity: val.quantity })),
-                // userAddressId: this.user.id,
+                items: selectedItems,
+                 // userAddressId: this.user.id,
                 message: this.message,
                 paymentType: this.option,
             })

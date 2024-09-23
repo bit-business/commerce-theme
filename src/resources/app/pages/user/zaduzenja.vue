@@ -1071,7 +1071,7 @@ formatDate(dateString) {
   try {
     const response = await skijasiStaraplacanja.citanjenasiclanovi({
       slug: "tbl-payments",
-      idmember: this.user.idmember
+      idmember: this.user.id
     });
 
     if (response && response.data) {
@@ -1174,13 +1174,13 @@ formatDate(dateString) {
       }
 
       this.$openLoading()
-      let carts = []
+      // let carts = []
 
-      this.checkboxModel.forEach(val => {
-        carts.push({ ...this.$_.find(this.carts, { id: val }) })
-      });
+let selectedCarts = this.carts.filter(cart => this.checkboxModel.includes(cart.id))
 
-      this.$store.dispatch('SET_CHECKOUT', carts)
+this.$store.dispatch('SET_CHECKOUT', selectedCarts)
+      
+
 
       this.$closeLoading()
       this.$inertia.visit(this.route('skijasi.commerce-theme.checkout', { from: this.$page.props.from }))
