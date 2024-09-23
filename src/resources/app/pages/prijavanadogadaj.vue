@@ -23,14 +23,14 @@
                 v-if="field.fieldType === 'text' || field.fieldType === 'email'"
                 :id="field.label"
                 :type="field.fieldType"
-                v-model="formData[field.label]"
+                v-model.lazy="formData[field.label]"
       
                 class="form-input"
               />
               <textarea
                 v-else-if="field.fieldType === 'textarea'"
                 :id="field.label"
-                v-model="formData[field.label]"
+                v-model.lazy="formData[field.label]"
               
                 class="form-input"
               ></textarea>
@@ -67,7 +67,7 @@
       :id="`${field.label}-${option}`"
       :name="field.label"
       :value="option"
-      v-model="formData[field.label]"
+      v-model.lazy="formData[field.label]"
     
     />
     <label :for="`${field.label}-${option}`">{{ option }}</label>
@@ -78,7 +78,7 @@
                 <input
                   type="checkbox"
                   :id="field.label"
-                  v-model="formData[field.label]"
+                  v-model.lazy="formData[field.label]"
             
                 />
                 <label :for="field.label">{{ field.label }}</label>
@@ -88,7 +88,7 @@
           <input
             type="date"
             :id="field.label"
-            v-model="formData[field.label]"
+            v-model.lazy="formData[field.label]"
             class="form-input"
           />
         </div>
@@ -104,7 +104,7 @@
                   :id="`${field.label}-${option}`"
                   :name="field.label" 
                   :value="option" 
-                  v-model="formData[field.label]"
+                  v-model.lazy="formData[field.label]"
                 >
                 <label :for="`${field.label}-${option}`">{{ option }}</label>
               </div>
@@ -119,7 +119,7 @@
           <div class="form-group gdpr-checkbox">
             <input type="checkbox"
        id="gdpr-agreement"
-       v-model="gdprAgreement"
+       v-model.lazy="gdprAgreement"
        required 
        class="hidden-checkbox">
 <label for="gdpr-agreement" class="custom-checkbox"></label>
@@ -237,6 +237,8 @@ export default {
   },
   data() {
     return {
+      scrollPosition: 0,
+
       selectedProduct: {
         id: null
       },
@@ -326,7 +328,7 @@ export default {
 
   beforeDestroy() {
   document.removeEventListener('click', this.closeAllDropdowns);
-    window.removeEventListener('scroll', this.handleScroll);
+  window.removeEventListener('scroll', this.saveScrollPosition);
   },
   updated() {
     this.$nextTick(() => {
@@ -363,13 +365,21 @@ export default {
     }
 
     document.addEventListener('click', this.closeAllDropdowns);
-    window.addEventListener('scroll', this.handleScroll);
+    window.addEventListener('scroll', this.saveScrollPosition);
   },
   methods: {
 
-    handleScroll() {
-      this.scrollPosition = window.pageYOffset;
-    },
+    saveScrollPosition() {
+    this.scrollPosition = window.pageYOffset;
+  },
+
+  restoreScrollPosition() {
+    this.$nextTick(() => {
+      window.scrollTo(0, this.scrollPosition);
+    });
+  },
+
+  
 
     closeAllDropdowns(event) {
     if (!event.target.closest('.dropdown')) {
@@ -638,17 +648,20 @@ setSelectedProduct() {
 
 
   toggleDropdown(fieldLabel) {
+  this.$nextTick(() => {
     if (this.activeDropdown === fieldLabel) {
       this.activeDropdown = null;
     } else {
       this.activeDropdown = fieldLabel;
     }
-  },
-
+    this.restoreScrollPosition();
+  });
+},
   selectOption(option, fieldLabel) {
     this.formData[fieldLabel] = option;
     this.activeDropdown = null;
-    this.errors[fieldLabel] = null; // Clear any existing error
+    this.errors[fieldLabel] = null; 
+    this.restoreScrollPosition();
   },
 
   getDisplayLabel(label) {
@@ -744,6 +757,7 @@ setSelectedProduct() {
         const response = await api.saveFormEntry(this.formId, submissionData);
         this.$refs.form.reset();
         this.showConfirmation = true; 
+        this.restoreScrollPosition();
       } catch (error) {
         alert(error.message || 'Greška prilikom slanja prijavnice. Pokušajte ponovo ili nas kontaktirajte.');
       }

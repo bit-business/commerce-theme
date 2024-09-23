@@ -11,14 +11,14 @@
       <!-- Ime -->
       <div class="form-group">
         <label for="ime">Ime <span class="asterisk">*</span></label>
-        <input type="text" id="ime" v-model="form.name" required>
+        <input type="text" id="ime" v-model.lazy="form.name" required>
         <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
       </div>
 
       <!-- Prezime -->
       <div class="form-group">
         <label for="prezime">Prezime <span class="asterisk">*</span></label>
-        <input type="text" id="prezime" v-model="form.username" required>
+        <input type="text" id="prezime" v-model.lazy="form.username" required>
         <span v-if="errors.username" class="error-message">{{ errors.username }}</span>
       </div>
 
@@ -28,49 +28,49 @@
       <!-- OIB -->
       <div class="form-group">
         <label for="oib">OIB <span class="asterisk">*</span></label>
-        <input type="text" id="oib" v-model="form.oib" required>
+        <input type="text" id="oib" v-model.lazy="form.oib" required>
         <span v-if="errors.oib" class="error-message">{{ errors.oib }}</span>
       </div>
 
       <!-- Datum rođenja -->
       <div class="form-group">
         <label for="datumRodenja">Datum rođenja <span class="asterisk">*</span></label>
-        <input type="date" id="datumRodenja" v-model="form.datumrodjenja" required>
+        <input type="date" id="datumRodenja" v-model.lazy="form.datumrodjenja" required>
         <span v-if="errors.datumrodjenja" class="error-message">{{ errors.datumrodjenja }}</span>
       </div>
 
       <!-- Adresa -->
       <div class="form-group">
         <label for="adresa">Adresa <span class="asterisk">*</span></label>
-        <input type="text" id="adresa" v-model="form.adresa" required>
+        <input type="text" id="adresa" v-model.lazy="form.adresa" required>
         <span v-if="errors.adresa" class="error-message">{{ errors.adresa }}</span>
       </div>
 
       <!-- Poštanski broj -->
       <div class="form-group">
         <label for="postanskiBroj">Poštanski broj <span class="asterisk">*</span></label>
-        <input type="text" id="postanskiBroj" v-model="form.postanskibroj" required>
+        <input type="text" id="postanskiBroj" v-model.lazy="form.postanskibroj" required>
         <span v-if="errors.postanskibroj" class="error-message">{{ errors.postanskibroj }}</span>
       </div>
 
       <!-- Grad -->
       <div class="form-group">
         <label for="grad">Grad <span class="asterisk">*</span></label>
-        <input type="text" id="grad" v-model="form.grad" required>
+        <input type="text" id="grad" v-model.lazy="form.grad" required>
         <span v-if="errors.grad" class="error-message">{{ errors.grad }}</span>
       </div>
 
       <!-- Država -->
       <div class="form-group">
         <label for="drzava">Država <span class="asterisk">*</span></label>
-        <input type="text" id="drzava" v-model="form.drzava" required>
+        <input type="text" id="drzava" v-model.lazy="form.drzava" required>
         <span v-if="errors.drzava" class="error-message">{{ errors.drzava }}</span>
       </div>
 
       <!-- Mobitel -->
       <div class="form-group">
         <label for="mobitel">Mobitel <span class="asterisk">*</span></label>
-        <input type="tel" id="mobitel" v-model="form.brojmobitela" required>
+        <input type="tel" id="mobitel" v-model.lazy="form.brojmobitela" required>
         <span v-if="errors.brojmobitela" class="error-message">{{ errors.brojmobitela }}</span>
 
       </div>
@@ -79,14 +79,14 @@
       <!-- E-mail adresa -->
       <div class="form-group">
         <label for="email">E-mail adresa <span class="asterisk">*</span></label>
-        <input type="email" id="email" v-model="form.email" required>
+        <input type="email" id="email" v-model.lazy="form.email" required>
         <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
       </div>
 
         <!-- Spol -->
   <div class="form-group" v-for="(options, model) in dropdownOptions" :key="model" required>
   <label class="selektortekst" :for="model">{{ labels[model] }} <span class="asterisk">*</span></label>
-  <div class="dropdown" @click="toggleDropdown(model)">
+  <div class="dropdown" @click.prevent="toggleDropdown(model, $event)">
     <div class="dropdown-select">
       <span>{{ form[model] || 'Izaberite' }}</span>
       <i class="arrow" :class="{ 'arrow-up': activeDropdown === model }"></i>
@@ -107,21 +107,21 @@
       <!-- Datum i mjesto polaganja -->
       <div class="form-group">
         <label for="datumMjestoPolaganja">Datum i mjesto polaganja za učitelja/trenera <span class="asterisk">*</span></label>
-        <input type="text" id="datumMjestoPolaganja" v-model="form.datummjestopolaganja" required>
+        <input type="text" id="datumMjestoPolaganja" v-model.lazy="form.datummjestopolaganja" required>
         <span v-if="errors.datummjestopolaganja" class="error-message">{{ errors.datummjestopolaganja }}</span>
       </div>
 
       <!-- Ustanova -->
       <div class="form-group">
         <label for="ustanova">Ustanova koja je izdala Uvjerenje za učitelja/trenera <span class="asterisk">*</span></label>
-        <input type="text" id="ustanova" v-model="form.ustanova" required>
+        <input type="text" id="ustanova" v-model.lazy="form.ustanova" required>
         <span v-if="errors.ustanova" class="error-message">{{ errors.ustanova }}</span>
       </div>
 
   <!-- Zbor -->
       <div class="form-group" v-for="(options, model) in dropdownOptionsZbor" :key="model" required>
   <label class="selektortekst" :for="model">{{ labelsZbor[model] }} <span class="asterisk">*</span></label>
-  <div class="dropdown" @click="toggleDropdown(model)">
+  <div class="dropdown" @click.prevent="toggleDropdown(model, $event)">
     <div class="dropdown-select">
       <span>{{ form[model] || 'Izaberite' }}</span>
       <i class="arrow" :class="{ 'arrow-up': activeDropdown === model }"></i>
@@ -223,7 +223,7 @@
 
       <!-- GDPR Agreement -->
       <div class="form-group gdpr-checkbox">
-  <input type="checkbox" id="gdpr" v-model="form.gdpr" class="hidden-checkbox">
+  <input type="checkbox" id="gdpr" v-model.lazy="form.gdpr" class="hidden-checkbox">
   <label for="gdpr" class="custom-checkbox"></label>
   <label for="gdpr" class="gdpr-label">
     Potvrđujem da sam suglasan s navedenim:<span class="asterisk">*</span><br><br>
@@ -305,6 +305,8 @@ export default {
   
   data() {
     return {
+
+      scrollPosition: 0,
       
       uploadedFilesCount: 0,
     uploadedFiles: [],
@@ -436,14 +438,21 @@ export default {
       this.prefillData(this.user);
     }
 
-   
+    window.addEventListener('scroll', this.saveScrollPosition);
   },
 
   beforeDestroy() {
     window.removeEventListener('click', this.closeDropdown);
+    window.removeEventListener('scroll', this.saveScrollPosition);
   },
 
   methods: {
+    saveScrollPosition() {
+    this.scrollPosition = window.pageYOffset;
+  },
+  restoreScrollPosition() {
+    window.scrollTo(0, this.scrollPosition);
+  },
     validateForm() {
     // Clear previous errors
     this.errors = {};
@@ -675,17 +684,21 @@ deleteImage() {
 
     
 
-    toggleDropdown(dropdown) {
-    if (this.activeDropdown === dropdown) {
+    toggleDropdown(dropdown, event) {
+      if (event) event.preventDefault();
+      if (this.activeDropdown === dropdown) {
+        this.activeDropdown = null;
+      } else {
+        this.activeDropdown = dropdown;
+      }
+      this.restoreScrollPosition();
+    },
+
+    selectOption(option, model) {
+      this.form[model] = option;
       this.activeDropdown = null;
-    } else {
-      this.activeDropdown = dropdown;
-    }
-  },
-  selectOption(option, model) {
-    this.form[model] = option;
-    this.activeDropdown = null;
-  },
+      this.restoreScrollPosition();
+    },
 
   getChangedData() {
   const changedData = {};
