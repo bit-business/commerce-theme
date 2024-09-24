@@ -148,7 +148,7 @@
     Spremi uplatnicu
   </button>
 </div>
-<iframe v-if="paymentSlipUrl" :src="paymentSlipUrl" class="pdf-iframe" frameborder="0"></iframe>
+<iframe v-if="paymentSlipUrl" ref="pdfViewer" :src="paymentSlipUrl" class="pdf-iframe" frameborder="0"></iframe>
 <p v-else class="mt-12 pt-12 mb-12">Greška u prikazu uplatnice. Ali smo Vam uplatnicu poslali na email. Provjerite email.</p>
 </div>
 
@@ -535,7 +535,8 @@ export default {
     return {
       contentMode: 'default',
       showCopiedMessage: false,
-      pdfUrl: null,
+     
+      
 
       showSuccessModal: false,
       selectedItems: [],
@@ -648,6 +649,7 @@ export default {
   mounted() {
   this.$nextTick(() => {
     this.fetchOrder();
+    this.reloadPdf();
   });
 
 },
@@ -669,8 +671,12 @@ export default {
     },
 
     paymentSlipUrl(newVal) {
-      console.log('Payment slip URL updated:', newVal);
+    if (newVal) {
+      this.$nextTick(() => {
+        this.reloadPdf(); // Reload the PDF whenever the URL changes
+      });
     }
+  }
 
 },
   methods: {
@@ -723,16 +729,26 @@ export default {
 
   // },
 
-    printPDF() {
-    if (this.$refs.pdfViewer && this.$refs.pdfViewer.contentWindow) {
-      this.$refs.pdfViewer.contentWindow.print();
+  reloadPdf() {
+    if (this.paymentSlipUrl) {
+      this.$refs.pdfViewer.src = this.paymentSlipUrl;
     }
   },
+  printPDF() {
+      this.$nextTick(() => {
+        if (this.$refs.pdfViewer) {
+          const pdfViewer = this.$refs.pdfViewer.contentWindow;
+          pdfViewer.print();
+        } else {
+          console.error('pdfViewer reference is not available');
+        }
+      });
+    },
 
   downloadPDF() {
-    if (this.$refs.pdfViewer && this.$refs.pdfViewer.src) {
+    if (this.paymentSlipUrl) {
       const link = document.createElement('a');
-      link.href = this.$refs.pdfViewer.src;
+      link.href = this.paymentSlipUrl;
       link.download = 'HZUTS_uplatnica.pdf';
       document.body.appendChild(link);
       link.click();
@@ -772,89 +788,80 @@ export default {
     return [...new Set(productNames)].join(', ');
 },
 
-    async generatePaymentSlip() {
+    // async generatePaymentSlip() {
 
-      const iznos = Math.round(parseFloat(this.order.payed) * 100).toString();
+    //   const iznos = Math.round(parseFloat(this.order.payed) * 100).toString();
 
 
-      const opis = this.getProductNames() + ", " + this.user.name + " " + this.user.username;
-      const ime = this.user.name + " " + this.user.username;
-      const postbrojgrad = this.user.postanskibroj + " " + this.user.grad;
+    //   const opis = this.getProductNames() + ", " + this.user.name + " " + this.user.username;
+    //   const ime = this.user.name + " " + this.user.username;
+    //   const postbrojgrad = this.user.postanskibroj + " " + this.user.grad;
 
-    // Initialize pozivnabroj with an empty string or null to avoid errors
-    let pozivnabroj = this.user.idmember ? this.user.idmember.toString() : '';
+    // // Initialize pozivnabroj with an empty string or null to avoid errors
+    // let pozivnabroj = this.user.idmember ? this.user.idmember.toString() : '';
 
-    // Check if user.idmember is empty and format datumrodjenja if necessary
-    if (!pozivnabroj) {
-        const datumrodjenja = new Date(this.user.datumrodjenja);
-        const dd = String(datumrodjenja.getDate()).padStart(2, '0');
-        const mm = String(datumrodjenja.getMonth() + 1).padStart(2, '0'); // Months are zero-based
-        const yyyy = datumrodjenja.getFullYear();
-        pozivnabroj = `${dd}${mm}${yyyy}`;
-    }
+    // // Check if user.idmember is empty and format datumrodjenja if necessary
+    // if (!pozivnabroj) {
+    //     const datumrodjenja = new Date(this.user.datumrodjenja);
+    //     const dd = String(datumrodjenja.getDate()).padStart(2, '0');
+    //     const mm = String(datumrodjenja.getMonth() + 1).padStart(2, '0'); // Months are zero-based
+    //     const yyyy = datumrodjenja.getFullYear();
+    //     pozivnabroj = `${dd}${mm}${yyyy}`;
+    // }
 
-      console.log ("TEST:", pozivnabroj)
+    //   console.log ("TEST:", pozivnabroj)
 
-      const uplatnicaPodaci = {
-                 "poziv_na_broj_platitelja": "",
-                 "poziv_na_broj_primatelja": pozivnabroj,
-                 "iznos": iznos,
-                 "iban_primatelja": "HR7423600001101359833",
-                 "iban_platitelja": "",
-                 "model_primatelja": "HR07",
-                 "model_platitelja": "",
-                 "sifra_namjene": "",
-                 "datum_izvrsenja": "",
-                 "valuta_placanja": "EUR",
+    //   const uplatnicaPodaci = {
+    //              "poziv_na_broj_platitelja": "",
+    //              "poziv_na_broj_primatelja": pozivnabroj,
+    //              "iznos": iznos,
+    //              "iban_primatelja": "HR7423600001101359833",
+    //              "iban_platitelja": "",
+    //              "model_primatelja": "HR07",
+    //              "model_platitelja": "",
+    //              "sifra_namjene": "",
+    //              "datum_izvrsenja": "",
+    //              "valuta_placanja": "EUR",
                
-                 "ime_i_prezime_platitelja": ime,
-                 "ulica_i_broj_platitelja": this.user.adresa,
-                 "postanski_i_grad_platitelja": postbrojgrad,
-                 "naziv_primatelja": "Hrvatski zbor učitelja i trenera sportova na snijegu(HZUTS)",
-                 "ulica_i_broj_primatelja": "Maksimirska 51a",
-                 "postanski_i_grad_primatelja": "10 000 Zagreb,Hrvatska",
-                 "opis_placanja": opis
-      };
-      try {
-        const transactionUniqueCode = this.order.id; // Retrieve transactionUniqueCode from Vue component
+    //              "ime_i_prezime_platitelja": ime,
+    //              "ulica_i_broj_platitelja": this.user.adresa,
+    //              "postanski_i_grad_platitelja": postbrojgrad,
+    //              "naziv_primatelja": "Hrvatski zbor učitelja i trenera sportova na snijegu(HZUTS)",
+    //              "ulica_i_broj_primatelja": "Maksimirska 51a",
+    //              "postanski_i_grad_primatelja": "10 000 Zagreb,Hrvatska",
+    //              "opis_placanja": opis
+    //   };
+    //   try {
+    //     const transactionUniqueCode = this.order.id; // Retrieve transactionUniqueCode from Vue component
 
-        console.log("TEST CODE:", transactionUniqueCode)
-        // Make API call to generate and fetch PDF URL
-        const response = await this.$api.skijasiOrder.stvoriuplatnicu({
-          paymentSlipData: JSON.stringify(uplatnicaPodaci),
-          transactionUniqueCode: transactionUniqueCode
-        });
+    //     console.log("TEST CODE:", transactionUniqueCode)
+    //     // Make API call to generate and fetch PDF URL
+    //     const response = await this.$api.skijasiOrder.stvoriuplatnicu({
+    //       paymentSlipData: JSON.stringify(uplatnicaPodaci),
+    //       transactionUniqueCode: transactionUniqueCode
+    //     });
 
-        // Ensure response contains PDF URL
-        if (response.pdfUrl) {
-    this.pdfUrl = response.pdfUrl;
-    this.$nextTick(() => {
-      if (this.$refs.pdfViewer) {
-        this.$refs.pdfViewer.src = this.pdfUrl;
-      }
-    });
-        } else {
-                console.error("PDF URL not found in response:", response);
+    //     // Ensure response contains PDF URL
+    //     if (response.pdfUrl) {
+    // this.pdfUrl = response.pdfUrl;
+    // this.$nextTick(() => {
+    //   if (this.$refs.pdfViewer) {
+    //     this.$refs.pdfViewer.src = this.pdfUrl;
+    //   }
+    // });
+    //     } else {
+    //             console.error("PDF URL not found in response:", response);
           
-              }
+    //           }
 
-            } catch (error) {
-              console.error("Error generating or loading PDF:", error);
+    //         } catch (error) {
+    //           console.error("Error generating or loading PDF:", error);
 
-            }
-    },
+    //         }
+    // },
 
-    reloadPdf() {
-  if (this.pdfUrl && this.$refs.pdfViewer) {
-    this.$refs.pdfViewer.src = this.pdfUrl;
-  }
-},
-switchToDefaultView() {
-  this.contentMode = 'default';
-  this.$nextTick(() => {
-    this.reloadPdf();
-  });
-},
+
+
 
     fetchOrder() {
       this.$openLoading()
@@ -867,7 +874,7 @@ switchToDefaultView() {
           if (res.data.order.status != 'waitingBuyerPayment' || res.data.order.orderPayment.paymentType != 'manual-transfer') {
          //   this.$inertia.visit('skijasi.commerce-theme.order')
          }
-          this.generatePaymentSlip(); 
+          // this.generatePaymentSlip(); 
         })
         .catch(err => {
        //   this.$helper.displayErrors(err)
