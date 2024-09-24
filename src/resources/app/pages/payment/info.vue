@@ -148,7 +148,8 @@
     Spremi uplatnicu
   </button>
 </div>
-<iframe v-if="pdfUrl" ref="pdfViewer" :src="pdfUrl" class="pdf-iframe" frameborder="0"></iframe>
+<iframe v-if="paymentSlipUrl" :src="paymentSlipUrl" class="pdf-iframe" frameborder="0"></iframe>
+<p v-else class="mt-12 pt-12 mb-12">Greška u prikazu uplatnice. Ali smo Vam uplatnicu poslali na email. Provjerite email.</p>
 </div>
 
 <div 
@@ -524,6 +525,10 @@ export default {
       type: Object,
       default: () => ({})
     },
+    paymentSlipUrl: {
+    type: String,
+    required: true,
+  },
   
   },
   data() {
@@ -582,6 +587,7 @@ export default {
       openDialog: false,
       bankDestinationSheet: false,
       bankSourceSheet: false,
+
   }
   
   },
@@ -643,6 +649,7 @@ export default {
   this.$nextTick(() => {
     this.fetchOrder();
   });
+
 },
   watch: {
   contentMode(newMode) {
@@ -659,7 +666,12 @@ export default {
           this.fetchOrder();
         }
       }
+    },
+
+    paymentSlipUrl(newVal) {
+      console.log('Payment slip URL updated:', newVal);
     }
+
 },
   methods: {
     closeSuccessModal() {
@@ -749,17 +761,15 @@ export default {
     },
 
     getProductNames() {
-  const productNames = this.order.orderDetails.map(
-    (orderDetail) => orderDetail.productDetail.product.name
-  );
-  const joinedNames = productNames.join(', ');
-  
-  // Check if the joined names contain "članar" (case-insensitive)
-  if (joinedNames.toLowerCase().includes('članarina')) {
-    return joinedNames;
-  } else {
-    return "Članarina";
-  }
+    const productNames = this.items.map(item => {
+        if (item.productDetail.product.product_category_id === 30) {
+            return 'Članarina';
+        }
+        return item.productDetail.product.name;
+    });
+
+    // Remove duplicates and join
+    return [...new Set(productNames)].join(', ');
 },
 
     async generatePaymentSlip() {
@@ -823,15 +833,15 @@ export default {
         this.$refs.pdfViewer.src = this.pdfUrl;
       }
     });
-  } else {
-          console.error("PDF URL not found in response:", response);
-     
-        }
+        } else {
+                console.error("PDF URL not found in response:", response);
+          
+              }
 
-      } catch (error) {
-        console.error("Error generating or loading PDF:", error);
+            } catch (error) {
+              console.error("Error generating or loading PDF:", error);
 
-      }
+            }
     },
 
     reloadPdf() {

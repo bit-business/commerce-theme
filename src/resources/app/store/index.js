@@ -109,9 +109,13 @@ export default new Vuex.Store({
       total: null,
       currentPage: 1,
       perPage: 10
-    }
+    },
+    existingOrderId: null,
   },
   mutations: {
+    SET_EXISTING_ORDER_ID(state, id) {
+      state.existingOrderId = id;
+    },
     SET_PURCHASE_ORIGIN(state, origin) {
       state.purchaseOrigin = origin;
     },
@@ -231,6 +235,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    setExistingOrderId({ commit }, id) {
+      commit('SET_EXISTING_ORDER_ID', id);
+    },
     SET_PURCHASE_ORIGIN({ commit }, origin) {
       commit('SET_PURCHASE_ORIGIN', origin);
     },

@@ -1329,7 +1329,8 @@ class="bell-icon">
   :isOpen="showModal" 
   @close="closeModal" 
   :id="orderId"
-  :items="items" 
+  :items="items"
+  :paymentSlipUrl="paymentSlipUrl"
 />
 
 </div>
@@ -1370,6 +1371,8 @@ export default {
   },
   data() {
     return {
+
+      paymentSlipUrl: '',
 
       isSidebarExpanded: window.innerWidth > 768, // Initialize based on screen width
      isSidebarOpen: false,
@@ -1667,48 +1670,39 @@ export default {
       const purchaseOrigin = this.$store.state.purchaseOrigin;
       this.$inertia.visit(this.route('skijasi.commerce-theme.checkout', purchaseOrigin))
     },
-    checkout() {
-  
-     this.$openLoading();
-
-
-     const selectedItems = this.items.map(item => ({
+checkout() {
+  this.$openLoading();
+  const selectedItems = this.items.map(item => ({
     id: item.id,
-    quantity: item.quantity
+    quantity: item.quantity,
+    product_detail_id: item.productDetail.id,
+    product_name: item.productDetail.product.name 
   }));
-    
-      this.$api.skijasiCheckout
-      .finish({
-                items: selectedItems,
-                 // userAddressId: this.user.id,
-                message: this.message,
-                paymentType: this.option,
-            })
-        .then((res) => {
-          this.$store.dispatch("FETCH_CARTS");
-
-          // this.$helper.alert(
-          //   "Transakcija se obrađuje, ostanite na ovoj stranici."
-          // );
-
-          if (typeof this.checkoutData === "function") {
-            this.checkoutData(res);
-          }
-         
-          this.orderId = res.data.order;
-          console.log("TEST IDd:", this.orderId )
-        })
-        .catch((err) => {
-          this.$helper.displayErrors(err);
-        })
-        .finally(() => {
-          this.$closeLoading();
-          this.openModal(); 
-
-   
-         // this.$inertia.visit(this.route("skijasi.commerce-theme.zaduzenja"));
-        });
-    },
+  
+  this.$api.skijasiCheckout
+    .finish({
+      items: selectedItems,
+      message: this.message,
+      paymentType: this.option,
+    })
+    .then((res) => {
+      this.$store.dispatch("FETCH_CARTS");
+      this.orderId = res.data.order;
+      this.$store.dispatch('setExistingOrderId', this.orderId);
+      this.paymentSlipUrl = res.data.paymentSlipUrl || ''; // Ensure it's always a string
+      console.log('TESTPayment Slip URL:', this.paymentSlipUrl ); 
+      this.$nextTick(() => {
+        this.openModal();
+      });
+    })
+    .catch((err) => {
+      this.$helper.displayErrors(err);
+      this.paymentSlipUrl = ''; // Set to empty string in case of error
+    })
+    .finally(() => {
+      this.$closeLoading();
+    });
+},
     setPaymentTab(p) {
       this.option = "";
       this.payment = p.slug;

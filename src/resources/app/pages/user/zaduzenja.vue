@@ -870,8 +870,8 @@ export default {
     }
   },
   computed: {
-  
-    ...mapState({
+    ...mapState(['existingOrderId']),
+    ...mapState( {
       isAuthenticated(state) {
         return state.isAuthenticated
       },
@@ -990,7 +990,30 @@ created() {
 
   },
   methods: {
+    updateOrder() {
+    const updatedItems = this.carts.map(item => ({
+      id: item.id,
+      quantity: item.quantity
+    }));
 
+    if (!this.existingOrderId) {
+      console.error('No existing order to update');
+      return;
+    }
+
+    this.$api.skijasiOrder
+      .update({
+        order_id: this.existingOrderId, // Use the existingOrderId from Vuex store
+        items: updatedItems
+      })
+      .then((res) => {
+        // Handle successful update
+        this.$inertia.visit(this.route('skijasi.commerce-theme.checkout'));
+      })
+      .catch((err) => {
+        this.$helper.displayErrors(err);
+      });
+  },
 
 
     fetchAdminMessages() {
