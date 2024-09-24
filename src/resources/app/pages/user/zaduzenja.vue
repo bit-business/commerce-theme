@@ -229,7 +229,7 @@
               </template>
             </div>
 
-            <div v-if="cart.productDetail.product.productCategory.slug != 'licence'" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center"> 
+            <div v-if="cart.productDetail.product.productCategory.slug != 'licence' || (cart.productDetail.product.productCategory.slug == 'licence' && [10, 11, 12].includes(cart.productDetail.product.id))"  class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center"> 
               <!-- <div v-if="cart.cekapotvrdu == 1"> 
     <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span> 
 </div> -->
@@ -244,7 +244,7 @@
         :disabled="loading"
       />
     </div> -->
-    <div v-if="cart.productDetail.product.productCategory.slug != 'licence'">
+    <div >
       <div v-if="cart.cekapotvrdu == 1">
         <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span>
       </div>
@@ -459,7 +459,7 @@
 
 
 
-            <div v-if="cart.productDetail.product.productCategory.slug != 'licence'" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center mt-6 bg-gray-100 rounded-md"> 
+            <div v-if="cart.productDetail.product.productCategory.slug != 'licence' || (cart.productDetail.product.productCategory.slug == 'licence' && [10, 11, 12].includes(cart.productDetail.product.id))" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center mt-6 bg-gray-100 rounded-md"> 
               <div v-if="cart.cekapotvrdu == 1"> 
     <span class="text-sm font-bold">Uspješno ste poslali potvrdu plaćanja! Poslat ćemo Vam email kada primimo uplatu.</span> 
 </div><button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 mt-2 mb-2 text-red-500 rounded hover:bg-red-50"> 

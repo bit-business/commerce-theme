@@ -50,6 +50,7 @@
         </div>
         
         <div class="frameimeiprezime">
+          
           <div class="frameime">
             <div class="imebackground">
               <div class="containerzaime" />
@@ -69,8 +70,7 @@
           </div>
      
 
-
-
+          <div class="imenapomena">*Ime i prezime upišite sa hrvatskim znakovima žčćšđ</div>
         </div>
         
         <div class="frameemail">
@@ -94,7 +94,6 @@
           <div class="ime">Datum rođenja</div>
         </div>
 
-   
               <!-- Error messages container -->
               <div v-if="firstErrorMessage" class="error-message">
   {{ firstErrorMessage }}
@@ -1573,6 +1572,15 @@ uploadAvatar(resizedImage) {
   .frameimeiprezime {
     position: absolute;
     top: 10.88rem;
+    left: 0rem;
+    width: 32.94rem;
+    height: 4.56rem;
+  }
+  .imenapomena {
+    font-size:x-small;
+    color: gray;
+    position: absolute;
+    top: 5rem;
     left: 0rem;
     width: 32.94rem;
     height: 4.56rem;
@@ -3267,6 +3275,17 @@ left: calc(50% - 46px) !important;
   .frameimeiprezime {
     position: absolute;
     top: 101.3px;
+    left: 0px;
+    width: 306.9px;
+    height: 42.5px;
+  }
+
+  .imenapomena {
+    font-size: smaller;
+    color: gray;
+    position: absolute;
+    position: absolute;
+    top: 47.3px;
     left: 0px;
     width: 306.9px;
     height: 42.5px;

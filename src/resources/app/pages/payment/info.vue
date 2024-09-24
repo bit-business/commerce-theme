@@ -651,7 +651,15 @@ export default {
         this.reloadPdf();
       });
     }
-  }
+  },
+  id: {
+      immediate: true,
+      handler(newId, oldId) {
+        if (newId !== oldId) {
+          this.fetchOrder();
+        }
+      }
+    }
 },
   methods: {
     closeSuccessModal() {
