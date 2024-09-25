@@ -197,6 +197,9 @@
 
 
 
+
+
+
     <div v-else-if="contentMode === 'uploadProof'">
     <div class="w-full flex justify-center flex-wrap">
     <Head :title="$page.props.name" />
@@ -697,37 +700,6 @@ export default {
   
 },
 
-  //   potvrdaplacanjabezdokaza() {
-  //     console.log('Sending data:', {
-  //   orderId: this.id,
-  //   ...this.selected,
-  //   destinationBank: this.selected.destinationBank.name,
-  //   sourceBank: this.selected.sourceBank.key,
-  // });
-   
-  //       this.$openLoading()
-  //       this.$api.skijasiOrder
-  //         .pay({
-  
-  //           orderId: this.id,
-  //           ...this.selected,
-  //           destinationBank: this.selected.destinationBank.name,
-  //           sourceBank: this.selected.sourceBank.key,
-  //         })
-  //         .then(res => {
-         
-         
-  //         })
-  //         .catch(err => {
-  //           this.$helper.displayErrors(err)
-  //           this.$inertia.visit(this.route('skijasi.commerce-theme.cart'))
-  //         })
-  //         .finally(() => {
-  //           this.$closeLoading()
-  //           this.showSuccessModal = true;
-  //         })
-
-  // },
 
   reloadPdf() {
     if (this.paymentSlipUrl) {
@@ -739,9 +711,7 @@ export default {
         if (this.$refs.pdfViewer) {
           const pdfViewer = this.$refs.pdfViewer.contentWindow;
           pdfViewer.print();
-        } else {
-          console.error('pdfViewer reference is not available');
-        }
+        } 
       });
     },
 
@@ -776,17 +746,132 @@ export default {
       this.$emit('close');
     },
 
-    getProductNames() {
-    const productNames = this.items.map(item => {
-        if (item.productDetail.product.product_category_id === 30) {
-            return 'Članarina';
-        }
-        return item.productDetail.product.name;
-    });
 
-    // Remove duplicates and join
-    return [...new Set(productNames)].join(', ');
-},
+
+    fetchOrder() {
+      this.$openLoading()
+      this.$api.skijasiOrder
+        .read({
+          id: this.id
+        })
+        .then(res => {
+          this.order = res.data.order
+          if (res.data.order.status != 'waitingBuyerPayment' || res.data.order.orderPayment.paymentType != 'manual-transfer') {
+         //   this.$inertia.visit('skijasi.commerce-theme.order')
+         }
+         this.reloadPdf();
+          // this.generatePaymentSlip(); 
+        })
+        .catch(err => {
+       //   this.$helper.displayErrors(err)
+       //   this.$inertia.visit('skijasi.commerce-theme.order')
+        })
+        .finally(() => {
+          this.$closeLoading()
+        })
+    },
+
+
+    onFilePicked(e) {
+    const files = e.target.files;
+    if (files[0] !== undefined) {
+      if (files[0].size > 5120000) {
+        this.$helper.alert("Prevelika datoteka!")
+        return;
+      }
+
+      let fr = new FileReader()
+      fr.readAsDataURL(files[0])
+      fr.addEventListener("load", () => {
+        this.selected.proofOfTransaction = fr.result
+        this.selected.proofOfTransactionName = files[0].name
+        this.selected.proofOfTransactionType = files[0].type
+      })
+    }
+  },
+  send() {
+      console.log('Sending data:', {
+        orderId: this.id,
+        ...this.selected,
+        destinationBank: this.selected.destinationBank.name,
+        sourceBank: this.selected.sourceBank.key,
+      });
+   
+      this.$openLoading();
+
+      // Prepare the payload
+      const payload = {
+        order_id: this.id,
+        source_bank: this.selected.sourceBank.key,
+        destination_bank: this.selected.destinationBank.name,
+        account_number: this.selected.accountNumber,
+        total_transfered: this.selected.totalTransfered,
+        item_ids: this.items.map(item => item.id),
+      };
+
+      // Only include proof_of_transaction if it exists
+      if (this.selected.proofOfTransaction) {
+        payload.proof_of_transaction = this.selected.proofOfTransaction;
+      }
+
+      this.$api.skijasiOrder
+        .pay(payload)
+        .then(res => {
+          this.showSuccessModal = true;
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err);
+          // this.$inertia.visit(this.route('skijasi.commerce-theme.cart'));
+        })
+        .finally(() => {
+          this.$closeLoading();
+        });
+    },
+
+
+  //   potvrdaplacanjabezdokaza() {
+  //     console.log('Sending data:', {
+  //   orderId: this.id,
+  //   ...this.selected,
+  //   destinationBank: this.selected.destinationBank.name,
+  //   sourceBank: this.selected.sourceBank.key,
+  // });
+   
+  //       this.$openLoading()
+  //       this.$api.skijasiOrder
+  //         .pay({
+  
+  //           orderId: this.id,
+  //           ...this.selected,
+  //           destinationBank: this.selected.destinationBank.name,
+  //           sourceBank: this.selected.sourceBank.key,
+  //         })
+  //         .then(res => {
+         
+         
+  //         })
+  //         .catch(err => {
+  //           this.$helper.displayErrors(err)
+  //           this.$inertia.visit(this.route('skijasi.commerce-theme.cart'))
+  //         })
+  //         .finally(() => {
+  //           this.$closeLoading()
+  //           this.showSuccessModal = true;
+  //         })
+
+  // },
+
+//     getProductNames() {
+//     const productNames = this.items.map(item => {
+//         if (item.productDetail.product.product_category_id === 30) {
+//             return 'Članarina';
+//         }
+//         return item.productDetail.product.name;
+//     });
+
+//     // Remove duplicates and join
+//     return [...new Set(productNames)].join(', ');
+// },
 
     // async generatePaymentSlip() {
 
@@ -859,92 +944,6 @@ export default {
 
     //         }
     // },
-
-
-
-
-    fetchOrder() {
-      this.$openLoading()
-      this.$api.skijasiOrder
-        .read({
-          id: this.id
-        })
-        .then(res => {
-          this.order = res.data.order
-          if (res.data.order.status != 'waitingBuyerPayment' || res.data.order.orderPayment.paymentType != 'manual-transfer') {
-         //   this.$inertia.visit('skijasi.commerce-theme.order')
-         }
-          // this.generatePaymentSlip(); 
-        })
-        .catch(err => {
-       //   this.$helper.displayErrors(err)
-       //   this.$inertia.visit('skijasi.commerce-theme.order')
-        })
-        .finally(() => {
-          this.$closeLoading()
-        })
-    },
-
-
-    onFilePicked(e) {
-    const files = e.target.files;
-    if (files[0] !== undefined) {
-      if (files[0].size > 5120000) {
-        this.$helper.alert("Prevelika datoteka!")
-        return;
-      }
-
-      let fr = new FileReader()
-      fr.readAsDataURL(files[0])
-      fr.addEventListener("load", () => {
-        this.selected.proofOfTransaction = fr.result
-        this.selected.proofOfTransactionName = files[0].name
-        this.selected.proofOfTransactionType = files[0].type
-      })
-    }
-  },
-  send() {
-      console.log('Sending data:', {
-        orderId: this.id,
-        ...this.selected,
-        destinationBank: this.selected.destinationBank.name,
-        sourceBank: this.selected.sourceBank.key,
-      });
-   
-      this.$openLoading();
-
-      // Prepare the payload
-      const payload = {
-        order_id: this.id,
-        source_bank: this.selected.sourceBank.key,
-        destination_bank: this.selected.destinationBank.name,
-        account_number: this.selected.accountNumber,
-        total_transfered: this.selected.totalTransfered,
-        item_ids: this.items.map(item => item.id),
-      };
-
-      // Only include proof_of_transaction if it exists
-      if (this.selected.proofOfTransaction) {
-        payload.proof_of_transaction = this.selected.proofOfTransaction;
-      }
-
-      this.$api.skijasiOrder
-        .pay(payload)
-        .then(res => {
-          this.showSuccessModal = true;
-        })
-        .catch(err => {
-          this.$helper.displayErrors(err);
-          // You might want to handle this error more gracefully,
-          // perhaps by showing an error message to the user instead of redirecting
-          // this.$inertia.visit(this.route('skijasi.commerce-theme.cart'));
-        })
-        .finally(() => {
-          this.$closeLoading();
-        });
-    },
-
-
 
   }
 }

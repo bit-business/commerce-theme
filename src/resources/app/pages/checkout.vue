@@ -1678,7 +1678,7 @@ checkout() {
     product_detail_id: item.productDetail.id,
     product_name: item.productDetail.product.name 
   }));
-
+  this.paymentSlipUrl = ''; 
   console.log("TEST FINISH PRIJE:", selectedItems);
   
   this.$api.skijasiCheckout
