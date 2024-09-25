@@ -264,9 +264,11 @@ export default {
     document.addEventListener('focusout', function() {
     window.scrollTo(0, 0);
 });
+  },
 
-
-
+beforeDestroy() {  
+    window.removeEventListener('resize', this.handleResize);
+    document.removeEventListener('focusout', this.focusoutHandler);
   },
   methods: {
 
@@ -297,11 +299,11 @@ export default {
 
           const previousRoute = sessionStorage.getItem('previousRoute');
         if (previousRoute) {
-          this.$inertia.visit(previousRoute);
-          sessionStorage.removeItem('previousRoute'); // Clear the stored route
+          this.$inertia.visit(previousRoute, { preserveState: false });
+        sessionStorage.removeItem('previousRoute');
         } else {
-          this.$inertia.visit(this.route("skijasi.commerce-theme.profile"));
-        }
+          this.$inertia.visit(this.route("skijasi.commerce-theme.profile"), { preserveState: false });
+                }
 
             this.$store.dispatch("SET_IS_AUTHENTICATED", true);
             this.$store.dispatch("SET_USER", response.data.user);

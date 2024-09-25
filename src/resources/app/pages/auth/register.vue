@@ -1578,7 +1578,7 @@ uploadAvatar(resizedImage) {
   }
   .imenapomena {
     font-size:x-small;
-    color: gray;
+    color: red;
     position: absolute;
     top: 5rem;
     left: 0rem;
@@ -3282,7 +3282,7 @@ left: calc(50% - 46px) !important;
 
   .imenapomena {
     font-size: smaller;
-    color: gray;
+    color: red;
     position: absolute;
     position: absolute;
     top: 47.3px;

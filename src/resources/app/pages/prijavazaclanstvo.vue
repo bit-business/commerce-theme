@@ -11,14 +11,14 @@
       <!-- Ime -->
       <div class="form-group">
         <label for="ime">Ime <span class="asterisk">*</span></label>
-        <input type="text" id="ime" v-model.lazy="form.name" required>
+        <input  @focus="saveScrollPosition" type="text" id="ime" v-model.lazy="form.name" required>
         <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
       </div>
 
       <!-- Prezime -->
       <div class="form-group">
         <label for="prezime">Prezime <span class="asterisk">*</span></label>
-        <input type="text" id="prezime" v-model.lazy="form.username" required>
+        <input @focus="saveScrollPosition" type="text" id="prezime" v-model.lazy="form.username" required>
         <span v-if="errors.username" class="error-message">{{ errors.username }}</span>
       </div>
 
@@ -28,49 +28,49 @@
       <!-- OIB -->
       <div class="form-group">
         <label for="oib">OIB <span class="asterisk">*</span></label>
-        <input type="text" id="oib" v-model.lazy="form.oib" required>
+        <input @focus="saveScrollPosition" type="text" id="oib" v-model.lazy="form.oib" required>
         <span v-if="errors.oib" class="error-message">{{ errors.oib }}</span>
       </div>
 
       <!-- Datum rođenja -->
       <div class="form-group">
         <label for="datumRodenja">Datum rođenja <span class="asterisk">*</span></label>
-        <input type="date" id="datumRodenja" v-model.lazy="form.datumrodjenja" required>
+        <input @focus="saveScrollPosition" type="date" id="datumRodenja" v-model.lazy="form.datumrodjenja" required>
         <span v-if="errors.datumrodjenja" class="error-message">{{ errors.datumrodjenja }}</span>
       </div>
 
       <!-- Adresa -->
       <div class="form-group">
         <label for="adresa">Adresa <span class="asterisk">*</span></label>
-        <input type="text" id="adresa" v-model.lazy="form.adresa" required>
+        <input @focus="saveScrollPosition" type="text" id="adresa" v-model.lazy="form.adresa" required>
         <span v-if="errors.adresa" class="error-message">{{ errors.adresa }}</span>
       </div>
 
       <!-- Poštanski broj -->
       <div class="form-group">
         <label for="postanskiBroj">Poštanski broj <span class="asterisk">*</span></label>
-        <input type="text" id="postanskiBroj" v-model.lazy="form.postanskibroj" required>
+        <input @focus="saveScrollPosition" type="text" id="postanskiBroj" v-model.lazy="form.postanskibroj" required>
         <span v-if="errors.postanskibroj" class="error-message">{{ errors.postanskibroj }}</span>
       </div>
 
       <!-- Grad -->
       <div class="form-group">
         <label for="grad">Grad <span class="asterisk">*</span></label>
-        <input type="text" id="grad" v-model.lazy="form.grad" required>
+        <input @focus="saveScrollPosition" type="text" id="grad" v-model.lazy="form.grad" required>
         <span v-if="errors.grad" class="error-message">{{ errors.grad }}</span>
       </div>
 
       <!-- Država -->
       <div class="form-group">
         <label for="drzava">Država <span class="asterisk">*</span></label>
-        <input type="text" id="drzava" v-model.lazy="form.drzava" required>
+        <input @focus="saveScrollPosition" type="text" id="drzava" v-model.lazy="form.drzava" required>
         <span v-if="errors.drzava" class="error-message">{{ errors.drzava }}</span>
       </div>
 
       <!-- Mobitel -->
       <div class="form-group">
         <label for="mobitel">Mobitel <span class="asterisk">*</span></label>
-        <input type="tel" id="mobitel" v-model.lazy="form.brojmobitela" required>
+        <input @focus="saveScrollPosition" type="tel" id="mobitel" v-model.lazy="form.brojmobitela" required>
         <span v-if="errors.brojmobitela" class="error-message">{{ errors.brojmobitela }}</span>
 
       </div>
@@ -79,7 +79,7 @@
       <!-- E-mail adresa -->
       <div class="form-group">
         <label for="email">E-mail adresa <span class="asterisk">*</span></label>
-        <input type="email" id="email" v-model.lazy="form.email" required>
+        <input @focus="saveScrollPosition" type="email" id="email" v-model.lazy="form.email" required>
         <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
       </div>
 
@@ -107,14 +107,14 @@
       <!-- Datum i mjesto polaganja -->
       <div class="form-group">
         <label for="datumMjestoPolaganja">Datum i mjesto polaganja za učitelja/trenera <span class="asterisk">*</span></label>
-        <input type="text" id="datumMjestoPolaganja" v-model.lazy="form.datummjestopolaganja" required>
+        <input @focus="saveScrollPosition" type="text" id="datumMjestoPolaganja" v-model.lazy="form.datummjestopolaganja" required>
         <span v-if="errors.datummjestopolaganja" class="error-message">{{ errors.datummjestopolaganja }}</span>
       </div>
 
       <!-- Ustanova -->
       <div class="form-group">
         <label for="ustanova">Ustanova koja je izdala Uvjerenje za učitelja/trenera <span class="asterisk">*</span></label>
-        <input type="text" id="ustanova" v-model.lazy="form.ustanova" required>
+        <input @focus="saveScrollPosition" type="text" id="ustanova" v-model.lazy="form.ustanova" required>
         <span v-if="errors.ustanova" class="error-message">{{ errors.ustanova }}</span>
       </div>
 
@@ -141,7 +141,7 @@
 
 
       <div class="form-groupAvatar">
-        <input type="file" @change="filesChangeAvatar" accept="image/png, image/jpeg, image/jpg" ref="avatarslika" class="hidden">
+        <input @focus="saveScrollPosition" type="file" @change="filesChangeAvatar" accept="image/png, image/jpeg, image/jpg" ref="avatarslika" class="hidden">
               <button @click.prevent="$refs.avatarslika.click()" class="gumbSlika">
                 Odaberite svoju sliku
               </button>  <span class="asterisk-top">*</span>
@@ -394,9 +394,10 @@ export default {
       croppedImage: null,
       avatar: null,
       avatarReadyToUpload: false,
-      file: null
+      file: null,
 
-
+      lastFocusedElement: null,
+      lastScrollTop: 0,
     }
   },
 
@@ -434,24 +435,31 @@ export default {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     }
 
+    this.$nextTick(() => {
+    this.$forceUpdate();
+  });
+
     if (this.user) {
       this.prefillData(this.user);
     }
 
-    window.addEventListener('scroll', this.saveScrollPosition);
+  
   },
 
   beforeDestroy() {
     window.removeEventListener('click', this.closeDropdown);
-    window.removeEventListener('scroll', this.saveScrollPosition);
   },
 
   methods: {
-    saveScrollPosition() {
-    this.scrollPosition = window.pageYOffset;
+    saveScrollPosition(event) {
+    this.lastFocusedElement = event.target;
   },
   restoreScrollPosition() {
-    window.scrollTo(0, this.scrollPosition);
+    if (this.lastFocusedElement) {
+      this.$nextTick(() => {
+        this.lastFocusedElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      });
+    }
   },
     validateForm() {
     // Clear previous errors
@@ -691,13 +699,15 @@ deleteImage() {
       } else {
         this.activeDropdown = dropdown;
       }
-      this.restoreScrollPosition();
+      this.saveScrollPosition(event);
     },
 
     selectOption(option, model) {
       this.form[model] = option;
       this.activeDropdown = null;
-      this.restoreScrollPosition();
+      this.$nextTick(() => {
+    this.restoreScrollPosition();
+  });
     },
 
   getChangedData() {

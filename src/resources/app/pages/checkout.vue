@@ -1662,15 +1662,25 @@ export default {
       return parseInt(price - d);
     },
 
-    openModal() {
-      this.showModal = true;
-    },
+openModal() {
+  if (this.paymentSlipUrl) {
+    this.showModal = true;
+  } else {
+    // Wait for paymentSlipUrl to be available
+    const checkPaymentSlipUrl = setInterval(() => {
+      if (this.paymentSlipUrl) {
+        clearInterval(checkPaymentSlipUrl);
+        this.showModal = true;
+      }
+    }, 100); // Check every 100ms
+  }
+},
     closeModal() {
       this.showModal = false;
       const purchaseOrigin = this.$store.state.purchaseOrigin;
       this.$inertia.visit(this.route('skijasi.commerce-theme.checkout', purchaseOrigin))
     },
-checkout() {
+    async checkout() {
   this.$openLoading();
   const selectedItems = this.items.map(item => ({
     id: item.id,
@@ -1681,29 +1691,29 @@ checkout() {
   this.paymentSlipUrl = ''; 
   console.log("TEST FINISH PRIJE:", selectedItems);
   
-  this.$api.skijasiCheckout
-    .finish({
+  try {
+    const res = await this.$api.skijasiCheckout.finish({
       items: selectedItems,
       message: this.message,
       paymentType: this.option,
-    })
-    .then((res) => {
-      this.$store.dispatch("FETCH_CARTS");
-      this.orderId = res.data.order;
-      this.$store.dispatch('setExistingOrderId', this.orderId);
-      this.paymentSlipUrl = res.data.paymentSlipUrl || ''; // Ensure it's always a string
-      console.log('TESTPayment Slip URL:', this.paymentSlipUrl ); 
-      this.$nextTick(() => {
-        this.openModal();
-      });
-    })
-    .catch((err) => {
-      this.$helper.displayErrors(err);
-      this.paymentSlipUrl = ''; // Set to empty string in case of error
-    })
-    .finally(() => {
-      this.$closeLoading();
     });
+
+    this.$store.dispatch("FETCH_CARTS");
+    this.orderId = res.data.order;
+    this.$store.dispatch('setExistingOrderId', this.orderId);
+    this.paymentSlipUrl = res.data.paymentSlipUrl || ''; 
+    console.log('Updated Payment Slip URL:', this.paymentSlipUrl);
+    
+    this.$nextTick(() => {
+      console.log('Before opening modal. paymentSlipUrl:', this.paymentSlipUrl);
+      this.openModal();
+    });
+  } catch (err) {
+    this.$helper.displayErrors(err);
+    this.paymentSlipUrl = ''; // Set to empty string in case of error
+  } finally {
+    this.$closeLoading();
+  }
 },
     setPaymentTab(p) {
       this.option = "";

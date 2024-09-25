@@ -491,6 +491,8 @@ export default {
       },
     }),
 
+    
+
   },
   watch: {
     '$page.props': {
@@ -556,10 +558,16 @@ export default {
 
 
     navigateToPrijava() {
-      this.showSkiingTypePopup = true;
-      this.isLoading = false; 
-
-    },
+        if (!this.isAuthenticated) {
+          // Store the current page's full path before redirecting
+          sessionStorage.setItem('previousRoute', this.route('skijasi.commerce-theme.detalji', { slug: this.$page.props.slug }));
+          this.$inertia.visit(this.route('skijasi.commerce-theme.login'));
+        }
+        else {
+          this.showSkiingTypePopup = true;
+          this.isLoading = false; 
+        }
+      },
 
     async ucitajClanove() {
             console.log("TEST ID ucitaj clanove:", this.user.id);
@@ -882,23 +890,37 @@ setSelectedProduct() {
 },
 
 getSkiingTypePrice(type) {
-      if (type === 'Samostalno skijanje') {
-        const hzutsProduct = this.product.productDetails.find(
-      detail => detail.name === "HZUTS član"
+  // First, check if the user is "Nije član"
+  if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
+    const nijeclanProduct = this.product.productDetails.find(
+      detail => detail.name === "Nije član"
     );
-    return hzutsProduct ? hzutsProduct.price : 0;
-        // const matchingProduct = this.product.productDetails.find(
-        //   detail => detail.name === this.korisnik.statusString
-        // );
-        // return matchingProduct ? matchingProduct.price : 0;
-      } else if (type === 'Produženje licence') {
-        const grupnoProduct = this.product.productDetails.find(
-          detail => detail.name === "Produženje licence"
-        );
-        return grupnoProduct ? grupnoProduct.price : 0;
-      }
-      return 0;
-    },
+    return nijeclanProduct ? nijeclanProduct.price : 0;
+  }
+
+  // For other statuses
+  if (type === 'Samostalno skijanje') {
+    // Find the product that matches the user's status
+    const matchingProduct = this.product.productDetails.find(
+      detail => detail.name === this.korisnik.statusString
+    );
+    // If no matching product is found, fallback to "HZUTS član"
+    if (!matchingProduct) {
+      const hzutsProduct = this.product.productDetails.find(
+        detail => detail.name === "HZUTS član"
+      );
+      return hzutsProduct ? hzutsProduct.price : 0;
+    }
+    return matchingProduct.price;
+  } else if (type === 'Produženje licence') {
+    const grupnoProduct = this.product.productDetails.find(
+      detail => detail.name === "Produženje licence"
+    );
+    return grupnoProduct ? grupnoProduct.price : 0;
+  }
+
+  return 0;
+},
 
 
     getSimilarProduct() {
@@ -1795,10 +1817,24 @@ width: 100%;
   font-weight: bold;
 }
 
-.custom-html-content :deep(ul),
-.custom-html-content :deep(ol) {
-  padding-left: 20px;
+.custom-html-content ::v-deep ul {
+  padding-left: 20px !important;
+  list-style-type: disc !important;
 }
+
+.custom-html-content ::v-deep ol {
+  padding-left: 20px !important;
+  list-style-type: decimal !important; 
+}
+
+.custom-html-content ::v-deep li {
+  display: list-item !important;
+  margin-bottom: 5px !important;
+  list-style-position: inside !important;
+}
+
+
+
 
 .custom-html-content :deep(p),
 .custom-html-content :deep(h1),
@@ -1819,4 +1855,6 @@ width: 100%;
     font-size: 10px;
   }
 }
+
+
 </style>

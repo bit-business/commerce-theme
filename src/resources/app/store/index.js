@@ -110,9 +110,13 @@ export default new Vuex.Store({
       currentPage: 1,
       perPage: 10
     },
+    paymentSlipUrl: '',
     existingOrderId: null,
   },
   mutations: {
+    SET_PAYMENT_SLIP_URL(state, url) {
+      state.paymentSlipUrl = url;
+    },
     SET_EXISTING_ORDER_ID(state, id) {
       state.existingOrderId = id;
     },
@@ -235,6 +239,9 @@ export default new Vuex.Store({
     }
   },
   actions: {
+    updatePaymentSlipUrl({ commit }, url) {
+      commit('SET_PAYMENT_SLIP_URL', url);
+    },
     setExistingOrderId({ commit }, id) {
       commit('SET_EXISTING_ORDER_ID', id);
     },
