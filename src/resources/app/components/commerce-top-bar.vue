@@ -5,21 +5,21 @@
       <div class="navbartekstoviframe-inner">
         <div class="poetna-parent">
        
-      <Link class="poetna animation-link"  :class="{ 'active-link': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">Početna</Link>
-      <Link class="dogaanja animation-link"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kategorija/dogadanja') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja</Link>
-      <Link class="pretraivanje animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">Naši članovi</Link>
+      <Link class="poetna animation-link"  :class="{ 'active-link': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">{{ $t('home') }}</Link>
+      <Link class="dogaanja animation-link"  :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kategorija/dogadanja') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">{{ $t('events') }}</Link>
+      <Link class="pretraivanje animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">{{ $t('ourMembers') }}</Link>
       <button 
   class="dogaanja animation-link" 
   @mouseenter="toggleDropdownInformacije(true)" 
   @click="toggleDropdownInformacije" 
   :class="{ 'active-link': showDropdowninformacije || isRouteActive('skijasi.commerce-theme.osnovneinformacije') || isRouteActive('skijasi.commerce-theme.djelatnostihzutsa') || isRouteActive('skijasi.commerce-theme.infoclanarine') || isRouteActive('skijasi.commerce-theme.izradaiskaznice') || isRouteActive('skijasi.commerce-theme.podrucnizborovi') || isRouteActive('skijasi.commerce-theme.dokumenti') }">
-  Informacije
+  {{ $t('information') }}
 </button>
 
 
 
       <Link class="dogaanja animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">{{ $t('Galerija') }}</Link>
-      <Link class="dogaanja animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt</Link>
+      <Link class="dogaanja animation-link" :class="{ 'active-link': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">{{ $t('Kontakt') }}</Link>
 
 
 
@@ -118,12 +118,12 @@
       
      <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}"/>
     <Link :href="route('skijasi.commerce-theme.login')" class="prvigumbprijavise">
-        <div class="prijavi-se">Prijavi se</div>
+        <div class="prijavi-se">{{ $t('prijaviSe') }}</div>
         <div class="prvigumbprijavise-child" />
     </Link>
   <Link :href="route('skijasi.commerce-theme.register')" class="drugigumbregistracija">
         <div class="drugigumbregistracija-child" />
-        <div class="registriraj-se">Registriraj se</div>
+        <div class="registriraj-se">{{ $t('registriraj-se') }}</div>
   </Link>
        </div>
       </transition>
@@ -132,12 +132,12 @@
     <div v-if="showDropdownprijavljen" class="dropdownnavglavni">
       <div class="pozadinadropdown" :class="{'transparent-bg': isHomePage}" />
       <Link :href="route('skijasi.commerce-theme.profile')" class="prvigumbprijavise">
-        <div class="prijavi-se">Profil</div>
+        <div class="prijavi-se">{{ $t('profile') }}</div>
         <div class="prvigumbprijavise-child" />
       </Link>
       <button  @click="logout" class="drugigumbregistracija">
         <div class="drugigumbregistracija-child" />
-        <div class="registriraj-se">Odjavi se</div>
+        <div class="registriraj-se">{{ $t('odjaviSe') }}</div>
       </button>
     </div>
   </transition>
@@ -148,22 +148,28 @@
 
 
   <div class="dropdownjezikglavni" v-if="showDropdownjezik">
-      <div class="izaberi-jezik">{{ $t('izaberiJezik') }}</div>
-      <div class="listajezika">
-        <button class="hrvatskiframe" @click="changeLanguage('hr')">
-          <div class="hrvatski-hr">{{ $t('hrvatski') }}</div>
-          <img class="ikonattalijanska-icon" alt="" src="/storage/slike/ikonahrvatska.svg" />
-        </button>
-        <button class="engleskifframe" @click="changeLanguage('en')">
-          <div class="engleski-uk">{{ $t('engleski') }}</div>
-          <img class="ikonaengleska-icon" alt="" src="/storage/slike/ikonaengleska.svg" />
-        </button>
-        <button class="talijanskiframe" @click="changeLanguage('it')">
-          <div class="talijanski-it">{{ $t('talijanski') }}</div>
-          <img class="ikonattalijanska-icon" alt="" src="/storage/slike/ikonattalijanska.svg" />
-        </button>
-      </div>
+    <div class="izaberi-jezik">{{ $t('izaberiJezik') }}</div>
+    <div class="listajezika">
+      <button class="hrvatskiframe" @click="changeLanguage('hr')">
+        <div class="hrvatski-hr" :class="{ 'selected': currentLanguage === 'hr' }">
+          {{ $t('hrvatski') }}
+        </div>
+        <img class="ikonattalijanska-icon" alt="" src="/storage/slike/ikonahrvatska.svg" />
+      </button>
+      <button class="engleskifframe" @click="changeLanguage('en')">
+        <div class="engleski-uk" :class="{ 'selected': currentLanguage === 'en' }">
+          {{ $t('engleski') }}
+        </div>
+        <img class="ikonaengleska-icon" alt="" src="/storage/slike/ikonaengleska.svg" />
+      </button>
+      <button class="talijanskiframe" @click="changeLanguage('it')">
+        <div class="talijanski-it" :class="{ 'selected': currentLanguage === 'it' }">
+          {{ $t('talijanski') }}
+        </div>
+        <img class="ikonattalijanska-icon" alt="" src="/storage/slike/ikonattalijanska.svg" />
+      </button>
     </div>
+  </div>
 
 
 
@@ -174,13 +180,13 @@
      @mouseleave="toggleDropdownInformacije(false)"
      @click="toggleDropdownInformacije">
   <!-- Dropdown content -->
-      <Link class="osnovne-informacije" :href="route('skijasi.commerce-theme.osnovneinformacije')">Osnovne informacije</Link>
-      <Link class="djelatnost-hzuts-a" :href="route('skijasi.commerce-theme.djelatnostihzutsa')">Djelatnost HZUTS-a</Link>
-      <Link class="status-lanova-hzuts-a" :href="route('skijasi.commerce-theme.stranicastatusiclanova')" >Status članova HZUTS-a</Link>
-      <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')" >Članarine</Link> 
-      <Link class="izrada-lanske-iskaznice" :href="route('skijasi.commerce-theme.izradaiskaznice')" >Izrada članske iskaznice</Link>
-      <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')" >Područni zborovi</Link>
-      <div class="dokumenti-hzuts-a">Dokumenti HZUTS-a</div>
+      <Link class="osnovne-informacije" :href="route('skijasi.commerce-theme.osnovneinformacije')">{{ $t('osnovne-informacije') }}</Link>
+      <Link class="djelatnost-hzuts-a" :href="route('skijasi.commerce-theme.djelatnostihzutsa')">{{ $t('djelatnost-hzuts-a') }}</Link>
+      <Link class="status-lanova-hzuts-a" :href="route('skijasi.commerce-theme.stranicastatusiclanova')" >{{ $t('status-clanova-hzuts-a') }}</Link>
+      <Link class="lanarineInfo" :href="route('skijasi.commerce-theme.infoclanarine')" >{{ $t('clanarine') }}</Link> 
+      <Link class="izrada-lanske-iskaznice" :href="route('skijasi.commerce-theme.izradaiskaznice')" >{{ $t('izrada-clanske-iskaznice') }}</Link>
+      <Link class="podruni-zboroviMeni" :href="route('skijasi.commerce-theme.podrucnizborovi')" >{{ $t('podrucni-zborovi') }}</Link>
+      <div class="dokumenti-hzuts-a">{{ $t('dokumenti-hzuts-a') }}</div>
  
 </div>
 
@@ -194,13 +200,13 @@
         <div class="infolista">
 
   <!-- Dropdown content -->
-      <Link class="osnovne-informacije" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')" @click="closeDropdown">Osnovne informacije</Link>
-      <Link class="djelatnost-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.djelatnostihzutsa') }" :href="route('skijasi.commerce-theme.djelatnostihzutsa')" @click="closeDropdown">Djelatnost HZUTS-a</Link>
-      <Link class="status-lanova-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.stranicastatusiclanova') }" :href="route('skijasi.commerce-theme.stranicastatusiclanova')" @click="closeDropdown">Status članova HZUTS-a</Link>
-      <Link class="lanarineInfo" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')" @click="closeDropdown">Članarine</Link> 
-      <Link class="izrada-lanske-iskaznice" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.izradaiskaznice') }" :href="route('skijasi.commerce-theme.izradaiskaznice')" @click="closeDropdown">Izrada članske iskaznice</Link>
-      <Link class="podruni-zboroviMeni" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.podrucnizborovi') }" :href="route('skijasi.commerce-theme.podrucnizborovi')" @click="closeDropdown">Područni zborovi</Link>
-      <div class="dokumenti-hzuts-a">Dokumenti HZUTS-a</div>
+      <Link class="osnovne-informacije" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.osnovneinformacije') }" :href="route('skijasi.commerce-theme.osnovneinformacije')" @click="closeDropdown">{{ $t('osnovne-informacije-0') }}</Link>
+      <Link class="djelatnost-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.djelatnostihzutsa') }" :href="route('skijasi.commerce-theme.djelatnostihzutsa')" @click="closeDropdown">{{ $t('djelatnost-hzuts-a-0') }}</Link>
+      <Link class="status-lanova-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.stranicastatusiclanova') }" :href="route('skijasi.commerce-theme.stranicastatusiclanova')" @click="closeDropdown">{{ $t('status-clanova-hzuts-a-0') }}</Link>
+      <Link class="lanarineInfo" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')" @click="closeDropdown">{{ $t('clanarine-0') }}</Link> 
+      <Link class="izrada-lanske-iskaznice" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.izradaiskaznice') }" :href="route('skijasi.commerce-theme.izradaiskaznice')" @click="closeDropdown">{{ $t('izradaclanskeiskaznice') }}</Link>
+      <Link class="podruni-zboroviMeni" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.podrucnizborovi') }" :href="route('skijasi.commerce-theme.podrucnizborovi')" @click="closeDropdown">{{ $t('podrucni-zborovi-0') }}</Link>
+      <div class="dokumenti-hzuts-a">{{ $t('dokumenti-hzuts-a') }}</div>
     </div>
 </div>
 
@@ -217,18 +223,18 @@
       <div class="mobilnimeni">
 
      
-      <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">Početna <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
-      <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.kategorija') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">Događanja <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
-      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">Naši članovi <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('/') }" :href="route('skijasi.commerce-theme.home')">{{ $t('home') }} <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile"  :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.kategorija') }" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })">{{ $t('events') }} <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.nasiclanovi') }" :href="route('skijasi.commerce-theme.nasiclanovi')">{{ $t('ourMembers') }} <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
       <button 
   class="pocetnamobile" 
   @click="toggleDropdownInformacijeMob" 
   :class="{ 'active-linkmobile': showDropdowninformacijeMob }">
-  Informacije<img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" />
+  {{ $t('information') }}<img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" />
 </button>
 
-      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">Galerija <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
-      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">Kontakt <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.galerija') }" :href="route('skijasi.commerce-theme.galerija')">{{ $t('Galerija') }} <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
+      <Link class="pocetnamobile" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.kontakt') }" :href="route('skijasi.commerce-theme.kontakt')">{{ $t('Kontakt') }} <img class="ikonaselectmeni-icon" alt="" src="/storage/slike/ikonaselectmeni.svg" /></Link>
     
       </div>
     </div>
@@ -1302,7 +1308,7 @@ align-items: center;
     font-size: 0.75rem;
     font-weight: 500;
     font-family: Inter;
-    color: #03a9f4;
+  
     text-align: center;
   }
   .hrvatskiframe {
@@ -1350,6 +1356,12 @@ align-items: center;
     width: 7.06rem;
     height: 5rem;
   }
+
+  .selected {
+    color: #03a9f4; 
+ 
+  }
+
   .dropdownjezikglavni {
     position: absolute;
     top: 3.75rem;

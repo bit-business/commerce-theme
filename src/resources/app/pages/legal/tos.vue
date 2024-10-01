@@ -2,7 +2,7 @@
   <div class="flex-grow flex container py-8 flex-wrap">
     <Head :title="$page.props.name" />
 
-    <div class="uppercase text-lg mb-8 font-bold text-gray-700 text-center w-full">UVJETI KORIŠTENJA</div>
+    <div class="uppercase text-lg mb-8 font-bold text-gray-700 text-center w-full">{{ $t('uvjeti-koristenja') }}</div>
     <div v-html="tos" class="tos-content px-6" />
 
     <fab color="primary" @click="scrollToTop" v-if="!isHide">

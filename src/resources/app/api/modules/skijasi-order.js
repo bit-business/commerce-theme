@@ -37,6 +37,7 @@ export default {
   getOrderStatus(data = {}) {
     let ep = apiPrefix + "/v1/order/public/orderstatus";
     return resource.post(ep, data);
-  }
+  },
+
 
 };

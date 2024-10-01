@@ -2,7 +2,7 @@
   <div class="flex-grow flex container py-8 flex-wrap">
     <Head :title="$page.props.name" />
 
-    <div class="uppercase text-lg mb-8 font-bold text-gray-700 text-center w-full">POLITIKA PRIVATNOSTI</div>
+    <div class="uppercase text-lg mb-8 font-bold text-gray-700 text-center w-full">{{ $t('politika-privatnosti') }}</div>
     <div v-html="tos" class="privacy-content px-6" />
 
     <fab color="primary" @click="scrollToTop">

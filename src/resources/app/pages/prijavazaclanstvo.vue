@@ -435,15 +435,11 @@ export default {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     }
 
-    this.$nextTick(() => {
-    this.$forceUpdate();
-  });
 
     if (this.user) {
       this.prefillData(this.user);
     }
-
-  
+  this.$forceUpdate();
   },
 
   beforeDestroy() {

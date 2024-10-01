@@ -1,54 +1,34 @@
-import _ from "lodash";
+import hr from './modules/hr.json';
+import en from './modules/en.json';
+import it from './modules/it.json';
 
-import hr from './modules//hr';
-import en from './modules/en';
-import it from './modules/it';
+const languages = [
+  { label: "Hrvatski", key: "hr" },
+  { label: "English", key: "en" },
+  { label: "Italiano", key: "it" }
+];
 
-let exported = {};
-let languages = [];
+const i18n = {
+  hr,
+  en,
+  it
+};
 
-// DYNAMIC IMPORT SKIJASI LANG
+// Dynamic import of additional languages
 try {
-  const modules = require.context("./modules", false, /\.js$/); //
+  const modules = require.context("./modules", false, /\.json$/);
   modules.keys().forEach((fileName) => {
-    let property = fileName
-      .replace("./", "")
-      .replace(".js", "")
-      .replace(/([a-z])([A-Z])/g, "$1-$2") // get all lowercase letters that are near to uppercase ones
-      .replace(/[\s_]+/g, "-") // replace all spaces and low dash
-      .replace(/^\.\/_/, "")
-      .replace(/\.\w+$/, "")
-      .split("-")
-      .map((word, index) => {
-        if (index > 0) {
-          return word.charAt(0).toUpperCase() + word.slice(1);
-        } else {
-          return word;
-        }
-      })
-      .join("");
-
-    languages.push({
-      label: modules(fileName).label,
-      key: property,
-    });
-    exported[property] = modules(fileName).default;
+    const languageKey = fileName.replace("./", "").replace(".json", "");
+    if (!i18n[languageKey]) {
+      const module = modules(fileName);
+      i18n[languageKey] = module; // Remove .default here
+    }
   });
 } catch (error) {
-  console.info("Failed to load skijasi languages", error);
+  console.warn("Failed to load additional languages", error);
 }
 
 export default {
-  languages: [
-    { label: "Hrvatski", key: "hr" },
-    { label: "English", key: "en" },
-    { label: "Italiano", key: "it" }
-  ],
-  i18n: {
-    hr,
-    en,
-    it
-  },
-  // languages,
-  // i18n: exported,
+  languages,
+  i18n
 };

@@ -1,7 +1,7 @@
 <template>
  
   <div class="hzuts-reset-password-desktop">
-    <Head title="Zaboravljena lozinka" />
+    <Head title="$t('zaboravljena-lozinka-0')" />
     <img
       class="backgroundzaboravljenalozinka-icon"
       alt=""
@@ -20,9 +20,9 @@
 
 
         <template v-if="!isVerify">
-          <b class="zaboravljena-lozinka">Zaboravljena lozinka</b>
+          <b class="zaboravljena-lozinka">{{ $t('zaboravljena-lozinka-0') }}</b>
           <div class="bez-brige-poslat">
-          Bez brige, poslat ćemo Vam upute za ponovno postavljanje.
+          {{ $t('bez-brige-poslat-cemo-vam-upute-za-ponovno-postavljanje') }}
         </div>
         
           <div class="upisemaila">
@@ -31,14 +31,14 @@
             <input class="poljezaupis" type="email" v-model="email" @keypress.enter="reset" ref="emailInput" :class="{ invalid: $v.email.$error }" />
             <img class="mail-icon" alt="" src="/storage/slike/mail-iconprijava.svg" />
           </div>
-          <div class="email">Email</div>
+          <div class="email">{{ $t('email-0') }}</div>
         </div>
        
             <button :class="emailButtonClasses" @click="reset">
               <commerce-loading v-if="loading" />
               <div class="posaljigumbzaboravljenalozinka">
           <div class="posaljigumbzaboravljenalozinka-child" />
-          <span class="poalji">Pošalji</span>
+          <span class="poalji">{{ $t('posalji-0') }}</span>
         </div>
             </button>
     
@@ -47,7 +47,7 @@
 
         <template v-else>
       
-            <b class="zaboravljena-lozinka2">Verificiraj</b>
+            <b class="zaboravljena-lozinka2">{{ $t('verificiraj') }}</b>
             <div class="">
             <alert color="primary popup2 absolute" closeable>
               <template slot="icon">
@@ -55,20 +55,20 @@
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </template>
-              <span>Provjerite svoju e-poštu kako biste dobili kod tokena</span>
+              <span>{{ $t('provjerite-svoju-e-postu-kako-biste-dobili-kod-tokena') }}</span>
             </alert>
             <pin
               v-model="token"
               :length="6"
               class="mt-4 tokenpozicija"
-              label="Upišite token dobiven na email"
+              label="$t('upisite-token-dobiven-na-email')"
               @keypress.enter="verify"
             />
             <button :class="tokenButtonClasses" @click="verify">
               <commerce-loading v-if="loading" />
               <div v-else class="posaljigumbzaboravljenalozinka2">
           <div class="posaljigumbzaboravljenalozinka-child" />
-          <span class="poalji">Pošalji</span>
+          <span class="poalji">{{ $t('posalji-1') }}</span>
         </div>
               
             </button>
@@ -87,18 +87,18 @@
           src="/storage/slike/ikonasrednjiframetop.svg"
         />
         <div class="natragnaprijavutekst" @click="back">
-          <div class="natrag-na-prijavu cursor-pointer" >Natrag na prijavu</div>
+          <div class="natrag-na-prijavu cursor-pointer" >{{ $t('natrag-na-prijavu') }}</div>
           <img class="arrow-left-1-icon" alt="" src="/storage/slike/arrowleft-1.svg" />
         </div>
         <div class="e-mail-adresa-nije" v-if="$v.email.$error">
-          E-mail adresa nije valjanog formata
+          {{ $t('e-mail-adresa-nije-valjanog-formata') }}
         </div>
       </div>
     </div>
 
     <div class="hzuts-login-desktop-child" />
     <div class="footertext">
-      Copyright © 2023 Sva prava pridržana od strane HZUTS-a.
+      {{ $t('copyright-c-2023-sva-prava-pridrzana-od-strane-hzuts-a-0') }}
     </div>
     <img class="logoprijava-icon" alt="" src="/storage/slike/logoprijava.svg" />
   </div>
@@ -262,13 +262,13 @@ export default {
     emailButtonClasses() {
       return [
         "posalji",
-        this.$v.email.$invalid || this.loading ? "cursor-not-allowed opacity-50" : "",
+        this.$v.email.$invalid || this.loading ? this.$t('cursor-not-allowed-opacity-50') : "",
       ];
     },
     tokenButtonClasses() {
       return [
         "posalji",
-        this.$v.token.$invalid || this.loading ? "cursor-not-allowed opacity-50" : "",
+        this.$v.token.$invalid || this.loading ? this.$t('cursor-not-allowed-opacity-50') : "",
       ];
     },
     ...mapState({

@@ -557,17 +557,39 @@ export default {
     },
 
 
-    navigateToPrijava() {
+
+    // navigateToPrijava() {
+    //     if (!this.isAuthenticated) {
+    //       // Store the current page's full path before redirecting
+    //       sessionStorage.setItem('previousRoute', this.route('skijasi.commerce-theme.detalji', { slug: this.$page.props.slug }));
+    //       this.$inertia.visit(this.route('skijasi.commerce-theme.login'));
+    //     }
+    //     else {
+    //       this.showSkiingTypePopup = true;
+    //       this.isLoading = false; 
+    //     }
+    //   },
+// ORIGINAL NAVIGATE
+
+      // OVO JE TEST ZA SEMINAR GDJE SE SAMO PRIJAVLJUJU UCITELJI SKIJANJA I NIJE ČLAN
+      navigateToPrijava() {
         if (!this.isAuthenticated) {
           // Store the current page's full path before redirecting
           sessionStorage.setItem('previousRoute', this.route('skijasi.commerce-theme.detalji', { slug: this.$page.props.slug }));
           this.$inertia.visit(this.route('skijasi.commerce-theme.login'));
         }
         else {
+          if (this.product.id != 39) {
           this.showSkiingTypePopup = true;
           this.isLoading = false; 
+        } else{
+          this.isLoading = false; 
+          this.setSelectedProduct2()
+         
         }
-      },
+        }
+       }, 
+       // OVO JE TEST ZA SEMINAR GDJE SE SAMO PRIJAVLJUJU UCITELJI SKIJANJA I NIJE ČLAN
 
     async ucitajClanove() {
             console.log("TEST ID ucitaj clanove:", this.user.id);
@@ -587,6 +609,55 @@ export default {
         }
       },
 
+
+   async setSelectedProduct2() {
+  if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
+    const nijeclanProduct = this.product.productDetails.find(
+      detail => detail.name === "Nije član"
+    );
+    this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : this.product.productDetails[0].id;
+  } else  {
+    const hzutsProduct = this.product.productDetails.find(
+      detail => detail.name === this.korisnik.statusString
+    );
+    this.selectedProduct.id = hzutsProduct ? hzutsProduct.id : this.product.productDetails[0].id;
+  } 
+  
+  // Log the selected product for debugging
+  console.log("Selected product ID:", this.selectedProduct.id);
+  if (this.selectedProduct.id) {
+        const selectedProductDetail = this.product.productDetails.find(detail => detail.id === this.selectedProduct.id);
+        
+        if (selectedProductDetail) {
+            try {
+                const response = await api.checkUserFormEntry(this.product.formId, this.user.id);
+                console.log("API Response:", response);
+
+                if (response.hasEntry) {
+                    this.$helper.alert("Već ste prijavljeni na ovaj seminar. Ne možete se ponovno prijaviti.");
+         
+                    return;
+                }
+
+                if (selectedProductDetail.quantity > 0) {
+                
+                    this.processOrder();
+                } else {
+                    this.$helper.alert("Nažalost, nema raspoloživih mjesta za odabranu opciju.");
+                }
+            } catch (error) {
+                this.$helper.alert("Došlo je do greške pri provjeri vaše prijave. Molimo pokušajte ponovno.");
+            
+            }
+        
+        } else {
+            this.$helper.alert("Došlo je do greške pri odabiru. Molimo pokušajte ponovno.");
+
+        }
+    }
+
+
+},
 
 
 
@@ -850,7 +921,7 @@ showPreviousImage() {
       this.activeDiscount = res.data.product.productDetails[0].discount;
 // this.getSimilarProduct() // this.getReviews() 
      
-
+console.log("TEST GRTRPODUCT",this.product);
      
     })
     .catch(err => {

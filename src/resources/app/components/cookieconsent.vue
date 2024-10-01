@@ -11,11 +11,11 @@
     >
        <!-- @decline="acceptCookies('functional')" -->
       <template v-slot:message>
-        Koristimo samo nužne kolačiće kako bismo omogućili funkcioniranje web stranice. 
-        <a class="custom-link" href="https://hzuts.hr/politikakolacica" target="_blank">Saznajte više</a><br>
+        {{ $t('koristimo-samo-nuzne-kolacice-kako-bismo-omogucili-funkcioniranje-web-stranice') }} 
+        <a class="custom-link" href="https://hzuts.hr/politikakolacica" target="_blank">{{ $t('saznajte-vise') }}</a><br>
       </template>
       <template v-slot:acceptContent class="gumb">
-        U redu
+        {{ $t('u-redu') }}
       </template>
       <!-- <template v-slot:declineContent>
         Funkcionalni

@@ -31,71 +31,41 @@ import { broadcastMessageHandle } from "./utils/broadcast-messages";
 import SsrCarousel from 'vue-ssr-carousel';
 import ssrCarouselCss from 'vue-ssr-carousel/index.css';
 
-
+import VueI18n from 'vue-i18n';
 // i18n.js
 
-import VueI18n from 'vue-i18n';
+import en from '../js/lang/modules/en.json';
+import hr from '../js/lang/modules/hr.json';
+import it from '../js/lang/modules/it.json';
 
 Vue.use(VueI18n);
 
-const messages = {
-  en: {
-    home: 'Home',
-    events: 'Events',
-    ourMembers: 'Our members',
-    information: 'Information',
-    Galerija: 'Gallery',
-    Kontakt: 'Contact',
-    prijaviSe: 'Prijavi se',
-    registrirajSe: 'Registriraj se',
-    profile: 'Profil',
-    odjaviSe: 'Odjavi se',
-    izaberiJezik: 'Choose language',
-    hrvatski: 'Hrvatski',
-    engleski: 'English',
-    talijanski: 'Italian'
-  },
-  hr: {
-    home: 'Početna',
-  events: 'Događanja',
-  ourMembers: 'Naši članovi',
-  information: 'Informacije',
-  Galerija: 'Galerija',
-  Kontakt: 'Kontakt',
-  prijaviSe: 'Prijavi se',
-  registrirajSe: 'Registriraj se',
-  profile: 'Profil',
-  odjaviSe: 'Odjavi se',
-  izaberiJezik: 'Izaberi jezik',
-  hrvatski: 'Hrvatski',
-  engleski: 'English',
-  talijanski: 'Italian'
-  },
-  it: {
-    home: 'Početna',
-  events: 'Događanja',
-  ourMembers: 'Naši članovi',
-  information: 'Informacije',
-  Galerija: 'Galerija',
-  Kontakt: 'Kontakt',
-  prijaviSe: 'Prijavi se',
-  registrirajSe: 'Registriraj se',
-  profile: 'Profil',
-  odjaviSe: 'Odjavi se',
-  izaberiJezik: 'Izaberi jezik',
-  hrvatski: 'Hrvatski',
-  engleski: 'English',
-  talijanski: 'Talijanski'
-  },
-
-};
-
 const i18n = new VueI18n({
   locale: 'hr', // Default language
-  messages,
+  fallbackLocale: 'en',
+  messages: {
+    en,
+    hr,
+    it
+  },
+  silentTranslationWarn: true, // Set to false during development to see warnings for missing translations
+  missing: (locale, key, vm, values) => {
+    console.warn(`[i18n] Missing '${key}' for locale '${locale}'`);
+    return key; // return the key itself as fallback
+  }
 });
 
-export default i18n;
+// Language change helper
+Vue.prototype.$changeLanguage = function(lang) {
+  i18n.locale = lang;
+  localStorage.setItem('userLanguage', lang);
+};
+
+// Load saved language preference on app start
+const savedLanguage = localStorage.getItem('userLanguage');
+if (savedLanguage) {
+  i18n.locale = savedLanguage;
+}
 
 
 

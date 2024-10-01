@@ -1,6 +1,6 @@
 <template>
   <div class="hzuts-registration-desktop">
-    <Head title="Registracija" />
+    <Head title="$t('registracija')" />
     <Link :href="route('skijasi.commerce-theme.home')" class="backgumb">
       <img class="vector-icon2" alt="" src="/storage/slike/vectornazad1.svg" />
       <img class="vector-icon2" alt="" src="/storage/slike/vectornazad2.svg" />
@@ -10,7 +10,7 @@
       <transition name="frame-fade" mode="out-in">
     <div class="srednjiframe" v-if="showCurrentFrame">
       <div class="srednjipodframe">
-        <b class="registracijatekst">Registracija</b>
+        <b class="registracijatekst">{{ $t('registracija-0') }}</b>
 
 
 
@@ -18,7 +18,7 @@
         :style="{ backgroundColor: isFormValid ? '#03a9f4' : 'rgba(152, 208, 241, 0.6)' }"
         class="gumbsljedece" 
         @click="toggleContent">
-  <div class="sljedee">Sljedeće</div>
+  <div class="sljedee">{{ $t('sljedece') }}</div>
 </button>
         <div class="frame1234">
           <div class="framegore4">
@@ -57,7 +57,7 @@
               <input class="poljezaupisime" type="text" required v-model="computedName" ref="name"/>
               <img class="user-icon" alt="" src="/storage/slike/user-icon.svg" />
             </div>
-            <div class="ime">Ime</div>
+            <div class="ime">{{ $t('ime') }}</div>
   
           </div>
           <div class="frameprezime">
@@ -66,11 +66,11 @@
               <input class="poljezaupisime" type="text" required v-model="computedUsername" ref="username" />
               <img class="user-icon" alt="" src="/storage/slike/user-icon.svg" />
             </div>
-            <div class="ime">Prezime</div>
+            <div class="ime">{{ $t('prezime') }}</div>
           </div>
      
 
-          <div class="imenapomena">*Ime i prezime upišite sa hrvatskim znakovima žčćšđ</div>
+          <div class="imenapomena">{{ $t('ime-i-prezime-upisite-sa-hrvatskim-znakovima-zccsd') }}</div>
         </div>
         
         <div class="frameemail">
@@ -79,7 +79,7 @@
             <input class="poljezaupisemaila" type="email" required v-model="email" ref="email"/>
             <img class="user-icon" alt="" src="/storage/slike/mail-iconprijava.svg" />
           </div>
-          <div class="ime">Email</div>
+          <div class="ime">{{ $t('email-0') }}</div>
         </div>
         <div class="framedatumrodjenja">
           <div class="framezaemail">
@@ -91,7 +91,7 @@
               src="/storage/slike/calendarikonazadatumrodenja.svg"
             />
           </div>
-          <div class="ime">Datum rođenja</div>
+          <div class="ime">{{ $t('datum-rodenja') }}</div>
         </div>
 
               <!-- Error messages container -->
@@ -110,12 +110,12 @@
       <!-- Content of the second frame you want to show on top of the current one -->
       <div class="srednjiframe2" v-if="!showCurrentFrame && showSecondFrame">
       <div class="srednjipodframe2">
-        <b class="registracijatekst">Registracija</b>
+        <b class="registracijatekst">{{ $t('registracija-1') }}</b>
         <button :disabled="!isSecondFormValid"
         :style="{ backgroundColor: isSecondFormValid ? '#03a9f4' : 'rgba(152, 208, 241, 0.6)' }"
         class="gumbsljedece" 
         @click="toggleContent">
-  <div class="sljedee">Sljedeće</div>
+  <div class="sljedee">{{ $t('sljedece-0') }}</div>
 </button>
 
         <div class="frameregistracija-1do4glavni">
@@ -176,7 +176,7 @@
                 src="/storage/slike/ikonareg-mobitel.svg"
               />
             </div>
-            <div class="broj-mobitela">Broj mobitela</div>
+            <div class="broj-mobitela">{{ $t('broj-mobitela') }}</div>
           </div>
           <div class="framedrzava">
             <div class="podframebrojmobitela">
@@ -195,7 +195,7 @@
                 src="/storage/slike/ikonareg-drzava.svg"
               />
             </div>
-            <div class="broj-mobitela">Država</div>
+            <div class="broj-mobitela">{{ $t('drzava') }}</div>
           </div>
         </div>
         <div class="frameadresa">
@@ -215,10 +215,10 @@
               src="/storage/slike/registracija-ikonaadresa.svg"
             />
           </div>
-          <div class="adresa">Adresa</div>
+          <div class="adresa">{{ $t('adresa') }}</div>
         </div>
         <div class="framenatrag">
-          <button @click="switchToFirstFrame" class="tekstnatragnaprethodnigrad2">Natrag na prethodni korak</button>
+          <button @click="switchToFirstFrame" class="tekstnatragnaprethodnigrad2">{{ $t('natrag-na-prethodni-korak') }}</button>
           <img
             class="ikona-reg-strelicazanazad-icon"
             alt=""
@@ -243,7 +243,7 @@
                 src="/storage/slike/registracija-ikonaadresa.svg"
               />
             </div>
-            <div class="broj-mobitela">Grad</div>
+            <div class="broj-mobitela">{{ $t('grad') }}</div>
           </div>
           <div class="framedrzava">
             <div class="podframebrojmobitela">
@@ -255,7 +255,7 @@
                 src="/storage/slike/registracija-ikonaadresa.svg"
               />
             </div>
-            <div class="broj-mobitela">Poštanski broj</div>
+            <div class="broj-mobitela">{{ $t('postanski-broj') }}</div>
           </div>
         </div>
 
@@ -282,13 +282,13 @@
    
 
       <div class="srednjipodframe3">
-        <b class="registracijatekst">Registracija</b>
+        <b class="registracijatekst">{{ $t('registracija-2') }}</b>
      
         <button :disabled="!isThirdFormValid"
         :style="{ backgroundColor: isThirdFormValid ? '#03a9f4' : 'rgba(152, 208, 241, 0.6)' }"
         class="login-with-email-button" 
         @click="toggleContent">
-  <div class="sljedee">Sljedeće</div>
+  <div class="sljedee">{{ $t('sljedece-1') }}</div>
 </button>
 
 
@@ -347,7 +347,7 @@
 
               <img class="password-icon" alt="" src="/storage/slike/password-icon.svg" />
             </div>
-            <div class="lozinka">Lozinka</div>
+            <div class="lozinka">{{ $t('lozinka-0') }}</div>
             
           </div>
 
@@ -386,7 +386,7 @@
         </div>
               <img class="password-icon" alt="" src="/storage/slike/password-icon.svg" />
             </div>
-            <div class="lozinka">Potvrda lozinke</div>
+            <div class="lozinka">{{ $t('potvrda-lozinke') }}</div>
           </div>
         </div>
 
@@ -407,7 +407,7 @@
           <path id="semi-circle-path" d="M 10,75 A 65,65 0 0 1 140,75" fill="transparent" />
           <text>
             <textPath xlink:href="#semi-circle-path" startOffset="50%" text-anchor="middle" style="fill: white; font-weight: 600; font-size: 12px;">
-              Slika Profila
+              {{ $t('slika-profila') }}
             </textPath>
           </text>
         </svg>
@@ -440,8 +440,8 @@
     @cropped="cropImage"
   />
   <div class="button-group">
-    <button @click="cancelCrop" class="cancel-button">Odustani</button>
-    <button @click="confirmCrop" class="confirm-button">Potvrdi</button>
+    <button @click="cancelCrop" class="cancel-button">{{ $t('odustani') }}</button>
+    <button @click="confirmCrop" class="confirm-button">{{ $t('potvrdi') }}</button>
   </div>
   </div>
 
@@ -449,7 +449,7 @@
 
         
         <div class="framezanatragnaprethodnikorak">
-          <button @click="switchToSecondFrame" class="tekstnatragnaprethodnigrad">Natrag na prethodni korak</button>
+          <button @click="switchToSecondFrame" class="tekstnatragnaprethodnigrad">{{ $t('natrag-na-prethodni-korak-0') }}</button>
           <img
             class="arrow-left-1-icon"
             alt=""
@@ -491,12 +491,12 @@
     <div class="srednjiframe4" v-if="!showCurrentFrame && !showSecondFrame && !showThirdFrame && showFourthFrame">
   <!-- Content of the fourth frame you want to show on top of the current, second, and third one -->
       <div class="srednjipodframe4">
-        <b class="registracijatekst">Registracija</b>
+        <b class="registracijatekst">{{ $t('registracija-3') }}</b>
         <button :disabled="!isFourthFormValid"
         :style="{ backgroundColor: isFourthFormValid ? '#03a9f4' : 'rgba(152, 208, 241, 0.6)' }"
         class="screen4gumbregistrirajseframe" 
         @click="register">
-  <div class="sljedee4">Registriraj se</div>
+  <div class="sljedee4">{{ $t('registriraj-se') }}</div>
   <div v-if="loading" class="loader"></div>
 </button>
         <div class="screen4reg4-frame1do4brojevi">
@@ -533,19 +533,19 @@
         </div>
         <div class="screen4framespolidodajlinkove">
           <div class="screen4framezaodabirpola">
-            <div class="screen4tekstspol">Spol</div>
+            <div class="screen4tekstspol">{{ $t('spol') }}</div>
             <div class="screen4framemusko">
               <input class="screen4radiooff" type="radio"    
               @click="spol = 'Muško'"
               :checked="spol === 'Muško'"/>
-              <div class="screen4muko">Muško</div>
+              <div class="screen4muko">{{ $t('musko') }}</div>
             </div>
             <div class="screen4framezensko">
               <input class="screen4radioon" 
               type="radio" 
               @click="spol = 'Žensko'"
         :checked="spol === 'Žensko'" />
-              <div class="screen4ensko">Žensko</div>
+              <div class="screen4ensko">{{ $t('zensko') }}</div>
             </div>
           </div>
 
@@ -589,13 +589,13 @@
         <div class="screen4framechecktermsofuse">
           <div class="screen4tekst-pristajemnaregistraciju">
             <span
-              >Registracijom pristajem na obradu osobnih podataka i pristajem na
+              >{{ $t('registracijom-pristajem-na-obradu-osobnih-podataka-i-pristajem-na') }}
             </span>
             <Link :href="route('skijasi.commerce-theme.politikaprivatnosti')" class="uvjete-i-politiku text-primary cursor-pointer">
-              uvjete korištenja i
+              {{ $t('uvjete-koristenja-i') }}
                 </Link>
                 <Link :href="route('skijasi.commerce-theme.politikaprivatnosti')" class="text-primary cursor-pointer">
-                  politiku privatnosti
+                  {{ $t('politiku-privatnosti') }}
                 </Link>
          
           </div>
@@ -609,7 +609,7 @@
 
    
         <a class="framezanatragnaprethodnikorak4">
-          <button @click="switchToThirdFrame" class="tekstnatragnaprethodnigrad">Natrag na prethodni korak</button>
+          <button @click="switchToThirdFrame" class="tekstnatragnaprethodnigrad">{{ $t('natrag-na-prethodni-korak-1') }}</button>
           <img class="arrow-left-1-icon" alt="" src="/storage/slike/arrowleft-1.svg" />
         </a>
 
@@ -646,7 +646,7 @@
 
     <div class="footerbackground" />
     <div class="footertekst">
-      Copyright © 2024 Sva prava pridržana od strane HZUTS-a.
+      {{ $t('copyright-c-2024-sva-prava-pridrzana-od-strane-hzuts-a') }}
     </div>
     <img class="logohzuts-icon" alt="" src="/storage/slike/logohzuts.svg" />
   </div>
@@ -877,14 +877,14 @@ export default {
 
 
   isFourthFormValid() {
-    return this.checkboxValue && (this.spol === 'Muško' || this.spol === 'Žensko');
+    return this.checkboxValue && (this.spol === this.$t('musko-0') || this.spol === this.$t('zensko-0'));
   },
 
 
     buttonClasses() {
       return [
-        "w-full bg-primary text-white py-2 rounded-md text-sm font-medium mt-4 select-none flex items-center justify-center gap-2",
-        this.$v.$invalid || this.loading ? "cursor-not-allowed opacity-50" : "",
+        this.$t('w-full-bg-primary-text-white-py-2-rounded-md-text-sm-font-medium-mt-4-select-none-flex-items-center-justify-center-gap-2'),
+        this.$v.$invalid || this.loading ? this.$t('cursor-not-allowed-opacity-50') : "",
       ];
     },
     ...mapState({
@@ -910,83 +910,83 @@ export default {
 
     firstErrorMessage() {
     if (this.$v.name.$dirty && !this.$v.name.required) {
-      return 'Ime je obavezno.';
+      return this.$t('ime-je-obavezno');
     } else if (this.$v.name.$dirty && !this.$v.name.minLength) {
-      return 'Ime mora sadržavati najmanje 3 znaka.';
+      return this.$t('ime-mora-sadrzavati-najmanje-3-znaka');
     } else if (this.$v.name.$dirty && !this.$v.name.maxLength) {
-      return 'Ime ne smije biti duže od 35 znakova.';
+      return this.$t('ime-ne-smije-biti-duze-od-35-znakova');
     }
 
     if (this.$v.username.$dirty && !this.$v.username.required) {
-      return 'Prezime je obavezno.';
+      return this.$t('prezime-je-obavezno');
     } else if (this.$v.username.$dirty && !this.$v.username.minLength) {
-      return 'Prezime mora sadržavati najmanje 3 znaka.';
+      return this.$t('prezime-mora-sadrzavati-najmanje-3-znaka');
     } else if (this.$v.username.$dirty && !this.$v.username.maxLength) {
-      return 'Prezime ne smije biti duže od 35 znakova.';
+      return this.$t('prezime-ne-smije-biti-duze-od-35-znakova');
     }
 
     if (this.$v.email.$dirty && !this.$v.email.required) {
-      return 'Email je obavezan.';
+      return this.$t('email-je-obavezan');
     } else if (this.$v.email.$dirty && !this.$v.email.email) {
-      return 'Neispravna email adresa.';
+      return this.$t('neispravna-email-adresa');
     } else if (this.$v.email.$dirty && !this.$v.email.minLength) {
-      return 'Email mora sadržavati najmanje 4 znaka.';
+      return this.$t('email-mora-sadrzavati-najmanje-4-znaka');
     } else if (this.$v.email.$dirty && !this.$v.email.maxLength) {
-      return 'Email ne smije biti duži od 55 znakova.';
+      return this.$t('email-ne-smije-biti-duzi-od-55-znakova');
     }
 
 
      // Checks for the second screen
      if (this.showSecondFrame) {
       if (this.$v.brojmobitela.$dirty && !this.$v.brojmobitela.minLength) {
-        return 'Broj mobitela mora sadržavati najmanje 5 znamenki.';
+        return this.$t('broj-mobitela-mora-sadrzavati-najmanje-5-znamenki');
       } else if (this.$v.brojmobitela.$dirty && !this.$v.brojmobitela.maxLength) {
-        return 'Broj mobitela ne smije biti duži od 25 znamenki.';
+        return this.$t('broj-mobitela-ne-smije-biti-duzi-od-25-znamenki');
       }
       else if (this.brojmobitela && this.$v.brojmobitela.minLength && this.$v.brojmobitela.$dirty && !this.$v.brojmobitela.regexPattern) {
-        return 'Broj mobitela ima neispravne znakove.';
+        return this.$t('broj-mobitela-ima-neispravne-znakove');
       }
 
       if (this.$v.drzava.$dirty && !this.$v.drzava.minLength) {
-        return 'Država mora sadržavati najmanje 3 znaka.';
+        return this.$t('drzava-mora-sadrzavati-najmanje-3-znaka');
       } else if (this.$v.drzava.$dirty && !this.$v.drzava.maxLength) {
-        return 'Država ne smije biti duža od 20 znakova.';
+        return this.$t('drzava-ne-smije-biti-duza-od-20-znakova');
       }
 
       if (this.$v.adresa.$dirty && !this.$v.adresa.minLength) {
-        return 'Adresa mora sadržavati najmanje 3 znaka.';
+        return this.$t('adresa-mora-sadrzavati-najmanje-3-znaka');
       } else if (this.$v.adresa.$dirty && !this.$v.adresa.maxLength) {
-        return 'Adresa ne smije biti duža od 100 znakova.';
+        return this.$t('adresa-ne-smije-biti-duza-od-100-znakova');
       }
 
       if (this.$v.grad.$dirty && !this.$v.grad.minLength) {
-        return 'Grad mora sadržavati najmanje 3 znaka.';
+        return this.$t('grad-mora-sadrzavati-najmanje-3-znaka');
       } else if (this.$v.grad.$dirty && !this.$v.grad.maxLength) {
-        return 'Grad ne smije biti duži od 20 znakova.';
+        return this.$t('grad-ne-smije-biti-duzi-od-20-znakova');
       }
 
       if (this.$v.postanskibroj.$dirty && !this.$v.postanskibroj.minLength) {
-        return 'Poštanski broj mora sadržavati najmanje 1 znak.';
+        return this.$t('postanski-broj-mora-sadrzavati-najmanje-1-znak');
       } else if (this.$v.postanskibroj.$dirty && !this.$v.postanskibroj.maxLength) {
-        return 'Poštanski broj ne smije biti duži od 20 znakova.';
+        return this.$t('postanski-broj-ne-smije-biti-duzi-od-20-znakova');
       }
     }
 
       if (this.showThirdFrame) {
       if (this.$v.password.$dirty && !this.$v.password.minLength) {
-        return 'Lozinka mora sadržavati najmanje 4 znaka.';
+        return this.$t('lozinka-mora-sadrzavati-najmanje-4-znaka');
       } else if (this.$v.password.$dirty && !this.$v.password.maxLength) {
-        return 'Lozinka ne smije biti duža od 50 znakova.';
+        return this.$t('lozinka-ne-smije-biti-duza-od-50-znakova');
       }
 
       if (this.$v.passwordConfirmation.$dirty && !this.$v.passwordConfirmation.minLength) {
-        return 'Potvrda lozinke mora sadržavati najmanje 4 znaka.';
+        return this.$t('potvrda-lozinke-mora-sadrzavati-najmanje-4-znaka');
       } else if (this.$v.passwordConfirmation.$dirty && !this.$v.passwordConfirmation.maxLength) {
-        return 'Potvrda lozinke ne smije biti duža od 50 znakova.';
+        return this.$t('potvrda-lozinke-ne-smije-biti-duza-od-50-znakova');
       }
 
       if (this.$v.oib.$dirty && !this.$v.oib.minLength) {
-        return 'OIB mora sadržavati 11 znakova.';
+        return this.$t('oib-mora-sadrzavati-11-znakova');
       } 
 
    
@@ -1049,7 +1049,7 @@ export default {
   }
 
   const byteString = atob(dataURI.split(',')[1]);
-  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+  const mimeString = dataURI.split(',')[0].split(':')[1].split(this.$t('key'))[0];
   const ab = new ArrayBuffer(byteString.length);
   const ia = new Uint8Array(ab);
   for (let i = 0; i < byteString.length; i++) {
@@ -1203,7 +1203,7 @@ uploadAvatar(resizedImage) {
     register() {
       console.log(this.checkboxValue); 
       if (!this.checkboxValue) {
-        alert("Morate prihvatiti uvjete korištenja i politiku privatnosti za nastavak.");
+        alert(this.$t('morate-prihvatiti-uvjete-koristenja-i-politiku-privatnosti-za-nastavak'));
 
         return;
       }
@@ -1240,7 +1240,7 @@ uploadAvatar(resizedImage) {
           console.log("TEST2",error); 
       if (error.errors.email.includes("validation.unique")) {
        
-        alert("Ovaj email je već u upotrebi. Molimo koristite drugi email ili odite na zaboravljena lozinka.");
+        alert(this.$t('ovaj-email-je-vec-u-upotrebi-molimo-koristite-drugi-email-ili-odite-na-zaboravljena-lozinka'));
 
     } else {
       console.log("TEST1",error); 

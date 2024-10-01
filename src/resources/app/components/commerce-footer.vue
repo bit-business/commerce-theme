@@ -4,11 +4,11 @@
       <div class="bijelapozadina" />
       <img class="slikaframe-icon" alt="" loading="eager" src="/storage/slike/footer/footerslika.svg" />
       <div class="glavnagrupakontakt">
-        <div class="kontakt">Kontakt</div>
+        <div class="kontakt">{{ $t('Kontakt') }}</div>
         <div class="kontainerzakontakttekstove">
           <div class="text-input">
             <img class="container-icon" alt="" src="/storage/slike/footer/containerfooter.svg" />
-            <a href="tel:+38512399950" class="divbrojmob">+385 1 23 999 50</a>
+            <a href="tel:+38512399950" class="divbrojmob">{{ $t('385-1-23-999-50') }}</a>
           </div>
           <a class="text-input1">
             <img class="container-icon1" alt="" src="/storage/slike/footer/containerfooter1.svg" />
@@ -28,28 +28,28 @@
           <a class="adresaframe" href="https://goo.gl/maps/18tA6BKkGBjNovbM8">
             <img class="map-pin-1-icon" alt="" src="/storage/slike/footer/mappin-1.svg" />
             <div class="maksimirska-51a-10000">
-              Maksimirska 51A, 10000 Zagreb
+              {{ $t('maksimirska-51a-10000-zagreb') }}
             </div>
           </a>
         </div>
       </div>
       <div class="glavnagrupaonama">
         <div class="gornjidiotekstovionama">
-          <div class="o-nama" href>O nama</div>
+          <div class="o-nama" href>{{ $t('o-nama') }}</div>
           <div class="paragraph-container">
-            <a class="politika-privatnosti" href="https://hzuts.hr/politikaprivatnosti">Politika privatnosti</a>
-            <a class="politika-o-kolaiima" href="https://hzuts.hr/politikakolacica">Politika o kolačićima</a>
-            <Link  :href="route('skijasi.commerce-theme.osnovneinformacije')" class="osnovne-informacije-footer">Osnovne informacije</Link>
-           <Link :href="route('skijasi.commerce-theme.popustizaclanove')" class="povijest">Popusti za članove</Link>
-            <a class="bilteni-hzuts-a" href="https://hzuts.hr/infoclanarine">Članarine</a>
-            <a class="podruni-zborovi">Dokumenti</a>
+            <a class="politika-privatnosti" href="https://hzuts.hr/politikaprivatnosti">{{ $t('politika-privatnosti-0') }}</a>
+            <a class="politika-o-kolaiima" href="https://hzuts.hr/politikakolacica">{{ $t('politika-o-kolacicima') }}</a>
+            <Link  :href="route('skijasi.commerce-theme.osnovneinformacije')" class="osnovne-informacije-footer">{{ $t('osnovne-informacije-0') }}</Link>
+           <Link :href="route('skijasi.commerce-theme.popustizaclanove')" class="povijest">{{ $t('popusti-za-clanove') }}</Link>
+            <a class="bilteni-hzuts-a" href="https://hzuts.hr/infoclanarine">{{ $t('clanarine-0') }}</a>
+            <a class="podruni-zborovi">{{ $t('dokumenti') }}</a>
           </div>
         </div>
         <div class="donjidioonama" />
       </div>
       <div class="glavnagrupapratitenas">
         <div class="pratitenasnaslov">
-          <div class="pratite-nas">Pratite nas</div>
+          <div class="pratite-nas">{{ $t('pratite-nas') }}</div>
         </div>
         <a class="instagramgrupa" target="_blank" href="https://www.instagram.com/hzuts/">
           <img class="instagramvector-icon" alt="" src="/storage/slike/footer/instagramvector.svg" />
@@ -64,7 +64,7 @@
     </footer>
     <footer class="footernajdonji">
       <div class="copyright-2023">
-        Copyright © 2023 Sva prava pridržana od strane HZUTS-a.
+        {{ $t('copyright-c-2023-sva-prava-pridrzana-od-strane-hzuts-a-0') }}
       </div>
     </footer>
     <cookie-consent />
@@ -124,23 +124,23 @@ export default {
     return {
       footerData: {
         services: {
-          title: "Služba za korisnike",
+          title: this.$t('sluzba-za-korisnike'),
           child: [
-            'Pomoć',
+            this.$t('pomoc'),
           ]
         },
         explore: {
           title: null,
           child: [
-             'O nama',
-             'Uvjeti pružanja usluge',
-             'Pravila o privatnosti',
+             this.$t('o-nama-0'),
+             this.$t('uvjeti-pruzanja-usluge'),
+             this.$t('pravila-o-privatnosti'),
           ]
         },
         payment: {
-          title: "Plaćanje",
+          title: this.$t('placanje'),
           child: [
-            'Ručni prijenos',
+            this.$t('rucni-prijenos'),
           ]
         },
       }

@@ -230,48 +230,23 @@
             </div>
 
             <div v-if="cart.productDetail.product.productCategory.slug != 'licence' || (cart.productDetail.product.productCategory.slug == 'licence' && [10, 11, 12].includes(cart.productDetail.product.id))"  class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center"> 
-              <!-- <div v-if="cart.cekapotvrdu == 1"> 
-    <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span> 
-</div> -->
-<div class="col-span-1 flex flex-row items-center justify-center">
-    <!-- <div v-if="filteredCarts.some(c => c.id === cart.id)" class="mb-2">
-      <counter
-        :key="cart.id"
-        @input="changeQuantity($event, cart.id)"
-        v-model="cart.quantity"
-        :min="1"
-        text-disabled
-        :disabled="loading"
-      />
-    </div> -->
-    <div >
-      <div v-if="cart.cekapotvrdu == 1">
-        <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span>
-      </div>
-      <button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 mt-2 text-red-500 rounded hover:bg-red-50">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-          <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+  <div v-if="cart.cekapotvrdu == 1">
+    <div class="flex flex-col items-center justify-center">
+      <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-gray-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-      </button>
+      </div>
+      <span class="text-sm font-bold mt-2">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span>
     </div>
   </div>
-</div> 
-<div v-else-if="cart.cekapotvrdu == 1" class="text-center"> 
-
-     
-            <template>
-          
-              <div class="flex flex-col items-center justify-center">
-                <div class="flex flex-col rounded-full w-12 items-center justify-center h-12  bg-primary1 text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 23 23" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-              </div>    <span class="text-sm font-bold">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span> 
-            </template>
-
-
+  <button v-else @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 mt-2 text-red-500 rounded hover:bg-red-50">
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+      <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+    </svg>
+  </button>
 </div>
+
 
 
             <div class="col-span-full" v-if="index !== carts.length - 1">
@@ -459,31 +434,25 @@
 
 
 
-            <div v-if="cart.productDetail.product.productCategory.slug != 'licence' || (cart.productDetail.product.productCategory.slug == 'licence' && [10, 11, 12].includes(cart.productDetail.product.id))" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center mt-6 bg-gray-100 rounded-md"> 
-              <div v-if="cart.cekapotvrdu == 1"> 
-    <span class="text-sm font-bold">Uspješno ste poslali potvrdu plaćanja! Poslat ćemo Vam email kada primimo uplatu.</span> 
-</div><button @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 mt-2 mb-2 text-red-500 rounded hover:bg-red-50"> 
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"> 
-            <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /> 
+      <!-- For mobile view -->
+<div v-if="cart.productDetail.product.productCategory.slug != 'licence' || (cart.productDetail.product.productCategory.slug == 'licence' && [10, 11, 12].includes(cart.productDetail.product.id))" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center mt-6 bg-gray-100 rounded-md"> 
+  <div v-if="cart.cekapotvrdu == 1"> 
+    <div class="flex flex-col items-center justify-center p-2">
+      <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-gray-200">
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
         </svg>
-    </button> 
-</div> 
-<div v-else-if="cart.cekapotvrdu == 1" class="text-center mt-6 bg-gray-200 p-4 rounded-lg"> 
-
-     
-            <template>
-          
-              <div class="flex flex-col items-center justify-center">
-                <div class="flex flex-col rounded-full w-12 items-center justify-center h-12  bg-primary1 text-white">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 23 23" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
-                  </svg>
-                </div>
-              </div>    <span class="text-sm font-bold">Uspješno ste poslali potvrdu plaćanja! Poslat ćemo Vam email kada primimo uplatu.</span> 
-            </template>
-
-
+      </div>
+      <span class="text-sm font-bold mt-2">Čeka se potvrda plaćanja. Poslat ćemo Vam email kada primimo uplatu</span>
+    </div>
+  </div>
+  <button v-else @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 mt-2 mb-2 text-red-500 rounded hover:bg-red-50"> 
+    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"> 
+      <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /> 
+    </svg>
+  </button> 
 </div>
+
 
 
             <!-- <div class="mt-2 items-center justify-center flex" v-if="filteredCarts.length > 0">

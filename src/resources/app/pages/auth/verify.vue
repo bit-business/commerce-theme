@@ -1,7 +1,7 @@
 <template>
  
   <div class="hzuts-reset-password-desktop">
-    <Head title="Verifikacija" />
+    <Head title="$t('verifikacija')" />
     <img
       class="backgroundzaboravljenalozinka-icon"
       alt=""
@@ -21,7 +21,7 @@
    
         <div class="col-span-1 md:px-0 lg:px-20">
           <div class="bg-white rounded-xl p-12 flex flex-wrap gap-2 shadow-md">
-            <b class="text-xl w-full zaboravljena-lozinka">Verifikacija</b>
+            <b class="text-xl w-full zaboravljena-lozinka">{{ $t('verifikacija-0') }}</b>
             <input
               type="email"
               class="
@@ -35,7 +35,7 @@
                 rounded-md
                 mt-4
               "
-              placeholder="Email"
+              placeholder="$t('email-0')"
               v-model="email"
             />
             
@@ -43,15 +43,15 @@
               v-model="token"
               :length="6"
               class="mt-4"
-              label="Upišite token"
+              label="$t('upisite-token')"
             />
             <div :class="['inline-block text-xs justify-end text-center w-30 rounded-md  p-2', getCountdown === 0 ? 'bg-primary text-white border-transparent' : 'border-gray-200 text-gray-400 bg-transparent']" @click="sendVerify">
-            Ponovno pošalji({{ getCountdown }})
+            {{ $t('ponovno-posalji-getcountdown', [getCountdown]) }}
           </div>
             <button :class="buttonClasses" @click="verify">
               <commerce-loading v-if="loading" />
               
-              <span v-else>Verificiraj</span>
+              <span v-else>{{ $t('verificiraj') }}</span>
             </button>
 
             
@@ -60,7 +60,7 @@
             <div class="flex w-full flex-wrap">
               
               <Link :href="route('skijasi.commerce-theme.forgot-password', $page.props.email)" class="text-xs plavitekst font-medium">
-                Zaboravili ste lozinku?
+                {{ $t('zaboravili-ste-lozinku') }}
               </Link>
            
       
@@ -72,9 +72,9 @@
                 <div class="h-px w-full bg-gray-300" />
               </div>
               <div class="text-sm text-gray-300 w-full text-center">
-                Nemaš račun?
+                {{ $t('nemas-racun-0') }}
                 <Link :href="route('skijasi.commerce-theme.register')" class="plavitekst font-medium cursor-pointer">
-                 Registrirajte se
+                 {{ $t('registrirajte-se-0') }}
                 </Link>
               </div>
             
@@ -123,7 +123,7 @@
       <div class="backgroundfooter" />
     </div>
     <div class="footertext">
-      Copyright © 2023 Sva prava pridržana od strane HZUTS-a.
+      {{ $t('copyright-c-2023-sva-prava-pridrzana-od-strane-hzuts-a-0') }}
     </div>
     <img class="logoprijava-icon" alt="" src="/storage/slike/logoprijava.svg" />
   </div>
@@ -193,7 +193,7 @@ export default {
   },
   buttonClasses() {
     return [
-      "w-full plavitekstbg text-white py-2 rounded-md text-sm font-medium mt-4 select-none flex items-center justify-center gap-2",
+      this.$t('w-full-plavitekstbg-text-white-py-2-rounded-md-text-sm-font-medium-mt-4-select-none-flex-items-center-justify-center-gap-2'),
        this.loading ? "opacity-100" : "",
     ];
   },
@@ -247,12 +247,12 @@ export default {
         })
         .then((response) => {
           this.$inertia.visit(this.route("skijasi.commerce-theme.login"));
-          this.$helper.alert("Verifikacija uspješna")
+          this.$helper.alert(this.$t('verifikacija-uspjesna'))
         })
         .catch((error) => {
           if (error.message && error.message === "EXPIRED") {
             this.expired = true;
-            this.$helper.displayErrors("Verifikacijski token je istekao")
+            this.$helper.displayErrors(this.$t('verifikacijski-token-je-istekao'))
           } else {
             this.$helper.displayErrors(error)
           }
@@ -270,12 +270,12 @@ export default {
         })
         .then((response) => {
           this.$inertia.visit(this.route("skijasi.commerce-theme.login"));
-          this.$helper.alert("Verifikacija uspješna")
+          this.$helper.alert(this.$t('verifikacija-uspjesna-0'))
         })
         .catch((error) => {
           if (error.message && error.message === "EXPIRED") {
             this.expired = true;
-            this.$helper.displayErrors("Verifikacijski token je istekao")
+            this.$helper.displayErrors(this.$t('verifikacijski-token-je-istekao-0'))
           } else {
             this.$helper.displayErrors(error)
           }
@@ -292,7 +292,7 @@ export default {
             email: this.email,
           })
           .then((response) => {
-            this.$helper.alert("Email sa tokenom je poslan")
+            this.$helper.alert(this.$t('email-sa-tokenom-je-poslan'))
           })
           .catch((error) => {
             this.$helper.displayErrors(error)

@@ -360,15 +360,15 @@ export default {
       }));
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     } else {
-      this.$nextTick(() => {
-    this.$forceUpdate();
-  });
+ 
       this.ucitajClanove();
       this.getProduct();
     }
 
     document.addEventListener('click', this.closeAllDropdowns);
     window.addEventListener('scroll', this.saveScrollPosition);
+
+    this.$forceUpdate();
   },
   methods: {
 

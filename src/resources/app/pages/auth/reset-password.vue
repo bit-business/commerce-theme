@@ -1,6 +1,6 @@
 <template>
   <div class="h-auth sm:h-auto">
-    <Head title="Reset Password" />
+    <Head title="$t('reset-password')" />
     <div class="hidden sm:flex sm:container sm:py-32 items-center justify-center">
       <div class="col-span-1 w-96">
         <div class="bg-white rounded-xl p-8 flex flex-wrap gap-2 shadow-md">
@@ -10,10 +10,10 @@
                 <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
               </svg>
             </Link>
-            Resetiraj Lozinku
+            {{ $t('resetiraj-lozinku') }}
           </div>
-          <password v-model="password" placeholder="Password" class="mt-4" />
-          <password v-model="passwordConfirmation" placeholder="Password Confirmation" class="mt-4" />
+          <password v-model="password" placeholder="$t('password')" class="mt-4" />
+          <password v-model="passwordConfirmation" placeholder="$t('password-confirmation')" class="mt-4" />
           <button :class="buttonClasses" @click="reset">
             <commerce-loading v-if="loading" />
             <span v-else>RESETIRAJ</span>
@@ -23,7 +23,7 @@
     </div>
     <div class="flex flex-col sm:hidden bg-gray-50 h-auth relative z-0 justify-start pt-4 items-center transform px-4">
       <div class="relative mt-6 w-full">
-        <input :type="showPassword ? 'password' : 'text'" class="border-none outline-none w-full py-2 pl-8 pr-24 focus:outline-none text-sm rounded-md rounded-b-none bg-transparent" placeholder="Password" v-model="password" ref="password">
+        <input :type="showPassword ? 'password' : 'text'" class="border-none outline-none w-full py-2 pl-8 pr-24 focus:outline-none text-sm rounded-md rounded-b-none bg-transparent" placeholder="$t('password-0')" v-model="password" ref="password">
         <div class="w-full h-px bg-gray-400 absolute bottom-0" />
         <div class="absolute left-1 top-1/2 transform -translate-y-1/2 text-gray-500">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -43,7 +43,7 @@
         </div>
       </div>
       <div class="relative mt-6 w-full">
-        <input :type="showPasswordConfirmation ? 'password' : 'text'" class="border-none outline-none w-full py-2 pl-8 pr-24 focus:outline-none text-sm rounded-md rounded-b-none bg-transparent" placeholder="Password Confirmation" v-model="passwordConfirmation" ref="passwordConfirmation">
+        <input :type="showPasswordConfirmation ? 'password' : 'text'" class="border-none outline-none w-full py-2 pl-8 pr-24 focus:outline-none text-sm rounded-md rounded-b-none bg-transparent" placeholder="$t('password-confirmation-0')" v-model="passwordConfirmation" ref="passwordConfirmation">
         <div class="w-full h-px bg-gray-400 absolute bottom-0" />
         <div class="absolute left-1 top-1/2 transform -translate-y-1/2 text-gray-500">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -114,8 +114,8 @@ export default {
   computed: {
     buttonClasses() {
       return [
-        "w-full bg-primary text-white py-2 rounded-md text-sm font-medium mt-4 select-none flex items-center justify-center gap-2",
-        this.$v.$invalid || this.loading ? "cursor-not-allowed opacity-50" : "",
+        this.$t('w-full-bg-primary-text-white-py-2-rounded-md-text-sm-font-medium-mt-4-select-none-flex-items-center-justify-center-gap-2'),
+        this.$v.$invalid || this.loading ? this.$t('cursor-not-allowed-opacity-50') : "",
       ];
     },
     ...mapState({
@@ -138,7 +138,7 @@ export default {
           password_confirmation: this.passwordConfirmation,
         })
         .then((response) => {
-          this.$helper.alert("Redirect on 5 seconds.")
+          this.$helper.alert(this.$t('redirect-on-5-seconds'))
           setTimeout(() => {
             this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
           }, 5000);

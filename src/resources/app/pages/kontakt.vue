@@ -13,26 +13,26 @@
     </a>
     <div class="kontaktformaframe">
       <div class="kontaktiraj-nas-parent">
-        <div class="kontaktiraj-nas">Kontaktiraj nas</div>
+        <div class="kontaktiraj-nas">{{ $t('kontaktiraj-nas') }}</div>
         <div class="kontaktformapolja">
-          <div class="va-e-mail">Vaš e-mail</div>
+          <div class="va-e-mail">{{ $t('vas-e-mail') }}</div>
           <div class="image-wrapper">
   <img class="crtekontaktforma3-icon" alt="" src="/storage/slike/kontakt/crtekontaktforma3.svg" />
   <input v-model="email" type="email" class="input-email">
 </div>
 
-          <div class="naslov">Naslov</div>
+          <div class="naslov">{{ $t('naslov') }}</div>
           <div class="image-wrapper">
   <img class="crtekontaktforma2-icon" alt="" src="/storage/slike/kontakt/crtekontaktforma3.svg" />
   <input v-model="subject" type="text" class="input-subject">
 </div>
-          <div class="poruka">Poruka</div>
+          <div class="poruka">{{ $t('poruka') }}</div>
           <div class="image-wrapper">
   <img class="crtekontaktforma1-icon" alt="" src="/storage/slike/kontakt/crtekontaktforma1.svg" />
   <textarea v-model="message" class="textarea-message"></textarea>
 </div>
           <button class="poalji-wrapper" @click="sendContactEmail()">
-        <div class="poalji">POŠALJI</div>
+        <div class="poalji">{{ $t('posalji') }}</div>
       </button>
         </div>
       </div>
@@ -40,23 +40,23 @@
         <div class="uredovno-vrijeme-za-lanove-u-parent">
           <div class="uredovno-vrijeme-za-container">
             <span class="uredovno-vrijeme-za-container1">
-              <span>Uredovno vrijeme za članove: </span>
+              <span>{{ $t('uredovno-vrijeme-za-clanove') }} </span>
               <span class="utorkom">utorkom</span>
               <span> i </span>
-              <span class="utorkom">četvrtkom</span>
-              <span> od 11 - 15h</span>
+              <span class="utorkom">{{ $t('cetvrtkom') }}</span>
+              <span> {{ $t('od-11-15h') }}</span>
             </span>
           </div>
           <img class="group-icon" alt="" src="/storage/slike/kontakt/group2.svg" />
         </div>
         <div class="maksimirska-51a-10000-zagreb-parent">
           <div class="maksimirska-51a-10000">
-            Maksimirska 51A, 10000 Zagreb, Hrvatska
+            {{ $t('maksimirska-51a-10000-zagreb-hrvatska') }}
           </div>
           <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/mappin-12.svg" />
         </div>
         <div class="parent">
-          <div class="divkontakt">+385 1 23 999 50</div>
+          <div class="divkontakt">{{ $t('385-1-23-999-50') }}</div>
           <img class="map-pin-1-icon" alt="" src="/storage/slike/kontakt/phone-1-1.svg" />
         </div>
   
@@ -72,11 +72,11 @@
         </div>
         <div class="clip-path-group-parent">
           <img class="clip-path-group" alt="" src="/storage/slike/kontakt/clip-path-group1.svg" />
-          <div class="mb-1603388">MB: 1603388</div>
+          <div class="mb-1603388">{{ $t('mb-1603388') }}</div>
         </div>
         <div class="vector-parent">
           <img class="vector-icon2" alt="" src="/storage/slike/kontakt/vector3.svg" />
-          <div class="oib-31990276348">OIB: 31990276348</div>
+          <div class="oib-31990276348">{{ $t('oib-31990276348') }}</div>
         </div>
       </div>
     </div>
@@ -146,13 +146,13 @@ export default {
     message: this.message,
         })
         .then((response) => {
-          this.$helper.alert("Uspješno je poslana poruka!")
+          this.$helper.alert(this.$t('uspjesno-je-poslana-poruka'))
   
        
        
         })
         .catch((error) => {
-          this.$helper.alert("Nije uspjelo slanje! Provjerit da li ste dobro unijeli email.")
+          this.$helper.alert(this.$t('nije-uspjelo-slanje-provjerit-da-li-ste-dobro-unijeli-email'))
         });
     },
 
