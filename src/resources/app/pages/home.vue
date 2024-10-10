@@ -262,72 +262,19 @@
     <div class="sponzorigrupa">
       <div class="sponzor1">
         <vue-marquee-slider
-  id="marquee-slider-width"
-  :speed="100000"
-  :width="250"
-  :space="100"
-  :paused="isPaused"
-  class="sponzor1"
-  @mouseenter="pauseMarquee"
-    @mouseleave="resumeMarquee"
->
-<a class="rostsport-1-icon" href="https://www.dreizinnen.com/en/skiresort-3-zinnen-dolomites.html">
-  <img src="/storage/slike/sponzori/sponzor1.jpg" />
-</a>
-<a class="rostsport-1-icon" href="https://www.energiapura.info">
-  <img src="/storage/slike/sponzori/sponzor2.jpg" />
-</a>
-<a class="rostsport-1-icon" href="https://elan.si">
-  <img src="/storage/slike/sponzori/sponzor3.png" />
-</a>
-<a class="rostsport-1-icon" href="https://dobro.hr">
-  <img src="/storage/slike/sponzori/sponzor4.png" />
-</a>
-  <a class="rostsport-1-icon" href="https://www.kotanyi.com/en/">
-  <img src="/storage/slike/sponzori/sponzor5.jpg" />
-</a><!--
-  <a class="rostsport-1-icon" href="https://www.oryx-osiguranje.hr">
-  <img src="/storage/slike/sponzori/sponzor6.png" />
-</a>-->
-  <a class="rostsport-1-icon" href="https://staklorez-buric.hr">
-  <img src="/storage/slike/sponzori/sponzor7.jpg" />
-</a>
-<!-- <a class="rostsport-1-icon" href="https://lenovostore.hr">
-  <img src="/storage/slike/sponzori/sponzor8.png" />
-</a> -->
-<a class="rostsport-1-icon" href="https://5th-element.com.hr">
-  <img src="/storage/slike/sponzori/sponzor9.jpg" />
-</a>
-<!-- <a class="rostsport-1-icon" href="https://www.bolle.com">
-  <img src="/storage/slike/sponzori/sponzor10.jpg" />
-</a> -->
-<a class="rostsport-1-icon" href="https://www.jamnica.hr">
-  <img src="/storage/slike/sponzori/sponzor11.jpg" />
-</a>
-<a class="rostsport-1-icon" href="https://klara.hr">
-  <img src="/storage/slike/sponzori/sponzor12.jpg" />
-</a><!--
-<a class="rostsport-1-icon" href="https://www.oryx-asistencija.hr">
-  <img src="/storage/slike/sponzori/sponzor13.png" />
-</a>-->
-<a class="rostsport-1-icon" href="https://www.seat.hr">
-  <img src="/storage/slike/sponzori/sponzor14.jpg" />
-</a>
-<a class="rostsport-1-icon" href="https://galic-vina.hr">
-  <img src="/storage/slike/sponzori/sponzor15.png" />
-</a>
-
-<a class="rostsport-1-icon" href="https://croatia.hr">
-  <img src="/storage/slike/sponzori/sponzor16.png" />
-</a>
-<a class="rostsport-1-icon" href="https://www.milojevic.hr">
-  <img src="/storage/slike/sponzori/sponzor17.png" />
-</a>
-<a class="rostsport-1-icon" href="https://www.messer.hr">
-  <img src="/storage/slike/sponzori/sponzor18.jpg" />
-</a>
-</vue-marquee-slider>
-
+          id="marquee-slider-width"
+          :speed="100000"
+          :width="250"
+          :space="100"
+          :paused="isPaused"
+          class="sponzor1"
+          @mouseenter="pauseMarquee"
+          @mouseleave="resumeMarquee"
+        >
+          <a v-for="sponsor in shuffledSponsors" :key="sponsor.href" class="rostsport-1-icon" :href="sponsor.href">
+            <img :src="sponsor.src" />
+          </a>
+        </vue-marquee-slider>
       </div>
     </div>
     <div class="popustizaclanove animate-on-scroll">
@@ -535,6 +482,25 @@ VuePreloader,
       scrollPosition: 0,
     maxScroll: 0,
 
+    sponsors: [
+        { href: "https://www.dreizinnen.com/en/skiresort-3-zinnen-dolomites.html", src: "/storage/slike/sponzori/sponzor1.jpg" },
+        { href: "https://www.energiapura.info", src: "/storage/slike/sponzori/sponzor2.jpg" },
+        { href: "https://elan.si", src: "/storage/slike/sponzori/sponzor3.png" },
+        { href: "https://dobro.hr", src: "/storage/slike/sponzori/sponzor4.png" },
+        { href: "https://www.kotanyi.com/en/", src: "/storage/slike/sponzori/sponzor5.jpg" },
+        { href: "https://www.allianz.hr/", src: "/storage/slike/sponzori/sponzor19.png" },
+        { href: "https://www.reusch.com", src: "/storage/slike/sponzori/sponzor20.jpg" },
+        { href: "https://www.tripoint.com", src: "/storage/slike/sponzori/sponzor21.png" },
+        { href: "https://staklorez-buric.hr", src: "/storage/slike/sponzori/sponzor7.jpg" },
+        { href: "https://5th-element.com.hr", src: "/storage/slike/sponzori/sponzor9.jpg" },
+        { href: "https://www.jamnica.hr", src: "/storage/slike/sponzori/sponzor11.jpg" },
+        { href: "https://klara.hr", src: "/storage/slike/sponzori/sponzor12.jpg" },
+        { href: "https://www.seat.hr", src: "/storage/slike/sponzori/sponzor14.jpg" },
+        { href: "https://galic-vina.hr", src: "/storage/slike/sponzori/sponzor15.png" },
+        { href: "https://croatia.hr", src: "/storage/slike/sponzori/sponzor16.png" },
+        { href: "https://www.milojevic.hr", src: "/storage/slike/sponzori/sponzor17.png" },
+        { href: "https://www.messer.hr", src: "/storage/slike/sponzori/sponzor18.jpg" },
+      ],
 
     
       desktopVideoUrl:
@@ -708,7 +674,11 @@ this.fetchTotalUsers();
 
 splitCategory() {
   return this.$_.chunk(this.productCategories, 2)
-}
+},
+
+shuffledSponsors() {
+    return this.shuffleArray([...this.sponsors]);
+  }
   },
 
  
@@ -725,7 +695,13 @@ splitCategory() {
     
   },
   methods: {
-  
+    shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  },
     
     moveSlider(direction) {
     const slider = this.$el.querySelector('.bilteni-slides');
