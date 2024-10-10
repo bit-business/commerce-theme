@@ -269,14 +269,20 @@ class ConfigurationController extends Controller
             $user = auth()->user();
     
             // Check if the user has already submitted this form
-            $existingEntry = FormEntry::where('form_id', $formId)
-                ->where('ispunio', $user->name . '  ' . $user->username)
-                ->first();
-    
-            if ($existingEntry) {
-                DB::rollBack();
-                return ApiResponse::failed(new Exception('Već ste prijavljeni na ovaj seminar! Ukoliko mislite da je to greška ili ste krivo ispunili, molimo kontaktirajte nas.'), 400);
+            $unrestrictedIds = array_merge(range(1, 10), [4417, 2439]);
+
+            // Check if the user has already submitted this form, but only if they're not in the unrestricted list
+            if (!in_array($user->id, $unrestrictedIds)) {
+                $existingEntry = FormEntry::where('form_id', $formId)
+                    ->where('ispunio', $user->name . '  ' . $user->username)
+                    ->first();
+
+                if ($existingEntry) {
+                    DB::rollBack();
+                    return ApiResponse::failed(new Exception('Već ste prijavljeni na ovaj seminar! Ukoliko mislite da je to greška ili ste krivo ispunili, molimo kontaktirajte nas.'), 400);
+                }
             }
+
     
             // Validate the form data
             $formFields = $form->fields;
@@ -357,7 +363,28 @@ class ConfigurationController extends Controller
         }
     }
     
-
+    public function updateFormProductSlug(Request $request)
+    {
+        DB::beginTransaction();
+    
+        try {
+            $request->validate([
+                'id' => 'required|exists:skijasi_forms,id', 
+                'productslug' => 'required|string',
+            ]);
+    
+            $form = Form::findOrFail($request->id);
+            $form->productslug = $request->productslug;
+            $form->save();
+    
+            DB::commit();
+    
+            return ApiResponse::success(['form' => $form, 'message' => 'Form updated successfully with new product slug.']);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return ApiResponse::failed($e);
+        }
+    }
 
 
 

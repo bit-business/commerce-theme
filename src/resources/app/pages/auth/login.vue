@@ -5,7 +5,7 @@
   
         <template v-if="isWideScreen">
         
-        <Head title="$t('prijava')" />
+        <Head title="Prijava"/>
           <div class="hzuts-login-desktop">
       <img
         class="backgroundslika-icon"

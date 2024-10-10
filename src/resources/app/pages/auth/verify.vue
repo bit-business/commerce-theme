@@ -179,7 +179,7 @@ export default {
       loading: false,
       
       mobileToken: "",
-      countdown: 60,
+      countdown: 300,
       interval: null,
     };
   },

@@ -197,7 +197,15 @@
         <template v-if="carts.length > 0">
           <div class="grid grid-cols-5 gap-4 w-full" v-for="cart, index in carts" :key="index">
             <div class="col-span-2 flex gap-4 items-center">
-              <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox">
+              <input 
+                v-if="cart.cekapotvrdu != 1"
+                type="checkbox" 
+                v-model="checkboxModel" 
+                :id="cart.id" 
+                :value="cart.id" 
+                class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox"
+              >
+              <div v-else class="w-4"></div>
               <div class="text-sm text-gray-700 w-24 h-24">
                 <img :src="cart.productDetail && cart.productDetail.productImage ? cart.productDetail.productImage : defaultImageUrl" class="w-full h-full rounded-lg">
 
@@ -408,7 +416,15 @@
 
           </div>
           <div class="col-span-1 relative text-center m-4">
-            <input type="checkbox" v-model="checkboxModel" :id="cart.id" :value="cart.id" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox ">
+            <input 
+              v-if="cart.cekapotvrdu != 1"
+              type="checkbox" 
+              v-model="checkboxModel" 
+              :id="cart.id" 
+              :value="cart.id"
+              class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox"
+            >
+            <div v-else class="w-4"></div> 
           </div>
           <div class="col-span-8 flex flex-col gap-3">
             <div class="line-clamp-1 text-md font-semibold w-full text-center">
@@ -1190,25 +1206,20 @@ this.$store.dispatch('SET_CHECKOUT', selectedCarts)
         return cart;
       });
 
-
-          // ova linija sve stavlja checkbox kvacicu pa sam stavio ispod da unchecka koji cekaju potvrdu
-          // this.checkboxModel = this.carts.map(cart => cart.id);
-          this.checkboxModel = this.carts
+      // Only select items that don't have cekapotvrdu == 1
+      this.checkboxModel = this.carts
         .filter(cart => cart.cekapotvrdu !== 1)
         .map(cart => cart.id);
 
+    })
+    .catch(err => {
+      localStorage.removeItem('token')
+      this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+      this.$helper.displayErrors(err)
+    })
+},
 
-          // if (this.carts.length > 0) {
-          //   this.fetchSimilar(this.$_.take(res.data.carts)[0])
-          // }
 
-        })
-        .catch(err => {
-          localStorage.removeItem('token')
-          this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
-          this.$helper.displayErrors(err)
-        })
-    },
     fetchSimilar(cart) {
       this.$api.skijasiProduct
         .browseByCategorySlug({
@@ -1296,16 +1307,16 @@ this.$store.dispatch('SET_CHECKOUT', selectedCarts)
       return parseInt(price - d)
     },
     checkAll($event) {
-      if ($event.target.checked) {
-        this.carts.forEach(cart => {
-          if (!this.checkboxModel.includes(cart.id)) {
-            this.checkboxModel.push(cart.id)
-          }
-        });
-      } else {
-        this.checkboxModel = []
+  if ($event.target.checked) {
+    this.carts.forEach(cart => {
+      if (!this.checkboxModel.includes(cart.id) && cart.cekapotvrdu != 1) {
+        this.checkboxModel.push(cart.id)
       }
-    },
+    });
+  } else {
+    this.checkboxModel = []
+  }
+},
     openVariationDialog({ id, quantity, productDetail: { productId }, productDetailId }) {
       this.$api.skijasiProduct
         .readByCart({ id: productId })

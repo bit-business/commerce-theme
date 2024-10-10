@@ -8,7 +8,7 @@ class Form extends Model
 {
     protected $table = 'skijasi_forms'; 
     
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'productslug', 'description'];
 
     public function fields()
     {

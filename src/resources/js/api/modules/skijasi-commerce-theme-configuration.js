@@ -54,6 +54,12 @@ export default {
     return resource.post(ep, data);
   },
 
+
+    updateFormProductSlug(data) {
+      let ep = `${apiPrefix}/v1/forms/update-product-slug`;
+      return resource.put(ep, data);
+    },
+
   saveForm(data) {
     let ep = `${apiPrefix}/v1/forms`;
     return resource.post(ep, data);

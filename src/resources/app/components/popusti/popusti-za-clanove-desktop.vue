@@ -65,6 +65,41 @@
         </div>
       </div>
     </section>
+
+
+
+
+  <!-- New Allianz insurance section -->
+  <section class="sponzorallianz">
+    <div class="sponzorallianz-container-bg">
+    <div class="sponzorallianz-container">
+      <div class="logo-title">
+        <img class="sponzor19-1-icon" loading="lazy" alt="Allianz logo" src="/storage/slike/popusti/sponzor19-1@2x.png" />
+        <h2 class="ugovorite-osiguranje-po">Ugovorite osiguranje po izboru i putujte i skijajte bezbrižno!!</h2>
+      </div>
+      <div class="content-wrapper">
+        <div class="putno-osiguranje">PUTNO OSIGURANJE</div>
+        <div class="osiguranje-od-odgovornosti">OSIGURANJE od<p>ODGOVORNOSTI</p></div>
+        <div class="content-divider"></div>
+        <div class="content">
+          <div class="left-content">
+            <p><strong>Allianz</strong> je za članove HZUTS-a osigurao posebne pogodnosti putnog zdravstvenog osiguranja i osiguranja od odgovornosti.</p>
+            <p>Ugovorite li paket putnog zdravstvenog osiguranja i osiguranja od odgovornosti dobivate popust od 15% na ukupnu premiju.</p>
+          </div>
+          <div class="right-content">
+            <h3>Ponudu pogledajte putem linka:</h3>
+            <a href="/storage/slike/popusti/Allianz_ponuda.pdf" class="offer-link">
+              <img src="/storage/slike/popusti/vrstva-x0020-1-15.svg" alt="PDF icon" class="pdf-icon" />
+              <span>Osiguranje izvanugovorne odgovornosti za učitelje skijanja</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+
+
     <section class="desktop-container">
       <div class="rectangle-parent18">
         <div class="frame-child32" />
@@ -2152,4 +2187,222 @@
       font-size: 16px;
     }
   }
+
+
+
+
+/* popusti za clanove allianz dio*/
+.sponzorallianz {
+  font-family: var(--font-inter);
+  width: 100%;
+  padding-bottom: 50px;
+}
+
+.sponzorallianz-container {
+  max-width: 1000px;
+  margin: 0 auto;
+ 
+}
+.sponzorallianz-container-bg {
+  padding: 60px 20px;
+
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.logo-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.sponzor19-1-icon {
+  max-width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+}
+
+.ugovorite-osiguranje-po {
+  color: #1172ba;
+  font-size: 24px;
+  font-weight: 600;
+  text-align: center;
+  margin: 0;
+}
+
+.content-wrapper {
+  background: linear-gradient(84.83deg, #20409a, #1074bb);
+  border-radius: 10px;
+  padding: 50px 30px;
+  position: relative;
+  overflow: visible;
+  min-height: 300px;
+
+  align-content: center;
+}
+
+.putno-osiguranje,
+.osiguranje-od-odgovornosti {
+  font-family: "Luckiest Guy";
+  color: #1C63B7;
+  font-size: 27px;
+  position: absolute;
+  white-space: nowrap;
+}
+
+.putno-osiguranje {
+  top: -30px;
+  left: -180px;
+  transform: rotate(-30deg);
+}
+
+.osiguranje-od-odgovornosti {
+  top: -40px;
+  right: -210px;
+  transform: rotate(30deg);
+}
+
+.content {
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  color: #ffffff;
+  text-align: center;
+  gap: 30px; 
+  position: relative;
+}
+
+.left-content {
+gap: 1.1rem;
+font-size: medium;
+}
+
+
+.left-content,
+.right-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.content-divider {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  border-right: 5px dashed #ffffff;
+}
+
+
+
+.right-content {
+  align-items: center;
+
+
+}
+
+.right-content h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+  font-family: "Luckiest Guy";
+}
+
+.offer-link {
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  color: #000000;
+  padding: 10px 15px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 10px;
+  margin-top: 10px;
+}
+
+.pdf-icon {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+}
+
+@media screen and (max-width: 1440px) {
+  .sponzorallianz-container {
+    max-width: 63%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .left-content,
+  .right-content {
+    padding: 20px 0; /* Adjust padding for mobile */
+  }
+  .content {
+    flex-direction: column;
+  }
+
+  .content-divider {
+    position: static;
+    width: 100%;
+    height: 0;
+    border-right: none;
+    border-bottom: 5px dashed #ffffff;
+    margin: 20px 0;
+  }
+
+  .putno-osiguranje,
+  .osiguranje-od-odgovornosti {
+    font-size: 20px;
+  }
+
+  .content-wrapper {
+    padding: 40px 20px;
+  }
+
+  .putno-osiguranje {
+    top: -25px;
+    left: -60px;
+  }
+
+  .osiguranje-od-odgovornosti {
+    bottom: -25px;
+    right: -90px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .ugovorite-osiguranje-po {
+    font-size: 18px;
+  }
+
+  .content-wrapper {
+    padding: 30px 15px;
+  }
+
+  .offer-link {
+    font-size: 8px;
+  }
+
+  .putno-osiguranje,
+  .osiguranje-od-odgovornosti {
+    font-size: 16px;
+  }
+
+  .putno-osiguranje {
+    top: -20px;
+    left: -50px;
+  }
+
+  .osiguranje-od-odgovornosti {
+    bottom: -20px;
+    right: -70px;
+  }
+}
+
+
 </style>

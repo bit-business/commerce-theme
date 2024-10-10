@@ -26,7 +26,7 @@ Route::group(['prefix' => $api_route_prefix, 'as' => 'skijasi.', 'middleware' =>
 
 
 
-  
+        Route::put('/forms/update-product-slug',[ConfigurationController::class, 'updateFormProductSlug']);
 
         Route::get('/forms/{formId}/fields', [ConfigurationController::class, 'getFormFields']);
         Route::get('/users/{userId}', [ConfigurationController::class, 'getUserData']);
