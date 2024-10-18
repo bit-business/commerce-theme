@@ -183,7 +183,7 @@
                   </span>
                 </div>
               </div>
-              <div class="framestegovnisud">
+              <Link :href="route('skijasi.commerce-theme.interskikongres')" class="framestegovnisud">
                 <div class="saznaj-vie24">{{ $t('saznaj-vise') }}</div>
                 <img
                   class="vector-icon54"
@@ -191,7 +191,7 @@
                   alt=""
                   src="/storage/slike/osnovneinformacije/vector.svg"
                 />
-              </div>
+              </Link>
             </div>
           </div>
           <div class="trecired-inner">

@@ -101,6 +101,38 @@
 </div>
 </div>
 
+
+
+  <!-- Translations section -->
+  <div v-if="!field.fixed" class="translations-section">
+    <h4>Translations</h4>
+    <div v-for="lang in ['en', 'it']" :key="lang" class="translation-input">
+      <label :for="`${field.label}-${lang}`">{{ lang.toUpperCase() }} Label:</label>
+      <input 
+        :id="`${field.label}-${lang}`"
+        v-model="field.translations[lang].label"
+        type="text"
+        :placeholder="`Enter ${lang.toUpperCase()} translation for label`"
+      >
+      
+      <div v-if="field.field_type === 'select' || field.field_type === 'radio'">
+        <h5>Options Translations:</h5>
+        <div v-for="option in parseOptions(field.options)" :key="option" class="option-translation">
+          <label :for="`${field.label}-${lang}-${option}`">{{ option }}:</label>
+          <input 
+            :id="`${field.label}-${lang}-${option}`"
+            v-model="field.translations[lang].options[option]"
+            type="text"
+            :placeholder="`Enter ${lang.toUpperCase()} translation for ${option}`"
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+ <!-- Translations section -->
+
+
+
       </div>
     </div>
 
@@ -171,7 +203,11 @@ export default {
           required: true, 
           fixed: true,
           options: {},
-          showForStatus: {}
+          showForStatus: {},
+          translations: {
+      en: { label: '', options: {} },
+      it: { label: '', options: {} }
+    }
         }
         ]
       },
@@ -282,7 +318,8 @@ export default {
           label: label,
           fieldType: field.field_type,
           required: field.required ? 1 : 0,
-          options: options
+          options: options,
+          translations: field.translations
         };
 
       
@@ -320,109 +357,141 @@ export default {
   }
 },
 
-    async selectForm(formId) {
-      try {
-        this.selectedFormId = formId;
-        this.isCreatingNewForm = false;
-        const response = await api.getFormFields(formId);
+async selectForm(formId) {
+  try {
+    this.selectedFormId = formId;
+    this.isCreatingNewForm = false;
+    const response = await api.getFormFields(formId);
 
-        if (response.data && response.data.fields && response.data.fields['\u0000*\u0000items']) {
-          this.form = {
-            name: response.data.name || '',
-            description: response.data.description || '',
-            fields: response.data.fields['\u0000*\u0000items'].map(field => {
-              let processedField = {
+    if (response.data && response.data.fields && response.data.fields['\u0000*\u0000items']) {
+      this.form = {
+        name: response.data.name || '',
+        description: response.data.description || '',
+        fields: response.data.fields['\u0000*\u0000items'].map(field => {
+          let processedField = {
             label: field.label,
             displayLabel: this.getDisplayLabel(field.label),
             field_type: field.fieldType,
             required: field.required === '1' || field.required === 1 || field.required === true,
             options: field.options ? JSON.parse(field.options) : [],
-            fixed: ['name', 'username', 'spol', 'datumrodjenja', 'OIB', 'Adresa', 'Grad', 'Email', 'brojmobitela', 'Na seminaru:'].includes(field.label)
+            fixed: ['name', 'username', 'spol', 'datumrodjenja', 'OIB', 'Adresa', 'Grad', 'Email', 'brojmobitela', 'Na seminaru:'].includes(field.label),
+            translations: field.translations || {
+              en: { label: '', options: {} },
+              it: { label: '', options: {} }
+            }
           };
 
-          
           if (field.label === 'Na seminaru:') {
-  try {
-    let parsedOptions = JSON.parse(field.options);
-    if (typeof parsedOptions === 'string') {
-      parsedOptions = JSON.parse(parsedOptions);
-    }
-    processedField.options = parsedOptions;
-    processedField.showForStatus = field.showForStatus || {};
-  } catch (e) {
-    console.error('Error parsing Na seminaru: options:', e);
-    processedField.options = {};
-    processedField.showForStatus = {};
-  }
-}
-  
+            try {
+              let parsedOptions = JSON.parse(field.options);
+              if (typeof parsedOptions === 'string') {
+                parsedOptions = JSON.parse(parsedOptions);
+              }
+              processedField.options = parsedOptions;
+              processedField.showForStatus = field.showForStatus || {};
+            } catch (e) {
+              console.error('Error parsing Na seminaru: options:', e);
+              processedField.options = {};
+              processedField.showForStatus = {};
+            }
+          }
 
           return processedField;
         })
-
-            
-          };
-        } else {
-          throw new Error('Invalid form data structure');
-        }
-      } catch (error) {
-        console.error('Error fetching form:', error);
-        this.form = { name: '', description: '', fields: [] };
-      }
-    },
+      };
+    } else {
+      throw new Error('Invalid form data structure');
+    }
+  } catch (error) {
+    console.error('Error fetching form:', error);
+    this.form = { name: '', description: '', fields: [] };
+  }
+},
     getDisplayLabel(label) {
       return this.fixedDisplayLabels[label] || label;
     },
     createNewForm() {
-      this.selectedFormId = null;
-      this.form = {
-        name: '',
-        description: '',
-        fields: [
-          { label: 'name', displayLabel: this.fixedDisplayLabels.name, field_type: 'text', required: true, fixed: true },
-          { label: 'username', displayLabel: this.fixedDisplayLabels.username, field_type: 'text', required: true, fixed: true },
-          { label: 'spol', displayLabel: 'Spol', field_type: 'text', required: true, fixed: true },
-          { label: 'datumrodjenja', displayLabel: 'Datum rođenja', field_type: 'date', required: true, fixed: true },
-          { label: 'OIB', displayLabel: 'OIB', field_type: 'text', required: true, fixed: true },
-          { label: 'Adresa', displayLabel: 'Adresa', field_type: 'text', required: true, fixed: true },
-          { label: 'Grad', displayLabel: 'Grad', field_type: 'text', required: true, fixed: true },
-          { label: 'Email', displayLabel: 'Email', field_type: 'email', required: true, fixed: true },
-          { label: 'brojmobitela', displayLabel: this.fixedDisplayLabels.brojmobitela, field_type: 'text', required: true, fixed: true },
-          { 
-          label: 'Na seminaru:', 
-          displayLabel: 'Na seminaru:', 
-          field_type: 'radio', 
-          required: true, 
-          fixed: true,
-          options: {
-            "Demonstrator skijanja": "",
-            "Učitelj skijanja": "",
-            "Voditelj skijanja": "",
-            "ISIA učitelj": "",
-            "IVSI učitelj": "",
-            "Počasni član": "", 
-            "Podupirući član": "",
-            "Snowboard Trener": "",
-            "Trener skijanja": "",
-            "Nije član": "",
+  this.selectedFormId = null;
+  this.form = {
+    name: '',
+    description: '',
+    fields: [
+      { label: 'name', displayLabel: this.fixedDisplayLabels.name, field_type: 'text', required: true, fixed: true, translations: { en: { label: 'First Name' }, it: { label: 'Nome' } } },
+      { label: 'username', displayLabel: this.fixedDisplayLabels.username, field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Last Name' }, it: { label: 'Cognome' } } },
+      { label: 'spol', displayLabel: 'Spol', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Gender' }, it: { label: 'Genere' } } },
+      { label: 'datumrodjenja', displayLabel: 'Datum rođenja', field_type: 'date', required: true, fixed: true, translations: { en: { label: 'Date of Birth' }, it: { label: 'Data di Nascita' } } },
+      { label: 'OIB', displayLabel: 'OIB', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'OIB' }, it: { label: 'OIB' } } },
+      { label: 'Adresa', displayLabel: 'Adresa', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Address' }, it: { label: 'Indirizzo' } } },
+      { label: 'Grad', displayLabel: 'Grad', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'City' }, it: { label: 'Città' } } },
+      { label: 'Email', displayLabel: 'Email', field_type: 'email', required: true, fixed: true, translations: { en: { label: 'Email' }, it: { label: 'Email' } } },
+      { label: 'brojmobitela', displayLabel: this.fixedDisplayLabels.brojmobitela, field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Mobile Number' }, it: { label: 'Numero di Cellulare' } } },
+      { 
+        label: 'Na seminaru:', 
+        displayLabel: 'Na seminaru:', 
+        field_type: 'radio', 
+        required: true, 
+        fixed: true,
+        options: {
+          "Demonstrator skijanja": "",
+          "Učitelj skijanja": "",
+          "Voditelj skijanja": "",
+          "ISIA učitelj": "",
+          "IVSI učitelj": "",
+          "Počasni član": "", 
+          "Podupirući član": "",
+          "Snowboard Trener": "",
+          "Trener skijanja": "",
+          "Nije član": "",
+        },
+        showForStatus: {
+          "Demonstrator skijanja": true,
+          "Učitelj skijanja": true,
+          "Voditelj skijanja": true,
+          "ISIA učitelj": true,
+          "IVSI učitelj": true,
+          "Počasni član": true,
+          "Podupirući član": true,
+          "Snowboard Trener": true,
+          "Trener skijanja": true,
+          "Nije član": true
+        },
+        translations: {
+          en: { 
+            label: 'At the seminar:',
+            options: {
+              "Demonstrator skijanja": "Ski Demonstrator",
+              "Učitelj skijanja": "Ski Instructor",
+              "Voditelj skijanja": "Ski Leader",
+              "ISIA učitelj": "ISIA Instructor",
+              "IVSI učitelj": "IVSI Instructor",
+              "Počasni član": "Honorary Member", 
+              "Podupirući član": "Supporting Member",
+              "Snowboard Trener": "Snowboard Trainer",
+              "Trener skijanja": "Ski Trainer",
+              "Nije član": "Not a Member",
+            }
           },
-          showForStatus: {
-            "Demonstrator skijanja": true,
-            "Učitelj skijanja": true,
-            "Voditelj skijanja": true,
-            "ISIA učitelj": true,
-            "IVSI učitelj": true,
-            "Počasni član": true,
-            "Podupirući član": true,
-            "Snowboard Trener": true,
-            "Trener skijanja": true,
-            "Nije član": true
+          it: { 
+            label: 'Al seminario:',
+            options: {
+              "Demonstrator skijanja": "Dimostratore di sci",
+              "Učitelj skijanja": "Maestro di sci",
+              "Voditelj skijanja": "Guida di sci",
+              "ISIA učitelj": "Istruttore ISIA",
+              "IVSI učitelj": "Istruttore IVSI",
+              "Počasni član": "Membro onorario", 
+              "Podupirući član": "Membro sostenitore",
+              "Snowboard Trener": "Allenatore di snowboard",
+              "Trener skijanja": "Allenatore di sci",
+              "Nije član": "Non membro",
+            }
           }
         }
-        ]
-      };
-      this.isCreatingNewForm = true;
-    },
+      }
+    ]
+  };
+  this.isCreatingNewForm = true;
+},
   },
 
 };

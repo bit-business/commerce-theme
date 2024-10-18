@@ -15,7 +15,8 @@
         v-if="shouldShowField(field)"
       >
           <label>
-          {{ getDisplayLabel(field.label) }}<span v-if="isFieldRequired(field)" class="asterisk">*</span>
+            {{ getDisplayLabel(field) }}<span v-if="isFieldRequired(field)" class="asterisk">*</span>
+          <!-- {{ getDisplayLabel(field.label) }}<span v-if="isFieldRequired(field)" class="asterisk">*</span> -->
         </label>
           
             <div class="input-wrapper">
@@ -35,26 +36,26 @@
                 class="form-input"
               ></textarea>
               <div v-else-if="field.fieldType === 'select'" class="form-group">
-  <div class="dropdown" @click="toggleDropdown(field.label)">
-    <div class="dropdown-select">
-      <span>{{ formData[field.label] || 'Izaberite' }}</span>
-      <i class="arrow" :class="{ 'arrow-up': activeDropdown === field.label }"></i>
-    </div>
-    <transition name="fade">
-      <div class="dropdown-list" v-if="activeDropdown === field.label">
-        <div 
-          v-for="option in parseOptions(field.options)" 
-          :key="option" 
-          class="dropdown-list-item" 
-          @click.stop="selectOption(option, field.label)"
-        >
-          {{ option }}
-        </div>
+    <div class="dropdown" @click="toggleDropdown(field.label)">
+      <div class="dropdown-select">
+        <span>{{ formData[field.label] ? translateOption(field, formData[field.label]) : $t('izaberite') }}</span>
+        <i class="arrow" :class="{ 'arrow-up': activeDropdown === field.label }"></i>
       </div>
-    </transition>
+      <transition name="fade">
+        <div class="dropdown-list" v-if="activeDropdown === field.label">
+          <div 
+            v-for="option in parseOptions(field.options)" 
+            :key="option" 
+            class="dropdown-list-item" 
+            @click.stop="selectOption(option, field.label)"
+          >
+            {{ translateOption(field, option) }}
+          </div>
+        </div>
+      </transition>
+    </div>
   </div>
-  <span v-if="errors[field.label]" class="error-message">{{ errors[field.label] }}</span>
-</div>
+
           
 <div v-else-if="field.fieldType === 'radio' && field.label !== 'Na seminaru:' && (field.required === '1' || field.required === true)" class="radio-group">
   <div
@@ -70,7 +71,8 @@
       v-model.lazy="formData[field.label]"
     
     />
-    <label :for="`${field.label}-${option}`">{{ option }}</label>
+    <label :for="`${field.label}-${option}`">{{ translateOption(field, option) }}</label>
+    <!-- <label :for="`${field.label}-${option}`">{{ option }}</label> -->
   </div>
 </div>
 
@@ -667,9 +669,20 @@ setSelectedProduct() {
     this.restoreScrollPosition();
   },
 
-  getDisplayLabel(label) {
-    return fixedDisplayLabels[label] || label;
-  },
+  getDisplayLabel(field) {
+  const currentLang = this.$i18n.locale;
+  if (currentLang !== 'hr' && field.translations && field.translations[currentLang]) {
+    return field.translations[currentLang].label || field.label;
+  }
+  return fixedDisplayLabels[field.label] || field.label;
+},
+translateOption(field, option) {
+  const currentLang = this.$i18n.locale;
+  if (currentLang !== 'hr' && field.translations && field.translations[currentLang]) {
+    return field.translations[currentLang].options[option] || option;
+  }
+  return option;
+},
 
   async fetchForms(userid) {
   try {
@@ -748,7 +761,19 @@ setSelectedProduct() {
         }
 
         // Create a copy of the form data
-        const submissionData = { ...this.formData };
+        // const submissionData = { ...this.formData };
+
+        const submissionData = {};
+    Object.keys(this.formData).forEach(key => {
+      const field = this.formFields.find(f => f.label === key);
+      if (field && (field.fieldType === 'select' || field.fieldType === 'radio')) {
+        // Find the original option value
+        const originalOptions = this.parseOptions(field.options);
+        submissionData[key] = originalOptions.find(opt => this.translateOption(field, opt) === this.formData[key]) || this.formData[key];
+      } else {
+        submissionData[key] = this.formData[key];
+      }
+    });
 
         // Safely add user status and ID
         submissionData['Status člana'] = this.userStatus || 'Nepoznato';

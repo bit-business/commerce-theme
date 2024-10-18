@@ -96,7 +96,7 @@
     max-width: 100%;
   }
   .predsjednik-likvidator-tomisla {
-    width: 43.38rem !important;
+    width: 48rem !important;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
