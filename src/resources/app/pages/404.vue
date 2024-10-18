@@ -2,9 +2,9 @@
   <div class="text-center py-2">
     <Head :title="$page.props.name" />
 
-    <div class="text-2xl">Nije pronađena stranica!</div>
+    <div class="text-2xl">{{ $t('nije-pronadena-stranica') }}</div>
     <Link :href="route('skijasi.commerce-theme.home')" class="text-primary font-bold">
-      [Odi na početnu stranicu]
+      {{ $t('odi-na-pocetnu-stranicu') }}
     </Link>
   </div>
 </template>

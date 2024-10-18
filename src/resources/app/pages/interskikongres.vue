@@ -4,23 +4,23 @@
     <section class="rectangle-parent56">
       <img class="frame-child82" alt="" src="/storage/slike/interski/rectangle-200@2x.png" />
       <div class="frame-child83" />
-      <h1 class="interski-kongresi-i">INTERSKI KONGRESI I DEMO TEAM</h1>
+      <h1 class="interski-kongresi-i">{{ $t('interski-kongresi-i-demo-team') }}</h1>
     </section>
     <section class="interski-kongresi-inner">
       <div class="instruction-provider-parent">
         <!-- Instruction Provider 0 -->
         <button class="instruction-provider" @click="toggleInstruction(0)" :class="{ 'active': activeInstruction === 0 }">
-          <b class="interski-povijest">Interski povijest</b>
+          <b class="interski-povijest">{{ $t('interski-povijest-0') }}</b>
         </button>
         <img class="line-icon" loading="lazy" alt="" src="/storage/slike/interski/line-39.svg" />
         <!-- Instruction Provider 1 -->
         <button class="instruction-provider1" @click="toggleInstruction(1)" :class="{ 'active': activeInstruction === 1 }">
-          <b class="interski">Interski</b>
+          <b class="interski">{{ $t('interski') }}</b>
         </button>
         <img class="line-icon" loading="lazy" alt="" src="/storage/slike/interski/line-39.svg" />
         <!-- Instruction Provider 2 -->
         <button class="instruction-provider2" @click="toggleInstruction(2)" :class="{ 'active': activeInstruction === 2 }">
-          <b class="demo-team">Demo team</b>
+          <b class="demo-team">{{ $t('demo-team') }}</b>
         </button>
       </div>
     </section>
@@ -34,17 +34,16 @@
     <section class="access-modifier" v-else-if="activeInstruction === 2">
       <div class="rectangle-parent57">
         <img class="frame-child85" alt="" src="/storage/slike/interski/rectangle-1581@2x.png" />
-        <h1 class="demo-team1">DEMO TEAM</h1>
+        <h1 class="demo-team1">{{ $t('demo-team-0') }}</h1>
         <div class="demo-team-selekcija-container">
           <span>
             <p class="demo-team-selekcija-je-najbolj">
               <span>
                 <span class="demo-team-selekcija"
-                  >DEMO TEAM selekcija je najboljih hrvatskih demonstratora
-                  skijanja izabranih prema rang listi rezultata
+                  >{{ $t('demo-team-selekcija-je-najboljih-hrvatskih-demonstratora-skijanja-izabranih-prema-rang-listi-rezultata') }}
                 </span>
                 <Link class="demonstratorskog-seminara" :href="route('skijasi.commerce-theme.kategorija', { slug: 'dogadanja' })" 
-                  >Demonstratorskog seminara</Link
+                  >{{ $t('demonstratorskog-seminara') }}</Link
                 >
               </span>
               <span>
@@ -58,8 +57,8 @@
             </p>
             <p class="demo-team-bira-se-na-razdoblje">
               <span>
-                <span>DEMO TEAM bira se na razdoblje od </span>
-                <b class="godine">4 godine</b>
+                <span>{{ $t('demo-team-bira-se-na-razdoblje-od') }} </span>
+                <b class="godine">{{ $t('4-godine') }}</b>
                 <span>.</span>
               </span>
             </p>
@@ -70,39 +69,35 @@
             </p>
             <p class="zadaa-hrvatskog-demo-team-a">
               <span>
-                <b>Zadaća Hrvatskog DEMO TEAM-a:</b>
+                <b>{{ $t('zadaca-hrvatskog-demo-team-a') }}</b>
               </span>
             </p>
             <ul class="predstavljanje-hrvatske-svake">
               <li class="predstavljanje-hrvatske-svake1">
                 <span>
                   <span
-                    >predstavljanje Hrvatske svake 4 godine na Interski
-                    kongresima</span
+                    >{{ $t('predstavljanje-hrvatske-svake-4-godine-na-interski-kongresima') }}</span
                   >
                 </span>
               </li>
               <li class="prikaz-hrvatske-kole-skijanja">
                 <span>
                   <span
-                    >prikaz Hrvatske škole skijanja, sudjelovanje na show
-                    nastupima i raznim radionicama na Interski kongresima</span
+                    >{{ $t('prikaz-hrvatske-skole-skijanja-sudjelovanje-na-show-nastupima-i-raznim-radionicama-na-interski-kongresima') }}</span
                   >
                 </span>
               </li>
               <li class="razvoj-i-unaprjeenje-hrvatske">
                 <span>
                   <span
-                    >razvoj i unaprjeđenje Hrvatske škole skijanja i
-                    metodologije podučavanja</span
+                    >{{ $t('razvoj-i-unaprjedenje-hrvatske-skole-skijanja-i-metodologije-poducavanja') }}</span
                   >
                 </span>
               </li>
               <li>
                 <span>
                   <span
-                    >prijenos znanja i rad na seminarima i tečajevima za
-                    učitelje skijanja</span
+                    >{{ $t('prijenos-znanja-i-rad-na-seminarima-i-tecajevima-za-ucitelje-skijanja') }}</span
                   >
                 </span>
               </li>
@@ -114,7 +109,7 @@
     <section class="interski-kongresi-child">
       <div class="error-handler-parent">
         <div class="error-handler">
-          <h1 class="hrvatska-na-interski">HRVATSKA NA INTERSKI KONGRESIMA</h1>
+          <h1 class="hrvatska-na-interski">{{ $t('hrvatska-na-interski-kongresima') }}</h1>
         </div>
         <div class="frame-parent21">
           <div class="rectangle-parent58">
@@ -132,7 +127,7 @@
               <div class="decision-maker-wrapper">
                 <div class="decision-maker">
                   <div class="interski-kongres-finska-wrapper">
-                    <h1 class="interski-kongres-">INTERSKI KONGRES - FINSKA</h1>
+                    <h1 class="interski-kongres-">{{ $t('interski-kongres-finska') }}</h1>
                   </div>
                   <div class="parent">
                     <b class="b">2023</b>
@@ -142,13 +137,13 @@
                           <b>Levi</b>
                         </p>
                         <p class="n-24802e">67.805°N 24.802°E</p>
-                        <p class="m-nadmorske-visine">531 m nadmorske visine</p>
+                        <p class="m-nadmorske-visine">{{ $t('531-m-nadmorske-visine') }}</p>
                         <p class="zagreb-levi-2497-km">Zagreb-Levi: 2497 km</p>
                       </span>
                     </div>
                     <button class="rectangle-parent60"  @click.prevent="toggleDropdown1"> 
                       <div class="frame-child89" />
-                      <b class="demo-team2">DEMO TEAM</b>
+                      <b class="demo-team2">{{ $t('demo-team-0') }}</b>
                     </button>
                   </div>
                 </div>
@@ -170,13 +165,13 @@
                       <div class="spinner">
                         <div class="icon-set">
                           <b class="vrijeme-i-mjesto"
-                            >Vrijeme i mjesto održavanja:</b
+                            >{{ $t('vrijeme-i-mjesto-odrzavanja') }}</b
                           >
-                          <div class="godina-levi">2023. godina, Levi</div>
+                          <div class="godina-levi">{{ $t('2023-godina-levi') }}</div>
                         </div>
                        
                         <div class="icon-set1">
-                          <b class="demo-team3">PREDSTAVNICI:</b>
+                          <b class="demo-team3">{{ $t('predstavnici') }}</b>
                         </div>
 
 
@@ -224,62 +219,31 @@
               <div class="transformer">
                 <div class="interski-kongres-odran-container">
                   <p class="interski-kongres-odran">
-                    22. INTERSKI kongres održan je 2023.g. u Finskom mjestu
-                    Levi. 2015.g. bili smo na najjužnijem mjestu, a sada skoro
-                    pa možemo reći da smo na krajnjem sjeveru kugle zemaljske.
+                    {{ $t('22-interski-kongres-odrzan-je-2023-g-u-finskom-mjestu-levi-2015-g-bili-smo-na-najjuznijem-mjestu-a-sada-skoro-pa-mozemo-reci-da-smo-na-krajnjem-sjeveru-kugle-zemaljske') }}
                   </p>
                   <p class="na-kongresu-je">
-                    Na kongresu je prisustvovalo 1148 sudionika iz 34 svjetske
-                    nacije.
+                    {{ $t('na-kongresu-je-prisustvovalo-1148-sudionika-iz-34-svjetske-nacije') }}
                   </p>
                   <p class="novi-demo-team">
-                    Novi demo team izabran tek u ožujku 2022.g. imao je prije
-                    kongresa svega 29 dana skijaških treninga. Veliki trud, rad
-                    i volja doveli su nas je do vrhunskog uspjeha na Interski
-                    kongresu u Finskoj. Svaka nacija nastupila je na show
-                    nastupima i nastupima prikaza nacionalne škole skijanja.
+                    {{ $t('novi-demo-team-izabran-tek-u-ozujku-2022-g-imao-je-prije-kongresa-svega-29-dana-skijaskih-treninga-veliki-trud-rad-i-volja-doveli-su-nas-je-do-vrhunskog-uspjeha-na-interski-kongresu-u-finskoj-svaka-nacija-nastupila-je-na-show-nastupima-i-nastupima-prikaza-nacionalne-skole-skijanja') }}
                   </p>
                   <p class="blank-line62">&nbsp;</p>
                   <p class="hrvatska-je-ve">
-                    Hrvatska je već u startu proglašena za najbolje odjevenom
-                    nacijom, jedini smo na Interski kongresu imali 3 različite
-                    uniforme, no to je bila tek dobra najava za ono što slijedi.
+                    {{ $t('hrvatska-je-vec-u-startu-proglasena-za-najbolje-odjevenom-nacijom-jedini-smo-na-interski-kongresu-imali-3-razlicite-uniforme-no-to-je-bila-tek-dobra-najava-za-ono-sto-slijedi') }}
                   </p>
                   <p class="na-nonom-show">
-                    Na noćnom show nastupu najprije se Maxime spustio ravno na
-                    monoskiji, za njim je Davide izveo izvanredan skok,
-                    reflektori skijališta su se ugasili i svi su gledali gdje li
-                    je ostatak hrvatskog demo team. Članovi demo teama, jedan po
-                    jedan palili su led lampice na svojim odijelima i krenuli u
-                    akciju. Sjurili su se u vrhunskoj formaciji niz padinu, u
-                    mrklom mraku, osvijetljen samo led lampicama. Tim nastupom
-                    iznenadili smo sve sudionike i gledatelje te dobili vrhunske
-                    pohvale jer skijati u mrklom mraku formacije, kada si ne
-                    vidiš tlo pod nogama i nije tako lako. Također smo
-                    impresionirali publiku našim izborom muzike (pjesme: Mama
-                    ŠČ, Top Gun Anthem) koju je ukomponirao Franjo Jardas.
+                    {{ $t('na-nocnom-show-nastupu-najprije-se-maxime-spustio-ravno-na-monoskiji-za-njim-je-davide-izveo-izvanredan-skok-reflektori-skijalista-su-se-ugasili-i-svi-su-gledali-gdje-li-je-ostatak-hrvatskog-demo-team-clanovi-demo-teama-jedan-po-jedan-palili-su-led-lampice-na-svojim-odijelima-i-krenuli-u-akciju-sjurili-su-se-u-vrhunskoj-formaciji-niz-padinu-u-mrklom-mraku-osvijetljen-samo-led-lampicama-tim-nastupom-iznenadili-smo-sve-sudionike-i-gledatelje-te-dobili-vrhunske-pohvale-jer-skijati-u-mrklom-mraku-formacije-kada-si-ne-vidis-tlo-pod-nogama-i-nije-tako-lako-takoder-smo-impresionirali-publiku-nasim-izborom-muzike-pjesme-mama-sc-top-gun-anthem-koju-je-ukomponirao-franjo-jardas') }}
                   </p>
                   <p class="blank-line63">&nbsp;</p>
                   <p class="osim-nastupa-odlino">
-                    Osim nastupa odlično smo prezentirali hrvatsku školu
-                    skijanja na radionicama i održali smo predavanja s vrlo
-                    zanimljivim, inovativnim temama u skijanju.
+                    {{ $t('osim-nastupa-odlicno-smo-prezentirali-hrvatsku-skolu-skijanja-na-radionicama-i-odrzali-smo-predavanja-s-vrlo-zanimljivim-inovativnim-temama-u-skijanju') }}
                   </p>
                   <p class="od-ostalih-sudionika">
-                    Od ostalih sudionika uvelike bi pohvalili Švicarsku na
-                    odličnim nastupima i radionicama. Švicarski demo team
-                    oduševljen našim nastupom također je predložio da na
-                    sljedećem Interski kongresu na 1 show nastupu nastupamo
-                    zajedno, što bi bio prvi slušaj zajedničkog nastupa u
-                    povijesti Interskija.
+                    {{ $t('od-ostalih-sudionika-uvelike-bi-pohvalili-svicarsku-na-odlicnim-nastupima-i-radionicama-svicarski-demo-team-odusevljen-nasim-nastupom-takoder-je-predlozio-da-na-sljedecem-interski-kongresu-na-1-show-nastupu-nastupamo-zajedno-sto-bi-bio-prvi-slusaj-zajednickog-nastupa-u-povijesti-interskija') }}
                   </p>
                   <p class="blank-line64">&nbsp;</p>
                   <p class="sudjelovali-smo-na">
-                    Sudjelovali smo na radionicama skoro svih prisutnih nacija,
-                    brojim predavanjima i svim sastancima s ciljem promicanja,
-                    poboljšanja i usavršavanja kvalitete sportova na snijegu u
-                    Hrvatskoj. Novo naučena znanja i vještine prenijet ćemo
-                    našim članovima na budućim seminarima i tečajevima.
+                    {{ $t('sudjelovali-smo-na-radionicama-skoro-svih-prisutnih-nacija-brojim-predavanjima-i-svim-sastancima-s-ciljem-promicanja-poboljsanja-i-usavrsavanja-kvalitete-sportova-na-snijegu-u-hrvatskoj-novo-naucena-znanja-i-vjestine-prenijet-cemo-nasim-clanovima-na-buducim-seminarima-i-tecajevima') }}
                   </p>
                 </div>
               </div>
@@ -309,7 +273,7 @@
         <div class="frame-parent22">
           <div class="frame-wrapper16">
             <div class="interski-kongres-bugarska-parent">
-              <h1 class="interski-kongres-1">INTERSKI KONGRES - BUGARSKA</h1>
+              <h1 class="interski-kongres-1">{{ $t('interski-kongres-bugarska') }}</h1>
               <div class="frame-wrapper17">
                 <div class="frame-parent23">
                   <div class="group">
@@ -321,7 +285,7 @@
                         </p>
                         <p class="n-2440e">41°38'N 24°40'E</p>
                         <p class="m-nadmorske-visine1">
-                          1926 m nadmorske visine
+                          {{ $t('1926-m-nadmorske-visine') }}
                         </p>
                         <p class="zagreb-pamporovo-838-km">
                           Zagreb-Pamporovo: 838 km
@@ -332,7 +296,7 @@
                   <div class="frame-wrapper18">
                     <button class="rectangle-parent67" @click.prevent="toggleDropdown2"> 
                       <div class="frame-child96" />
-                      <b class="demo-team4">DEMO TEAM</b>
+                      <b class="demo-team4">{{ $t('demo-team-0') }}</b>
                     </button>
                   </div>
                 </div>
@@ -369,13 +333,13 @@
                 <div class="spinner1">
                   <div class="icon-set2">
                     <b class="vrijeme-i-mjesto1"
-                      >Vrijeme i mjesto održavanja:</b
+                      >{{ $t('vrijeme-i-mjesto-odrzavanja') }}</b
                     >
-                    <div class="godina-pamporovo">2019. godina, Pamporovo</div>
+                    <div class="godina-pamporovo">{{ $t('2019-godina-pamporovo') }}</div>
                   </div>
                   
                   <div class="icon-set3">
-                    <b class="demo-team5">PREDSTAVNICI:</b>
+                    <b class="demo-team5">{{ $t('predstavnici') }}</b>
                   </div>
                  
                 </div>
@@ -409,50 +373,25 @@
             <div class="na-najstarijem-bugarskom-container">
               <span>
                 <p class="na-najstarijem-bugarskom">
-                  Na najstarijem bugarskom skijalištu Pamporovo od
-                  16.-23.03.2019. održan je 21. Interski kongres. U Bugarskoj je
-                  sudjelovalo 35 zemalja članica INTERSKI-a, ISIA organizacije,
-                  IVSI i IVSS-a među kojima je bila i delegacija Hrvatske te
-                  demo team HZUTS-a.
+                  {{ $t('na-najstarijem-bugarskom-skijalis-tu-pamporovo-od-16-23-03-2019-odrz-an-je-21-interski-kongres-u-bugarskoj-je-sudjelovalo-35-zemalja-c-lanica-interski-a-isia-organizacije-ivsi-i-ivss-a-medu-kojima-je-bila-i-delegacija-hrvatske-te-demo-team-hzuts-a') }}
                 </p>
                 <p class="blank-line65">&nbsp;</p>
                 <p class="hrvatsku-skolu-skijanja">
-                  Hrvatsku školu skijanja prezentirali smo vrhunskim show
-                  nastupima, seminarima, predavanjima i udžbenikom Alpsko
-                  skijanje te tako opravdali odlične kritike koje smo dobili
-                  nakon nastupa na prošlom kongresu u Argentini 2015. godine.
+                  {{ $t('hrvatsku-s-kolu-skijanja-prezentirali-smo-vrhunskim-show-nastupima-seminarima-predavanjima-i-udz-benikom-alpsko-skijanje-te-tako-opravdali-odlic-ne-kritike-koje-smo-dobili-nakon-nastupa-na-pros-lom-kongresu-u-argentini-2015-godine') }}
                 </p>
                 <p class="blank-line66">&nbsp;</p>
                 <p class="team-u-se-prikljuio">
-                  Team-u se priključio i Dino Sokolović zlatni u slalomu na
-                  Paraolimpijskim igrama održanim u Koreji 2018.g. i time
-                  hrvatski nastup “digao” na još viši nivo.
+                  {{ $t('team-u-se-prikljucio-i-dino-sokolovic-zlatni-u-slalomu-na-paraolimpijskim-igrama-odrzanim-u-koreji-2018-g-i-time-hrvatski-nastup-digao-na-jos-vis-i-nivo') }}
                 </p>
                 <p class="direktan-prijenos-na">
-                  Direktan prijenos na Bugarskoj nacionalnoj televiziji dodao je
-                  još više naboja i novu dozu adrenalina svim sudionicima na
-                  otvaranju kongresa. Naš nastup su započeli Ana Maria Vučinić i
-                  Dino Sokolović skijanjem u “kontri”, a zatim je krenuo ostatak
-                  tima u formaciji koju smo pripremali za otvaranje (jedna od
-                  pet pripremljenih).
+                  {{ $t('direktan-prijenos-na-bugarskoj-nacionalnoj-televiziji-dodao-je-jos-vis-e-naboja-i-novu-dozu-adrenalina-svim-sudionicima-na-otvaranju-kongresa-nas-nastup-su-zapoc-eli-ana-maria-vuc-inic-i-dino-sokolovic-skijanjem-u-kontri-a-zatim-je-krenuo-ostatak-tima-u-formaciji-koju-smo-pripremali-za-otvaranje-jedna-od-pet-pripremljenih') }}
                 </p>
                 <p class="p"></p>
                 <p class="na-sveopce-iznenaenje">
-                  Na sveopće iznenađenje svih prisutnih, a naročito voditeljice
-                  i TV komentatora, naš demonstrator Nino Ružička spustio se
-                  kroz našu formaciju na BICIKLU!!! Izmjerena brzina bila je
-                  93,3 km/h. To je bio vrhunac otvaranja kongresa. Odlični Dino
-                  i Ana, super formacija teama i na kraju Nino na biciklu,
-                  dovela nas je do titule najboljeg tima na otvaranju. Sljedećih
-                  dana izmjenjivali smo iskustva s demonstratorima ostalih
-                  zemalja sudionika, sudjelovali na workshopovima i raznim
-                  prikazima škola skijanja te se pripremali za ostale službene
-                  nastupe.
+                  {{ $t('na-sveopce-iznenadenje-svih-prisutnih-a-narocito-voditeljice-i-tv-komentatora-nas-demonstrator-nino-ruz-ic-ka-spustio-se-kroz-nas-u-formaciju-na-biciklu-izmjerena-brzina-bila-je-93-3-km-h-to-je-bio-vrhunac-otvaranja-kongresa-odlicni-dino-i-ana-super-formacija-teama-i-na-kraju-nino-na-biciklu-dovela-nas-je-do-titule-najboljeg-tima-na-otvaranju-sljedecih-dana-izmjenjivali-smo-iskustva-s-demonstratorima-ostalih-zemalja-sudionika-sudjelovali-na-workshopovima-i-raznim-prikazima-s-kola-skijanja-te-se-pripremali-za-ostale-sluzbene-nastupe') }}
                 </p>
                 <p class="uz-odlicno-skijanje">
-                  Uz odlično skijanje koje smo pokazali, slijedilo je još bolje
-                  predavanje “Hrvatska škola skijanja” i njen prikaz na terenu
-                  uz preko 300 sudionika.
+                  {{ $t('uz-odlic-no-skijanje-koje-smo-pokazali-slijedilo-je-jos-bolje-predavanje-hrvatska-s-kola-skijanja-i-njen-prikaz-na-terenu-uz-preko-300-sudionika') }}
                 </p>
               </span>
             </div>
@@ -488,7 +427,7 @@
         </div>
         <div class="logic-gate-wrapper">
           <div class="logic-gate">
-            <h1 class="interski-kongres-2">INTERSKI KONGRES - ARGENTINA</h1>
+            <h1 class="interski-kongres-2">{{ $t('interski-kongres-argentina') }}</h1>
             <div class="error-handler1">
               <div class="frame-parent27">
                 <div class="parent1">
@@ -499,7 +438,7 @@
                         <b>Ushuaia</b>
                       </p>
                       <p class="s-6819w">54°48′S 68°19′W</p>
-                      <p class="m-nadmorske-visine2">958 m nadmorske visine</p>
+                      <p class="m-nadmorske-visine2">{{ $t('958-m-nadmorske-visine') }}</p>
                       <p class="zagreb-ushuaia-13687-km">
                         Zagreb-Ushuaia: 13687 km
                       </p>
@@ -509,7 +448,7 @@
                 <div class="frame-wrapper21">
                   <button class="rectangle-parent73" @click.prevent="toggleDropdown3"> 
                     <div class="frame-child103" />
-                    <b class="demo-team6">DEMO TEAM</b>
+                    <b class="demo-team6">{{ $t('demo-team-0') }}</b>
                   </button>
                 </div>
               </div>
@@ -532,9 +471,9 @@
                   <div class="spinner2">
                     <div class="icon-set4">
                       <b class="vrijeme-i-mjesto2"
-                        >Vrijeme i mjesto održavanja:</b
+                        >{{ $t('vrijeme-i-mjesto-odrzavanja') }}</b
                       >
-                      <div class="godina-ushuaia">2015. godina, Ushuaia</div>
+                      <div class="godina-ushuaia">{{ $t('2015-godina-ushuaia') }}</div>
                     </div>
                     <div class="icon-set5">
                       <b class="demo-team7">PREDSTAVNICI:</b>
@@ -572,44 +511,28 @@
           <div class="ushuaia-a-je-najjuniji-grad-i-wrapper">
             <div class="ushuaia-a-je-najjuniji-container">
               <p class="ushuaia-a-je-najjuniji">
-                Ushuaia-a je najjužniji grad i luka na svijetu, sa skijalištem
-                udaljenim pola sata vožnje od grada. Staze se protežu od 1057
-                nmv. pa do 195 nmv. što skijalište čini najnižim skijalištem na
-                svijetu.
+                {{ $t('ushuaia-a-je-najjuzniji-grad-i-luka-na-svijetu-sa-skijalistem-udaljenim-pola-sata-voznje-od-grada-staze-se-protezu-od-1057-nmv-pa-do-195-nmv-sto-skijaliste-cini-najnizim-skijalistem-na-svijetu') }}
               </p>
               <p class="blank-line67">&nbsp;</p>
               <p class="team-je-funkcionirao">
-                Team je funkcionirao besprijekorno. Svaki dan treninzi od 09 do
-                15 sati, odmor, obilazak, razgledavanje grada i video analize
-                prije večere.
+                {{ $t('team-je-funkcionirao-besprijekorno-svaki-dan-treninzi-od-09-do-15-sati-odmor-obilazak-razgledavanje-grada-i-video-analize-prije-vecere') }}
               </p>
               <p class="na-interskiju-je">
-                Na Interskiju je sudjelovalo 37 zemalja svijeta. Svaka zemlja
-                ima 3 show nastupa i 2 nastupa prikaza škole skijanja sa
-                timovima od četiri pa do dvanaest članova.
+                {{ $t('na-interskiju-je-sudjelovalo-37-zemalja-svijeta-svaka-zemlja-ima-3-show-nastupa-i-2-nastupa-prikaza-skole-skijanja-sa-timovima-od-cetiri-pa-do-dvanaest-clanova') }}
               </p>
               <p class="blank-line68">&nbsp;</p>
               <p class="hrvatski-demo-team">
-                Hrvatski demo team odskijao je vrhunski - brzo, s odličnim
-                zavojem, bez grešaka i sa mnogo pohvala ostalih teamova.
+                {{ $t('hrvatski-demo-team-odskijao-je-vrhunski-brzo-s-odlicnim-zavojem-bez-gresaka-i-sa-mnogo-pohvala-ostalih-teamova') }}
               </p>
               <p class="odlinom-prezentacijom-demons">
-                Odličnom prezentacijom, demonstracijom i objašnjenjem hrvatske
-                škole skijanja oduševili smo sve prisutne. Rezultat je bio 88
-                članova svih delegacija koji su prisustvovali našem workshopu
-                što je daleko najveći broj posjećenosti workshopa cijelog
-                kongresa.
+                {{ $t('odlicnom-prezentacijom-demonstracijom-i-objasnjenjem-hrvatske-skole-skijanja-odusevili-smo-sve-prisutne-rezultat-je-bio-88-clanova-svih-delegacija-koji-su-prisustvovali-nasem-workshopu-sto-je-daleko-najveci-broj-posjecenosti-workshopa-cijelog-kongresa') }}
               </p>
               <p class="blank-line69">&nbsp;</p>
               <p class="postali-smo-hit">
-                Postali smo hit INTERSKI-a. Pohvale sa svih strana. Trud i
-                ulaganja su se isplatila. Pokazali smo svijetu kvalitetnu i
-                modernu školu skijanja.
+                {{ $t('postali-smo-hit-interski-a-pohvale-sa-svih-strana-trud-i-ulaganja-su-se-isplatila-pokazali-smo-svijetu-kvalitetnu-i-modernu-skolu-skijanja') }}
               </p>
               <p class="od-ostalih-zemalja">
-                Od ostalih zemalja dojmile su nas izvrsna Švicarska, Italija sa
-                zanimljivim prikazom kako bi vrtić na snijegu trebao izgledati i
-                atraktivna Argentina, domaćin s velikim brojem sudionika.
+                {{ $t('od-ostalih-zemalja-dojmile-su-nas-izvrsna-svicarska-italija-sa-zanimljivim-prikazom-kako-bi-vrtic-na-snijegu-trebao-izgledati-i-atraktivna-argentina-domacin-s-velikim-brojem-sudionika') }}
               </p>
             </div>
           </div>
@@ -633,7 +556,7 @@
         <div class="frame-parent28">
           <div class="frame-wrapper23">
             <div class="interski-kongres-austrija-parent">
-              <h1 class="interski-kongres-3">INTERSKI KONGRES - AUSTRIJA</h1>
+              <h1 class="interski-kongres-3">{{ $t('interski-kongres-austrija') }}</h1>
               <div class="frame-wrapper24">
                 <div class="frame-parent29">
                   <div class="parent2">
@@ -645,7 +568,7 @@
                         </p>
                         <p class="n-1016e">47°07′N 10°16′E</p>
                         <p class="m-nadmorske-visine3">
-                          2806 m nadmorske visine
+                          {{ $t('2806-m-nadmorske-visine') }}
                         </p>
                         <p class="zagreb-st-anton-461">
                           Zagreb-St. Anton: 461 km
@@ -656,7 +579,7 @@
                   <div class="frame-wrapper25">
                     <button class="rectangle-parent80" @click.prevent="toggleDropdown4"> 
                       <div class="frame-child110" />
-                      <b class="demo-team8">DEMO TEAM</b>
+                      <b class="demo-team8">{{ $t('demo-team-0') }}</b>
                     </button>
                   </div>
                 </div>
@@ -689,12 +612,12 @@
                 <div class="spinner3">
                   <div class="icon-set6">
                     <b class="vrijeme-i-mjesto3"
-                      >Vrijeme i mjesto održavanja:</b
+                      >{{ $t('vrijeme-i-mjesto-odrzavanja') }}</b
                     >
-                    <div class="godina-st-anton">2011. godina, St. Anton</div>
+                    <div class="godina-st-anton">{{ $t('2011-godina-st-anton') }}</div>
                   </div>
                   <div class="icon-set7">
-                    <b class="demo-team9">PREDSTAVNICI:</b>
+                    <b class="demo-team9">{{ $t('predstavnici') }}</b>
                   </div>
               
                 </div>
@@ -728,59 +651,28 @@
               <div class="interski-kongres-koji-container">
                 <span>
                   <p class="interski-kongres-koji">
-                    Interski kongres koji se u siječnju 2011. godine održao u
-                    St. Antonu bio je dosada najveći i najbolje organizirani
-                    Interski kongres. Na kongresu su nastupili predstavnici iz
-                    40 zemalja članica Interski International, a ukupno je
-                    akreditirano više od 2.000 sudionika. I za hrvatsko skijanje
-                    i HZUTS ovaj je kongres bio do sada najuspješniji i
-                    najkvalitetnije realizirani nastup.
+                    {{ $t('interski-kongres-koji-se-u-sijecnju-2011-godine-odrzao-u-st-antonu-bio-je-dosada-najveci-i-najbolje-organizirani-interski-kongres-na-kongresu-su-nastupili-predstavnici-iz-40-zemalja-clanica-interski-international-a-ukupno-je-akreditirano-vise-od-2-000-sudionika-i-za-hrvatsko-skijanje-i-hzuts-ovaj-je-kongres-bio-do-sada-najuspjesniji-i-najkvalitetnije-realizirani-nastup') }}
                   </p>
                   <p class="p1"></p>
                   <p class="za-razliku-od">
-                    Za razliku od prakse prethodnih kongresa, u St. Antonu je
-                    promijenjen način rada na workshopovima. Sudionici su od 10
-                    do 13 sati proveli u radu na jednom workshopu te nisu mogli
-                    sudjelovati na nekom drugom. To je omogućilo kvalitetniji
-                    rad na worksopu jer sudionici praktično nisu mogli mijenjati
-                    po volji workshopove, što je bilo na prijašnjim kongresima
-                    moguće. Zbog takve organizacije, workshopovi su bili
-                    brojniji, sudionici su provodili više vremena u istoj grupi,
-                    što je intenziviralo međusobnu interakciju i povećalo broj
-                    pitanja.
+                    {{ $t('za-razliku-od-prakse-prethodnih-kongresa-u-st-antonu-je-promijenjen-nacin-rada-na-workshopovima-sudionici-su-od-10-do-13-sati-proveli-u-radu-na-jednom-workshopu-te-nisu-mogli-sudjelovati-na-nekom-drugom-to-je-omogucilo-kvalitetniji-rad-na-worksopu-jer-sudionici-prakticno-nisu-mogli-mijenjati-po-volji-workshopove-sto-je-bilo-na-prijasnjim-kongresima-moguce-zbog-takve-organizacije-workshopovi-su-bili-brojniji-sudionici-su-provodili-vise-vremena-u-istoj-grupi-sto-je-intenziviralo-medusobnu-interakciju-i-povecalo-broj-pitanja') }}
                   </p>
                   <p class="intenzivirani-su-workshopovi">
-                    Intenzivirani su workshopovi snowborda i telemarka te rada
-                    sa osobama s invaliditetom.
+                    {{ $t('intenzivirani-su-workshopovi-snowborda-i-telemarka-te-rada-sa-osobama-s-invaliditetom') }}
                   </p>
                   <p class="blank-line70">&nbsp;</p>
                   <p class="hrvatski-nastup-bio">
-                    Hrvatski nastup bio je u cijelosti na najvišoj razini, a
-                    vrhunski su bili i svi pojedini dijelovi nastupa -
-                    predavanja, workshopovi i show nastupi.
+                    {{ $t('hrvatski-nastup-bio-je-u-cijelosti-na-najvisoj-razini-a-vrhunski-su-bili-i-svi-pojedini-dijelovi-nastupa-predavanja-workshopovi-i-show-nastupi') }}
                   </p>
                   <p class="naa-predavanja-su">
-                    Naša predavanja su bila praćena sa velikim interesom, a
-                    diskusije nakon predavanja pokazale da postoji veliki
-                    interes za hrvatsko skijanje. Workshopovi su održani s dvije
-                    teme - Hrvatska škola skijanja i Novi način učenja
-                    snowboarda uz pomoć skijaša, koji je razradio Igor Kecerin
-                    uz pomoć Mikija Toskića, hrvatskog demonstratora snowboarda.
-                    Taj pristup učenju snowboarda je vrlo dobro prihvaćen i
-                    ocijenjen. Hrvatska škola skijanja je održana na tri jezika:
-                    njemačkom, engleskom i talijanskom.
+                    {{ $t('nasa-predavanja-su-bila-pracena-sa-velikim-interesom-a-diskusije-nakon-predavanja-pokazale-da-postoji-veliki-interes-za-hrvatsko-skijanje-workshopovi-su-odrzani-s-dvije-teme-hrvatska-skola-skijanja-i-novi-nacin-ucenja-snowboarda-uz-pomoc-skijasa-koji-je-razradio-igor-kecerin-uz-pomoc-mikija-toskica-hrvatskog-demonstratora-snowboarda-taj-pristup-ucenju-snowboarda-je-vrlo-dobro-prihvacen-i-ocijenjen-hrvatska-skola-skijanja-je-odrzana-na-tri-jezika-njemackom-engleskom-i-talijanskom') }}
                   </p>
                   <p class="snowbord-workshop-je">
-                    Snowbord workshop je održan na Engleskom. U realizaciji je
-                    sudjelovao cijeli Demo team i ostvarili su veliki uspjeh.
+                    {{ $t('snowbord-workshop-je-odrzan-na-engleskom-u-realizaciji-je-sudjelovao-cijeli-demo-team-i-ostvarili-su-veliki-uspjeh') }}
                   </p>
                   <p class="blank-line71">&nbsp;</p>
                   <p class="show-nastup-se">
-                    Show nastup se sastojao od tri nastupa tijekom večernjeg
-                    programa i nastupom na ceremoniji zatvaranja kongresa.
-                    Nastupi su bili izvrsni, te smo dobili mnogo pohvala i
-                    čestitki od članova drugih demo-teamova, trenera
-                    demo-teamova i organizacije.
+                    {{ $t('show-nastup-se-sastojao-od-tri-nastupa-tijekom-vecernjeg-programa-i-nastupom-na-ceremoniji-zatvaranja-kongresa-nastupi-su-bili-izvrsni-te-smo-dobili-mnogo-pohvala-i-cestitki-od-clanova-drugih-demo-teamova-trenera-demo-teamova-i-organizacije') }}
                   </p>
                 </span>
               </div>
@@ -816,7 +708,7 @@
           <div class="frame-wrapper29">
             <div class="frame-parent33">
               <div class="interski-kongres-koreja-wrapper">
-                <h1 class="interski-kongres-4">INTERSKI KONGRES - KOREJA</h1>
+                <h1 class="interski-kongres-4">{{ $t('interski-kongres-koreja') }}</h1>
               </div>
               <div class="frame-parent34">
                 <div class="parent3">
@@ -827,7 +719,7 @@
                         <b>Pyeongchang</b>
                       </p>
                       <p class="n-12824e">37°22′N 128°24′E</p>
-                      <p class="m-nadmorske-visine4">1450 m nadmorske visine</p>
+                      <p class="m-nadmorske-visine4">{{ $t('1450-m-nadmorske-visine') }}</p>
                       <p class="zagreb-pyeongchang-8568">
                         Zagreb-Pyeongchang : 8568 km
                       </p>
@@ -837,7 +729,7 @@
                 <div class="frame-wrapper30">
                   <button class="rectangle-parent89" @click.prevent="toggleDropdown5"> 
                     <div class="frame-child121" />
-                    <b class="demo-team10">DEMO TEAM</b>
+                    <b class="demo-team10">{{ $t('demo-team-0') }}</b>
                   </button>
                 </div>
               </div>
@@ -859,10 +751,10 @@
                   <div class="spinner4">
                     <div class="icon-set8">
                       <b class="vrijeme-i-mjesto4"
-                        >Vrijeme i mjesto održavanja:</b
+                        >{{ $t('vrijeme-i-mjesto-odrzavanja') }}</b
                       >
                       <div class="godina-pyeongchang">
-                    2007. godina, Pyeongchang
+                    {{ $t('2007-godina-pyeongchang') }}
                   </div>
                     </div>
                 
@@ -896,11 +788,7 @@
           </div>
           <div class="u-18-om-interski-kongresu-u-k-wrapper">
             <div class="u-18-om-interski">
-              U 18.-om Interski kongresu u Koreji bilo je prisutno 1500
-              sudionika i 31 nacija. Delegacija HZUTS-a i njen DEMO TEAM
-              predstavio se sa tri show nastupa s elementima hrvatske škole
-              skijanja, tri predavanja te show nastupima na službenom otvaranju
-              i zatvaranju Kongresa.
+              {{ $t('u-18-om-interski-kongresu-u-koreji-bilo-je-prisutno-1500-sudionika-i-31-nacija-delegacija-hzuts-a-i-njen-demo-team-predstavio-se-sa-tri-show-nastupa-s-elementima-hrvatske-skole-skijanja-tri-predavanja-te-show-nastupima-na-sluzbenom-otvaranju-i-zatvaranju-kongresa') }}
             </div>
           </div>
         </div>
@@ -924,7 +812,7 @@
           <div class="frame-wrapper33">
             <div class="frame-parent39">
               <div class="interski-kongres-vicarska-wrapper">
-                <h1 class="interski-kongres-5">INTERSKI KONGRES - ŠVICARSKA</h1>
+                <h1 class="interski-kongres-5">{{ $t('interski-kongres-svicarska') }}</h1>
               </div>
               <div class="frame-parent40">
                 <div class="parent4">
@@ -935,7 +823,7 @@
                         <b>Crans Montana</b>
                       </p>
                       <p class="n-729e">46°19′N 7°29′E</p>
-                      <p class="m-nadmorske-visine5">3177 m nadmorske visine</p>
+                      <p class="m-nadmorske-visine5">{{ $t('3177-m-nadmorske-visine') }}</p>
                       <p class="zagreb-crans-montana-658">
                         Zagreb-Crans Montana: 658 km
                       </p>
@@ -945,7 +833,7 @@
                 <div class="frame-wrapper34">
                   <button class="rectangle-parent96" @click.prevent="toggleDropdown6"> 
                     <div class="frame-child128" />
-                    <b class="demo-team12">DEMO TEAM</b>
+                    <b class="demo-team12">{{ $t('demo-team-0') }}</b>
                   </button>
                 </div>
               </div>
@@ -975,7 +863,7 @@
                 <div class="spinner5">
                   <div class="icon-set10">
                     <b class="vrijeme-i-mjesto5"
-                      >Vrijeme i mjesto održavanja:</b
+                      >{{ $t('vrijeme-i-mjesto-odrzavanja') }}</b
                     >
                   </div>
                   <div class="icon-set11">
@@ -984,7 +872,7 @@
                  
                 </div>
                 <div class="godina-crans-montana">
-                  2003. godina, Crans Montana
+                  {{ $t('2003-godina-crans-montana') }}
                 </div>
               </div>
             </div>
@@ -1009,10 +897,10 @@
               <div class="interski-kongres-koji-container">
                 <span>
                   <p class="interski-kongres-koji">
-                  Novi DEMO TEAM predstavio je Hrvatsku na 17.-om Interski kongresu u Švicarskoj. 35 zemalja svijeta učesnica kongresa ponovno su se uvjerile da Hrvatska nema samo Ivicu i Janicu Kostelić, već i hrvatsku školu skijanja sa stogodišnjom tradicijom. </p>
+                  {{ $t('novi-demo-team-predstavio-je-hrvatsku-na-17-om-interski-kongresu-u-svicarskoj-35-zemalja-svijeta-ucesnica-kongresa-ponovno-su-se-uvjerile-da-hrvatska-nema-samo-ivicu-i-janicu-kostelic-vec-i-hrvatsku-skolu-skijanja-sa-stogodisnjom-tradicijom') }} </p>
                        <p class="blank-line71">&nbsp;</p>
                   <p class="show-nastup-se">
-Uz odlične show nastupe Demo teama, imali smo vrlo zapažena i posjećena predavanja i radionice te smo na najbolji način predstavili hrvatsku školu skijanja. Sudionicima Interskija podijelili smo video kazetu 'Hrvatska škola skijanja', koja ujedno predstavlja prvi edukativni materijal na tržištu s novom modernom 'carving' školom skijanja (na hrvatskom jeziku s engleskim titlom).
+{{ $t('uz-odlicne-show-nastupe-demo-teama-imali-smo-vrlo-zapazena-i-posjecena-predavanja-i-radionice-te-smo-na-najbolji-nacin-predstavili-hrvatsku-skolu-skijanja-sudionicima-interskija-podijelili-smo-video-kazetu-hrvatska-skola-skijanja-koja-ujedno-predstavlja-prvi-edukativni-materijal-na-trzistu-s-novom-modernom-carving-skolom-skijanja-na-hrvatskom-jeziku-s-engleskim-titlom') }}
           </p>
         </span></div>
             </div>
@@ -1047,7 +935,7 @@ Uz odlične show nastupe Demo teama, imali smo vrlo zapažena i posjećena preda
           <div class="frame-wrapper38">
             <div class="frame-parent44">
               <div class="interski-kongres-norveka-wrapper">
-                <h1 class="interski-kongres-6">INTERSKI KONGRES - NORVEŠKA</h1>
+                <h1 class="interski-kongres-6">{{ $t('interski-kongres-norveska') }}</h1>
               </div>
               <div class="frame-parent45">
                 <div class="parent5">
@@ -1058,7 +946,7 @@ Uz odlične show nastupe Demo teama, imali smo vrlo zapažena i posjećena preda
                         <b>Beitostølen</b>
                       </p>
                       <p class="n-854e">61°14′N 8°54′E</p>
-                      <p class="m-nadmorske-visine6">1100 m nadmorske visine</p>
+                      <p class="m-nadmorske-visine6">{{ $t('1100-m-nadmorske-visine') }}</p>
                       <p class="zagreb-beitostlen-1776-km">
                         Zagreb-Beitostølen: 1776 km
                       </p>
@@ -1068,7 +956,7 @@ Uz odlične show nastupe Demo teama, imali smo vrlo zapažena i posjećena preda
                 <div class="frame-wrapper39">
                   <button class="rectangle-parent105" @click.prevent="toggleDropdown7"> 
                     <div class="frame-child140" />
-                    <b class="demo-team14">DEMO TEAM</b>
+                    <b class="demo-team14">{{ $t('demo-team-0') }}</b>
                   </button>
                 </div>
               </div>
@@ -1087,8 +975,8 @@ Uz odlične show nastupe Demo teama, imali smo vrlo zapažena i posjećena preda
             <div class="tooltip">
               <div class="spinner6">
                 <div class="icon-set12">
-                  <b class="vrijeme-i-mjesto6">Vrijeme i mjesto održavanja:</b>
-                  <div class="godina-beitostlen">1999. godina, Beitostølen</div>
+                  <b class="vrijeme-i-mjesto6">{{ $t('vrijeme-i-mjesto-odrzavanja') }}</b>
+                  <div class="godina-beitostlen">{{ $t('1999-godina-beitostolen') }}</div>
                 </div>
                 <div class="icon-set13">
                   <b class="demo-team15">PREDSTAVNICI:</b>
@@ -1116,17 +1004,11 @@ Uz odlične show nastupe Demo teama, imali smo vrlo zapažena i posjećena preda
                 <div class="image-palette" />
                 <div class="prvi-hrvatski-demo-container">
                   <p class="prvi-hrvatski-demo">
-                    Prvi hrvatski Demo team (8 demonstratora) izabran je 1997.g.
-                    i nakon 2 godine intenzivnih priprema nastupio je na XVI
-                    Interski kongresu 1999.g. u Norveškoj. Team se odlično
-                    pripremio i vrhunski odradio show nastupe, radionice i
-                    predavanja.
+                    {{ $t('prvi-hrvatski-demo-team-8-demonstratora-izabran-je-1997-g-i-nakon-2-godine-intenzivnih-priprema-nastupio-je-na-xvi-interski-kongresu-1999-g-u-norveskoj-team-se-odlicno-pripremio-i-vrhunski-odradio-show-nastupe-radionice-i-predavanja') }}
                   </p>
                   <p class="blank-line72">&nbsp;</p>
                   <p class="hrvatska-je-tada">
-                    Hrvatska je tada prvi puta predstavljena svjetskoj sceni
-                    učitelja sportova na snijegu uz velike pohvale i ovacije
-                    svih sudionika Interski kongresa.
+                    {{ $t('hrvatska-je-tada-prvi-puta-predstavljena-svjetskoj-sceni-ucitelja-sportova-na-snijegu-uz-velike-pohvale-i-ovacije-svih-sudionika-interski-kongresa') }}
                   </p>
                 </div>
               </div>

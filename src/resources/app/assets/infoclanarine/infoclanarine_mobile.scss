@@ -146,9 +146,55 @@
   }
   .lanarinee-icon {
     position: relative;
-    width: 20.88rem;
-    height: 2.53rem;
-    z-index: 0;
+    width: 35.77rem;
+
+    font-size: 1.8rem;
+    font-family: Inter;
+    color:  #03A9F4;
+    line-height: 1.5; 
+    font-weight: 800;
+    letter-spacing: 7px;
+  }
+  .lanarinee-icon2 {
+    position: relative;
+    width: 90%;
+
+    font-size: 1.8rem;
+    font-family: Inter;
+    color:  #03A9F4;
+    line-height: 1.4; 
+    font-weight: 800;
+    letter-spacing: 7px;
+    justify-content: center;
+    text-align: center;
+  }
+
+
+  .lanarinee-icon3 {
+    position: relative;
+    width: 100%;
+
+    font-size: 1.8rem;
+    font-family: Inter;
+    color:  #03A9F4;
+    line-height: 1; 
+    font-weight: 800;
+    letter-spacing: 7px;
+    justify-content: center;
+    text-align: center;
+  }
+  .lanarinee-icon4 {
+    position: relative;
+    width: 100%;
+
+    font-size: 1.8rem;
+    font-family: Inter;
+    color:  #03A9F4;
+
+    font-weight: 800;
+    letter-spacing: 7px;
+    justify-content: center;
+    text-align: center;
   }
   .uitelj-skijanjadaskanja-ivs {
     position: absolute;
@@ -244,7 +290,7 @@
   .treneri-skijanjadaskanja-na1 {
     position: absolute;
     width: 100%;
-    top: calc(50% + 29.2px);
+    top: calc(50% + 14.2px);
     left: 0%;
     letter-spacing: 2.61px;
     display: flex;
@@ -1632,11 +1678,21 @@
       text-align: left;
     }
 
- 
+    .izdavanje-iskaznice-parentt {
+width: 16rem;
+    }
+    .uitelj-skijanjadaskanja-parentt {
+      width: 16rem;
+    }
+
+    .podacizauplatuframe {
+      height: 95%;
+    }
 
     .podacizauplatuframe-parentt {
       align-self: stretch;
       width: auto;
+      height: 95%;
     }
 
     .uplatnicaframe-icon {
@@ -1660,6 +1716,22 @@
 
 
   @media screen and (max-width: 360px) {
+    .lanarinee-icon {
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+    }
+    .lanarinee-icon2 {
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+    }
+    .lanarinee-icon3 {
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+    }
+    .lanarinee-icon4 {
+      font-size: 1.5rem;
+      letter-spacing: 3px;
+    }
   .uitelj-skijanjadaskanja-ivs {
     font-size: 0.78rem;
   }

@@ -4,8 +4,7 @@
   <div>
   
         <template v-if="isWideScreen">
-        
-        <Head title="Prijava"/>
+          <Head :title="$t('prijaviSe')" />
           <div class="hzuts-login-desktop">
       <img
         class="backgroundslika-icon"
@@ -229,10 +228,10 @@
     },
   
   
-      buttonClasses() {
+    buttonClasses() {
         return [
-          this.$t('w-full-bg-primary-text-white-py-2-rounded-md-text-sm-font-medium-mt-4-select-none-flex-items-center-justify-center-gap-2'),
-          this.$v.$invalid || this.loading ? this.$t('cursor-not-allowed-opacity-50') : "",
+          "w-full bg-primary text-white py-2 rounded-md text-sm font-medium mt-4 select-none flex items-center justify-center gap-2",
+          this.$v.$invalid || this.loading ? "cursor-not-allowed opacity-50" : "",
         ];
       },
       ...mapState({
@@ -374,7 +373,7 @@
       width: 31rem;
     }
     .prijavi-se {
-      position: absolute;
+
       top: 0%;
       left: calc(50% - 80px);
       font-size: 2.25rem;
@@ -693,7 +692,7 @@
    
      
     .prijavi-se {
-      position: absolute;
+
       top: 0%;
       left: calc(50% - 45.5px);
       font-size: 1.31rem;

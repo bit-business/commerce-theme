@@ -26,19 +26,19 @@
         <div class="trakakategorije">
   <div class="framezakategorijepod">
     <div class="framezakategorije">
-      <button :class="{ 'active': activeSection === 'skijaliste' }" class="o-skijalitu" @click="activeSection = 'skijaliste'">O skijalištu</button>
+      <button :class="{ 'active': activeSection === 'skijaliste' }" class="o-skijalitu" @click="activeSection = 'skijaliste'">{{ $t('o-skijalistu') }}</button>
       <div class="framezakategorije-child" />
       
-      <button :class="{ 'active': activeSection === 'informacije' }" class="o-skijalitu" @click="activeSection = 'informacije'">Informacije</button>
+      <button :class="{ 'active': activeSection === 'informacije' }" class="o-skijalitu" @click="activeSection = 'informacije'">{{ $t('informacije') }}</button>
       <div class="framezakategorije-child" />
       
-      <button :class="{ 'active': activeSection === 'smjestaj' }" class="o-skijalitu" @click="activeSection = 'smjestaj'">Smještaj</button>
-      <img class="framezakategorije-inner" alt="" src="/storage/slike/detail/line-39.svg" />
+      <button :class="{ 'active': activeSection === 'smjestaj' }" class="o-skijalitu" @click="activeSection = 'smjestaj'">{{ $t('smjestaj') }}</button>
+      <img class="framezakategorije-child" alt="" src="/storage/slike/detail/line-39.svg" />
       
-      <button :class="{ 'active': activeSection === 'prijevoz' }" class="o-skijalitu" @click="activeSection = 'prijevoz'">Prijevoz</button>
-      <img class="framezakategorije-inner" alt="" src="/storage/slike/detail/line-39.svg" />
+      <button :class="{ 'active': activeSection === 'prijevoz' }" class="o-skijalitu" @click="activeSection = 'prijevoz'">{{ $t('prijevoz') }}</button>
+      <img class="framezakategorije-child" alt="" src="/storage/slike/detail/line-39.svg" />
       
-      <button :class="{ 'active': activeSection === 'cijene' }" class="o-skijalitu" @click="activeSection = 'cijene'">Prijava i plaćanje</button>
+      <button :class="{ 'active': activeSection === 'cijene' }" class="o-skijalitu" @click="activeSection = 'cijene'">{{ $t('prijava-i-placanje') }}</button>
     </div>
   </div>
 </div>
@@ -58,7 +58,7 @@
     
           <div class="tekstovipodpodframe">
             <div class="titleglavninatekstu">
-              <b class="sexten">O skijalištu</b>                 
+              <b class="sexten">{{ $t('o-skijalistu') }}</b>                 
 
             </div>
             <div class="adminsadrzajframe">
@@ -66,7 +66,7 @@
              
                 <div class="smjetaj-je-u-container">
                   <div class="content-wrapper">
-  <div v-html="sanitizeHtml(product.desc)" class="custom-html-content"></div>
+                    <div v-html="sanitizeHtml(getLocalizedDesc('desc'), $i18n.locale)" class="custom-html-content"></div>
 </div>
                 </div>
               </div>
@@ -85,14 +85,14 @@
   <div class="smjestajpodframe">
           <div class="tekstovipodpodframe">
             <div class="titleglavninatekstu">
-              <b class="sexten">Informacije</b>
+              <b class="sexten">{{ $t('informacije') }}</b>
             </div>
             <div class="adminsadrzajframe">
               <div class="sudionici-seminara-bit-e-smje-parent">
              
                 <div class="smjetaj-je-u-container">
                   <div class="content-wrapper">
-  <div v-html="sanitizeHtml(product.desc2)" class="custom-html-content"></div>
+                    <div v-html="sanitizeHtml(getLocalizedDesc('desc2'), $i18n.locale)" class="custom-html-content"></div>
 </div>
                 </div>
               </div>
@@ -113,15 +113,14 @@
   <div class="smjestajpodframe">
           <div class="tekstovipodpodframe">
             <div class="titleglavninatekstu">
-              <b class="sexten">Smještaj</b>
+              <b class="sexten">{{ $t('smjestaj') }}</b>
             </div>
             <div class="adminsadrzajframe">
               <div class="sudionici-seminara-bit-e-smje-parent">
              
                 <div class="smjetaj-je-u-container">
                   <div class="content-wrapper">
-  <div v-html="sanitizeHtml(product.desc3)" class="custom-html-content"></div>
-</div>
+                    <div v-html="sanitizeHtml(getLocalizedDesc('desc3'), $i18n.locale)" class="custom-html-content"></div></div>
                 </div>
               </div>
             </div>
@@ -164,15 +163,14 @@
   <div class="smjestajpodframe">
           <div class="tekstovipodpodframe">
             <div class="titleglavninatekstu">
-              <b class="sexten">Prijevoz</b>
+              <b class="sexten">{{ $t('prijevoz') }}</b>
             </div>
             <div class="adminsadrzajframe">
               <div class="sudionici-seminara-bit-e-smje-parent">
              
                 <div class="smjetaj-je-u-container">
                   <div class="content-wrapper">
-  <div v-html="sanitizeHtml(product.desc4)" class="custom-html-content"></div>
-</div>
+                    <div v-html="sanitizeHtml(getLocalizedDesc('desc4'), $i18n.locale)" class="custom-html-content"></div></div>
                 </div>
               </div>
             </div>
@@ -191,17 +189,16 @@
   <div class="smjestajpodframe">
           <div class="tekstovipodpodframe">
             <div class="titleglavninatekstu">
-              <b class="sexten">Prijava i plaćanje</b>
+              <b class="sexten">{{ $t('prijava-i-placanje') }}</b>
             </div>
             <div class="adminsadrzajframe">
               <div class="sudionici-seminara-bit-e-smje-parent">
                 <div class="smjetaj-je-u-container">
-                  <div v-if="product.zatvoriprijave == 1" class="no-tailwindcss-base text-center">  <div class="coming-soon-text">Prijave su zatvorene.</div></div>
+                  <div v-if="product.zatvoriprijave == 1" class="no-tailwindcss-base text-center">  <div class="coming-soon-text">{{ $t('prijave-su-zatvorene') }}</div></div>
              <div  v-else-if="product.desc5" class="content-wrapper">
-  <div v-html="sanitizeHtml(product.desc5)" class="custom-html-content"></div>
-</div>
+              <div v-html="sanitizeHtml(getLocalizedDesc('desc5'), $i18n.locale)" class="custom-html-content"></div></div>
                   <div v-else class="coming-soon-container">
-                    <div class="coming-soon-text">Ubrzo više informacija! Provjerite idućih dana.</div>
+                    <div class="coming-soon-text">{{ $t('ubrzo-vise-informacija-provjerite-iducih-dana') }}</div>
                   </div>
                   </div>
                 </div>
@@ -227,7 +224,7 @@
     class="lijevigumb" 
     @click.prevent="navigateToPrijava"
   >
-  <b class="prijavnica-za-dogaaj">PRIJAVA I PLAĆANJE</b>
+  <b class="prijavnica-za-dogaaj">{{ $t('prijava-i-placanje-0') }}</b>
 </a>
 
 
@@ -248,21 +245,21 @@
 <!-- Skiing Type Selection Popup -->
 <div v-if="showSkiingTypePopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
   <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Odaberite vrstu skijanja</h2>
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">{{ $t('odaberite-vrstu-skijanja') }}</h2>
     <div class="space-y-4">
       <button @click="selectSkiingType('Samostalno skijanje')" 
        v-if="korisnik.additionalInfo !== 'KIF'"
       class="w-full py-3 bg-blue-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
-        <span>Samostalno skijanje</span>
+        <span>{{ $t('samostalno-skijanje') }}</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Samostalno skijanje')) }}</span>
       </button>
       <button v-if = "korisnik.statusString !== ''  || korisnik.additionalInfo === 'KIF' " @click="selectSkiingType('Produženje licence')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
-        <span>{{ korisnik.additionalInfo === 'KIF' ? 'Grupno skijanje' : 'Produženje licence' }}</span>
+        <span>{{ korisnik.additionalInfo === 'KIF' ? this.$t('grupno-skijanje') : this.$t('produzenje-licence') }}</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Produženje licence')) }}</span>
       </button>
     </div>
     <button @click="showSkiingTypePopup = false" class="text-nazad mt-6 w-3/4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out">
-      Nazad
+      {{ $t('nazad') }}
     </button>
   </div>
 </div>
@@ -374,6 +371,18 @@ export default {
         desc3: null,
         desc4: null,
         desc5: null,
+
+        descEn: null,
+        desc2En: null,
+        desc3En: null,
+        desc4En: null,
+        desc5En: null,
+        descIt: null,
+        desc2It: null,
+        desc3It: null,
+        desc4It: null,
+        desc5It: null,
+
         name: "",
         datum_pocetka: null,
         datum_kraja: null,
@@ -528,33 +537,47 @@ export default {
   },
   methods: {
 
-    sanitizeHtml(html) {
+    getLocalizedDesc(field) {
+  const lang = this.$i18n.locale;
+  if (lang === 'hr') {
+    return this.product[field];
+  } else {
+    const langSuffix = lang.charAt(0).toUpperCase() + lang.slice(1);
+    return this.product[`${field}${langSuffix}`] || this.product[field];
+  }
+},
 
-     if (!html) return '';
-      const doc = new DOMParser().parseFromString(html, 'text/html');
-      
-      // Adjust table structure
-      doc.body.querySelectorAll('table').forEach(table => {
-        table.classList.add('w-full', 'max-w-full', 'overflow-x-auto');
-        table.style.display = 'block';
-      });
+sanitizeHtml(html, lang) {
+  if (!html) return '';
+  
+  // Use the content as is, since we're now passing the localized content directly
+  let content = html;
 
-      // Adjust images
-      doc.body.querySelectorAll('img').forEach(img => {
-        img.classList.add('max-w-full', 'h-auto');
-      });
+  const doc = new DOMParser().parseFromString(content, 'text/html');
+  
+  // Adjust table structure
+  doc.body.querySelectorAll('table').forEach(table => {
+    table.classList.add('w-full', 'max-w-full', 'overflow-x-auto');
+    table.style.display = 'block';
+  });
 
-          // Remove all style attributes
-          doc.body.querySelectorAll('table').forEach(el => {
-        el.removeAttribute('style');
-      });
-           // Adjust table structure
-           doc.body.querySelectorAll('table').forEach(table => {
-        table.classList.add('w-full', 'max-w-full', 'overflow-y-auto', 'block');
-      });
+  // Adjust images
+  doc.body.querySelectorAll('img').forEach(img => {
+    img.classList.add('max-w-full', 'h-auto');
+  });
 
-      return doc.body.innerHTML;
-    },
+  // Remove all style attributes
+  doc.body.querySelectorAll('*').forEach(el => {
+    el.removeAttribute('style');
+  });
+
+  // Adjust table structure
+  doc.body.querySelectorAll('table').forEach(table => {
+    table.classList.add('w-full', 'max-w-full', 'overflow-y-auto', 'block');
+  });
+
+  return doc.body.innerHTML;
+},
 
 
 
@@ -611,6 +634,7 @@ export default {
 
 
    async setSelectedProduct2() {
+    
   if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
     const nijeclanProduct = this.product.productDetails.find(
       detail => detail.name === "Nije član"
@@ -634,7 +658,7 @@ export default {
                 console.log("API Response:", response);
 
                 if (response.hasEntry) {
-                    this.$helper.alert("Već ste prijavljeni na ovaj seminar. Ne možete se ponovno prijaviti.");
+                    this.$helper.alert(this.$t('vec-ste-prijavljeni-na-ovaj-seminar-ne-mozete-se-ponovno-prijaviti'));
          
                     return;
                 }
@@ -643,15 +667,15 @@ export default {
                 
                     this.processOrder();
                 } else {
-                    this.$helper.alert("Nažalost, nema raspoloživih mjesta za odabranu opciju.");
+                    this.$helper.alert(this.$t('nazalost-nema-raspolozivih-mjesta-za-odabranu-opciju'));
                 }
             } catch (error) {
-                this.$helper.alert("Došlo je do greške pri provjeri vaše prijave. Molimo pokušajte ponovno.");
+                this.$helper.alert(this.$t('doslo-je-do-greske-pri-provjeri-vase-prijave-molimo-pokusajte-ponovno'));
             
             }
         
         } else {
-            this.$helper.alert("Došlo je do greške pri odabiru. Molimo pokušajte ponovno.");
+            this.$helper.alert(this.$t('doslo-je-do-greske-pri-odabiru-molimo-pokusajte-ponovno'));
 
         }
     }
@@ -831,7 +855,7 @@ showPreviousImage() {
 
     openVariationDialog() {
       if (!this.isAuthenticated) {
-        this.$helper.alert("Morate se prijaviti prvo!")
+        this.$helper.alert(this.$t('morate-se-prijaviti-prvo'))
         this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
         return
       }
@@ -948,7 +972,7 @@ setSelectedProduct() {
       this.selectedProduct.id = grupnoProduct.id;
     } else {
       // Handle case where "Produženje licence" is not found
-      this.$helper.alert("Opcija 'Produženje licence' nije dostupna. Molimo odaberite drugu opciju.");
+      this.$helper.alert(this.$t('opcija-produzenje-licence-nije-dostupna-molimo-odaberite-drugu-opciju'));
       this.showSkiingTypePopup = true; 
       this.isLoading = false; 
       // Show the popup again
@@ -1022,7 +1046,7 @@ getSkiingTypePrice(type) {
       // }
 
       if (!this.isAuthenticated) {
-        this.$helper.alert("Morate se prijaviti prvo!")
+        this.$helper.alert(this.$t('morate-se-prijaviti-prvo'))
         this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
         return
       }
@@ -1047,7 +1071,7 @@ getSkiingTypePrice(type) {
               // }
 
               if (!this.isAuthenticated) {
-                this.$helper.alert("Morate se prijaviti prvo. Niste logirani!")
+                this.$helper.alert(this.$t('morate-se-prijaviti-prvo-niste-logirani'))
                 this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
                 return
               }
@@ -1115,7 +1139,7 @@ async selectSkiingType(type) {
                 console.log("API Response:", response);
 
                 if (response.hasEntry) {
-                    this.$helper.alert("Već ste prijavljeni na ovaj seminar. Ne možete se ponovno prijaviti.");
+                    this.$helper.alert(this.$t('vec-ste-prijavljeni-na-ovaj-seminar-ne-mozete-se-ponovno-prijaviti'));
                     this.showSkiingTypePopup = false;
                     return;
                 }
@@ -1124,19 +1148,19 @@ async selectSkiingType(type) {
                     this.showSkiingTypePopup = false;
                     this.processOrder();
                 } else {
-                    this.$helper.alert("Nažalost, nema raspoloživih mjesta za odabranu opciju.");
+                    this.$helper.alert(this.$t('nazalost-nema-raspolozivih-mjesta-za-odabranu-opciju'));
                 }
             } catch (error) {
                 console.error("Error checking user form entry:", error);
-                this.$helper.alert("Došlo je do greške pri provjeri vaše prijave. Molimo pokušajte ponovno.");
+                this.$helper.alert(this.$t('doslo-je-do-greske-pri-provjeri-vase-prijave-molimo-pokusajte-ponovno'));
                 this.showSkiingTypePopup = false;
             }
         } else {
-            this.$helper.alert("Došlo je do greške pri odabiru. Molimo pokušajte ponovno.");
+            this.$helper.alert(this.$t('doslo-je-do-greske-pri-odabiru-molimo-pokusajte-ponovno'));
             this.showSkiingTypePopup = false;
         }
     } else {
-        this.$helper.alert("Molimo odaberite vrstu skijanja.");
+        this.$helper.alert(this.$t('molimo-odaberite-vrstu-skijanja'));
     }
 },
 
@@ -1495,8 +1519,8 @@ async selectSkiingType(type) {
     margin: 0 !important;
     position: absolute;
     top: 1.88rem;
-    left: calc(50% - 400px);
-    width: 50rem;
+    /* left: calc(50% - 400px);
+    width: 50rem; */
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -1714,7 +1738,16 @@ async selectSkiingType(type) {
 
   @media screen and (max-width: 550px) {
     .o-skijalitu {
-      font-size: 0.63rem !important;
+      font-size: 0.43rem !important;
+    }
+    .o-skijalitu::before {
+    bottom: -10px; 
+}
+.trakakategorije {
+  height: 4.5rem;
+}
+    .framezakategorije-child {
+      height: 1rem;
     }
 
     .framezakategorije {
@@ -1759,7 +1792,7 @@ async selectSkiingType(type) {
 
   @media screen and (max-width: 800px) {
     .o-skijalitu {
-      font-size: 1rem;
+      font-size: 0.83rem;
     }
 
     .framezakategorije {
@@ -1843,8 +1876,6 @@ width: 100%;
     transform: scale(1);
   }
 }
-
-
 
 
 

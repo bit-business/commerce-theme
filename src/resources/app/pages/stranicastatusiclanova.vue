@@ -2,7 +2,7 @@
   <div class="hzuts-statusiclanovastranica">
     <section class="members">
       <div class="content">
-        <h1 class="statusi-lanova-u">STATUSI ČLANOVA U HZUTS-u</h1>
+        <h1 class="statusi-lanova-u">{{ $t('statusi-clanova-u-hzuts-u') }}</h1>
       </div>
     </section>
     <section class="ski-instructor">
@@ -10,7 +10,7 @@
         <div class="lead-instructor-parent">
           <div class="lead-instructor">
             <h2 class="voditelj-skijanja-iaess">
-              VODITELJ SKIJANJA (IAESS LICENCA)
+              {{ $t('voditelj-skijanja-iaess-licenca-1') }}
             </h2>
           </div>
           <div class="instructor-status">
@@ -25,43 +25,38 @@
             <div class="status-voditelj-skijanja-moe-container">
               <span>
                 <p class="status-voditelj-skijanja-moe">
-                  <b class="status">Status</b>
+                  <b class="status">{{ $t('status-0') }}</b>
                   <span class="span"> </span>
-                  <b class="voditelj-skijanja">VODITELJ SKIJANJA</b>
+                  <b class="voditelj-skijanja">{{ $t('voditelj-skijanja-0') }}</b>
                   <span class="moe-imati-svaki"
-                    > može imati svaki profesor kineziologije koji je:</span
+                    > {{ $t('moze-imati-svaki-profesor-kineziologije-koji-je') }}</span
                   >
                 </p>
                 <ol class="zavrio-diplomski-studij-na-ki">
                   <li class="zavrio-diplomski-studij-na-ki1">
                     <span class="zavrio-diplomski-studij"
-                      > završio diplomski studij na Kineziološkom fakultetu i
-                      odslušao nastavu iz predmeta Skijanje koji su vodili
-                      isključivo licencirani demonstratori HZUTS-a</span
+                      > {{ $t('zavrsio-diplomski-studij-na-kinezioloskom-fakultetu-i-odslusao-nastavu-iz-predmeta-skijanje-koji-su-vodili-iskljucivo-licencirani-demonstratori-hzuts-a') }}</span
                     >
                   </li>
                   <li class="zaposlen-u-obrazovnoj-ustanovi">
                     <span class="zaposlen-u-obrazovnoj"
-                      >zaposlen u obrazovnoj ustanovi (škola ili fakultet)</span
+                      >{{ $t('zaposlen-u-obrazovnoj-ustanovi-skola-ili-fakultet') }}</span
                     >
                   </li>
                   <li class="prisustvovao-dravnom-seminaru">
                     <span class="prisustvovao-dravnom-seminaru1"
-                      >prisustvovao Državnom seminaru za voditelje skijanja koji
-                      provodi HZUTS</span
+                      >{{ $t('prisustvovao-drzavnom-seminaru-za-voditelje-skijanja-koji-provodi-hzuts') }}</span
                     >
                   </li>
                 </ol>
                 <p class="p"> </p>
                 <p class="iaess-licenca">
-                  <b>IAESS Licenca</b>
+                  <b>{{ $t('iaess-licenca') }}</b>
                 </p>
                 <ul class="prisustvovanjem-na-seminaru-v">
                   <li class="prisustvovanjem-na-seminaru-v1">
                     <span class="prisustvovanjem-na-seminaru"
-                      >Prisustvovanjem na seminaru, voditelji skijanja ostvaruju
-                      pravo na IAESS (International Association of Education in
-                      Science and Snowsports) licencu</span
+                      >{{ $t('prisustvovanjem-na-seminaru-voditelji-skijanja-ostvaruju-pravo-na-iaess-international-association-of-education-in-science-and-snowsports-licencu') }}</span
                     >
                   </li>
                 </ul>
@@ -69,9 +64,7 @@
                 <ul class="iaess-licenca-se-produuje-sva">
                   <li class="iaess-licenca-se-produuje-sva1">
                     <span class="iaess-licenca-se"
-                      >IAESS licenca se produžuje svake 3 godine prisustvovanjem
-                      na seminaru HZUTS-a/ Područnog zbora u trajanju od 3
-                      dana</span
+                      >{{ $t('iaess-licenca-se-produzuje-svake-3-godine-prisustvovanjem-na-seminaru-hzuts-a-podrucnog-zbora-u-trajanju-od-3-dana') }}</span
                     >
                   </li>
                 </ul>
@@ -79,26 +72,15 @@
                 <ul class="voditelji-skijanja-mukog-spol">
                   <li class="voditelji-skijanja-mukog-spol1">
                     <span class="voditelji-skijanja-mukog"
-                      >Voditelji skijanja muškog spola nakon 60 g., a
-                      voditeljice skijanja ženskog spola nakon 55 godina života
-                      i najmanje tri potvrđene IAESS licence dobivaju trajnu
-                      IAESS licencu bez obveznog sudjelovanja na
-                      seminaru</span
+                      >{{ $t('voditelji-skijanja-muskog-spola-nakon-60-g-a-voditeljice-skijanja-zenskog-spola-nakon-55-godina-zivota-i-najmanje-tri-potvrdene-iaess-licence-dobivaju-trajnu-iaess-licencu-bez-obveznog-sudjelovanja-na-seminaru') }}</span
                     >
                   </li>
                 </ul>
                 <p class="vano">
-                  <b>!!VAŽNO!!</b>
+                  <b>{{ $t('vazno-0') }}</b>
                 </p>
                 <p class="voditelji-skijanja-nisu">
-                  Voditelji skijanja nisu isto što i učitelji skijanja.
-                  Voditelji mogu raditi SAMO i ISKLJUČIVO s djecom, učenicima
-                  ili studentima iz obrazovne ustanove u kojoj su zaposleni.
-                  Prilikom vođenja takvih grupa obvezni su imati i potvrdu
-                  ravnatelja. Oni ne smiju raditi preko turističkih agencija s
-                  grupama ljudi koji su uplatili aranžmane preko agencija. Za
-                  takav rad su nadležni učitelji skijanja s potvrđenom IVSI
-                  licencom.
+                  {{ $t('voditelji-skijanja-nisu-isto-sto-i-ucitelji-skijanja-voditelji-mogu-raditi-samo-i-iskljucivo-s-djecom-ucenicima-ili-studentima-iz-obrazovne-ustanove-u-kojoj-su-zaposleni-prilikom-vodenja-takvih-grupa-obvezni-su-imati-i-potvrdu-ravnatelja-oni-ne-smiju-raditi-preko-turistickih-agencija-s-grupama-ljudi-koji-su-uplatili-aranzmane-preko-agencija-za-takav-rad-su-nadlezni-ucitelji-skijanja-s-potvrdenom-ivsi-licencom') }}
                 </p>
               </span>
             </div>
@@ -110,7 +92,7 @@
       <div class="isi-types">
         <div class="i-s-i-a-license-content">
           <h2 class="uitelj-skijanjadaskanja-na">
-            UČITELJ SKIJANJA/DASKANJA NA SNIJEGU (IVSI LICENCA)
+            {{ $t('ucitelj-skijanja-daskanja-na-snijegu-ivsi-licenca') }}
           </h2>
         </div>
         <div class="ivsi-how-to">
@@ -123,38 +105,34 @@
           <div class="kako-postati-ivsi-container">
             <span>
               <p class="kako-postati-ivsi-uitelj-skij">
-                <b>Kako postati IVSI učitelj skijanja/daskanja?</b>
+                <b>{{ $t('kako-postati-ivsi-ucitelj-skijanja-daskanja') }}</b>
               </p>
               <p class="blank-line1">
                 <b>&nbsp;</b>
               </p>
               <p class="uitelj-skijanjadaskanja-na1">
-                Učitelj skijanja/daskanja na snijegu može postati član HZUTS-a
-                ako je:
+                {{ $t('ucitelj-skijanja-daskanja-na-snijegu-moze-postati-clan-hzuts-a-ako-je') }}
               </p>
               <ul class="zavrio-program-odobren-od-min">
                 <li class="zavrio-program-odobren-od-min1">
                   <span class="zavrio-program-odobren"
-                    >završio program odobren od Ministarstva znanosti i
-                    obrazovanja u trajanju od minimalno 310 sati</span
+                    >{{ $t('zavrsio-program-odobren-od-ministarstva-znanosti-i-obrazovanja-u-trajanju-od-minimalno-310-sati') }}</span
                   >
                 </li>
                 <li class="poloio-ispit-ispred-ispitne-k">
                   <span class="poloio-ispit-ispred"
-                    >položio ispit ispred Ispitne komisije HZUTS-a</span
+                    >{{ $t('polozio-ispit-ispred-ispitne-komisije-hzuts-a') }}</span
                   >
                 </li>
               </ul>
               <p class="p2"> </p>
               <p class="ivsi-licenca">
-                <b>IVSI licenca</b>
+                <b>{{ $t('ivsi-licenca') }}</b>
               </p>
               <ul class="ukoliko-su-zadovoljeni-gore-na">
                 <li class="ukoliko-su-zadovoljeni-gore-na1">
                   <span class="ukoliko-su-zadovoljeni"
-                    >Ukoliko su zadovoljeni gore navedeni uvjeti, član HZUTS-a
-                    ima status Učitelj skijanja/daskanja na snijegu sa IVSI
-                    licencom</span
+                    >{{ $t('ukoliko-su-zadovoljeni-gore-navedeni-uvjeti-clan-hzuts-a-ima-status-ucitelj-skijanja-daskanja-na-snijegu-sa-ivsi-licencom') }}</span
                   >
                 </li>
               </ul>
@@ -162,8 +140,7 @@
               <ul class="ivsi-licenca-se-produuje-svak">
                 <li class="ivsi-licenca-se-produuje-svak1">
                   <span class="ivsi-licenca-se"
-                    >IVSI licenca se produžuje svake 3 godine prisustvovanjem na
-                    seminaru HZUTS-a/ Područnog zbora u trajanju od 3 dana</span
+                    >{{ $t('ivsi-licenca-se-produzuje-svake-3-godine-prisustvovanjem-na-seminaru-hzuts-a-podrucnog-zbora-u-trajanju-od-3-dana') }}</span
                   >
                 </li>
               </ul>
@@ -171,10 +148,7 @@
               <ul class="uitelji-sportova-na-snijegu-m">
                 <li>
                   <span class="uitelji-sportova-na"
-                    >Učitelji sportova na snijegu muškog spola nakon 60 g., a
-                    učiteljice sportova na snijegu ženskog spola nakon 55 godina
-                    života i najmanje tri potvrđene IVSI licence dobivaju trajnu
-                    IVSS licencu bez obveznog sudjelovanja na seminaru</span
+                    >{{ $t('ucitelji-sportova-na-snijegu-muskog-spola-nakon-60-g-a-uciteljice-sportova-na-snijegu-zenskog-spola-nakon-55-godina-zivota-i-najmanje-tri-potvrdene-ivsi-licence-dobivaju-trajnu-ivss-licencu-bez-obveznog-sudjelovanja-na-seminaru') }}</span
                   >
                 </li>
               </ul>
@@ -187,7 +161,7 @@
       <div class="frame-parent-statusiclanova">
         <div class="uitelj-skijanjadaskanja-na-s-wrapper">
           <h2 class="uitelj-skijanjadaskanja-na2">
-            UČITELJ SKIJANJA/DASKANJA NA SNIJEGU (ISIA LICENCA)
+            {{ $t('ucitelj-skijanja-daskanja-na-snijegu-isia-licenca') }}
           </h2>
         </div>
         <div class="isia-how-to">
@@ -200,31 +174,28 @@
           <div class="kako-postati-isia-container">
             <span>
               <p class="kako-postati-isia-uitelj-skij">
-                <b>Kako postati ISIA učitelj skijanja/daskanja?</b>
+                <b>{{ $t('kako-postati-isia-ucitelj-skijanja-daskanja') }}</b>
               </p>
               <ul class="prisustvovati-isia-seminaru-hz">
                 <li class="prisustvovati-isia-seminaru-hz1">
                   <span class="prisustvovati-isia-seminaru"
-                    >Prisustvovati ISIA seminaru HZUTS-a u trajanju od 5
-                    dana</span
+                    >{{ $t('prisustvovati-isia-seminaru-hzuts-a-u-trajanju-od-5-dana') }}</span
                   >
                 </li>
                 <li class="poloiti-praktine-i-teorijske">
                   <span class="poloiti-praktine-i"
-                    >Položiti praktične i teorijske ISIA ispite</span
+                    >{{ $t('poloziti-prakticne-i-teorijske-isia-ispite') }}</span
                   >
                 </li>
               </ul>
               <p class="p5"> </p>
               <p class="isia-licenca">
-                <b>ISIA licenca</b>
+                <b>{{ $t('isia-licenca') }}</b>
               </p>
               <ul class="ukoliko-su-zadovoljeni-gore-na2">
                 <li class="ukoliko-su-zadovoljeni-gore-na3">
                   <span class="ukoliko-su-zadovoljeni1"
-                    >Ukoliko su zadovoljeni gore navedeni uvjeti, član HZUTS-a
-                    ima status Učitelj skijanja/daskanja na snijegu sa ISIA
-                    licencom</span
+                    >{{ $t('ukoliko-su-zadovoljeni-gore-navedeni-uvjeti-clan-hzuts-a-ima-status-ucitelj-skijanja-daskanja-na-snijegu-sa-isia-licencom') }}</span
                   >
                 </li>
               </ul>
@@ -232,8 +203,7 @@
               <ul class="isia-licenca-se-produuje-svak">
                 <li class="isia-licenca-se-produuje-svak1">
                   <span class="isia-licenca-se"
-                    >ISIA licenca se produžuje svake 3 godine prisustvovanjem na
-                    seminaru HZUTS-a/ Područnog zbora u trajanju od 3 dana</span
+                    >{{ $t('isia-licenca-se-produzuje-svake-3-godine-prisustvovanjem-na-seminaru-hzuts-a-podrucnog-zbora-u-trajanju-od-3-dana') }}</span
                   >
                 </li>
               </ul>
@@ -241,11 +211,7 @@
               <ul class="isia-uitelji-sportova-na-snij">
                 <li>
                   <span class="isia-uitelji-sportova"
-                    >ISIA učitelji sportova na snijegu muškog spola nakon 60 g.,
-                    a ISIA učiteljice sportova na snijegu ženskog spola nakon 55
-                    godina života i najmanje tri potvrđene ISIA licence dobivaju
-                    trajnu ISIA licencu bez obveznog sudjelovanja na
-                    seminaru</span
+                    >{{ $t('isia-ucitelji-sportova-na-snijegu-muskog-spola-nakon-60-g-a-isia-uciteljice-sportova-na-snijegu-zenskog-spola-nakon-55-godina-zivota-i-najmanje-tri-potvrdene-isia-licence-dobivaju-trajnu-isia-licencu-bez-obveznog-sudjelovanja-na-seminaru') }}</span
                   >
                 </li>
               </ul>
@@ -257,7 +223,7 @@
     <section class="demo-content">
       <div class="ski-instructors">
         <div class="demonstrator-experience">
-          <h2 class="dravni-demonstrator">DRŽAVNI DEMONSTRATOR</h2>
+          <h2 class="dravni-demonstrator">{{ $t('drzavni-demonstrator') }}</h2>
         </div>
         <div class="leader-description">
           <div class="demonstrator-icon">
@@ -271,86 +237,71 @@
           <div class="kako-postati-demonstrator-container">
             <span>
               <p class="kako-postati-demonstrator-skij">
-                <b>Kako postati Demonstrator skijanja?</b>
+                <b>{{ $t('kako-postati-demonstrator-skijanja') }}</b>
               </p>
               <ul class="godine-nakon-poloenog-isia-is">
                 <li class="godine-nakon-poloenog-isia-is1">
                   <span class="godine-nakon-poloenog"
-                    >2 godine nakon položenog ISIA ispita, ISIA učitelj skijanja
-                    može pristupiti prijemnom ispitu za prisustvovanje na
-                    Demonstratorskom seminaru HZUTS-a</span
+                    >{{ $t('2-godine-nakon-polozenog-isia-ispita-isia-ucitelj-skijanja-moze-pristupiti-prijemnom-ispitu-za-prisustvovanje-na-demonstratorskom-seminaru-hzuts-a') }}</span
                   >
                 </li>
                 <li class="nakon-poloenog-prijemnog-ispi">
                   <span class="nakon-poloenog-prijemnog"
-                    >Nakon položenog prijemnog ispita, ISIA učitelj skijanja
-                    pristupa Demonstratorskom seminaru</span
+                    >{{ $t('nakon-polozenog-prijemnog-ispita-isia-ucitelj-skijanja-pristupa-demonstratorskom-seminaru') }}</span
                   >
                 </li>
               </ul>
               <p class="p8"> </p>
               <p class="demonstrator-skijanja">
-                <b>Demonstrator skijanja</b>
+                <b>{{ $t('demonstrator-skijanja') }}</b>
               </p>
               <ul class="isia-uitelj-skijanja-stjee-s">
                 <li class="isia-uitelj-skijanja-stjee-s1">
                   <span class="isia-uitelj-skijanja"
-                    >ISIA učitelj skijanja stječe status Državnog demonstratora
-                    nakon uspješno položenog demonstratorskog ispita</span
+                    >{{ $t('isia-ucitelj-skijanja-stjece-status-drzavnog-demonstratora-nakon-uspjesno-polozenog-demonstratorskog-ispita') }}</span
                   >
                 </li>
                 <li class="prema-rang-listi-rezultata-dem">
                   <span class="prema-rang-listi"
-                    >Prema rang listi rezultata Demonstratorskog seminara,
-                    najboljih 10 demonstratora čine DEMO TEAM</span
+                    >{{ $t('prema-rang-listi-rezultata-demonstratorskog-seminara-najboljih-10-demonstratora-cine-demo-team') }}</span
                   >
                 </li>
                 <li class="status-dravnog-demonstratora">
                   <span class="status-dravnog-demonstratora1"
-                    >Status Državnog demonstratora obnavlja se svake 2 godine
-                    prisustvovanjem na Demonstratorskom seminaru HZUTS-a</span
+                    >{{ $t('status-drzavnog-demonstratora-obnavlja-se-svake-2-godine-prisustvovanjem-na-demonstratorskom-seminaru-hzuts-a') }}</span
                   >
                 </li>
               </ul>
               <p class="p9"> </p>
               <p class="rang-lista-dravnih">
-                Rang lista Državnih demonstratora 2022.g. – 2024.g.:
+                {{ $t('rang-lista-drzavnih-demonstratora-2022-g-2024-g') }}
               </p>
             </span>
           </div>
         </div>
       </div>
     </section>
-    <h2 class="ispitna-komisija">ISPITNA KOMISIJA</h2>
+    <h2 class="ispitna-komisija">{{ $t('ispitna-komisija') }}</h2>
     <section class="commission-details">
       <div class="evaluation" />
       <div class="u-svrhu-to-container">
         <span>
           <p class="u-svrhu-to">
-            U svrhu što objektivnijeg i što stručnijeg ocjenjivanja kandidata za
-            polaganje stručnih poslova u skijaškom sportu, HZUTS je na Izvršnom
-            odboru 08. studenog 2003. godine donio odluku o osnivanju Ispitne
-            komisije.
+            {{ $t('u-svrhu-sto-objektivnijeg-i-sto-strucnijeg-ocjenjivanja-kandidata-za-polaganje-strucnih-poslova-u-skijaskom-sportu-hzuts-je-na-izvrsnom-odboru-08-studenog-2003-godine-donio-odluku-o-osnivanju-ispitne-komisije') }}
           </p>
           <p class="zadaci-ispitne-komisije">
-            Zadaci Ispitne komisije su ocjenjivanje prikaza elemenata Hrvatske
-            škole skijanja kod kandidata koji polažu neki od ispita za određenu
-            licencu ili su polaznici tečaja za osposobljavanje kadrova u
-            skijaškom sportu.
+            {{ $t('zadaci-ispitne-komisije-su-ocjenjivanje-prikaza-elemenata-hrvatske-skole-skijanja-kod-kandidata-koji-polazu-neki-od-ispita-za-odredenu-licencu-ili-su-polaznici-tecaja-za-osposobljavanje-kadrova-u-skijaskom-sportu') }}
           </p>
           <p class="lanovi-komisije-biraju">
-            Članovi komisije biraju se iz redova demonstratora s najvećim
-            pedagoškim iskustvom, dugogodišnjim članstvom u Hrvatskom demo teamu
-            te iz redova bivših natjecatelja i članova Hrvatske skijaške
-            reprezentacije.
+            {{ $t('clanovi-komisije-biraju-se-iz-redova-demonstratora-s-najvecim-pedagoskim-iskustvom-dugogodisnjim-clanstvom-u-hrvatskom-demo-teamu-te-iz-redova-bivsih-natjecatelja-i-clanova-hrvatske-skijaske-reprezentacije') }}
           </p>
           <p class="ispitna-komisija-bira">
-            Ispitna komisija bira se na mandat od 4 godine.   
+            {{ $t('ispitna-komisija-bira-se-na-mandat-od-4-godine') }}   
           </p>
-          <p class="lanovi-ispitne-komisije">Članovi Ispitne komisije:</p>
-          <p class="nadglednik-dag-modri">Nadglednik: Dag Modrić</p>
+          <p class="lanovi-ispitne-komisije">{{ $t('clanovi-ispitne-komisije') }}</p>
+          <p class="nadglednik-dag-modri">{{ $t('nadglednik-dag-modric') }}</p>
           <p class="lanovi-josip">
-            Članovi: Josip Tucman, Ivan Vučinić, Ozren Rađenović, Radovan Saks, Ivica Franjko, Danijel Jurković, Pavle Zobundžija, Anton Tudor, Boris Petljak, Davor Puhak
+            {{ $t('clanovi-josip-tucman-ivan-vucinic-ozren-radenovic-radovan-saks-ivica-franjko-danijel-jurkovic-pavle-zobundzija-anton-tudor-boris-petljak-davor-puhak') }}
           </p>
         </span>
       </div>
@@ -1616,7 +1567,7 @@ import appLayout from '../layouts/app.vue'
   }
 
   ul {
-  list-style-type: disc; /* Bullet points for <ul> */
+  list-style-type: disc; 
 }
 
 ol {
@@ -1625,7 +1576,7 @@ ol {
 }
 
 li {
-  list-style-position: inside; /* Ensure that the bullets/numbers are inside the list item */
+  list-style-position: inside; 
 }
 
 

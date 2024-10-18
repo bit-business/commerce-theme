@@ -4,7 +4,7 @@
       <div class="form-content">
         <div class="slikazvijezda"></div>
         <div class="header">
-          <h1>Prijavnica</h1>
+          <h1>{{ $t('prijavnica') }}</h1>
         </div>
 
         <form @submit.prevent="submitForm" class="form-container" ref="form">
@@ -124,8 +124,8 @@
        class="hidden-checkbox">
 <label for="gdpr-agreement" class="custom-checkbox"></label>
   <label for="gdpr-agreement" class="gdpr-label">
-    Potvrđujem da sam suglasan s navedenim:<span class="asterisk">*</span><br><br>
-    Zaštita i privatnost osobnih podataka (GDPR 2016/679) Prema novom zakonu vezanom uz zaštitu i privatnost podataka (GDPR 2016/679) svi navedeni podaci služe isključivo za potrebe organiziranja usluge (skijanje) za koje se korisnik prijavljuje te se ne koriste u druge svrhe. Zaprimljene podatke čuvamo i obrađujemo korištenjem najsigurnijih metoda zaštite u skladu s navedenim propisima te ih brišemo poštujući propise koji su navedeni u zakonu vezanom uz zaštitu i privatnost podataka. Korisnik u bilo kojem trenutku može zatražiti uklanjanje svojih podataka iz našeg sustava slanjem e-mail poruke na adresu info@hzuts.hr 
+    {{ $t('potvrdujem-da-sam-suglasan-s-navedenim') }}<span class="asterisk">*</span><br><br>
+    {{ $t('zastita-i-privatnost-osobnih-podataka-gdpr-2016-679-prema-novom-zakonu-vezanom-uz-zastitu-i-privatnost-podataka-gdpr-2016-679-svi-navedeni-podaci-sluze-iskljucivo-za-potrebe-organiziranja-usluge-skijanje-za-koje-se-korisnik-prijavljuje-te-se-ne-koriste-u-druge-svrhe-zaprimljene-podatke-cuvamo-i-obradujemo-koristenjem-najsigurnijih-metoda-zastite-u-skladu-s-navedenim-propisima-te-ih-brisemo-postujuci-propise-koji-su-navedeni-u-zakonu-vezanom-uz-zastitu-i-privatnost-podataka-korisnik-u-bilo-kojem-trenutku-moze-zatraziti-uklanjanje-svojih-podataka-iz-naseg-sustava-slanjem-e-mail-poruke-na-adresu-info-hzuts-hr') }} 
   </label>
 </div>
 
@@ -133,7 +133,7 @@
 
 
           <div class="form-group submit-group">
-            <button type="submit" class="submit-btn" :disabled="!gdprAgreement">Pošalji</button>
+            <button type="submit" class="submit-btn" :disabled="!gdprAgreement">{{ $t('posalji-0') }}</button>
           </div>
         </form>
       </div>
@@ -149,8 +149,8 @@
       <span class="stars">&#10022;</span>
       <span class="stars">&#10022;</span>
     </div>
-    <p>Prijavnica je uspješno poslana!  <br> <br><br>Prijavljeni ste na događaj!<br>Sljedeći korak je plaćanje koje slijedi nakon ovoga.</p>
-    <button class="gumbOK" @click="closeConfirmation">Dalje</button>
+    <p>{{ $t('prijavnica-je-uspjesno-poslana') }}  <br> <br><br>{{ $t('prijavljeni-ste-na-dogadaj') }}<br>{{ $t('sljedeci-korak-je-placanje-koje-slijedi-nakon-ovoga') }}</p>
+    <button class="gumbOK" @click="closeConfirmation">{{ $t('dalje') }}</button>
   </div>
 </div>
 
@@ -163,12 +163,12 @@
 <!-- Skiing Type Selection Popup -->
 <div v-if="showSkiingTypePopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
   <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
-    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">Odaberite vrstu skijanja</h2>
+    <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">{{ $t('odaberite-vrstu-skijanja') }}</h2>
     <div class="space-y-4">
       <button @click="selectSkiingType('Samostalno skijanje')" 
        v-if="korisnik.additionalInfo !== 'KIF'"
       class="w-full py-3 bg-blue-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
-        <span>Samostalno skijanje</span>
+        <span>{{ $t('samostalno-skijanje') }}</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Samostalno skijanje')) }}</span>
       </button>
       <button v-if = "korisnik.statusString !== ''" @click="selectSkiingType('Produženje licence')" class="w-full py-3 bg-green-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
@@ -177,7 +177,7 @@
       </button>
     </div>
     <button @click="showSkiingTypePopup = false" class="text-nazad mt-6 w-3/4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out">
-      Nazad
+      {{ $t('nazad') }}
     </button>
   </div>
 </div>
@@ -417,7 +417,7 @@ export default {
               // }
 
               if (!this.isAuthenticated) {
-                this.$helper.alert("Morate se prijaviti prvo. Niste logirani!")
+                this.$helper.alert(this.$t('morate-se-prijaviti-prvo-niste-logirani'))
                 this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
                 return
               }
@@ -460,7 +460,7 @@ export default {
     })
     .catch(err => {
       if (err.message === 'skijasi_commerce::validation.stock_not_available') {
-        this.$helper.alert('Nažalost, nema dovoljno zaliha za ovu narudžbu.');
+        this.$helper.alert(this.$t('nazalost-nema-dovoljno-zaliha-za-ovu-narudzbu'));
       } else {
         console.error('Error in processOrder:', err);
         this.$helper.displayErrors(err);
@@ -520,7 +520,7 @@ setSelectedProduct() {
       this.selectedProduct.id = grupnoProduct.id;
     } else {
       // Handle case where "Produženje licence" is not found
-      this.$helper.alert("Opcija 'Produženje licence' nije dostupna. Molimo odaberite drugu opciju.");
+      this.$helper.alert(this.$t('opcija-produzenje-licence-nije-dostupna-molimo-odaberite-drugu-opciju'));
       this.showSkiingTypePopup = true; 
       this.isLoading = false; 
       // Show the popup again
@@ -723,7 +723,7 @@ setSelectedProduct() {
         const errors = {};
         this.formFields.forEach(field => {
           if (this.isFieldRequired(field) && this.shouldShowField(field) && !this.formData[field.label]) {
-            errors[field.label] = 'Ovo polje niste ispunili';
+            errors[field.label] = this.$t('ovo-polje-niste-ispunili');
           }
         });
 
@@ -743,7 +743,7 @@ setSelectedProduct() {
 
         if (Object.keys(errors).length > 0) {
           this.errors = errors;
-          alert('Molimo ispunite sva polja prijavnice.');
+          alert(this.$t('molimo-ispunite-sva-polja-prijavnice'));
           return;
         }
 
@@ -762,7 +762,7 @@ setSelectedProduct() {
         this.showConfirmation = true; 
         this.restoreScrollPosition();
       } catch (error) {
-        alert(error.message || 'Greška prilikom slanja prijavnice. Pokušajte ponovo ili nas kontaktirajte.');
+        alert(error.message || this.$t('greska-prilikom-slanja-prijavnice-pokusajte-ponovo-ili-nas-kontaktirajte'));
       }
     },
 

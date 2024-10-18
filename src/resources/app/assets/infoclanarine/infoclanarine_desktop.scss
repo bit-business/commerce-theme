@@ -24,9 +24,58 @@
   }
   .lanarinee-icon {
     position: relative;
-    width: 35.77rem;
-    height: 4.6rem;
+    width: 90%;
+
+    font-size: 4.4rem;
+    font-family: Inter;
+    color:  #03A9F4;
+    line-height: 1.5; 
+    font-weight: 800;
+    letter-spacing: 20px;
   }
+  .lanarinee-icon2 {
+    position: relative;
+    width: 65.77rem;
+
+    font-size: 4.4rem;
+    font-family: Inter;
+    color:  #03A9F4;
+    line-height: 1.4; 
+    font-weight: 800;
+    letter-spacing: 20px;
+    justify-content: center;
+    text-align: center;
+  }
+
+
+  .lanarinee-icon3 {
+    position: relative;
+    width: 100%;
+    font-size: 4.4rem;
+    font-family: Inter;
+    color:  #03A9F4;
+    line-height: 2; 
+    font-weight: 800;
+    letter-spacing: 20px;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .lanarinee-icon4 {
+    position: relative;
+    width: 100%;
+
+    font-size: 4.4rem;
+    font-family: Inter;
+    color:  #03A9F4;
+    line-height: 1; 
+    font-weight: 800;
+    letter-spacing: 20px;
+    justify-content: center;
+    text-align: center;
+    padding-top: 4rem;
+  }
+
   .voditelj-skijanja-iaess {
     position: absolute;
 
@@ -204,16 +253,20 @@
     letter-spacing: 2px;
   }
   .demonstratori-skijanjadaskanj {
-    position: absolute;
+    position: relative;
+    // position: absolute;
     top: 5.06rem;
-    left: calc(50% - 294px);
+    // left: calc(50% - 294px);
     letter-spacing: 2px;
   }
   .treneri-skijanjadaskanja-na1 {
     position: absolute;
     top: 7.81rem;
-    left: calc(50% - 361px);
+    left: 50%;
+    transform: translateX(-50%);
     letter-spacing: 2px;
+    text-align: center;
+    width: 100%;
   }
   .clanarine-div2 {
     position: absolute;
@@ -750,7 +803,13 @@
   .info-potvrda {
     position: absolute;
     top: calc(50% - 122px);
-    left: calc(50% - 61px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   .ddiv9 {
     position: absolute;
@@ -1261,7 +1320,7 @@
     justify-content: flex-start;
     padding: 0rem 0rem 5rem;
     box-sizing: border-box;
-    gap: 4.38rem;
+    gap: 3.5rem;
   }
   .clanarine-desktop-radi {
     position: relative;

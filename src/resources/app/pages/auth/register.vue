@@ -1,6 +1,6 @@
 <template>
   <div class="hzuts-registration-desktop">
-    <Head title="$t('registracija')" />
+    <Head :title="$t('registracija')" />
     <Link :href="route('skijasi.commerce-theme.home')" class="backgumb">
       <img class="vector-icon2" alt="" src="/storage/slike/vectornazad1.svg" />
       <img class="vector-icon2" alt="" src="/storage/slike/vectornazad2.svg" />
@@ -877,14 +877,14 @@ export default {
 
 
   isFourthFormValid() {
-    return this.checkboxValue && (this.spol === this.$t('musko-0') || this.spol === this.$t('zensko-0'));
+    return this.checkboxValue && (this.spol === 'Muško' || this.spol === 'Žensko');
   },
 
 
     buttonClasses() {
       return [
-        this.$t('w-full-bg-primary-text-white-py-2-rounded-md-text-sm-font-medium-mt-4-select-none-flex-items-center-justify-center-gap-2'),
-        this.$v.$invalid || this.loading ? this.$t('cursor-not-allowed-opacity-50') : "",
+        "w-full bg-primary text-white py-2 rounded-md text-sm font-medium mt-4 select-none flex items-center justify-center gap-2",
+        this.$v.$invalid || this.loading ? "cursor-not-allowed opacity-50" : "",
       ];
     },
     ...mapState({
@@ -1049,7 +1049,7 @@ export default {
   }
 
   const byteString = atob(dataURI.split(',')[1]);
-  const mimeString = dataURI.split(',')[0].split(':')[1].split(this.$t('key'))[0];
+  const mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
   const ab = new ArrayBuffer(byteString.length);
   const ia = new Uint8Array(ab);
   for (let i = 0; i < byteString.length; i++) {

@@ -3,7 +3,7 @@
         <Head :title="$page.props.name" />
     <div class="frame-parent">
       <div class="izrada-lanske-iskaznice-wrapper">
-        <div class="izrada-lanske-iskaznice">IZRADA ČLANSKE ISKAZNICE</div>
+        <div class="izrada-lanske-iskaznice">{{ $t('izrada-clanske-iskaznice-0') }}</div>
       </div>
       <div class="frame-wrapper">
         <div class="frame-group">
@@ -12,20 +12,17 @@
               <div class="frame2">
                 <div class="frame3">
                   <div class="nakon-ulanjenja-u">
-                    Nakon učlanjenja u Područni zbor i HZUTS, svaki član ima
-                    pravo na člansku iskaznicu.
+                    {{ $t('nakon-uclanjenja-u-podrucni-zbor-i-hzuts-svaki-clan-ima-pravo-na-clansku-iskaznicu') }}
                   </div>
                 </div>
                 <div class="frame3">
                   <div class="nakon-ulanjenja-u">
-                    Iskaznice HZUTS-a su plastične, a sa stražnje strane nalazi
-                    se slika člana, njegovi osobni podaci, te prostor za
-                    hologram i licencu.
+                    {{ $t('iskaznice-hzuts-a-su-plasticne-a-sa-straznje-strane-nalazi-se-slika-clana-njegovi-osobni-podaci-te-prostor-za-hologram-i-licencu') }}
                   </div>
                 </div>
               </div>
               <div class="frame5">
-                <b class="izgled-iskaznice">IZGLED ISKAZNICE:</b>
+                <b class="izgled-iskaznice">{{ $t('izgled-iskaznice') }}</b>
               </div>
             </div>
             <div class="frame6">
@@ -37,7 +34,7 @@
                     src="/storage/slike/izradaiskaznice/prednja-strana-1@2x.png"
                   />
                   <div class="slika-1-lanska">
-                    Slika 1. Članska iskaznica HZUTS-a (prednja strana)
+                    {{ $t('slika-1-clanska-iskaznica-hzuts-a-prednja-strana') }}
                   </div>
                 </div>
                 <div class="frame-frame">
@@ -48,7 +45,7 @@
                       src="/storage/slike/izradaiskaznice/straznja-strana--1@2x.png"
                     />
                     <div class="slika-1-lanska">
-                      Slika 2. Članska iskaznica HZUTS-a (stražnja strana)
+                      {{ $t('slika-2-clanska-iskaznica-hzuts-a-straznja-strana') }}
                     </div>
                   </div>
                 </div>
@@ -66,7 +63,7 @@
                     <p class="za-izradu-iskaznice-potrebna-j">
                       <span>
                         <span class="za-izradu-iskaznice"
-                          >Za izradu iskaznice potrebna je:</span
+                          >{{ $t('za-izradu-iskaznice-potrebna-je') }}</span
                         >
                       </span>
                     </p>
@@ -77,17 +74,17 @@
                     </p>
                     <p class="za-izradu-iskaznice-potrebna-j">
                       <span>
-                        <b>1. Potvrda o uplati za izradu iste</b>
+                        <b>{{ $t('1-potvrda-o-uplati-za-izradu-iste') }}</b>
                       </span>
                     </p>
                     <ul class="cijena-i-podaci-za-uplatu-">
                       <li class="format-jpg">
                         <span>
                           <span class="za-izradu-iskaznice"
-                            >Cijena i podaci za uplatu -&gt;
+                            >{{ $t('cijena-i-podaci-za-uplatu') }}&gt;
                           </span>
                         </span>
-                        <Link :href="route('skijasi.commerce-theme.infoclanarine')" class="lanarine">Članarine</Link>      
+                        <Link :href="route('skijasi.commerce-theme.infoclanarine')" class="lanarine">{{ $t('clanarine-0') }}</Link>      
 
                       </li>
                     </ul>
@@ -99,8 +96,7 @@
                     <p class="za-izradu-iskaznice-potrebna-j">
                       <span class="blank-line3">
                         <b class="fotografija-u-digitalnom"
-                          >2. Fotografija u digitalnom obliku sa sljedećim
-                          karakteristikama:</b
+                          >{{ $t('2-fotografija-u-digitalnom-obliku-sa-sljedecim-karakteristikama') }}</b
                         >
                       </span>
                     </p>
@@ -108,9 +104,7 @@
                       <li class="format-jpg">
                         <span class="opis">Opis:</span>
                         <span class="jpg">
-                          Fotografija u digitalnom obliku, po mogućnosti u
-                          skijaškom odijelu, s vidljivim licem (bez naočala,
-                          kape, kacige i slično)</span
+                          {{ $t('fotografija-u-digitalnom-obliku-po-mogucnosti-u-skijaskom-odijelu-s-vidljivim-licem-bez-naocala-kape-kacige-i-slicno') }}</span
                         >
                       </li>
                       <li class="format-jpg">
@@ -118,10 +112,9 @@
                         <span class="jpg"> JPG</span>
                       </li>
                       <li>
-                        <span class="opis">Veličina:</span>
+                        <span class="opis">{{ $t('velicina') }}</span>
                         <span class="jpg">
-                          minimalna dimenzija 300x540 pixela (vertikalna
-                          orijentacija)</span
+                          {{ $t('minimalna-dimenzija-300x540-pixela-vertikalna-orijentacija') }}</span
                         >
                       </li>
                     </ul>
@@ -130,9 +123,7 @@
                 <div class="frame3">
                   <b class="osobe-koje-prilikom-container">
                     <span
-                      >!! Osobe koje prilikom registracije za prijavu na
-                      web/aplikaciju nisu priložile fotografiju, fotografiju je
-                      potrebno poslati na e-mail:
+                      >{{ $t('osobe-koje-prilikom-registracije-za-prijavu-na-web-aplikaciju-nisu-prilozile-fotografiju-fotografiju-je-potrebno-poslati-na-e-mail') }}
                     </span>
                     <a
                       class="infohzutshr"
@@ -149,8 +140,7 @@
               <img class="frame-child" alt="" src="/storage/slike/izradaiskaznice/rectangle-280@2x.png" />
               <div class="frame3">
                 <div class="slika-1-lanska">
-                  Slika 3. Primjer fotografije potrebne za izradu članske
-                  iskaznice
+                  {{ $t('slika-3-primjer-fotografije-potrebne-za-izradu-clanske-iskaznice') }}
                 </div>
               </div>
             </div>

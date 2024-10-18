@@ -3,45 +3,25 @@
       <Head :title="$page.props.name" />
     <div class="djelatnosti-hzuts-a-inner">
       <div class="djelatnosti-hzuts-a-wrapper">
-        <div class="djelatnosti-hzuts-a1">DJELATNOSTI HZUTS-a</div>
+        <div class="djelatnosti-hzuts-a1">{{ $t('djelatnosti-hzuts-a') }}</div>
       </div>
     </div>
     <div class="djelatnosti-hzuts-a-child">
       <div class="hzuts-sudjeluje-u-razvoju-i-pr-wrapper">
         <div class="hzuts-sudjeluje-u-container">
           <p class="hzuts-sudjeluje-u">
-            HZUTS sudjeluje u razvoju i promicanju sportova na snijegu;
-            osposobljavanju, školovanju, doškolovanju i obuci kadrova i osoba
-            koje se bave sportovima na snijegu. HZUTS surađuje s Hrvatskim
-            olimpijskim odborom, Hrvatskim skijaškim savezom, fakul­tetima,
-            školama, zavodima i drugim subjektima s područja bavljenja
-            sportovima na snijegu. Važan cilj HZUTS­-a također je i ostvarivanje
-            međunarodnih veza i suradnje s međuna­rodnim sportskim udrugama i
-            organizacijama.
+            {{ $t('hzuts-sudjeluje-u-razvoju-i-promicanju-sportova-na-snijegu-osposobljavanju-skolovanju-doskolovanju-i-obuci-kadrova-i-osoba-koje-se-bave-sportovima-na-snijegu-hzuts-suraduje-s-hrvatskim-olimpijskim-odborom-hrvatskim-skijaskim-savezom-fakul-tetima-skolama-zavodima-i-drugim-subjektima-s-podrucja-bavljenja-sportovima-na-snijegu-vazan-cilj-hzuts-a-takoder-je-i-ostvarivanje-medunarodnih-veza-i-suradnje-s-meduna-rodnim-sportskim-udrugama-i-organizacijama') }}
           </p>
           <p class="hzuts-sudjeluje-u">&nbsp;</p>
           <p class="hzuts-sudjeluje-u">
-            Statutom Hrvatskog skijaškog saveza, u kojem HZUTS ima status
-            punopravnog člana, HZUTS-­u je povjerena skrb oko školovanja i
-            izobrazbe učitelja i trenera sportova na snijegu u Hrvatskoj te je
-            posebno ovlašten za vršenje kontrole posjedovanja potrebne
-            kvalifikacije za obavljanje poslova u podučavanju osoba na hrvatskim
-            i inozemnim skijalištima.
+            {{ $t('statutom-hrvatskog-skijaskog-saveza-u-kojem-hzuts-ima-status-punopravnog-clana-hzuts-u-je-povjerena-skrb-oko-skolovanja-i-izobrazbe-ucitelja-i-trenera-sportova-na-snijegu-u-hrvatskoj-te-je-posebno-ovlasten-za-vrsenje-kontrole-posjedovanja-potrebne-kvalifikacije-za-obavljanje-poslova-u-poducavanju-osoba-na-hrvatskim-i-inozemnim-skijalistima') }}
           </p>
           <p class="hzuts-sudjeluje-u">
-            Temeljem tih ovlasti HZUTS tijekom skijaške sezone organi­zira
-            stručne skupove – seminare – za obrazovanje kadrova u sportovima na
-            snijegu u smislu pripreme, stjecanja licence te produživanja licence
-            voditelja, učitelja i trenera sportova na snijegu. Osim toga, HZUTS
-            organizira i kampove za pri­premu budućih učitelja sportova na
-            snijegu te kampove za usavršavanje tehnike.
+            {{ $t('temeljem-tih-ovlasti-hzuts-tijekom-skijaske-sezone-organi-zira-strucne-skupove-seminare-za-obrazovanje-kadrova-u-sportovima-na-snijegu-u-smislu-pripreme-stjecanja-licence-te-produzivanja-licence-voditelja-ucitelja-i-trenera-sportova-na-snijegu-osim-toga-hzuts-organizira-i-kampove-za-pri-premu-buducih-ucitelja-sportova-na-snijegu-te-kampove-za-usavrsavanje-tehnike') }}
           </p>
           <p class="hzuts-sudjeluje-u">&nbsp;</p>
           <p class="hzuts-sudjeluje-u">
-            HZUTS, zajedno s članovima svoje Nastavne komisije, kon­tinuirano
-            radi na usavršavanju tehnike podučavanja pri čemu se najveći
-            naglasak stavlja na praćenje svjetskih trendova i metodologije
-            podučavanja.
+            {{ $t('hzuts-zajedno-s-clanovima-svoje-nastavne-komisije-kon-tinuirano-radi-na-usavrsavanju-tehnike-poducavanja-pri-cemu-se-najveci-naglasak-stavlja-na-pracenje-svjetskih-trendova-i-metodologije-poducavanja') }}
           </p>
         </div>
       </div>

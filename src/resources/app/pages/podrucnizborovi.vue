@@ -3,9 +3,8 @@
   <div class="hzuts-podrucni-zborovi-screen-">
     <Head :title="$page.props.name" />
     <div class="slikanavrhupodrucnihzborova">
-      <div class="info-podruni-zborovi">PODRUČNI ZBOROVI</div>
-      <div class="info-podruni-zborovi-podtekst">Da bi osoba postala član HZUTS-a prethodno se mora učlaniti u 
-područni zbor prema vlastitom izboru.</div>
+      <div class="info-podruni-zborovi">{{ $t('podrucni-zborovi-1') }}</div>
+      <div class="info-podruni-zborovi-podtekst">{{ $t('da-bi-osoba-postala-clan-hzuts-a-prethodno-se-mora-uclaniti-u-podrucni-zbor-prema-vlastitom-izboru') }}.</div>
     </div>
 
 
@@ -16,20 +15,15 @@ područni zbor prema vlastitom izboru.</div>
           alt=""
           src="/storage/slike/podrucnizborovi/novovectorpozadina@2x.png"
         />
-        <b class="novopostupak-ulanjivanja">POSTUPAK UČLANJIVANJA</b>
+        <b class="novopostupak-ulanjivanja">{{ $t('postupak-uclanjivanja') }}</b>
         <div class="novojavite-se-tajniku-container">
           <span class="novojavite-se-tajniku-container1">
             <p class="javite-se-tajniku">
-              Javite se tajniku željenog područnog zbora prema podacima koji se
-              nalaze u nastavku i zatražite primitak u članstvo. Nakon toga će
-              vas tajnik područnog zbora uputiti u daljnje korake oko plaćanja
-              članarine i ostalih obveza.
+              {{ $t('javite-se-tajniku-zeljenog-podrucnog-zbora-prema-podacima-koji-se-nalaze-u-nastavku-i-zatrazite-primitak-u-clanstvo-nakon-toga-ce-vas-tajnik-podrucnog-zbora-uputiti-u-daljnje-korake-oko-placanja-clanarine-i-ostalih-obveza') }}
             </p>
             <p class="javite-se-tajniku">&nbsp;</p>
             <p class="javite-se-tajniku">
-              Članovi u područnim zborovima preuzimaju sezonske markice (licenca
-              i hologram) i ostvaruju ostala prava stoga je preporuka odabrati
-              Područni zbor koji se nalazi u blizini mjesta stanovanja.
+              {{ $t('clanovi-u-podrucnim-zborovima-preuzimaju-sezonske-markice-licenca-i-hologram-i-ostvaruju-ostala-prava-stoga-je-preporuka-odabrati-podrucni-zbor-koji-se-nalazi-u-blizini-mjesta-stanovanja') }}
             </p>
           </span>
         </div>
@@ -37,30 +31,29 @@ područni zbor prema vlastitom izboru.</div>
       <div class="novodesniframetekst">
         <div class="novopodframedesnitekst">
           <div class="novonaslovdesnitekst">
-            <b class="novopromjena-podrunog-zbora">PROMJENA PODRUČNOG ZBORA</b>
+            <b class="novopromjena-podrunog-zbora">{{ $t('promjena-podrucnog-zbora') }}</b>
           </div>
           <div class="novoza-promjenu-podrunog-container">
             <p class="javite-se-tajniku">
-              Za promjenu područnog zbora potrebno je:
+              {{ $t('za-promjenu-podrucnog-zbora-potrebno-je') }}
             </p>
             <p class="javite-se-tajniku">
-              1. Zatražiti ispisnicu iz sadašnjeg zbora
+              {{ $t('1-zatraziti-ispisnicu-iz-sadasnjeg-zbora') }}
             </p>
             <p class="javite-se-tajniku">
               <span
-                >2. Predati zahtjev za članstvo u novi zbor najkasnije
+                >{{ $t('2-predati-zahtjev-za-clanstvo-u-novi-zbor-najkasnije') }}
               </span>
-              <span class="do-01-rujna">do 01. rujna tekuće</span>
+              <span class="do-01-rujna">{{ $t('do-01-rujna-tekuce') }}</span>
               <span class="span"> </span>
               <span class="do-01-rujna">godine</span>
             </p>
             <p class="javite-se-tajniku">&nbsp;</p>
             <p class="podruni-zbor-je">
-              Područni zbor je moguće promijeniti isključivo u periodu od 01.06.
-              do 01.09. tekuće godine (radi rasporeda licenci i holograma).
+              {{ $t('podrucni-zbor-je-moguce-promijeniti-iskljucivo-u-periodu-od-01-06-do-01-09-tekuce-godine-radi-rasporeda-licenci-i-holograma') }}
             </p>
             <p class="podruni-zbor-je">
-              Za sva pitanja slobodno se javite tajnicima zborova.
+              {{ $t('za-sva-pitanja-slobodno-se-javite-tajnicima-zborova') }}
             </p>
           </div>
         </div>
@@ -79,11 +72,11 @@ područni zbor prema vlastitom izboru.</div>
         </div>
         <div class="tekstovi1">
           <div class="frame">
-            <div class="predsjednik">Predsjednik:</div>
+            <div class="predsjednik">{{ $t('predsjednik') }}:</div>
             <b class="dubravko-grgi">{{ zborovi && zborovi[2] ? zborovi[2].predsjednik : '' }}</b>
           </div>
           <div class="frame1">
-            <div class="predsjednik">Tajnik:</div>
+            <div class="predsjednik">{{ $t('tajnik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].tajnik : '' }}</b>
           </div>
           <div class="adresa-parent">
@@ -192,15 +185,15 @@ područni zbor prema vlastitom izboru.</div>
         </div>
         <div class="podzbo-frame-parent2">
           <div class="frame7">
-            <div class="predsjednik">Predsjednik:</div>
+            <div class="predsjednik">{{ $t('predsjednik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].predsjednik : '' }}</b>
           </div>
           <div class="frame8">
-            <div class="predsjednik">Tajnik:</div>
+            <div class="predsjednik">{{ $t('tajnik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[3] ? zborovi[3].tajnik : '' }}</b>
           </div>
           <div class="adresa2">
-            <div class="adresa1">Adresa:</div>
+            <div class="adresa1">{{ $t('adresa') }}:</div>
             <a class="ulica-grada-vukovara1"
               >{{ zborovi && zborovi[3] ? zborovi[3].depaddress : '' }}</a
             >
@@ -216,17 +209,17 @@ područni zbor prema vlastitom izboru.</div>
         </div>
         <div class="adresa2-parent">
           <div class="adresa21">
-            <div class="adresa1">Adresa:</div>
+            <div class="adresa1">{{ $t('adresa') }}:</div>
             <a class="ulica-grada-vukovara2"
               >{{ zborovi && zborovi[4] ? zborovi[4].depaddress : '' }}</a
             >
           </div>
           <div class="frame9">
-            <div class="predsjednik">Predsjednik:</div>
+            <div class="predsjednik">{{ $t('predsjednik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].predsjednik : '' }}</b>
           </div>
           <div class="frame10">
-            <div class="predsjednik">Tajnik:</div>
+            <div class="predsjednik">{{ $t('tajnik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[4] ? zborovi[4].tajnik : '' }}</b>
           </div>
         </div>
@@ -329,17 +322,17 @@ područni zbor prema vlastitom izboru.</div>
         </div>
         <div class="adresa2-group">
           <div class="adresa22">
-            <div class="adresa1">Adresa:</div>
+            <div class="adresa1">{{ $t('adresa') }}:</div>
             <a class="ulica-grada-vukovara1"
               >{{ zborovi && zborovi[5] ? zborovi[5].depaddress : '' }}</a
             >
           </div>
           <div class="frame15">
-            <div class="predsjednik">Predsjednik:</div>
+            <div class="predsjednik">{{ $t('predsjednik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].predsjednik : '' }}</b>
           </div>
           <div class="frame16">
-            <div class="predsjednik">Tajnik:</div>
+            <div class="predsjednik">{{ $t('tajnik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[5] ? zborovi[5].tajnik : '' }}</b>
           </div>
         </div>
@@ -361,11 +354,11 @@ područni zbor prema vlastitom izboru.</div>
             >
           </div>
           <div class="frame17">
-            <div class="predsjednik">Predsjednik:</div>
+            <div class="predsjednik">{{ $t('predsjednik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].predsjednik : '' }}</b>
           </div>
           <div class="frame18">
-            <div class="predsjednik">Tajnik:</div>
+            <div class="predsjednik">{{ $t('tajnik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[6] ? zborovi[6].tajnik : '' }}</b>
           </div>
         </div>
@@ -466,26 +459,29 @@ područni zbor prema vlastitom izboru.</div>
           <img class="podzbo-plavacrta" alt="" src="/storage/slike/podrucnizborovi/line-32.svg" />
         </div>
         <div class="podzbo-frame-parent11">
-          <div class="frame23">
-            <div class="predsjednik">Predsjednik:</div>
+          <div class="adresa2-group">
+          <div class="frame15">
+            <div class="predsjednik">{{ $t('predsjednik') }}:</div>
             <b class="predsjednik">{{ zborovi && zborovi[7] ? zborovi[7].predsjednik : '' }}</b>
           </div>
-          <div class="frame24">
-            <div class="tajnik5">Tajnik:</div>
+          <div class="frame16">
+            <div class="tajnik5">{{ $t('tajnik') }}:</div>
             <b class="mirna-rajle-broanac">{{ zborovi && zborovi[7] ? zborovi[7].tajnik : '' }}</b>
           </div>
-          <div class="adresa6">
-            <div class="adresa1">Adresa:</div>
-            <a class="ulica-grada-vukovara5"
+          <div class="adresa22">
+            <div class="adresa1">{{ $t('adresa') }}:</div>
+            <a class="ulica-grada-vukovara1"
               >{{ zborovi && zborovi[7] ? zborovi[7].depaddress : '' }}</a
             >
           </div>
-        </div>
+        </div>        </div>
       </div>
     </div>
   </div>
 </template>
 <script>
+
+
 
 
 import galerijaLayout from '../layouts/galerija.vue'
@@ -780,7 +776,7 @@ align-self: stretch;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 0.94rem;
+    gap: 3rem;
   }
   .frame1 {
     align-self: stretch;
@@ -1077,7 +1073,7 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 4.81rem;
   }
   .frame8 {
@@ -1093,7 +1089,6 @@ align-self: stretch;
   .adresa1 {
     position: relative;
     display: inline-block;
-    width: 3.63rem;
     height: 1.19rem;
     flex-shrink: 0;
   }
@@ -1115,11 +1110,12 @@ align-self: stretch;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
+    gap: 2rem;
   }
   .podzbo-frame-parent2 {
     position: absolute;
     top: 3.88rem;
-    left: 6.34rem;
+    left: 4rem;
     display: flex;
     flex-direction: column;
     align-items: flex-end;
@@ -1201,7 +1197,7 @@ align-self: stretch;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 1.25rem;
+    gap: 2.3rem;
   }
   .frame10 {
     position: absolute;
@@ -1214,7 +1210,7 @@ align-self: stretch;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 4rem;
+    gap: 2.8rem;
   }
   .adresa2-parent {
     position: absolute;
@@ -1336,16 +1332,16 @@ align-self: stretch;
     position: absolute;
     top: 3.63rem;
     left: 0.06rem;
-    width: 16.31rem;
+    width: 19rem;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
+    gap: 1.9rem;
   }
   .frame15 {
     position: absolute;
     top: 0rem;
-    left: 0.06rem;
     height: 1.19rem;
     overflow: hidden;
     display: flex;
@@ -1364,13 +1360,13 @@ align-self: stretch;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 6.88rem;
+    gap: 3rem;
   }
   .adresa2-group {
     position: absolute;
     top: 6.56rem;
-    left: 4.88rem;
-    width: 16.38rem;
+    left: 2rem;
+    width: 19.38rem;
     height: 6.63rem;
     text-align: center;
     font-size: 1rem;
@@ -1435,7 +1431,7 @@ align-self: stretch;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 1.25rem;
+    gap: 2.3rem;
   }
   .frame18 {
     position: absolute;
@@ -1447,13 +1443,13 @@ align-self: stretch;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 4rem;
+    gap: 3rem;
   }
   .adresa2-container {
     position: absolute;
     top: 8.38rem;
     left: 0rem;
-    width: 15.56rem;
+    width: 18.56rem;
     height: 6.06rem;
     text-align: center;
     font-size: 1rem;
@@ -1550,7 +1546,7 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 2rem;
     z-index: 0;
   }
@@ -1559,7 +1555,6 @@ align-self: stretch;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 3.69rem;
     flex-shrink: 0;
   
   }
@@ -1577,7 +1572,7 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 2.1rem;
     z-index: 1;
   }
@@ -1597,7 +1592,6 @@ align-self: stretch;
     margin: 0 !important;
     position: absolute;
     top: 4.06rem;
-    left: 2.56rem;
     height: 2.75rem;
     display: flex;
     flex-direction: row;
@@ -1610,19 +1604,16 @@ align-self: stretch;
     height: 3.31rem;
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-start;
     justify-content: space-between;
-    position: relative;
     text-align: center;
     font-size: 1rem;
     color: #000;
   }
   .podzbo-frame-parent10 {
-    height: 9.81rem;
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: space-between;
+    position: relative;
+    width: 21.25rem;
+    height: 12.94rem;
     text-align: right;
     font-size: 2rem;
     color: #21231e;

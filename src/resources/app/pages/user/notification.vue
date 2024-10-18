@@ -47,7 +47,7 @@
 <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Profil</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-profil-0') }}</span>
   </Link>
   <!--
   <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center group">
@@ -58,7 +58,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M21.0003 2L19.0003 4M19.0003 4L22.0003 7L18.5003 10.5L15.5003 7.5M19.0003 4L15.5003 7.5M11.3903 11.61C11.9066 12.1195 12.3171 12.726 12.598 13.3948C12.879 14.0635 13.0249 14.7813 13.0273 15.5066C13.0297 16.232 12.8887 16.9507 12.6122 17.6213C12.3357 18.2919 11.9293 18.9012 11.4164 19.4141C10.9035 19.9271 10.2942 20.3334 9.62358 20.6099C8.95296 20.8864 8.23427 21.0275 7.50891 21.025C6.78354 21.0226 6.06582 20.8767 5.39707 20.5958C4.72831 20.3148 4.12174 19.9043 3.61227 19.388C2.6104 18.3507 2.05604 16.9614 2.06857 15.5193C2.0811 14.0772 2.65953 12.6977 3.67927 11.678C4.69902 10.6583 6.07849 10.0798 7.52057 10.0673C8.96265 10.0548 10.352 10.6091 11.3893 11.611L11.3903 11.61ZM11.3903 11.61L15.5003 7.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Promjena lozinke</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-0') }}</span>
   </Link>
 
 
@@ -68,7 +68,7 @@
 <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Obavijesti</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('obavijesti-0') }}</span>
   </Link>
 
 
@@ -87,7 +87,7 @@
 </defs>
 </svg>
 </div>
-  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-0') }}</span>
 </Link>
 
 
@@ -104,7 +104,7 @@
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Povijest plaćanja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-0') }}</span>
   </Link>
 
 
@@ -122,7 +122,7 @@
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zaduženja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zaduzenja-0') }}</span>
   </Link>
   <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
@@ -131,7 +131,7 @@
 <path d="M12 16V12" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 8H12.01" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Status</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-status-0') }}</span>
   </Link>
 
 
@@ -150,7 +150,7 @@
 <rect width="24" height="24" fill="white"/>
 </clipPath>
 </defs>
-</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Odjavi se</span>
+</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('odjavi-se-0') }}</span>
   </div>
 </div>
 </div>  </div>
@@ -160,7 +160,7 @@
 <div class="bg-white shadow-sm px-6 rounded-xl ml-16 pb-8">
           <!--2-->
           <div class="h-22 flex flex-col py-4 justify-center border-plava-200 border-b">
-            <span class="text-lg font-medium plavi-text">Obavijesti</span>
+            <span class="text-lg font-medium plavi-text">{{ $t('obavijesti-0') }}</span>
           </div>
         <div class="flex flex-wrap w-full">
 
@@ -190,12 +190,12 @@
       <div class="text-gray-500" style="max-width: 46vw; white-space: pre-line; word-wrap: break-word;">
         {{ notification.message }}
       </div>
-      <div class="text-sm text-black text-bold mt-2" style="font-weight: 500;">Objavljeno: {{ $moment(notification.created_at).format('DD.MM.YYYY') }}</div>
+      <div class="text-sm text-black text-bold mt-2" style="font-weight: 500;">{{ $t('objavljeno') }} {{ $moment(notification.created_at).format('DD.MM.YYYY') }}</div>
     </a>
 
     <div v-else class="text-gray-500" style="max-width: 46vw; white-space: pre-line; word-wrap: break-word;">
       {{ notification.message }}
-      <div class="text-sm text-black text-bold mt-2" style="font-weight: 500;">Objavljeno: {{ $moment(notification.created_at).format('DD.MM.YYYY') }}</div>
+      <div class="text-sm text-black text-bold mt-2" style="font-weight: 500;">{{ $t('objavljeno') }} {{ $moment(notification.created_at).format('DD.MM.YYYY') }}</div>
     </div>
   </div>
 
@@ -203,7 +203,7 @@
     <button
       class="py-2 px-8 float-right bg-white hover:border-primary hover:text-primary text-xs border rounded-md"
       v-if="notification.type === 'orderNotification'">
-      Prikaži detalje plaćanja
+      {{ $t('prikazi-detalje-placanja') }}
     </button>
   </div>
 
@@ -233,8 +233,7 @@
   <path d="M52.8304 20.0996L52.1704 20.7596C52.1704 20.7596 41.8304 31.0996 41.6104 31.3196C41.6004 31.3296 42.6004 31.9196 42.6704 31.9596C44.8304 33.1496 47.3404 33.2796 49.6104 32.2896C54.2404 30.2696 55.9704 24.1296 52.8304 20.0996Z" fill="black"/>
   <path d="M11.7002 30.88V34.11C11.7002 39.55 11.1502 44.51 9.91016 49.96C10.5902 49.49 11.3702 49.07 12.2402 48.68C15.7302 47.1 20.6102 46.09 25.7002 45.71C28.8902 45.47 32.1402 45.42 35.3302 45.71C40.4302 46.1 45.3102 47.11 48.8002 48.69C49.6602 49.08 50.4402 49.51 51.1102 49.98C49.9102 44.67 49.3502 39.84 49.3302 34.59C49.2302 34.62 49.1302 34.65 49.0302 34.67C46.0802 35.47 42.7902 34.76 40.3902 32.9C35.6302 29.23 35.3202 21.73 39.7202 17.64C39.9602 17.42 41.8402 15.8 42.1302 16.03C39.8002 14.19 37.0902 12.94 34.2002 12.36C35.0202 11.47 35.5102 10.29 35.5102 9C35.5102 6.24 33.2702 4 30.5102 4C27.7502 4 25.5102 6.24 25.5102 9C25.5102 10.29 26.0002 11.47 26.8202 12.36C18.2102 14.09 11.7002 21.74 11.7002 30.88ZM30.5102 6C32.1702 6 33.5102 7.35 33.5102 9C33.5102 10.65 32.1702 12 30.5102 12C28.8502 12 27.5102 10.65 27.5102 9C27.5102 7.35 28.8602 6 30.5102 6Z" fill="black"/>
 </svg>
-              <span class ="tekstnemaobavijesti">Trenutno nemate nikakvih obavijesti. 
-Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima. Budite sigurni da ćemo vam pružiti sve najnovije informacije kada se pojave.  </span>
+              <span class ="tekstnemaobavijesti">{{ $t('trenutno-nemate-nikakvih-obavijesti-ovdje-cete-primati-obavijesti-o-vaznim-dogadajima-novostima-i-azuriranjima-budite-sigurni-da-cemo-vam-pruziti-sve-najnovije-informacije-kada-se-pojave') }} </span>
             </div>
           </template>
         </div>
@@ -279,7 +278,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
 <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Profil</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-profil-0') }}</span>
   </Link>
   <!--
   <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center group">
@@ -290,7 +289,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M21.0003 2L19.0003 4M19.0003 4L22.0003 7L18.5003 10.5L15.5003 7.5M19.0003 4L15.5003 7.5M11.3903 11.61C11.9066 12.1195 12.3171 12.726 12.598 13.3948C12.879 14.0635 13.0249 14.7813 13.0273 15.5066C13.0297 16.232 12.8887 16.9507 12.6122 17.6213C12.3357 18.2919 11.9293 18.9012 11.4164 19.4141C10.9035 19.9271 10.2942 20.3334 9.62358 20.6099C8.95296 20.8864 8.23427 21.0275 7.50891 21.025C6.78354 21.0226 6.06582 20.8767 5.39707 20.5958C4.72831 20.3148 4.12174 19.9043 3.61227 19.388C2.6104 18.3507 2.05604 16.9614 2.06857 15.5193C2.0811 14.0772 2.65953 12.6977 3.67927 11.678C4.69902 10.6583 6.07849 10.0798 7.52057 10.0673C8.96265 10.0548 10.352 10.6091 11.3893 11.611L11.3903 11.61ZM11.3903 11.61L15.5003 7.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Promjena lozinke</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-0') }}</span>
   </Link>
 
 
@@ -300,7 +299,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
 <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Obavijesti</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('obavijesti-0') }}</span>
   </Link>
 
   <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
@@ -318,7 +317,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
 </defs>
 </svg>
 </div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-0') }}</span>
   </Link>
 
   <Link :href="route('skijasi.commerce-theme.order')" class="w-full inline-flex items-center group sidebar-item">
@@ -334,7 +333,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Povijest plaćanja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-0') }}</span>
   </Link>
 
 
@@ -352,7 +351,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zaduženja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zaduzenja-0') }}</span>
   </Link>
   <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
@@ -361,7 +360,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
 <path d="M12 16V12" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 8H12.01" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Status</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-status-0') }}</span>
   </Link>
 
 
@@ -380,7 +379,7 @@ Ovdje ćete primati obavijesti o važnim događajima, novostima i ažuriranjima.
 <rect width="24" height="24" fill="white"/>
 </clipPath>
 </defs>
-</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Odjavi se</span>
+</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('odjavi-se-0') }}</span>
   </div>
 </div>
 </div>  </div>

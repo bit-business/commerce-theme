@@ -1,7 +1,7 @@
 <template>
   <section class="hzuts-leadership-parent">
     <div class="hzuts-leadership">
-      <b class="vodstvo-hzuts-a3">VODSTVO HZUTS-a</b>
+      <b class="vodstvo-hzuts-a3">{{ $t('vodstvo-hzuts-a') }}</b>
     </div>
     <div class="dopredsednik-vucinic">
       <PredsjednikLikvidatorTomisla
@@ -16,28 +16,28 @@
       <div class="nastavna-komisa">
         <div class="lanovi-izvrnog-odbora-container1">
           <span>
-            <p class="lanovi-izvrnog-odbora1">ČLANOVI IZVRŠNOG ODBORA:</p>
+            <p class="lanovi-izvrnog-odbora1">{{ $t('clanovi-izvrsnog-odbora') }}</p>
             <ul class="dag-modri-predstavnik-pz-nik1">
               <li class="dag-modri3">
                 <span>Dag Modrić</span>
               </li>
               <li class="predstavnik-pz-nik-krmar1">
-                <span>Predstavnik PZ Nik Krčmar</span>
+                <span>{{ $t('predstavnik-pz-nik-krcmar') }}</span>
               </li>
               <li class="predstavnik-pz-istra1">
-                <span>Predstavnik PZ Istra</span>
+                <span>{{ $t('predstavnik-pz-istra') }}</span>
               </li>
               <li class="predstavnik-pz-slavonije-i-bar1">
-                <span>Predstavnik PZ Slavonije i Baranje</span>
+                <span>{{ $t('predstavnik-pz-slavonije-i-baranje') }}</span>
               </li>
               <li class="predstavnik-pz-ogulin1">
-                <span>Predstavnik PZ Ogulin</span>
+                <span>{{ $t('predstavnik-pz-ogulin') }}</span>
               </li>
               <li class="predstavnik-pz-primorsko-goran1">
-                <span>Predstavnik PZ Primorsko-goranska županije</span>
+                <span>{{ $t('predstavnik-pz-primorsko-goranska-zupanije') }}</span>
               </li>
               <li class="predstavnik-pz-sjeverozapadne1">
-                <span>Predstavnik PZ Sjeverozapadne Hrvatske</span>
+                <span>{{ $t('predstavnik-pz-sjeverozapadne-hrvatske') }}</span>
               </li>
               <li class="dario-ali1">
                 <span>Dario Šalić</span>
@@ -71,55 +71,55 @@
         <div class="interskia-komisa-i-s-i-a">
           <div class="nastavna-komisija1">
             <span>
-              <span>NASTAVNA KOMISIJA:</span>
+              <span>{{ $t('nastavna-komisija') }}</span>
               <b> </b>
             </span>
           </div>
           <div class="predsjednik-dario-maravic-edin">
             <div class="predsjednik-dario-maravi1">
-              Predsjednik: Dario Maravić
+              {{ $t('predsjednik-dario-maravic') }}
             </div>
           </div>
         </div>
         <div class="interskia-komisa-i-s-i-a1">
           <div class="isia-komisija1">
             <span>
-              <span>ISIA KOMISIJA:</span>
+              <span>{{ $t('isia-komisija') }}</span>
               <b> </b>
             </span>
           </div>
           <div class="frame197">
-            <div class="predsjednik-edin-sara1">Predsjednik: Edin Sarač</div>
+            <div class="predsjednik-edin-sara1">{{ $t('predsjednik-edin-sarac') }}</div>
           </div>
         </div>
         <div class="interskia-komisa-i-s-i-a2">
           <div class="interski-komisija1">
             <span>
-              <span>INTERSKI KOMISIJA:</span>
+              <span>{{ $t('interski-komisija') }}</span>
               <b> </b>
             </span>
           </div>
           <div class="frame198">
-            <div class="predsjednik-petar-thur1">Predsjednik: Petar Thur</div>
+            <div class="predsjednik-petar-thur1">{{ $t('predsjednik-petar-thur') }}</div>
           </div>
         </div>
         <div class="isia-komisa-predsjednik-franjo">
           <div class="predsjednik-zeljko-crnkovic">
             <div class="gospodarska-komisija1">
               <span>
-                <span>GOSPODARSKA KOMISIJA:</span>
+                <span>{{ $t('gospodarska-komisija') }}</span>
                 <b> </b>
               </span>
             </div>
             <div class="stegovni-sud-tomislav-bartolic">
-              <div class="predsjednik-dario-ali1">Predsjednik: Dario Šalić</div>
+              <div class="predsjednik-dario-ali1">{{ $t('predsjednik') }}: Dario Šalić</div>
             </div>
           </div>
           <div class="nadzorni-odbor-neven-putar-per">
             <footer class="predsjednik-neven-putar">
               <div class="nadzorni-odbor-neven-container1">
                 <span>
-                  <p class="nadzorni-odbor1">Nadzorni odbor:</p>
+                  <p class="nadzorni-odbor1">{{ $t('nadzorni-odbor') }}</p>
                   <ul class="neven-putar-pero-miheli-pavl1">
                     <li class="neven-putar1">Neven Putar</li>
                     <li class="pero-miheli1">Pero Mihelčić</li>
@@ -131,7 +131,7 @@
             <div class="predsjednik-neven-putar1">
               <div class="stegovni-sud-tomislav-container1">
                 <span>
-                  <p class="stegovni-sud1">Stegovni sud:</p>
+                  <p class="stegovni-sud1">{{ $t('stegovni-sud') }}</p>
                   <ul class="tomislav-bartoli-anja-kostren1">
                     <li class="tomislav-bartoli1">Tomislav Bartolić</li>
                     <li class="anja-kostreni1">Anja Kostrenčić</li>
@@ -676,6 +676,19 @@ ul.dag-modri-predstavnik-pz-nik1, ul.neven-putar-pero-miheli-pavl1, ul.tomislav-
     align-items: center;
     justify-content: left;
   }
+}
+
+ul {
+  list-style-type: disc; 
+}
+
+ol {
+  list-style-type: decimal; 
+  font-weight: 300;
+}
+
+li {
+  list-style-position: inside; 
 }
 
 </style>

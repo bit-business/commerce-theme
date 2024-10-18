@@ -41,7 +41,7 @@
           <div class="uredovno-vrijeme-za-container">
             <span class="uredovno-vrijeme-za-container1">
               <span>{{ $t('uredovno-vrijeme-za-clanove') }} </span>
-              <span class="utorkom">utorkom</span>
+              <span class="utorkom">{{ $t('utorkom') }}</span>
               <span> i </span>
               <span class="utorkom">{{ $t('cetvrtkom') }}</span>
               <span> {{ $t('od-11-15h') }}</span>
@@ -395,7 +395,7 @@ export default {
   }
   .uredovno-vrijeme-za-container {
     position: absolute;
-    width: 93.95%;
+    width: 94.95%;
     top: 0.22rem;
     left: 8.63%;
     display: -webkit-inline-box;

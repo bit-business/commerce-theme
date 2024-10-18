@@ -3,19 +3,13 @@
     <div class="frame-child145" />
     <div class="history-details">
       <div class="interski-povijest-parent">
-        <h1 class="interski-povijest1">INTERSKI POVIJEST</h1>
+        <h1 class="interski-povijest1">{{ $t('interski-povijest') }}</h1>
         <div class="interski-kongres-osnovali-container">
           <p class="interski-kongres-osnovali">
-            Interski kongres osnovali su predstavnici europskih alpskih zemalja
-            kako bi razmijenili informacije o tehnici i metodologiji podučavanja
-            sportova na snijegu. Prvi Interski kongres održan je u 1951.g. u
-            Albergu, Austrija, a Sjedinjene Američke Države prva su van-europska
-            destinacija koja je ugostila Interski kongres 1968.g. u Aspenu.
+            {{ $t('interski-kongres-osnovali-su-predstavnici-europskih-alpskih-zemalja-kako-bi-razmijenili-informacije-o-tehnici-i-metodologiji-poducavanja-sportova-na-snijegu-prvi-interski-kongres-odrzan-je-u-1951-g-u-albergu-austrija-a-sjedinjene-americke-drzave-prva-su-van-europska-destinacija-koja-je-ugostila-interski-kongres-1968-g-u-aspenu') }}
           </p>
           <p class="hrvatski-demo-team1">
-            Hrvatski demo team i delegacija su prvi puta nastupili na XVI.
-            Interski kongresu održanom 1999. g.u Beitostølenu, Norveška te su
-            proglašeni i najvećim iznenađenjem kongresa.
+            {{ $t('hrvatski-demo-team-i-delegacija-su-prvi-puta-nastupili-na-xvi-interski-kongresu-odrzanom-1999-g-u-beitostolenu-norveska-te-su-proglaseni-i-najvecim-iznenadenjem-kongresa') }}
           </p>
         </div>
       </div>

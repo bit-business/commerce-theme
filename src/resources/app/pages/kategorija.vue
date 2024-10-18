@@ -26,7 +26,7 @@
         <div class="frame-kategorija">
           <div class="line-parent">
             <div class="frame-child" />
-            <div class="sljedei-dogaaj">Sljedeći događaj</div>
+            <div class="sljedei-dogaaj">{{ $t('sljedeci-dogadaj') }}</div>
             <div class="frame-child" />
           </div>
 
@@ -36,7 +36,7 @@
     class="login-with-email-button cursor-pointer" 
     :href="route('skijasi.commerce-theme.detalji', nextEvent.slug)"
 >     
-    <div class="saznaj-vie-kategorija">Saznaj više</div>
+    <div class="saznaj-vie-kategorija">{{ $t('saznaj-vise') }}</div>
 </Link>
 
 <!-- Render the button without a link when nextEvent.slug does not exist -->
@@ -44,7 +44,7 @@
     v-else
     class="login-with-email-button cursor-pointer"
 >     
-    <div class="saznaj-vie-kategorija">Uskoro novi događaji</div>
+    <div class="saznaj-vie-kategorija">{{ $t('uskoro-novi-dogadaji') }}</div>
 </div>
 
 
@@ -73,12 +73,12 @@
          
         
         <div class="dogadanjatekst">
-         <div class="dogaanja">Događanja</div>  <div class="dogaanja2 cursor-pointer rounded-xl border-red-400 border-2 text-red-500 p-3"  @click="handleKalendarOpen"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+         <div class="dogaanja">{{ $t('events') }}</div>  <div class="dogaanja2 cursor-pointer rounded-xl border-red-400 border-2 text-red-500 p-3"  @click="handleKalendarOpen"><svg width="26" height="26" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
 <path d="M20.5833 4.33337H5.41667C4.22005 4.33337 3.25 5.30342 3.25 6.50004V21.6667C3.25 22.8633 4.22005 23.8334 5.41667 23.8334H20.5833C21.78 23.8334 22.75 22.8633 22.75 21.6667V6.50004C22.75 5.30342 21.78 4.33337 20.5833 4.33337Z" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M17.3333 2.16663V6.49996" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M8.66675 2.16663V6.49996" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M3.25 10.8333H22.75" stroke="red" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-</svg>Cijeli popis događaja</div>
+</svg>{{ $t('cijeli-popis-dogadaja') }}</div>
        </div>
 
 
@@ -127,7 +127,7 @@
               </div>
             </Link>
             <div v-if="!isEventActive(product)" class="inactive-overlay">
-                              NIJE AKTIVNO
+                              {{ $t('nije-aktivno') }}
             </div>
         <!--    <div v-if="index > 3" class="inactive-overlay">
     UBRZO DETALJI
@@ -558,7 +558,6 @@ updateCountdown() {
         .then(res => {
           this.products = res.data.products;
           this.kalendar = res.data.products;
-          console.log("PODACI KALENDARA:" ,this.kalendar);
           this.updateCountdown(); 
        //   this.setMaxPrice();
         //  this.setMinPrice();
@@ -1498,6 +1497,100 @@ font-size: 0.5rem;
     .product-item:nth-child(2) {
         grid-column: span 1;
     }
+}
+
+/* Base styles for grid items */
+.product-item {
+  background-color: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  position: relative;
+  z-index: 1;
+  transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+  cursor: pointer;
+}
+
+/* Advanced hover animation */
+.animacijakvadrati {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+.animacijakvadrati::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(45deg, rgba(255,255,255,0.1), rgba(255,255,255,0.5));
+  z-index: -1;
+  transition: opacity 0.5s ease;
+  opacity: 0;
+}
+
+.animacijakvadrati:hover {
+  transform: translateY(-10px) scale(0.98);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+}
+
+.animacijakvadrati:hover::before {
+  opacity: 1;
+}
+
+/* Shine effect */
+.animacijakvadrati::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(
+    to bottom right,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,0.1) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: rotate(30deg);
+  transition: transform 0.7s ease-out;
+}
+
+.animacijakvadrati:hover::after {
+  transform: rotate(30deg) translate(50%, 50%);
+}
+
+/* Text and content animation */
+.animacijakvadrati .frame-container {
+  transition: transform 0.5s ease;
+}
+
+.animacijakvadrati:hover .frame-container {
+  transform: translateY(-5px);
+}
+
+/* Pulsating effect for CTAs or important elements */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(3, 169, 244, 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(3, 169, 244, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(3, 169, 244, 0);
+  }
+}
+
+.animacijakvadrati .login-with-email-button {
+  animation: pulse 2s infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .animacijakvadrati:hover {
+    transform: translateY(-5px) scale(1.02);
+  }
 }
 
 </style>

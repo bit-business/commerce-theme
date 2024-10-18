@@ -2,7 +2,7 @@
     <div class="glavniscreen">
   <div class="form-container">
     <div class="form-header">
-      <h1>PRIJAVNICA ZA ČLANSTVO</h1>
+      <h1>{{ $t('prijavnica-za-clanstvo') }}</h1>
     </div>
 
     <div class="slikazvijezda"></div>
@@ -10,14 +10,14 @@
     <form @submit.prevent="submitForm">
       <!-- Ime -->
       <div class="form-group">
-        <label for="ime">Ime <span class="asterisk">*</span></label>
+        <label for="ime">{{ $t('ime-0') }} <span class="asterisk">*</span></label>
         <input  @focus="saveScrollPosition" type="text" id="ime" v-model.lazy="form.name" required>
         <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
       </div>
 
       <!-- Prezime -->
       <div class="form-group">
-        <label for="prezime">Prezime <span class="asterisk">*</span></label>
+        <label for="prezime">{{ $t('prezime') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="text" id="prezime" v-model.lazy="form.username" required>
         <span v-if="errors.username" class="error-message">{{ errors.username }}</span>
       </div>
@@ -34,42 +34,42 @@
 
       <!-- Datum rođenja -->
       <div class="form-group">
-        <label for="datumRodenja">Datum rođenja <span class="asterisk">*</span></label>
+        <label for="datumRodenja">{{ $t('datum-rodenja') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="date" id="datumRodenja" v-model.lazy="form.datumrodjenja" required>
         <span v-if="errors.datumrodjenja" class="error-message">{{ errors.datumrodjenja }}</span>
       </div>
 
       <!-- Adresa -->
       <div class="form-group">
-        <label for="adresa">Adresa <span class="asterisk">*</span></label>
+        <label for="adresa">{{ $t('adresa') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="text" id="adresa" v-model.lazy="form.adresa" required>
         <span v-if="errors.adresa" class="error-message">{{ errors.adresa }}</span>
       </div>
 
       <!-- Poštanski broj -->
       <div class="form-group">
-        <label for="postanskiBroj">Poštanski broj <span class="asterisk">*</span></label>
+        <label for="postanskiBroj">{{ $t('postanski-broj') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="text" id="postanskiBroj" v-model.lazy="form.postanskibroj" required>
         <span v-if="errors.postanskibroj" class="error-message">{{ errors.postanskibroj }}</span>
       </div>
 
       <!-- Grad -->
       <div class="form-group">
-        <label for="grad">Grad <span class="asterisk">*</span></label>
+        <label for="grad">{{ $t('grad') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="text" id="grad" v-model.lazy="form.grad" required>
         <span v-if="errors.grad" class="error-message">{{ errors.grad }}</span>
       </div>
 
       <!-- Država -->
       <div class="form-group">
-        <label for="drzava">Država <span class="asterisk">*</span></label>
+        <label for="drzava">{{ $t('drzava') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="text" id="drzava" v-model.lazy="form.drzava" required>
         <span v-if="errors.drzava" class="error-message">{{ errors.drzava }}</span>
       </div>
 
       <!-- Mobitel -->
       <div class="form-group">
-        <label for="mobitel">Mobitel <span class="asterisk">*</span></label>
+        <label for="mobitel">{{ $t('mobitel') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="tel" id="mobitel" v-model.lazy="form.brojmobitela" required>
         <span v-if="errors.brojmobitela" class="error-message">{{ errors.brojmobitela }}</span>
 
@@ -78,7 +78,7 @@
 
       <!-- E-mail adresa -->
       <div class="form-group">
-        <label for="email">E-mail adresa <span class="asterisk">*</span></label>
+        <label for="email">{{ $t('e-mail-adresa') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="email" id="email" v-model.lazy="form.email" required>
         <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
       </div>
@@ -106,14 +106,14 @@
 
       <!-- Datum i mjesto polaganja -->
       <div class="form-group">
-        <label for="datumMjestoPolaganja">Datum i mjesto polaganja za učitelja/trenera <span class="asterisk">*</span></label>
+        <label for="datumMjestoPolaganja">{{ $t('datum-i-mjesto-polaganja-za-ucitelja-trenera') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="text" id="datumMjestoPolaganja" v-model.lazy="form.datummjestopolaganja" required>
         <span v-if="errors.datummjestopolaganja" class="error-message">{{ errors.datummjestopolaganja }}</span>
       </div>
 
       <!-- Ustanova -->
       <div class="form-group">
-        <label for="ustanova">Ustanova koja je izdala Uvjerenje za učitelja/trenera <span class="asterisk">*</span></label>
+        <label for="ustanova">{{ $t('ustanova-koja-je-izdala-uvjerenje-za-ucitelja-trenera') }} <span class="asterisk">*</span></label>
         <input @focus="saveScrollPosition" type="text" id="ustanova" v-model.lazy="form.ustanova" required>
         <span v-if="errors.ustanova" class="error-message">{{ errors.ustanova }}</span>
       </div>
@@ -143,7 +143,7 @@
       <div class="form-groupAvatar">
         <input @focus="saveScrollPosition" type="file" @change="filesChangeAvatar" accept="image/png, image/jpeg, image/jpg" ref="avatarslika" class="hidden">
               <button @click.prevent="$refs.avatarslika.click()" class="gumbSlika">
-                Odaberite svoju sliku
+                {{ $t('odaberite-svoju-sliku') }}
               </button>  <span class="asterisk-top">*</span>
      
               <div v-if="showCropperModal" class="cropper-modal">
@@ -167,8 +167,8 @@
     @cropped="cropImage"
   />
       <div class="button-group">
-    <button @click="cancelCrop" class="cancel-button">Odustani</button>
-    <button @click="confirmCrop" class="confirm-button">Potvrdi</button>
+    <button @click="cancelCrop" class="cancel-button">{{ $t('odustani') }}</button>
+    <button @click="confirmCrop" class="confirm-button">{{ $t('potvrdi-0') }}</button>
   </div>
     </div>
               
@@ -194,26 +194,24 @@
     
     <!-- This input will handle file selection -->
     <input
-    type="file"
-    class="hidden"
-    ref="dokument"
-    accept=".pdf, .doc, .docx, .jpg, .jpeg, .png, application/pdf, image/jpeg, image/png"
-    @change="onFilePicked"
-    multiple
-  />
+  type="file"
+  class="hidden"
+  ref="dokument"
+  accept=".pdf, .doc, .docx, .jpg, .jpeg, .png, application/pdf, image/jpeg, image/png"
+  @change="onFilePicked"
+  multiple
+/>
 
   <div class="dokumentitekst">
 
-    Molimo dodajte potvrdu učlanjenja u područni zbor,<br>
-             te dodajte svu dokumentaciju za dokaz statusa.<br>
-              (Uvjerenje o osposobljavanju, diploma Kineziološkog fakulteta
-              za osobe koje su diplomirale i usmjerile skijanje – zvanje:
-              Sveučilišni magistar kineziologije u edukaciji i skijanju)
+    {{ $t('molimo-dodajte-potvrdu-uclanjenja-u-podrucni-zbor') }},<br>
+             {{ $t('te-dodajte-svu-dokumentaciju-za-dokaz-statusa') }}<br>
+              {{ $t('uvjerenje-o-osposobljavanju-diploma-kinezioloskog-fakulteta-za-osobe-koje-su-diplomirale-i-usmjerile-skijanje-zvanje-sveucilisni-magistar-kineziologije-u-edukaciji-i-skijanju') }}
 </div>
 
 
-  <button @click="$refs.dokument.click()" class="gumbOK">
-  UPLOAD DOKUMENTA 
+<button @click.prevent="$refs.dokument.click()" class="gumbOK">
+  {{ $t('upload-dokumenta') }} 
   <span v-if="uploadedFilesCount > 0" class="upload-count">{{ uploadedFilesCount }}</span>
 </button> <span class="asterisk-top">*</span>
 
@@ -226,8 +224,8 @@
   <input type="checkbox" id="gdpr" v-model.lazy="form.gdpr" class="hidden-checkbox">
   <label for="gdpr" class="custom-checkbox"></label>
   <label for="gdpr" class="gdpr-label">
-    Potvrđujem da sam suglasan s navedenim:<span class="asterisk">*</span><br><br>
-    Zaštita i privatnost osobnih podataka (GDPR 2016/679) Prema novom zakonu vezanom uz zaštitu i privatnost podataka (GDPR 2016/679) svi navedeni podaci služe isključivo za potrebe upisa u naš registar članova te se ne koriste u druge svrhe. Zaprimljene podatke čuvamo i obrađujemo korištenjem najsigurnijih metoda zaštite u skladu s navedenim propisima te ih brišemo poštujući propise koji su navedeni u zakonu vezanom uz zaštitu i privatnost podataka. Korisnik u bilo kojem trenutku može zatražiti uklanjanje svojih podataka iz našeg sustava slanjem e-mail poruke na adresu info@hzuts.hr 
+    {{ $t('potvrdujem-da-sam-suglasan-s-navedenim') }}<span class="asterisk">*</span><br><br>
+    {{ $t('zastita-i-privatnost-osobnih-podataka-gdpr-2016-679-prema-novom-zakonu-vezanom-uz-zastitu-i-privatnost-podataka-gdpr-2016-679-svi-navedeni-podaci-sluze-iskljucivo-za-potrebe-upisa-u-nas-registar-clanova-te-se-ne-koriste-u-druge-svrhe-zaprimljene-podatke-cuvamo-i-obradujemo-koristenjem-najsigurnijih-metoda-zastite-u-skladu-s-navedenim-propisima-te-ih-brisemo-postujuci-propise-koji-su-navedeni-u-zakonu-vezanom-uz-zastitu-i-privatnost-podataka-korisnik-u-bilo-kojem-trenutku-moze-zatraziti-uklanjanje-svojih-podataka-iz-naseg-sustava-slanjem-e-mail-poruke-na-adresu-info-hzuts-hr') }} 
   </label>
 </div>
 <span v-if="errors.gdpr" class="error-message">{{ errors.gdpr }}</span>
@@ -242,7 +240,7 @@
 
       <!-- Submit Button -->
       <div class="form-group">
-        <button type="submit">POŠALJITE</button>
+        <button type="submit">{{ $t('posaljite') }}</button>
       </div>
     </form>
 
@@ -260,8 +258,8 @@
       <span class="stars">&#10022;</span>
       <span class="stars">&#10022;</span>
     </div>
-    <p>Prijavnica je uspješno poslana!</p>
-    <button class="gumbOK" @click="closeConfirmation">U redu</button>
+    <p>{{ $t('prijavnica-je-uspjesno-poslana') }}</p>
+    <button class="gumbOK" @click="closeConfirmation">{{ $t('u-redu') }}</button>
   </div>
 </div>
 
@@ -472,7 +470,7 @@ export default {
     // Check each text field and if it's empty, add an error message
     fieldsToValidate.forEach(field => {
       if (!this.form[field]) {
-        this.errors[field] = 'Polje ne smije biti prazno';
+        this.errors[field] = this.$t('polje-ne-smije-biti-prazno');
         valid = false; // Mark form as invalid
       }
     });
@@ -480,25 +478,25 @@ export default {
     // Validate dropdowns
     for (const model in this.dropdownOptions) {
       if (!this.form[model] || this.form[model] === 'Izaberite') {
-        this.errors[model] = 'Polje ne smije biti prazno';
+        this.errors[model] = this.$t('polje-ne-smije-biti-prazno');
         valid = false; // Mark form as invalid
       }
     }
 
     // Validate GDPR checkbox
     if (!this.form.gdpr) {
-      this.errors.gdpr = 'Morate prihvatiti uvjete privatnosti i korištenja';
+      this.errors.gdpr = this.$t('morate-prihvatiti-uvjete-privatnosti-i-koristenja');
       valid = false; // Mark form as invalid
     }
 
     if (!this.form.avatar) {
-    this.errors.avatar = 'Molimo dodajte avatar.';
+    this.errors.avatar = this.$t('molimo-dodajte-avatar');
     valid = false; // Mark form as invalid
   }
 
   // Check for document upload
   if (this.uploadedFilesCount === 0) {
-    this.errors.uploadedFiles = 'Molimo dodajte potrebnu dokumentaciju.';
+    this.errors.uploadedFiles = this.$t('molimo-dodajte-potrebnu-dokumentaciju');
     valid = false; // Mark form as invalid
   }
 
@@ -609,15 +607,92 @@ confirmCrop() {
     },
 
  
-    onFilePicked(e) {
-  const files = Array.from(e.target.files); // Convert FileList to Array
-  files.forEach(file => {
-    this.uploadedFiles.push(file);
-  });
-  this.uploadedFilesCount = this.uploadedFiles.length;
-  this.$refs.dokument.value = ''; // Clear the file input
+    async onFilePicked(event) {
+  const files = event.target.files;
+  if (files.length === 0) return;
+
+  const chunkSize = 1024 * 1024; // 1MB
+  let uploadPromises = [];
+
+  for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
+    const file = files[fileIndex];
+    let start = 0;
+    const totalChunks = Math.ceil(file.size / chunkSize);
+
+    console.log(`Preparing to upload file: ${file.name}, size: ${file.size}, chunks: ${totalChunks}`);
+
+    let fileChunks = [];
+    for (let i = 0; i < totalChunks; i++) {
+      const end = Math.min(start + chunkSize, file.size);
+      const chunk = file.slice(start, end);
+      const formData = new FormData();
+      formData.append('file', chunk, file.name);
+      formData.append('filename', file.name);
+      formData.append('chunkIndex', i);
+      formData.append('totalChunks', totalChunks);
+      formData.append('fileIndex', fileIndex);
+
+      fileChunks.push(this.uploadChunk(formData));
+      start = end;
+    }
+    uploadPromises.push(Promise.all(fileChunks));
+  }
+
+  try {
+    const fileResponses = await Promise.all(uploadPromises);
+    const successfulUploads = fileResponses.filter(chunks => chunks.every(path => path !== ''));
+
+    console.log(`Successful uploads: ${successfulUploads.length} out of ${files.length}`);
+
+    if (successfulUploads.length === files.length) {
+      console.log("All files uploaded successfully");
+      // Use the last chunk's path as the complete file path
+      const filePaths = successfulUploads.map(chunks => chunks[chunks.length - 1]);
+      this.uploadedFiles = [...this.uploadedFiles, ...filePaths];
+      this.uploadedFilesCount = this.uploadedFiles.length;
+
+      // Save file paths to the database
+      for (const filePath of filePaths) {
+        await this.dodavanjeDATOTEKE(filePath);
+      }
+    } else {
+      console.error("Some files failed to upload");
+    }
+  } catch (error) {
+    console.error('Error during the upload process:', error);
+  }
+
+  event.target.value = ''; // Reset the file input
 },
 
+uploadChunk(formData) {
+  return new Promise((resolve, reject) => {
+    console.log('Uploading chunk:', {
+      filename: formData.get('filename'),
+      chunkIndex: formData.get('chunkIndex'),
+      totalChunks: formData.get('totalChunks'),
+      fileIndex: formData.get('fileIndex'),
+      fileSize: formData.get('file').size
+    });
+
+    apiuploaddokumenta.customuploadfiledokumenti(formData)
+      .then(response => {
+        console.log('Chunk upload response:', response);
+        if (response.data && (response.data.message.includes("successfully") || response.data.message === "Uspješno")) {
+          console.log('Chunk uploaded successfully', response);
+          resolve(response.data.path || response.data.url || ''); // Return the file path or URL
+        } else {
+          console.error('Chunk upload reported failure', response);
+          reject(new Error('Upload failed for a chunk.'));
+        }
+      })
+      .catch(error => {
+        console.error('Error uploading chunk:', error);
+        console.error('Error response:', error.response);
+        reject(error);
+      });
+  });
+},
 uploadAvatar(resizedImage) {
     const reader = new FileReader();
     reader.onloadend = () => {
@@ -761,49 +836,36 @@ prefillData(user) {
     },
 
 
-  submitForm() {
-              if (this.validateForm()) {
-            //  if (!this.form.name.trim()) {
-            //      alert('Polje "Ime" je obavezno.');
-            //      return;
-            //    }
+    submitForm() {
+  if (this.validateForm()) {
+    const changedData = this.getChangedData();
 
-                const changedData = this.getChangedData();
+    if (Object.keys(changedData).length === 0) {
+      this.$alert(this.$t('nema-promjena'));
+      return;
+    }
 
-          // Check if there are changes
-              if (Object.keys(changedData).length === 0) {
-            this.$alert('Nema promjena.');
-            return;
-              }
+    console.log("TEST prije submita changeddata:", changedData)
 
-              console.log("TEST prije submita changeddata:",changedData)
+    this.$api.skijasiUser.prijavnicaedit(changedData)
+      .then(res => {
+        console.log("API response:", res.data);
+        this.$store.dispatch('SET_USER', res.data.user)
 
+        this.dodavanjeFILES();
+        // Remove this line: this.uploadFilesAndAddDatoteke(); 
 
-            this.$api.skijasiUser.prijavnicaedit(changedData)
-                  .then(res => {
-                    console.log("API response:", res.data);
-                    this.$store.dispatch('SET_USER', res.data.user)
-
-
-                    this.dodavanjeFILES();
-                    this.uploadFilesAndAddDatoteke(); 
-                  // this.$alert('Uspješno poslana prijavnica!')
-
-                    this.showConfirmation = true; 
-                  })
-                  .catch((error) => {
-              console.error("Error submitting form:", error);
-              this.$alert('Neuspješno! Provjerite da li ste unijeli sve dobro i da Vam internet radi.');
-          });
-
-          }
-          else {
-                // If validation fails, handle accordingly
-                // For example, you can scroll to the top or focus the first input with an error
-                console.error('Validation failed');
-                // Additional logic for handling validation failure
-              }
-    },
+        this.showConfirmation = true; 
+      })
+      .catch((error) => {
+        console.error("Error submitting form:", error);
+        this.$alert(this.$t('neuspjesno-provjerite-da-li-ste-unijeli-sve-dobro-i-da-vam-internet-radi'));
+      });
+  }
+  else {
+    console.error('Validation failed');
+  }
+},
 
 
     closeConfirmation() {
@@ -814,45 +876,36 @@ prefillData(user) {
     },
 
 
-    uploadFilesAndAddDatoteke() {
-  this.uploadedFiles.forEach((file, index) => {
-    const formData = new FormData();
-    formData.append("file", file);
-    formData.append("filename", file.name);
-    formData.append("chunkIndex", index);
-    formData.append("totalChunks", this.uploadedFiles.length);
-
-    apiuploaddokumenta.customuploadfiledokumenti(formData)
-      .then(response => {
-        const filePath = response.data.path;
-        this.dodavanjeDATOTEKE(filePath);
-      })
-      .catch(error => {
-        console.error(error);
-      });
-  });
+    async uploadFilesAndAddDatoteke() {
+  for (const filePath of this.uploadedFiles) {
+    try {
+      await this.dodavanjeDATOTEKE(filePath);
+    } catch (error) {
+      console.error('Error adding file to database:', error);
+    }
+  }
 },
 
 
 
     // DATOTEKE TBL_DATOTEKE pocetak
     dodavanjeDATOTEKE(filePath) {
-
-
-  const data = {
-        idmember: this.user.id,
-        filetitle: 'Prijavnica za članstvo dokument',
-        filecontent: filePath,
-  };
-  skijasidatoteke
-  .add({ data: data, })
-    .then((response) => {
-    
-    })
-    .catch((error) => {
-    
-    });
-  
+  return new Promise((resolve, reject) => {
+    const data = {
+      idmember: this.user.id,
+      filetitle: 'Prijavnica za članstvo dokument',
+      filecontent: filePath,
+    };
+    skijasidatoteke.add({ data: data })
+      .then((response) => {
+        console.log('File path saved to database:', filePath);
+        resolve(response);
+      })
+      .catch((error) => {
+        console.error('Error saving file path to database:', error);
+        reject(error);
+      });
+  });
 },
 
 
@@ -884,7 +937,7 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
       
     })
     .catch((error) => {
-      this.$alert('Greška. Provjerite Internet!');
+      this.$alert(this.$t('greska-provjerite-internet'));
     });
 
 },
@@ -894,7 +947,7 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
       const file = e.target.files[0]
       const fileSize = Math.round((file.size / 1024))
       if (fileSize > 4048) {
-        this.$alert('Maksimalna veličina slike je 4MB!')
+        this.$alert(this.$t('maksimalna-velicina-slike-je-4mb'))
         return
       }
       const fileReader = new FileReader()

@@ -23,7 +23,7 @@
     </span>
     <!-- Render this span only if user.statusPlacanja is NOT 'Nije plaćeno' and NOT 'Djelomično plaćeno' and user.statusAktivan is 'Istekla licenca' -->
     <span v-if="user.statusAktivan === 'Istekla licenca'" class="nije-plaena expired-license" style="text-transform: uppercase;">
-      LICENCA ISTEKLA
+      {{ $t('licenca-istekla') }}
     </span>
 
 
@@ -34,7 +34,7 @@
                <div class="licenca-vrijedi-do-container">
                  <span></span>
                  <span class="span"></span>
-                 <button v-if="user.avatar_approved != 1" class="dodatne-animacije-btn">Dodatne informacije</button>
+                 <button v-if="user.avatar_approved != 1" class="dodatne-animacije-btn">{{ $t('dodatne-informacije') }}</button>
                </div>
              </div>
            </div>

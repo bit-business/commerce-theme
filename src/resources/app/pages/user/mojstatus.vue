@@ -50,7 +50,7 @@
   <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Profil</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-profil-0') }}</span>
             </Link>
             <!--
             <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center group">
@@ -61,7 +61,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path d="M21.0003 2L19.0003 4M19.0003 4L22.0003 7L18.5003 10.5L15.5003 7.5M19.0003 4L15.5003 7.5M11.3903 11.61C11.9066 12.1195 12.3171 12.726 12.598 13.3948C12.879 14.0635 13.0249 14.7813 13.0273 15.5066C13.0297 16.232 12.8887 16.9507 12.6122 17.6213C12.3357 18.2919 11.9293 18.9012 11.4164 19.4141C10.9035 19.9271 10.2942 20.3334 9.62358 20.6099C8.95296 20.8864 8.23427 21.0275 7.50891 21.025C6.78354 21.0226 6.06582 20.8767 5.39707 20.5958C4.72831 20.3148 4.12174 19.9043 3.61227 19.388C2.6104 18.3507 2.05604 16.9614 2.06857 15.5193C2.0811 14.0772 2.65953 12.6977 3.67927 11.678C4.69902 10.6583 6.07849 10.0798 7.52057 10.0673C8.96265 10.0548 10.352 10.6091 11.3893 11.611L11.3903 11.61ZM11.3903 11.61L15.5003 7.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Promjena lozinke</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-0') }}</span>
             </Link>
 
 
@@ -72,7 +72,7 @@
   <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">{{ $t('obavijesti-0') }}</span>
             </Link>
 
 
@@ -91,7 +91,7 @@
 </defs>
 </svg>
 </div>
-  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-0') }}</span>
 </Link>
 
 
@@ -108,7 +108,7 @@
     </clipPath>
   </defs>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Povijest plaćanja</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-0') }}</span>
             </Link>
 
 
@@ -126,7 +126,7 @@
     </clipPath>
   </defs>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zaduženja</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zaduzenja-0') }}</span>
             </Link>
             <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
@@ -135,7 +135,7 @@
   <path d="M12 16V12" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M12 8H12.01" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Moj Status</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('moj-status-0') }}</span>
             </Link>
          
 
@@ -154,7 +154,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Odjavi se</span>
+</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('odjavi-se-0') }}</span>
             </div>
           </div>
         </div>  </div>
@@ -183,7 +183,7 @@
         <div class="prviframedetalji border-plava-200 border-2">
           <div class="naslovosnovneinfo">
             <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/info-icon.svg" />
-            <div class="osnovne-informacije">Osnovne informacije</div>
+            <div class="osnovne-informacije">{{ $t('osnovne-informacije-0') }}</div>
           </div>
           <div class="kvadrat">
             <div class="gradframe">
@@ -196,7 +196,7 @@
             </div>
             <div class="podrucnizborframe">
               <div class="podruni-zbor-wrapper">
-                <div class="grad">Područni zbor:</div>
+                <div class="grad">{{ $t('podrucni-zbor') }}</div>
               </div>
               <div class="zagreb-wrapper">
                 <div class="osnovne-informacije">{{ korisnik.department }}</div>
@@ -204,7 +204,7 @@
             </div>
             <div class="clanskibrojframe">
               <div class="lanski-broj-wrapper">
-                <div class="grad">Članski broj:</div>
+                <div class="grad">{{ $t('clanski-broj') }}</div>
               </div>
               <div class="zagreb-wrapper">
                 <div class="osnovne-informacije">{{ korisnik.idmember }}</div>
@@ -216,12 +216,12 @@
           <div class="kvadrat1">
             <div class="naslovstatus">
               <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/user-icon.svg" />
-              <div class="statusdetalji">Status</div>
+              <div class="statusdetalji">{{ $t('status-0') }}</div>
             </div>
             <div class="kvadrat">
               <div class="statusframedetalji">
                 <div class="status-wrapperdetalji">
-                  <div class="grad">Status</div>
+                  <div class="grad">{{ $t('status-0') }}</div>
                 </div>
                 <div class="zagreb-wrapper">
                   <div class="osnovne-informacije">{{ getStatusWithLicenseCheck(korisnik) }}</div>
@@ -237,7 +237,7 @@
               </div>
               <div class="licencavrijediframe">
                 <div class="licenca-vrijedi-do-wrapper">
-                  <div class="grad">Licenca vrijedi do:</div>
+                  <div class="grad">{{ $t('licenca-vrijedi-do') }}</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
                   <div class="osnovne-informacije">{{ formatEuropeanDate(korisnik.endstatusdate) }}</div>
@@ -245,7 +245,7 @@
               </div>
               <div class="valjanostlicenceframe">
                 <div class="valjanost-licence-wrapper">
-                  <div class="grad">Valjanost licence:</div>
+                  <div class="grad">{{ $t('valjanost-licence') }}</div>
                 </div>
                 <div class="zagreb-wrapper">
                   <div class="osnovne-informacije">{{ yearDifference }}</div>
@@ -253,7 +253,7 @@
               </div>
               <div class="clanskaiskaznicaframe">
                 <div class="lanska-iskaznica-wrapper">
-                  <div class="grad">Članska iskaznica:</div>
+                  <div class="grad">{{ $t('clanska-iskaznica') }}</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
 
@@ -267,12 +267,12 @@
           <div class="kvadrat2">
             <div class="naslovseminar">
               <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/trending-icon.svg" />
-              <div class="osnovne-informacije">Seminar</div>
+              <div class="osnovne-informacije">{{ $t('seminar') }}</div>
             </div>
             <div class="kvadrat">
               <div class="statusstecenframe">
                 <div class="status-steen-wrapper">
-                  <div class="grad">Status stečen:</div>
+                  <div class="grad">{{ $t('status-stecen') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="osnovne-informacije">
@@ -282,7 +282,7 @@
               </div>
               <div class="datumseminaraframe">
                 <div class="datum-seminara-wrapper">
-                  <div class="grad">Datum seminara:</div>
+                  <div class="grad">{{ $t('datum-seminara') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="osnovne-informacije">{{formatEuropeanDate (getEventDetails(korisnik.idevent).eventdate) }}</div>
@@ -290,7 +290,7 @@
               </div>
               <div class="mjestoseminaraframe">
                 <div class="mjesto-seminara-wrapper">
-                  <div class="mjesto-seminara">Mjesto seminara:</div>
+                  <div class="mjesto-seminara">{{ $t('mjesto-seminara') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="osnovne-informacije">{{ getEventDetails(korisnik.idevent).eventplace }}</div>
@@ -298,7 +298,7 @@
               </div>
               <div class="drzavaframe">
                 <div class="drava-wrapper">
-                  <div class="grad">Država:</div>
+                  <div class="grad">{{ $t('drzava-0') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="osnovne-informacije">{{ getEventDetails(korisnik.idevent).eventstate }}</div>
@@ -380,7 +380,7 @@
 <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Profil</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-profil-0') }}</span>
   </Link>
   <!--
   <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center group">
@@ -391,7 +391,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M21.0003 2L19.0003 4M19.0003 4L22.0003 7L18.5003 10.5L15.5003 7.5M19.0003 4L15.5003 7.5M11.3903 11.61C11.9066 12.1195 12.3171 12.726 12.598 13.3948C12.879 14.0635 13.0249 14.7813 13.0273 15.5066C13.0297 16.232 12.8887 16.9507 12.6122 17.6213C12.3357 18.2919 11.9293 18.9012 11.4164 19.4141C10.9035 19.9271 10.2942 20.3334 9.62358 20.6099C8.95296 20.8864 8.23427 21.0275 7.50891 21.025C6.78354 21.0226 6.06582 20.8767 5.39707 20.5958C4.72831 20.3148 4.12174 19.9043 3.61227 19.388C2.6104 18.3507 2.05604 16.9614 2.06857 15.5193C2.0811 14.0772 2.65953 12.6977 3.67927 11.678C4.69902 10.6583 6.07849 10.0798 7.52057 10.0673C8.96265 10.0548 10.352 10.6091 11.3893 11.611L11.3903 11.61ZM11.3903 11.61L15.5003 7.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Promjena lozinke</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-0') }}</span>
   </Link>
 
 
@@ -422,7 +422,7 @@
     />
   </svg>
 </div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">{{ $t('obavijesti-0') }}</span>
   </Link>
 
 
@@ -441,7 +441,7 @@
 </defs>
 </svg>
 </div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-0') }}</span>
   </Link>
 
 
@@ -458,7 +458,7 @@
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Povijest plaćanja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-0') }}</span>
   </Link>
 
 
@@ -476,7 +476,7 @@
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zaduženja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zaduzenja-0') }}</span>
   </Link>
   <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
@@ -485,7 +485,7 @@
 <path d="M12 16V12" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 8H12.01" stroke="#03A9F4" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Moj Status</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('moj-status-0') }}</span>
   </Link>
 
 
@@ -504,7 +504,7 @@
 <rect width="24" height="24" fill="white"/>
 </clipPath>
 </defs>
-</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Odjavi se</span>
+</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('odjavi-se-0') }}</span>
   </div>
 </div>
 </div>  </div>
@@ -674,7 +674,7 @@ yearDifference() {
       const today = new Date();
 
       if (endDate < today) {
-    return 'Istekla'; // Return "0 godina" if endDate is before today
+    return this.$t('istekla'); // Return "0 godina" if endDate is before today
   }
       const diffTime = Math.abs(endDate - today);
       const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365); // Convert milliseconds to years
@@ -682,15 +682,15 @@ yearDifference() {
       console.log("TEST DULJINA:", diffYears);
       console.log("TEST DULJINA2:", endDate);
       if (diffYears < 1) {
-        return '<1 godine';
+        return this.$t('less-than-1-godine');
       } else if (diffYears >= 1 && diffYears < 2) {
-        return '2 godine';
+        return this.$t('2-godine');
       } else if (diffYears >= 2 && diffYears < 3) {
-        return '3 godine';
+        return this.$t('3-godine-0');
       } else if (diffYears >= 3 && diffYears < 4) {
-        return '3 godine';
+        return this.$t('3-godine-0');
       } else if (diffYears >= 4) {
-        return 'Doživotna';
+        return this.$t('dozivotna');
       }
 
       return ''; // Default return value if none of the conditions are met
@@ -752,7 +752,7 @@ created() {
     endStatusDate.setHours(0, 0, 0, 0); // Normalize endStatusDate to midnight for accurate comparison
 
     if (korisnik.statusString === "Demonstrator skijanja" && endStatusDate < today) {
-      return "Demonstrator skijanja bez licence";
+      return this.$t('demonstrator-skijanja-bez-licence');
     }
 
     return korisnik.statusString;
@@ -856,7 +856,7 @@ getStatusString(user) {
     console.log(`Status data for record with ID ${user.id}:`, user.statusData);
 
     if (!user.statusData) {
-    return "Nema status?"; // or return an empty string
+    return this.$t('nema-status'); // or return an empty string
   }
 
     if (!Array.isArray(user.statusData)) {
@@ -888,11 +888,10 @@ getStatusString(user) {
       .filter(item => item.statusdefault === 1)
       .map(item => {
         const endDate = item.endstatusdate ? new Date(item.endstatusdate) : null;
-        return (!endDate || endDate < today) ? "Istekla licenca" : "Aktivan";
+        return (!endDate || endDate < today) ? this.$t('istekla-licenca') : this.$t('aktivan');
       })
       .join(', ');
 
-    console.log("Generated Active Status for record:", status);
     return status;
   },
 
@@ -975,7 +974,7 @@ console.log ("TEST EVENTI", response.data);
       const year = date.getFullYear();
         // Check if the year is 2030 or greater
         if (year >= 2030) {
-        return 'Doživotno';
+        return this.$t('dozivotno');
       }
 
   
@@ -1017,7 +1016,7 @@ console.log ("TEST EVENTI", response.data);
       const file = e.target.files[0]
       const fileSize = Math.round((file.size / 1024))
       if (fileSize > 4048) {
-        this.$alert('Maksimalna veličina slike je 4MB!')
+        this.$alert(this.$t('maksimalna-velicina-slike-je-4mb'))
         return
       }
       const fileReader = new FileReader()
@@ -1058,10 +1057,10 @@ console.log ("TEST EVENTI", response.data);
         .then(res => {
           console.log("API response:", res.data);
           this.$store.dispatch('SET_USER', res.data.user)
-          this.$alert('Uspješno pohranjeno!')
+          this.$alert(this.$t('uspjesno-pohranjeno'))
         })
         .catch(err => {
-          this.$alert('Neuspješno! Provjerite da li ste unijeli sve dobro')
+          this.$alert(this.$t('neuspjesno-provjerite-da-li-ste-unijeli-sve-dobro'))
         })
     },
     logout() {

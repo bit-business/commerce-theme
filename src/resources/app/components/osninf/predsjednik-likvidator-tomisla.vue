@@ -5,7 +5,7 @@
   >
     <div class="predsjedniklikvidator-dag-mo-container1">
       <span>
-        <span>PREDSJEDNIK/LIKVIDATOR:</span>
+        <span>{{ $t('predsjednik-likvidator') }}</span>
         <b class="b30"> </b>
       </span>
       <b class="dag-modri2">
@@ -15,7 +15,7 @@
     <div class="dopredsjednik-ivan-vuini-container1">
       <span>
         <span>
-          <span>DOPREDSJEDNIK:</span>
+          <span>{{ $t('dopredsjednik') }}</span>
           <b class="b31"> </b>
         </span>
         <b class="ivan-vuini2">
@@ -26,7 +26,7 @@
     <div class="dopredsjednik-ivan-vuini-container1">
       <span>
         <span>
-          <span>DOPREDSJEDNIK:</span>
+          <span>{{ $t('dopredsjednik') }}</span>
           <b class="b31"> </b>
         </span>
         <b class="ivan-vuini2">
@@ -37,7 +37,7 @@
     <div class="dopredsjednik-ivan-vuini-container1">
       <span>
         <span>
-          <span>GLAVNI TAJNIK:</span>
+          <span>{{ $t('glavni-tajnik') }}</span>
           <b class="b31"> </b>
         </span>
         <b class="ivan-vuini2">
@@ -127,4 +127,18 @@
       font-size: 1.19rem;
     }
   }
+
+
+  ul {
+  list-style-type: disc; 
+}
+
+ol {
+  list-style-type: decimal; 
+  font-weight: 300;
+}
+
+li {
+  list-style-position: inside; 
+}
 </style>

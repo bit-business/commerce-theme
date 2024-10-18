@@ -67,9 +67,9 @@
 </div>
   </Link></template>
 
-      <button class="drzavaikona" @click="toggleDropdownjezik">
-        <img class="croatia-icon" alt="" src="/storage/slike/croatia.svg" />
-      </button>
+  <button class="drzavaikona" @click="toggleDropdownjezik">
+  <img class="croatia-icon" :alt="$t(currentLanguage)" :src="currentFlagImage" />
+</button>
 
 
       <template v-if="!isAuthenticated">
@@ -355,8 +355,21 @@ beforeDestroy() {
 
 showNotification() {
     return this.showNotificationTemplate && this.hasUnreadMessages && this.isAuthenticated;
-  }
+  },
 
+
+  currentFlagImage() {
+    switch(this.currentLanguage) {
+      case 'hr':
+        return '/storage/slike/ikonahrvatska.svg';
+      case 'en':
+        return '/storage/slike/ikonaengleska.svg';
+      case 'it':
+        return '/storage/slike/ikonattalijanska.svg';
+      default:
+        return '/storage/slike/croatia.svg';
+    }
+  }
 
   },
 

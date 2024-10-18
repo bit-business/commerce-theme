@@ -6,20 +6,20 @@
         <img class="gornjiblokframe-child" alt="" src="/storage/slike/uclanise/rectangle-200@2x.png" />
         <div class="gornjiblokframe-item" />
         <div class="ulanite-se-u-hzuts-wrapper">
-          <div class="ulanite-se-u">UČLANITE SE U HZUTS</div>
+          <div class="ulanite-se-u">{{ $t('uclanite-se-u-hzuts-0') }}</div>
         </div>
       </div>
       <div class="donjiblokframe">
         <div class="bijelidioglavniframe">
           <b class="za-ulanjenje-u"
-            >Za učlanjenje u HZUTS potrebno je ispuniti sljedeće uvjete:</b
+            >{{ $t('za-uclanjenje-u-hzuts-potrebno-je-ispuniti-sljedece-uvjete') }}</b
           >
           <div class="prvired">
             <div class="ellipse-parent-uclanise">
               <div class="group-child-uclanise" />
               <div class="div-uclanise">1</div>
             </div>
-            <div class="imati-zvanje-uitelja">navršiti minimalno 18 godina</div>
+            <div class="imati-zvanje-uitelja">{{ $t('navrsiti-minimalno-18-godina') }}</div>
           </div>
           <div class="drugired-uclanise">
             <div class="ellipse-group-uclanise">
@@ -27,10 +27,7 @@
               <div class="div1-uclanise">2</div>
             </div>
             <div class="imati-zvanje-uitelja">
-              imati zvanje učitelja ili trenera sportova na snijegu (za učitelja
-              skijanja to znači završen program odobren od Ministarstva znanosti
-              i obrazovanja u trajanju od minimalno 310 sati te položen ispit
-              ispred komisije HZUTS-a)
+              {{ $t('imati-zvanje-ucitelja-ili-trenera-sportova-na-snijegu-za-uc-itelja-skijanja-to-znac-i-zavrs-en-program-odobren-od-ministarstva-znanosti-i-obrazovanja-u-trajanju-od-minimalno-310-sati-te-poloz-en-ispit-ispred-komisije-hzuts-a') }}
             </div>
           </div>
           <div class="prvired">
@@ -39,10 +36,7 @@
               <div class="div-uclanise">3</div>
             </div>
             <div class="imati-zvanje-uitelja">
-              dostaviti svu dokumentaciju za dokaz statusa prethodne točke
-              (Uvjerenje o osposobljavanju, diploma Kineziološkog fakulteta
-              osoba koje su diplomirale i usmjerile skijanje – zvanje:
-              Sveučilišni magistar kineziologije u edukaciji i skijanju)
+              {{ $t('dostaviti-svu-dokumentaciju-za-dokaz-statusa-prethodne-tocke-uvjerenje-o-osposobljavanju-diploma-kinezioloskog-fakulteta-osoba-koje-su-diplomirale-i-usmjerile-skijanje-zvanje-sveucilisni-magistar-kineziologije-u-edukaciji-i-skijanju') }}
             </div>
           </div>
           <div class="prvired">
@@ -51,8 +45,8 @@
               <div class="div-uclanise">4</div>
             </div>
             <div class="prethodno-se-ulaniti-container">
-              <span>prethodno se učlaniti u jedan od </span>     
-              <Link :href="route('skijasi.commerce-theme.podrucnizborovi')" class="podrunih-zborova">Područnih zborova</Link>
+              <span>{{ $t('prethodno-se-uclaniti-u-jedan-od') }} </span>     
+              <Link :href="route('skijasi.commerce-theme.podrucnizborovi')" class="podrunih-zborova">{{ $t('podrucnih-zborova') }}</Link>
             </div>
           </div>
           <div class="prvired">
@@ -60,7 +54,7 @@
               <div class="group-inner-uclanise" />
               <div class="div-uclanise">5</div>
             </div>
-            <div class="imati-zvanje-uitelja">ispuniti obrazac za prijavu</div>
+            <div class="imati-zvanje-uitelja">{{ $t('ispuniti-obrazac-za-prijavu') }}</div>
           </div>
           <div class="prvired">
             <div class="ellipse-container-uclanise">
@@ -68,15 +62,14 @@
               <div class="div-uclanise">6</div>
             </div>
             <div class="uz-prijavu-ili-container">
-              <span class="uz-prijavu-ili">uz prijavu (ili na </span>
+              <span class="uz-prijavu-ili">{{ $t('uz-prijavu-ili-na') }} </span>
               <span class="infohzutshr">          <a href="mailto:info@hzuts.hr" >&#105;&#110;&#102;&#111;&#64;&#104;&#122;&#117;&#116;&#115;&#46;&#104;&#114;</a>
 </span>
               <span class="uz-prijavu-ili"
-                >) poslati fotografiju u digitalnom obliku - više informacija
-                potražite pod linkom
+                >{{ $t('poslati-fotografiju-u-digitalnom-obliku-vise-informacija-potrazite-pod-linkom') }}
               </span>
               <Link :href="route('skijasi.commerce-theme.izradaiskaznice')" class="izrada-lanske-iskaznice"
-                >Izrada članske iskaznice</Link>
+                >{{ $t('izrada-clanske-iskaznice') }}</Link>
             </div>
           </div>
           <div class="prvired">
@@ -85,41 +78,36 @@
               <div class="div-uclanise">7</div>
             </div>
             <div class="imati-zvanje-uitelja">
-              uplatiti članarinu HZUTS-u i članarinu područnom zboru na račun
-              prema cijenama članarina područnih zborova
+              {{ $t('uplatiti-clanarinu-hzuts-u-i-clanarinu-podrucnom-zboru-na-racun-prema-cijenama-clanarina-podrucnih-zborova') }}
             </div>
           </div>
           <div class="vano-vrijeme-izrade-container">
             <p class="vano">
-              <b>VAŽNO</b>
+              <b>{{ $t('vazno') }}</b>
             </p>
             <p class="vano">
               <b>&nbsp;</b>
             </p>
             <p class="vrijeme-izrade-iskaznice">
-              Vrijeme izrade iskaznice je minimalno tjedan dana od zaprimanja
-              svih materijala.
+              {{ $t('vrijeme-izrade-iskaznice-je-minimalno-tjedan-dana-od-zaprimanja-svih-materijala') }}
             </p>
             <p class="vrijeme-izrade-iskaznice">
-              Nakon izrade iskaznicu i amblem možete pruzeti u uredovno vrijeme
-              u HZUTS-u ili iste možemo poslati na vašu kućnu adresu.
+              {{ $t('nakon-izrade-iskaznicu-i-amblem-mozete-pruzeti-u-uredovno-vrijeme-u-hzuts-u-ili-iste-mozemo-poslati-na-vasu-kucnu-adresu') }}
             </p>
             <p class="vrijeme-izrade-iskaznice">
-              Licence i hologrami podižu se isključivo u vrijeme dežurstva Vašeg
-              područnog zbora koje možete saznati na web stranicama područnih
-              zborova ili kontaktiranjem tajnika područnog zbora.
+              {{ $t('licence-i-hologrami-podizu-se-iskljucivo-u-vrijeme-dezurstva-vaseg-podrucnog-zbora-koje-mozete-saznati-na-web-stranicama-podrucnih-zborova-ili-kontaktiranjem-tajnika-podrucnog-zbora') }}
             </p>
           </div>
           <div class="gumbiframeglavni">
             <div class="lijevigumbframe">
               <a class="pozadinalijevoggumba">
-                <Link :href="route('skijasi.commerce-theme.prijavazaclanstvo')" class="prijavnica-za-lanstvo font-bold">PRIJAVNICA ZA ČLANSTVO</Link>
+                <Link :href="route('skijasi.commerce-theme.prijavazaclanstvo')" class="prijavnica-za-lanstvo font-bold">{{ $t('prijavnica-za-clanstvo') }}</Link>
               </a>
             </div>
             <div class="desnigumbframe">
               <a class="pozadinadesnoggumba" href="https://hzuts.hr/infoclanarine" >
               <b class="uplatite-lanarinu-hzuts-u" 
-                >UPLATITE ČLANARINU HZUTS-U</b
+                >{{ $t('uplatite-clanarinu-hzuts-u') }}</b
               ></a>
             </div>
           </div>

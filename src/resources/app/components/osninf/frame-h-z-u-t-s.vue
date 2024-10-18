@@ -7,24 +7,21 @@
     <div class="trecired2">
       <div class="vector-frame">
         <div class="prvired2">
-        <b class="o-hzuts-u4">O HZUTS-u</b>
+        <b class="o-hzuts-u4">{{ $t('o-hzuts-u') }}</b>
       <div class="framed-o-h-z-u-t-su">
         <div class="lanovi-hzuts-a-su-container5">
           <span>
             <span class="lanovi-hzuts-a-su4"
-              >Članovi HZUTS-a su područni zborovi iz Istre, Ogulina, Osijeka,
-              Rijeke, Varaždina i Zagreba, a kroz njih voditelji, treneri,
-              učitelji i demonstratori sportova na snijegu. Razlikuju se
-              učitelji s državnom (</span
+              >{{ $t('clanovi-hzuts-a-su-podrucni-zborovi-iz-istre-ogulina-osijeka-rijeke-varazdina-i-zagreba-a-kroz-njih-voditelji-treneri-ucitelji-i-demonstratori-sportova-na-snijegu-razlikuju-se-ucitelji-s-drzavnom') }}</span
             >
             <span class="ivsi7">IVSI</span>
-            <span class="i-s-meunarodnom4">) i s međunarodnom (</span>
+            <span class="i-s-meunarodnom4">{{ $t('i-s-medunarodnom') }}</span>
             <span class="isia6">ISIA</span>
             <span class="licencom-dok-voditelji4"
-              >) licencom, dok voditelji skijanja imaju posebnu
+              >{{ $t('licencom-dok-voditelji-skijanja-imaju-posebnu') }}
             </span>
             <span class="iaess4">IAESS</span>
-            <span class="licencu4"> licencu.</span>
+            <span class="licencu4">{{ $t('licencu') }}</span>
           </span>
         </div>
         <div class="frame-istarskeogulskepodrucnez">
@@ -48,12 +45,12 @@
               />
             </div>
             <div class="frame-h-z-u-t-simeunarodneorga">
-              <b class="hzuts-i-podruni1">HZUTS I PODRUČNI ZBOROVI</b>
+              <b class="hzuts-i-podruni1">{{ $t('hzuts-i-podrucni-zborovi') }}</b>
               <div class="predsjednik-likvidator-dag-mod">
                 <div class="hzuts-se-sastoji-container2">
                   <span>
                     <p class="hzuts-se-sastoji1">
-                      HZUTS se sastoji od 6 područnih zborova i to su:
+                      {{ $t('hzuts-se-sastoji-od-6-podrucnih-zborova-i-to-su') }}
                     </p>
                     <ul class="zuts-istra-zuts-ogulin-zut1">
                       <li class="zuts-istra3">
@@ -86,7 +83,7 @@
                   </span>
                 </div>
                 <div class="group-frame">
-                  <Link class="saznaj-vie23" :href="route('skijasi.commerce-theme.podrucnizborovi')">Saznaj više</Link>
+                  <Link class="saznaj-vie23" :href="route('skijasi.commerce-theme.podrucnizborovi')">{{ $t('saznaj-vise') }}</Link>
                
                   <img
                     class="predsjednik-dario-maravic-i-s"
@@ -109,15 +106,14 @@
             <div class="vozdstvo-h-z-u-t-saimeunarodne">
               <div class="predsjednik-dario-salic">
                 <b class="hzuts-i-meunarodne1"
-                  >HZUTS I MEĐUNARODNE ORGANIZACIJE</b
+                  >{{ $t('hzuts-i-medunarodne-organizacije') }}</b
                 >
                 <div class="hzuts-je-lan-container2">
                   <span>
                     <p class="hzuts-je-lan-meunarodnih-org1">
                       <span>
                         <span class="hzuts-je-lan1"
-                          >HZUTS je član međunarodnih organizacija sportova na
-                          snijegu:</span
+                          >{{ $t('hzuts-je-clan-medunarodnih-organizacija-sportova-na-snijegu') }}</span
                         >
                       </span>
                     </p>
@@ -136,7 +132,7 @@
                           </span>
                         </span>
                         <span class="od-1993g2">
-                          <span class="od-1993g3">od 1993.g</span>
+                          <span class="od-1993g3">{{ $t('od-1993-g') }}</span>
                           <span class="span42">. </span>
                         </span>
                       </li>
@@ -155,7 +151,7 @@
                           <span class="internationaler-verband-des1"
                             >(Internationaler Verband des Ski Instructors)
                           </span>
-                          <span class="od-1995g2">od 1995.g.</span>
+                          <span class="od-1995g2">{{ $t('od-1995-g') }}</span>
                         </span>
                         <span class="span45">
                           <span class="span46"> </span>
@@ -170,7 +166,7 @@
                             >(IAESS International Association of Education in
                             Science and Snowsports)
                           </span>
-                          <span class="od-1995g3">od 1995.g.</span>
+                          <span class="od-1995g3">{{ $t('od-1995-g') }}</span>
                           <span class="span47"> </span>
                         </span>
                       </li>
@@ -180,7 +176,7 @@
                           <span class="international1">International </span>
                         </span>
                         <span class="od-1998g2">
-                          <span class="od-1998g3">od 1998.g.</span>
+                          <span class="od-1998g3">{{ $t('od-1998-g') }}</span>
                         </span>
                       </li>
                     </ul>
@@ -188,7 +184,7 @@
                 </div>
               </div>
               <div class="framestegovnisud">
-                <div class="saznaj-vie24">Saznaj više</div>
+                <div class="saznaj-vie24">{{ $t('saznaj-vise') }}</div>
                 <img
                   class="vector-icon54"
                   loading="eager"
@@ -889,6 +885,19 @@
   .vozdstvo-h-z-u-t-saimeunarodne {
       gap: 2.5rem;
     }
+}
+
+ul {
+  list-style-type: disc; 
+}
+
+ol {
+  list-style-type: decimal; 
+  font-weight: 300;
+}
+
+li {
+  list-style-position: inside; 
 }
 
 

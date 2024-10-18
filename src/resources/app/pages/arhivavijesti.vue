@@ -15,7 +15,7 @@
       <div class="gornjiblokframe">
         <div class="gornjiblokframe-item" />
         <div class="ulanite-se-u-hzuts-wrapper">
-          <div class="ulanite-se-u">ARHIVA VIJESTI</div>
+          <div class="ulanite-se-u">{{ $t('arhiva-vijesti') }}</div>
         </div>
       </div>
 

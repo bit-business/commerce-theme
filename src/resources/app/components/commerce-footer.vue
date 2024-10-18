@@ -320,7 +320,7 @@ export default {
   }
   .o-nama {
     position: absolute;
-    right: 4rem;
+
     bottom: 15.15rem;
     font-weight: 500;
   }
@@ -668,7 +668,7 @@ export default {
   }
   .o-nama {
     position: absolute;
-    right: 4rem;
+
     bottom: 15.15rem;
     font-weight: 500;
   }
@@ -1023,7 +1023,7 @@ export default {
   }
   .o-nama {
     position: absolute;
-    right: 4rem;
+
     bottom: 15.46rem;
     font-weight: 500;
   }

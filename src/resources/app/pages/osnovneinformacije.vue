@@ -1,17 +1,15 @@
 <template>
   <div class="osnovn-informacije">
     <section class="naslovni-frame">
-      <div class="osnovne-informacije">OSNOVNE INFORMACIJE</div>
+      <div class="osnovne-informacije">{{ $t('osnovne-informacije-1') }}</div>
       <div class="hrvatski-zbor-uitelja-container">
         <span class="hrvatski-zbor-uitelja-container1">
           <span class="hrvatski-zbor-uitelja"
-            >Hrvatski zbor učitelja i trenera sportova na snijegu (</span
+            >{{ $t('hrvatski-zbor-ucitelja-i-trenera-sportova-na-snijegu') }}</span
           >
           <b>HZUTS</b>
           <span class="dobrovoljna-je-strukovna"
-            >) dobrovoljna je strukovna organizacija u koju se udružuju
-            voditelji, učitelji i treneri sportova na snijegu, i njihova
-            udruženja s područja djelovanja Hrvatskog skijaškog saveza.</span
+            >{{ $t('dobrovoljna-je-strukovna-organizacija-u-koju-se-udruzuju-voditelji-ucitelji-i-treneri-sportova-na-snijegu-i-njihova-udruzenja-s-podrucja-djelovanja-hrvatskog-skijaskog-saveza') }}</span
           >
         </span>
       </div>
@@ -120,6 +118,19 @@ import _ from "lodash";
     gap: 1.75rem;
     letter-spacing: normal;
   }
+
+  ul {
+  list-style-type: disc; 
+}
+
+ol {
+  list-style-type: decimal; 
+  font-weight: 300;
+}
+
+li {
+  list-style-position: inside; 
+}
 
   @media screen and (max-width: 1150px) {
     .osnovn-informacije {

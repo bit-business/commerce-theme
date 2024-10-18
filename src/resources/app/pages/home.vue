@@ -42,11 +42,11 @@
               :width="computedSpace"
               class="pokretnitekst"
             >
-              <div>Važne vijesti</div>
-              <div>Važne vijesti</div>
-              <div>Važne vijesti</div>
-              <div>Važne vijesti</div>
-              <div>Važne vijesti</div>
+              <div>{{ $t('vazne-vijesti') }}</div>
+              <div>{{ $t('vazne-vijesti') }}</div>
+              <div>{{ $t('vazne-vijesti') }}</div>
+              <div>{{ $t('vazne-vijesti') }}</div>
+              <div>{{ $t('vazne-vijesti') }}</div>
             </vue-marquee-slider>
            
 
@@ -86,7 +86,7 @@
 <div class="dogadajitrecired ">
   <div class="pogledajvisecontainer">
   <Link :href="route('skijasi.commerce-theme.arhivavijesti')" class="view-more-button">
-    Pogledaj više <span class="pogledajarrow">→</span>
+    {{ $t('pogledaj-vise') }} <span class="pogledajarrow">→</span>
   </Link>
 </div>
 
@@ -176,14 +176,14 @@
         <a class="drugiredlijevo animacijakvadrati" href="https://www.skijasko-uciliste.hr" target="_blank" rel="noopener noreferrer">
           <div class="drugiredlijevotekst">
             <b class="kako-postati-uitelj"
-              >Kako postati učitelj sportova na snijegu</b
+              >{{ $t('kako-postati-ucitelj-sportova-na-snijegu') }}</b
             >
             <div class="saznajvise">
               <img class="home-vector-icon" alt="" src="/storage/slike/pocetna/vector2.svg" />
-              <div class="saznaj-vie">Saznaj više</div>
+              <div class="saznaj-vie">{{ $t('saznaj-vise') }}</div>
             </div>
             <div class="proitajte-kako-postati">
-              Pročitajte kako postati učitelj skijanja ili daskanja na snijegu
+              {{ $t('procitajte-kako-postati-ucitelj-skijanja-ili-daskanja-na-snijegu') }}
             </div>
           </div>
           <div class="slikaframe3">
@@ -206,14 +206,13 @@
             />
           </div>
           <div class="tekstdrugireddesno">
-            <b class="ulanite-se-u">Učlanite se u HZUTS</b>
+            <b class="ulanite-se-u">{{ $t('uclanite-se-u-hzuts') }}</b>
             <div class="tekstdrugiredsaznajvise">
               <img class="home-vector-icon" alt="" src="/storage/slike/pocetna/vector2.svg" />
-              <div class="saznaj-vie">Saznaj više</div>
+              <div class="saznaj-vie">{{ $t('saznaj-vise') }}</div>
             </div>
             <div class="saznajte-informacije-kako">
-              Saznajte informacije kako se možete učlaniti te postati dio HZUTS
-              obitelji.
+              {{ $t('saznajte-informacije-kako-se-mozete-uclaniti-te-postati-dio-hzuts-obitelji') }}
             </div>
           </div>
            </Link>
@@ -229,13 +228,13 @@
             alt=""
             src="/storage/slike/pocetna/img-5449photoroom-1@2x.png"
           />
-          <b class="podruni-zborovi-hzuts-a">Savjeti za članove</b>
+          <b class="podruni-zborovi-hzuts-a">{{ $t('savjeti-za-clanove') }}</b>
           <div class="saznajte-informacije-o">
-            Sve što trebate znati na jednom mjestu
+            {{ $t('sve-sto-trebate-znati-na-jednom-mjestu') }}
           </div>
           <div class="vector-parent">
             <img class="home-vector-icon2" alt="" src="/storage/slike/pocetna/vector.svg" />
-            <div class="saznaj-vie2">Saznaj više</div>
+            <div class="saznaj-vie2">{{ $t('saznaj-vise') }}</div>
           </div>
      <!--Link-->   </Link>
  
@@ -246,14 +245,13 @@
             alt=""
             src="/storage/slike/pocetna/img-7155photoroom-1@2x.png"
           />
-          <b class="interski-kongresi-i">Interski kongresi i Demo team</b>
+          <b class="interski-kongresi-i">{{ $t('interski-kongresi-i-demo-team-0') }}</b>
           <div class="saznajvise1">
             <img class="home-vector-icon" alt="" src="/storage/slike/pocetna/vector1.svg" />
-            <div class="saznaj-vie">Saznaj više</div>
+            <div class="saznaj-vie">{{ $t('saznaj-vise') }}</div>
           </div>
           <div class="saznajte-informacije-o1">
-            Saznajte informacije o povijest interski kongresa i članova demo
-            team-a
+            {{ $t('saznajte-informacije-o-povijest-interski-kongresa-i-clanova-demo-team-a') }}
           </div>
         </Link>
       </div>
@@ -282,12 +280,12 @@
         <img class="img-4689-photoroom-1-icon" alt="" src="/storage/slike/pocetna/image@2x.png" />
       </div>
       <div class="okvirtekst">
-        <b class="popusti-za-nae">Popusti za naše članove</b>
+        <b class="popusti-za-nae">{{ $t('popusti-za-nase-clanove') }}</b>
         <div class="saznajte-pogodnosti-za">
-          Saznajte pogodnosti za članove HZUTS-a
+          {{ $t('saznajte-pogodnosti-za-clanove-hzuts-a') }}
         </div>
         <div class="popustisaznajvise">
-          <!--Link-->     <Link class="saznaj-vie4" :href="route('skijasi.commerce-theme.popustizaclanove')">SAZNAJ VIŠE</Link>
+          <!--Link-->     <Link class="saznaj-vie4" :href="route('skijasi.commerce-theme.popustizaclanove')">{{ $t('saznaj-vise-0') }}</Link>
         </div>
       </div>
     </div>
@@ -295,22 +293,22 @@
       <div class="analitikapodgrupa">
         <div class="analitika1">
           <b class="b">{{ totalUsers }}</b>
-          <b class="lanova">Članova</b>
+          <b class="lanova">{{ $t('clanova') }}</b>
           <img class="membership-1-icon" alt="" src="/storage/slike/pocetna/membership-1.svg" />
         </div>
         <div class="analitika1">
           <b class="b1">87</b>
-          <b class="godina-postojanja">Godina postojanja</b>
+          <b class="godina-postojanja">{{ $t('godina-postojanja') }}</b>
           <img class="group-icon" alt="" src="/storage/slike/pocetna/group.svg" />
         </div>
         <div class="analitika1">
           <b class="b2">6</b>
-          <b class="podrunih-zborova">Područnih zborova</b>
+          <b class="podrunih-zborova">{{ $t('podrucnih-zborova') }}</b>
           <img class="group-icon1" alt="" src="/storage/slike/pocetna/group1.svg" />
         </div>
         <div class="analitika1">
           <b class="b3">61</b>
-          <b class="demostratora-skijanja">Demonstratora skijanja</b>
+          <b class="demostratora-skijanja">{{ $t('demonstratora-skijanja') }}</b>
           <img class="clip-path-group" alt="" src="/storage/slike/pocetna/clip-path-group.svg" />
         </div>
       </div>
@@ -321,7 +319,7 @@
 
 
       <div class="biltenipodframe">
-        <b class="bilteni-hzuts-a">BILTENI HZUTS-a</b>
+        <b class="bilteni-hzuts-a">{{ $t('bilteni-hzuts-a') }}</b>
 
         <div class="slider-container">
         <img class="slider-arrow left-arrow" src="/storage/slike/pocetna/lijevastrelica.svg" @click="moveSlider(-1)">
@@ -330,35 +328,35 @@
           <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2020-v1.3.pdf">
             <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2020.png" />
             <b class="bilten-sezona-20192020-container">
-              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">{{ $t('bilten-sezona') }}</p>
               <p class="bilten-sezona">2019/2020</p>
             </b>
           </a>
           <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2019-v1.3low.pdf">
             <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2019.png" />
             <b class="bilten-sezona-20192020-container">
-              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">{{ $t('bilten-sezona') }}</p>
               <p class="bilten-sezona">2018/2019</p>
             </b>
           </a>
           <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2018-v2.3-rgb-web.pdf">
             <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2018.png" />
             <b class="bilten-sezona-20192020-container">
-              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">{{ $t('bilten-sezona') }}</p>
               <p class="bilten-sezona">2017/2018</p>
             </b>
           </a>
           <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS-Bilten-2017-v1.2.1-150dpiR.pdf">
             <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2017.png" />
             <b class="bilten-sezona-20192020-container">
-              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">{{ $t('bilten-sezona') }}</p>
               <p class="bilten-sezona">2016/2017</p>
             </b>
           </a>
           <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2016.pdf">
             <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2016.png" />
             <b class="bilten-sezona-20192020-container">
-              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">{{ $t('bilten-sezona') }}</p>
               <p class="bilten-sezona">2015/2016</p>
             </b>
           </a>
@@ -366,7 +364,7 @@
           <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2015.pdf">
             <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2015.png" />
             <b class="bilten-sezona-20192020-container">
-              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">{{ $t('bilten-sezona') }}</p>
               <p class="bilten-sezona">2014/2015</p>
             </b>
           </a>
@@ -374,7 +372,7 @@
           <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2014.pdf">
             <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2014.png" />
             <b class="bilten-sezona-20192020-container">
-              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">{{ $t('bilten-sezona') }}</p>
               <p class="bilten-sezona">2013/2014</p>
             </b>
           </a>
@@ -382,14 +380,14 @@
           <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2013.pdf">
             <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2013.png" />
             <b class="bilten-sezona-20192020-container">
-              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">{{ $t('bilten-sezona') }}</p>
               <p class="bilten-sezona">2012/2013</p>
             </b>
           </a>
           <a class="bilteni-rectangle-parent " href="/storage/slike/pocetna/bilteni/HZUTS_Bilten_2012.pdf">
             <img class="bilteni-frame-child" alt="" src="/storage/slike/pocetna/bilten2012.png" />
             <b class="bilten-sezona-20192020-container">
-              <p class="bilten-sezona">Bilten sezona</p>
+              <p class="bilten-sezona">{{ $t('bilten-sezona') }}</p>
               <p class="bilten-sezona">2011/2012</p>
             </b>
           </a>
@@ -500,6 +498,8 @@ VuePreloader,
         { href: "https://croatia.hr", src: "/storage/slike/sponzori/sponzor16.png" },
         { href: "https://www.milojevic.hr", src: "/storage/slike/sponzori/sponzor17.png" },
         { href: "https://www.messer.hr", src: "/storage/slike/sponzori/sponzor18.jpg" },
+        { href: null, src: "/storage/slike/sponzori/sponzor22.jpg" },
+        { href: null, src: "/storage/slike/sponzori/sponzor23.png" },
       ],
 
     
@@ -1806,7 +1806,6 @@ line-height: normal;
     overflow: hidden;
     display: flex;
     flex-direction: row;
-    flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     font-size: 1.25rem;
@@ -1814,26 +1813,26 @@ line-height: normal;
   .b {
     position: absolute;
     top: 11.81rem;
-    left: calc(50% - 86.5px);
+  
   }
   .lanova {
     position: absolute;
     top: 18.31rem;
-    left: calc(50% - 50.5px);
+  
     font-size: 1.25rem;
     color: #000;
   }
   .analitika1-child {
     position: absolute;
     top: 1.06rem;
-    left: calc(50% + 96.5px);
+
     width: 0.06rem;
     height: 18.75rem;
   }
   .membership-1-icon {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 67.5px);
+ 
     width: 8.13rem;
     height: 8.13rem;
     overflow: hidden;
@@ -1847,71 +1846,70 @@ line-height: normal;
   .b1 {
     position: absolute;
     top: 11.81rem;
-    left: calc(50% - 51px);
+
   }
   .godina-postojanja {
     position: absolute;
     top: 18.31rem;
-    left: calc(50% - 95px);
+
     font-size: 1.25rem;
     color: #000;
   }
   .analitika2-child {
     position: absolute;
     top: 1.06rem;
-    left: calc(50% + 108px);
     width: 0.06rem;
     height: 18.75rem;
   }
   .group-icon {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 60px);
+
     width: 8.13rem;
     height: 8.13rem;
   }
   .b2 {
     position: absolute;
     top: 11.81rem;
-    left: calc(50% - 40px);
+
   }
   .podrunih-zborova {
     position: absolute;
     top: 18.31rem;
-    left: calc(50% - 101px);
+
     font-size: 1.25rem;
     color: #000;
   }
   .analitika3-child {
     position: absolute;
     top: 1.06rem;
-    left: calc(50% + 110px);
+
     width: 0.06rem;
     height: 18.75rem;
   }
   .group-icon1 {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 80px);
+
     width: 8.13rem;
     height: 8.13rem;
   }
   .b3 {
     position: absolute;
     top: 11.83rem;
-    left: calc(50% - 60px);
+
   }
   .demostratora-skijanja {
     position: absolute;
     top: 18.33rem;
-    left: calc(50% - 116px);
+
     font-size: 1.25rem;
     color: #000;
   }
   .clip-path-group {
     position: absolute;
     top: 0rem;
-    left: calc(50% - 80px);
+
     width: 8.13rem;
     height: 8.13rem;
   }
@@ -2083,9 +2081,8 @@ line-height: normal;
 
 
   @media screen and (max-width: 1200px) {
-    .saznajte-informacije-kako {
-      width: 27.5rem;
-    }
+
+
 
     .analitikapodgrupa {
     display: flex; /* Display children in a row */
@@ -2103,7 +2100,7 @@ line-height: normal;
   }
 
 
-  @media screen and (max-width: 960px) {
+  @media screen and (max-width: 1100px) {
 
 
 
@@ -2314,15 +2311,16 @@ line-height: normal;
     }
 
     .popusti-za-nae {
-      font-size: 1.88rem;
+      font-size: 1.5rem;
     }
 
     .saznajte-pogodnosti-za {
-      font-size: 1.25rem;
+      font-size: 0.9rem;
     }
 
     .saznaj-vie4 {
-      font-size: 1.13rem;
+      font-size: 0.9rem;
+      letter-spacing: 4px;
     }
 
     .popustisaznajvise {
@@ -2363,9 +2361,7 @@ margin-top: -4rem;
       max-width: 23.75rem;
     }
 
-    .popusti-za-nae {
-      font-size: 1.7rem;
-    }
+
 
     
   }
@@ -2468,5 +2464,61 @@ opacity: 0; /* Set initial opacity to 50% */
 }
 
 
+.analitikahome {
+  align-self: stretch;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 2.5rem 0;
+  font-size: 4rem;
+  color: #03a9f4;
+}
+
+.analitikapodgrupa {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.analitika1, .analitika2, .analitika3, .analitika4 {
+  max-width: 300px;
+  min-width: 200px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin: 1rem;
+}
+
+@media screen and (max-width: 768px) {
+  .analitikapodgrupa {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .analitika1, .analitika2, .analitika3, .analitika4 {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .analitikahome {
+    font-size: 3rem;
+  }
+
+  .analitika1, .analitika2, .analitika3, .analitika4 {
+    margin: 0.5rem;
+  }
+}
 
 </style>

@@ -3,7 +3,7 @@
     <section class="rectangle-parent54">
       <img class="frame-child80" alt="" src="/storage/slike/dokumenti/dokumentinaslovnaslika.png" />
       <div class="frame-child81" />
-      <h1 class="dokumenti-hzuts-a">DOKUMENTI HZUTS-a</h1>
+      <h1 class="dokumenti-hzuts-a">{{ $t('dokumenti-hzuts-a-0') }}</h1>
     </section>
     <GlavniGrid :pdfFiles="pdfFiles" />
   </div>

@@ -3,7 +3,7 @@
     <main class="kalendardogadanja">
       <div class="pozadina" />
       <header class="vector">
-        <h2 class="kalendar-dogaanja">Kalendar događanja</h2>
+        <h2 class="kalendar-dogaanja">{{ $t('kalendar-dogadanja') }}</h2>
         <img
           class="gumbxzatvori-icon cursor-pointer"
           loading="eager"

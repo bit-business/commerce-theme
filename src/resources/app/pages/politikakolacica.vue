@@ -3,7 +3,7 @@
     <Head :title="$page.props.name" />
     <div class="osnovneinformacije-inner">
       <div class="osnovne-informacije-parent">
-        <div class="osnovne-informacije">POLITIKA O KOLAČIĆIMA</div>
+        <div class="osnovne-informacije">{{ $t('politika-o-kolacicima-0') }}</div>
 
       </div>
     </div>

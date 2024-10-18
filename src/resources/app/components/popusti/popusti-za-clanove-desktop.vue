@@ -3,7 +3,7 @@
     <header class="group-header">
       <img class="frame-child27" alt="" src="/storage/slike/popusti/desktop/rectangle-200@2x.png" />
       <div class="frame-child28" />
-      <h1 class="popusti-za-nae1">POPUSTI ZA NAŠE ČLANOVE</h1>
+      <h1 class="popusti-za-nae1">{{ $t('popusti-za-nase-clanove-0') }}</h1>
     </header>
     <section class="popusti-za-clanove-desktop-inner">
       <div class="rectangle-parent15">
@@ -18,10 +18,9 @@
                 </div>
                 <div class="elan-je-za-container1">
                   <span class="elan-je-za1"
-                    >Elan je za članove HZUTS-a odobrio 30 % popusta u
-                    tvorničkom dućanu
+                    >{{ $t('elan-je-za-clanove-hzuts-a-odobrio-30-popusta-u-tvornickom-ducanu-0') }}
                   </span>
-                  <b>Elana u Begunju, Slovenija</b>
+                  <b>{{ $t('elana-u-begunju-slovenija') }}</b>
                 </div>
               </div>
             </div>
@@ -35,10 +34,9 @@
                 </div>
                 <div class="lanovi-demo-team-a-container1">
                   <span class="lanovi-demo-team-a1"
-                    >Članovi demo team-a imaju pravo na 50% popusta prilikom
-                    kupnje
+                    >{{ $t('clanovi-demo-team-a-imaju-pravo-na-50-popusta-prilikom-kupnje-0') }}
                   </span>
-                  <b>drugog para skija</b>
+                  <b>{{ $t('drugog-para-skija') }}</b>
                   <span class="span1">.</span>
                 </div>
               </div>
@@ -56,12 +54,11 @@
           </div>
           <button class="rectangle-parent17">
             <div class="frame-child31" />
-            <a href="https://elansports.com" target="_blank" class="saznaj-vie-informacija3">Saznaj više informacija</a>
+            <a href="https://elansports.com" target="_blank" class="saznaj-vie-informacija3">{{ $t('saznaj-vise-informacija-1') }}</a>
           </button>
         </div>
         <div class="popust-se-odobrava5">
-          Popust se odobrava uz predočenje važeće HZUTS iskaznice sa važećom
-          licencom.
+          {{ $t('popust-se-odobrava-uz-predocenje-vazece-hzuts-iskaznice-sa-vazecom-licencom-0') }}
         </div>
       </div>
     </section>
@@ -75,22 +72,22 @@
     <div class="sponzorallianz-container">
       <div class="logo-title">
         <img class="sponzor19-1-icon" loading="lazy" alt="Allianz logo" src="/storage/slike/popusti/sponzor19-1@2x.png" />
-        <h2 class="ugovorite-osiguranje-po">Ugovorite osiguranje po izboru i putujte i skijajte bezbrižno!!</h2>
+        <h2 class="ugovorite-osiguranje-po">{{ $t('ugovorite-osiguranje-po-izboru-i-putujte-i-skijajte-bezbrizno') }}</h2>
       </div>
       <div class="content-wrapper">
-        <div class="putno-osiguranje">PUTNO OSIGURANJE</div>
-        <div class="osiguranje-od-odgovornosti">OSIGURANJE od<p>ODGOVORNOSTI</p></div>
+        <div class="putno-osiguranje">{{ $t('putno-osiguranje') }}</div>
+        <div class="osiguranje-od-odgovornosti">{{ $t('osiguranje-od') }}<p>{{ $t('odgovornosti') }}</p></div>
         <div class="content-divider"></div>
         <div class="content">
           <div class="left-content">
-            <p><strong>Allianz</strong> je za članove HZUTS-a osigurao posebne pogodnosti putnog zdravstvenog osiguranja i osiguranja od odgovornosti.</p>
-            <p>Ugovorite li paket putnog zdravstvenog osiguranja i osiguranja od odgovornosti dobivate popust od 15% na ukupnu premiju.</p>
+            <p><strong>Allianz</strong> {{ $t('je-za-clanove-hzuts-a-osigurao-posebne-pogodnosti-putnog-zdravstvenog-osiguranja-i-osiguranja-od-odgovornosti') }}</p>
+            <p>{{ $t('ugovorite-li-paket-putnog-zdravstvenog-osiguranja-i-osiguranja-od-odgovornosti-dobivate-popust-od-15-na-ukupnu-premiju') }}</p>
           </div>
           <div class="right-content">
-            <h3>Ponudu pogledajte putem linka:</h3>
+            <h3>{{ $t('ponudu-pogledajte-putem-linka') }}</h3>
             <a href="/storage/slike/popusti/Allianz_ponuda.pdf" class="offer-link">
               <img src="/storage/slike/popusti/vrstva-x0020-1-15.svg" alt="PDF icon" class="pdf-icon" />
-              <span>Osiguranje izvanugovorne odgovornosti za učitelje skijanja</span>
+              <span>{{ $t('osiguranje-izvanugovorne-odgovornosti-za-ucitelje-skijanja') }}</span>
             </a>
           </div>
         </div>
@@ -114,17 +111,15 @@
           <div class="frame-parent10">
             <div class="ski-frankie-osigurao-je-posebn-parent">
               <b class="ski-frankie-osigurao1"
-                >Ski Frankie osigurao je posebne popuste na servis i najam
-                opreme za članove HZUTS-a!</b
+                >{{ $t('ski-frankie-osigurao-je-posebne-popuste-na-servis-i-najam-opreme-za-clanove-hzuts-a-0') }}</b
               >
               <div class="popust-se-odobrava6">
-                Popust se odobrava uz predočenje važeće HZUTS iskaznice sa
-                važećom licencom.
+                {{ $t('popust-se-odobrava-uz-predocenje-vazece-hzuts-iskaznice-sa-vazecom-licencom-0') }}
               </div>
             </div>
             <button class="rectangle-parent20">
               <div class="frame-child34" />
-              <a href="https://skifrankie.hr" target="_blank" class="saznaj-vie-informacija4">Saznaj više informacija</a>
+              <a href="https://skifrankie.hr" target="_blank" class="saznaj-vie-informacija4">{{ $t('saznaj-vise-informacija-0') }}</a>
             </button>
           </div>
         </div>
@@ -142,62 +137,55 @@
           <div class="koala-ski-boot-lab-page">
             <div class="poliklinika-patela-logo">
               <b class="poliklinika-patela-za1"
-                >Poliklinika Patela za ortopediju, fizikalnu terapiju i
-                rehabilitaciju</b
+                >{{ $t('poliklinika-patela-za-ortopediju-fizikalnu-terapiju-i-rehabilitaciju-0') }}</b
               >
               <div class="rectangle-parent22">
                 <div class="frame-child37" />
                 <div class="vodei-hrvatski-ortopedi-container1">
                   <p class="vodei-hrvatski-ortopedi1">
-                    Vodeći hrvatski ortopedi:
+                    {{ $t('vodeci-hrvatski-ortopedi') }}
                   </p>
                   <ul class="drsc-saa-jankovi-drmed2">
                     <li class="drsc-saa-jankovi-drmed3">
                       <a class="drsc4" >
-                        <span class="drsc5">dr.sc</span> </a
-                      >. Saša Janković, dr.med (liječnik hrvatske nogometne
-                      reprezentacije)
+                        <span class="drsc5">dr.sc</span> </a>{{ $t('sasa-jankovic-dr-med-lijecnik-hrvatske-nogometne-reprezentacije-0') }}
                     </li>
                     <li>
-                      Trpimir Vrdoljak, dr.med (jedan od najbolje ocijenjenih
-                      hrvatskih ortopeda)
+                      {{ $t('trpimir-vrdoljak-dr-med-jedan-od-najbolje-ocijenjenih-hrvatskih-ortopeda-0') }}
                     </li>
                   </ul>
                 </div>
                 <div class="centar-za-rehabilitaciju-container1">
                   <p class="centar-za-rehabilitaciju1">
-                    Centar za rehabilitaciju nakon sportskih ozljeda:
+                    {{ $t('centar-za-rehabilitaciju-nakon-sportskih-ozljeda') }}
                   </p>
                   <ul class="najvei-broj-rehabilitacija-na2">
                     <li class="najvei-broj-rehabilitacija-na3">
-                      Najveći broj rehabilitacija nakon operacije prednjeg
-                      križnog ligamenta i drugih ozljeda koljena
+                      {{ $t('najveci-broj-rehabilitacija-nakon-operacije-prednjeg-kriznog-ligamenta-i-drugih-ozljeda-koljena-0') }}
                     </li>
                     <li class="uspjeno-izlijeeni-najpoznati1">
-                      Uspješno izliječeni najpoznatiji hrvatski sportaši
+                      {{ $t('uspjesno-izlijeceni-najpoznatiji-hrvatski-sportasi') }}
                     </li>
                     <li>
-                      Tim maldih fizioterapeuta i kinezioterapeuta pod vodstvom
+                      {{ $t('tim-maldih-fizioterapeuta-i-kinezioterapeuta-pod-vodstvom') }}
                       <a class="drsc6">
-                        <span class="drsc7">dr.sc</span> </a
-                      >. Saše Bašćevana
+                        <span class="drsc7">dr.sc</span> </a>{{ $t('sase-bascevana') }}
                     </li>
                   </ul>
                 </div>
                 <div class="centar-za-dijagnostiku-container1">
                   <p class="centar-za-dijagnostiku1">
-                    Centar za dijagnostiku ozljeda:
+                    {{ $t('centar-za-dijagnostiku-ozljeda') }}
                   </p>
                   <ul class="najnoviji-sustav-za-analizu-mi1">
                     <li class="najnoviji-sustav-za1">
-                      Najnoviji sustav za analizu mišićne jakosti Biodex System
-                      4 PRO
+                      {{ $t('najnoviji-sustav-za-analizu-misicne-jakosti-biodex-system-4-pro') }}
                     </li>
                     <li class="sustav-za-analizu1">
-                      Sustav za analizu motoričke kontrole HBCU UNLOCK
+                      {{ $t('sustav-za-analizu-motoricke-kontrole-hbcu-unlock') }}
                     </li>
-                    <li class="posturalna-analiza1">Posturalna analiza</li>
-                    <li>Dinamometrija</li>
+                    <li class="posturalna-analiza1">{{ $t('posturalna-analiza') }}</li>
+                    <li>{{ $t('dinamometrija') }}</li>
                   </ul>
                 </div>
               </div>
@@ -212,7 +200,7 @@
             />
             <div class="za-sve-informacije-slobodno-n-wrapper">
               <div class="za-sve-informacije1">
-                Za sve informacije, slobodno nas kontaktirajte!
+                {{ $t('za-sve-informacije-slobodno-nas-kontaktirajte') }}
               </div>
             </div>
           </div>
@@ -269,26 +257,24 @@
         <div class="koalasekcija1">
         <button class="rectangle-parent25">
           <div class="frame-child44" />
-          <a href="https://koala.si/hr/kupovina-skijaskih-cipela/" target="_blank" class="rezerviraj-termin1">Rezerviraj termin</a>
+          <a href="https://koala.si/hr/kupovina-skijaskih-cipela/" target="_blank" class="rezerviraj-termin1">{{ $t('rezerviraj-termin') }}</a>
         </button>   
         <div class="ukoliko-ste-zainteresirani1">
-          Ukoliko ste zainteresirani za izradu novih skijaških cipela potrebno
-          je prethodno rezervirati termin.
+          {{ $t('ukoliko-ste-zainteresirani-za-izradu-novih-skijaskih-cipela-potrebno-je-prethodno-rezervirati-termin-0') }}
         </div>
       </div>
 
         <button class="rectangle-parent24">
           <div class="frame-child43" />
-          <a href="https://koala.si/hr/" target="_blank" class="koala-ski-boot2">Koala ski boot lab stranica</a>
+          <a href="https://koala.si/hr/" target="_blank" class="koala-ski-boot2">{{ $t('koala-ski-boot-lab-stranica') }}</a>
         </button>
         <div class="ostale-informacije-moete1">
-          Ostale informacije možete pronaći na službenoj web stranici.
+          {{ $t('ostale-informacije-mozete-pronaci-na-sluzbenoj-web-stranici') }}
         </div>
         
       
         <div class="koala-ski-boot3">
-          Koala Ski Boot Lab u svom dućanu za članove HZUTS-a odobrava popuste
-          uz predočenje važeće HZUTS iskaznice sa važećom licencom.
+          {{ $t('koala-ski-boot-lab-u-svom-ducanu-za-clanove-hzuts-a-odobrava-popuste-uz-predocenje-vazece-hzuts-iskaznice-sa-vazecom-licencom-0') }}
         </div>
 
       </div>
@@ -348,22 +334,18 @@
         <b class="razna-svjetska-skijalita-container1">
           <span class="razna-svjetska-skijalita-container2">
             <p class="razna-svjetska-skijalita2">
-              Razna svjetska skijališta odobravaju razne popuste članovima
-              HZUTS-a.
+              {{ $t('razna-svjetska-skijalista-odobravaju-razne-popuste-clanovima-hzuts-a-0') }}
             </p>
             <p class="popust-se-odobrava7">
-              Popust se odobrava uz predočenje važeće HZUTS iskaznice sa važećom
-              licencom.
+              {{ $t('popust-se-odobrava-uz-predocenje-vazece-hzuts-iskaznice-sa-vazecom-licencom-0') }}
             </p>
             <p class="blank-line2">&nbsp;</p>
             <p class="savjetujemo-vam-da1">
-              Savjetujemo vam da za više informacija pogledate službene web
-              stranice određenog skijališta. Popust ovisi o pravilima skijališta
-              i o licenci koju posjedujete.
+              {{ $t('savjetujemo-vam-da-za-vise-informacija-pogledate-sluzbene-web-stranice-odredenog-skijalista-popust-ovisi-o-pravilima-skijalista-i-o-licenci-koju-posjedujete-0') }}
             </p>
           </span>
         </b>
-        <h1 class="razna-svjetska-skijalita3">Razna svjetska skijališta</h1>
+        <h1 class="razna-svjetska-skijalita3">{{ $t('razna-svjetska-skijalista') }}</h1>
       </div>
     </section>
     <section class="desktop-container4">
@@ -382,17 +364,15 @@
           <div class="frame-parent12">
             <div class="lanovi-hzuts-a-sa-vaeom-ivsi-group">
               <b class="lanovi-hzuts-a-sa1"
-                >Članovi HZUTS-a sa važećom IVSI ili ISIA licencom ostvaruju 30%
-                popusta na skijaške karte.
+                >{{ $t('clanovi-hzuts-a-sa-vazecom-ivsi-ili-isia-licencom-ostvaruju-30-popusta-na-skijaske-karte-0') }}
               </b>
               <div class="popust-se-odobrava8">
-                Popust se odobrava uz predočenje važeće HZUTS iskaznice sa
-                važećom licencom.
+                {{ $t('popust-se-odobrava-uz-predocenje-vazece-hzuts-iskaznice-sa-vazecom-licencom-0') }}
               </div>
             </div>
             <button class="rectangle-parent29">
               <div class="frame-child53" />
-              <a href ="https://www.dreizinnen.com/en/skiresort-3-zinnen-dolomites.html" target="_blank" class="saznaj-vie-informacija5">Saznaj više informacija</a>
+              <a href ="https://www.dreizinnen.com/en/skiresort-3-zinnen-dolomites.html" target="_blank" class="saznaj-vie-informacija5">{{ $t('saznaj-vise-informacija-0') }}</a>
             </button>
           </div>
         </div>
@@ -411,19 +391,16 @@
         <b class="uitelji-skijanja-hzuts-a-container1">
           <span class="uitelji-skijanja-hzuts-a-container2">
             <p class="uitelji-skijanja-hzuts-a1">
-              Učitelji skijanja HZUTS-a sa važećom IVSI ili ISIA licencom
-              ostvaruju 30% popusta na skijaške karte.
+              {{ $t('ucitelji-skijanja-hzuts-a-sa-vazecom-ivsi-ili-isia-licencom-ostvaruju-30-popusta-na-skijaske-karte-0') }}
             </p>
             <p class="blank-line3">&nbsp;</p>
             <p class="demonstratorski-skijanja-hzuts1">
-              Demonstratorski skijanja HZUTS-a sa ISIA cardom ostvaruju 50%
-              popusta na skijaške karte.
+              {{ $t('demonstratorski-skijanja-hzuts-a-sa-isia-cardom-ostvaruju-50-popusta-na-skijaske-karte-0') }}
             </p>
           </span>
         </b>
         <div class="popust-se-odobrava9">
-          Popust se odobrava uz predočenje važeće HZUTS iskaznice sa važećom
-          licencom.
+          {{ $t('popust-se-odobrava-uz-predocenje-vazece-hzuts-iskaznice-sa-vazecom-licencom-0') }}
         </div>
       </footer>
     </section>

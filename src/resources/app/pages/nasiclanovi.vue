@@ -14,7 +14,7 @@
 
              <!-- Zborovi Dropdown -->
 <div class="custom-dropdown1" @click="toggleDropdown('zborovi', $event)">
-  <div class="dropdown-label">{{ 'Odaberi područne zborove' }}</div>
+  <div class="dropdown-label">{{ $t('odaberi-podrucne-zborove') }}</div>
   <span class="selected-count" v-if="selectedZboroviCount">{{ selectedZboroviCount }}</span>
   <img class="strelicapremadolje-icon" alt="" src="/storage/slike/nasiclanovi/strelicapremadolje.svg" />
   <div class="dropdown-content" v-show="dropdowns.zborovi">
@@ -29,7 +29,7 @@
 
 <!-- Status Dropdown -->
 <div class="custom-dropdown2" @click="toggleDropdown('status', $event)">
-  <div class="dropdown-label">{{ 'Status' }}</div>
+  <div class="dropdown-label">{{ $t('status') }}</div>
   <span class="selected-count" v-if="selectedStatusCount">{{ selectedStatusCount }}</span>
   <img class="strelicapremadolje-icon2" alt="" src="/storage/slike/nasiclanovi/strelicapremadolje.svg" />
   <div class="dropdown-content" v-show="dropdowns.status">
@@ -43,7 +43,7 @@
 
 <!-- Payments Dropdown -->
 <div class="custom-dropdown3" @click="toggleDropdown('payments', $event)">
-  <div class="dropdown-label">{{ 'Članarine' }}</div>
+  <div class="dropdown-label">{{ $t('clanarine') }}</div>
   <span class="selected-count" v-if="selectedPaymentsCount">{{ selectedPaymentsCount }}</span>
   <img class="strelicapremadolje-icon2" alt="" src="/storage/slike/nasiclanovi/strelicapremadolje.svg" />
   <div class="dropdown-content" v-show="dropdowns.payments">
@@ -56,7 +56,7 @@
 
 <!-- Licence Dropdown -->
 <div class="custom-dropdown4" @click="toggleDropdown('licence', $event)">
-  <div class="dropdown-label">{{ 'Licence' }}</div>
+  <div class="dropdown-label">{{ $t('licence') }}</div>
   <span class="selected-count" v-if="selectedLicenceCount">{{ selectedLicenceCount }}</span>
   <img class="strelicapremadolje-icon2" alt="" src="/storage/slike/nasiclanovi/strelicapremadolje.svg" />
   <div class="dropdown-content" v-show="dropdowns.licence">
@@ -69,7 +69,7 @@
 
 
 <div class="custom-dropdown4" @click="toggleDropdown('sorting', $event)">
-            <div class="dropdown-label">Prikaz</div>
+            <div class="dropdown-label">{{ $t('prikaz') }}</div>
             <div class="dropdown-contentAZ" v-show="dropdowns.sorting">
             <label v-for="option in sortingOptions" :key="option.value" class="dropdown-item">
       <input type="radio" :value="option.value" v-model="sortOrder" @change="changeSortingOrder(option.value)" />
@@ -87,7 +87,7 @@
   </svg>
   <input
     class="input-wrapper"
-    placeholder="Pretraživanje po imenu, prezimenu..."
+   :placeholder="$t('pretrazivanje-po-imenu-prezimenu')"
     type="text"
     v-model="searchQuery"
     @keyup.enter="handleSearchEnter" 
@@ -111,10 +111,10 @@
 
         
           
-          <b class="popis-lanova-hzuts-a">POPIS ČLANOVA HZUTS-a</b>
+          <b class="popis-lanova-hzuts-a">{{ $t('popis-clanova-hzuts-a') }}</b>
           <button @click="resetAllSelections" class="ponistigumb">
             <img class="arrow-1-icon" alt="" src="/storage/slike/nasiclanovi/arrow-1.svg" />
-            <b class="poniti-sve">Poništi sve</b>
+            <b class="poniti-sve">{{ $t('ponisti-sve') }}</b>
           </button>
         </div>
 <!-- FILTERI kraj-->
@@ -167,7 +167,7 @@
     <div class="glavnipodframedetalji">
       <div class="framedetalji">
          <img class="placeholderzaslike-icon" :alt="'slika'" :src="selectedUser.avatar || '/storage/slike/nasiclanovi/slikaplaceholder.png'" />
-        <div class="detaljnije-informacije">Detaljnije informacije</div>
+        <div class="detaljnije-informacije">{{ $t('detaljnije-informacije') }}</div>
 
         <div @click="viewingPaymentsList ? closePaymentsList() : closeDetailsFrame()">
     <template v-if="viewingPaymentsList">
@@ -193,7 +193,7 @@
         <div class="prviframedetalji">
           <div class="naslovosnovneinfo">
             <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/info-icon.svg" />
-            <div class="osnovne-informacije">Osnovne informacije</div>
+            <div class="osnovne-informacije">{{ $t('osnovne-informacije') }}</div>
           </div>
           <div class="kvadrat">
             <div class="gradframe">
@@ -206,7 +206,7 @@
             </div>
             <div class="podrucnizborframe">
               <div class="podruni-zbor-wrapper">
-                <div class="grad">Područni zbor:</div>
+                <div class="grad">{{ $t('podrucni-zbor') }}</div>
               </div>
               <div class="zagreb-wrapper">
                 <div class="osnovne-informacije">{{ selectedUser?.department }}</div>
@@ -214,7 +214,7 @@
             </div>
             <div class="clanskibrojframe">
               <div class="lanski-broj-wrapper">
-                <div class="grad">Članski broj:</div>
+                <div class="grad">{{ $t('clanski-broj') }}</div>
               </div>
               <div class="zagreb-wrapper">
                 <div class="osnovne-informacije">{{ selectedUser?.idmember }}</div>
@@ -226,12 +226,12 @@
           <div class="kvadrat1">
             <div class="naslovstatus">
               <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/user-icon.svg" />
-              <div class="statusdetalji">Status</div>
+              <div class="statusdetalji">{{ $t('status-0') }}</div>
             </div>
             <div class="kvadrat">
               <div class="statusframedetalji">
                 <div class="status-wrapperdetalji">
-                  <div class="grad">Status</div>
+                  <div class="grad">{{ $t('status-0') }}</div>
                 </div>
                 <div class="zagreb-wrapper">
                   <div class="osnovne-informacije">{{ displayedStatus }}</div>
@@ -247,7 +247,7 @@
               </div>
               <div class="licencavrijediframe">
                 <div class="licenca-vrijedi-do-wrapper">
-                  <div class="grad">Licenca vrijedi do:</div>
+                  <div class="grad">{{ $t('licenca-vrijedi-do') }}</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
                   <div :class="{'red-text': selectedUser?.statusAktivan === 'Istekla licenca'}" class="osnovne-informacije">{{ formatEuropeanDate(selectedUser?.endstatusdate) }}</div>
@@ -255,7 +255,7 @@
               </div>
               <div class="valjanostlicenceframe">
                 <div class="valjanost-licence-wrapper">
-                  <div class="grad">Valjanost licence:</div>
+                  <div class="grad">{{ $t('valjanost-licence') }}</div>
                 </div>
                 <div class="zagreb-wrapper">
                   <div class="osnovne-informacije">{{ yearDifference }}</div>
@@ -263,7 +263,7 @@
               </div>
               <div class="clanskaiskaznicaframe">
                 <div class="lanska-iskaznica-wrapper">
-                  <div class="grad">Članska iskaznica:</div>
+                  <div class="grad">{{ $t('clanska-iskaznica') }}</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
 
@@ -277,12 +277,12 @@
           <div class="kvadrat2">
             <div class="naslovseminar">
               <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/trending-icon.svg" />
-              <div class="osnovne-informacije">Seminar</div>
+              <div class="osnovne-informacije">{{ $t('seminar') }}</div>
             </div>
             <div class="kvadrat">
               <div class="statusstecenframe">
                 <div class="status-steen-wrapper">
-                  <div class="grad">Status stečen:</div>
+                  <div class="grad">{{ $t('status-stecen') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="osnovne-informacije">
@@ -292,7 +292,7 @@
               </div>
               <div class="datumseminaraframe">
                 <div class="datum-seminara-wrapper">
-                  <div class="grad">Datum seminara:</div>
+                  <div class="grad">{{ $t('datum-seminara') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="osnovne-informacije">{{ formatEuropeanDate(getEventDetails(selectedUser?.idevent)?.eventdate) }} </div>
@@ -300,7 +300,7 @@
               </div>
               <div class="mjestoseminaraframe">
                 <div class="mjesto-seminara-wrapper">
-                  <div class="mjesto-seminara">Mjesto seminara:</div>
+                  <div class="mjesto-seminara">{{ $t('mjesto-seminara') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="osnovne-informacije">{{ getEventDetails(selectedUser?.idevent)?.eventplace }}</div>
@@ -308,7 +308,7 @@
               </div>
               <div class="drzavaframe">
                 <div class="drava-wrapper">
-                  <div class="grad">Država:</div>
+                  <div class="grad">{{ $t('drzava-0') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="osnovne-informacije">{{ getEventDetails(selectedUser?.idevent)?.eventstate }}</div>
@@ -335,7 +335,7 @@
         </div>
 
         <div class="gumbzaduzenja" @click="viewPaymentsList">
-  <div class="zaduenja">Zaduženja</div>
+  <div class="zaduenja">{{ $t('zaduzenja-0') }}</div>
 </div>
       </div>
 
@@ -425,21 +425,21 @@ export default {
 
 
     statusOptions: [
-      { value: 'Demonstrator skijanja', text: 'Demonstrator skijanja' },
-      { value: 'Voditelj skijanja', text: 'Voditelj skijanja' },
-      { value: 'Učitelj skijanja', text: 'Učitelj skijanja' },
-      { value: 'ISIA učitelj', text: 'ISIA učitelj' },
-      { value: 'Snowboard učitelj', text: 'Snowboard učitelj' },
-      { value: 'Snowboard demonstrator', text: 'Snowboard demonstrator' },
+      { value: 'Demonstrator skijanja', text: this.$t('demonstrator-skijanja') },
+      { value: 'Voditelj skijanja', text: this.$t('voditelj-skijanja') },
+      { value: 'Učitelj skijanja', text: this.$t('ucitelj-skijanja') },
+      { value: 'ISIA učitelj', text: this.$t('isia-ucitelj') },
+      { value: 'Snowboard učitelj', text: this.$t('snowboard-ucitelj') },
+      { value: 'Snowboard demonstrator', text: this.$t('snowboard-demonstrator') },
     ],
     paymentOptions: [
-      { value: 'Sve plaćeno', text: 'Plaćena' },
-      { value: 'Nije plaćeno', text: 'Nije plaćena' },
+      { value: 'Sve plaćeno', text: this.$t('placena') },
+      { value: 'Nije plaćeno', text: this.$t('nije-placena') },
       // ... other payment options ...
     ],
     licenceOptions: [
-    { value: 'Aktivan', text: 'Aktivna licenca' },
-      { value: 'Istekla licenca', text: 'Istekla licenca' },
+    { value: 'Aktivan', text: this.$t('aktivna-licenca') },
+      { value: 'Istekla licenca', text: this.$t('istekla-licenca') },
  
       // ... other payment options ...
     ],
@@ -546,7 +546,7 @@ export default {
 
   displayedStatus() {
     if (this.selectedUser?.statusString === "Demonstrator skijanja" && this.selectedUser?.statusAktivan === 'Istekla licenca') {
-      return "Demonstrator skijanja bez licence";
+      return this.$t('demonstrator-skijanja-bez-licence');
     } else {
       return this.selectedUser?.statusString;
     }
@@ -617,22 +617,21 @@ export default {
   const today = new Date();
   // Check if endDate is before today
   if (endDate < today) {
-    return 'Istekla'; // Return "0 godina" if endDate is before today
+    return this.$t('istekla'); // Return "0 godina" if endDate is before today
   }
   
   const diffTime = Math.abs(endDate - today);
   const diffYears = diffTime / (1000 * 60 * 60 * 24 * 365); // Convert milliseconds to years
-  console.log("TEST GODINE2:", diffYears);
   if (diffYears < 1) {
-    return '<1 godine';
+    return this.$t('less-than-1-godine');
   } else if (diffYears >= 1 && diffYears < 2) {
-    return '2 godine';
+    return this.$t('2-godine');
   } else if (diffYears >= 2 && diffYears < 3) {
-    return '3 godine';
+    return this.$t('3-godine-0');
   }  else if (diffYears >= 3 && diffYears < 4) {
-    return '3 godine';
+    return this.$t('3-godine-0');
   } else if (diffYears >= 4) {
-    return 'Doživotna';
+    return this.$t('dozivotna');
   }
 
   return ''; // Default return value if none of the conditions are met
@@ -799,7 +798,7 @@ handleCardClick(user) {
       const year = date.getFullYear();
         // Check if the year is 2030 or greater
         if (year >= 2030) {
-        return 'Doživotno';
+        return this.$t('dozivotno');
       }
 
   
@@ -1051,7 +1050,7 @@ getStatusString(user) {
       .filter(item => item.statusdefault === 1)
       .map(item => {
         const endDate = item.endstatusdate ? new Date(item.endstatusdate) : null;
-        return (!endDate || endDate < today) ? "Istekla licenca" : "Aktivan";
+        return (!endDate || endDate < today) ? this.$t('istekla-licenca-0') : this.$t('aktivan-0');
       })
       .join(', ');
 
@@ -1551,7 +1550,7 @@ margin-top: 5%;
     text-align: center;
     align-items: center;
     justify-content: center;
-    width: 19.44rem;
+
   }
   .arrow-1-icon {
     position: relative;

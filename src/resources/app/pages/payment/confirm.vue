@@ -17,14 +17,14 @@
     <div class="lg:max-w-xl w-full">
       <div class="flex w-full flex-wrap justify-center select-none">
         <div class="w-full flex text-sm bg-white p-3 border-b border-gray-300 justify-between">
-          <p>Ukupno Plaćanje</p>
+          <p>{{ $t('ukupno-placanje') }}</p>
           <span class="text-primary font-medium">{{ $currency(total) }}</span>
         </div>
         <div 
           class="w-full flex text-sm bg-white p-3 border-b border-gray-300 justify-between cursor-pointer items-center" 
           @click="openAccordion = !openAccordion"
         >
-          <p>Bankovni podaci</p>
+          <p>{{ $t('bankovni-podaci') }}</p>
           <div class="w-6 h-6 transform transition-transform duration-300 ease-in-out" :class="openAccordion ? '-rotate-180' : ''">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -42,18 +42,18 @@
             <div class="w-full text-sm sm:text-base">{{ bank.displayName }}</div>
             <div class="flex w-full mt-2 text-gray-500 text-xs sm:text-sm">
               <div class="flex-grow">
-                Broj računa: {{ bank.accountNumber }} <br />
-                Ime računa: {{ bank.accountName }}
+                {{ $t('broj-racuna') }}{{ bank.accountNumber }} <br />
+               {{ $t('ime-racuna') }}{{ bank.accountName }}
               </div>
               <div class="cursor-pointer self-baseline text-gray-400">PRIJEVOD</div>
             </div>
           </div>
         </div>
         <div class="w-full flex flex-nowrap gap-2 p-2">
-          <div class="text-xs text-gray-500">Provjerite jeste li ispunili sve podatke prije učitavanja dokaza o prijenosu. {{ title }} ispitat će vaše dokaze u roku od 24 sata.</div>
+          <div class="text-xs text-gray-500">{{ $t('provjerite-jeste-li-ispunili-sve-podatke-prije-ucitavanja-dokaza-o-prijenosu-title-ispitat-ce-vase-dokaze-u-roku-od-24-sata', [title]) }}</div>
         </div>
         <div class="w-full flex text-sm flex-col bg-white p-3 border-t border-b border-gray-300 justify-between">
-          <p>Podaci o bankovnom računu:</p>
+          <p>{{ $t('podaci-o-bankovnom-racunu') }}</p>
           <label class="block text-center select-none max-w-full" for="receipt_file">
             <div class="inline-block mx-3 mt-3.5 w-24 h-24 border-2 border-gray-700 text-gray-700 border-dashed cursor-pointer">
               <template v-if="selected.proofOfTransaction === null">
@@ -61,7 +61,7 @@
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
                   </svg>
-                  <div class="text-center">Dodirnite za prijenos</div>
+                  <div class="text-center">{{ $t('dodirnite-za-prijenos') }}</div>
                 </div>
               </template>
               <template v-else>

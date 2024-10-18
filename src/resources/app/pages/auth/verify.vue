@@ -1,7 +1,7 @@
 <template>
  
   <div class="hzuts-reset-password-desktop">
-    <Head title="$t('verifikacija')" />
+    <Head :title="$t('verifikacija')" />
     <img
       class="backgroundzaboravljenalozinka-icon"
       alt=""
@@ -35,7 +35,7 @@
                 rounded-md
                 mt-4
               "
-              placeholder="$t('email-0')"
+                     placeholder="$t('email-0')"
               v-model="email"
             />
             
@@ -193,7 +193,7 @@ export default {
   },
   buttonClasses() {
     return [
-      this.$t('w-full-plavitekstbg-text-white-py-2-rounded-md-text-sm-font-medium-mt-4-select-none-flex-items-center-justify-center-gap-2'),
+      "w-full plavitekstbg text-white py-2 rounded-md text-sm font-medium mt-4 select-none flex items-center justify-center gap-2",
        this.loading ? "opacity-100" : "",
     ];
   },

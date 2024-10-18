@@ -15,7 +15,7 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6  plava-boja" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg> 
-        </div><button class="plava-boja font-bold items-start">Plaćanje</button>
+        </div><button class="plava-boja font-bold items-start">{{ $t('placanje') }}</button>
       </div>
     </div>
     <div class="lg:max-w-xl w-full">
@@ -33,7 +33,7 @@
   
 
           <div class="mt-4 text-sm p-1 px-2 border-l border-r border-dotted">
-            Plaćanje možete izvršiti na sljedeće naćine:
+            {{ $t('placanje-mozete-izvrsiti-na-sljedece-nacine') }}
           </div>
 
         <div class="w-full flex flex-nowrap gap-2 p-2">
@@ -43,7 +43,7 @@
               </path>
             </svg>
           </div>
-          <div class="text-sm text-gray-500">Skeniranjem koda na uplatnici sa aplikacijom za internet bankarstvo</div>
+          <div class="text-sm text-gray-500">{{ $t('skeniranjem-koda-na-uplatnici-sa-aplikacijom-za-internet-bankarstvo') }}</div>
         </div>
  
         <div class="w-full flex flex-wrap gap-4 p-2">
@@ -55,7 +55,7 @@
                 </path>
               </svg>
             </div>
-            <div class="text-sm text-gray-500">Plaćanje internet bankarstvom 
+            <div class="text-sm text-gray-500">{{ $t('placanje-internet-bankarstvom') }} 
               <!-- <span v-if="order.expiredAt">prije {{ $moment(order.expiredAt).format('DD-MM-YYYY H:mm:ss') }}</span> --> 
             </div>
           </div>
@@ -65,13 +65,13 @@
                 <path id="path0" d="M137.778 49.836 C 33.422 89.851,5.497 232.941,86.278 313.722 C 188.849 416.294,360.000 345.186,360.000 200.000 C 360.000 84.104,247.198 7.880,137.778 49.836 M231.453 146.325 C 247.767 162.639,247.801 171.076,231.611 186.200 L 218.777 198.189 231.688 205.599 C 254.954 218.951,254.119 243.121,229.881 257.899 C 203.731 273.843,160.506 263.854,154.386 240.453 C 151.135 228.019,165.519 227.741,177.778 240.000 C 196.968 259.190,233.725 243.471,223.278 220.542 C 220.055 213.469,213.254 209.030,202.573 207.026 C 185.400 203.804,180.036 191.111,195.848 191.111 C 218.121 191.111,230.750 170.305,216.889 156.444 C 208.585 148.140,187.424 150.125,178.969 160.000 C 164.554 176.835,147.817 168.133,161.252 150.788 C 177.986 129.187,212.144 127.016,231.453 146.325 " stroke="none" fill="currentColor" fill-rule="evenodd"></path>
               </svg>
             </div>
-            <div class="text-sm text-gray-500">Plaćanjem u pošti ili banci sa isprintanom uplatnicom ili podacima</div>
+            <div class="text-sm text-gray-500">{{ $t('placanjem-u-posti-ili-banci-sa-isprintanom-uplatnicom-ili-podacima') }}</div>
           </div>
         </div>
 
 
         <div class="w-full flex text-sm flex-col bg-white p-3 border-t border-b border-gray-300 justify-between">
-          <p>Pošaljite nam potvrdu plaćanja za bržu obradu (opcionalno):</p>
+          <p>{{ $t('posaljite-nam-potvrdu-placanja-za-brzu-obradu-opcionalno') }}</p>
           <label class="block text-center select-none max-w-full" for="receipt_file">
             <div class="inline-block mx-3 mt-3.5 w-24 h-24 border-2 border-gray-700 text-gray-700 border-dashed cursor-pointer">
               <template v-if="selected.proofOfTransaction === null">
@@ -79,7 +79,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
     </svg>
-    <div class="text-center">Dodirnite za prijenos</div>
+    <div class="text-center">{{ $t('dodirnite-za-prijenos') }}</div>
   </div>
 </template>
 <template v-else>
@@ -101,7 +101,7 @@
 
 
 
-        <div class="text-sm mt-2 text-gray-500">Provjerite jeste li ispunili sve podatke dobro prije plaćanja. Uplata uobičajeno stiže u roku 24-72 sati. Mi ćemo Vam svakako poslati obavijest kada je potvrđena uplata.</div>
+        <div class="text-sm mt-2 text-gray-500">{{ $t('provjerite-jeste-li-ispunili-sve-podatke-dobro-prije-placanja-uplata-uobicajeno-stize-u-roku-24-72-sati-mi-cemo-vam-svakako-poslati-obavijest-kada-je-potvrdena-uplata') }}</div>
 
      
 
@@ -116,14 +116,14 @@
            Potvrdi da je uplaćeno
           </button> -->
           <button @click="send" class="w-full p-4 font-bold bg-plava-boja text-white rounded text-center text-sm">
-  POTVRDI DA JE PLAĆENO
+  {{ $t('potvrdi-da-je-placeno') }}
 </button>
    
           <Link 
             class="w-full p-2 bg-transparent  plava-boja border border-primary rounded text-center text-sm" 
             :href="route('skijasi.commerce-theme.zaduzenja')"
           >
-          Odustani
+          {{ $t('odustani') }}
           </Link>
         </div>
 
@@ -139,24 +139,24 @@
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 17h2a2 2 0 002-2v-4a2 2 0 00-2-2H5a2 2 0 00-2 2v4a2 2 0 002 2h2m2 4h6a2 2 0 002-2v-4a2 2 0 00-2-2H9a2 2 0 00-2 2v4a2 2 0 002 2zm8-12V5a2 2 0 00-2-2H9a2 2 0 00-2 2v4h10z" />
     </svg>
-    Isprintaj uplatnicu
+    {{ $t('isprintaj-uplatnicu') }}
   </button>
   <button @click="downloadPDF" class="action-button">
     <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
     </svg>
-    Spremi uplatnicu
+    {{ $t('spremi-uplatnicu') }}
   </button>
 </div>
 <iframe v-if="paymentSlipUrl" ref="pdfViewer" :src="paymentSlipUrl" class="pdf-iframe" frameborder="0"></iframe>
-<p v-else class="mt-12 pt-12 mb-12">Greška u prikazu uplatnice. Ali smo Vam uplatnicu poslali na email. Provjerite email.</p>
+<p v-else class="mt-12 pt-12 mb-12">{{ $t('greska-u-prikazu-uplatnice-ali-smo-vam-uplatnicu-poslali-na-email-provjerite-email') }}</p>
 </div>
 
 <div 
           class="w-full mb-8 mt-2 flex text-sm bg-white p-3 border-b border-gray-300 justify-between cursor-pointer items-center" 
           @click="openAccordion = !openAccordion"
         >
-          <p>Podaci za ručno plaćanje</p>
+          <p>{{ $t('podaci-za-rucno-placanje') }}</p>
           <div class="w-6 h-6 transform transition-transform duration-300 ease-in-out" :class="openAccordion ? '-rotate-180' : ''">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -174,17 +174,17 @@
             <div class="w-full text-sm sm:text-base">{{ bank.displayName }}</div>
             <div class="flex w-full mt-2 text-gray-500 text-xs sm:text-sm">
     <div class="flex-grow">
-      Uplatite na broj računa: {{ bank.accountNumber }} <br />
-      Ime računa: {{ bank.accountName }} <br />
-      Poziv na broj primatelja: {{ user.idmember }} 
+      {{ $t('uplatite-na-broj-racuna') }} {{ bank.accountNumber }} <br />
+      {{ $t('ime-racuna') }} {{ bank.accountName }} <br />
+      {{ $t('poziv-na-broj-primatelja') }} {{ user.idmember }} 
     </div>
     <div 
       class="cursor-pointer self-baseline text-gray-400"
       @click="copyToClipboard(bank.accountNumber)"
     >
-      Kopiraj
+      {{ $t('kopiraj') }}
     </div>
-    <div v-if="showCopiedMessage" class="text-green-500 ml-2">Broj računa kopiran!</div>
+    <div v-if="showCopiedMessage" class="text-green-500 ml-2">{{ $t('broj-racuna-kopiran') }}</div>
   </div>
           </div>
         </div>
@@ -213,20 +213,20 @@
           <svg xmlns="http://www.w3.org/2000/svg" class="h-6  plava-boja" fill="none" viewBox="0 0 24 24" stroke="currentColor">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
           </svg> 
-        </div><button class="plava-boja font-bold items-start">Slanje potvrde plaćanja</button>
+        </div><button class="plava-boja font-bold items-start">{{ $t('slanje-potvrde-placanja') }}</button>
       </div>
     </div>
     <div class="lg:max-w-xl w-full">
       <div class="flex w-full flex-wrap justify-center select-none">
         <div class="w-full flex text-sm bg-white p-3 border-b border-gray-300 justify-between">
-          <p>Ukupno za platiti</p>
+          <p>{{ $t('ukupno-za-platiti') }}</p>
           <span class="plava-boja font-medium">{{ last }}{{ first }}</span>
         </div>
         <div 
           class="w-full flex text-sm bg-white p-3 border-b border-gray-300 justify-between cursor-pointer items-center" 
           @click="openAccordion = !openAccordion"
         >
-          <p>Podaci za plaćanje</p>
+          <p>{{ $t('podaci-za-placanje') }}</p>
           <div class="w-6 h-6 transform transition-transform duration-300 ease-in-out" :class="openAccordion ? '-rotate-180' : ''">
             <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
@@ -244,25 +244,25 @@
             <div class="w-full text-sm sm:text-base">{{ bank.displayName }}</div>
             <div class="flex w-full mt-2 text-gray-500 text-xs sm:text-sm">
     <div class="flex-grow">
-      Uplatite na broj računa: {{ bank.accountNumber }} <br />
-      Ime računa: {{ bank.accountName }} <br />
-      Poziv na broj primatelja: {{ user.idmember }} 
+      {{ $t('uplatite-na-broj-racuna') }} {{ bank.accountNumber }} <br />
+      {{ $t('ime-racuna') }} {{ bank.accountName }} <br />
+      {{ $t('poziv-na-broj-primatelja') }} {{ user.idmember }} 
     </div>
     <div 
       class="cursor-pointer self-baseline text-gray-400"
       @click="copyToClipboard(bank.accountNumber)"
     >
-      Kopiraj
+      {{ $t('kopiraj') }}
     </div>
-    <div v-if="showCopiedMessage" class="text-green-500 ml-2">Broj računa kopiran!</div>
+    <div v-if="showCopiedMessage" class="text-green-500 ml-2">{{ $t('broj-racuna-kopiran') }}</div>
   </div>
           </div>
         </div>
         <div class="w-full flex flex-nowrap gap-2 p-2">
-          <div class="text-xs text-gray-500">Provjerite jeste li ispunili sve podatke dobro prije plaćanja. Uplata uobičajeno stiže u roku 24-72 sati. Mi ćemo Vam svakako poslati obavijest kada je potvrđena uplata.</div>
+          <div class="text-xs text-gray-500">{{ $t('provjerite-jeste-li-ispunili-sve-podatke-dobro-prije-placanja-uplata-uobicajeno-stize-u-roku-24-72-sati-mi-cemo-vam-svakako-poslati-obavijest-kada-je-potvrdena-uplata') }}</div>
         </div>
         <div class="w-full flex text-sm flex-col bg-white p-3 border-t border-b border-gray-300 justify-between">
-          <p>Slanje potvrde plaćanja:</p>
+          <p>{{ $t('slanje-potvrde-placanja-0') }}</p>
           <label class="block text-center select-none max-w-full" for="receipt_file">
             <div class="inline-block mx-3 mt-3.5 w-24 h-24 border-2 border-gray-700 text-gray-700 border-dashed cursor-pointer">
               <template v-if="selected.proofOfTransaction === null">
@@ -270,7 +270,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
       <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12" />
     </svg>
-    <div class="text-center">Dodirnite za prijenos</div>
+    <div class="text-center">{{ $t('dodirnite-za-prijenos') }}</div>
   </div>
 </template>
 <template v-else>
@@ -307,14 +307,14 @@
                 target="_blank"
                 class="py-2 bg-plava-boja text-white w-full rounded text-sm text-center"
               >
-              Spremi 
+              {{ $t('spremi') }} 
               </a>
               <iframe ref="pdfViewer" class="pdf-iframe" frameborder="0"></iframe>
               <button 
                 @click="openDialog = false"
                 class="py-2 bg-white border border-primary hover:bg-plava-boja hover:bg-opacity-10 plava-boja w-full rounded text-sm"
               >
-               Zatvori
+               {{ $t('zatvori') }}
               </button>
             </div>
           </div>
@@ -425,7 +425,7 @@
 
         <div class="w-full flex flex-wrap gap-2 p-2 border-t border-gray-300  max-w-xl bg-white">
           <button @click="send" class="w-full p-4 font-bold bg-plava-boja text-white rounded text-center text-sm" :to="{ name: 'PaymentConfirm' }">
-           POTVRDI DA JE PLAĆENO
+           {{ $t('potvrdi-da-je-placeno') }}
           </button>
         </div>
       </div>
@@ -467,11 +467,11 @@
                 </div>
                 <div class="mt-3 text-center sm:mt-0 sm:text-center">
                   <h3 class="text-lg leading-6 font-medium text-gray-900">
-                    Uspješno plaćanje
+                    {{ $t('uspjesno-placanje') }}
                   </h3>
                   <div class="mt-2">
                     <p class="text-sm text-gray-500">
-                      Uspješno ste završili plaćanje. Poslat ćemo Vam potvrdu na email tijekom idućih dana kada potvrdimo da je uplata sjela.
+                      {{ $t('uspjesno-ste-zavrsili-placanje-poslat-cemo-vam-potvrdu-na-email-tijekom-iducih-dana-kada-potvrdimo-da-je-uplata-sjela') }}
                     </p>
                   </div>
                 </div>
@@ -479,7 +479,7 @@
             </div>
             <div class="bg-gray-50 px-4 py-3 sm:px-6 sm:flex sm:flex-row-reverse">
               <button @click="closeSuccessModal" type="button" class="w-full inline-flex justify-center rounded-md border border-transparent shadow-sm px-4 py-2 bg-blue-500 text-base font-medium text-white hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 sm:ml-3 sm:w-auto sm:text-sm">
-                Zatvori
+                {{ $t('zatvori') }}
               </button>
             </div>
           </div>
@@ -776,7 +776,7 @@ export default {
     const files = e.target.files;
     if (files[0] !== undefined) {
       if (files[0].size > 5120000) {
-        this.$helper.alert("Prevelika datoteka!")
+        this.$helper.alert(this.$t('prevelika-datoteka'))
         return;
       }
 

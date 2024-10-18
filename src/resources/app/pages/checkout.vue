@@ -46,7 +46,7 @@
 <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Profil</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-profil-0') }}</span>
   </Link>
   <!--
   <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center group">
@@ -57,7 +57,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M21.0003 2L19.0003 4M19.0003 4L22.0003 7L18.5003 10.5L15.5003 7.5M19.0003 4L15.5003 7.5M11.3903 11.61C11.9066 12.1195 12.3171 12.726 12.598 13.3948C12.879 14.0635 13.0249 14.7813 13.0273 15.5066C13.0297 16.232 12.8887 16.9507 12.6122 17.6213C12.3357 18.2919 11.9293 18.9012 11.4164 19.4141C10.9035 19.9271 10.2942 20.3334 9.62358 20.6099C8.95296 20.8864 8.23427 21.0275 7.50891 21.025C6.78354 21.0226 6.06582 20.8767 5.39707 20.5958C4.72831 20.3148 4.12174 19.9043 3.61227 19.388C2.6104 18.3507 2.05604 16.9614 2.06857 15.5193C2.0811 14.0772 2.65953 12.6977 3.67927 11.678C4.69902 10.6583 6.07849 10.0798 7.52057 10.0673C8.96265 10.0548 10.352 10.6091 11.3893 11.611L11.3903 11.61ZM11.3903 11.61L15.5003 7.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Promjena lozinke</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-0') }}</span>
   </Link>
 
 
@@ -68,7 +68,7 @@ class="bell-icon">
 <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">{{ $t('obavijesti-0') }}</span>
   </Link>
 
 
@@ -87,7 +87,7 @@ class="bell-icon">
 </defs>
 </svg>
 </div>
-  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-0') }}</span>
 </Link>
 
 
@@ -105,7 +105,7 @@ class="bell-icon">
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Povijest plaćanja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-0') }}</span>
   </Link>
 
 
@@ -123,7 +123,7 @@ class="bell-icon">
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Zaduženja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('zaduzenja-0') }}</span>
   </Link>
   <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
@@ -132,7 +132,7 @@ class="bell-icon">
 <path d="M12 16V12" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 8H12.01" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Status</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-status-0') }}</span>
   </Link>
 
 
@@ -151,7 +151,7 @@ class="bell-icon">
 <rect width="24" height="24" fill="white"/>
 </clipPath>
 </defs>
-</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Odjavi se</span>
+</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('odjavi-se-0') }}</span>
   </div>
 </div>
 </div>  </div>
@@ -186,7 +186,7 @@ class="bell-icon">
 <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Profil</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-profil-0') }}</span>
   </Link>
   <!--
   <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center group">
@@ -197,7 +197,7 @@ class="bell-icon">
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M21.0003 2L19.0003 4M19.0003 4L22.0003 7L18.5003 10.5L15.5003 7.5M19.0003 4L15.5003 7.5M11.3903 11.61C11.9066 12.1195 12.3171 12.726 12.598 13.3948C12.879 14.0635 13.0249 14.7813 13.0273 15.5066C13.0297 16.232 12.8887 16.9507 12.6122 17.6213C12.3357 18.2919 11.9293 18.9012 11.4164 19.4141C10.9035 19.9271 10.2942 20.3334 9.62358 20.6099C8.95296 20.8864 8.23427 21.0275 7.50891 21.025C6.78354 21.0226 6.06582 20.8767 5.39707 20.5958C4.72831 20.3148 4.12174 19.9043 3.61227 19.388C2.6104 18.3507 2.05604 16.9614 2.06857 15.5193C2.0811 14.0772 2.65953 12.6977 3.67927 11.678C4.69902 10.6583 6.07849 10.0798 7.52057 10.0673C8.96265 10.0548 10.352 10.6091 11.3893 11.611L11.3903 11.61ZM11.3903 11.61L15.5003 7.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Promjena lozinke</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-0') }}</span>
   </Link>
 
 
@@ -228,7 +228,7 @@ class="bell-icon">
     />
   </svg>
 </div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">Obavijesti</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">{{ $t('obavijesti-0') }}</span>
   </Link>
 
 
@@ -247,7 +247,7 @@ class="bell-icon">
 </defs>
 </svg>
 </div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Zahtjevi</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-0') }}</span>
   </Link>
 
 
@@ -264,7 +264,7 @@ class="bell-icon">
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Povijest plaćanja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-0') }}</span>
   </Link>
 
 
@@ -282,7 +282,7 @@ class="bell-icon">
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">Zaduženja</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('zaduzenja-0') }}</span>
   </Link>
   <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
@@ -291,7 +291,7 @@ class="bell-icon">
 <path d="M12 16V12" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 8H12.01" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Moj Status</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-status-0') }}</span>
   </Link>
 
 
@@ -310,7 +310,7 @@ class="bell-icon">
 <rect width="24" height="24" fill="white"/>
 </clipPath>
 </defs>
-</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">Odjavi se</span>
+</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('odjavi-se-0') }}</span>
   </div>
 </div> 
 </div>  </div> </transition>
@@ -334,7 +334,7 @@ class="bell-icon">
   <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
   <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd" />
 </svg>
-              Plaćanje za osobu:
+              {{ $t('placanje-za-osobu') }}
             </span>
             <template v-if="isAddState">
               <!-- <Link
@@ -397,7 +397,7 @@ class="bell-icon">
                     <span
                       v-if="address.isMain == 1"
                       class="text-sm text-gray-500"
-                      >Glavna</span
+                      >{{ $t('glavna') }}</span
                     >
                   </div>
 
@@ -407,7 +407,7 @@ class="bell-icon">
                     class="bg-primary1 px-3 py-1 w-24 text-white rounded"
                     @click="isAddState = false"
                   >
-                    Potvrdi
+                    {{ $t('potvrdi-0') }}
                   </button>
                 </div>
               </div>
@@ -487,11 +487,11 @@ class="bell-icon">
       <div class="bg-white hidden sm:block rounded-xl shadow-md mt-4">
         <div class="p-6 grid">
           <div class="gap-2 grid grid-cols-6">
-            <div class="col-span-2 text-lg font-medium">Narudžba</div>
+            <div class="col-span-2 text-lg font-medium">{{ $t('narudzba') }}</div>
             <div></div>
-            <div class="text-gray-300 text-sm">Jedinična cijena</div>
-            <div class="text-gray-300 text-sm">Količina</div>
-            <div class="text-gray-300 text-sm text-right">Međuzbroj narudžbe</div>
+            <div class="text-gray-300 text-sm">{{ $t('jedinicna-cijena-0') }}</div>
+            <div class="text-gray-300 text-sm">{{ $t('kolicina') }}</div>
+            <div class="text-gray-300 text-sm text-right">{{ $t('meduzbroj-narudzbe') }}</div>
           </div>
           <div class="divide-y divide-dashed border-b border-dashed mt-4">
             <div
@@ -506,7 +506,7 @@ class="bell-icon">
                 </div>
               </div>
               <div class="text-xs text-gray-400 pl-2">
-                Status člana: {{ item.productDetail.name }}
+                {{ $t('status-clana') }} {{ item.productDetail.name }}
               </div>
               <div
                 class="text-sm"
@@ -567,7 +567,7 @@ class="bell-icon">
                 text-sm
               "
             >
-              Napomena:
+              {{ $t('napomena') }}
               <textarea
                 v-model="message"
                 class="
@@ -580,7 +580,7 @@ class="bell-icon">
                   border-gray-300
                 "
                 rows="1"
-                placeholder="Ostavite nam poruku ukoliko želite (opcionalno) "
+                  :placeholder="$t('ostavite-nam-poruku-ukoliko-zelite-opcionalno')"
               ></textarea>
             </div>
             <!-- <div
@@ -600,7 +600,7 @@ class="bell-icon">
           </div>
           <div class="flex pt-6 justify-end gap-4 items-center">
             <div class="text-sm text-gray-400">
-              Ukupni iznos:
+              {{ $t('ukupni-iznos') }}
               <!-- Ukupni iznos (odabrano {{ items.length }}): -->
             </div>
             <div class="text-lg plava-boja">
@@ -624,7 +624,7 @@ class="bell-icon">
               text-gray-700
             "
           >
-          Način plaćanja
+          {{ $t('nacin-placanja') }}
           </div>
           <div
             class="ml-4 pt-6 md:col-span-6 lg:col-span-7 flex gap-4 flex-wrap"
@@ -714,7 +714,7 @@ class="bell-icon">
               class="md:w-1/2 lg:w-1/3 flex justify-between items-center flex-1"
             >
               <div class="text-sm text-gray-500 text-left">
-                Zbroj za odabrano:
+                {{ $t('zbroj-za-odabrano') }}
               </div>
               <div class="text-sm text-gray-500">
                 {{ $currency(getTotalCost) }}
@@ -734,7 +734,7 @@ class="bell-icon">
               class="md:w-1/2 lg:w-1/3 flex justify-between items-center flex-1"
             >
               <div class="text-sm text-gray-500 text-left">
-                Ukupno Za Platiti:
+                {{ $t('ukupno-za-platiti-0') }}
               </div>
               <div class="text-3xl plava-boja">
                 {{ $currency(getTotalCost + parseInt(shippingCost)) }}
@@ -763,7 +763,7 @@ class="bell-icon">
   <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
   </svg>
-  NA PLAĆANJE
+  {{ $t('na-placanje-0') }}
 </button>
           </div>
         </div>
@@ -795,7 +795,7 @@ class="bell-icon">
         </div>
         <div class="flex-grow flex flex-col">
           <div class="text-sm mb-1">
-            Plaćanje za osobu:
+            {{ $t('placanje-za-osobu') }}
           </div>
             <!-- <template v-if="isAddState">
               <Link
@@ -837,7 +837,7 @@ class="bell-icon">
                     <span
                       v-if="address.isMain == 1"
                       class="text-sm text-gray-500"
-                      >Glavna</span
+                      >{{ $t('glavna') }}</span
                     >
                   </div>
                 </div>
@@ -846,7 +846,7 @@ class="bell-icon">
                     class="bg-primary1 px-3 py-1 w-24 text-white rounded"
                     @click="isAddState = false"
                   >
-                    Potvrdi
+                    {{ $t('potvrdi-0') }}
                   </button>
                 </div>
               </div>
@@ -971,7 +971,7 @@ class="bell-icon">
                 {{ item.productDetail.product.name }}
               </div>
               <div class="text-xs text-gray-500">
-                Status: {{ item.productDetail.name }}
+                {{ $t('status-1') }} {{ item.productDetail.name }}
               </div>
               <div
                 class="
@@ -1003,8 +1003,7 @@ class="bell-icon">
         </div>
 
         <div class="p-3 flex justify-between text-sm w-full">
-          <div>Iznos narudžbe
-             (odabrano {{ items.length }}):
+          <div>{{ $t('iznos-narudzbe-odabrano') }} {{ items.length }}):
             </div>
           <div class="font-medium plava-boja">
             {{ $currency(getTotalCost) }}
@@ -1031,11 +1030,11 @@ class="bell-icon">
               d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
             />
           </svg>
-          <span class="text-gray-500">Način plaćanja</span>
+          <span class="text-gray-500">{{ $t('nacin-placanja') }}</span>
         </div>
         <div class="1/4 text-sm flex items-center pt-1">
           <span class="plava-boja" v-if="!option"
-            >Uplatnica/Internet Bankarstvo</span
+            >{{ $t('uplatnica-internet-bankarstvo') }}</span
           >
           <!-- <span class="plava-boja" v-if="!option"
             >Promijeni</span
@@ -1070,7 +1069,7 @@ class="bell-icon">
      <div class="text-xs text-gray-700">{{ $currency(shippingCost) }}</div>
         </div>-->  
         <div class="flex justify-between items-center">
-          <div class="text-gray-700">Ukupno sve:</div>
+          <div class="text-gray-700">{{ $t('ukupno-sve') }}</div>
           <div class="plava-boja">
             {{ $currency(getTotalCost + parseInt(shippingCost)) }}
           </div>
@@ -1097,7 +1096,7 @@ class="bell-icon">
        
           @click="checkout"
         >
-          Na plaćanje
+          {{ $t('na-placanje-1') }}
         </div>
 
       </div>

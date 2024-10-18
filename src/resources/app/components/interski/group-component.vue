@@ -5,51 +5,45 @@
     <div class="description">
       <div class="interski-kongres-svjetska-container">
         <p class="interski-kongres-svjetska-je-o">
-          <b>Interski kongres svjetska je organizacija</b>
-          <span class="koja-okuplja-vie"> koja okuplja više od </span>
-          <b class="nacija-i-3">40 nacija i 3 međunarodne organizacije</b>
+          <b>{{ $t('interski-kongres-svjetska-je-organizacija') }}</b>
+          <span class="koja-okuplja-vie"> {{ $t('koja-okuplja-vise-od') }} </span>
+          <b class="nacija-i-3">{{ $t('40-nacija-i-3-medunarodne-organizacije') }}</b>
           <span class="span3">.</span>
         </p>
         <p class="blank-line73">&nbsp;</p>
         <p class="odrava-se-svake-4-godine-na-d">
-          <span class="odrava-se-svake">Održava se svake </span>
-          <b class="godine1">4 godine</b>
-          <span> na drugoj lokaciji.</span>
+          <span class="odrava-se-svake">{{ $t('odrzava-se-svake') }} </span>
+          <b class="godine1">{{ $t('4-godine') }}</b>
+          <span> {{ $t('na-drugoj-lokaciji') }}</span>
         </p>
         <p class="blank-line74">&nbsp;</p>
         <p class="ciljevi-interski-kongresa">
-          <b>Ciljevi Interski kongresa:</b>
+          <b>{{ $t('ciljevi-interski-kongresa') }}</b>
         </p>
         <ul class="razvoj-promocija-i-koordinaci">
           <li class="razvoj-promocija-i-koordinaci1">
             <span
-              >razvoj, promocija i koordinacija međunarodnih pitanja relevantnih
-              za sportove na snijegu</span
+              >{{ $t('razvoj-promocija-i-koordinacija-medunarodnih-pitanja-relevantnih-za-sportove-na-snijegu') }}</span
             >
           </li>
           <li class="razvoj-promocija-i-koordinaci2">
             <span
-              >razvoj, promocija i koordinacija metodologija podučavanja
-              sportova na snijegu</span
+              >{{ $t('razvoj-promocija-i-koordinacija-metodologija-poducavanja-sportova-na-snijegu') }}</span
             >
           </li>
           <li class="razmjena-do-sada-nauenih-i-pr">
             <span
-              >razmjena do sada naučenih i primijenjenih znanja i vještina
-              sportova na snijegu</span
+              >{{ $t('razmjena-do-sada-naucenih-i-primijenjenih-znanja-i-vjestina-sportova-na-snijegu') }}</span
             >
           </li>
           <li class="usavravanja-i-unapreenja-na">
             <span
-              >usavršavanja i unapređenja načina učenja i tehnika sportova na
-              snijegu</span
+              >{{ $t('usavrsavanja-i-unapredenja-nacina-ucenja-i-tehnika-sportova-na-snijegu') }}</span
             >
           </li>
           <li>
             <span
-              >okupljanje najboljih skijaša iz svake nacije, skijaških medija,
-              stručnjaka u industriji, dobavljača opreme i tisuće sudionika,
-              ljubitelja sportova na snijegu</span
+              >{{ $t('okupljanje-najboljih-skijasa-iz-svake-nacije-skijaskih-medija-strucnjaka-u-industriji-dobavljaca-opreme-i-tisuce-sudionika-ljubitelja-sportova-na-snijegu') }}</span
             >
           </li>
         </ul>
