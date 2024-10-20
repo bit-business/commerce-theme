@@ -35,10 +35,11 @@
               
                 class="form-input"
               ></textarea>
-              <div v-else-if="field.fieldType === 'select'" class="form-group">
+ <!-- Update select field to use translated options -->
+ <div v-else-if="field.fieldType === 'select'" class="form-group">
     <div class="dropdown" @click="toggleDropdown(field.label)">
       <div class="dropdown-select">
-        <span>{{ formData[field.label] ? translateOption(field, formData[field.label]) : $t('izaberite') }}</span>
+        <span>{{ formData[field.label] ? getTranslatedOption(field, formData[field.label]) : $t('izaberite') }}</span>
         <i class="arrow" :class="{ 'arrow-up': activeDropdown === field.label }"></i>
       </div>
       <transition name="fade">
@@ -49,32 +50,33 @@
             class="dropdown-list-item" 
             @click.stop="selectOption(option, field.label)"
           >
-            {{ translateOption(field, option) }}
+            {{ getTranslatedOption(field, option) }}
           </div>
         </div>
       </transition>
     </div>
   </div>
 
+            <!-- Update radio buttons to use translated options -->
+            <div v-else-if="field.fieldType === 'radio' && field.label !== 'Na seminaru:' && (field.required === '1' || field.required === true)" class="radio-group">
+              <div
+              v-for="option in parseOptions(field.options)"
+              :key="option"
+              class="radio-option"
+            >
+              <input
+                type="radio"
+                :id="`${field.label}-${option}`"
+                :name="field.label"
+                :value="option"
+                v-model.lazy="formData[field.label]"
+              />
+              <label :for="`${field.label}-${option}`">{{ getTranslatedOption(field, option) }}</label>
+            </div>
+          </div>
+
           
-<div v-else-if="field.fieldType === 'radio' && field.label !== 'Na seminaru:' && (field.required === '1' || field.required === true)" class="radio-group">
-  <div
-    v-for="option in parseOptions(field.options)"
-    :key="option"
-    class="radio-option"
-  >
-    <input
-      type="radio"
-      :id="`${field.label}-${option}`"
-      :name="field.label"
-      :value="option"
-      v-model.lazy="formData[field.label]"
-    
-    />
-    <label :for="`${field.label}-${option}`">{{ translateOption(field, option) }}</label>
-    <!-- <label :for="`${field.label}-${option}`">{{ option }}</label> -->
-  </div>
-</div>
+
 
               <div v-else-if="field.fieldType === 'checkbox'" class="checkbox-group">
                 <input
@@ -85,34 +87,36 @@
                 />
                 <label :for="field.label">{{ field.label }}</label>
               </div>
-              <div
-                v-else-if="field.fieldType === 'date'" class="date-input-group">
-          <input
-            type="date"
-            :id="field.label"
-            v-model.lazy="formData[field.label]"
-            class="form-input"
-          />
-        </div>
+              <div v-else-if="field.fieldType === 'date'" class="date-input-group">
+  <input
+    type="date"
+    :id="field.label"
+    :value="getFormattedDate(field.label)"
+    @input="updateDate($event, field.label)"
+    class="form-input"
+  />
+</div>
 
               
-              <div v-if="field.label === 'Na seminaru:' && isFieldRequired(field)" class="radio-group">
-          <label>{{ field.displayLabel }}</label>
-          <div v-for="(options, status) in getOptions(field.options)" :key="status">
-            <div v-if="status === userStatus && getStatusOptions(getOptions(field.options), status).length > 0">
-              <div v-for="option in getStatusOptions(getOptions(field.options), status)" :key="option" class="radio-option">
-                <input 
-                  type="radio" 
-                  :id="`${field.label}-${option}`"
-                  :name="field.label" 
-                  :value="option" 
-                  v-model.lazy="formData[field.label]"
-                >
-                <label :for="`${field.label}-${option}`">{{ option }}</label>
+          <!-- Special handling for "Na seminaru:" field -->
+          <div v-if="field.label === 'Na seminaru:' && isFieldRequired(field)" class="radio-group">
+            <!-- <label>{{ getTranslatedLabel(field) }}</label> -->
+            <div v-for="(options, status) in getOptions(field.options)" :key="status">
+              <div v-if="status === userStatus && getStatusOptions(getOptions(field.options), status).length > 0">
+                <div v-for="option in getStatusOptions(getOptions(field.options), status)" :key="option" class="radio-option">
+                  <input 
+                    type="radio" 
+                    :id="`${field.label}-${option}`"
+                    :name="field.label" 
+                    :value="option" 
+                    v-model="formData[field.label]"
+                  >
+                  <label :for="`${field.label}-${option}`">{{ getTranslatedOption(field, option, status) }}</label>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+
 
             </div>
           </div>
@@ -302,6 +306,9 @@ export default {
       errors: {},
       showConfirmation: false,
 
+      currentLanguage: 'hr', 
+
+
       scrollPosition: 0,
     }
   },
@@ -325,7 +332,19 @@ export default {
     return this.korisnik.statusString || "Nije član";
   },
      
-  
+  formattedDates() {
+    const formatted = {};
+    for (const [key, value] of Object.entries(this.formData)) {
+      if (this.formFields.find(f => f.label === key && f.fieldType === 'date')) {
+        formatted[key] = this.formatDateToCroatian(value);
+      } else {
+        formatted[key] = value;
+      }
+    }
+    return formatted;
+  },
+
+
   },
 
   beforeDestroy() {
@@ -372,7 +391,29 @@ export default {
 
     this.$forceUpdate();
   },
+  created() {
+  const savedLang = localStorage.getItem('userLanguage') || 'hr'; // Default to 'hr' if not set
+  this.changeLanguage(savedLang);
+  console.log("Saved language:", savedLang);
+},
+
   methods: {
+
+
+ changeLanguage(lang) {
+      this.currentLanguage = lang;
+      this.$i18n.locale = lang;
+      localStorage.setItem('userLanguage', lang);
+    },
+    getDisplayLabel(field) {
+      const currentLang = this.$i18n.locale;
+      if (currentLang !== 'hr' && field.translations && field.translations[currentLang]) {
+        return field.translations[currentLang].label || field.label;
+      }
+      return field.label;
+    },
+
+
 
     saveScrollPosition() {
     this.scrollPosition = window.pageYOffset;
@@ -535,14 +576,31 @@ setSelectedProduct() {
 },
 
 
-    shouldShowField(field) {
-      if (field.label === 'Na seminaru:') {
-        const options = this.getOptions(field.options);
-        const statusOptions = this.getStatusOptions(options, this.userStatus);
-        return statusOptions.length > 0;
-      }
-      return true;
-    },
+shouldShowField(field) {
+  if (field.label === 'Na seminaru:') {
+    try {
+      const options = this.getOptions(field.options);
+      const statusOptions = this.getStatusOptions(options, this.userStatus);
+      return statusOptions.length > 0;
+    } catch (error) {
+      console.error('Error in shouldShowField:', error);
+      return false;
+    }
+  }
+  return true;
+},
+
+getStatusOptions(options, status) {
+  if (typeof options === 'object' && options !== null) {
+    const statusOptions = options[status];
+    if (typeof statusOptions === 'string') {
+      return statusOptions.split(',').map(opt => opt.trim()).filter(opt => opt !== '');
+    } else if (Array.isArray(statusOptions)) {
+      return statusOptions;
+    }
+  }
+  return [];
+},
 
     isFieldRequired(field) {
       // If the field label is 'Napomena', it should not be required
@@ -563,24 +621,40 @@ setSelectedProduct() {
     },
 
     getOptions(optionsString) {
-      try {
-        // Parse the outer JSON string
-        const parsedOuter = JSON.parse(optionsString);
-        // Parse the inner JSON string
-        const parsedInner = JSON.parse(parsedOuter);
-        return parsedInner;
-      } catch (e) {
-        console.error('Error parsing options:', e);
-        return {};
-      }
-    },
+  console.log('Raw options:', optionsString);
+  
+  if (!optionsString) {
+    return {};
+  }
 
-    getStatusOptions(options, status) {
-      if (typeof options[status] === 'string') {
-        return options[status].split(',').map(opt => opt.trim()).filter(opt => opt !== '');
-      }
-      return [];
-    },
+  if (typeof optionsString === 'object' && optionsString !== null) {
+    return optionsString;
+  }
+
+  try {
+    // First, try to parse as JSON
+    const parsed = JSON.parse(optionsString);
+    
+    // If it's a string after parsing, it might be double-encoded
+    if (typeof parsed === 'string') {
+      return JSON.parse(parsed);
+    }
+    
+    return parsed;
+  } catch (e) {
+    console.error('Error parsing options:', e);
+    
+    // If JSON parsing fails, return the original string as an object
+    if (typeof optionsString === 'string') {
+      return { [optionsString]: optionsString };
+    }
+    
+    // If all else fails, return an empty object
+    return {};
+  }
+},
+
+
 
 
     shouldShowStatus(field, status) {
@@ -623,26 +697,33 @@ setSelectedProduct() {
   },
 
   
-  parseOptions(optionsString) {
-    console.log('Original options string:', optionsString);
-    if (!optionsString) return [];
-
-    try {
-      // Try parsing as JSON first
-      const parsed = JSON.parse(optionsString);
-      if (Array.isArray(parsed)) {
-        return parsed;
-      } else if (typeof parsed === 'string') {
-        // If it's a string, split by comma
-        return this.splitAndClean(parsed);
-      } else {
-        return [String(parsed)];
+  parseOptions(options) {
+      console.log('Parsing options:', options);
+      if (typeof options === 'string') {
+        return options.split(',').map(opt => opt.trim());
+      } else if (Array.isArray(options)) {
+        return options;
+      } else if (typeof options === 'object' && options !== null) {
+        return Object.keys(options);
       }
-    } catch (e) {
-      // If JSON parsing fails, treat as a string
-      return this.splitAndClean(optionsString);
-    }
-  },
+      return [];
+    },
+
+    getTranslatedOption(field, option) {
+      const currentLang = this.$i18n.locale;
+      if (currentLang !== 'hr' && field.translations && field.translations[currentLang]) {
+        const translatedOptions = field.translations[currentLang].options;
+        if (typeof translatedOptions === 'object' && translatedOptions !== null) {
+          return translatedOptions[option] || option;
+        } else if (typeof translatedOptions === 'string') {
+          const translatedArray = this.parseOptions(translatedOptions);
+          const originalArray = this.parseOptions(field.options);
+          const index = originalArray.findIndex(opt => opt.trim() === option);
+          return index !== -1 ? translatedArray[index].trim() : option;
+        }
+      }
+      return option;
+    },
 
   splitAndClean(str) {
     return str
@@ -662,20 +743,30 @@ setSelectedProduct() {
     this.restoreScrollPosition();
   });
 },
-  selectOption(option, fieldLabel) {
-    this.formData[fieldLabel] = option;
-    this.activeDropdown = null;
-    this.errors[fieldLabel] = null; 
-    this.restoreScrollPosition();
-  },
 
-  getDisplayLabel(field) {
+selectOption(option, fieldLabel) {
+      this.formData[fieldLabel] = option;
+      this.activeDropdown = null;
+      this.errors[fieldLabel] = null;
+      this.restoreScrollPosition();
+    },
+
+    getTranslatedLabel(field) {
+    const currentLang = this.$i18n.locale;
+    if (currentLang !== 'hr' && field.translations && field.translations[currentLang]) {
+      return field.translations[currentLang].label || field.label;
+    }
+    return field.label;
+  },
+  
+    getDisplayLabel(field) {
   const currentLang = this.$i18n.locale;
   if (currentLang !== 'hr' && field.translations && field.translations[currentLang]) {
     return field.translations[currentLang].label || field.label;
   }
   return fixedDisplayLabels[field.label] || field.label;
 },
+
 translateOption(field, option) {
   const currentLang = this.$i18n.locale;
   if (currentLang !== 'hr' && field.translations && field.translations[currentLang]) {
@@ -684,32 +775,43 @@ translateOption(field, option) {
   return option;
 },
 
-  async fetchForms(userid) {
+async fetchForms(userid) {
   try {
     this.userId = userid;
     const formFieldsResponse = await api.getFormFields(this.formId);
     console.log("Form fields:", formFieldsResponse.data);
     
-    // Set formFields and then immediately map over it to normalize the 'required' property
     this.formFields = formFieldsResponse.data.fields["\u0000*\u0000items"] || [];
-    this.formFields = this.formFields.map(field => ({
-      ...field,
-      required: field.required === '1' || field.required === true || field.required === 1
-    }));
+    this.formFields = this.formFields.map(field => {
+      const parsedOptions = JSON.parse(field.options || '{}');
+      return {
+        ...field,
+        required: field.required === '1' || field.required === true || field.required === 1,
+        translations: parsedOptions.translations || {},
+        options: parsedOptions.options || field.options
+      };
+    });
 
-    // Log the updated formFields to check the 'required' values
     console.log("Updated form fields:", this.formFields);
 
     this.formFields.forEach(field => {
       this.$set(this.formData, field.label, '');
     });
 
-    const userResponse = await api.getUserData(this.user.id);
+   const userResponse = await api.getUserData(this.user.id);
     const userData = userResponse.data.user;
     if (userData) {
       Object.keys(this.formData).forEach(key => {
         if (userData[key.toLowerCase()]) {
-          this.$set(this.formData, key, userData[key.toLowerCase()]);
+          const field = this.formFields.find(f => f.label === key);
+          if (field && field.fieldType === 'date') {
+            // Ensure the date is in YYYY-MM-DD format
+            const date = new Date(userData[key.toLowerCase()]);
+            const formattedDate = date.toISOString().split('T')[0];
+            this.$set(this.formData, key, formattedDate);
+          } else {
+            this.$set(this.formData, key, userData[key.toLowerCase()]);
+          }
         }
       });
     }
@@ -740,6 +842,7 @@ translateOption(field, option) {
           }
         });
 
+        
         // Special handling for "Na seminaru:" field
         if (this.formFields.some(field => field.label === 'Na seminaru:')) {
           const naSeminaruField = this.formFields.find(field => field.label === 'Na seminaru:');
@@ -764,16 +867,15 @@ translateOption(field, option) {
         // const submissionData = { ...this.formData };
 
         const submissionData = {};
-    Object.keys(this.formData).forEach(key => {
-      const field = this.formFields.find(f => f.label === key);
-      if (field && (field.fieldType === 'select' || field.fieldType === 'radio')) {
-        // Find the original option value
-        const originalOptions = this.parseOptions(field.options);
-        submissionData[key] = originalOptions.find(opt => this.translateOption(field, opt) === this.formData[key]) || this.formData[key];
-      } else {
-        submissionData[key] = this.formData[key];
-      }
-    });
+        Object.keys(this.formData).forEach(key => {
+          const field = this.formFields.find(f => f.label === key);
+          if (field && (field.fieldType === 'select' || field.fieldType === 'radio')) {
+            // Use the original option value for submission
+            submissionData[key] = this.formData[key];
+          } else {
+            submissionData[key] = this.formData[key];
+          }
+        });
 
         // Safely add user status and ID
         submissionData['Status člana'] = this.userStatus || 'Nepoznato';
@@ -791,17 +893,27 @@ translateOption(field, option) {
       }
     },
 
-    formatDateToCroatian(dateString) {
-      if (!dateString) return '';
-      const [year, month, day] = dateString.split('-');
-      return `${day}.${month}.${year}`;
-    },
 
-    parseCroatianDate(dateString) {
-      if (!dateString) return '';
-      const [day, month, year] = dateString.split('.');
-      return `${year}-${month}-${day}`;
-    },
+    formatDateToCroatian(dateString) {
+    if (!dateString) return '';
+    const [year, month, day] = dateString.split('-');
+    return `${day}.${month}.${year}.`;
+  },
+
+  parseCroatianDate(dateString) {
+    if (!dateString) return '';
+    const [day, month, year] = dateString.replace(/\./g, '').split(/[\s/-]+/);
+    return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
+  },
+
+  getFormattedDate(fieldLabel) {
+    return this.formData[fieldLabel] || '';
+  },
+
+  updateDate(event, fieldLabel) {
+    const inputValue = event.target.value;
+    this.$set(this.formData, fieldLabel, inputValue);
+  },
 
 
   

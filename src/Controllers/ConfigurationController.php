@@ -15,6 +15,8 @@ use NadzorServera\Skijasi\Traits\FileHandler;
 
 
 
+use Illuminate\Support\Facades\Log;
+
 use NadzorServera\Skijasi\Theme\CommerceTheme\Models\Form;
 use NadzorServera\Skijasi\Theme\CommerceTheme\Models\FormField;
 use NadzorServera\Skijasi\Theme\CommerceTheme\Models\FormEntry;
@@ -208,12 +210,19 @@ class ConfigurationController extends Controller
 
 
     // New methods for form handling
-
     public function getFormFields($formId)
     {
         try {
-            $formFields = FormField::where('form_id', $formId)->get();
-            $form = Form::find($formId); // Ensure you get the form details too
+            $formFields = FormField::where('form_id', $formId)->get()->map(function ($field) {
+                $decodedOptions = json_decode($field->options, true);
+                $field->options = $decodedOptions['options'] ?? null;
+                $field->translations = $decodedOptions['translations'] ?? null;
+                if ($field->label === 'Na seminaru:') {
+                    $field->showForStatus = $decodedOptions['showForStatus'] ?? null;
+                }
+                return $field;
+            });
+            $form = Form::find($formId);
     
             if (!$form) {
                 throw new Exception('Form not found');
@@ -333,36 +342,9 @@ class ConfigurationController extends Controller
         }
     }
 
-    public function saveForm(Request $request)
-    {
-        DB::beginTransaction();
-    
-        try {
-            $form = new Form();
-            $form->name = $request->name;
-            $form->description = $request->description;
-            $form->save();
-    
-            foreach ($request->fields as $fieldData) {
-                $field = new FormField();
-                $field->form_id = $form->id;
-                $field->label = $fieldData['label'];
-                $field->field_type = $fieldData['field_type'];
-                $field->required = $fieldData['required'] ? 1 : 0; 
-                $field->options = !empty($fieldData['options']) ? json_encode($fieldData['options']) : null;
-                $field->save();
-            }
-    
-            DB::commit();
-    
-            return ApiResponse::success(['form' => $form]);
-        } catch (Exception $e) {
-            DB::rollBack();
-    
-            return ApiResponse::failed($e);
-        }
-    }
-    
+
+
+
     public function updateFormProductSlug(Request $request)
     {
         DB::beginTransaction();
@@ -413,37 +395,199 @@ class ConfigurationController extends Controller
         }
     }
 
-    public function updateForm(Request $request, $formId)
+    public function saveForm(Request $request)
     {
         DB::beginTransaction();
     
         try {
-            $form = Form::findOrFail($formId);
-            $form->name = $request->name;
-            $form->description = $request->description;
+            // Validation remains the same
+            $validatedData = $request->validate([
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'fields' => 'nullable|array',
+                'fields.*.label' => 'nullable|string|max:255',
+                'fields.*.field_type' => 'nullable|string',
+                'fields.*.required' => 'nullable|boolean',
+                'fields.*.options' => 'nullable',
+                'fields.*.translations' => 'nullable|string',
+            ]);
+    
+            $form = new Form();
+            $form->name = $validatedData['name'];
+            $form->description = $validatedData['description'] ?? null;
             $form->save();
     
-            // Delete existing fields
-            FormField::where('form_id', $formId)->delete();
-    
-            // Add new fields
-            foreach ($request->fields as $fieldData) {
+            foreach ($validatedData['fields'] as $fieldData) {
                 $field = new FormField();
                 $field->form_id = $form->id;
                 $field->label = $fieldData['label'];
-                $field->field_type = $fieldData['field_type'];
-                $field->options = isset($fieldData['options']) ? json_encode($fieldData['options']) : null;
-                $field->required = $fieldData['required'] ?? false;
+                $field->field_type = $fieldData['fieldType'] ?? $fieldData['field_type'];
+                $field->required = $fieldData['required'] ? 1 : 0;
+    
+                // Handle options and translations
+                $optionsData = [];
+                $translations = is_string($fieldData['translations']) ? json_decode($fieldData['translations'], true) : $fieldData['translations'];
+    
+                if ($fieldData['label'] === 'Na seminaru:') {
+                    $options = is_string($fieldData['options']) ? json_decode($fieldData['options'], true) : $fieldData['options'];
+                    $optionsData = [
+                        'options' => $options['options'] ?? [],
+                        'showForStatus' => $options['showForStatus'] ?? [],
+                        'translations' => [
+                            'en' => [
+                                'label' => $translations['en']['label'] ?? '',
+                                'options' => $translations['en']['options'] ?? [],
+                            ],
+                            'it' => [
+                                'label' => $translations['it']['label'] ?? '',
+                                'options' => $translations['it']['options'] ?? [],
+                            ],
+                        ],
+                    ];
+                } else {
+                    $optionsData = [
+                        'options' => $fieldData['options'] ?? '',
+                        'translations' => $translations,
+                    ];
+                }
+    
+                $field->options = json_encode($optionsData);
                 $field->save();
             }
     
             DB::commit();
     
-            return ApiResponse::success(['form' => $form]);
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Form saved successfully.',
+                'data' => [
+                    'form' => $form
+                ]
+            ], 200);
+        } catch (ValidationException $e) {
+            DB::rollBack();
+            Log::error('Validation failed: ' . json_encode($e->errors()));
+            return response()->json([
+                'status' => 'fail',
+                'message' => 'Validation failed',
+                'errors' => $e->errors()
+            ], 422);
         } catch (Exception $e) {
             DB::rollBack();
-            return ApiResponse::failed($e);
+            Log::error('Error saving form: ' . $e->getMessage());
+            return response()->json([
+                'status' => 'error',
+                'message' => 'An error occurred while saving the form',
+                'error' => $e->getMessage()
+            ], 500);
         }
+    }
+
+    public function updateForm(Request $request, $formId)
+    {
+        DB::beginTransaction();
+    
+        try {
+            // Validation remains the same
+            $validator = Validator::make($request->all(), [
+                'name' => 'required|string|max:255',
+                'description' => 'nullable|string',
+                'fields' => 'nullable|array',
+                'fields.*.label' => 'nullable|string|max:255',
+                'fields.*.fieldType' => 'nullable|string',
+                'fields.*.field_type' => 'nullable|string',
+                'fields.*.required' => 'nullable|boolean',
+                'fields.*.options' => 'nullable',
+                'fields.*.translations' => 'nullable',
+            ]);
+    
+            if ($validator->fails()) {
+                Log::error('Validation failed: ' . json_encode($validator->errors()));
+                return ApiResponse::failed($validator->errors(), 422, 'Validation failed');
+            }
+    
+            $validatedData = $validator->validated();
+        
+            $form = Form::findOrFail($formId);
+            $form->name = $validatedData['name'];
+            $form->description = $validatedData['description'] ?? null;
+            $form->save();
+    
+            // Delete existing fields
+            FormField::where('form_id', $formId)->delete();
+    
+            foreach ($validatedData['fields'] as $fieldData) {
+                $field = new FormField();
+                $field->form_id = $form->id;
+                $field->label = $fieldData['label'];
+                $field->field_type = $fieldData['fieldType'] ?? $fieldData['field_type'] ?? 'text';
+                $field->required = $fieldData['required'] ? 1 : 0;
+    
+                // Handle options and translations
+                $optionsData = [
+                    'options' => $this->decodeJsonField($fieldData['options']),
+                    'translations' => $this->decodeJsonField($fieldData['translations']),
+                ];
+    
+                if ($fieldData['label'] === 'Na seminaru:') {
+                    $optionsData['showForStatus'] = $optionsData['options']['showForStatus'] ?? [];
+                    $optionsData['options'] = $optionsData['options']['options'] ?? [];
+                }
+    
+                $field->options = json_encode($optionsData, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+                $field->save();
+    
+                Log::info('Saved field: ' . json_encode($field));
+            }
+    
+            DB::commit();
+    
+            return ApiResponse::success(['status' => 'success', 'form' => $form, 'message' => 'Form updated successfully.']);
+        } catch (Exception $e) {
+            DB::rollBack();
+            Log::error('Error updating form: ' . $e->getMessage());
+            Log::error('Stack trace: ' . $e->getTraceAsString());
+            return ApiResponse::failed($e, 500, 'An error occurred while updating the form: ' . $e->getMessage());
+        }
+    }
+    
+    private function decodeJsonField($field)
+    {
+        if (is_string($field)) {
+            $decoded = json_decode($field, true);
+            return (json_last_error() === JSON_ERROR_NONE) ? $decoded : $field;
+        }
+        return $field;
+    }
+    
+    private function getDefaultTranslation($label, $lang)
+    {
+        $defaultTranslations = [
+            'en' => [
+                'name' => 'Name',
+                'username' => 'Surname',
+                'spol' => 'Gender',
+                'datumrodjenja' => 'Date of Birth',
+                'OIB' => 'OIB',
+                'Adresa' => 'Address',
+                'Grad' => 'City',
+                'Email' => 'Email',
+                'brojmobitela' => 'Mobile Number'
+            ],
+            'it' => [
+                'name' => 'Nome',
+                'username' => 'Cognome',
+                'spol' => 'Genere',
+                'datumrodjenja' => 'Data di nascita',
+                'OIB' => 'OIB',
+                'Adresa' => 'Indirizzo',
+                'Grad' => 'Città',
+                'Email' => 'Email',
+                'brojmobitela' => 'Numero di cellulare'
+            ]
+        ];
+    
+        return $defaultTranslations[$lang][$label] ?? $label;
     }
 
 }
