@@ -313,10 +313,10 @@ class InertiaController extends Controller
             'name' => 'Zaduženja',
         ], 'commerce-theme:app');
     }
-    public function Zahtjevi()
+    public function Webshop()
     {
-        return Inertia::render('user/zahtjevi', [
-            'name' => 'Zahtjevi',
+        return Inertia::render('user/webshop', [
+            'name' => 'Webshop',
         ], 'commerce-theme:app');
     }
     public function Mojstatus()
