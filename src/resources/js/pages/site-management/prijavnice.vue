@@ -440,7 +440,7 @@ getDefaultFields() {
 },
 
 
-    async selectForm(formId) {
+async selectForm(formId) {
   try {
     this.selectedFormId = formId;
     this.isCreatingNewForm = false;
@@ -482,11 +482,26 @@ getDefaultFields() {
 
         if (field.label === 'Na seminaru:') {
           try {
-            const parsedOptions = typeof field.options === 'string' ? JSON.parse(field.options) : field.options;
-            processedField.options = parsedOptions.options || {};
+            let parsedOptions = typeof field.options === 'string' ? JSON.parse(field.options) : field.options;
+            
+            // Ensure the structure is correct
+            if (parsedOptions.options && parsedOptions.showForStatus) {
+              processedField.options = parsedOptions.options;
+              processedField.showForStatus = parsedOptions.showForStatus;
+            } else {
+              // If the structure is not as expected, create a default structure
+              processedField.options = parsedOptions;
+              processedField.showForStatus = Object.keys(parsedOptions).reduce((acc, key) => {
+                acc[key] = true;
+                return acc;
+              }, {});
+            }
+
+            // Handle translations
             if (parsedOptions.translations) {
               processedField.translations = parsedOptions.translations;
             }
+
             // Ensure translations for "Na seminaru:" label are set
             if (!processedField.translations.en.label) {
               processedField.translations.en.label = 'At the seminar:';
@@ -494,6 +509,7 @@ getDefaultFields() {
             if (!processedField.translations.it.label) {
               processedField.translations.it.label = 'Al seminario:';
             }
+
             // Ensure options for translations are initialized
             if (!processedField.translations.en.options) {
               processedField.translations.en.options = {};
@@ -501,6 +517,17 @@ getDefaultFields() {
             if (!processedField.translations.it.options) {
               processedField.translations.it.options = {};
             }
+
+            // Populate translation options if they're empty
+            Object.keys(processedField.options).forEach(status => {
+              if (!processedField.translations.en.options[status]) {
+                processedField.translations.en.options[status] = processedField.options[status];
+              }
+              if (!processedField.translations.it.options[status]) {
+                processedField.translations.it.options[status] = processedField.options[status];
+              }
+            });
+
           } catch (e) {
             console.error('Error parsing Na seminaru: options:', e);
             processedField.options = {
@@ -515,6 +542,10 @@ getDefaultFields() {
               "Trener skijanja": "",
               "Nije član": "",
             };
+            processedField.showForStatus = Object.keys(processedField.options).reduce((acc, key) => {
+              acc[key] = true;
+              return acc;
+            }, {});
           }
         } else {
           processedField.options = field.options || '';
