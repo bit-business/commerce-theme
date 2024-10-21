@@ -77,42 +77,43 @@
   
 <!-- Special handling for "Na seminaru:" field -->
 <div v-if="field.label === 'Na seminaru:'" class="seminar-options-container">
-  <div class="seminar-options">
-    <h4>Options for "Na seminaru:"</h4>
-    <!-- Add translation inputs for "Na seminaru:" label -->
-    <div class="translations">
+      <!-- Add translation inputs for "Na seminaru:" label -->
+      <div class="translations">
       <input
         type="text"
         v-model="field.translations.en.label"
-        placeholder="English Label for 'Na seminaru:'"
+        placeholder="Engleski prijevod za 'Na seminaru:'"
       />
       <input
         type="text"
         v-model="field.translations.it.label"
-        placeholder="Italian Label for 'Na seminaru:'"
+        placeholder="Talijanski prijevod za 'Na seminaru:'"
       />
     </div>
+  <div class="seminar-options">
+    <h3 style="padding-bottom: 1.3rem;" >Opcije za "Na seminaru:"</h3>
+
 
     <div v-for="(options, status) in field.options" :key="status" class="status-options">
-      <label>{{ status }}</label>
+      <vs-card><label class="font-semibold">{{ status }}</label>
       <input
         type="text"
         v-model="field.options[status]"
-        placeholder="Options (comma separated)"
+        placeholder="Opcije (odvoji zarezom)"
       />
       <!-- Translations for "Na seminaru:" options -->
       <div class="translations">
         <input
           type="text"
           v-model="field.translations.en.options[status]"
-          placeholder="English Options (comma separated)"
+          placeholder="Engleski prijevod opcija (odvoji zarezom)"
         />
         <input
           type="text"
           v-model="field.translations.it.options[status]"
-          placeholder="Italian Options (comma separated)"
+          placeholder="Talijanski prijevod opcija (odvoji zarezom)"
         />
-      </div>
+      </div></vs-card>
     </div>
   </div>
 </div>
@@ -123,12 +124,12 @@
         <input
           type="text"
           v-model="field.translations.en.label"
-          placeholder="English Label"
+          placeholder="Engleski prijevod pitanja"
         />
         <input
           type="text"
           v-model="field.translations.it.label"
-          placeholder="Italian Label"
+          placeholder="Talijanski prijevod pitanja"
         />
       </div>
   <!-- Translation inputs for options -->
@@ -136,12 +137,12 @@
         <input
           type="text"
           v-model="field.translations.en.options"
-          placeholder="English Options (comma separated)"
+          placeholder="Engleski prijevod opcija (odvojit zarezom)"
         />
         <input
           type="text"
           v-model="field.translations.it.options"
-          placeholder="Italian Options (comma separated)"
+          placeholder="Talijanski prijevod opcija (odvojit zarezom)"
         />
       </div>
 
@@ -210,7 +211,7 @@ export default {
           { label: 'Adresa', displayLabel: 'Adresa', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Address' }, it: { label: 'Indirizzo' } } },
           { label: 'Grad', displayLabel: 'Grad', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'City' }, it: { label: 'Città' } } },
           { label: 'Email', displayLabel: 'Email', field_type: 'email', required: true, fixed: true, translations: { en: { label: 'Email' }, it: { label: 'Email' } } },
-          { label: 'brojmobitela', displayLabel: 'Broj Mobitela', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Mobile Number' }, it: { label: 'Numero di cellulare' } } },
+          { label: 'brojmobitela', displayLabel: 'Broj Mobitela', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Phone Number' }, it: { label: 'Numero di cellulare' } } },
           { 
             label: 'Na seminaru:', 
             displayLabel: 'Na seminaru:', 
@@ -400,7 +401,7 @@ getDefaultFields() {
     { label: 'Adresa', displayLabel: 'Adresa', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Address' }, it: { label: 'Indirizzo' } } },
     { label: 'Grad', displayLabel: 'Grad', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'City' }, it: { label: 'Città' } } },
     { label: 'Email', displayLabel: 'Email', field_type: 'email', required: true, fixed: true, translations: { en: { label: 'Email' }, it: { label: 'Email' } } },
-    { label: 'brojmobitela', displayLabel: 'Broj Mobitela', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Mobile Number' }, it: { label: 'Numero di cellulare' } } },
+    { label: 'brojmobitela', displayLabel: 'Broj Mobitela', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Phone Number' }, it: { label: 'Numero di cellulare' } } },
     { 
       label: 'Na seminaru:', 
       displayLabel: 'Na seminaru:', 
@@ -589,7 +590,7 @@ async selectForm(formId) {
           { label: 'Adresa', displayLabel: 'Adresa', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Address' }, it: { label: 'Indirizzo' } } },
           { label: 'Grad', displayLabel: 'Grad', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'City' }, it: { label: 'Città' } } },
           { label: 'Email', displayLabel: 'Email', field_type: 'email', required: true, fixed: true, translations: { en: { label: 'Email' }, it: { label: 'Email' } } },
-          { label: 'brojmobitela', displayLabel: 'Broj Mobitela', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Mobile Number' }, it: { label: 'Numero di cellulare' } } },
+          { label: 'brojmobitela', displayLabel: 'Broj Mobitela', field_type: 'text', required: true, fixed: true, translations: { en: { label: 'Phone Number' }, it: { label: 'Numero di cellulare' } } },
           { 
           label: 'Na seminaru:', 
           displayLabel: 'Na seminaru:', 
