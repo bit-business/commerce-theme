@@ -168,12 +168,12 @@
 
 <!-- Skiing Type Selection Popup -->
 <div v-if="showSkiingTypePopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+  <div class="bg-white p-10 rounded-lg shadow-lg max-w-md w-full">
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">{{ $t('odaberite-vrstu-skijanja') }}</h2>
     <div class="space-y-4">
       <button @click="selectSkiingType('Samostalno skijanje')" 
        v-if="korisnik.additionalInfo !== 'KIF'"
-      class="w-full py-3 bg-blue-500 pt-6 pb-6 text-white text-lg rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
+      class="w-full py-3 bg-blue-500 pt-6 pb-6 text-white text-md rounded-lg hover:bg-blue-600 transition duration-300 ease-in-out transform hover:scale-105 flex justify-between items-center px-4">
         <span>{{ $t('samostalno-skijanje') }}</span>
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Samostalno skijanje')) }}</span>
       </button>
@@ -716,24 +716,20 @@ getStatusOptions(options, status) {
     getTranslatedOption(field, option, status = null) {
   const currentLang = this.$i18n.locale;
   if (currentLang !== 'hr' && field.translations && field.translations[currentLang]) {
+    let translatedOptions;
     if (field.label === 'Na seminaru:' && status) {
-      // For "Na seminaru:" field, use status-specific translations
-      const translatedOptions = field.translations[currentLang].options[status];
-      if (typeof translatedOptions === 'string') {
-        const translatedArray = this.parseOptions(translatedOptions);
-        const originalArray = this.parseOptions(field.options[status]);
-        const index = originalArray.findIndex(opt => opt.trim() === option);
-        return index !== -1 ? translatedArray[index].trim() : option;
-      }
+      translatedOptions = field.translations[currentLang].options?.[status];
     } else {
-      // For other fields or when status is not provided
-      const translatedOptions = field.translations[currentLang].options;
-      if (typeof translatedOptions === 'string') {
-        const translatedArray = this.parseOptions(translatedOptions);
-        const originalArray = this.parseOptions(field.options);
-        const index = originalArray.findIndex(opt => opt.trim() === option);
-        return index !== -1 ? translatedArray[index].trim() : option;
-      }
+      translatedOptions = field.translations[currentLang].options;
+    }
+
+    if (typeof translatedOptions === 'string') {
+      const translatedArray = this.parseOptions(translatedOptions);
+      const originalArray = Array.isArray(field.options) ? field.options : this.parseOptions(field.options);
+      const index = originalArray.findIndex(opt => opt.trim() === option);
+      return index !== -1 ? translatedArray[index].trim() : option;
+    } else if (typeof translatedOptions === 'object' && translatedOptions !== null) {
+      return translatedOptions[option] || option;
     }
   }
   return option;
@@ -813,23 +809,25 @@ async fetchForms(userid) {
       let parsedOptions;
       let translations = {};
 
+      // Handle options parsing
       if (typeof field.options === 'string') {
         try {
           parsedOptions = JSON.parse(field.options);
         } catch (e) {
-          console.error(`Error parsing options for field ${field.label}:`, e);
-          parsedOptions = {};
+          // If JSON parsing fails, treat the string as a comma-separated list
+          parsedOptions = field.options.split(',').map(opt => opt.trim());
         }
       } else {
         parsedOptions = field.options || {};
       }
 
-      // Handle translations
+      // Handle translations parsing
       if (typeof field.translations === 'string') {
         try {
           translations = JSON.parse(field.translations);
         } catch (e) {
           console.error(`Error parsing translations for field ${field.label}:`, e);
+          translations = {};
         }
       } else if (typeof field.translations === 'object') {
         translations = field.translations;
@@ -838,7 +836,6 @@ async fetchForms(userid) {
       // Special handling for "Na seminaru:" field
       if (field.label === 'Na seminaru:') {
         if (parsedOptions.options && parsedOptions.showForStatus) {
-          // If the structure is as expected
           return {
             ...field,
             required: field.required === '1' || field.required === true || field.required === 1,
@@ -847,7 +844,6 @@ async fetchForms(userid) {
             showForStatus: parsedOptions.showForStatus
           };
         } else {
-          // If the structure is not as expected, assume parsedOptions is directly the options
           return {
             ...field,
             required: field.required === '1' || field.required === true || field.required === 1,
@@ -916,69 +912,62 @@ async fetchForms(userid) {
 
 
   async submitForm() {
-      try {
-        if (!this.formId) {
-          throw new Error('Form ID is not set');
-        }
+  try {
+    if (!this.formId) {
+      throw new Error('Form ID is not set');
+    }
 
-        // Validate required fields
-        const errors = {};
-        this.formFields.forEach(field => {
-          if (this.isFieldRequired(field) && this.shouldShowField(field) && !this.formData[field.label]) {
-            errors[field.label] = this.$t('ovo-polje-niste-ispunili');
-          }
-        });
-
-        
-        // Special handling for "Na seminaru:" field
-        if (this.formFields.some(field => field.label === 'Na seminaru:')) {
-          const naSeminaruField = this.formFields.find(field => field.label === 'Na seminaru:');
-          const options = this.getOptions(naSeminaruField.options);
-          const statusOptions = this.getStatusOptions(options, this.userStatus);
-          
-          if (statusOptions.length === 0) {
-            // If there are no options for the user's status, remove any existing error for this field
-            delete errors['Na seminaru:'];
-            // Also remove the field from formData to prevent submitting an empty value
-            delete this.formData['Na seminaru:'];
-          }
-        }
-
-        if (Object.keys(errors).length > 0) {
-          this.errors = errors;
-          alert(this.$t('molimo-ispunite-sva-polja-prijavnice'));
-          return;
-        }
-
-        // Create a copy of the form data
-        // const submissionData = { ...this.formData };
-
-        const submissionData = {};
-        Object.keys(this.formData).forEach(key => {
-          const field = this.formFields.find(f => f.label === key);
-          if (field && (field.fieldType === 'select' || field.fieldType === 'radio')) {
-            // Use the original option value for submission
-            submissionData[key] = this.formData[key];
-          } else {
-            submissionData[key] = this.formData[key];
-          }
-        });
-
-        // Safely add user status and ID
-        submissionData['Status člana'] = this.userStatus || 'Nepoznato';
-        submissionData['Hzuts ID'] = this.korisnik && this.korisnik.idmember ? this.korisnik.idmember.toString() : null;
-        submissionData['User ID'] = this.korisnik && this.korisnik.id ? this.korisnik.id.toString() : null;
-
-        
-        // Submit the form with the updated data
-        const response = await api.saveFormEntry(this.formId, submissionData);
-        this.$refs.form.reset();
-        this.showConfirmation = true; 
-        this.restoreScrollPosition();
-      } catch (error) {
-        alert(error.message || this.$t('greska-prilikom-slanja-prijavnice-pokusajte-ponovo-ili-nas-kontaktirajte'));
+    // Validate required fields
+    const errors = {};
+    this.formFields.forEach(field => {
+      if (this.isFieldRequired(field) && this.shouldShowField(field) && !this.formData[field.label]) {
+        errors[field.label] = this.$t('ovo-polje-niste-ispunili');
       }
-    },
+    });
+
+    // Special handling for "Na seminaru:" field
+    const naSeminaruField = this.formFields.find(field => field.label === 'Na seminaru:');
+    if (naSeminaruField) {
+      const options = this.getOptions(naSeminaruField.options);
+      const statusOptions = this.getStatusOptions(options, this.userStatus);
+      if (statusOptions.length > 0 && !this.formData['Na seminaru:']) {
+        errors['Na seminaru:'] = this.$t('ovo-polje-niste-ispunili');
+      }
+    }
+
+    if (Object.keys(errors).length > 0) {
+      this.errors = errors;
+      alert(this.$t('molimo-ispunite-sva-polja-prijavnice'));
+      return;
+    }
+
+    // Create a copy of the form data
+    const submissionData = {};
+    Object.keys(this.formData).forEach(key => {
+      const field = this.formFields.find(f => f.label === key);
+      if (field && (field.fieldType === 'select' || field.fieldType === 'radio')) {
+        // Use the original option value for submission
+        submissionData[key] = this.formData[key];
+      } else {
+        submissionData[key] = this.formData[key];
+      }
+    });
+
+    // Safely add user status and ID
+    submissionData['Status člana'] = this.userStatus || 'Nepoznato';
+    submissionData['Hzuts ID'] = this.korisnik && this.korisnik.idmember ? this.korisnik.idmember.toString() : null;
+    submissionData['User ID'] = this.korisnik && this.korisnik.id ? this.korisnik.id.toString() : null;
+
+    // Submit the form with the updated data
+    const response = await api.saveFormEntry(this.formId, submissionData);
+    this.$refs.form.reset();
+    this.showConfirmation = true; 
+    this.restoreScrollPosition();
+  } catch (error) {
+    console.error('Form submission error:', error);
+    alert(error.message || this.$t('greska-prilikom-slanja-prijavnice-pokusajte-ponovo-ili-nas-kontaktirajte'));
+  }
+},
 
     formatDateToCroatian(dateString) {
   if (!dateString) return '';

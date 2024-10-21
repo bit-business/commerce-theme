@@ -244,7 +244,7 @@
 
 <!-- Skiing Type Selection Popup -->
 <div v-if="showSkiingTypePopup" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-  <div class="bg-white p-8 rounded-lg shadow-lg max-w-md w-full">
+  <div class="bg-white p-8 pl-14 pr-14 rounded-lg shadow-lg max-w-lg w-full">
     <h2 class="text-2xl font-bold mb-6 text-center text-gray-800">{{ $t('odaberite-vrstu-skijanja') }}</h2>
     <div class="space-y-4">
       <button @click="selectSkiingType('Samostalno skijanje')" 
@@ -258,7 +258,7 @@
         <span class="font-bold">{{ $currency(getSkiingTypePrice('Produženje licence')) }}</span>
       </button>
     </div>
-    <button @click="showSkiingTypePopup = false" class="text-nazad mt-6 w-3/4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out">
+    <button @click="showSkiingTypePopup = false" class="text-nazad mt-10 w-3/4 py-2 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition duration-300 ease-in-out">
       {{ $t('nazad') }}
     </button>
   </div>
