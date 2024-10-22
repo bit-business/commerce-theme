@@ -378,9 +378,13 @@ showNotification() {
     changeLanguage(lang) {
       this.currentLanguage = lang;
       this.$i18n.locale = lang;
-      // You might want to store the selected language in localStorage for persistence
       localStorage.setItem('userLanguage', lang);
+      // Close dropdown after selection
+      setTimeout(() => {
+        this.showDropdownjezik = false;
+      }, 200); 
     },
+    
 
     // Update your toggleDropdownjezik method
     toggleDropdownjezik() {
@@ -1739,5 +1743,36 @@ top: 0%;
 .has-unread svg {
   stroke: #21231e;
 }
+
+
+
+
+.dropdownjezikglavni {
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Subtle hover effect for language options - keeping original positioning */
+.hrvatskiframe:hover .hrvatski-hr,
+.engleskifframe:hover .engleski-uk,
+.talijanskiframe:hover .talijanski-it {
+  color: #03a9f4;
+  transition: color 0.2s ease;
+}
+
+/* Update selected state without moving anything */
+.selected {
+  color: #03a9f4;
+  transition: color 0.2s ease;
+}
+
 
 </style>

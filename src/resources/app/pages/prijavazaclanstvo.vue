@@ -1273,6 +1273,19 @@ padding-bottom: 5px;
   overflow: hidden;
 }
 
+.dropdown-list {
+  position: absolute;
+  z-index: 1000;
+  background: white;
+  max-height: 200px;
+  overflow-y: auto;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.form-container {
+  position: relative;
+  overflow: visible !important;
+}
 .dropdown-list-item {
   padding: 10px 20px;
   border-bottom: 1px solid #eaeaea; /* Last item shouldn't have a border */

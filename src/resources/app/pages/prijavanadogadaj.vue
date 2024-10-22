@@ -88,12 +88,20 @@
                 <label :for="field.label">{{ field.label }}</label>
               </div>
               <div v-else-if="field.fieldType === 'date'" class="date-input-group">
+  <!-- Hidden input for actual date value -->
   <input
     type="date"
-    :id="field.label"
-    :value="getFormattedDate(field.label)"
+    :value="formData[field.label]"
     @input="updateDate($event, field.label)"
-    class="form-input"
+    class="real-date-input"
+  />
+  <!-- Display input -->
+  <input
+    type="text"
+    :value="getDisplayDate(field.label)"
+    readonly
+    class="form-input display-date-input"
+    placeholder="DD/MM/YYYY"
   />
 </div>
 
@@ -245,7 +253,6 @@ export default {
   },
   data() {
     return {
-      scrollPosition: 0,
 
       selectedProduct: {
         id: null
@@ -310,8 +317,6 @@ export default {
 
       currentLanguage: 'hr', 
 
-
-      scrollPosition: 0,
     }
   },
   computed: {
@@ -349,15 +354,7 @@ export default {
 
   },
 
-  beforeDestroy() {
-  document.removeEventListener('click', this.closeAllDropdowns);
-  window.removeEventListener('scroll', this.saveScrollPosition);
-  },
-  updated() {
-    this.$nextTick(() => {
-      window.scrollTo(0, this.scrollPosition);
-    });
-  },
+
 
   watch: {
     user: {
@@ -373,6 +370,13 @@ export default {
       },
       deep: true
     },
+    activeDropdown(newVal) {
+    if (newVal) {
+      document.body.classList.add('dropdown-open');
+    } else {
+      document.body.classList.remove('dropdown-open');
+    }
+  },
   },
 
   mounted() {
@@ -388,10 +392,14 @@ export default {
       this.getProduct();
     }
 
+    
     document.addEventListener('click', this.closeAllDropdowns);
-    window.addEventListener('scroll', this.saveScrollPosition);
 
     this.$forceUpdate();
+
+     if (document.querySelector('.custom-date-input')) {
+    document.querySelector('.custom-date-input').setAttribute('lang', 'hr');
+  }
   },
   created() {
   const savedLang = localStorage.getItem('userLanguage') || 'hr'; // Default to 'hr' if not set
@@ -400,6 +408,28 @@ export default {
 },
 
   methods: {
+    updateField(event, fieldName, value = null) {
+      // Prevent the default form behavior
+      event.preventDefault();
+      
+      // Update the form data without triggering a re-render
+      this.$set(
+        this.formData, 
+        fieldName, 
+        value !== null ? value : event.target.value
+      );
+    },
+
+    toggleDropdown(fieldLabel) {
+      // Prevent event propagation
+      event.stopPropagation();
+      
+      if (this.activeDropdown === fieldLabel) {
+        this.activeDropdown = null;
+      } else {
+        this.activeDropdown = fieldLabel;
+      }
+    },
 
 
  changeLanguage(lang) {
@@ -417,23 +447,9 @@ export default {
 
 
 
-    saveScrollPosition() {
-    this.scrollPosition = window.pageYOffset;
-  },
-
-  restoreScrollPosition() {
-    this.$nextTick(() => {
-      window.scrollTo(0, this.scrollPosition);
-    });
-  },
-
   
 
-    closeAllDropdowns(event) {
-    if (!event.target.closest('.dropdown')) {
-      this.activeDropdown = null;
-    }
-  },
+ 
 
     getSkiingTypePrice(type) {
       if (type === 'Samostalno skijanje') {
@@ -743,22 +759,20 @@ getStatusOptions(options, status) {
   },
 
 
-  toggleDropdown(fieldLabel) {
-  this.$nextTick(() => {
-    if (this.activeDropdown === fieldLabel) {
+
+
+  // Simplified close dropdowns
+  closeAllDropdowns(event) {
+    if (!event.target.closest('.dropdown')) {
       this.activeDropdown = null;
-    } else {
-      this.activeDropdown = fieldLabel;
     }
-    this.restoreScrollPosition();
-  });
-},
+  },
 
 selectOption(option, fieldLabel) {
       this.formData[fieldLabel] = option;
       this.activeDropdown = null;
       this.errors[fieldLabel] = null;
-      this.restoreScrollPosition();
+   
     },
 
     getTranslatedLabel(field) {
@@ -879,20 +893,22 @@ async fetchForms(userid) {
       const userResponse = await api.getUserData(this.user.id);
       const userData = userResponse.data.user;
       if (userData) {
-        Object.keys(this.formData).forEach(key => {
-          if (userData[key.toLowerCase()]) {
-            const field = this.formFields.find(f => f.label === key);
-            if (field && field.fieldType === 'date') {
-              // Ensure the date is in YYYY-MM-DD format
-              const date = new Date(userData[key.toLowerCase()]);
-              const formattedDate = date.toISOString().split('T')[0];
-              this.$set(this.formData, key, formattedDate);
-            } else {
-              this.$set(this.formData, key, userData[key.toLowerCase()]);
+          Object.keys(this.formData).forEach(key => {
+            if (userData[key.toLowerCase()]) {
+              const field = this.formFields.find(f => f.label === key);
+              if (field && field.fieldType === 'date') {
+                // Ensure date is in YYYY-MM-DD format
+                const date = new Date(userData[key.toLowerCase()]);
+                if (!isNaN(date.getTime())) {
+                  const formattedDate = date.toISOString().split('T')[0];
+                  this.$set(this.formData, key, formattedDate);
+                }
+              } else {
+                this.$set(this.formData, key, userData[key.toLowerCase()]);
+              }
             }
-          }
-        });
-      }
+          });
+        }
     }
 
     this.$forceUpdate();
@@ -962,7 +978,7 @@ async fetchForms(userid) {
     const response = await api.saveFormEntry(this.formId, submissionData);
     this.$refs.form.reset();
     this.showConfirmation = true; 
-    this.restoreScrollPosition();
+   
   } catch (error) {
     console.error('Form submission error:', error);
     alert(error.message || this.$t('greska-prilikom-slanja-prijavnice-pokusajte-ponovo-ili-nas-kontaktirajte'));
@@ -981,18 +997,25 @@ parseCroatianDate(dateString) {
   return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`;
 },
 
-getFormattedDate(fieldLabel) {
-  const dateString = this.formData[fieldLabel];
-  if (dateString) {
-    return this.formatDateToCroatian(dateString);
-  }
-  return '';
-},
 
-updateDate(event, fieldLabel) {
-  const inputValue = event.target.value;
-  this.$set(this.formData, fieldLabel, this.parseCroatianDate(inputValue));
-},
+
+getDisplayDate(fieldLabel) {
+    const dateString = this.formData[fieldLabel];
+    if (!dateString) return '';
+    try {
+      const [year, month, day] = dateString.split('-');
+      return `${day}/${month}/${year}`;
+    } catch (e) {
+      console.error('Error formatting date:', e);
+      return dateString;
+    }
+  },
+
+  updateDate(event, fieldLabel) {
+    const dateValue = event.target.value;
+    this.$set(this.formData, fieldLabel, dateValue);
+  },
+
 
 
 
@@ -1589,5 +1612,70 @@ padding-top: 10px;
   .submit-btn {
     font-size: 16px;
   }
+}
+
+
+
+
+
+/* Update your CSS */
+.date-input-group {
+  position: relative;
+}
+
+.real-date-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.display-date-input {
+  background-color: white;
+  cursor: pointer;
+}
+
+/* Make sure the calendar icon is visible and clickable */
+.real-date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px;
+  height: 20px;
+  opacity: 0;
+  cursor: pointer;
+}
+
+/* Add a calendar icon to the display input */
+.display-date-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px) center;
+  background-size: 20px;
+}
+
+
+
+
+
+.form-renderer {
+  position: relative;
+  overflow: visible;
+}
+
+.dropdown-list {
+  position: absolute;
+  z-index: 1000;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+/* Prevent body scroll when dropdown is open */
+body.dropdown-open {
+  overflow: hidden;
 }
 </style>
