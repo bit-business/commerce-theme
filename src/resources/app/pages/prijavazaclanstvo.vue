@@ -11,14 +11,14 @@
       <!-- Ime -->
       <div class="form-group">
         <label for="ime">{{ $t('ime-0') }} <span class="asterisk">*</span></label>
-        <input  @focus="saveScrollPosition" type="text" id="ime" v-model.lazy="form.name" required>
+        <input   type="text" id="ime" v-model.lazy="form.name" required>
         <span v-if="errors.name" class="error-message">{{ errors.name }}</span>
       </div>
 
       <!-- Prezime -->
       <div class="form-group">
         <label for="prezime">{{ $t('prezime') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="text" id="prezime" v-model.lazy="form.username" required>
+        <input  type="text" id="prezime" v-model.lazy="form.username" required>
         <span v-if="errors.username" class="error-message">{{ errors.username }}</span>
       </div>
 
@@ -28,49 +28,49 @@
       <!-- OIB -->
       <div class="form-group">
         <label for="oib">OIB <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="text" id="oib" v-model.lazy="form.oib" required>
+        <input  type="text" id="oib" v-model.lazy="form.oib" required>
         <span v-if="errors.oib" class="error-message">{{ errors.oib }}</span>
       </div>
 
       <!-- Datum rođenja -->
       <div class="form-group">
         <label for="datumRodenja">{{ $t('datum-rodenja') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="date" id="datumRodenja" v-model.lazy="form.datumrodjenja" required>
+        <input  type="date" id="datumRodenja" v-model.lazy="form.datumrodjenja" required>
         <span v-if="errors.datumrodjenja" class="error-message">{{ errors.datumrodjenja }}</span>
       </div>
 
       <!-- Adresa -->
       <div class="form-group">
         <label for="adresa">{{ $t('adresa') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="text" id="adresa" v-model.lazy="form.adresa" required>
+        <input  type="text" id="adresa" v-model.lazy="form.adresa" required>
         <span v-if="errors.adresa" class="error-message">{{ errors.adresa }}</span>
       </div>
 
       <!-- Poštanski broj -->
       <div class="form-group">
         <label for="postanskiBroj">{{ $t('postanski-broj') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="text" id="postanskiBroj" v-model.lazy="form.postanskibroj" required>
+        <input type="text" id="postanskiBroj" v-model.lazy="form.postanskibroj" required>
         <span v-if="errors.postanskibroj" class="error-message">{{ errors.postanskibroj }}</span>
       </div>
 
       <!-- Grad -->
       <div class="form-group">
         <label for="grad">{{ $t('grad') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="text" id="grad" v-model.lazy="form.grad" required>
+        <input type="text" id="grad" v-model.lazy="form.grad" required>
         <span v-if="errors.grad" class="error-message">{{ errors.grad }}</span>
       </div>
 
       <!-- Država -->
       <div class="form-group">
         <label for="drzava">{{ $t('drzava') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="text" id="drzava" v-model.lazy="form.drzava" required>
+        <input type="text" id="drzava" v-model.lazy="form.drzava" required>
         <span v-if="errors.drzava" class="error-message">{{ errors.drzava }}</span>
       </div>
 
       <!-- Mobitel -->
       <div class="form-group">
         <label for="mobitel">{{ $t('mobitel') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="tel" id="mobitel" v-model.lazy="form.brojmobitela" required>
+        <input type="tel" id="mobitel" v-model.lazy="form.brojmobitela" required>
         <span v-if="errors.brojmobitela" class="error-message">{{ errors.brojmobitela }}</span>
 
       </div>
@@ -79,69 +79,87 @@
       <!-- E-mail adresa -->
       <div class="form-group">
         <label for="email">{{ $t('e-mail-adresa') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="email" id="email" v-model.lazy="form.email" required>
+        <input type="email" id="email" v-model.lazy="form.email" required>
         <span v-if="errors.email" class="error-message">{{ errors.email }}</span>
       </div>
 
-        <!-- Spol -->
-  <div class="form-group" v-for="(options, model) in dropdownOptions" :key="model" required>
-  <label class="selektortekst" :for="model">{{ labels[model] }} <span class="asterisk">*</span></label>
+        <!-- Spol -->  
+<!-- Regular Dropdowns (spol, ostvarenistatus) -->
+<div class="form-group" v-for="(options, model) in dropdownOptions" :key="model" required>
+  <label class="selektortekst" :for="model">{{ translatedLabels[model] }} <span class="asterisk">*</span></label>
   <div class="dropdown" @click.prevent="toggleDropdown(model, $event)">
     <div class="dropdown-select">
-      <span>{{ form[model] || 'Izaberite' }}</span>
+      <span>
+        {{ 
+          form[model] 
+            ? (model === 'spol' 
+                ? $t(`gender.${form[model]}`) 
+                : $t(`status.${form[model]}`))
+            : $t('common.choose') 
+        }}
+      </span>
       <i class="arrow" :class="{ 'arrow-up': activeDropdown === model }"></i>
     </div>
     <transition name="fade">
       <div class="dropdown-list" v-if="activeDropdown === model">
-        <div v-for="option in options" class="dropdown-list-item" @click.stop="selectOption(option, model)">
-          {{ option }}
+        <div 
+          v-for="option in translatedDropdownOptions[model]" 
+          :key="option.original"
+          class="dropdown-list-item" 
+          @click.stop="selectOption(option.original, model)"
+        >
+          {{ option.translated }}
         </div>
       </div>
     </transition>
   </div>
   <span v-if="errors[model]" class="error-message">{{ errors[model] }}</span>
-
 </div>
 
 
       <!-- Datum i mjesto polaganja -->
       <div class="form-group">
         <label for="datumMjestoPolaganja">{{ $t('datum-i-mjesto-polaganja-za-ucitelja-trenera') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="text" id="datumMjestoPolaganja" v-model.lazy="form.datummjestopolaganja" required>
+        <input type="text" id="datumMjestoPolaganja" v-model.lazy="form.datummjestopolaganja" required>
         <span v-if="errors.datummjestopolaganja" class="error-message">{{ errors.datummjestopolaganja }}</span>
       </div>
 
       <!-- Ustanova -->
       <div class="form-group">
         <label for="ustanova">{{ $t('ustanova-koja-je-izdala-uvjerenje-za-ucitelja-trenera') }} <span class="asterisk">*</span></label>
-        <input @focus="saveScrollPosition" type="text" id="ustanova" v-model.lazy="form.ustanova" required>
+        <input type="text" id="ustanova" v-model.lazy="form.ustanova" required>
         <span v-if="errors.ustanova" class="error-message">{{ errors.ustanova }}</span>
       </div>
 
   <!-- Zbor -->
-      <div class="form-group" v-for="(options, model) in dropdownOptionsZbor" :key="model" required>
-  <label class="selektortekst" :for="model">{{ labelsZbor[model] }} <span class="asterisk">*</span></label>
+<!-- Zbor Dropdown (untranslated) -->
+<div class="form-group" v-for="(options, model) in dropdownOptionsZbor" :key="model" required>
+  <label class="selektortekst" :for="model">{{ translatedLabelsZbor[model] }} <span class="asterisk">*</span></label>
   <div class="dropdown" @click.prevent="toggleDropdown(model, $event)">
     <div class="dropdown-select">
-      <span>{{ form[model] || 'Izaberite' }}</span>
+      <span>{{ form[model] || $t('common.choose') }}</span>
       <i class="arrow" :class="{ 'arrow-up': activeDropdown === model }"></i>
     </div>
     <transition name="fade">
       <div class="dropdown-list" v-if="activeDropdown === model">
-        <div v-for="option in options" class="dropdown-list-item" @click.stop="selectOption(option, model)">
+        <div 
+          v-for="option in dropdownOptionsZbor[model]" 
+          :key="option"
+          class="dropdown-list-item" 
+          @click.stop="selectOption(option, model)"
+        >
           {{ option }}
         </div>
       </div>
     </transition>
   </div>
   <span v-if="errors[model]" class="error-message">{{ errors[model] }}</span>
-
 </div>
 
 
 
       <div class="form-groupAvatar">
-        <input @focus="saveScrollPosition" type="file" @change="filesChangeAvatar" accept="image/png, image/jpeg, image/jpg" ref="avatarslika" class="hidden">
+        <input type="file" @change="filesChangeAvatar" accept="image/png, image/jpeg, image/jpg" ref="avatarslika" class="hidden">
               <button @click.prevent="$refs.avatarslika.click()" class="gumbSlika">
                 {{ $t('odaberite-svoju-sliku') }}
               </button>  <span class="asterisk-top">*</span>
@@ -304,7 +322,6 @@ export default {
   data() {
     return {
 
-      scrollPosition: 0,
       
       uploadedFilesCount: 0,
     uploadedFiles: [],
@@ -315,6 +332,7 @@ export default {
       showConfirmation: false,
 
       activeDropdown: null,
+      
     dropdownOptions: {
       spol: ['Muško', 'Žensko'],
       ostvarenistatus: ['Voditelj skijanja', 'Učitelj skijanja', 'Trener skijanja', 'Učitelj daskanja na snijegu', 'Trener daskanja'],
@@ -424,6 +442,45 @@ export default {
         return this.$_.find(state.themeConfigurations, { key: "appName" }).value;
       },
     }),
+
+
+    translatedLabels() {
+      return {
+        spol: this.$t('dropdownLabels.spol'),
+        ostvarenistatus: this.$t('dropdownLabels.ostvarenistatus'),
+      }
+    },
+    translatedLabelsZbor() {
+      return {
+        podrucnizbor: this.$t('dropdownLabels.podrucnizbor'),
+      }
+    },
+    
+    // Translated options while keeping original values
+    translatedDropdownOptions() {
+      return {
+        spol: this.dropdownOptions.spol.map(value => ({
+          original: value,
+          translated: this.$t(`gender.${value}`)
+        })),
+        ostvarenistatus: this.dropdownOptions.ostvarenistatus.map(value => ({
+          original: value,
+          translated: this.$t(`status.${value}`)
+        }))
+      }
+    },
+    
+    translatedDropdownOptionsZbor() {
+      return {
+        podrucnizbor: this.dropdownOptionsZbor.podrucnizbor.map(value => ({
+          original: value,
+          translated: this.$t(`zbor.${value}`)
+        }))
+      }
+    },
+
+
+
   },
   mounted() {
 
@@ -445,16 +502,7 @@ export default {
   },
 
   methods: {
-    saveScrollPosition(event) {
-    this.lastFocusedElement = event.target;
-  },
-  restoreScrollPosition() {
-    if (this.lastFocusedElement) {
-      this.$nextTick(() => {
-        this.lastFocusedElement.scrollIntoView({ behavior: 'smooth', block: 'center' });
-      });
-    }
-  },
+
     validateForm() {
     // Clear previous errors
     this.errors = {};
@@ -770,15 +818,13 @@ deleteImage() {
       } else {
         this.activeDropdown = dropdown;
       }
-      this.saveScrollPosition(event);
+
     },
 
     selectOption(option, model) {
       this.form[model] = option;
       this.activeDropdown = null;
-      this.$nextTick(() => {
-    this.restoreScrollPosition();
-  });
+
     },
 
   getChangedData() {
@@ -1246,6 +1292,7 @@ padding-bottom: 5px;
   width: 100%;
   font-weight: 600;
   padding-bottom: 16px;
+  z-index: 1000;
 }
 
 .dropdown-select {
@@ -1261,25 +1308,27 @@ padding-bottom: 5px;
   padding-left: 25px;
 }
 
-.dropdown-list {
+.dropdown .dropdown-list {
   position: absolute;
   padding: 10px 20px;
   top: 100%;
   left: 0;
   right: 0;
-  z-index: 10;
+  /* Higher z-index and ensure GPU acceleration */
+  z-index: 9999;
+  transform: translateZ(0);
   background-color: #fff;
   box-shadow: 0 7px 10px rgba(0, 0, 0, 0.22);
   overflow: hidden;
 }
 
-.dropdown-list {
-  position: absolute;
+.form-group:has(.dropdown-list) {
+  z-index: 1050; 
+}
+.dropdown-list[data-type="zbor"] {
+  max-height: none; /* Remove max height limitation */
+  overflow: visible; /* Change from auto to visible */
   z-index: 1000;
-  background: white;
-  max-height: 200px;
-  overflow-y: auto;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
 .form-container {
@@ -1288,7 +1337,7 @@ padding-bottom: 5px;
 }
 .dropdown-list-item {
   padding: 10px 20px;
-  border-bottom: 1px solid #eaeaea; /* Last item shouldn't have a border */
+  border-bottom: 1px solid #eaeaea;
   cursor: pointer;
 }
 
@@ -1299,6 +1348,17 @@ padding-bottom: 5px;
 .dropdown-list-item:hover {
   background-color: #eaeaea; /* Your hover color */
 }
+
+
+/* Update form group styles to handle z-index properly */
+.form-group {
+  position: relative;
+  margin: 24px;
+  /* Create stacking context for each form group */
+  isolation: isolate;
+}
+
+
 
 /* Arrow styles */
 .arrow {

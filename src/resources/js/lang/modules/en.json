@@ -465,6 +465,7 @@
   "osobe-koje-prilikom-registracije-za-prijavu-na-web-aplikaciju-nisu-prilozile-fotografiju-fotografiju-je-potrebno-poslati-na-e-mail": "!! Individuals who did not attach a photo during registration for the web/application need to send a photo to the following email:",
   "ostale-informacije-mozete-pronaci-na-sluzbenoj-web-stranici": "You can find other information on the official website.",
   "ostavite-nam-poruku-ukoliko-zelite-opcionalno": "Leave us a message if you want (optional)",
+  "ostvareni-status-s-kojim-se-uclanjujete-u-hzuts": "",
   "ourMembers": "Our members",
   "ovaj-email-je-vec-u-upotrebi-molimo-koristite-drugi-email-ili-odite-na-zaboravljena-lozinka": "This email is already in use. Please use another email or go to forgotten password.",
   "ovo-polje-niste-ispunili": "You did not fill out this field.",
@@ -684,7 +685,6 @@
   "spol": "Gender",
   "spremi": "Prepare",
   "spremi-uplatnicu": "Save payment slip",
-  "status": "Status",
   "status-0": "Status",
   "status-1": "Status:",
   "status-cart-productdetail-name": "Status: {0}",
@@ -715,6 +715,8 @@
   "tim-maldih-fizioterapeuta-i-kinezioterapeuta-pod-vodstvom": "A team of grumpy physiotherapists and kinesiotherapists under the leadership",
   "transakcija-se-obraduje-ostanite-na-ovoj-stranici": "The transaction is being processed, stay on this page.",
   "transakcije": "Transactions",
+  "trener-daskanja": "",
+  "trener-skijanja": "",
   "trener-skijanja-daskanja": "ski/snowboard coach",
   "trener-skijanja-daskanja-0": "ski/snowboard coach",
   "treneri-skijanja-daskanja-na-snijegu": "Ski/snowboard instructors",
@@ -727,9 +729,11 @@
   "trpimir-vrdoljak-dr-med-jedan-od-najbolje-ocijenjenih-hrvatskih-ortopeda": "Trpimir Vrdoljak, MD (one of the highest rated Croatian orthopedists)",
   "trpimir-vrdoljak-dr-med-jedan-od-najbolje-ocijenjenih-hrvatskih-ortopeda-0": "Trpimir Vrdoljak, MD (one of the highest rated Croatian orthopedists)",
   "u-18-om-interski-kongresu-u-koreji-bilo-je-prisutno-1500-sudionika-i-31-nacija-delegacija-hzuts-a-i-njen-demo-team-predstavio-se-sa-tri-show-nastupa-s-elementima-hrvatske-skole-skijanja-tri-predavanja-te-show-nastupima-na-sluzbenom-otvaranju-i-zatvaranju-kongresa": "At the 18th Interski Congress in Korea, there were 1500 participants and 31 nations present. The delegation of HZUTS and its DEMO TEAM introduced themselves with three show performances featuring elements of Croatian ski school, three lectures, and show performances at the official opening and closing of the Congress.",
+  "u-koji-podrucni-zbor-ste-se-uclanili": "",
   "u-redu": "Okay",
   "u-svrhu-sto-objektivnijeg-i-sto-strucnijeg-ocjenjivanja-kandidata-za-polaganje-strucnih-poslova-u-skijaskom-sportu-hzuts-je-na-izvrsnom-odboru-08-studenog-2003-godine-donio-odluku-o-osnivanju-ispitne-komisije": "For the purpose of as objective and professional evaluation of candidates for professional work in skiing, HZUTS made a decision at the Executive Board on November 8, 2003 to establish an Examination Committee.",
   "ubrzo-vise-informacija-provjerite-iducih-dana": "More information coming soon! Check back in the next few days.",
+  "ucitelj-daskanja-na-snijegu": "",
   "ucitelj-skijanja": "Ski instructor",
   "ucitelj-skijanja-daskanja": "ski/snowboard instructor",
   "ucitelj-skijanja-daskanja-0": "ski/snowboard instructor",
@@ -865,5 +869,27 @@
   "zavrsio-program-odobren-od-ministarstva-znanosti-i-obrazovanja-u-trajanju-od-minimalno-310-sati": "completed a program approved by the Ministry of Science and Education lasting a minimum of 310 hours",
   "zbroj-za-odabrano": "Total for selected:",
   "zensko": "Female",
-  "zensko-0": "Female"
+  "zensko-0": "Female",
+
+
+
+  "dropdownLabels": {
+    "spol": "Gender",
+    "ostvarenistatus": "Achieved status for HZUTS membership",
+    "podrucnizbor": "Which regional assembly did you join?"
+  },
+  "gender": {
+    "Muško": "Male",
+    "Žensko": "Female"
+  },
+  "status": {
+    "Voditelj skijanja": "Ski Leader",
+    "Učitelj skijanja": "Ski Instructor",
+    "Trener skijanja": "Ski Coach",
+    "Učitelj daskanja na snijegu": "Snowboard Instructor",
+    "Trener daskanja": "Snowboard Coach"
+  },
+  "common": {
+    "choose": "Choose"
+  }
 }

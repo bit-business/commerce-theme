@@ -29,7 +29,7 @@
 
 <!-- Status Dropdown -->
 <div class="custom-dropdown2" @click="toggleDropdown('status', $event)">
-  <div class="dropdown-label">{{ $t('status') }}</div>
+  <div class="dropdown-label">{{ $t('status-0') }}</div>
   <span class="selected-count" v-if="selectedStatusCount">{{ selectedStatusCount }}</span>
   <img class="strelicapremadolje-icon2" alt="" src="/storage/slike/nasiclanovi/strelicapremadolje.svg" />
   <div class="dropdown-content" v-show="dropdowns.status">

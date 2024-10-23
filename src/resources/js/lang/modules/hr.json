@@ -465,6 +465,7 @@
   "osobe-koje-prilikom-registracije-za-prijavu-na-web-aplikaciju-nisu-prilozile-fotografiju-fotografiju-je-potrebno-poslati-na-e-mail": "!! Osobe koje prilikom registracije za prijavu na web/aplikaciju nisu priložile fotografiju, fotografiju je potrebno poslati na e-mail:",
   "ostale-informacije-mozete-pronaci-na-sluzbenoj-web-stranici": "Ostale informacije možete pronaći na službenoj web stranici.",
   "ostavite-nam-poruku-ukoliko-zelite-opcionalno": "Ostavite nam poruku ukoliko želite (opcionalno)",
+  "ostvareni-status-s-kojim-se-uclanjujete-u-hzuts": "Ostvareni status s kojim se učlanjujete u HZUTS",
   "ourMembers": "Naši članovi",
   "ovaj-email-je-vec-u-upotrebi-molimo-koristite-drugi-email-ili-odite-na-zaboravljena-lozinka": "Ovaj email je već u upotrebi. Molimo koristite drugi email ili odite na zaboravljena lozinka.",
   "ovo-polje-niste-ispunili": "Ovo polje niste ispunili",
@@ -684,7 +685,6 @@
   "spol": "Spol",
   "spremi": "Spremi",
   "spremi-uplatnicu": "Spremi uplatnicu",
-  "status": "Status",
   "status-0": "Status",
   "status-1": "Status:",
   "status-cart-productdetail-name": "Status: {0}",
@@ -715,6 +715,8 @@
   "tim-maldih-fizioterapeuta-i-kinezioterapeuta-pod-vodstvom": "Tim maldih fizioterapeuta i kinezioterapeuta pod vodstvom",
   "transakcija-se-obraduje-ostanite-na-ovoj-stranici": "Transakcija se obrađuje, ostanite na ovoj stranici.",
   "transakcije": "Transakcije",
+  "trener-daskanja": "Trener daskanja",
+  "trener-skijanja": "Trener skijanja",
   "trener-skijanja-daskanja": "trener skijanja/daskanja",
   "trener-skijanja-daskanja-0": "trener skijanja/daskanja",
   "treneri-skijanja-daskanja-na-snijegu": "Treneri skijanja/daskanja na snijegu",
@@ -727,9 +729,11 @@
   "trpimir-vrdoljak-dr-med-jedan-od-najbolje-ocijenjenih-hrvatskih-ortopeda": "Trpimir Vrdoljak, dr.med (jedan od najbolje ocijenjenih hrvatskih ortopeda)",
   "trpimir-vrdoljak-dr-med-jedan-od-najbolje-ocijenjenih-hrvatskih-ortopeda-0": "Trpimir Vrdoljak, dr.med (jedan od najbolje ocijenjenih hrvatskih ortopeda)",
   "u-18-om-interski-kongresu-u-koreji-bilo-je-prisutno-1500-sudionika-i-31-nacija-delegacija-hzuts-a-i-njen-demo-team-predstavio-se-sa-tri-show-nastupa-s-elementima-hrvatske-skole-skijanja-tri-predavanja-te-show-nastupima-na-sluzbenom-otvaranju-i-zatvaranju-kongresa": "U 18.-om Interski kongresu u Koreji bilo je prisutno 1500 sudionika i 31 nacija. Delegacija HZUTS-a i njen DEMO TEAM predstavio se sa tri show nastupa s elementima hrvatske škole skijanja, tri predavanja te show nastupima na službenom otvaranju i zatvaranju Kongresa.",
+  "u-koji-podrucni-zbor-ste-se-uclanili": "U koji područni zbor ste se učlanili?",
   "u-redu": "U redu",
   "u-svrhu-sto-objektivnijeg-i-sto-strucnijeg-ocjenjivanja-kandidata-za-polaganje-strucnih-poslova-u-skijaskom-sportu-hzuts-je-na-izvrsnom-odboru-08-studenog-2003-godine-donio-odluku-o-osnivanju-ispitne-komisije": "U svrhu što objektivnijeg i što stručnijeg ocjenjivanja kandidata za polaganje stručnih poslova u skijaškom sportu, HZUTS je na Izvršnom odboru 08. studenog 2003. godine donio odluku o osnivanju Ispitne komisije.",
   "ubrzo-vise-informacija-provjerite-iducih-dana": "Ubrzo više informacija! Provjerite idućih dana.",
+  "ucitelj-daskanja-na-snijegu": "Učitelj daskanja na snijegu",
   "ucitelj-skijanja": "Učitelj skijanja",
   "ucitelj-skijanja-daskanja": "učitelj skijanja/daskanja",
   "ucitelj-skijanja-daskanja-0": "učitelj skijanja/daskanja",
@@ -865,5 +869,26 @@
   "zavrsio-program-odobren-od-ministarstva-znanosti-i-obrazovanja-u-trajanju-od-minimalno-310-sati": "završio program odobren od Ministarstva znanosti i obrazovanja u trajanju od minimalno 310 sati",
   "zbroj-za-odabrano": "Zbroj za odabrano:",
   "zensko": "Žensko",
-  "zensko-0": "Žensko"
+  "zensko-0": "Žensko",
+
+
+  "dropdownLabels": {
+    "spol": "Spol",
+    "ostvarenistatus": "Ostvareni status s kojim se učlanjujete u HZUTS",
+    "podrucnizbor": "U koji područni zbor ste se učlanili?"
+  },
+  "common": {
+    "choose": "Izaberite"
+  },
+  "gender": {
+    "Muško": "Muško",
+    "Žensko": "Žensko"
+  },
+  "status": {
+    "Voditelj skijanja": "Voditelj skijanja",
+    "Učitelj skijanja": "Učitelj skijanja",
+    "Trener skijanja": "Trener skijanja",
+    "Učitelj daskanja na snijegu": "Učitelj daskanja na snijegu",
+    "Trener daskanja": "Trener daskanja"
+  }
 }

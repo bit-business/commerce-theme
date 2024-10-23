@@ -729,23 +729,29 @@ getStatusOptions(options, status) {
       return [];
     },
 
-    getTranslatedOption(field, option, status = null) {
+// Only modify the getTranslatedOption method - everything else stays the same
+getTranslatedOption(field, option, status = null) {
   const currentLang = this.$i18n.locale;
   if (currentLang !== 'hr' && field.translations && field.translations[currentLang]) {
-    let translatedOptions;
     if (field.label === 'Na seminaru:' && status) {
-      translatedOptions = field.translations[currentLang].options?.[status];
+      const translatedOptions = field.translations[currentLang].options;
+      // Check if we have status-specific translations
+      if (translatedOptions && translatedOptions[status]) {
+        const statusOptions = translatedOptions[status].split(',').map(opt => opt.trim());
+        const originalOptions = this.getStatusOptions(this.getOptions(field.options), status);
+        const index = originalOptions.findIndex(opt => opt.trim() === option.trim());
+        return index !== -1 && statusOptions[index] ? statusOptions[index] : option;
+      }
     } else {
-      translatedOptions = field.translations[currentLang].options;
-    }
-
-    if (typeof translatedOptions === 'string') {
-      const translatedArray = this.parseOptions(translatedOptions);
-      const originalArray = Array.isArray(field.options) ? field.options : this.parseOptions(field.options);
-      const index = originalArray.findIndex(opt => opt.trim() === option);
-      return index !== -1 ? translatedArray[index].trim() : option;
-    } else if (typeof translatedOptions === 'object' && translatedOptions !== null) {
-      return translatedOptions[option] || option;
+      let translatedOptions = field.translations[currentLang].options;
+      if (typeof translatedOptions === 'string') {
+        const translatedArray = this.parseOptions(translatedOptions);
+        const originalArray = Array.isArray(field.options) ? field.options : this.parseOptions(field.options);
+        const index = originalArray.findIndex(opt => opt.trim() === option.trim());
+        return index !== -1 ? translatedArray[index].trim() : option;
+      } else if (typeof translatedOptions === 'object' && translatedOptions !== null) {
+        return translatedOptions[option] || option;
+      }
     }
   }
   return option;

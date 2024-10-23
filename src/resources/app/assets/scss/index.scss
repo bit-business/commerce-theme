@@ -32,6 +32,17 @@ body {
   border-width: 0;
 }
 
+input,
+select,
+textarea,
+.dropdown,
+.form-input {
+  /* Critical fix for position shifting */
+  transform: translateZ(0);
+  /* Smooth transitions */
+  transition: all 0.2s ease;
+}
+
 /* Add this to prevent unwanted scroll on input focus */
 input, select, textarea {
   &:focus {
