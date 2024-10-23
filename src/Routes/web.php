@@ -76,6 +76,7 @@ Route::prefix($commerce_route_prefix)
         Route::get('/profile/zaduzenja', HelpersRoute::getController('InertiaController@Zaduzenja'))->name('zaduzenja');
         Route::get('/profile/mojstatus', HelpersRoute::getController('InertiaController@Mojstatus'))->name('mojstatus');
         Route::get('/profile/zahtjevi', HelpersRoute::getController('InertiaController@Zahtjevi'))->name('zahtjevi');
+        Route::get('/profile/shop', HelpersRoute::getController('InertiaController@Shop'))->name('shop');
         /**
          * Legal route.
          */

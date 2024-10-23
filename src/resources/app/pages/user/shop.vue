@@ -60,7 +60,7 @@
               <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <path d="M21.0003 2L19.0003 4M19.0003 4L22.0003 7L18.5003 10.5L15.5003 7.5M19.0003 4L15.5003 7.5M11.3903 11.61C11.9066 12.1195 12.3171 12.726 12.598 13.3948C12.879 14.0635 13.0249 14.7813 13.0273 15.5066C13.0297 16.232 12.8887 16.9507 12.6122 17.6213C12.3357 18.2919 11.9293 18.9012 11.4164 19.4141C10.9035 19.9271 10.2942 20.3334 9.62358 20.6099C8.95296 20.8864 8.23427 21.0275 7.50891 21.025C6.78354 21.0226 6.06582 20.8767 5.39707 20.5958C4.72831 20.3148 4.12174 19.9043 3.61227 19.388C2.6104 18.3507 2.05604 16.9614 2.06857 15.5193C2.0811 14.0772 2.65953 12.6977 3.67927 11.678C4.69902 10.6583 6.07849 10.0798 7.52057 10.0673C8.96265 10.0548 10.352 10.6091 11.3893 11.611L11.3903 11.61ZM11.3903 11.61L15.5003 7.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-1') }}</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-2') }}</span>
             </Link>
 
 
@@ -71,13 +71,12 @@
   <path d="M18 8C18 6.4087 17.3679 4.88258 16.2426 3.75736C15.1174 2.63214 13.5913 2 12 2C10.4087 2 8.88258 2.63214 7.75736 3.75736C6.63214 4.88258 6 6.4087 6 8C6 15 3 17 3 17H21C21 17 18 15 18 8Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M13.7295 21C13.5537 21.3031 13.3014 21.5547 12.9978 21.7295C12.6941 21.9044 12.3499 21.9965 11.9995 21.9965C11.6492 21.9965 11.3049 21.9044 11.0013 21.7295C10.6977 21.5547 10.4453 21.3031 10.2695 21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">{{ $t('obavijesti-1') }}</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">{{ $t('obavijesti-2') }}</span>
             </Link>
 
 
 
-
-            <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+            <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
@@ -92,7 +91,7 @@
 </defs>
 </svg>
 </div>
-  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-1') }}</span>
+  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-0') }}</span>
 </Link>
 
 
@@ -110,13 +109,8 @@
     </clipPath>
   </defs>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-1') }}</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-0') }}</span>
             </Link>
-
-
-
-
-
 
 
 
@@ -124,8 +118,8 @@
               <div class="sidebar-icon">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
   <g clip-path="url(#clip0_1338_3683)">
-    <path d="M22.9088 12.1007V8.7275C22.9088 7.5837 22.0216 6.6535 20.9006 6.56329L17.7681 1.09179C17.4778 0.585754 17.009 0.224073 16.4481 0.0738875C15.8899 -0.0752748 15.3061 0.00306481 14.8064 0.293873L4.06783 6.5457H2.1818C0.97853 6.5457 0 7.52418 0 8.7275V21.8182C0 23.0215 0.978478 24 2.1818 24H20.727C21.9302 24 22.9088 23.0215 22.9088 21.8182V18.445C23.5423 18.2191 23.9996 17.6194 23.9996 16.9092V13.6365C23.9996 12.9263 23.5423 12.3266 22.9088 12.1007ZM19.633 6.5457H14.8789L18.4445 4.4698L19.633 6.5457ZM17.9025 3.52313L12.7108 6.5457H10.5573L17.3641 2.5827L17.9025 3.52313ZM15.3556 1.23666C15.6022 1.0923 15.8904 1.05395 16.1658 1.12748C16.4444 1.20204 16.6766 1.38209 16.821 1.63403L16.8221 1.63603L8.38935 6.5457H6.23598L15.3556 1.23666ZM21.8178 21.8182C21.8178 22.4196 21.3283 22.9091 20.727 22.9091H2.1818C1.58045 22.9091 1.09093 22.4196 1.09093 21.8182V8.7275C1.09093 8.12615 1.58045 7.63663 2.1818 7.63663H20.727C21.3283 7.63663 21.8178 8.12615 21.8178 8.7275V12.0002H18.5452C16.7405 12.0002 15.2725 13.4682 15.2725 15.2728C15.2725 17.0775 16.7405 18.5455 18.5452 18.5455H21.8178V21.8182ZM22.9088 16.9092C22.9088 17.2101 22.6643 17.4546 22.3633 17.4546H18.5452C17.3419 17.4546 16.3634 16.4762 16.3634 15.2728C16.3634 14.0696 17.3418 13.091 18.5452 13.091H22.3633C22.6642 13.091 22.9088 13.3355 22.9088 13.6365V16.9092Z" fill="#03A9F4"/>
-    <path d="M18.545 14.1816C17.9436 14.1816 17.4541 14.6712 17.4541 15.2725C17.4541 15.8739 17.9436 16.3634 18.545 16.3634C19.1463 16.3634 19.6358 15.8739 19.6358 15.2725C19.6359 14.6712 19.1464 14.1816 18.545 14.1816Z" fill="#03A9F4"/>
+    <path d="M22.9088 12.1007V8.7275C22.9088 7.5837 22.0216 6.6535 20.9006 6.56329L17.7681 1.09179C17.4778 0.585754 17.009 0.224073 16.4481 0.0738875C15.8899 -0.0752748 15.3061 0.00306481 14.8064 0.293873L4.06783 6.5457H2.1818C0.97853 6.5457 0 7.52418 0 8.7275V21.8182C0 23.0215 0.978478 24 2.1818 24H20.727C21.9302 24 22.9088 23.0215 22.9088 21.8182V18.445C23.5423 18.2191 23.9996 17.6194 23.9996 16.9092V13.6365C23.9996 12.9263 23.5423 12.3266 22.9088 12.1007ZM19.633 6.5457H14.8789L18.4445 4.4698L19.633 6.5457ZM17.9025 3.52313L12.7108 6.5457H10.5573L17.3641 2.5827L17.9025 3.52313ZM15.3556 1.23666C15.6022 1.0923 15.8904 1.05395 16.1658 1.12748C16.4444 1.20204 16.6766 1.38209 16.821 1.63403L16.8221 1.63603L8.38935 6.5457H6.23598L15.3556 1.23666ZM21.8178 21.8182C21.8178 22.4196 21.3283 22.9091 20.727 22.9091H2.1818C1.58045 22.9091 1.09093 22.4196 1.09093 21.8182V8.7275C1.09093 8.12615 1.58045 7.63663 2.1818 7.63663H20.727C21.3283 7.63663 21.8178 8.12615 21.8178 8.7275V12.0002H18.5452C16.7405 12.0002 15.2725 13.4682 15.2725 15.2728C15.2725 17.0775 16.7405 18.5455 18.5452 18.5455H21.8178V21.8182ZM22.9088 16.9092C22.9088 17.2101 22.6643 17.4546 22.3633 17.4546H18.5452C17.3419 17.4546 16.3634 16.4762 16.3634 15.2728C16.3634 14.0696 17.3418 13.091 18.5452 13.091H22.3633C22.6642 13.091 22.9088 13.3355 22.9088 13.6365V16.9092Z" fill="black"/>
+    <path d="M18.545 14.1816C17.9436 14.1816 17.4541 14.6712 17.4541 15.2725C17.4541 15.8739 17.9436 16.3634 18.545 16.3634C19.1463 16.3634 19.6358 15.8739 19.6358 15.2725C19.6359 14.6712 19.1464 14.1816 18.545 14.1816Z" fill="black"/>
   </g>
   <defs>
     <clipPath id="clip0_1338_3683">
@@ -133,7 +127,7 @@
     </clipPath>
   </defs>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('zaduzenja-1') }}</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zaduzenja-0') }}</span>
             </Link>
             <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
@@ -142,21 +136,22 @@
   <path d="M12 16V12" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
   <path d="M12 8H12.01" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-status-1') }}</span>
+              <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-status-0') }}</span>
             </Link>
-         
+
 
             <Link :href="route('skijasi.commerce-theme.shop')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
 </div>
-  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('shop') }}</span>
+  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('shop') }}</span>
 </Link>
+         
 
             <div class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
@@ -173,7 +168,7 @@
       <rect width="24" height="24" fill="white"/>
     </clipPath>
   </defs>
-</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('odjavi-se') }}</span>
+</svg> </div>             <span @click="() => logout()" class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('odjavi-se-0') }}</span>
             </div>
           </div>
         </div>  </div>
@@ -182,420 +177,105 @@
 
 
 
-        <div class="bg-white shadow-sm px-6 rounded-xl ml-16 pb-8">
+<div class="bg-white shadow-sm px-6 rounded-xl ml-16 pb-8">
           <!--2-->
           <div class="h-22 flex flex-col py-4 justify-center border-plava-200 border-b">
-            <span class="text-lg font-medium plavi-text">{{ $t('zaduzenja-2') }}</span>
+            <span class="text-lg font-medium plavi-text">{{ $t('shop') }}</span>
           </div>
-
-
-            <!--      POČETAK CART           -->
-
-
-
-
-  <div class="container hidden pt-8 gap-4 auto-rows-min sm:grid navbarpraznina">
-      <div class="bg-gray-100 px-8 py-4 grid grid-cols-5 gap-4 shadow-sm rounded-xl">
-        <div class="col-span-2 text-sm text-gray-700 font-medium">{{ $t('opis-placanja-0') }}</div>
-        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">{{ $t('jedinicna-cijena-0') }}</div>
-          <!-- <div class="col-span-1 text-sm text-gray-700 text-center font-medium" v-if="filteredCarts.length > 0">Broj ljudi</div> -->
-        <div class="col-span-1 text-sm text-gray-700 text-center font-medium">{{ $t('ukupna-cijena-0') }}</div>
-   <!---    <div class="col-span-1 text-sm text-gray-700 text-center font-medium">Odustani</div> -->
-      </div>
-
-  <div></div>
-
-      <div class=" px-8 py-8 flex shadow-sm rounded-xl flex-wrap gap-4">
-        <template v-if="carts.length > 0">
-          <div class="grid grid-cols-5 gap-4 w-full" v-for="cart, index in carts" :key="index">
-            <div class="col-span-2 flex gap-4 items-center">
-              <input 
-                v-if="cart.cekapotvrdu != 1"
-                type="checkbox" 
-                v-model="checkboxModel" 
-                :id="cart.id" 
-                :value="cart.id" 
-                class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox"
-              >
-              <div v-else class="w-4"></div>
-              <div class="text-sm text-gray-700 w-24 h-24">
-                <img :src="cart.productDetail && cart.productDetail.productImage ? cart.productDetail.productImage : defaultImageUrl" class="w-full h-full rounded-lg">
-
-              </div>
-              <div class="flex-1 text-sm">
-                <Link :to="{ name: 'DetailProduct', params: { slug: cart.productDetail.product.slug } }" class="line-clamp-2">{{ cart.productDetail.product.name }}</Link>
-                <div class="text-sm mt-2">
-                  <span class="border border-gray-300 px-1.5 py-1 cursor-pointer  rounded-md text-gray-500 text-xs">{{ $voca.titleCase(cart.productDetail.name) }}</span>
-                </div>
-              </div>
-            </div>
-            <div class="col-span-1 text-sm text-gray-700 text-center flex items-center  justify-center">
-              <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
-                <span class="line-through text-gray-400">{{ $currency(cart.productDetail.price) }}</span>&nbsp;{{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount)) }}
-              </template>
-              <template v-else>
-                <span class="text-gray-700">{{ $currency(cart.productDetail.price) }}</span>
-              </template>
-            </div>
-
-      
-
-            <div class="col-span-1 text-sm plava-boja text-center justify-center flex items-center">
-              <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
-                {{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount) * parseInt(cart.quantity)) }}
-              </template>
-              <template v-else>
-                {{ $currency(cart.productDetail.price * cart.quantity) }}
-              </template>
-            </div>
-
-            <div v-if="cart.productDetail.product.productCategory.slug != 'licence' || (cart.productDetail.product.productCategory.slug == 'licence' && [10, 11, 12].includes(cart.productDetail.product.id))"  class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center"> 
-  <div v-if="cart.cekapotvrdu == 1">
-    <div class="flex flex-col items-center justify-center">
-      <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-gray-200">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </div>
-      <span class="text-sm font-bold mt-2">{{ $t('ceka-se-potvrda-placanja-poslat-cemo-vam-email-kada-primimo-uplatu-1') }}</span>
-    </div>
-  </div>
-  <button v-else @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 mt-2 text-red-500 rounded hover:bg-red-50">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-      <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
-    </svg>
-  </button>
-</div>
-
-
-<!-- quantity desktop -->
-<div v-if="cart.productDetail.product.productCategory.slug == 'webshop'" class="mt-2 items-center justify-center flex" >
-              <counter
-              class="jusitfy-center"
-              @subtract="openDeleteDialog($event, cart, index)"        
-                :key="cart.id"
-                @input="changeQuantity($event, cart.id)"
-                v-model="cart.quantity"
-                :min="1"
-                text-disabled
-                :disabled="loading"
-              />
-            </div> 
+       
+ 
 
 
 
-            <div class="col-span-full" v-if="index !== carts.length - 1">
-              <div class="h-px w-full bg-gray-300" />
-            </div>
-          </div>
-        </template>
-        <template v-else>
-          <div class="p-2 h-40 w-full flex justify-center gap-2 items-center flex-col text-gray-500">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-            </svg>
-            <span class="text-sm">{{ $t('niste-dodali-nijedno-placanje-0') }}</span>
-          </div>
-        </template>
-      </div>
-
-      <div></div>
-      
-      <div class="bg-gray-100 px-8 py-4 flex justify-between gap-4 shadow-sm rounded-xl">
-  <div class="flex flex-wrap items-center gap-1">
-    <div class="flex items-center gap-4 w-full">
-      {{ $t('ukupno-checkboxmodel-length-odabrano-0', [checkboxModel.length]) }}
-      <span class="text-2xl plava-boja">{{ $currency(getTotal) }}</span>
-    </div>
-    <div class="flex items-center gap-4 text-sm w-full" v-if="Number(getSaving) !== 0">
-      {{ $t('popust') }}
-      <span class="plava-boja"> -{{ $currency(getSaving) }}</span>
-    </div>
-  </div>
-  <div class="flex items-center w-60  justify-end">
-    <button 
-  @click="checkout"
-  class="checkout-btn bg-primary1 px-12 py-3 text-white rounded-lg font-medium flex items-center justify-center"
+          <div class="flex gap-2 w-full mt-8 flex-wrap">
+            <carousel 
+  class="container hidden lg:flex" 
+  show="4"
+  @quantity-change="handleQuantityChange"
 >
-  <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path>
-  </svg>
-  {{ $t('na-placanje-1') }}
+  <carousel-item 
+    v-for="product, index in similarProducts.data" 
+    :key="index"
+    @quantity-change="handleQuantityChange"
+  >
+    <commerce-product-alt
+      :product="product"
+      :cart-data="getCartDataForProduct(product)"
+      @click="setSelectedProduct"
+      @quantity-change="handleQuantityChange"
+    />
+  </carousel-item>
+</carousel>
+            <carousel 
+class="container hidden md:flex lg:hidden" show="3"
+  @quantity-change="handleQuantityChange"
+>
+  <carousel-item 
+    v-for="product, index in similarProducts.data" 
+    :key="index"
+    @quantity-change="handleQuantityChange"
+  >
+  <commerce-product-alt
+      :product="product"
+      :cart-data="getCartDataForProduct(product)"
+      @click="setSelectedProduct"
+      @quantity-change="handleQuantityChange"
+    />
+  </carousel-item>
+</carousel>
+
+            <carousel 
+            class="container flex  md:hidden" show="1"
+  @quantity-change="handleQuantityChange"
+>
+  <carousel-item 
+    v-for="product, index in similarProducts.data" 
+    :key="index"
+    @quantity-change="handleQuantityChange"
+  >
+  <commerce-product-alt
+      :product="product"
+      :cart-data="getCartDataForProduct(product)"
+      @click="setSelectedProduct"
+      @quantity-change="handleQuantityChange"
+    />
+  </carousel-item>
+</carousel>
+
+
+      </div>
+      
+
+
+      <div class="flex items-center justify-end mt-10 ">
+    <button 
+  @click="naplacanjelink"
+  class="checkout-btn bg-primary1 px-8 py-3 text-white rounded-lg font-medium flex items-center justify-center"
+>
+<svg 
+         
+            xmlns="http://www.w3.org/2000/svg" 
+            class="h-5 w-5 mr-2" 
+            fill="none" 
+            viewBox="0 0 24 24" 
+            stroke="currentColor"
+          >
+            <path 
+              stroke-linecap="round" 
+              stroke-linejoin="round" 
+              stroke-width="2" 
+              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" 
+            />
+          </svg>
+ {{ $t('na-kosaricu') }}
 </button>
   </div>
-</div>
-
-
-      <!-- možda ti se svidi kod
-      <div class="flex gap-2 w-full mt-8 flex-wrap">
-        <div class="text-gray-400 font-medium w-full">
-          MOŽDA TI SE TAKOĐER SVIDI
-        </div>
-        <carousel class="container hidden lg:flex" show="6">
-          <carousel-item v-for="product, index in similarProducts.data" :key="index">
-            <commerce-product-alt :product="product" />
-          </carousel-item>
-        </carousel>
-        <carousel class="container hidden md:flex lg:hidden" show="4">
-          <carousel-item v-for="product, index in similarProducts.data" :key="index">
-            <commerce-product-alt :product="product" />
-          </carousel-item>
-        </carousel>
-      </div>
-          -->
-
-    </div>
 
 
 
 
+ </div>
 
-
-
-        <div class="sm:hidden relative">
-      <transition
-        enter-active-class="transition-all ease-out duration-100"
-        leave-active-class="transition-all ease-in duration-100"
-        enter-class="opacity-0"
-        enter-to-class="opacity-100"
-        leave-class="opacity-100"
-        leave-to-class="opacity-0"
-      >
-        <div key="background" v-if="variationDialog" class="fixed inset-0 w-screen h-screen bg-black z-80 bg-opacity-50" @click="closeVariationDialog" />
-      </transition>
-
-      <transition
-        enter-active-class="transition-all ease-out duration-100"
-        leave-active-class="transition-all ease-in duration-100"
-        enter-class="opacity-40 translate-y-full"
-        enter-to-class="opacity-100 translate-y-0"
-        leave-class="opacity-100 translate-y-0"
-        leave-to-class="opacity-40 translate-y-full"
-      >
-        <div key="content" class="fixed bottom-0 p-3 transform origin-bottom right-0 left-0 w-full z-90 bg-white rounded-t-md" v-if="variationDialog">
-          <div class="flex flex-col gap-2">
-
-            <div class="w-full flex gap-2 pb-3 border-b">
-              <div class="w-1/3">
-                <img :src="getImageSource">
-              </div>
-              <div class="w-2/3 flex flex-col">
-                <div class="w-full flex justify-end text-gray-400" @click="closeVariationDialog">
-                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </div>
-                <div class="flex-grow" />
-                <div v-if="hasActiveDiscount">
-                  <div class="text-normal text-gray-400 line-through">
-                    {{ $currency(activePrice) }}
-                  </div>
-                  <div class="text-lg plava-boja font-semibold">
-                    {{ getDiscountedPrice(activePrice, activeDiscount) }}
-                  </div>
-                </div>
-                <div class="text-lg plava-boja font-semibold" v-else>
-                  {{ $currency(activePrice) }}
-                </div>
-            
-              </div>
-            </div>
-
-            <!--  
-            selektor za opciju/varijantu
-            <div class="w-full flex gap-2 flex-col border-b pb-3">
-              <div class="text-sm">Status člana</div>
-
-              <div class="w-full flex flex-row flex-wrap gap-4">
-                <div v-for="productDetail, index in product.productDetails" :key="index" class="py-1.5 gap-2 rounded-md bg-gray-100 flex items-center px-3" @click="clickProductDetail(index)" :class="[index == productDetailSelectedIndex ? 'border-primary border' : '']">
-                  <img :src="productDetail.productImage" class="h-6 w-6">
-                  <div class="text-sm">{{ productDetail.name }}</div>
-                </div>
-              </div>
-            </div> -->
-
-    
-
-            <!-- <div class="w-full flex gap-2 justify-between items-center"   v-if="filteredCarts.length > 0"> -->
-              <!-- <div class="text-sm">Količina</div> -->
-              <!-- <counter
-        
-               v-model="variationQuantity"
-                :min="1"
-                :max="product.productDetails[productDetailSelectedIndex].quantity"
-              /> -->
-
-              
-            <!-- </div> -->
-
-            <div class="w-full flex gap-4 justify-center items-center mt-2">
-              <div class="w-full h-10 flex items-center justify-center text-white text-sm rounded-md uppercase py-2 px-4 text-center bg-primary1" @click="confirmVariationDialog">{{ $t('potvrdi-0') }}</div>
-            </div>
-          </div>
-        </div>
-      </transition>
-    </div>
-
-    <div class="block sm:hidden pb-8">
-      <template v-if="carts.length > 0">
-        <div class="p-3 grid border-b-2  border-gray-100 mb-6 mt-3 grid-cols-12 gap-2 items-center" v-for="cart, index in carts" :key="index">
-       
-          <div class="col-span-3">
-            <img :src="cart.productDetail && cart.productDetail.productImage ? cart.productDetail.productImage : defaultImageUrl" class="w-full h-full">
-
-          </div>
-          <div class="col-span-1 relative text-center m-4">
-            <input 
-              v-if="cart.cekapotvrdu != 1"
-              type="checkbox" 
-              v-model="checkboxModel" 
-              :id="cart.id" 
-              :value="cart.id"
-              class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox"
-            >
-            <div v-else class="w-4"></div> 
-          </div>
-          <div class="col-span-8 flex flex-col gap-3">
-            <div class="line-clamp-1 text-md font-semibold w-full text-center">
-              {{ cart.productDetail.product.name }}
-            </div>
-            <!-- <div class="w-full p-2 bg-gray-100 text-sm flex text-gray-600 items-center" @click="openVariationDialog(cart)"> -->
-              <div class="w-full rounded-md p-2 bg-gray-100 text-sm flex text-gray-600 items-center">
-              <div class="flex-grow text-center">{{ $t('status-cart-productdetail-name-0', [cart.productDetail.name]) }}</div>
-              <!-- <div class="flex-shrink">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-                </svg>
-              </div> -->
-            </div>
-          </div>
-          <div class="text-sm col-start-5 col-end-13 text-center mt-4 mb-2">
-            <template v-if="cart.productDetail.discount !== null && cart.productDetail.discount.active == 1">
-              <span class="line-through text-gray-400">{{ $currency(cart.productDetail.price) }}</span>&nbsp;<span class="plava-boja">{{ $currency(getDiscount(cart.productDetail.price, cart.productDetail.discount)) }}</span>
-            </template>
-            <template v-else>
-              <span class="text-gray-700">{{ $currency(cart.productDetail.price) }}</span>
-            </template>
-
-
-
-      <!-- For mobile view -->
-<div v-if="cart.productDetail.product.productCategory.slug != 'licence' || (cart.productDetail.product.productCategory.slug == 'licence' && [10, 11, 12].includes(cart.productDetail.product.id))" class="col-span-1 text-sm text-gray-700 text-center flex items-center justify-center mt-6 bg-gray-100 rounded-md"> 
-  <div v-if="cart.cekapotvrdu == 1"> 
-    <div class="flex flex-col items-center justify-center p-2">
-      <div class="flex items-center justify-center w-10 h-10 rounded-full bg-white border-2 border-gray-200">
-        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-gray-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-        </svg>
-      </div>
-      <span class="text-sm font-bold mt-2">{{ $t('ceka-se-potvrda-placanja-poslat-cemo-vam-email-kada-primimo-uplatu-2') }}</span>
-    </div>
-  </div>
-  <button v-else @click="deleteCart(cart.id)" class="focus:outline-none ring-1 ring-red-500 p-2.5 mt-2 mb-2 text-red-500 rounded hover:bg-red-50"> 
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor"> 
-      <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" /> 
-    </svg>
-  </button> 
-</div>
-
-
-
-
-
-         <div v-if="cart.productDetail.product.productCategory.slug == 'webshop'" class="mt-2 items-center justify-center flex" >
-              <counter
-              class="jusitfy-center"
-              @subtract="openDeleteDialog($event, cart, index)"        
-                :key="cart.id"
-                @input="changeQuantity($event, cart.id)"
-                v-model="cart.quantity"
-                :min="1"
-                text-disabled
-                :disabled="loading"
-              />
-            </div> 
-            
-
-
-
-          </div>
-        </div>
-      </template>
-      <template v-else>
-        <div class="p-3 bg-white h-40 w-full flex justify-center gap-2 items-center flex-col text-gray-500">
-          <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
-          </svg>
-          <span class="text-sm">{{ $t('nema-zaduzenja-0') }}</span>
-        </div>
-      </template>
-
-
-    </div>
-
-    <div class="block sm:hidden">
-      <div class="bottom-0 left-0 right-0 bg-white grid grid-cols-12 gap-4 items-center  h-21">
-        <div class="col-span-3 inline-flex flex-row gap-2 text-xs">
-          <input type="checkbox" @input="checkAll" :checked="checkboxModel.length === this.carts.length" class="h-4 w-4 focus:ring-primary focus:outline-none rounded-sm plava-boja form-checkbox">
-          <div class="line-clamp-1">{{ $t('izaberi-sve-0') }}</div>
-        </div>
-        <div class="col-span-5 text-sm">
-          <div class="flex items-center gap-2 w-full float-right justify-end" v-if="checkboxModel.length > 0 &&  Number(getSaving) !== 0">
-            {{ $t('popust') }}
-            <span class="plava-boja">{{ $currency(getSaving) }}</span>
-          </div>
-          <div class="flex items-center gap-4 w-full float-right justify-end">
-            {{ $t('ukupno') }}
-            <span class=" plava-boja">{{ $currency(getTotal) }}</span>
-          </div>
-        </div>
-        <div class="col-span-4">
-          <button @click="checkout" class="font-medium mt-6 bg-primary1 text-white p-2 text-sm w-full rounded-md">
-            {{ $t('na-placanje-2') }}
-          </button>
-        </div>
-      </div>
-    </div>
-
-
-
-
-  </div>
-
-
-  <!--KRAJ CART-->
- 
-<div></div>
-
-
-  <div class="bg-white shadow-sm px-6 rounded-xl ml-16 mt-5 mb-5">
-       <!-- New payments list view -->
-       <div class="payments-list">
-  <template v-if="staraPlacanjaArray && staraPlacanjaArray.length">
-    <div v-for="payment in staraPlacanjaArray" :key="payment.id" class="payment-item">
-    <!-- Payment title on its own line -->
-    <div class="payment-title">{{ payment.paymenttitle }}</div>
-
-    <!-- Payment status, date, and price on the next line -->
-    <div class="payment-info">
-      <div class="payment-status" :class="{ 'unpaid': payment.paidstatus === 0, 'paid': payment.paidstatus === 1 }">
-  {{ payment.paidstatus === 1 ? 'PODMIRENO' : 'NEPODMIRENO' }}
-</div>
-
-<span class="payment-date">{{ formatDate(payment.paydate) }}</span>
-      <span class="payment-price">{{ $t('payment-price-eura-0', [payment.price]) }}</span>
-    </div>
-
-    <!-- Blue line separator -->
-    <div class="payment-separator"></div>
-  </div>
-  </template>
-  <div v-else class="no-payments">
-    {{ $t('nemate-zaduzenja-0') }}
-  </div>
-</div>
-
-        </div>
 
 
 
@@ -635,7 +315,7 @@
 <path d="M20 21V19C20 17.9391 19.5786 16.9217 18.8284 16.1716C18.0783 15.4214 17.0609 15 16 15H8C6.93913 15 5.92172 15.4214 5.17157 16.1716C4.42143 16.9217 4 17.9391 4 19V21" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 11C14.2091 11 16 9.20914 16 7C16 4.79086 14.2091 3 12 3C9.79086 3 8 4.79086 8 7C8 9.20914 9.79086 11 12 11Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-profil-1') }}</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-profil-0') }}</span>
   </Link>
   <!--
   <Link :href="route('skijasi.commerce-theme.address')" class="w-full inline-flex items-center group">
@@ -646,7 +326,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <path d="M21.0003 2L19.0003 4M19.0003 4L22.0003 7L18.5003 10.5L15.5003 7.5M19.0003 4L15.5003 7.5M11.3903 11.61C11.9066 12.1195 12.3171 12.726 12.598 13.3948C12.879 14.0635 13.0249 14.7813 13.0273 15.5066C13.0297 16.232 12.8887 16.9507 12.6122 17.6213C12.3357 18.2919 11.9293 18.9012 11.4164 19.4141C10.9035 19.9271 10.2942 20.3334 9.62358 20.6099C8.95296 20.8864 8.23427 21.0275 7.50891 21.025C6.78354 21.0226 6.06582 20.8767 5.39707 20.5958C4.72831 20.3148 4.12174 19.9043 3.61227 19.388C2.6104 18.3507 2.05604 16.9614 2.06857 15.5193C2.0811 14.0772 2.65953 12.6977 3.67927 11.678C4.69902 10.6583 6.07849 10.0798 7.52057 10.0673C8.96265 10.0548 10.352 10.6091 11.3893 11.611L11.3903 11.61ZM11.3903 11.61L15.5003 7.5" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-2') }}</span>
+<span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('promjena-lozinke-0') }}</span>
   </Link>
 
 
@@ -677,19 +357,16 @@
     />
   </svg>
 </div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">{{ $t('obavijesti-2') }}</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text"   :class="{ 'text-yellow-500 ': hasUnreadMessages, 'text-gray-700': !hasUnreadMessages }">{{ $t('obavijesti-0') }}</span>
   </Link>
 
-  
-
-
-  <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
+  <Link :href="route('skijasi.commerce-theme.zahtjevi')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_1341_5428)">
-<path d="M17.4349 10.3894V5.84746C17.4349 5.71746 17.3749 5.59734 17.2899 5.50231L12.1977 0.15509C12.1027 0.0551147 11.9676 0 11.8326 0H3.75915C2.26868 0 1.07812 1.21545 1.07812 2.70611V17.9725C1.07812 19.4632 2.26868 20.6587 3.75915 20.6587H10.1319C11.3373 22.6595 13.5284 24 16.0243 24C19.8158 24 22.9121 20.9187 22.9121 17.1222C22.9173 13.8058 20.5362 11.0347 17.4349 10.3894ZM12.3329 1.7558L15.7492 5.35217H13.5333C12.873 5.35217 12.3329 4.80706 12.3329 4.14678V1.7558ZM3.75915 19.6582C2.82385 19.6582 2.07861 18.9078 2.07861 17.9725V2.70611C2.07861 1.76568 2.82385 1.00049 3.75915 1.00049H11.3324V4.14678C11.3324 5.36224 12.3179 6.35265 13.5333 6.35265H16.4344V10.2592C16.2845 10.2543 16.1643 10.2392 16.0343 10.2392C14.2886 10.2392 12.683 10.9096 11.4725 11.9601H5.11981C4.8446 11.9601 4.61956 12.1851 4.61956 12.4601C4.61956 12.7353 4.8446 12.9604 5.11981 12.9604H10.5421C10.1869 13.4606 9.89171 13.9609 9.66173 14.5111H5.11981C4.8446 14.5111 4.61956 14.7361 4.61956 15.0113C4.61956 15.2864 4.8446 15.5116 5.11981 15.5116H9.33654C9.21148 16.0118 9.14647 16.567 9.14647 17.1222C9.14647 18.0225 9.32152 18.9129 9.63665 19.6633H3.75915V19.6582ZM16.0294 23.0046C12.7881 23.0046 10.1519 20.3684 10.1519 17.1271C10.1519 13.8858 12.7829 11.2496 16.0294 11.2496C19.2757 11.2496 21.9067 13.8858 21.9067 17.1271C21.9067 20.3684 19.2707 23.0046 16.0294 23.0046Z" fill="black"/>
-<path d="M5.11938 10.4536H10.1865C10.4617 10.4536 10.6867 10.2284 10.6867 9.95337C10.6867 9.67816 10.4617 9.45312 10.1865 9.45312H5.11938C4.84418 9.45312 4.61914 9.67816 4.61914 9.95337C4.61914 10.2284 4.84418 10.4536 5.11938 10.4536Z" fill="black"/>
-<path d="M16.3846 13.4354C16.2896 13.3354 16.1596 13.2754 16.0195 13.2754C15.8794 13.2754 15.7494 13.3354 15.6544 13.4354L12.723 16.5817C12.533 16.7819 12.548 17.1019 12.7481 17.287C12.9483 17.4771 13.2733 17.4621 13.4633 17.2621L15.5342 15.0462V20.5084C15.5342 20.7836 15.7593 21.0087 16.0345 21.0087C16.3095 21.0087 16.5347 20.7836 16.5347 20.5084V15.0462L18.5905 17.2621C18.6906 17.3671 18.8206 17.4222 18.9558 17.4222C19.0757 17.4222 19.1958 17.3771 19.2958 17.287C19.4959 17.097 19.5109 16.7819 19.3209 16.5817L16.3846 13.4354Z" fill="black"/>
+<path d="M17.4349 10.3894V5.84746C17.4349 5.71746 17.3749 5.59734 17.2899 5.50231L12.1977 0.15509C12.1027 0.0551147 11.9676 0 11.8326 0H3.75915C2.26868 0 1.07812 1.21545 1.07812 2.70611V17.9725C1.07812 19.4632 2.26868 20.6587 3.75915 20.6587H10.1319C11.3373 22.6595 13.5284 24 16.0243 24C19.8158 24 22.9121 20.9187 22.9121 17.1222C22.9173 13.8058 20.5362 11.0347 17.4349 10.3894ZM12.3329 1.7558L15.7492 5.35217H13.5333C12.873 5.35217 12.3329 4.80706 12.3329 4.14678V1.7558ZM3.75915 19.6582C2.82385 19.6582 2.07861 18.9078 2.07861 17.9725V2.70611C2.07861 1.76568 2.82385 1.00049 3.75915 1.00049H11.3324V4.14678C11.3324 5.36224 12.3179 6.35265 13.5333 6.35265H16.4344V10.2592C16.2845 10.2543 16.1643 10.2392 16.0343 10.2392C14.2886 10.2392 12.683 10.9096 11.4725 11.9601H5.11981C4.8446 11.9601 4.61956 12.1851 4.61956 12.4601C4.61956 12.7353 4.8446 12.9604 5.11981 12.9604H10.5421C10.1869 13.4606 9.89171 13.9609 9.66173 14.5111H5.11981C4.8446 14.5111 4.61956 14.7361 4.61956 15.0113C4.61956 15.2864 4.8446 15.5116 5.11981 15.5116H9.33654C9.21148 16.0118 9.14647 16.567 9.14647 17.1222C9.14647 18.0225 9.32152 18.9129 9.63665 19.6633H3.75915V19.6582ZM16.0294 23.0046C12.7881 23.0046 10.1519 20.3684 10.1519 17.1271C10.1519 13.8858 12.7829 11.2496 16.0294 11.2496C19.2757 11.2496 21.9067 13.8858 21.9067 17.1271C21.9067 20.3684 19.2707 23.0046 16.0294 23.0046Z" fill="#03A9F4"/>
+<path d="M5.11938 10.4536H10.1865C10.4617 10.4536 10.6867 10.2284 10.6867 9.95337C10.6867 9.67816 10.4617 9.45312 10.1865 9.45312H5.11938C4.84418 9.45312 4.61914 9.67816 4.61914 9.95337C4.61914 10.2284 4.84418 10.4536 5.11938 10.4536Z" fill="#03A9F4"/>
+<path d="M16.3846 13.4354C16.2896 13.3354 16.1596 13.2754 16.0195 13.2754C15.8794 13.2754 15.7494 13.3354 15.6544 13.4354L12.723 16.5817C12.533 16.7819 12.548 17.1019 12.7481 17.287C12.9483 17.4771 13.2733 17.4621 13.4633 17.2621L15.5342 15.0462V20.5084C15.5342 20.7836 15.7593 21.0087 16.0345 21.0087C16.3095 21.0087 16.5347 20.7836 16.5347 20.5084V15.0462L18.5905 17.2621C18.6906 17.3671 18.8206 17.4222 18.9558 17.4222C19.0757 17.4222 19.1958 17.3771 19.2958 17.287C19.4959 17.097 19.5109 16.7819 19.3209 16.5817L16.3846 13.4354Z" fill="#03A9F4"/>
 </g>
 <defs>
 <clipPath id="clip0_1341_5428">
@@ -698,9 +375,8 @@
 </defs>
 </svg>
 </div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-2') }}</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zahtjevi-0') }}</span>
   </Link>
-
 
 
   <Link :href="route('skijasi.commerce-theme.order')" class="w-full inline-flex items-center group sidebar-item">
@@ -716,16 +392,8 @@
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-2') }}</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('povijest-placanja-0') }}</span>
   </Link>
-
-
-
-
-
-
-
-
 
 
 
@@ -733,8 +401,8 @@
     <div class="sidebar-icon">
       <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none">
 <g clip-path="url(#clip0_1338_3683)">
-<path d="M22.9088 12.1007V8.7275C22.9088 7.5837 22.0216 6.6535 20.9006 6.56329L17.7681 1.09179C17.4778 0.585754 17.009 0.224073 16.4481 0.0738875C15.8899 -0.0752748 15.3061 0.00306481 14.8064 0.293873L4.06783 6.5457H2.1818C0.97853 6.5457 0 7.52418 0 8.7275V21.8182C0 23.0215 0.978478 24 2.1818 24H20.727C21.9302 24 22.9088 23.0215 22.9088 21.8182V18.445C23.5423 18.2191 23.9996 17.6194 23.9996 16.9092V13.6365C23.9996 12.9263 23.5423 12.3266 22.9088 12.1007ZM19.633 6.5457H14.8789L18.4445 4.4698L19.633 6.5457ZM17.9025 3.52313L12.7108 6.5457H10.5573L17.3641 2.5827L17.9025 3.52313ZM15.3556 1.23666C15.6022 1.0923 15.8904 1.05395 16.1658 1.12748C16.4444 1.20204 16.6766 1.38209 16.821 1.63403L16.8221 1.63603L8.38935 6.5457H6.23598L15.3556 1.23666ZM21.8178 21.8182C21.8178 22.4196 21.3283 22.9091 20.727 22.9091H2.1818C1.58045 22.9091 1.09093 22.4196 1.09093 21.8182V8.7275C1.09093 8.12615 1.58045 7.63663 2.1818 7.63663H20.727C21.3283 7.63663 21.8178 8.12615 21.8178 8.7275V12.0002H18.5452C16.7405 12.0002 15.2725 13.4682 15.2725 15.2728C15.2725 17.0775 16.7405 18.5455 18.5452 18.5455H21.8178V21.8182ZM22.9088 16.9092C22.9088 17.2101 22.6643 17.4546 22.3633 17.4546H18.5452C17.3419 17.4546 16.3634 16.4762 16.3634 15.2728C16.3634 14.0696 17.3418 13.091 18.5452 13.091H22.3633C22.6642 13.091 22.9088 13.3355 22.9088 13.6365V16.9092Z" fill="#03A9F4"/>
-<path d="M18.545 14.1816C17.9436 14.1816 17.4541 14.6712 17.4541 15.2725C17.4541 15.8739 17.9436 16.3634 18.545 16.3634C19.1463 16.3634 19.6358 15.8739 19.6358 15.2725C19.6359 14.6712 19.1464 14.1816 18.545 14.1816Z" fill="#03A9F4"/>
+<path d="M22.9088 12.1007V8.7275C22.9088 7.5837 22.0216 6.6535 20.9006 6.56329L17.7681 1.09179C17.4778 0.585754 17.009 0.224073 16.4481 0.0738875C15.8899 -0.0752748 15.3061 0.00306481 14.8064 0.293873L4.06783 6.5457H2.1818C0.97853 6.5457 0 7.52418 0 8.7275V21.8182C0 23.0215 0.978478 24 2.1818 24H20.727C21.9302 24 22.9088 23.0215 22.9088 21.8182V18.445C23.5423 18.2191 23.9996 17.6194 23.9996 16.9092V13.6365C23.9996 12.9263 23.5423 12.3266 22.9088 12.1007ZM19.633 6.5457H14.8789L18.4445 4.4698L19.633 6.5457ZM17.9025 3.52313L12.7108 6.5457H10.5573L17.3641 2.5827L17.9025 3.52313ZM15.3556 1.23666C15.6022 1.0923 15.8904 1.05395 16.1658 1.12748C16.4444 1.20204 16.6766 1.38209 16.821 1.63403L16.8221 1.63603L8.38935 6.5457H6.23598L15.3556 1.23666ZM21.8178 21.8182C21.8178 22.4196 21.3283 22.9091 20.727 22.9091H2.1818C1.58045 22.9091 1.09093 22.4196 1.09093 21.8182V8.7275C1.09093 8.12615 1.58045 7.63663 2.1818 7.63663H20.727C21.3283 7.63663 21.8178 8.12615 21.8178 8.7275V12.0002H18.5452C16.7405 12.0002 15.2725 13.4682 15.2725 15.2728C15.2725 17.0775 16.7405 18.5455 18.5452 18.5455H21.8178V21.8182ZM22.9088 16.9092C22.9088 17.2101 22.6643 17.4546 22.3633 17.4546H18.5452C17.3419 17.4546 16.3634 16.4762 16.3634 15.2728C16.3634 14.0696 17.3418 13.091 18.5452 13.091H22.3633C22.6642 13.091 22.9088 13.3355 22.9088 13.6365V16.9092Z" fill="black"/>
+<path d="M18.545 14.1816C17.9436 14.1816 17.4541 14.6712 17.4541 15.2725C17.4541 15.8739 17.9436 16.3634 18.545 16.3634C19.1463 16.3634 19.6358 15.8739 19.6358 15.2725C19.6359 14.6712 19.1464 14.1816 18.545 14.1816Z" fill="black"/>
 </g>
 <defs>
 <clipPath id="clip0_1338_3683">
@@ -742,7 +410,7 @@
 </clipPath>
 </defs>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('zaduzenja-3') }}</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('zaduzenja-0') }}</span>
   </Link>
   <Link v-if="user.userType !== 'Običan Korisnik'" :href="route('skijasi.commerce-theme.mojstatus')" class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
@@ -751,21 +419,22 @@
 <path d="M12 16V12" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 <path d="M12 8H12.01" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
 </svg></div>
-    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-status-2') }}</span>
+    <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('moj-status-0') }}</span>
   </Link>
 
 
   <Link :href="route('skijasi.commerce-theme.shop')" class="w-full inline-flex items-center group sidebar-item">
               <div class="sidebar-icon">
                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-<path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" stroke="black" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M9 22C9.55228 22 10 21.5523 10 21C10 20.4477 9.55228 20 9 20C8.44772 20 8 20.4477 8 21C8 21.5523 8.44772 22 9 22Z" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M20 22C20.5523 22 21 21.5523 21 21C21 20.4477 20.5523 20 20 20C19.4477 20 19 20.4477 19 21C19 21.5523 19.4477 22 20 22Z" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M1 1H5L7.68 14.39C7.77144 14.8504 8.02191 15.264 8.38755 15.5583C8.75318 15.8526 9.2107 16.009 9.68 16H19.4C19.8693 16.009 20.3268 15.8526 20.6925 15.5583C21.0581 15.264 21.3086 14.8504 21.4 14.39L23 6H6" stroke="#03A9F4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
 </svg>
 
 </div>
-  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text">{{ $t('shop') }}</span>
+  <span class="text-gray-700 font-semibold cursor-pointer group-hover:text-primary transition-colors text-sm pl-2 sidebar-text plava-boja">{{ $t('shop') }}</span>
 </Link>
+
 
   <div class="w-full inline-flex items-center group sidebar-item">
     <div class="sidebar-icon">
@@ -809,7 +478,7 @@ import CommerceProductAlt from '../../components/commerce-product-alt.vue'
 import CommerceMobileProductAlt from '../../components/commerce-mobile-product-alt.vue'
 
 
-import skijasiStaraplacanja from '../../../../../../core/src/resources/js/api/modules/skijasi-staraplacanja.js';
+import podaciusera from '../../../../../../core/src/resources/js/api/modules/skijasi-user.js';
 
 import poruke from  '../../../../../../core/src/resources/js/api/modules/skijasi-poruke.js';
 
@@ -848,9 +517,11 @@ export default {
       productDetailSelectedIndex: 0,
     
 
-      orders: [], // Assuming this is where your order data is stored
-     
-    defaultImageUrl: '/storage/slike/zahtjeviprofil/zahtjevi-vector-1.svg',
+      selectedProduct: {
+        id: null
+      },
+
+
 
 
       avatar_approved: 0,
@@ -872,13 +543,15 @@ export default {
       currentUser: null,
       users: [], 
 
+      korisnik: [],
+
      isSidebarExpanded: window.innerWidth > 768, // Initialize based on screen width
      isSidebarOpen: false,
      isGridVisible: true, 
 
      paymentOptions: [
       { value: 'Sve plaćeno', text: this.$t('placena-0') },
-      { value: 'Nije plaćeno', text: this.$t('nije-placena') },
+      { value: 'Nije plaćeno', text: this.$t('nije-placena-0') },
       // ... other payment options ...
     ],
     staraPlacanjaArray: [],
@@ -897,8 +570,8 @@ export default {
     }
   },
   computed: {
-    ...mapState(['existingOrderId']),
-    ...mapState( {
+  
+    ...mapState({
       isAuthenticated(state) {
         return state.isAuthenticated
       },
@@ -937,9 +610,22 @@ export default {
 
 
 
+ cartDataMap() {
+    return this.carts.reduce((acc, cart) => {
+      if (cart.productDetail && cart.productDetail.product) {
+        acc[cart.productDetail.product.id] = {
+          cartId: cart.id,
+          quantity: cart.quantity
+        };
+      }
+      return acc;
+    }, {});
+  },
+
+
 
 filteredCarts() {
-    return this.carts.filter(cart => cart.productDetail.product.productCategory.slug == 'dogadanja');
+    return this.carts.filter(cart => cart.productDetail.product.slug !== 'dogadanja');
   },
 
     getTotal() {
@@ -963,14 +649,8 @@ filteredCarts() {
           ? this.getDiscount(cart.productDetail.price, cart.productDetail.discount)
           : cart.productDetail.price
         price += cart.productDetail.price - p
-
-        console.log("Cart:", cart);
-console.log("Discounted Price:", p);
-console.log("Original Price:", cart.productDetail.price);
-console.log("Accumulated Savings:", price);
-
       });
-      return Math.ceil(price)
+      return Math.ceil(price / 1000)
     },
     hasActiveDiscount() {
       return this.product.productDetails[this.productDetailSelectedIndex].discount !== null
@@ -997,6 +677,8 @@ console.log("Accumulated Savings:", price);
 },
 created() {
     this.fetchAdminMessages();
+
+    this.ucitajClanove();
   },
 
   mounted() {
@@ -1004,11 +686,11 @@ created() {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     };
 
-    this.getStaraPlacanja(); 
+
     window.addEventListener('scroll', this.handleScrollAttempt);
+  
     this.getCarts();
-
-
+    this.$store.dispatch('CLEAR_PURCHASE_ORIGIN');
   },
 
   beforeDestroy() {
@@ -1017,30 +699,144 @@ created() {
 
   },
   methods: {
-    updateOrder() {
-    const updatedItems = this.carts.map(item => ({
-      id: item.id,
-      quantity: item.quantity
-    }));
 
-    if (!this.existingOrderId) {
-      console.error('No existing order to update');
-      return;
+    naplacanjelink () {
+    this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
+  },
+
+
+    getCartDataForProduct(product) {
+    if (product && product.id && this.cartDataMap[product.id]) {
+      return this.cartDataMap[product.id];
     }
+    return {
+      cartId: null,
+      quantity: 1
+    };
+  },
 
-    this.$api.skijasiOrder
-      .update({
-        order_id: this.existingOrderId, // Use the existingOrderId from Vuex store
-        items: updatedItems
+    setSelectedProduct(proizvod) {
+  // Find the product from similarProducts using the ID
+  const product = this.similarProducts.data.find(p => p.id === proizvod);
+  
+  if (!product) {
+    console.error('Product not found');
+    return;
+  }
+
+  if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
+    const nijeclanProduct = product.productDetails.find(
+      detail => detail.name === "Nije član"
+    );
+    this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : product.productDetails[0].id;
+    this.addToCart(this.selectedProduct.id);
+  } else {
+    const hzutsProduct = product.productDetails.find(
+      detail => detail.name === "HZUTS član"
+    );
+    this.selectedProduct.id = hzutsProduct ? hzutsProduct.id : product.productDetails[0].id;
+    this.addToCart(this.selectedProduct.id);
+  }
+  console.log("Selected product ID:", this.selectedProduct.id);
+},
+
+changeQuantity(quantity, cartId) {
+  if (quantity && quantity > 0) {
+    this.loading = true;
+    this.$api.skijasiCart
+      .edit({
+        id: cartId,
+        quantity: quantity
       })
-      .then((res) => {
-        // Handle successful update
-        this.$inertia.visit(this.route('skijasi.commerce-theme.checkout'));
+      .then(res => {
+        this.getCarts();
       })
-      .catch((err) => {
+      .catch(err => {
+        this.$helper.displayErrors(err);
+      })
+      .finally(() => {
+        this.loading = false;
+        console.log("TEST RADI");
+      });
+  }
+},
+
+handleQuantityChange(payload) {
+  console.log("Quantity change payload:", payload); 
+  if (payload && payload.quantity && payload.cartId) {
+    this.$api.skijasiCart
+      .edit({
+        id: payload.cartId,
+        quantity: parseInt(payload.quantity)
+      })
+      .then(res => {
+        console.log("Cart updated successfully");
+        // Important: refresh the carts data after update
+        this.getCarts();
+        // Also refresh the related product data
+        this.fetchSimilar(this.$_.take(this.carts)[0]);
+      })
+      .catch(err => {
+        console.error("Error updating cart:", err);
         this.$helper.displayErrors(err);
       });
+  }
+},
+
+  handleSubtract({ event, cartId }) {
+    if (event <= 1) {
+      this.deleteCart(cartId);
+    }
   },
+
+
+    async ucitajClanove() {
+            console.log("TEST ID ucitaj clanove:", this.user.id);
+        try {
+          this.number = this.user.id;
+        
+          const response = await podaciusera.readmojstatus({
+              id: this.number,
+          });
+              this.korisnik = response.data.user;
+              console.log("TEST STATUS ucitaj clanove:", this.korisnik.statusString);
+              console.log("TESTucitaj clanove:", this.korisnik);
+
+            } catch (error) {
+            // this.$closeLoader();
+        
+        }
+      },
+
+
+      addToCart(idproizvoda) {
+      if (!this.isAuthenticated) {
+        this.$helper.alert(this.$t('morate-se-prijaviti-prvo'))
+        this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+        return
+      }
+
+      if (this.selectedProduct.quantity <= 0) {
+         this.$helper.alert(this.$t('nazalost-je-rasprodano'))
+         return
+       }
+
+      this.$api.skijasiCart
+        .add({
+          id: idproizvoda,
+          quantity: this.quantity
+        })
+        .then(res => {
+          this.$store.dispatch('FETCH_CARTS')
+          this.$helper.alert(res.message)
+        })
+        .catch(err => {
+          this.$helper.displayErrors(err)
+        })
+    },
+
+
+
 
 
     fetchAdminMessages() {
@@ -1095,14 +891,7 @@ created() {
       this.isSidebarExpanded = !this.isSidebarExpanded;
     },
 
-     //sortiranje placanja:
-     sortDataDescending() {
-    this.staraPlacanjaArray.sort((a, b) => {
-      // Assuming 'opendate' is in a format that can be directly compared
-      // Convert to Date objects if needed
-      return new Date(b.opendate) - new Date(a.opendate);
-    });
-  },
+
 
 formatDate(dateString) {
     if (!dateString) return ''; // Handle null, undefined, or empty strings
@@ -1114,44 +903,6 @@ formatDate(dateString) {
   },
 
 
-
-  async getStaraPlacanja() {
-  this.staraPlacanjaArray = [];
-
-  try {
-    const response = await skijasiStaraplacanja.citanjenasiclanovi({
-      slug: "tbl-payments",
-      idmember: this.user.id
-    });
-
-    if (response && response.data) {
-      if (Array.isArray(response.data)) {
-        this.staraPlacanjaArray = response.data;
-      } else if (typeof response.data === 'object') {
-        this.staraPlacanjaArray = [response.data];
-      } else {
-        console.warn("Unexpected data format:", response.data);
-        this.staraPlacanjaArray = [];
-      }
-
-      if (this.staraPlacanjaArray.length > 0) {
-        this.sortDataDescending();
-      } else {
-
-      }
-    } else {
-
-      this.staraPlacanjaArray = [];
-    }
-  } catch (error) {
-    if (error.response && error.response.status === 400 && error.response.data.errors.idmember) {
-      console.log("Invalid idmember. User might not have any payments yet.");
-      this.staraPlacanjaArray = [];
-    } else {
-
-    }
-  }
-},
 
 
 
@@ -1219,57 +970,43 @@ formatDate(dateString) {
 
     checkout() {
       if (this.checkboxModel.length <= 0) {
-        this.$helper.alert('Molimo odaberite barem jedno zaduženje!')
+        this.$helper.alert(this.$t('molimo-odaberite-barem-jedan-od-artikala'))
         return
       }
 
       this.$openLoading()
-      // let carts = []
+      let carts = []
 
-let selectedCarts = this.carts.filter(cart => this.checkboxModel.includes(cart.id))
-
-this.$store.dispatch('SET_CHECKOUT', selectedCarts)
-      
-
-
-      this.$closeLoading()
-      this.$inertia.visit(this.route('skijasi.commerce-theme.checkout', { from: this.$page.props.from }))
-    },
-    getCarts() {
-  this.$api.skijasiCart
-    .browse()
-    .then(res => {
-      this.carts = res.data.carts.map(cart => {
-        if (!cart.productDetail || !cart.productDetail.productImage) {
-          console.warn('Missing product detail or image for cart item:', cart);
-          cart.productDetail = cart.productDetail || {};
-          cart.productDetail.productImage = this.defaultImageUrl;
-
-        }
-        return cart;
+      this.checkboxModel.forEach(val => {
+        carts.push({ ...this.$_.find(this.carts, { id: val }) })
       });
 
-      // Only select items that don't have cekapotvrdu == 1
-      this.checkboxModel = this.carts
-        .filter(cart => cart.cekapotvrdu !== 1)
-        .map(cart => cart.id);
+      this.$store.dispatch('SET_CHECKOUT', carts)
 
+      this.$closeLoading()
+      this.$inertia.visit(this.route('skijasi.commerce-theme.checkout'))
+    },
+    getCarts() {
+      this.$api.skijasiCart
+        .browse()
+        .then(res => {
+          this.carts = res.data.carts
+          this.checkboxModel = this.carts.map(cart => cart.id);
 
-        console.log("TEST CART", this.carts);
-
-    })
-    .catch(err => {
-      localStorage.removeItem('token')
-      this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
-      this.$helper.displayErrors(err)
-    })
-},
-
-
+          if (this.carts.length > 0) {
+            this.fetchSimilar(this.$_.take(res.data.carts)[0])
+          }
+        })
+        .catch(err => {
+          localStorage.removeItem('token')
+          this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+          this.$helper.displayErrors(err)
+        })
+    },
     fetchSimilar(cart) {
       this.$api.skijasiProduct
         .browseByCategorySlug({
-          slug:  cart.productDetail.product.productCategory.slug
+          slug:  "webshop"
         })
         .then(res => {
           this.similarProducts = res.data.products
@@ -1278,26 +1015,18 @@ this.$store.dispatch('SET_CHECKOUT', selectedCarts)
           this.$helper.displayErrors(err)
         })
     },
-
     deleteCart(id) {
-    // Show confirmation dialog
-    if (window.confirm(this.$t('da-li-ste-sigurni-da-zelite-obrisati'))) {
-
-      // User confirmed, proceed with deletion
       this.$api.skijasiCart
-        .delete({ id })
+        .delete({
+          id
+        })
         .then(res => {
-          this.getCarts(); // Refresh the cart list after deletion
+          this.getCarts()
         })
         .catch(err => {
-          this.$helper.displayErrors(err); // Handle errors
-        });
-    } else {
-      // User cancelled the deletion, do nothing
-      console.log("Deletion cancelled");
-    }
-  },
-
+          this.$helper.displayErrors(err)
+        })
+    },
     deleteCartUsingState() {
       this.$api.skijasiCart
         .delete({
@@ -1325,25 +1054,7 @@ this.$store.dispatch('SET_CHECKOUT', selectedCarts)
       this.carts[this.deleteIndex].quantity = this.deleteQuantity
       this.deleteDialog = false
     },
-    changeQuantity(val, id) {
-      if (val && val > 0) {
-        this.loading = true
-        this.$api.skijasiCart
-          .edit({
-            id,
-            quantity: val
-          })
-          .then(res => {
-            this.getCarts()
-          })
-          .catch(err => {
-            this.$helper.displayErrors(err)
-          })
-          .finally(() => {
-            this.loading = false
-          })
-      }
-    },
+
     getDiscount(price, discount) {
       let d = 0
       if (discount.discountType === 'fixed') {
@@ -1354,16 +1065,16 @@ this.$store.dispatch('SET_CHECKOUT', selectedCarts)
       return parseInt(price - d)
     },
     checkAll($event) {
-  if ($event.target.checked) {
-    this.carts.forEach(cart => {
-      if (!this.checkboxModel.includes(cart.id) && cart.cekapotvrdu != 1) {
-        this.checkboxModel.push(cart.id)
+      if ($event.target.checked) {
+        this.carts.forEach(cart => {
+          if (!this.checkboxModel.includes(cart.id)) {
+            this.checkboxModel.push(cart.id)
+          }
+        });
+      } else {
+        this.checkboxModel = []
       }
-    });
-  } else {
-    this.checkboxModel = []
-  }
-},
+    },
     openVariationDialog({ id, quantity, productDetail: { productId }, productDetailId }) {
       this.$api.skijasiProduct
         .readByCart({ id: productId })
@@ -1732,13 +1443,13 @@ width: 80px;
 
 .sidebar-closed {
     background: none; /* Remove background */
-    width: 250px; 
+    width: 250px; /* Adjust width as needed */
     justify-content: left;
   align-items: left;
   }
 
   .sidebar-closed .sidebar-icon {
-    display: inline-block; 
+    display: inline-block; /* Display icons inline with text */
     margin-right: 8px; /* Space between icon and text */
   }
 
@@ -1747,15 +1458,11 @@ width: 80px;
     white-space: nowrap; /* Prevent text wrapping */
   }
   
-
+  /* You may need to adjust the hover effect to change the text color correctly */
   .sidebar-closed .sidebar-item:hover .sidebar-text {
     color: #03A9F4; /* Change text color on hover */
   }
   
-  .sidebar-closed .sidebar-item:hover .sidebar-icon {
-    display: inline-block; 
-    margin-right: 8px; /* Space between icon and text */
-  }
 
 
 }
@@ -1764,9 +1471,6 @@ width: 80px;
 
 
 @media (max-width: 550px) {
-.grid {
-display: block;
-}
   .border-l {
    /* Hide the border div */
    border-left-width: 0px;
@@ -1782,9 +1486,7 @@ display: block;
     order: -1;
   }
 
-  /* Assuming 'profile-info' is the class for the 2.section    */
-
-
+  /* Assuming 'profile-info' is the class for the <!--2--> section */
   .profile-info {
     order: 1;
   }
@@ -2399,6 +2101,11 @@ max-width: 1500px;
   }
 
   @media screen and (max-width: 600px) {
+    .zahtjevi-root {
+    grid-template-columns: auto !important;
+  }
+
+
 
     .placeholder-image {
     content: url('/storage/slike/nasiclanovi/placeholderclanovi_mobile.jpg');
@@ -2531,6 +2238,10 @@ overflow: visible;
 
 
   @media screen and (max-width: 675px) {
+
+
+
+
     .filteriframeglavni-child {
     height: 24.81rem;
   }
@@ -3036,7 +2747,7 @@ overflow: visible;
   @media screen and (max-width: 460px) {
 
     .container {
-    padding-right: 5%; 
+    padding-right: 3%; 
   }
 
       .naslovosnovneinfo {
@@ -3090,7 +2801,7 @@ overflow: visible;
 .payments-list {
   
     padding-top: 3.4rem;
- 
+
 }
 
 
@@ -3289,7 +3000,6 @@ border-bottom-left-radius: 5px;
     justify-content: flex-start;
     gap: 30px;
     padding-top: 1.9rem;
-    padding-bottom: 1.9rem;
     max-height: 100%;
 overflow-y: scroll;
 
@@ -3437,42 +3147,333 @@ padding-left: 1rem;
 
 
 
-.checkout-btn {
-  transition: all 0.3s ease;
-  font-size: 1.1rem;
-  padding: 0.75rem 2rem;
-}
 
-.checkout-btn:hover {
-  background-color: #0288d1;
 
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  animation: pulse 1.5s infinite;
-}
 
-.checkout-btn:active {
 
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
-}
 
-@keyframes pulse {
-  0% {
-    box-shadow: 0 0 0 0 rgba(3, 169, 244, 0.4);
+
+
+
+
+
+.group-icon1 {
+    height: 64px;
+    width: 51.2px;
+    position: relative;
   }
-  70% {
-    box-shadow: 0 0 0 10px rgba(3, 169, 244, 0);
+  .badge-1 {
+    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 6px;
   }
-  100% {
-    box-shadow: 0 0 0 0 rgba(3, 169, 244, 0);
+  .amblem {
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    color: inherit;
+    display: inline-block;
+    min-width: 65px;
   }
+  .zatrai-zahtjev-za {
+    align-self: stretch;
+    position: relative;
+    font-size: 12px;
+    font-weight: 300;
+    line-height: 2;
+  }
+  .zatrai {
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Inter;
+  
+    text-align: center;
+    display: inline-block;
+    min-width: 40px;
+  }
+  .zatrai-wrapper {
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    padding: 7px 49px;
+    background-color: #03a9f4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #03a9f4;
+  }
+  .zatrai-wrapper:hover {
+    background-color: #ffffff;
+    color: #03a9f4 !important;
+    border: 1px solid #03a9f4;
+  }
+  .badge-1-parent {
+    flex: 1;
+    border-radius: 15px;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 8px;
+    gap: 15px;
+    min-width: 149px;
+  }
+  .vector-icon5 {
+    width: 58.7px;
+    height: 42.7px;
+    position: relative;
+  }
+  .vector-icon6 {
+    width: 91.65%;
+    height: 4.64%;
+    position: absolute;
+    margin: 0 !important;
+    top: 41.58%;
+    right: 4.17%;
+    bottom: 53.79%;
+    left: 4.17%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    z-index: 1;
+  }
+  .credit-card-1 {
+    width: 64.7px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 11px 2px;
+    box-sizing: border-box;
+    position: relative;
+    gap: 10px;
+  }
+  .iskaznica {
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    color: inherit;
+    display: inline-block;
+    min-width: 73px;
+  }
+  .zatrai-zahtjev-za1 {
+    align-self: stretch;
+    position: relative;
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .zatrai1 {
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Inter;
+
+    text-align: center;
+    display: inline-block;
+    min-width: 40px;
+  }
+  .zatrai-container {
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    padding: 7px 49px;
+    background-color: #03a9f4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #03a9f4;
+  }
+  .zatrai-container:hover {
+    background-color: #ffffff;
+    color: #03a9f4 !important;
+    border: 1px solid #03a9f4;
+  }
+  .credit-card-1-parent {
+    flex: 1;
+    border-radius: 15px;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 8px;
+    gap: 15px;
+    min-width: 149px;
+  }
+  .vector-icon7 {
+    height: 64px;
+    width: 64px;
+    position: relative;
+  }
+  .vector-icon8 {
+    height: 5.94%;
+    width: 18.08%;
+    position: absolute;
+    margin: 0 !important;
+    top: 14.69%;
+    right: 40.58%;
+    bottom: 79.38%;
+    left: 41.35%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    z-index: 1;
+  }
+  .vector-icon9 {
+    height: 39.69%;
+    width: 28.94%;
+    position: absolute;
+    margin: 0 !important;
+    top: 37.66%;
+    right: 26.15%;
+    bottom: 22.66%;
+    left: 44.9%;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    z-index: 1;
+  }
+  .frame1 {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    padding: 0px 20px;
+    position: relative;
+    gap: 10px;
+  }
+  .potvrda {
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+    color: inherit;
+    display: inline-block;
+    min-width: 61px;
+  }
+  .zatrai-zahtjev-za2 {
+    align-self: stretch;
+    position: relative;
+    font-size: 12px;
+    font-weight: 300;
+  }
+  .zatrai2 {
+    position: relative;
+    font-size: 12px;
+    font-weight: 500;
+    font-family: Inter;
+
+    text-align: center;
+    display: inline-block;
+    min-width: 40px;
+  }
+  .zatrai-frame {
+    color: #fff;
+    cursor: pointer;
+    border: none;
+    padding: 7px 49px;
+    background-color: #03a9f4;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #03a9f4;
+  }
+  .zatrai-frame:hover {
+    background-color: #ffffff;
+    color: #03a9f4 !important;
+    border: 1px solid #03a9f4;
+  }
+  .frame-parent46 {
+    flex: 1;
+    border-radius: 15px;
+    border: 1px solid #03a9f4;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 28px 8px;
+    gap: 15px;
+    min-width: 149px;
+  }
+  .zahtjevi-root {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+
+
+  width: 100%;
+  max-width: 1000px; /* Adjust this value as needed */
+  margin: 0 auto;
+  display: grid;
+  gap: 20px;
+  padding: 20px;
+  line-height: normal;
+  letter-spacing: normal;
+  font-size: 16px;
+  color: #000;
+  font-family: Inter;
 }
 
-@media (max-width: 640px) {
-  .checkout-btn {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
+  @media screen and (max-width: 450px) {
+    .zatrai-wrapper {
+      width: calc(100% - 40px);
+    }
+
+    /* .badge-1-parent {
+      width: calc(100% - 40px);
+    } */
+
+    .zatrai-container {
+      width: calc(100% - 40px);
+    }
+
+    /* .credit-card-1-parent {
+      width: calc(100% - 40px);
+    } */
+
+    .zatrai-frame {
+      width: calc(100% - 40px);
+    }
+
+    /* .frame-parent46 {
+      width: calc(100% - 40px);
+    } */
+
+    .zahtjevi-root {
+      gap: 30px;
+    }
   }
+
+
+  .cart-text {
+font-family: Inter;
+font-size: 12px;
+font-weight: 700;
+line-height: 14.4px;
+text-align: left;
+  }
+
+  .cart-price {
+font-family: Inter;
+font-size: 14px;
+font-weight: 700;
+line-height: 16.8px;
+text-align: left;
 }
+  
+
 
 </style>

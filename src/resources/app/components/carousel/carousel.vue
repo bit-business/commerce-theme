@@ -1,11 +1,18 @@
 <template>
-  <!-- Carousel Container -->
   <div class="relative">
     <div class="w-full overflow-hidden" v-bind="{...$attrs}">
-      <!-- Carousel Track -->
-      <div class="flex m-0 p-0 relative transition-all duration-500 ease-in-out" :style="{ transform: `translateX(-${currentPosition}px)`}">
-        <slot />
+      <div 
+        class="flex m-0 p-0 relative transition-all duration-500 ease-in-out" 
+        :style="{ transform: `translateX(-${currentPosition}px)`}"
+      >
+        <slot
+          @quantity-change="handleQuantityChange"
+          @click="$emit('click', $event)"
+          @subtract="$emit('subtract', $event)"
+        />
       </div>
+      <!-- Carousel Track -->
+
       <template v-if="!hideNavigationData">
         <button v-if="canPrev" @click="prev" class="-left-3 p-1 focus:outline-none hover:scale-150 transition-transform ease shadow-md rounded-full bg-white absolute transform -translate-y-1/2 top-1/2 z-10">
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
@@ -82,6 +89,9 @@ export default {
     }
   },
   methods: {
+    handleQuantityChange(payload) {
+      this.$emit('quantity-change', payload);
+    },
     next() {
       if (this.canNext) {
         if (this.end + parseInt(this.show) > this.$children.length) {

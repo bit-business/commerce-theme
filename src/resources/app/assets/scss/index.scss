@@ -9,16 +9,42 @@
 @tailwind components;
 @tailwind utilities;
 
+html {
+  scroll-behavior: smooth;
+  height: 100%;
+  /* Prevent pull-to-refresh but keep normal scrolling */
+  overscroll-behavior-y: none;
+}
+
 body {
   @apply max-w-full antialiased bg-gray-100;
- // padding-top: 3.75rem; 
-  // overscroll-behavior: none;
   line-height: normal;
+  min-height: 100%;
+  /* Important: Add these properties */
+  position: relative;
+  overflow-y: auto;
+  overscroll-behavior-y: none;
+  -webkit-overflow-scrolling: touch;
 }
 *,
 ::before,
 ::after {
   border-width: 0;
+}
+
+/* Add this to prevent unwanted scroll on input focus */
+input, select, textarea {
+  &:focus {
+    /* Prevent viewport adjustments on focus */
+    @apply relative;
+    transform: translateY(0);
+  }
+}
+.modal-open,
+.dropdown-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
 }
 
 @layer base {
@@ -194,11 +220,4 @@ body {
 }
 
 
-
-
-
-
-
-
-//pocetna home
 
