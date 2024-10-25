@@ -1802,5 +1802,98 @@ text-align: center;
 }
 
 
+
+
+/* Base input styles */
+.form-input,
+.poljezaupisime,
+.poljezaupisemaila,
+.poljezaunoslinkova,
+.poljezaunosbrojmobitela,
+.poljezaupisadresa,
+.poljezunosoib {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  font-size: 16px !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Date input specific styles */
+.date-input-group {
+  position: relative;
+  width: 100%;
+}
+
+.real-date-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  z-index: 1;
+  cursor: pointer;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Make sure the date picker is clickable */
+.real-date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 2;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.display-date-input {
+  background-color: white;
+  cursor: pointer;
+  padding-right: 40px; /* Space for the calendar icon */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px) center;
+  background-size: 20px;
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+  input[type="date"] {
+    -webkit-appearance: textfield;
+    appearance: textfield;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Prevent scroll on focus but allow date picker */
+input:not([type="date"]):focus {
+  position: relative !important;
+  transform: none !important;
+}
+
+/* Dropdown positioning */
+.dropdown {
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown-list {
+  position: absolute;
+  z-index: 2;
+}
+
 </style>
 

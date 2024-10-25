@@ -1684,4 +1684,110 @@ padding-top: 10px;
 body.dropdown-open {
   overflow: hidden;
 }
+
+
+
+/* Base input styles */
+.form-input,
+.poljezaupisime,
+.poljezaupisemaila,
+.poljezaunoslinkova,
+.poljezaunosbrojmobitela,
+.poljezaupisadresa,
+.poljezunosoib {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  position: relative;
+  font-size: 16px !important;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Date input specific styles */
+.date-input-group {
+  position: relative;
+  width: 100%;
+}
+
+.real-date-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+  z-index: 1;
+  /* Important: Allow date picker to be clickable */
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+/* Make the date picker indicator clickable */
+.real-date-input::-webkit-calendar-picker-indicator {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  cursor: pointer;
+}
+
+.display-date-input {
+  background-color: white;
+  cursor: pointer;
+  padding-right: 30px; /* Space for the calendar icon */
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+/* Calendar icon */
+.display-date-input {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 10px) center;
+  background-size: 20px;
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+  input,
+  select,
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .form-input:focus,
+  input:focus {
+    position: relative !important;
+  }
+  
+  /* Ensure date inputs work on iOS */
+  input[type="date"] {
+    -webkit-appearance: textfield;
+    appearance: textfield;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+/* Dropdown fixes */
+.dropdown {
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown-list {
+  position: absolute;
+  z-index: 2;
+}
 </style>

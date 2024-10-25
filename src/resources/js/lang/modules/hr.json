@@ -82,6 +82,9 @@
   "clanovi-u-podrucnim-zborovima-preuzimaju-sezonske-markice-licenca-i-hologram-i-ostvaruju-ostala-prava-stoga-je-preporuka-odabrati-podrucni-zbor-koji-se-nalazi-u-blizini-mjesta-stanovanja": "Članovi u područnim zborovima preuzimaju sezonske markice (licenca i hologram) i ostvaruju ostala prava stoga je preporuka odabrati Područni zbor koji se nalazi u blizini mjesta stanovanja.",
   "clanska-iskaznica": "Članska iskaznica:",
   "clanski-broj": "Članski broj:",
+  "common": {
+    "choose": "Izaberite"
+  },
   "copyright-c-2023-sva-prava-pridrzana-od-strane-hzuts-a": "Copyright © 2023 Sva prava pridržana od strane HZUTS-a.",
   "copyright-c-2023-sva-prava-pridrzana-od-strane-hzuts-a-0": "Copyright © 2023 Sva prava pridržana od strane HZUTS-a.",
   "copyright-c-2024-sva-prava-pridrzana-od-strane-hzuts-a": "Copyright © 2024 Sva prava pridržana od strane HZUTS-a.",
@@ -148,6 +151,11 @@
   "dostaviti-svu-dokumentaciju-za-dokaz-statusa-prethodne-tocke-uvjerenje-o-osposobljavanju-diploma-kinezioloskog-fakulteta-osoba-koje-su-diplomirale-i-usmjerile-skijanje-zvanje-sveucilisni-magistar-kineziologije-u-edukaciji-i-skijanju": "dostaviti svu dokumentaciju za dokaz statusa prethodne točke (Uvjerenje o osposobljavanju, diploma Kineziološkog fakulteta osoba koje su diplomirale i usmjerile skijanje – zvanje: Sveučilišni magistar kineziologije u edukaciji i skijanju)",
   "dozivotna": "Doživotna",
   "dozivotno": "Doživotno",
+  "dropdownLabels": {
+    "ostvarenistatus": "Ostvareni status s kojim se učlanjujete u HZUTS",
+    "podrucnizbor": "U koji područni zbor ste se učlanili?",
+    "spol": "Spol"
+  },
   "drugog-para-skija": "drugog para skija",
   "drzava": "Država",
   "drzava-0": "Država:",
@@ -180,6 +188,10 @@
   "events": "Događanja",
   "format-slike-jpeg-png": "Format slike: .jpeg, .png",
   "fotografija-u-digitalnom-obliku-po-mogucnosti-u-skijaskom-odijelu-s-vidljivim-licem-bez-naocala-kape-kacige-i-slicno": "Fotografija u digitalnom obliku, po mogućnosti u skijaškom odijelu, s vidljivim licem (bez naočala, kape, kacige i slično)",
+  "gender": {
+    "Muško": "Muško",
+    "Žensko": "Žensko"
+  },
   "glavna": "Glavna",
   "glavni-tajnik": "GLAVNI TAJNIK:",
   "godina-postojanja": "Godina postojanja",
@@ -430,6 +442,7 @@
   "obavijesti-1": "Obavijesti",
   "obavijesti-2": "Obavijesti",
   "objavljeno": "Objavljeno:",
+  "obrisi": "Obriši",
   "od-11-15h": "od 11 - 15h",
   "od-1993-g": "od 1993.g",
   "od-1995-g": "od 1995.g.",
@@ -685,6 +698,13 @@
   "spol": "Spol",
   "spremi": "Spremi",
   "spremi-uplatnicu": "Spremi uplatnicu",
+  "status": {
+    "Trener daskanja": "Trener daskanja",
+    "Trener skijanja": "Trener skijanja",
+    "Učitelj daskanja na snijegu": "Učitelj daskanja na snijegu",
+    "Učitelj skijanja": "Učitelj skijanja",
+    "Voditelj skijanja": "Voditelj skijanja"
+  },
   "status-0": "Status",
   "status-1": "Status:",
   "status-cart-productdetail-name": "Status: {0}",
@@ -820,6 +840,8 @@
   "verifikacija-uspjesna-0": "Verifikacija uspješna",
   "verifikacijski-token-je-istekao": "Verifikacijski token je istekao",
   "verifikacijski-token-je-istekao-0": "Verifikacijski token je istekao",
+  "verifyEmail.field.token": "",
+  "verifyEmail.title": "",
   "vodeci-hrvatski-ortopedi": "Vodeći hrvatski ortopedi:",
   "voditelj-skijanja": "Voditelj skijanja",
   "voditelj-skijanja-0": "VODITELJ SKIJANJA",
@@ -871,24 +893,8 @@
   "zensko": "Žensko",
   "zensko-0": "Žensko",
 
-
-  "dropdownLabels": {
-    "spol": "Spol",
-    "ostvarenistatus": "Ostvareni status s kojim se učlanjujete u HZUTS",
-    "podrucnizbor": "U koji područni zbor ste se učlanili?"
-  },
-  "common": {
-    "choose": "Izaberite"
-  },
-  "gender": {
-    "Muško": "Muško",
-    "Žensko": "Žensko"
-  },
-  "status": {
-    "Voditelj skijanja": "Voditelj skijanja",
-    "Učitelj skijanja": "Učitelj skijanja",
-    "Trener skijanja": "Trener skijanja",
-    "Učitelj daskanja na snijegu": "Učitelj daskanja na snijegu",
-    "Trener daskanja": "Trener daskanja"
-  }
+  "podmireno-display": "PODMIRENO",
+  "nepodmireno-display": "NEPODMIRENO",
+  "godisnja-display": "Godišnja članarina",
+  "isia-clanarina-display": "ISIA članarina"
 }

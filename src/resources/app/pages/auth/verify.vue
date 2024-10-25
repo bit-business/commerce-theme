@@ -35,7 +35,7 @@
                 rounded-md
                 mt-4
               "
-                     placeholder="$t('email-0')"
+                     :placeholder="$t('email-0')"
               v-model="email"
             />
             
@@ -43,7 +43,7 @@
               v-model="token"
               :length="6"
               class="mt-4"
-              label="$t('upisite-token')"
+              :label="$t('upisite-token')"
             />
             <div :class="['inline-block text-xs justify-end text-center w-30 rounded-md  p-2', getCountdown === 0 ? 'bg-primary text-white border-transparent' : 'border-gray-200 text-gray-400 bg-transparent']" @click="sendVerify">
             {{ $t('ponovno-posalji-getcountdown', [getCountdown]) }}

@@ -189,58 +189,65 @@
 
           <div class="flex gap-2 w-full mt-8 flex-wrap">
             <carousel 
-  class="container hidden lg:flex" 
-  show="4"
-  @quantity-change="handleQuantityChange"
->
-  <carousel-item 
-    v-for="product, index in similarProducts.data" 
-    :key="index"
-    @quantity-change="handleQuantityChange"
-  >
-    <commerce-product-alt
-      :product="product"
-      :cart-data="getCartDataForProduct(product)"
-      @click="setSelectedProduct"
-      @quantity-change="handleQuantityChange"
-    />
-  </carousel-item>
-</carousel>
-            <carousel 
-class="container hidden md:flex lg:hidden" show="3"
-  @quantity-change="handleQuantityChange"
->
-  <carousel-item 
-    v-for="product, index in similarProducts.data" 
-    :key="index"
-    @quantity-change="handleQuantityChange"
-  >
-  <commerce-product-alt
-      :product="product"
-      :cart-data="getCartDataForProduct(product)"
-      @click="setSelectedProduct"
-      @quantity-change="handleQuantityChange"
-    />
-  </carousel-item>
-</carousel>
+        class="container hidden lg:flex" 
+        show="4"
+        @quantity-change="handleQuantityChange"
+      >
+        <carousel-item 
+          v-for="product, index in similarProducts.data" 
+          :key="index"
+          @quantity-change="handleQuantityChange"
+        >
+          <commerce-product-alt
+            :product="product"
+            :cart-data="getCartDataForProduct(product)"
+            @click="setSelectedProduct"
+            @quantity-change="handleQuantityChange"
+            @subtract="handleSubtract"
+            @show-preview="handleShowPreview"
+          />
+        </carousel-item>
+      </carousel>
 
             <carousel 
-            class="container flex  md:hidden" show="1"
-  @quantity-change="handleQuantityChange"
->
-  <carousel-item 
-    v-for="product, index in similarProducts.data" 
-    :key="index"
-    @quantity-change="handleQuantityChange"
-  >
-  <commerce-product-alt
-      :product="product"
-      :cart-data="getCartDataForProduct(product)"
-      @click="setSelectedProduct"
+class="container hidden md:flex lg:hidden" show="3"
       @quantity-change="handleQuantityChange"
-    />
-  </carousel-item>
-</carousel>
+      >
+        <carousel-item 
+          v-for="product, index in similarProducts.data" 
+          :key="index"
+          @quantity-change="handleQuantityChange"
+        >
+          <commerce-product-alt
+            :product="product"
+            :cart-data="getCartDataForProduct(product)"
+            @click="setSelectedProduct"
+            @quantity-change="handleQuantityChange"
+            @subtract="handleSubtract"
+            @show-preview="handleShowPreview"
+          />
+        </carousel-item>
+      </carousel>
+
+            <carousel 
+            class="container flex md:hidden" show="1"
+            @quantity-change="handleQuantityChange"
+      >
+        <carousel-item 
+          v-for="product, index in similarProducts.data" 
+          :key="index"
+          @quantity-change="handleQuantityChange"
+        >
+          <commerce-product-alt
+            :product="product"
+            :cart-data="getCartDataForProduct(product)"
+            @click="setSelectedProduct"
+            @quantity-change="handleQuantityChange"
+            @subtract="handleSubtract"
+            @show-preview="handleShowPreview"
+          />
+        </carousel-item>
+      </carousel>
 
 
       </div>
@@ -459,6 +466,44 @@ class="container hidden md:flex lg:hidden" show="3"
 
 
 
+
+ <!-- Fullscreen Preview Modal at root level -->
+ <div v-if="previewProduct" 
+         class="fixed inset-0 w-full h-full bg-black bg-opacity-90 flex items-center justify-center"
+         style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; min-height: 100vh; z-index: 99999;"
+         @click="previewProduct = null">
+      <div class="relative w-full h-full flex items-center justify-center p-4">
+        <!-- Close Button -->
+        <button 
+          @click.stop="previewProduct = null"
+          class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-200 z-[100000] p-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" 
+               class="h-8 w-8" 
+               fill="none" 
+               viewBox="0 0 24 24" 
+               stroke="currentColor">
+            <path stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Image -->
+        <img 
+          v-if="previewProduct"
+          :src="previewProduct.productImage" 
+          alt="Product Preview" 
+          class="max-w-[90vw] max-h-[90vh] object-contain"
+          @click.stop
+        >
+      </div>
+    </div>
+
+
+
+
     </div>
     
   
@@ -497,6 +542,7 @@ export default {
   },
   data() {
     return {
+      previewProduct: null,
       checkboxModel: [],
       quantity: 1,
       carts: [],
@@ -522,7 +568,7 @@ export default {
       },
 
 
-
+  
 
       avatar_approved: 0,
       name: '',
@@ -552,7 +598,7 @@ export default {
      paymentOptions: [
       { value: 'Sve plaćeno', text: this.$t('placena-0') },
       { value: 'Nije plaćeno', text: this.$t('nije-placena-0') },
-      // ... other payment options ...
+
     ],
     staraPlacanjaArray: [],
     viewingPaymentsList: false, 
@@ -567,7 +613,15 @@ export default {
       },
       immediate: true, // Trigger handler immediately with the current value of the expression
       deep: true // Watch for nested changes in the user object
+    },
+    previewProduct(val) {
+      if (!val) {
+        document.body.style.overflow = '';
+      }
     }
+  },
+  beforeDestroy() {
+    document.body.style.overflow = '';
   },
   computed: {
   
@@ -700,20 +754,16 @@ created() {
   },
   methods: {
 
+    handleShowPreview(product) {
+      this.previewProduct = product;
+      document.body.style.overflow = 'hidden';
+    },
     naplacanjelink () {
     this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
   },
 
 
-    getCartDataForProduct(product) {
-    if (product && product.id && this.cartDataMap[product.id]) {
-      return this.cartDataMap[product.id];
-    }
-    return {
-      cartId: null,
-      quantity: 1
-    };
-  },
+
 
     setSelectedProduct(proizvod) {
   // Find the product from similarProducts using the ID
@@ -761,33 +811,45 @@ changeQuantity(quantity, cartId) {
   }
 },
 
-handleQuantityChange(payload) {
-  console.log("Quantity change payload:", payload); 
-  if (payload && payload.quantity && payload.cartId) {
-    this.$api.skijasiCart
-      .edit({
-        id: payload.cartId,
-        quantity: parseInt(payload.quantity)
-      })
-      .then(res => {
-        console.log("Cart updated successfully");
-        // Important: refresh the carts data after update
-        this.getCarts();
-        // Also refresh the related product data
-        this.fetchSimilar(this.$_.take(this.carts)[0]);
-      })
-      .catch(err => {
-        console.error("Error updating cart:", err);
-        this.$helper.displayErrors(err);
-      });
-  }
+getCartDataForProduct(product) {
+  if (!product || !product.id) return { cartId: null, quantity: 1 };
+  
+  // Find cart item for this product
+  const cartItem = this.carts.find(cart => 
+    cart.productDetail.product.id === product.id
+  );
+  
+  return cartItem ? {
+    cartId: cartItem.id,
+    quantity: cartItem.quantity
+  } : {
+    cartId: null,
+    quantity: 1
+  };
 },
 
-  handleSubtract({ event, cartId }) {
-    if (event <= 1) {
-      this.deleteCart(cartId);
+  handleQuantityChange(payload) {
+    console.log("Quantity change payload:", payload);
+    if (payload && payload.quantity && payload.cartId) {
+      this.loading = true;
+      this.$api.skijasiCart
+        .edit({
+          id: payload.cartId,
+          quantity: parseInt(payload.quantity)
+        })
+        .then(res => {
+          this.getCarts(); // Refresh cart data
+          this.loading = false;
+        })
+        .catch(err => {
+          console.error("Error updating cart:", err);
+          this.$helper.displayErrors(err);
+          this.loading = false;
+        });
     }
   },
+
+
 
 
     async ucitajClanove() {
@@ -964,7 +1026,39 @@ formatDate(dateString) {
     },
 
 
+    openVariationDialog() {
+      if (!this.isAuthenticated) {
+        this.$helper.alert(this.$t('morate-se-prijaviti-prvo'))
+        this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+        return
+      }
 
+      disableBodyScroll(document.querySelector("body"));
+      this.variation = true
+    },
+    closeVariationDialog() {
+      enableBodyScroll(document.querySelector("body"));
+      this.variation = false
+    },
+    hideBodyScroll() {
+      enableBodyScroll(document.querySelector("body"));
+    },
+    getProductSoldTotal(product) {
+      return product.productDetails.reduce((prev, curr) => {
+        return prev + parseInt(curr.sold || 0)
+      }, 0) || 0;
+    },
+    toggleDescButton() {
+      this.openDesc = !this.openDesc
+    },
+    openPopup() {
+      disableBodyScroll(document.querySelector("body"));
+      this.popup = true
+    },
+    closePopup() {
+      enableBodyScroll(document.querySelector("body"));
+      this.popup = false
+    },
 
 
 
@@ -1015,18 +1109,55 @@ formatDate(dateString) {
           this.$helper.displayErrors(err)
         })
     },
+
     deleteCart(id) {
+  console.log('Attempting to delete cart with ID:', id);
+  
+  if (!id) {
+    console.error('No ID provided for deletion');
+    return;
+  }
+
+  // First check if cart still exists
+  this.$api.skijasiCart
+    .browse()
+    .then(res => {
+      const cartExists = res.data.carts.some(cart => cart.id === id);
+      
+      if (!cartExists) {
+        console.error('Cart no longer exists:', id);
+        // Refresh cart list anyway
+        this.getCarts();
+        return;
+      }
+
+      // Proceed with deletion
       this.$api.skijasiCart
-        .delete({
-          id
-        })
+        .delete({ id: id })
         .then(res => {
-          this.getCarts()
+          console.log('Delete response:', res);
+          this.getCarts();
+          this.$store.dispatch('FETCH_CARTS');
         })
         .catch(err => {
-          this.$helper.displayErrors(err)
-        })
-    },
+          console.error('Delete error:', err.response ? err.response.data : err);
+          this.$helper.displayErrors(err);
+          // Refresh carts anyway in case of error
+          this.getCarts();
+        });
+    })
+    .catch(err => {
+      console.error('Error checking cart existence:', err);
+      this.$helper.displayErrors(err);
+    });
+},
+
+handleSubtract({ event, cartId }) {
+  console.log('Handle subtract:', { event, cartId, type: typeof cartId });
+  if (event <= 1 && cartId) {
+    this.deleteCart(cartId);
+  }
+},
     deleteCartUsingState() {
       this.$api.skijasiCart
         .delete({
@@ -3475,5 +3606,20 @@ text-align: left;
 }
   
 
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: opacity 0.3s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+}
+
+.modal-enter-to,
+.modal-leave-from {
+  opacity: 1;
+}
 
 </style>

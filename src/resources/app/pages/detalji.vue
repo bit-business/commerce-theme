@@ -9,7 +9,7 @@
 
           <div class="glavnisasvimenazivisimjesto">
             <div class="nazivseminarapodframe">
-              <div class="dravni-seminar">{{ product.name }}</div>
+              <div class="dravni-seminar">{{ translatedName }}</div>
               <div class="div">{{ formatDateRange(product.datumPocetka, product.datumKraja) }}</div>
             </div>
             <div class="nazivmjestaframe">
@@ -500,7 +500,21 @@ export default {
       },
     }),
 
+    translatedName() {
+    if (!this.product) return '';
     
+    // Get the current locale
+    const currentLocale = this.$i18n.locale || 'hr';
+    
+    switch (currentLocale) {
+      case 'en':
+        return this.product.nameEn || this.product.name;
+      case 'it':
+        return this.product.nameIt || this.product.name;
+      default:
+        return this.product.name;
+    }
+  }
 
   },
   watch: {

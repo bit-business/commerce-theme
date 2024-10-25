@@ -3,7 +3,7 @@
     <div class="flex">
       <div class="text-sm mb-2 text-gray-700">{{ label }}</div>
       <div class="flex-grow" />
-      <div class="text-sm mb-2 text-primary font-medium cursor-pointer" @click="reset">Obriši</div>
+      <div class="text-sm mb-2 text-primary font-medium cursor-pointer" @click="reset">{{ $t('obrisi') }}</div>
     </div>
     <div class="flex gap-4 flex-nowrap justify-between w-full">
       <input

@@ -1,8 +1,10 @@
 <template>
   <div class="relative">
     <div class="w-full overflow-hidden" v-bind="{...$attrs}">
+      <!-- Add responsive class for flex direction and gap -->
       <div 
-        class="flex m-0 p-0 relative transition-all duration-500 ease-in-out" 
+        class="flex flex-col md:flex-row m-0 p-0 relative transition-all duration-500 ease-in-out"
+        :class="{ 'gap-4': true, 'gap-8 md:gap-2': true }"
         :style="{ transform: `translateX(-${currentPosition}px)`}"
       >
         <slot
@@ -11,23 +13,28 @@
           @subtract="$emit('subtract', $event)"
         />
       </div>
-      <!-- Carousel Track -->
 
+      <!-- Carousel Navigation, hidden on small screens -->
       <template v-if="!hideNavigationData">
-        <button v-if="canPrev" @click="prev" class="-left-3 p-1 focus:outline-none hover:scale-150 transition-transform ease shadow-md rounded-full bg-white absolute transform -translate-y-1/2 top-1/2 z-10">
+        <button v-if="canPrev" @click="prev" class="hidden md:block -left-3 p-1 focus:outline-none hover:scale-150 transition-transform ease shadow-md rounded-full bg-white absolute transform -translate-y-1/2 top-1/2 z-10">
+          <!-- Icon for previous button -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
           </svg>
         </button>
-        <button v-if="canNext" @click="next" class="-right-3 p-1 focus:outline-none hover:scale-150 transition-transform ease shadow-md rounded-full bg-white absolute transform -translate-y-1/2 top-1/2">
+        <button v-if="canNext" @click="next" class="hidden md:block -right-3 p-1 focus:outline-none hover:scale-150 transition-transform ease shadow-md rounded-full bg-white absolute transform -translate-y-1/2 top-1/2">
+          <!-- Icon for next button -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
-            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd" />
+            <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" />
           </svg>
         </button>
       </template>
     </div>
   </div>
 </template>
+
+
+
 
 <script>
 export default {

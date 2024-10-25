@@ -32,32 +32,6 @@ body {
   border-width: 0;
 }
 
-input,
-select,
-textarea,
-.dropdown,
-.form-input {
-  /* Critical fix for position shifting */
-  transform: translateZ(0);
-  /* Smooth transitions */
-  transition: all 0.2s ease;
-}
-
-/* Add this to prevent unwanted scroll on input focus */
-input, select, textarea {
-  &:focus {
-    /* Prevent viewport adjustments on focus */
-    @apply relative;
-    transform: translateY(0);
-  }
-}
-.modal-open,
-.dropdown-open {
-  overflow: hidden;
-  position: fixed;
-  width: 100%;
-}
-
 @layer base {
   // define revert css here
   .no-tailwindcss-base {

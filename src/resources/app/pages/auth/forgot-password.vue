@@ -417,14 +417,14 @@ position: absolute;
     position: absolute;
     top: 21.3%;
     left: calc(50% - 183px);
-    font-size: 2.25rem;
+    font-size: 2.1rem;
     text-align: left;
   }
   .zaboravljena-lozinka2 {
     position: absolute;
     top: 17.3%;
     left: calc(50% - 83px);
-    font-size: 2.25rem;
+    font-size: 2.1rem;
     text-align: left;
   }
   .background-container {
@@ -553,6 +553,7 @@ position: absolute;
     position: absolute;
     top: 0%;
     left: calc(50% - 45px);
+    white-space: nowrap;
     font-weight: 600;
   }
   .arrow-left-1-icon {

@@ -2026,6 +2026,7 @@ uploadAvatar(resizedImage) {
     left: calc(50% - 46px) !important;
     font-weight: 600;
     color: inherit;
+    white-space: nowrap;
   }
   .ikona-reg-strelicazanazad-icon {
     position: absolute;
@@ -2364,6 +2365,7 @@ uploadAvatar(resizedImage) {
     left: calc(50% - 66px) !important;
     font-weight: 600;
     color: inherit;
+    white-space: nowrap;
   }
   .arrow-left-1-icon {
     position: absolute;

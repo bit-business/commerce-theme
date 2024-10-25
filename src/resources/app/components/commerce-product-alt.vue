@@ -1,105 +1,145 @@
 <template>
-  <div class="w-full h-72 hover:shadow-md rounded-xl transition-transform duration-200 ease-in-out transform hover:-translate-y-1 bg-gray-200 relative group">
-    <!-- Counter Component - Show when item is in cart -->
-    <div v-if="isInCart" class="absolute top-2 left-0 right-0 flex items-center justify-center z-10">
-      <counter
-        class="justify-center bg-white rounded-lg"
-        @subtract="handleSubtract"
-        :key="product.id"
-        @input="handleQuantityChange"
-        v-model="localQuantity"
-        :min="1"
-        text-disabled
-        :disabled="loading"
-      />
-    </div>
+  <div>
+    <div class="w-full h-72 hover:shadow-md rounded-xl transition-transform duration-200 ease-in-out transform hover:-translate-y-1 bg-gray-200 relative group">
+      <!-- Counter Component -->
+      <div v-if="isAdded || cartData.cartId" 
+           class="absolute top-2 left-0 right-0 flex items-center justify-center z-10 transition-all duration-300"
+           :class="{'opacity-100 translate-y-0': isAdded || cartData.cartId, 'opacity-0 -translate-y-4': !isAdded && !cartData.cartId}">
+        <counter
+          class="justify-center bg-white rounded-lg shadow-lg transform transition-transform duration-300"
+          @subtract="handleSubtract"
+          :key="`counter-${product.id}`"
+          @input="handleQuantityChange"
+          :value="localQuantity"
+          :min="1"
+          text-disabled
+          :disabled="loading"
+        />
+      </div>
 
-    <!-- "Rasprodano" Label -->
-    <div 
-      v-if="parseInt(product.productDetails[0].quantity) <= 0" 
-      class="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full z-10"
-    >
-      {{ $t('rasprodano') }}
-    </div>
-    
-    <!-- Product Image Container -->
-    <div 
-      class="w-full h-4/5 bg-gray-300 rounded-t-xl flex items-center justify-center overflow-hidden cursor-pointer relative" 
-      @click="handleClick"
-    >
-      <img 
-        :src="product.productImage" 
-        alt="Product Image" 
-        class="object-contain w-4/5 h-full transition-transform duration-300 ease-in-out"
-        :class="{'scale-95': loading}"
-      >
+      <!-- "Rasprodano" Label -->
+      <div v-if="parseInt(product.productDetails[0].quantity) <= 0" 
+           class="absolute top-2 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full z-10">
+        {{ $t('rasprodano') }}
+      </div>
       
-      <!-- Hover Shopping Cart Icon -->
-      <div 
-        class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-all duration-300"
-        :class="{'pointer-events-none': loading}"
-      >
-        <div 
-          class="bg-white p-3 rounded-full transform transition-all duration-300 hover:scale-110"
-          :class="{'rotate-180': loading}"
+      <!-- Product Image Container -->
+      <div class="w-full h-4/5 bg-gray-300 rounded-t-xl flex items-center justify-center overflow-hidden cursor-pointer relative">
+      <img :src="product.productImage" 
+           alt="Product Image" 
+           class="object-contain w-4/5 h-full transition-transform duration-300 ease-in-out"
+           :class="{'scale-95': loading}">
+        
+        <!-- Hover Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-evenly opacity-0 group-hover:opacity-100 transition-all duration-300">
+        <button 
+          class="bg-white text-gray-800 font-regular text-sm py-2 px-4 rounded-lg mb-2 hover:bg-gray-100 transition-colors duration-200"
+          @click.stop="handlePreview"
         >
-          <svg 
-            v-if="!isAdded" 
-            xmlns="http://www.w3.org/2000/svg" 
-            class="h-6 w-6" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              stroke-width="2" 
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" 
-            />
-          </svg>
-          <svg 
-            v-else 
-            xmlns="http://www.w3.org/2000/svg" 
-            class="h-6 w-6" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              stroke-width="2" 
-              d="M12 6v6m0 0v6m0-6h6m-6 0H6" 
-            />
-          </svg>
-        </div>
-      </div>
+        Pogledaj
+        </button>
 
-      <!-- Loading Spinner -->
-      <div 
-        v-if="loading" 
-        class="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center"
-      >
-        <div class="spinner"></div>
+          <!-- Add to Cart or Remove Button -->
+          <button 
+            v-if="!isAdded && !cartData.cartId"
+            class="bg-blue-500  text-white text-xs font-regular py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 flex items-center"
+            @click.stop="handleClick"
+            :disabled="loading"
+          >
+            <!-- Cart/Checkmark Animation -->
+            <div class="relative w-5 h-5 mr-2">
+              <svg 
+                class="absolute inset-0 transform transition-transform duration-500 ease-in-out"
+                :class="{'scale-0 rotate-180': loading || addSuccess, 'scale-100 rotate-0': !loading && !addSuccess}"
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+              </svg>
+              <svg 
+                class="absolute inset-0 transform transition-transform duration-500 ease-in-out text-green-500"
+                :class="{'scale-100 rotate-0': addSuccess, 'scale-0 -rotate-180': !addSuccess}"
+                xmlns="http://www.w3.org/2000/svg" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor"
+              >
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+              </svg>
+            </div>
+            {{ $t('dodaj-u-kosaricu') }}
+          </button>
+
+          <!-- Remove from Cart Button -->
+          <button 
+            v-else
+            class="bg-red-500 text-white font-regular text-xs py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center"
+            @click.stop="handleRemove"
+            :disabled="loading"
+          >
+            <svg 
+              class="w-4 h-4 " 
+              xmlns="http://www.w3.org/2000/svg" 
+              fill="none" 
+              viewBox="0 0 24 24" 
+              stroke="currentColor"
+            >
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+            </svg>
+            <!-- {{ $t('ukloni-iz-kosarice') }} -->
+          </button>
+        </div>
+
+        <!-- Loading Spinner -->
+        <div v-if="loading" 
+             class="absolute inset-0 bg-black bg-opacity-25 flex items-center justify-center">
+          <div class="spinner"></div>
+        </div>
+      </div>
+      
+      <!-- Product Info -->
+      <div class="px-4 pb-4">
+        <h3 class="line-clamp-2 cart-text cursor-pointer">{{ product.name }}</h3>
+        <div class="flex items-start justify-between mt-1">
+          <div class="cart-price">
+            {{ getProductPrice }}
+          </div>
+        </div>
       </div>
     </div>
-    
-    <!-- "New" Label -->
-    <div 
-      v-if="isNewProduct" 
-      class="absolute bottom-20 left-2 bg-blue-500 text-white text-xs px-2 py-1 rounded-full"
-    >
-      {{ $t('novo') }}
-    </div>
-    
-    <!-- Product Info -->
-    <div class="px-4 pb-4">
-      <h3 class="line-clamp-2 cart-text cursor-pointer" @click="handleClick">{{ product.name }}</h3>
-      <div class="flex items-start justify-between mt-1">
-        <div class="cart-price">
-          {{ getProductPrice }}
-        </div>
+
+    <!-- Fullscreen Image Preview -->
+    <div v-if="showPreview" 
+         class="fixed inset-0 w-full h-full bg-black bg-opacity-90 flex items-center justify-center z-[9999]"
+         style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; min-height: 100vh;"
+         @click="showPreview = false">
+      <div class="relative w-full h-full flex items-center justify-center p-4">
+        <!-- Close Button -->
+        <button 
+          @click.stop="showPreview = false"
+          class="absolute top-4 right-4 text-white hover:text-gray-300 transition-colors duration-200 z-[10000] p-2"
+        >
+          <svg xmlns="http://www.w3.org/2000/svg" 
+               class="h-8 w-8" 
+               fill="none" 
+               viewBox="0 0 24 24" 
+               stroke="currentColor">
+            <path stroke-linecap="round" 
+                  stroke-linejoin="round" 
+                  stroke-width="2" 
+                  d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+
+        <!-- Image -->
+        <img 
+          :src="product.productImage" 
+          alt="Product Preview" 
+          class="max-w-[90vw] max-h-[90vh] object-contain"
+          @click.stop
+        >
       </div>
     </div>
   </div>
@@ -132,36 +172,73 @@ export default {
     return {
       localQuantity: this.cartData.quantity,
       loading: false,
-      isAdded: false
+      isAdded: false,
+      addSuccess: false,
+      showPreview: false
     }
   },
+
+  
   methods: {
-    handleQuantityChange(value) {
-      if (this.cartData.cartId) {
-        this.$emit('quantity-change', {
-          quantity: parseInt(value),
-          cartId: this.cartData.cartId
-        });
-      }
+    handlePreview() {
+      this.$emit('show-preview', this.product);
     },
-    
-    handleSubtract(event) {
-      if (this.cartData.cartId) {
-        this.$emit('subtract', {
-          event,
-          cartId: this.cartData.cartId
-        });
-      }
-    },
-
-
     async handleClick() {
       if (this.loading) return;
       
-      if (!this.isAdded) {
-        await this.addToCart();
+      try {
+        this.loading = true;
+        await this.$api.skijasiCart.add({
+          id: this.product.productDetails[0].id,
+          quantity: this.localQuantity
+        });
+        
+        this.isAdded = true;
+        this.addSuccess = true;
+        
+        // Reset success state after animation
+        setTimeout(() => {
+          this.addSuccess = false;
+        }, 2000);
+
+        this.$emit('click', this.product.id);
+        await this.$store.dispatch('FETCH_CARTS');
+        
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+        this.$helper.alert('Failed to add item to cart');
+      } finally {
+        this.loading = false;
       }
     },
+
+    handleQuantityChange(value) {
+      if (this.cartData.cartId && !this.loading) {
+        this.localQuantity = parseInt(value);
+        this.$emit('quantity-change', {
+          quantity: this.localQuantity,
+          cartId: this.cartData.cartId
+        });
+      }
+    },
+
+    handleSubtract(event) {
+      console.log('CartData:', this.cartData); // Debug log
+      if (this.cartData && this.cartData.cartId) {
+        if (event <= 1) {
+          console.log('Emitting subtract with cartId:', this.cartData.cartId); // Debug log
+          this.$emit('subtract', {
+            event,
+            cartId: this.cartData.cartId
+          });
+        } else {
+          this.handleQuantityChange(event);
+        }
+      }
+    },
+  
+
+
     async addToCart() {
       try {
         this.loading = true;
@@ -222,6 +299,28 @@ export default {
         }
       }
     },
+
+    async handleRemove() {
+      if (this.loading) return;
+      
+      try {
+        this.loading = true;
+        await this.$api.skijasiCart.delete({
+          id: this.cartData.cartId
+        });
+        
+        this.isAdded = false;
+        this.$emit('subtract', { event: 0, cartId: this.cartData.cartId });
+        await this.$store.dispatch('FETCH_CARTS');
+        
+      } catch (error) {
+        console.error('Error removing from cart:', error);
+        this.$helper.alert('Failed to remove item from cart');
+      } finally {
+        this.loading = false;
+      }
+    },
+
   },
   async created() {
     await this.findCartId();
@@ -231,7 +330,7 @@ export default {
       immediate: true,
       deep: true,
       handler(newVal) {
-        this.localQuantity = newVal.quantity;
+        this.localQuantity = newVal.quantity || 1;
         this.isAdded = !!newVal.cartId;
       }
     },
@@ -345,5 +444,73 @@ img {
 .slide-enter, .slide-leave-to {
   transform: translateY(-20px);
   opacity: 0;
+}
+
+
+
+
+
+.modal-enter-active,
+.modal-leave-active {
+  transition: all 0.3s ease;
+}
+
+.modal-enter-from,
+.modal-leave-to {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.modal-enter-to,
+.modal-leave-from {
+  opacity: 1;
+  transform: scale(1);
+}
+
+
+.spinner {
+  border: 3px solid #f3f3f3;
+  border-top: 3px solid #03a9f4;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Cart success animation */
+@keyframes checkmark {
+  0% {
+    transform: scale(0) rotate(-45deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(-45deg);
+  }
+  100% {
+    transform: scale(1) rotate(-45deg);
+  }
+}
+
+.success-checkmark {
+  animation: checkmark 0.5s ease-in-out forwards;
+}
+
+
+
+
+
+/* Remove button hover animation */
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-2px); }
+  75% { transform: translateX(2px); }
+}
+
+.shake {
+  animation: shake 0.3s ease-in-out;
 }
 </style>

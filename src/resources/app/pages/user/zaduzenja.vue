@@ -574,12 +574,12 @@
   <template v-if="staraPlacanjaArray && staraPlacanjaArray.length">
     <div v-for="payment in staraPlacanjaArray" :key="payment.id" class="payment-item">
     <!-- Payment title on its own line -->
-    <div class="payment-title">{{ payment.paymenttitle }}</div>
+    <div class="payment-title">{{ translatePaymentTitle(payment.paymenttitle) }}</div>
 
     <!-- Payment status, date, and price on the next line -->
     <div class="payment-info">
       <div class="payment-status" :class="{ 'unpaid': payment.paidstatus === 0, 'paid': payment.paidstatus === 1 }">
-  {{ payment.paidstatus === 1 ? 'PODMIRENO' : 'NEPODMIRENO' }}
+  {{ translatePaymentStatus(payment.paidstatus) }}
 </div>
 
 <span class="payment-date">{{ formatDate(payment.paydate) }}</span>
@@ -1153,7 +1153,24 @@ formatDate(dateString) {
   }
 },
 
+translatePaymentStatus(status) {
+    // Use a number check since paidstatus is numeric
+    return status === 1 ? this.$t('podmireno-display') : this.$t('nepodmireno-display');
+  },
 
+  translatePaymentTitle(title) {
+    if (!title) return '';
+    
+    let translatedTitle = title;
+
+    // Handle "Godišnja" translation
+    translatedTitle = translatedTitle.replace(/Godišnja članarina/g, this.$t('godisnja-display'));
+
+    // Handle "ISIA članarina" translation
+    translatedTitle = translatedTitle.replace(/ISIA članarina/g, this.$t('isia-clanarina-display'));
+
+    return translatedTitle;
+  },
 
 
     toggleSidebarExpansion() {

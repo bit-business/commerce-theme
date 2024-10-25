@@ -51,7 +51,7 @@
 
         </div>
         <div class="dogadajiframe1">
-          <b class="teaj-za-uitelja">{{ nextEvent.name }} </b>
+          <b class="teaj-za-uitelja">{{ translatedNextEventName }}</b>
           <div class="frame-group">
             <div class="dogadajiframe2">
               <div class="countdown">{{ countdownTime }}</div>
@@ -121,7 +121,7 @@
               
                   </div>
                 </div>
-                <div class="teaj-za-uitelje">{{ product.name }}</div>
+                <div class="teaj-za-uitelje">{{ getTranslatedName(product) }}</div>
                     </div>
                 </div>
               </div>
@@ -394,7 +394,45 @@ export default {
       productLimit(state) {
         return parseInt(this.$_.find(state.moduleConfigurations, { key: "homeProductLimit" }).value);
       },
-    })
+    }),
+
+
+
+
+
+    translatedNextEventName() {
+    if (!this.nextEvent) return '';
+    
+    // Get the current locale from your i18n/locale system
+    const currentLocale = this.$i18n.locale || 'hr'; // assuming you're using vue-i18n
+    
+    switch (currentLocale) {
+      case 'en':
+        return this.nextEvent.nameEn || this.nextEvent.name;
+      case 'it':
+        return this.nextEvent.nameIt || this.nextEvent.name;
+      default:
+        return this.nextEvent.name;
+    }
+  },
+
+  // Get translated name for product
+  getTranslatedName() {
+    return (product) => {
+      if (!product) return '';
+      
+      const currentLocale = this.$i18n.locale || 'hr';
+      
+      switch (currentLocale) {
+        case 'en':
+          return product.nameEn || product.name;
+        case 'it':
+          return product.nameIt || product.name;
+        default:
+          return product.name;
+      }
+    };
+  }
   },
   watch: {
     currentPage: {
