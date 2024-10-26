@@ -1,21 +1,22 @@
 <template>
   <div>
     <div class="w-full h-72 hover:shadow-md rounded-xl transition-transform duration-200 ease-in-out transform hover:-translate-y-1 bg-gray-200 relative group">
-      <!-- Counter Component -->
-      <div v-if="isAdded || cartData.cartId" 
-           class="absolute top-2 left-0 right-0 flex items-center justify-center z-10 transition-all duration-300"
-           :class="{'opacity-100 translate-y-0': isAdded || cartData.cartId, 'opacity-0 -translate-y-4': !isAdded && !cartData.cartId}">
-        <counter
+    <!-- Counter Component - Show only for non-slipper products -->
+    <div v-if="(isAdded || cartData.cartId) && !isSlippersProduct" 
+         class="absolute top-2 left-0 right-0 flex items-center justify-center z-10 transition-all duration-300"
+         :class="{'opacity-100 translate-y-0': isAdded || cartData.cartId, 'opacity-0 -translate-y-4': !isAdded && !cartData.cartId}">
+         <counter
           class="justify-center bg-white rounded-lg shadow-lg transform transition-transform duration-300"
           @subtract="handleSubtract"
-          :key="`counter-${product.id}`"
+          :key="`counter-${cartData.cartId}-${cartData.quantity}`"
           @input="handleQuantityChange"
-          :value="localQuantity"
+          :value="cartData.quantity"
           :min="1"
           text-disabled
           :disabled="loading"
         />
-      </div>
+    </div>
+
 
       <!-- "Rasprodano" Label -->
       <div v-if="parseInt(product.productDetails[0].quantity) <= 0" 
@@ -30,67 +31,68 @@
            class="object-contain w-4/5 h-full transition-transform duration-300 ease-in-out"
            :class="{'scale-95': loading}">
         
-        <!-- Hover Overlay -->
-        <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-evenly opacity-0 group-hover:opacity-100 transition-all duration-300">
-        <button 
-          class="bg-white text-gray-800 font-regular text-sm py-2 px-4 rounded-lg mb-2 hover:bg-gray-100 transition-colors duration-200"
-          @click.stop="handlePreview"
-        >
-        Pogledaj
-        </button>
+         <!-- Modify the Hover Overlay buttons section -->
+    <div class="absolute inset-0 bg-black bg-opacity-50 flex flex-col items-center justify-evenly opacity-0 group-hover:opacity-100 transition-all duration-300">
+      <button 
+        class="bg-white text-gray-800 font-regular text-sm py-2 px-4 rounded-lg mb-2 hover:bg-gray-100 transition-colors duration-200"
+        @click.stop="handlePreview"
+      >
+        {{ $t('pogledaj') }}
+      </button>
 
-          <!-- Add to Cart or Remove Button -->
-          <button 
-            v-if="!isAdded && !cartData.cartId"
-            class="bg-blue-500  text-white text-xs font-regular py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 flex items-center"
-            @click.stop="handleClick"
-            :disabled="loading"
+      <!-- Add to Cart Button - Modified logic -->
+      <button 
+        v-if="(!isAdded && !cartData.cartId) || (isSlippersProduct)"
+        class="bg-blue-500 text-white text-xs font-regular py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 flex items-center"
+        @click.stop="handleClick"
+        :disabled="loading"
+      >
+        <!-- Cart/Checkmark Animation -->
+        <div class="relative w-5 h-5 mr-2">
+          <svg 
+            class="absolute inset-0 transform transition-transform duration-500 ease-in-out"
+            :class="{'scale-0 rotate-180': loading || addSuccess, 'scale-100 rotate-0': !loading && !addSuccess}"
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor"
           >
-            <!-- Cart/Checkmark Animation -->
-            <div class="relative w-5 h-5 mr-2">
-              <svg 
-                class="absolute inset-0 transform transition-transform duration-500 ease-in-out"
-                :class="{'scale-0 rotate-180': loading || addSuccess, 'scale-100 rotate-0': !loading && !addSuccess}"
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
-              </svg>
-              <svg 
-                class="absolute inset-0 transform transition-transform duration-500 ease-in-out text-green-500"
-                :class="{'scale-100 rotate-0': addSuccess, 'scale-0 -rotate-180': !addSuccess}"
-                xmlns="http://www.w3.org/2000/svg" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor"
-              >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
-              </svg>
-            </div>
-            {{ $t('dodaj-u-kosaricu') }}
-          </button>
-
-          <!-- Remove from Cart Button -->
-          <button 
-            v-else
-            class="bg-red-500 text-white font-regular text-xs py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center"
-            @click.stop="handleRemove"
-            :disabled="loading"
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <svg 
+            class="absolute inset-0 transform transition-transform duration-500 ease-in-out text-green-500"
+            :class="{'scale-100 rotate-0': addSuccess, 'scale-0 -rotate-180': !addSuccess}"
+            xmlns="http://www.w3.org/2000/svg" 
+            viewBox="0 0 24 24" 
+            fill="none" 
+            stroke="currentColor"
           >
-            <svg 
-              class="w-4 h-4 " 
-              xmlns="http://www.w3.org/2000/svg" 
-              fill="none" 
-              viewBox="0 0 24 24" 
-              stroke="currentColor"
-            >
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-            </svg>
-            <!-- {{ $t('ukloni-iz-kosarice') }} -->
-          </button>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
+          </svg>
         </div>
+        {{ isSlippersProduct ? $t('dodaj-papuce') : $t('dodaj-u-kosaricu') }}
+      </button>
+
+   <!-- Remove Button - Modified to handle both cases -->
+   <button 
+        v-if="(isAdded || cartData.cartId)"
+        class="bg-red-500 text-white font-regular text-xs py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center gap-2"
+        @click.stop="isSlippersProduct ? handleRemoveAllSizes() : handleRemove()"
+        :disabled="loading"
+      >
+        <svg 
+          class="w-4 h-4" 
+          xmlns="http://www.w3.org/2000/svg" 
+          fill="none" 
+          viewBox="0 0 24 24" 
+          stroke="currentColor"
+        >
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+        </svg>
+        {{ isSlippersProduct ? $t('ukloni-sve-papuce') : '' }}
+      </button>
+    </div>
+
 
         <!-- Loading Spinner -->
         <div v-if="loading" 
@@ -170,7 +172,7 @@ export default {
 
   data() {
     return {
-      localQuantity: this.cartData.quantity,
+   
       loading: false,
       isAdded: false,
       addSuccess: false,
@@ -183,33 +185,9 @@ export default {
     handlePreview() {
       this.$emit('show-preview', this.product);
     },
-    async handleClick() {
+    handleClick() {
       if (this.loading) return;
-      
-      try {
-        this.loading = true;
-        await this.$api.skijasiCart.add({
-          id: this.product.productDetails[0].id,
-          quantity: this.localQuantity
-        });
-        
-        this.isAdded = true;
-        this.addSuccess = true;
-        
-        // Reset success state after animation
-        setTimeout(() => {
-          this.addSuccess = false;
-        }, 2000);
-
-        this.$emit('click', this.product.id);
-        await this.$store.dispatch('FETCH_CARTS');
-        
-      } catch (error) {
-        console.error('Error adding to cart:', error);
-        this.$helper.alert('Failed to add item to cart');
-      } finally {
-        this.loading = false;
-      }
+      this.$emit('click', this.product.id);
     },
 
     handleQuantityChange(value) {
@@ -236,26 +214,34 @@ export default {
         }
       }
     },
-  
-
-
-    async addToCart() {
+    
+    async handleRemoveAllSizes() {
+      if (this.loading) return;
+      
       try {
         this.loading = true;
-        await this.$api.skijasiCart.add({
-          id: this.product.productDetails[0].id,
-          quantity: this.localQuantity
-        });
-        this.isAdded = true;
-        await this.findCartId();
-        this.$emit('click', this.product.id);
+        // Emit an event to parent to handle the removal of all slippers
+        this.$emit('remove-all-slippers');
       } catch (error) {
-        console.error('Error adding to cart:', error);
-        this.$helper.alert('Failed to add item to cart');
+        console.error('Error removing items:', error);
+        this.$helper.alert('Failed to remove items');
       } finally {
         this.loading = false;
       }
     },
+
+    async addToCart() {
+  try {
+    this.loading = true;
+    // Instead of directly adding to cart, emit an event
+    this.$emit('click', this.product.id);
+  } catch (error) {
+    console.error('Error adding to cart:', error);
+    this.$helper.alert('Failed to add item to cart');
+  } finally {
+    this.loading = false;
+  }
+},
   
     async findCartId() {
       try {
@@ -322,15 +308,19 @@ export default {
     },
 
   },
-  async created() {
-    await this.findCartId();
+  created() {
+    // Initialize local quantity from props immediately
+    this.localQuantity = this.cartData.quantity || 1;
+    this.isAdded = !!this.cartData.cartId;
+    
+    // Initial cart check
+    this.findCartId();
   },
   watch: {
-    'cartData': {
+    cartData: {
       immediate: true,
       deep: true,
       handler(newVal) {
-        this.localQuantity = newVal.quantity || 1;
         this.isAdded = !!newVal.cartId;
       }
     },
@@ -346,12 +336,7 @@ export default {
       this.isAdded = !!newVal;
     }
   },
-  initialQuantity: {
-    immediate: true,
-    handler(newVal) {
-      this.localQuantity = newVal;
-    }
-  }
+  
   },
   computed: {
     isInCart() {
@@ -373,6 +358,10 @@ export default {
           : `${this.$currency(min.price)} - ${this.$currency(max.price)}`;
       }
       return this.$currency(0);
+    },
+
+    isSlippersProduct() {
+      return this.product.id === 43; // ID for slippers
     },
   },
 };

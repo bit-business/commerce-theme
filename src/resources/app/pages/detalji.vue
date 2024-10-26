@@ -384,6 +384,8 @@ export default {
         desc5It: null,
 
         name: "",
+        nameEn: "",
+        nameIt: "",
         datum_pocetka: null,
         datum_kraja: null,
         mjesto: "",

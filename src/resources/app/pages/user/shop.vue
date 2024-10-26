@@ -201,10 +201,11 @@
           <commerce-product-alt
             :product="product"
             :cart-data="getCartDataForProduct(product)"
-            @click="setSelectedProduct"
+            @click="setSelectedProduct(product.id)"
             @quantity-change="handleQuantityChange"
             @subtract="handleSubtract"
             @show-preview="handleShowPreview"
+              @remove-all-slippers="handleRemoveAllSlippers"
           />
         </carousel-item>
       </carousel>
@@ -221,10 +222,11 @@ class="container hidden md:flex lg:hidden" show="3"
           <commerce-product-alt
             :product="product"
             :cart-data="getCartDataForProduct(product)"
-            @click="setSelectedProduct"
+        @click="setSelectedProduct(product.id)"
             @quantity-change="handleQuantityChange"
             @subtract="handleSubtract"
             @show-preview="handleShowPreview"
+              @remove-all-slippers="handleRemoveAllSlippers"
           />
         </carousel-item>
       </carousel>
@@ -241,10 +243,11 @@ class="container hidden md:flex lg:hidden" show="3"
           <commerce-product-alt
             :product="product"
             :cart-data="getCartDataForProduct(product)"
-            @click="setSelectedProduct"
+      @click="setSelectedProduct(product.id)"
             @quantity-change="handleQuantityChange"
             @subtract="handleSubtract"
             @show-preview="handleShowPreview"
+              @remove-all-slippers="handleRemoveAllSlippers"
           />
         </carousel-item>
       </carousel>
@@ -502,7 +505,12 @@ class="container hidden md:flex lg:hidden" show="3"
     </div>
 
 
-
+<!-- Add this right before the closing </div> tag in your template -->
+<size-selector-dialog
+  :show="showSizeSelector"
+  @close="showSizeSelector = false"
+  @select="handleSizeSelection"
+/>
 
     </div>
     
@@ -522,6 +530,7 @@ import CarouselItem from '../../components/carousel/carousel-item.vue'
 import CommerceProductAlt from '../../components/commerce-product-alt.vue'
 import CommerceMobileProductAlt from '../../components/commerce-mobile-product-alt.vue'
 
+import SizeSelectorDialog from '../../components/SizeSelectorDialog.vue'
 
 import podaciusera from '../../../../../../core/src/resources/js/api/modules/skijasi-user.js';
 
@@ -537,6 +546,7 @@ export default {
     CarouselItem,
     CommerceProductAlt,
     CommerceMobileProductAlt,
+    SizeSelectorDialog,
     Link,
     Head
   },
@@ -561,13 +571,14 @@ export default {
         productDetails: []
       },
       productDetailSelectedIndex: 0,
-    
+      selectedVariationId: null,
 
       selectedProduct: {
         id: null
       },
 
-
+      showSizeSelector: false,
+      pendingProductId: null,
   
 
       avatar_approved: 0,
@@ -735,7 +746,7 @@ created() {
     this.ucitajClanove();
   },
 
-  mounted() {
+  async mounted() {
     if (!this.isAuthenticated) {
       this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
     };
@@ -743,7 +754,8 @@ created() {
 
     window.addEventListener('scroll', this.handleScrollAttempt);
   
-    this.getCarts();
+
+  await this.getCarts();
     this.$store.dispatch('CLEAR_PURCHASE_ORIGIN');
   },
 
@@ -762,32 +774,132 @@ created() {
     this.$inertia.visit(this.route('skijasi.commerce-theme.zaduzenja'))
   },
 
+// Add new method to handle size selection
+async handleSizeSelection(size) {
+  const product = this.similarProducts.data.find(p => p.id === this.pendingProductId);
+  if (!product) return;
 
+  const productDetail = product.productDetails.find(detail => 
+    detail.name === `Size ${size}` || detail.name === String(size)
+  );
 
+  if (productDetail) {
+    try {
+      await this.addToCart(productDetail.id);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      this.$helper.displayErrors(error);
+    }
+  }
 
-    setSelectedProduct(proizvod) {
-  // Find the product from similarProducts using the ID
-  const product = this.similarProducts.data.find(p => p.id === proizvod);
+  this.showSizeSelector = false;
+  this.pendingProductId = null;
+},
+
+// Add this method to your parent component
+// In your parent component
+async handleRemoveAllSlippers() {
+  try {
+    // Find all cart items that are slippers (product ID 43)
+    const slipperCarts = this.carts.filter(cart => 
+      cart.productDetail.product.id === 43
+    );
+
+    // Delete each slipper cart item
+    for (const cart of slipperCarts) {
+      await this.$api.skijasiCart.delete({
+        id: cart.id  // Changed from cart.cartId to cart.id
+      });
+    }
+
+    // Refresh carts
+    await this.$store.dispatch('FETCH_CARTS');
+    await this.getCarts();
+
+    this.$helper.alert(this.$t('sve-papuce-su-uklonjene-iz-kosarice'));
+  } catch (error) {
+    console.error('Error removing slippers:', error);
+    this.$helper.alert(this.$t('nije-uspjelo'));
+  }
+},
+
+async setSelectedProduct(proizvod) {
+  console.log('Product ID received:', proizvod);
   
+  // Special handling for slippers (ID: 43)
+  if (proizvod === 43) {
+    this.pendingProductId = proizvod;
+    this.showSizeSelector = true;
+    // Don't call handleRegularProduct
+    return;
+  }
+
+  // Only call handleRegularProduct for non-slipper products
+  await this.handleRegularProduct(proizvod);
+},
+
+// New method for handling regular products
+async handleRegularProduct(proizvod) {
+  // First check if this is a slippers product
+  if (proizvod === 43) {
+    return; // Exit immediately if it's the slippers product
+  }
+
+  const product = this.similarProducts.data.find(p => p.id === proizvod);
   if (!product) {
     console.error('Product not found');
     return;
   }
 
-  if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
-    const nijeclanProduct = product.productDetails.find(
-      detail => detail.name === "Nije član"
-    );
-    this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : product.productDetails[0].id;
-    this.addToCart(this.selectedProduct.id);
-  } else {
-    const hzutsProduct = product.productDetails.find(
-      detail => detail.name === "HZUTS član"
-    );
-    this.selectedProduct.id = hzutsProduct ? hzutsProduct.id : product.productDetails[0].id;
-    this.addToCart(this.selectedProduct.id);
+  try {
+    if (this.korisnik.statusString === "Nije član" || this.korisnik.statusString === "") {
+      const nijeclanProduct = product.productDetails.find(
+        detail => detail.name === "Nije član"
+      );
+      this.selectedProduct.id = nijeclanProduct ? nijeclanProduct.id : product.productDetails[0].id;
+      await this.addToCart(this.selectedProduct.id);
+    } else {
+      const hzutsProduct = product.productDetails.find(
+        detail => detail.name === "HZUTS član"
+      );
+      this.selectedProduct.id = hzutsProduct ? hzutsProduct.id : product.productDetails[0].id;
+      await this.addToCart(this.selectedProduct.id);
+    }
+  } catch (error) {
+    console.error('Error setting selected product:', error);
   }
-  console.log("Selected product ID:", this.selectedProduct.id);
+},
+
+
+
+async addToCart(idproizvoda) {
+  console.log('Adding to cart:', idproizvoda);
+  if (!this.isAuthenticated) {
+    this.$helper.alert(this.$t('morate-se-prijaviti-prvo'))
+    this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
+    return;
+  }
+
+  if (this.selectedProduct.quantity <= 0) {
+    this.$helper.alert(this.$t('nazalost-je-rasprodano'))
+    return;
+  }
+
+  try {
+    await this.$api.skijasiCart.add({
+      id: idproizvoda,
+      quantity: this.quantity
+    });
+    
+    // Update both store and local state
+    await this.$store.dispatch('FETCH_CARTS');
+    // After store update, get the latest carts
+    await this.getCarts();
+    
+    this.$helper.alert(this.$t('uspjesno-dodano-u-kosaricu'));
+  } catch (err) {
+    this.$helper.displayErrors(err);
+  }
 },
 
 changeQuantity(quantity, cartId) {
@@ -811,43 +923,41 @@ changeQuantity(quantity, cartId) {
   }
 },
 
-getCartDataForProduct(product) {
-  if (!product || !product.id) return { cartId: null, quantity: 1 };
+
+
+handleQuantityChange(payload) {
+  console.log("Quantity change payload:", payload);
   
-  // Find cart item for this product
-  const cartItem = this.carts.find(cart => 
-    cart.productDetail.product.id === product.id
-  );
+  // If this is for the slippers product and we have a selected variation
+  if (this.pendingProductId === 43 && this.selectedVariationId) {
+    payload.cartId = this.getCartIdForVariation(this.selectedVariationId);
+  }
   
-  return cartItem ? {
-    cartId: cartItem.id,
-    quantity: cartItem.quantity
-  } : {
-    cartId: null,
-    quantity: 1
-  };
+  if (payload && payload.quantity && payload.cartId) {
+    this.loading = true;
+    this.$api.skijasiCart
+      .edit({
+        id: payload.cartId,
+        quantity: parseInt(payload.quantity)
+      })
+      .then(res => {
+        this.getCarts(); // Refresh cart data
+        this.loading = false;
+      })
+      .catch(err => {
+        console.error("Error updating cart:", err);
+        this.$helper.displayErrors(err);
+        this.loading = false;
+      });
+  }
 },
 
-  handleQuantityChange(payload) {
-    console.log("Quantity change payload:", payload);
-    if (payload && payload.quantity && payload.cartId) {
-      this.loading = true;
-      this.$api.skijasiCart
-        .edit({
-          id: payload.cartId,
-          quantity: parseInt(payload.quantity)
-        })
-        .then(res => {
-          this.getCarts(); // Refresh cart data
-          this.loading = false;
-        })
-        .catch(err => {
-          console.error("Error updating cart:", err);
-          this.$helper.displayErrors(err);
-          this.loading = false;
-        });
-    }
-  },
+getCartIdForVariation(variationId) {
+  const cartItem = this.carts.find(cart => 
+    cart.productDetail && cart.productDetail.id === variationId
+  );
+  return cartItem ? cartItem.id : null;
+},
 
 
 
@@ -871,31 +981,6 @@ getCartDataForProduct(product) {
       },
 
 
-      addToCart(idproizvoda) {
-      if (!this.isAuthenticated) {
-        this.$helper.alert(this.$t('morate-se-prijaviti-prvo'))
-        this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
-        return
-      }
-
-      if (this.selectedProduct.quantity <= 0) {
-         this.$helper.alert(this.$t('nazalost-je-rasprodano'))
-         return
-       }
-
-      this.$api.skijasiCart
-        .add({
-          id: idproizvoda,
-          quantity: this.quantity
-        })
-        .then(res => {
-          this.$store.dispatch('FETCH_CARTS')
-          this.$helper.alert(res.message)
-        })
-        .catch(err => {
-          this.$helper.displayErrors(err)
-        })
-    },
 
 
 
@@ -1080,23 +1165,89 @@ formatDate(dateString) {
       this.$closeLoading()
       this.$inertia.visit(this.route('skijasi.commerce-theme.checkout'))
     },
-    getCarts() {
-      this.$api.skijasiCart
-        .browse()
-        .then(res => {
-          this.carts = res.data.carts
-          this.checkboxModel = this.carts.map(cart => cart.id);
+   
+    
 
-          if (this.carts.length > 0) {
-            this.fetchSimilar(this.$_.take(res.data.carts)[0])
-          }
-        })
-        .catch(err => {
-          localStorage.removeItem('token')
-          this.$inertia.visit(this.route('skijasi.commerce-theme.login'))
-          this.$helper.displayErrors(err)
-        })
-    },
+
+    async getCarts() {
+  try {
+    const res = await this.$api.skijasiCart.browse();
+    
+    // Map carts and ensure quantities are properly set
+    this.carts = res.data.carts.map(cart => ({
+      ...cart,
+      quantity: parseInt(cart.quantity) // Ensure quantity is a number
+    }));
+    
+    this.checkboxModel = this.carts.map(cart => cart.id);
+
+    // Also update product details in similarProducts with cart quantities
+    if (this.carts.length > 0) {
+      await this.fetchSimilar(this.$_.take(res.data.carts)[0]);
+      
+      // Update product quantities from cart
+      this.similarProducts.data = this.similarProducts.data.map(product => {
+        const cartItem = this.carts.find(cart => 
+          cart.productDetail.product.id === product.id
+        );
+        
+        if (cartItem) {
+          return {
+            ...product,
+            quantity: cartItem.quantity
+          };
+        }
+        return product;
+      });
+    }
+
+    // Debug log
+    console.log('Fetched carts:', this.carts);
+    console.log('Updated similar products:', this.similarProducts.data);
+
+  } catch (err) {
+    console.error('Error fetching carts:', err);
+    localStorage.removeItem('token');
+    this.$inertia.visit(this.route('skijasi.commerce-theme.login'));
+    this.$helper.displayErrors(err);
+  }
+},
+
+// Also update getCartDataForProduct to ensure correct quantity
+getCartDataForProduct(product) {
+  if (!product || !product.id) return { cartId: null, quantity: 1 };
+  
+  // For slippers product (ID: 43), use the selected variation
+  if (product.id === 43 && this.selectedVariationId) {
+    const cartItem = this.carts.find(cart => 
+      cart.productDetail && cart.productDetail.id === this.selectedVariationId
+    );
+    
+    return cartItem ? {
+      cartId: cartItem.id,
+      quantity: parseInt(cartItem.quantity)
+    } : {
+      cartId: null,
+      quantity: 1
+    };
+  }
+  
+  // For other products, use existing logic
+  const cartItem = this.carts.find(cart => 
+    cart.productDetail.product.id === product.id
+  );
+  
+  return cartItem ? {
+    cartId: cartItem.id,
+    quantity: parseInt(cartItem.quantity)
+  } : {
+    cartId: null,
+    quantity: 1
+  };
+},
+
+
+
     fetchSimilar(cart) {
       this.$api.skijasiProduct
         .browseByCategorySlug({

@@ -1895,5 +1895,126 @@ input:not([type="date"]):focus {
   z-index: 2;
 }
 
+
+.form-renderer {
+  position: relative;
+  /* Keep natural overflow behavior */
+  overflow: visible !important;
+  /* Prevent unwanted touch behaviors */
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Dropdown specific fixes */
+.dropdown {
+  position: relative;
+  z-index: 2;
+}
+
+.dropdown-select {
+  position: relative;
+  z-index: 1;
+}
+
+.dropdown-list {
+  position: absolute;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: white;
+  /* Prevent dropdown from causing page scroll */
+  transform: translateZ(0);
+}
+
+/* Input fixes */
+.form-input,
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+textarea {
+  /* Prevent zoom on iOS */
+  font-size: 16px !important;
+  /* Prevent layout shifts */
+  transform: translateZ(0);
+  /* Smooth transitions */
+  transition: border-color 0.2s ease;
+  /* Prevent unwanted highlights */
+  -webkit-tap-highlight-color: transparent;
+  /* Better touch behavior */
+  touch-action: manipulation;
+}
+
+/* Date input specific fixes */
+.date-input-group {
+  position: relative;
+  transform: translateZ(0);
+}
+
+.real-date-input {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  z-index: 1;
+}
+
+.display-date-input {
+  position: relative;
+  z-index: 0;
+  background-color: white;
+}
+
+/* Mobile specific fixes */
+@media (max-width: 768px) {
+  .form-input,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  textarea,
+  .dropdown-select {
+    font-size: 16px !important;
+    line-height: 1.3;
+    padding: 12px 16px;
+  }
+
+  .dropdown-list {
+    max-height: 250px;
+  }
+}
+
+/* Prevent body scroll when dropdown is open */
+:deep(.dropdown-open) {
+  .dropdown-list {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+  .form-input,
+  input[type="text"],
+  input[type="email"],
+  input[type="tel"],
+  input[type="date"],
+  textarea {
+    font-size: 16px !important;
+  }
+
+  .date-input-group {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+}
+
+
+
+
 </style>
 
