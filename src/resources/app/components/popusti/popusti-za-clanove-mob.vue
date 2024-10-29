@@ -99,8 +99,42 @@
     </div>
   </section>
 
+  <!--ROSI-->
+  <section class="rectangle-rosipozadina">
+      <div class="frame-child25" />
+      <div class="rectangle-parent14">
+        <img class="frame-child26" alt="" src="/storage/slike/popusti/desktop/rosi-pozadina.jpeg" />
+        <div class="logo-image-rosi">
+          <div class="logo-image-child" />
+          <img
+            class="logo-rosi-1-icon"
+            loading="lazy"
+            alt=""
+            src="/storage/slike/popusti/desktop/rosilogo.png"
+          />
+        </div>
+      </div>
+      <footer class="frame-footer">
+        <div class="uitelji-skijanja-hzuts-a-sa-v-parent-rosi">
+          <b class="uitelji-skijanja-hzuts-a-container text-center">
+            <p class="uitelji-skijanja-hzuts-a">
+              Rossi pro shop, trgovina sportske opreme odobrava 20 % popusta za članove HZUTS-a. 
+            </p>
+            <p class="blank-line1">&nbsp;</p>
+            <p class="demonstratorski-skijanja-hzuts">
+              Popust se odobrava uz predočenje važeće HZUTS iskaznice sa važećom licencom.
+            </p>
+          </b>
+          <div class="popust-se-odobrava4">
+            <p>Kontakt: cepelja.d@gmail.com </p>
+            <p>Adresa:  Zagrebacka cesta 210, 10000 Zagreb </p>
+          </div>
+        </div>
+      </footer>
+    </section>
 
-    <section class="group-section">
+
+    <section class="group-section-frankie">
       <div class="frame-child4" />
       <div class="rectangle-parent1">
         <div class="frame-child5" />
@@ -122,6 +156,7 @@
         </button>
       </div>
     </section>
+
     <section class="rectangle-parent3">
       <img class="frame-child7" alt="" src="/storage/slike/popusti/rectangle-2902@2x.png" />
       <div class="frame-child8" />
@@ -230,6 +265,35 @@
         </div>
       </div>
     </section>
+
+
+    <section class="group-section-ortho">
+      <div class="frame-child4" />
+      <div class="rectangle-parent1">
+        <div class="frame-child5" />
+        <img
+          class="ski-frankie-natpis-1-1"
+          loading="lazy"
+          alt=""
+          src="/storage/slike/popusti/desktop/orthoplus-logo.png"
+        />
+        <h2 class="ski-frankie-osigurao">
+          POLIKLINIKA ORTHOPLUS za članove HZUTS-a odobrava 25 % popusta na treninge pripreme za skijanje. 
+        </h2>
+        <div class="popust-se-odobrava1-ortho">
+          <p>Popust se odobrava uz predočenje važeće HZUTS iskaznice sa važećom licencom.</p><br>
+<p>Kontakt: Dino Krolo, 099 5320-707</p>
+<p>Adresa:  Ulica Petra Hektorovića 2, 10000 Zagreb</p>
+        </div>
+        <!-- <button class="rectangle-parent2">
+          <div class="frame-child6" />
+          <a href="https://skifrankie.hr" class="saznaj-vie-informacija1">{{ $t('saznaj-vise-informacija-0') }}</a>
+        </button> -->
+      </div>
+    </section>
+
+
+
     <section class="rectangle-parent5">
       <div class="frame-child13" />
       <img class="ekipa-1-icon" alt="" src="/storage/slike/popusti/ekipa-1@2x.png" />
@@ -786,6 +850,17 @@
     justify-content: center;
     z-index: 1;
   }
+  .popust-se-odobrava1-ortho {
+    align-self: stretch;
+    flex: 1;
+    position: relative;
+    font-size: 16px;
+    font-weight: 500;
+    color: rgba(11, 11, 69, 0.75);
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
+  }
   .frame-child6 {
     height: 40px;
     width: 300px;
@@ -830,8 +905,22 @@
     width: 100%;
     z-index: 1;
   }
-  .group-section {
+  .group-section-frankie {
     background-color: #da251c;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 50px 40px 52px 47px;
+    box-sizing: border-box;
+    width: 100%;
+    text-align: center;
+    font-size: 20px;
+    color: #000;
+    font-family: Inter;
+  }
+  .group-section-ortho {
+    background-color: #102e4d;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -1669,11 +1758,29 @@
     object-fit: contain;
     z-index: 3;
   }
+  .logo-rosi-1-icon {
+    position: absolute;
+    top: 18px;
+    left: 0px;
+    width: 100%;
+    height: 173px;
+    object-fit: contain;
+    z-index: 3;
+  }
   .logo-image {
     position: absolute;
     top: 245px;
     left: 0px;
     background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 209px;
+    z-index: 2;
+  }
+  .logo-image-rosi {
+    position: absolute;
+    top: 245px;
+    left: 0px;
+    background-color: rgba(255, 255, 255, 0.5);
     width: 100%;
     height: 209px;
     z-index: 2;
@@ -1714,6 +1821,15 @@
     gap: 117px;
     max-width: 100%;
   }
+  .uitelji-skijanja-hzuts-a-sa-v-parent-rosi {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 77px;
+    max-width: 100%;
+  }
   .frame-footer {
     align-self: stretch;
     display: flex;
@@ -1729,6 +1845,19 @@
     font-family: Inter;
   }
   .rectangle-parent13 {
+    align-self: stretch;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px 0px 60px;
+    box-sizing: border-box;
+    gap: 40px;
+    max-width: 100%;
+  }
+
+  .rectangle-rosipozadina {
     align-self: stretch;
     background-color: #fff;
     display: flex;
@@ -1946,6 +2075,9 @@ align-items: initial;
     .uitelji-skijanja-hzuts-a-sa-v-parent {
       gap: 58px 117px;
     }
+    .uitelji-skijanja-hzuts-a-sa-v-parent-rosi {
+      gap: 58px 117px;
+    }
   }
   @media screen and (max-width: 400px) {
 
@@ -2012,6 +2144,10 @@ align-items: initial;
     }
 
     .rectangle-parent13 {
+      padding-bottom: 25px;
+      box-sizing: border-box;
+    }
+    .rectangle-rosipozadina {
       padding-bottom: 25px;
       box-sizing: border-box;
     }

@@ -95,6 +95,34 @@
     </div></div>
   </section>
 
+<!-- ROSI section -->
+  <section class="rectangle-rosipozadina">
+      <img class="frame-rosipozadina" alt="" src="/storage/slike/popusti/desktop/rosi-pozadina.jpeg" />
+      <img
+        class="logo-rosi-1-icon1"
+        loading="lazy"
+        alt=""
+        src="/storage/slike/popusti/desktop/rosilogo.png"
+      />
+      <footer class="h-z-u-t-s-teachers">
+        <div class="h-z-u-t-s-teachers-child" />
+        <b class="uitelji-skijanja-hzuts-a-container1">
+          <span class="uitelji-skijanja-hzuts-a-container2">
+            <p class="uitelji-skijanja-hzuts-a1">
+              Rossi pro shop, trgovina sportske opreme odobrava 20 % popusta za članove HZUTS-a. 
+            </p>
+            <p class="blank-line3">&nbsp;</p>
+            <p class="demonstratorski-skijanja-hzuts1">
+              Popust se odobrava uz predočenje važeće HZUTS iskaznice sa važećom licencom.
+            </p>
+          </span>
+        </b>
+        <div class="popust-se-odobrava9">
+        <p>Kontakt: cepelja.d@gmail.com </p>
+        <p>Adresa:  Zagrebacka cesta 210, 10000 Zagreb </p>
+        </div>
+      </footer>
+    </section>
 
 
     <section class="desktop-container">
@@ -125,6 +153,7 @@
         </div>
       </div>
     </section>
+
     <section class="desktop-container1">
       <div class="rectangle-parent21">
         <img
@@ -239,6 +268,41 @@
         </div>
       </div>
     </section>
+
+
+<!-- ORTHOPLUS-->
+    <section class="desktop-container-ortho">
+      <div class="rectangle-parent18-ortho">
+        <div class="frame-child32" />
+        <div class="rectangle-parent19-ortho">
+          <div class="frame-child33" />
+          <img
+            class="ski-frankie-natpis-1-11-ortho"
+            loading="lazy"
+            alt=""
+            src="/storage/slike/popusti/desktop/orthoplus-logo.png"
+          />
+          <div class="frame-parent10">
+            <div class="ski-frankie-osigurao-je-posebn-parent">
+              <b class="ski-frankie-osigurao1">POLIKLINIKA ORTHOPLUS za članove HZUTS-a odobrava 25 % popusta na treninge pripreme za skijanje. 
+                </b>
+              <div class="popust-se-odobrava6-ortho text-left">
+                <p>Popust se odobrava uz predočenje važeće HZUTS iskaznice sa važećom licencom.</p>
+<p>Kontakt: Dino Krolo, 099 5320-707</p>
+<p>Adresa:  Ulica Petra Hektorovića 2, 10000 Zagreb</p>
+              </div>
+            </div>
+            <!-- <button class="rectangle-parent20">
+              <div class="frame-child34" />
+              <a href="https://skifrankie.hr" target="_blank" class="saznaj-vie-informacija4">{{ $t('saznaj-vise-informacija-0') }}</a>
+            </button> -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+
     <section class="desktop-container2">
       <div class="rectangle-parent23">
         <div class="frame-child42" />
@@ -378,6 +442,9 @@
         </div>
       </div>
     </section>
+
+
+    <!-- KOPE-->
     <section class="rectangle-parent30">
       <img class="frame-child54" alt="" src="/storage/slike/popusti/desktop/rectangle-2901@2x.png" />
       <img
@@ -404,6 +471,8 @@
         </div>
       </footer>
     </section>
+
+
   </div>
 </template>
 <script>
@@ -777,6 +846,15 @@
     max-width: 100%;
     z-index: 1;
   }
+  .ski-frankie-natpis-1-11-ortho {
+    height: 270px;
+    width: 500px;
+    position: relative;
+    object-fit: cover;
+    min-height: 270px;
+    max-width: 100%;
+    z-index: 1;
+  }
   .ski-frankie-osigurao1 {
     align-self: stretch;
     position: relative;
@@ -790,6 +868,18 @@
     font-weight: 500;
     color: rgba(218, 37, 28, 0.5);
     text-align: center;
+    display: inline-block;
+    max-width: 100%;
+    z-index: 1;
+  }
+  .popust-se-odobrava6-ortho {
+    width: 632px;
+    position: relative;
+    font-size: 19px;
+    line-height: 28.5px;
+    font-weight: 500;
+    color: rgba(11, 11, 69, 0.75);
+    text-align: left;
     display: inline-block;
     max-width: 100%;
     z-index: 1;
@@ -859,7 +949,20 @@
     flex-direction: row;
     align-items: flex-start;
     justify-content: flex-start;
-    padding: 79px 37px 83.9px 51px;
+    padding: 79px 37px 73.9px 51px;
+    box-sizing: border-box;
+    gap: 60px;
+    max-width: 100%;
+    z-index: 1;
+  }
+  .rectangle-parent19-ortho {
+    flex: 1;
+    background-color: #fff;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 79px 37px 43.9px 51px;
     box-sizing: border-box;
     gap: 60px;
     max-width: 100%;
@@ -876,7 +979,32 @@
     box-sizing: border-box;
     max-width: 100%;
   }
+  .rectangle-parent18-ortho {
+    flex: 1;
+    background-color: #102e4d;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 45px 55px 40px 57px;
+    box-sizing: border-box;
+    max-width: 100%;
+  }
   .desktop-container {
+    align-self: stretch;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-start;
+    padding: 0px 0px 40px;
+    box-sizing: border-box;
+    max-width: 100%;
+    text-align: left;
+    font-size: 24px;
+    color: #000;
+    font-family: Inter;
+  }
+  .desktop-container-ortho {
     align-self: stretch;
     display: flex;
     flex-direction: row;
@@ -1592,7 +1720,7 @@
     flex-direction: row;
     align-items: flex-end;
     justify-content: flex-start;
-    padding: 35px 37px 84px 27px;
+    padding: 35px 37px 78px 27px;
     box-sizing: border-box;
     gap: 89px;
     max-width: 100%;
@@ -1632,15 +1760,35 @@
     object-fit: cover;
     display: none;
   }
+  .frame-rosipozadina {
+    align-self: stretch;
+    position: relative;
+    max-width: 100%;
+    overflow: hidden;
+    max-height: 100%;
+    object-fit: cover;
+    display: none;
+  }
   .logo-kope-1-icon1 {
     width: 400px;
     height: 276.8px;
     position: relative;
     object-fit: contain;
     flex-shrink: 0;
-    debug_commit: f6aba90;
     z-index: 1;
   }
+  .logo-rosi-1-icon1 {
+    width: 450px;
+    height: 376.8px;
+    position: relative;
+    object-fit: contain;
+    flex-shrink: 0;
+    z-index: 1;
+    background: linear-gradient(45deg, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+
+}
+
+
   .h-z-u-t-s-teachers-child {
     width: 1440px;
     height: 209px;
@@ -1691,7 +1839,6 @@
     box-sizing: border-box;
     gap: 30px;
     flex-shrink: 0;
-    debug_commit: f6aba90;
     max-width: 100%;
     z-index: 1;
     text-align: left;
@@ -1711,6 +1858,22 @@
     background-repeat: no-repeat;
     background-position: top;
     max-width: 100%;
+  }
+
+  .rectangle-rosipozadina {
+    align-self: stretch;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 0rem;
+    background-image: url("/storage/slike/popusti/desktop/rosi-pozadina.jpeg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: top;
+    background-color: #fff;
+    max-width: 100%;
+    margin-bottom:3rem;
   }
   .popusti-za-clanove-desktop {
     width: 100%;
@@ -1839,6 +2002,11 @@
 
 
     .rectangle-parent19 {
+      flex-wrap: wrap;
+      padding-left: 25px;
+      box-sizing: border-box;
+    }
+    .rectangle-parent19-ortho {
       flex-wrap: wrap;
       padding-left: 25px;
       box-sizing: border-box;
@@ -1975,12 +2143,20 @@
     .rectangle-parent19 {
       gap: 60px 30px;
     }
+    .rectangle-parent19-ortho {
+      gap: 60px 30px;
+    }
+
 
     .rectangle-parent18 {
       padding: 29px 27px 26px 28px;
       box-sizing: border-box;
     }
 
+    .rectangle-parent18-ortho {
+      padding: 29px 27px 26px 28px;
+      box-sizing: border-box;
+    }
     .koala-ski-boot-lab-page {
       min-width: 100%;
     }
@@ -2043,8 +2219,15 @@
     .rectangle-parent19 {
       gap: 60px 30px;
     }
+    .rectangle-parent19-ortho {
+      gap: 60px 30px;
+    }
 
     .rectangle-parent18 {
+      padding: 29px 27px 26px 28px;
+      box-sizing: border-box;
+    }
+    .rectangle-parent18-ortho {
       padding: 29px 27px 26px 28px;
       box-sizing: border-box;
     }
@@ -2116,6 +2299,11 @@
     }
 
     .rectangle-parent19 {
+      padding-top: 51px;
+      padding-bottom: 55px;
+      box-sizing: border-box;
+    }
+    .rectangle-parent19-ortho {
       padding-top: 51px;
       padding-bottom: 55px;
       box-sizing: border-box;
