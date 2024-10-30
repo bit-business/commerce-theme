@@ -465,6 +465,7 @@
   "odaberite-sliku": "Select Image",
   "odaberite-svoju-sliku": "Choose your picture",
   "odaberite-vrstu-skijanja": "Select the type of skiing",
+  "odabrani-dokumenti": "Selected documents:",
   "odgovornosti": "RESPONSIBILITIES",
   "odi-na-pocetnu-stranicu": "[Go to the home page]",
   "odjavi-se": "Log out",
@@ -503,6 +504,12 @@
   "password-confirmation-0": "Password Confirmation",
   "payment-price-eura": "{0} euros",
   "payment-price-eura-0": "{0} euros",
+  "payments": {
+    "Bank Transfer": "Bank Transfer",
+    "Credit Card": "Credit Card",
+    "Internet Banking": "Internet Banking",
+    "Uplatnice/Internet Bankarstvo": "Payment Slip/Internet Banking"
+  },
   "pdf-icon": "PDF icon",
   "placanje": "Payment",
   "placanje-internet-bankarstvom": "Payment via internet banking",
@@ -633,6 +640,55 @@
   "prisustvovao-drzavnom-seminaru-za-voditelje-skijanja-koji-provodi-hzuts": "Attended the State Ski Leaders Seminar conducted by HZUTS.",
   "prisustvovati-isia-seminaru-hzuts-a-u-trajanju-od-5-dana": "Attend a 5-day ISIA seminar of HZUTS.",
   "procitajte-kako-postati-ucitelj-skijanja-ili-daskanja-na-snijegu": "Read how to become a skiing or snowboarding instructor.",
+  "products": {
+    "Amblem": "Badge",
+    "DRŽAVNI": "National",
+    "DRŽAVNI SEMINAR": "National Seminar",
+    "DRŽAVNI SEMINAR II": "National Seminar II",
+    "Godišnja članarina": "Annual Membership",
+    "ISIA SEMINAR": "ISIA Seminar",
+    "ISIA članarina": "ISIA Membership",
+    "Izdavanje iskaznice": "Identity Card",
+    "KAPA": "Hat",
+    "KNJIGA": "Book",
+    "PAPUČE": "Slippers",
+    "Potvrda": "Confirmation",
+    "SEMINAR HZUTS-a": "HZUTS Seminar",
+    "Seminar": "Seminar"
+  },
+  "products.Amblem": "",
+  "products.DRŽAVNI": "",
+  "products.DRŽAVNI SEMINAR": "",
+  "products.DRŽAVNI SEMINAR II": "",
+  "products.Dvodnevni seminar": "",
+  "products.Godišnja članarina": "",
+  "products.ISIA SEMINAR": "",
+  "products.ISIA kartica": "",
+  "products.ISIA članarina": "",
+  "products.IVSI kartica": "",
+  "products.Izdavanje iskaznica": "",
+  "products.Izdavanje iskaznice": "",
+  "products.Jednodnevni seminar": "",
+  "products.KAPA": "",
+  "products.KNJIGA": "",
+  "products.PAPUČE": "",
+  "products.Potvrda": "",
+  "products.SEMINAR HZUTS-a": "",
+  "products.Seminar": "",
+  "products.__i18n_ally_root__.Amblem": "",
+  "products.__i18n_ally_root__.DRŽAVNI SEMINAR": "",
+  "products.__i18n_ally_root__.Dvodnevni seminar": "",
+  "products.__i18n_ally_root__.Godišnja članarina": "",
+  "products.__i18n_ally_root__.ISIA SEMINAR": "",
+  "products.__i18n_ally_root__.ISIA kartica": "",
+  "products.__i18n_ally_root__.ISIA članarina": "",
+  "products.__i18n_ally_root__.IVSI kartica": "",
+  "products.__i18n_ally_root__.Izdavanje iskaznica": "",
+  "products.__i18n_ally_root__.Izdavanje iskaznice": "",
+  "products.__i18n_ally_root__.Jednodnevni seminar": "",
+  "products.__i18n_ally_root__.Potvrda": "",
+  "products.__i18n_ally_root__.SEMINAR HZUTS-a": "",
+  "products.__i18n_ally_root__.Seminar": "",
   "produzenje-licence": "License renewal",
   "profile": "Profile",
   "promijeni-lozinku": "Change Password",
@@ -734,6 +790,10 @@
   "status-cart-productdetail-name": "Status: {0}",
   "status-cart-productdetail-name-0": "Status: {0}",
   "status-clana": "Member status:",
+  "status-clana2": {
+    "HZUTS član": "HZUTS member",
+    "Nije član": "Not a member"
+  },
   "status-clanova-hzuts-a": "Status of HZUTS members",
   "status-clanova-hzuts-a-0": "Status of HZUTS members",
   "status-drzavnog-demonstratora-obnavlja-se-svake-2-godine-prisustvovanjem-na-demonstratorskom-seminaru-hzuts-a": "The status of the State Demonstrator is renewed every 2 years by attending the HZUTS Demonstrator Seminar.",
@@ -917,36 +977,5 @@
   "zavrsio-program-odobren-od-ministarstva-znanosti-i-obrazovanja-u-trajanju-od-minimalno-310-sati": "completed a program approved by the Ministry of Science and Education lasting a minimum of 310 hours",
   "zbroj-za-odabrano": "Total for selected:",
   "zensko": "Female",
-  "zensko-0": "Female",
-
-"products": {
-  "Godišnja članarina": "Annual Membership",
-  "ISIA članarina": "ISIA Membership",
-  "Amblem": "Badge",
-  "Seminar": "Seminar",
-  "DRŽAVNI": "National",
-  "DRŽAVNI SEMINAR": "National Seminar",
-  "DRŽAVNI SEMINAR II": "National Seminar II",
-  "ISIA SEMINAR": "ISIA Seminar",
-  "SEMINAR HZUTS-a": "HZUTS Seminar",
-  "Izdavanje iskaznice": "Identity Card",
-  "Potvrda": "Confirmation",
-  "PAPUČE": "Slippers",
-  "KAPA": "Hat",
-  "KNJIGA": "Book"
-},
-
-"payments": {
-  "Bank Transfer": "Bank Transfer",
-  "Internet Banking": "Internet Banking",
-  "Credit Card": "Credit Card",
-  "Uplatnice/Internet Bankarstvo": "Payment Slip/Internet Banking"  
-},
-
-"status-clana2": {
-  "HZUTS član": "HZUTS member",
-  "Nije član": "Not a member"
-}
-
-
+  "zensko-0": "Female"
 }

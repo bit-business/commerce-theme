@@ -9,7 +9,7 @@
       <img
         class="backgroundslika-icon"
         alt=""
-        src="/storage/slike/hzuts-login-desktop@3x.png"
+        src="/storage/slike/hzuts-login-desktop@3x.jpg"
       />
   
       <Link :href="route('skijasi.commerce-theme.home')" class="backgumb">
@@ -90,7 +90,7 @@
   
   <template v-else>
     <div class="hzuts-login-desktop-mob360">
-      <img class="backgroundslika-icon" alt="" src="/storage/slike/hzuts-login-desktop@3x.png" />
+      <img class="backgroundslika-icon" alt="" src="/storage/slike/hzuts-login-desktop@3x.jpg" />
       <div class="srednjiframe">
         <img class="logohzuts-icon" alt="" src="/storage/slike/logohzuts.svg" />
   
@@ -260,14 +260,14 @@
   
       window.addEventListener('resize', this.handleResize);
   
-      document.addEventListener('focusout', function() {
-      window.scrollTo(0, 0);
-  });
+  //     document.addEventListener('focusout', function() {
+  //     window.scrollTo(0, 0);
+  // });
     },
   
   beforeDestroy() {  
       window.removeEventListener('resize', this.handleResize);
-      document.removeEventListener('focusout', this.focusoutHandler);
+      // document.removeEventListener('focusout', this.focusoutHandler);
     },
     methods: {
   
@@ -330,8 +330,33 @@
   
   <style scoped>
   
-  
-  
+  .poljezaupisemail,
+.poljezaupispassword {
+  font-size: 16px !important;
+  -webkit-text-size-adjust: 100%;
+  transform: translateZ(0);
+}
+
+@media screen and (max-width: 460px) {
+  .hzuts-login-desktop-mob360 {
+    width: 100vw;
+    min-height: 100vh;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .srednjiframe {
+    /* Keep all your existing styles but just add: */
+    width: 100% !important;
+    max-width: 100vw;
+  }
+}
+
+/* Prevent iOS zoom */
+@supports (-webkit-touch-callout: none) {
+  input {
+    font-size: 16px !important;
+  }
+}
   
     .backgroundslika-icon {
       position: absolute;
@@ -625,7 +650,7 @@
       height: 3.56%;
     width: 100%;
       bottom: 0%;
-      font-size: 0.82rem;
+      font-size: 1rem;
       font-weight: 500;
       color: #fff;
       text-align: center;
@@ -676,6 +701,11 @@
       .hzuts-login-desktop {
         max-width: 960px;
       }
+
+      .footertext {
+
+     font-size: 0.86rem;
+   }
   
       .logohzuts-icon {
       top: 1rem !important;
@@ -844,11 +874,11 @@
       border: none;
       padding: 0;
       background-color: transparent;
-      position: relative !important;
+
       height: initial !important;
       top: 50% !important; 
       bottom: 41.66% !important;
-      left: 110px !important;
+      left: calc(50% + 104px);
       right: 10px !important; 
       width: 1.5rem;
       overflow: hidden;
@@ -968,7 +998,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      justify-content: center;
+      /* justify-content: center; */
       text-align: center;
       font-size: 0.59rem;
       color: #000;

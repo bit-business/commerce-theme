@@ -207,35 +207,46 @@
        
      </div>
 
-      <div class="form-groupUpload">
-
-    
-    <!-- This input will handle file selection -->
-    <input
-  type="file"
-  class="hidden"
-  ref="dokument"
-  accept="application/pdf,image/*,.pdf,.doc,.docx"
-  @change="onFilePicked"
-  multiple
-/>
+     <div class="form-groupUpload">
+  <input
+    type="file"
+    class="hidden"
+    ref="dokument"
+    accept="application/pdf,image/*,.pdf,.doc,.docx"
+    @change="onFilePicked"
+    multiple
+  />
 
   <div class="dokumentitekst">
-
     {{ $t('molimo-dodajte-potvrdu-uclanjenja-u-podrucni-zbor') }},<br>
-             {{ $t('te-dodajte-svu-dokumentaciju-za-dokaz-statusa') }}<br>
-              {{ $t('uvjerenje-o-osposobljavanju-diploma-kinezioloskog-fakulteta-za-osobe-koje-su-diplomirale-i-usmjerile-skijanje-zvanje-sveucilisni-magistar-kineziologije-u-edukaciji-i-skijanju') }}
+    {{ $t('te-dodajte-svu-dokumentaciju-za-dokaz-statusa') }}<br>
+    {{ $t('uvjerenje-o-osposobljavanju-diploma-kinezioloskog-fakulteta-za-osobe-koje-su-diplomirale-i-usmjerile-skijanje-zvanje-sveucilisni-magistar-kineziologije-u-edukaciji-i-skijanju') }}
+  </div>
+
+  <div class="upload-button-container">
+    <button @click.prevent="$refs.dokument.click()" class="gumbOK">
+      {{ $t('upload-dokumenta') }} 
+      <span v-if="uploadedFilesCount > 0" class="upload-count">{{ uploadedFilesCount }}</span>
+    </button>
+    <span class="asterisk-top">*</span>
+  </div>
+
+<!-- Selected Files List -->
+<div v-if="uploadedFilesInfo.length > 0" class="selected-files-list">
+  <h4>{{ $t('odabrani-dokumenti') }}:</h4>
+  <ul>
+    <li v-for="(fileInfo, index) in uploadedFilesInfo" :key="index" class="file-item">
+      <span class="file-name">{{ fileInfo.originalName }}</span>
+      <button @click.prevent="removeFile(index)" class="remove-file">×</button>
+    </li>
+  </ul>
 </div>
 
-
-<button @click.prevent="$refs.dokument.click()" class="gumbOK">
-  {{ $t('upload-dokumenta') }} 
-  <span v-if="uploadedFilesCount > 0" class="upload-count">{{ uploadedFilesCount }}</span>
-</button> <span class="asterisk-top">*</span>
-
-<span v-if="errors.uploadedFiles" class="error-message">{{ errors.uploadedFiles }}</span>
-
-            </div>
+  <!-- Error message in new row -->
+  <div class="error-container">
+    <span v-if="errors.uploadedFiles" class="error-message">{{ errors.uploadedFiles }}</span>
+  </div>
+</div>
 
       <!-- GDPR Agreement -->
       <div class="form-group gdpr-checkbox">
@@ -370,6 +381,7 @@ export default {
         updated_at: null,
     },
 
+    uploadedFilesInfo: [],
 
 
       form: {
@@ -426,8 +438,14 @@ export default {
         this.prefillData(newValue);
       },
       immediate: true, // Trigger handler immediately with the current value of the expression
-      deep: true // Watch for nested changes in the user object
+      deep: true 
+    },
+    '$i18n.locale'() {
+    // Revalidate form when locale changes
+    if (Object.keys(this.errors).length > 0) {
+      this.validateForm();
     }
+  }
   },
 
   computed: {
@@ -539,6 +557,17 @@ export default {
   },
 
   methods: {
+    getFileName(filePath) {
+    return filePath.split('/').pop();
+  },
+
+  removeFile(index) {
+  // Remove from both arrays
+  this.uploadedFilesInfo.splice(index, 1);
+  this.uploadedFiles.splice(index, 1);
+  this.uploadedFilesCount = this.uploadedFilesInfo.length;
+},
+
     handleDateInputFocus(event) {
       this.lastScrollPosition = window.pageYOffset;
       // Prevent iOS from zooming
@@ -579,54 +608,55 @@ export default {
 
 
     validateForm() {
-    // Clear previous errors
-    this.errors = {};
-    let valid = true; // Flag to track if the form is valid
+  this.errors = {};
+  let valid = true;
 
-    // List of all text fields to validate
-    const fieldsToValidate = [
-      'name', 'username', 'oib', 'datumrodjenja', 'adresa', 
-      'postanskibroj', 'grad', 'drzava', 'brojmobitela', 
-      'email', 'datummjestopolaganja', 'ustanova'
-    ];
+  const fieldsToValidate = [
+    'name', 'username', 'oib', 'datumrodjenja', 'adresa', 
+    'postanskibroj', 'grad', 'drzava', 'brojmobitela', 
+    'email', 'datummjestopolaganja', 'ustanova'
+  ];
 
-    // Check each text field and if it's empty, add an error message
-    fieldsToValidate.forEach(field => {
-      if (!this.form[field]) {
-        this.errors[field] = this.$t('polje-ne-smije-biti-prazno');
-        valid = false; // Mark form as invalid
-      }
-    });
-
-    // Validate dropdowns
-    for (const model in this.dropdownOptions) {
-      if (!this.form[model] || this.form[model] === 'Izaberite') {
-        this.errors[model] = this.$t('polje-ne-smije-biti-prazno');
-        valid = false; // Mark form as invalid
-      }
+  // Field validations
+  fieldsToValidate.forEach(field => {
+    if (!this.form[field]) {
+      const translationKey = 'polje-ne-smije-biti-prazno';
+      this.errors[field] = this.$te(translationKey) 
+        ? this.$t(translationKey)
+        : 'This field is required'; // fallback message
+      valid = false;
     }
+  });
 
-    // Validate GDPR checkbox
-    if (!this.form.gdpr) {
-      this.errors.gdpr = this.$t('morate-prihvatiti-uvjete-privatnosti-i-koristenja');
-      valid = false; // Mark form as invalid
-    }
-
-    if (!this.form.avatar) {
-    this.errors.avatar = this.$t('molimo-dodajte-avatar');
-    valid = false; // Mark form as invalid
+  // GDPR validation
+  if (!this.form.gdpr) {
+    const gdprTranslationKey = 'morate-prihvatiti-uvjete-privatnosti-i-koristenja';
+    this.errors.gdpr = this.$te(gdprTranslationKey)
+      ? this.$t(gdprTranslationKey)
+      : 'You must accept the privacy terms and conditions'; // fallback message
+    valid = false;
   }
 
-  // Check for document upload
+  // Avatar validation
+  if (!this.form.avatar) {
+    const avatarTranslationKey = 'molimo-dodajte-avatar';
+    this.errors.avatar = this.$te(avatarTranslationKey)
+      ? this.$t(avatarTranslationKey)
+      : 'Please add an avatar'; // fallback message
+    valid = false;
+  }
+
+  // Document upload validation
   if (this.uploadedFilesCount === 0) {
-    this.errors.uploadedFiles = this.$t('molimo-dodajte-potrebnu-dokumentaciju');
-    valid = false; // Mark form as invalid
+    const uploadTranslationKey = 'molimo-dodajte-potrebnu-dokumentaciju';
+    this.errors.uploadedFiles = this.$te(uploadTranslationKey)
+      ? this.$t(uploadTranslationKey)
+      : 'Please add required documentation'; // fallback message
+    valid = false;
   }
 
-
-    // Return true if the form is valid, otherwise false
-    return valid;
-  },
+  return valid;
+},
 
   filesChangeAvatar(event) {
     const currentScrollY = window.pageYOffset || document.documentElement.scrollTop;
@@ -730,7 +760,7 @@ confirmCrop() {
     },
 
  
-    async onFilePicked(event) {
+async onFilePicked(event) {
   const files = event.target.files;
   if (files.length === 0) return;
 
@@ -739,6 +769,7 @@ confirmCrop() {
 
   for (let fileIndex = 0; fileIndex < files.length; fileIndex++) {
     const file = files[fileIndex];
+    const originalFileName = file.name; // Store original file name
     let start = 0;
     const totalChunks = Math.ceil(file.size / chunkSize);
 
@@ -758,25 +789,31 @@ confirmCrop() {
       fileChunks.push(this.uploadChunk(formData));
       start = end;
     }
-    uploadPromises.push(Promise.all(fileChunks));
+    uploadPromises.push(Promise.all(fileChunks).then(chunks => {
+      return {
+        filePath: chunks[chunks.length - 1],
+        originalName: originalFileName
+      };
+    }));
   }
 
   try {
     const fileResponses = await Promise.all(uploadPromises);
-    const successfulUploads = fileResponses.filter(chunks => chunks.every(path => path !== ''));
+    const successfulUploads = fileResponses.filter(response => response.filePath !== '');
 
     console.log(`Successful uploads: ${successfulUploads.length} out of ${files.length}`);
 
     if (successfulUploads.length === files.length) {
       console.log("All files uploaded successfully");
-      // Use the last chunk's path as the complete file path
-      const filePaths = successfulUploads.map(chunks => chunks[chunks.length - 1]);
-      this.uploadedFiles = [...this.uploadedFiles, ...filePaths];
-      this.uploadedFilesCount = this.uploadedFiles.length;
+      
+      // Update uploadedFilesInfo with both path and original name
+      this.uploadedFilesInfo = [...this.uploadedFilesInfo, ...successfulUploads];
+      this.uploadedFiles = this.uploadedFilesInfo.map(file => file.filePath);
+      this.uploadedFilesCount = this.uploadedFilesInfo.length;
 
       // Save file paths to the database
-      for (const filePath of filePaths) {
-        await this.dodavanjeDATOTEKE(filePath);
+      for (const fileInfo of successfulUploads) {
+        await this.dodavanjeDATOTEKE(fileInfo.filePath);
       }
     } else {
       console.error("Some files failed to upload");
@@ -1935,6 +1972,122 @@ text-align: center;
 
 
 
+
+/* Add to style section */
+.selected-files-list {
+  margin-top: 1rem;
+  text-align: left;
+  max-width: 100%;
+  padding: 1rem;
+}
+
+.selected-files-list h4 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+}
+
+.file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 1rem;
+}
+
+.remove-file {
+  background: none;
+  border: none;
+  color: #ff4444;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+}
+
+.remove-file:hover {
+  color: #cc0000;
+}
+
+.upload-button-container {
+  position: relative;
+  display: inline-block;
+}
+
+.error-container {
+  text-align: left;
+  margin-top: 0.5rem;
+  min-height: 1.5rem;
+}
+
+.error-message {
+  display: block;
+  color: #ff4444;
+  font-size: 0.875rem;
+  margin-top: 0.5rem;
+}
+.file-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.5rem;
+  margin: 0.25rem 0;
+  background-color: #f5f5f5;
+  border-radius: 4px;
+  max-width: 100%;
+}
+
+.file-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-right: 1rem;
+  max-width: calc(100% - 2rem); /* Leave space for remove button */
+  font-size: 0.9rem;
+}
+
+.remove-file {
+  background: none;
+  border: none;
+  color: #ff4444;
+  font-size: 1.2rem;
+  cursor: pointer;
+  padding: 0 0.5rem;
+  flex-shrink: 0;
+}
+
+.remove-file:hover {
+  color: #cc0000;
+}
+
+.selected-files-list {
+  margin-top: 1rem;
+  text-align: left;
+  max-width: 100%;
+  padding: 1rem;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.selected-files-list h4 {
+  margin-bottom: 0.5rem;
+  color: #333;
+  font-size: 1rem;
+}
+
+.selected-files-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
 
 </style>
 

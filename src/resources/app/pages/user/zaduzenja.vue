@@ -1183,44 +1183,61 @@ translatePaymentStatus(status) {
       return status
     },
 
-  translateProductName(name) {
-    // First try exact match
-    const exactTranslation = this.$t(`products.${name}`);
-    if (exactTranslation && !exactTranslation.startsWith('products.')) {
-      return exactTranslation;
-    }
-    
-    // If no exact match, try translating individual words
-    const words = name.split(' ');
-    const translatedWords = words.map(word => {
-      const wordTranslation = this.$t(`products.${word}`);
-      return (wordTranslation && !wordTranslation.startsWith('products.')) 
-        ? wordTranslation 
-        : word;
-    });
-    
-    // If any words were translated, return the combined string
-    // otherwise return the original name
-    const combinedTranslation = translatedWords.join(' ');
-    return combinedTranslation !== name ? combinedTranslation : name;
-  },
+    translateProductName(name) {
+  // Get current locale/language
+  const currentLocale = this.$i18n.locale;
+  
+  // If locale is Croatian (default), return original name
+  if (currentLocale === 'hr') {
+    return name;
+  }
 
-  translatePaymentTitle(title) {
-    if (!title) return '';
-    
-    let translatedTitle = title;
+  // For other languages (en, it), proceed with translation
+  const exactTranslation = this.$t(`products.${name}`);
+  if (exactTranslation && !exactTranslation.startsWith('products.')) {
+    return exactTranslation;
+  }
 
-    // Handle "Godišnja" translation
-    translatedTitle = translatedTitle.replace(/Godišnja članarina/g, this.$t('godisnja-display'));
+  const words = name.split(' ');
+  const translatedWords = words.map(word => {
+    const wordTranslation = this.$t(`products.${word}`);
+    return (wordTranslation && !wordTranslation.startsWith('products.')) 
+      ? wordTranslation 
+      : word;
+  });
 
-    // Handle "ISIA članarina" translation
-    translatedTitle = translatedTitle.replace(/ISIA članarina/g, this.$t('isia-clanarina-display'));
+  const combinedTranslation = translatedWords.join(' ');
+  return combinedTranslation !== name ? combinedTranslation : name;
+},
 
-    translatedTitle = translatedTitle.replace(/Amblem/g, this.$t('amblem'));
-    translatedTitle = translatedTitle.replace(/Izdavanje iskaznica/g, this.$t('izdavanje-iskaznica'));
+translatePaymentTitle(title) {
+  if (!title) return '';
+  
+  // Get current locale/language
+  const currentLocale = this.$i18n.locale;
+  
+  // If locale is Croatian (default), return original title
+  if (currentLocale === 'hr') {
+    return title;
+  }
 
-    return translatedTitle;
-  },
+  // For other languages (en, it), proceed with translation
+  let translatedTitle = title;
+
+  const translations = {
+    'Godišnja članarina': this.$t('godisnja-display'),
+    'ISIA članarina': this.$t('isia-clanarina-display'),
+    'Amblem': this.$t('amblem'),
+    'Izdavanje iskaznica': this.$t('izdavanje-iskaznica')
+  };
+
+  Object.entries(translations).forEach(([original, translation]) => {
+    const regex = new RegExp(original, 'g');
+    translatedTitle = translatedTitle.replace(regex, translation);
+  });
+
+  return translatedTitle;
+},
 
 
     toggleSidebarExpansion() {
