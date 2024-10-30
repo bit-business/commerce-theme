@@ -507,7 +507,7 @@ class="bell-icon">
                 </div>
               </div>
               <div class="text-xs text-gray-400 pl-2">
-                {{ $t('status-clana') }} {{ item.productDetail.name }}
+                {{ $t('status-clana') }} {{ translateMembershipStatus(item.productDetail.name) }}
               </div>
               <div
                 class="text-sm"
@@ -1508,6 +1508,7 @@ export default {
 
   },
   methods: {
+    
     fetchAdminMessages() {
       poruke.getMessages()
       .then((response) => {
@@ -1528,6 +1529,30 @@ export default {
       console.error("Error fetching user messages:", error);
     });
 },
+
+translateMembershipStatus(status) {
+      // Check if we have a translation for this specific status
+      if (['HZUTS član', 'Nije član'].includes(status)) {
+        // Get the translation key
+        const translationKey = `status-clana2.${status}`
+        
+        // Try to get the translation
+        const translation = this.$te(translationKey) 
+          ? this.$t(translationKey) 
+          : status
+
+        // If translation is the same as the key (meaning i18n didn't find a translation)
+        // or if the translation is empty, return the original status
+        if (translation === translationKey || !translation) {
+          return status
+        }
+
+        return translation
+      }
+
+      // Return original status for any other values
+      return status
+    },
 
 translateProductName(name) {
     // First try exact match

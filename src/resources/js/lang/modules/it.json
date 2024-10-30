@@ -940,6 +940,11 @@
   "Internet Banking": "Internet Banking",
   "Credit Card": "Carta di Credito",
   "Uplatnice/Internet Bankarstvo": "Bollettino/Internet Banking"
+},
+
+"status-clana2": {
+  "HZUTS član": "Membro HZUTS",
+  "Nije član": "Non Membro"
 }
 
 }

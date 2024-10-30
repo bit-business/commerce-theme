@@ -189,26 +189,26 @@
 
           <div class="flex gap-2 w-full mt-8 flex-wrap">
             <carousel 
-        class="container hidden lg:flex" 
-        show="4"
-        @quantity-change="handleQuantityChange"
-      >
-        <carousel-item 
-          v-for="product, index in similarProducts.data" 
-          :key="index"
-          @quantity-change="handleQuantityChange"
-        >
-          <commerce-product-alt
-            :product="product"
-            :cart-data="getCartDataForProduct(product)"
-            @click="setSelectedProduct(product.id)"
-            @quantity-change="handleQuantityChange"
-            @subtract="handleSubtract"
-            @show-preview="handleShowPreview"
-              @remove-all-slippers="handleRemoveAllSlippers"
-          />
-        </carousel-item>
-      </carousel>
+  class="container hidden lg:flex" 
+  show="4"
+  @quantity-change="handleQuantityChange"
+>
+  <carousel-item 
+    v-for="product in similarProducts.data" 
+    :key="product.id"
+    @quantity-change="handleQuantityChange"
+  >
+    <commerce-product-alt
+      :product="product"
+      :cart-data="getCartDataForProduct(product)"
+      @click="setSelectedProduct(product.id)"
+      @quantity-change="handleQuantityChange"
+      @subtract="handleSubtract"
+      @show-preview="handleShowPreview"
+      @remove-all-slippers="handleRemoveAllSlippers"
+    />
+  </carousel-item>
+</carousel>
 
             <carousel 
 class="container hidden md:flex lg:hidden" show="3"
@@ -1182,7 +1182,7 @@ formatDate(dateString) {
     this.checkboxModel = this.carts.map(cart => cart.id);
 
     // Also update product details in similarProducts with cart quantities
-    if (this.carts.length > 0) {
+
       await this.fetchSimilar(this.$_.take(res.data.carts)[0]);
       
       // Update product quantities from cart
@@ -1199,11 +1199,8 @@ formatDate(dateString) {
         }
         return product;
       });
-    }
+    
 
-    // Debug log
-    console.log('Fetched carts:', this.carts);
-    console.log('Updated similar products:', this.similarProducts.data);
 
   } catch (err) {
     console.error('Error fetching carts:', err);

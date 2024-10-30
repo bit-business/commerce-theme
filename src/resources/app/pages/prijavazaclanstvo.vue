@@ -215,7 +215,7 @@
   type="file"
   class="hidden"
   ref="dokument"
-  accept=".pdf, .doc, .docx, .jpg, .jpeg, .png, application/pdf, image/jpeg, image/png"
+  accept="application/pdf,image/*,.pdf,.doc,.docx"
   @change="onFilePicked"
   multiple
 />
@@ -322,7 +322,9 @@ export default {
   data() {
     return {
 
-      
+      lastScrollPosition: 0,
+      isInputFocused: false,
+
       uploadedFilesCount: 0,
     uploadedFiles: [],
 
@@ -495,13 +497,86 @@ export default {
       this.prefillData(this.user);
     }
   this.$forceUpdate();
+
+
+  this.lastScrollPosition = window.pageYOffset;
+    
+    // Add input focus/blur event listeners
+    const formInputs = this.$el.querySelectorAll('input, select, textarea');
+    formInputs.forEach(input => {
+      input.addEventListener('focus', this.handleInputFocus);
+      input.addEventListener('blur', this.handleInputBlur);
+    });
+    
+    // Prevent default scroll restoration
+    if ('scrollRestoration' in window.history) {
+      window.history.scrollRestoration = 'manual';
+    }
+    const dateInputs = this.$el.querySelectorAll('input[type="date"]');
+    dateInputs.forEach(input => {
+      input.addEventListener('focus', this.handleDateInputFocus);
+      input.addEventListener('blur', this.handleDateInputBlur);
+      input.addEventListener('change', this.handleDateChange);
+    });
+
   },
 
   beforeDestroy() {
     window.removeEventListener('click', this.closeDropdown);
+
+       // Clean up event listeners
+       const formInputs = this.$el.querySelectorAll('input, select, textarea');
+    formInputs.forEach(input => {
+      input.removeEventListener('focus', this.handleInputFocus);
+      input.removeEventListener('blur', this.handleInputBlur);
+    });
+    const dateInputs = this.$el.querySelectorAll('input[type="date"]');
+    dateInputs.forEach(input => {
+      input.removeEventListener('focus', this.handleDateInputFocus);
+      input.removeEventListener('blur', this.handleDateInputBlur);
+      input.removeEventListener('change', this.handleDateChange);
+    });
   },
 
   methods: {
+    handleDateInputFocus(event) {
+      this.lastScrollPosition = window.pageYOffset;
+      // Prevent iOS from zooming
+      event.target.style.fontSize = '16px';
+    },
+
+    handleDateInputBlur(event) {
+      setTimeout(() => {
+        window.scrollTo(0, this.lastScrollPosition);
+      }, 100);
+    },
+
+    handleDateChange(event) {
+      // Store current scroll position
+      const currentPosition = window.pageYOffset;
+      
+      // Allow the change to process
+      setTimeout(() => {
+        window.scrollTo(0, currentPosition);
+      }, 10);
+    },
+    handleInputFocus() {
+      this.isInputFocused = true;
+      // Store the current scroll position when input is focused
+      this.lastScrollPosition = window.pageYOffset;
+    },
+
+    handleInputBlur() {
+      this.isInputFocused = false;
+      // Use setTimeout to allow the blur event to complete
+      setTimeout(() => {
+        // Restore scroll position only if no other input is focused
+        if (!this.isInputFocused) {
+          window.scrollTo(0, this.lastScrollPosition);
+        }
+      }, 0);
+    },
+
 
     validateForm() {
     // Clear previous errors
@@ -884,6 +959,7 @@ prefillData(user) {
 
     submitForm() {
   if (this.validateForm()) {
+    const currentPosition = window.pageYOffset;
     const changedData = this.getChangedData();
 
     if (Object.keys(changedData).length === 0) {
@@ -902,14 +978,18 @@ prefillData(user) {
         // Remove this line: this.uploadFilesAndAddDatoteke(); 
 
         this.showConfirmation = true; 
+        window.scrollTo(0, currentPosition);
       })
       .catch((error) => {
         console.error("Error submitting form:", error);
         this.$alert(this.$t('neuspjesno-provjerite-da-li-ste-unijeli-sve-dobro-i-da-vam-internet-radi'));
+        window.scrollTo(0, currentPosition);
       });
+      
   }
   else {
     console.error('Validation failed');
+    
   }
 },
 
@@ -1047,6 +1127,7 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
 
 <style scoped>
 
+
 .error-message {
     color: red;
     font-size: 0.875rem; /* Adjust the size as needed */
@@ -1111,9 +1192,38 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
   background-size: contain;
   /* Do not repeat the image */
   background-repeat: no-repeat;
+
+  
 }
 
+input[type="date"] {
+  /* Match your existing input styles */
+  width: 100%;
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #00aaff;
+  border-radius: 24px;
+  outline: none;
+  font-size: 18px;
+  font-weight: 600;
+  padding-left: 1.8rem;
+  
+  /* Reset default date input styles */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: transparent;
+}
 
+/* Style the calendar icon */
+input[type="date"]::-webkit-calendar-picker-indicator {
+  background-color: transparent;
+  padding: 0.5rem;
+  cursor: pointer;
+  position: absolute;
+  right: 1rem;
+  opacity: 0.7;
+}
 /* Form Input and Select Elements */
 .form-container input[type="text"],
 .form-container input[type="date"],
@@ -1821,197 +1931,7 @@ text-align: center;
   -webkit-backface-visibility: hidden;
 }
 
-/* Date input specific styles */
-.date-input-group {
-  position: relative;
-  width: 100%;
-}
 
-.real-date-input {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  z-index: 1;
-  cursor: pointer;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-/* Make sure the date picker is clickable */
-.real-date-input::-webkit-calendar-picker-indicator {
-  position: absolute;
-  right: 10px;
-  top: 50%;
-  transform: translateY(-50%);
-  width: 100%;
-  height: 100%;
-  opacity: 0;
-  cursor: pointer;
-  z-index: 2;
-  -webkit-appearance: none;
-  appearance: none;
-}
-
-.display-date-input {
-  background-color: white;
-  cursor: pointer;
-  padding-right: 40px; /* Space for the calendar icon */
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='3' y='4' width='18' height='18' rx='2' ry='2'%3E%3C/rect%3E%3Cline x1='16' y1='2' x2='16' y2='6'%3E%3C/line%3E%3Cline x1='8' y1='2' x2='8' y2='6'%3E%3C/line%3E%3Cline x1='3' y1='10' x2='21' y2='10'%3E%3C/line%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: calc(100% - 10px) center;
-  background-size: 20px;
-}
-
-/* iOS specific fixes */
-@supports (-webkit-touch-callout: none) {
-  input[type="date"] {
-    -webkit-appearance: textfield;
-    appearance: textfield;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
-}
-
-/* Prevent scroll on focus but allow date picker */
-input:not([type="date"]):focus {
-  position: relative !important;
-  transform: none !important;
-}
-
-/* Dropdown positioning */
-.dropdown {
-  position: relative;
-  z-index: 1;
-}
-
-.dropdown-list {
-  position: absolute;
-  z-index: 2;
-}
-
-
-.form-renderer {
-  position: relative;
-  /* Keep natural overflow behavior */
-  overflow: visible !important;
-  /* Prevent unwanted touch behaviors */
-  touch-action: pan-y pinch-zoom;
-}
-
-/* Dropdown specific fixes */
-.dropdown {
-  position: relative;
-  z-index: 2;
-}
-
-.dropdown-select {
-  position: relative;
-  z-index: 1;
-}
-
-.dropdown-list {
-  position: absolute;
-  z-index: 1000;
-  max-height: 300px;
-  overflow-y: auto;
-  -webkit-overflow-scrolling: touch;
-  background: white;
-  /* Prevent dropdown from causing page scroll */
-  transform: translateZ(0);
-}
-
-/* Input fixes */
-.form-input,
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="date"],
-textarea {
-  /* Prevent zoom on iOS */
-  font-size: 16px !important;
-  /* Prevent layout shifts */
-  transform: translateZ(0);
-  /* Smooth transitions */
-  transition: border-color 0.2s ease;
-  /* Prevent unwanted highlights */
-  -webkit-tap-highlight-color: transparent;
-  /* Better touch behavior */
-  touch-action: manipulation;
-}
-
-/* Date input specific fixes */
-.date-input-group {
-  position: relative;
-  transform: translateZ(0);
-}
-
-.real-date-input {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  z-index: 1;
-}
-
-.display-date-input {
-  position: relative;
-  z-index: 0;
-  background-color: white;
-}
-
-/* Mobile specific fixes */
-@media (max-width: 768px) {
-  .form-input,
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="date"],
-  textarea,
-  .dropdown-select {
-    font-size: 16px !important;
-    line-height: 1.3;
-    padding: 12px 16px;
-  }
-
-  .dropdown-list {
-    max-height: 250px;
-  }
-}
-
-/* Prevent body scroll when dropdown is open */
-:deep(.dropdown-open) {
-  .dropdown-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-  }
-}
-
-/* iOS specific fixes */
-@supports (-webkit-touch-callout: none) {
-  .form-input,
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="date"],
-  textarea {
-    font-size: 16px !important;
-  }
-
-  .date-input-group {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
-}
 
 
 

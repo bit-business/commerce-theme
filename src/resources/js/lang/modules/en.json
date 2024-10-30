@@ -941,5 +941,12 @@
   "Internet Banking": "Internet Banking",
   "Credit Card": "Credit Card",
   "Uplatnice/Internet Bankarstvo": "Payment Slip/Internet Banking"  
+},
+
+"status-clana2": {
+  "HZUTS član": "HZUTS member",
+  "Nije član": "Not a member"
 }
+
+
 }

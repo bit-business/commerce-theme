@@ -225,7 +225,7 @@
               <div class="flex-1 text-sm">
                 <Link :to="{ name: 'DetailProduct', params: { slug: cart.productDetail.product.slug } }" class="line-clamp-2">  {{ translateProductName(cart.productDetail.product.name) }}</Link>
                 <div class="text-sm mt-2">
-                  <span class="border border-gray-300 px-1.5 py-1 cursor-pointer  rounded-md text-gray-500 text-xs">{{ $voca.titleCase(cart.productDetail.name) }}</span>
+                  <span class="border border-gray-300 px-1.5 py-1 cursor-pointer rounded-md text-gray-500 text-xs">{{ translateMembershipStatus(cart.productDetail.name) }}</span>
                 </div>
               </div>
             </div>
@@ -462,7 +462,7 @@
             </div>
             <!-- <div class="w-full p-2 bg-gray-100 text-sm flex text-gray-600 items-center" @click="openVariationDialog(cart)"> -->
               <div class="w-full rounded-md p-2 bg-gray-100 text-sm flex text-gray-600 items-center">
-              <div class="flex-grow text-center">{{ $t('status-cart-productdetail-name-0', [cart.productDetail.name]) }}</div>
+              <div class="flex-grow text-center">{{ $t('status-cart-productdetail-name-0', [translateMembershipStatus(cart.productDetail.name)]) }}</div>
               <!-- <div class="flex-shrink">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
@@ -1158,6 +1158,30 @@ translatePaymentStatus(status) {
     // Use a number check since paidstatus is numeric
     return status === 1 ? this.$t('podmireno-display') : this.$t('nepodmireno-display');
   },
+
+  translateMembershipStatus(status) {
+      // Check if we have a translation for this specific status
+      if (['HZUTS član', 'Nije član'].includes(status)) {
+        // Get the translation key
+        const translationKey = `status-clana2.${status}`
+        
+        // Try to get the translation
+        const translation = this.$te(translationKey) 
+          ? this.$t(translationKey) 
+          : status
+
+        // If translation is the same as the key (meaning i18n didn't find a translation)
+        // or if the translation is empty, return the original status
+        if (translation === translationKey || !translation) {
+          return status
+        }
+
+        return translation
+      }
+
+      // Return original status for any other values
+      return status
+    },
 
   translateProductName(name) {
     // First try exact match

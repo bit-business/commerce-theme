@@ -24,7 +24,8 @@
                 v-if="field.fieldType === 'text' || field.fieldType === 'email'"
                 :id="field.label"
                 :type="field.fieldType"
-                v-model.lazy="formData[field.label]"
+             :value="formData[field.label]"
+@input="updateField($event, field.label)"
       
                 class="form-input"
               />
@@ -68,7 +69,9 @@
       type="radio"
       :id="`${field.label}-${option}`"
       :name="field.label"
-      :value="option"
+
+      :value="formData[field.label]"
+@change="updateField($event, field.label)"
       v-model.lazy="formData[field.label]"
     />
     <label :for="`${field.label}-${option}`">{{ getTranslatedOption(field, option) }}</label>
@@ -82,7 +85,8 @@
                 <input
                   type="checkbox"
                   :id="field.label"
-                  v-model.lazy="formData[field.label]"
+:checked="formData[field.label]"
+@change="updateField($event, field.label, $event.target.checked)"
             
                 />
                 <label :for="field.label">{{ field.label }}</label>
@@ -253,6 +257,11 @@ export default {
   },
   data() {
     return {
+      lastScrollPosition: 0,
+      isInputFocused: false,
+      isScrollLocked: false,
+      isMobile: false,
+
 
       selectedProduct: {
         id: null
@@ -379,6 +388,28 @@ export default {
   },
   },
 
+  beforeDestroy() {
+    // Clean up event listeners
+    const formInputs = this.$el.querySelectorAll('input, select, textarea');
+    formInputs.forEach(input => {
+      input.removeEventListener('focus', this.handleInputFocus);
+      input.removeEventListener('blur', this.handleInputBlur);
+    });
+
+    const dateInputs = this.$el.querySelectorAll('input[type="date"]');
+    dateInputs.forEach(input => {
+      input.removeEventListener('focus', this.handleDateInputFocus);
+      input.removeEventListener('blur', this.handleDateInputBlur);
+      input.removeEventListener('change', this.handleDateChange);
+    });
+
+    // Reset body styles
+    if (this.isMobile) {
+      document.body.style.height = '';
+      document.body.style.position = '';
+    }
+  },
+
   mounted() {
     if (!this.isAuthenticated) {
       sessionStorage.setItem('previousRoute', this.route('skijasi.commerce-theme.prijavanadogadaj', { 
@@ -400,6 +431,37 @@ export default {
      if (document.querySelector('.custom-date-input')) {
     document.querySelector('.custom-date-input').setAttribute('lang', 'hr');
   }
+
+
+  this.isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+
+// Add event listeners with passive option for better performance
+const formInputs = this.$el.querySelectorAll('input, select, textarea');
+formInputs.forEach(input => {
+  input.addEventListener('focus', this.handleInputFocus, { passive: true });
+  input.addEventListener('blur', this.handleInputBlur, { passive: true });
+});
+
+// Special handling for date inputs
+const dateInputs = this.$el.querySelectorAll('input[type="date"]');
+dateInputs.forEach(input => {
+  input.addEventListener('focus', this.handleDateInputFocus, { passive: true });
+  input.addEventListener('blur', this.handleDateInputBlur, { passive: true });
+  input.addEventListener('change', this.handleDateChange, { passive: true });
+});
+
+// Disable default scroll restoration
+if ('scrollRestoration' in window.history) {
+  window.history.scrollRestoration = 'manual';
+}
+
+// Prevent unwanted scroll on iOS
+if (this.isMobile) {
+  document.body.style.height = '100%';
+  document.body.style.position = 'relative';
+}
+
+
   },
   created() {
   const savedLang = localStorage.getItem('userLanguage') || 'hr'; // Default to 'hr' if not set
@@ -408,6 +470,120 @@ export default {
 },
 
   methods: {
+
+    handleInputFocus(event) {
+      // Store current scroll position
+      this.lastScrollPosition = window.pageYOffset;
+      this.isInputFocused = true;
+
+      if (this.isMobile) {
+        // For mobile devices, scroll to the input after a slight delay
+        setTimeout(() => {
+          const element = event.target;
+          const elementRect = element.getBoundingClientRect();
+          const absoluteElementTop = elementRect.top + window.pageYOffset;
+          const middle = absoluteElementTop - (window.innerHeight / 3);
+          
+          window.scrollTo({
+            top: middle,
+            behavior: 'smooth'
+          });
+        }, 100);
+      }
+    },
+
+    handleInputBlur(event) {
+      this.isInputFocused = false;
+
+      // Only restore scroll position on desktop
+      if (!this.isMobile) {
+        requestAnimationFrame(() => {
+          if (!this.isInputFocused && !this.isScrollLocked) {
+            window.scrollTo({
+              top: this.lastScrollPosition,
+              behavior: 'instant'
+            });
+          }
+        });
+      }
+    },
+
+    handleDateInputFocus(event) {
+      this.lastScrollPosition = window.pageYOffset;
+      this.isInputFocused = true;
+      
+      // Prevent iOS zoom
+      if (this.isMobile) {
+        event.target.style.fontSize = '16px';
+      }
+    },
+
+    handleDateInputBlur(event) {
+      this.isInputFocused = false;
+      
+      if (!this.isMobile) {
+        setTimeout(() => {
+          if (!this.isInputFocused) {
+            window.scrollTo({
+              top: this.lastScrollPosition,
+              behavior: 'instant'
+            });
+          }
+        }, 100);
+      }
+    },
+
+    handleDateChange(event) {
+      // Prevent scroll jump on date selection
+      event.preventDefault();
+      
+      const currentPosition = window.pageYOffset;
+      setTimeout(() => {
+        window.scrollTo({
+          top: currentPosition,
+          behavior: 'instant'
+        });
+      }, 10);
+    },
+
+    // Update your existing methods
+    toggleDropdown(dropdown, event) {
+      if (event) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      
+      // Store position before opening dropdown
+      this.lastScrollPosition = window.pageYOffset;
+      
+      if (this.activeDropdown === dropdown) {
+        this.activeDropdown = null;
+        this.isScrollLocked = false;
+      } else {
+        this.activeDropdown = dropdown;
+        this.isScrollLocked = true;
+      }
+    },
+
+    selectOption(option, model) {
+      this.form[model] = option;
+      this.activeDropdown = null;
+      this.isScrollLocked = false;
+      
+      // Restore scroll position after selection
+      if (!this.isMobile) {
+        requestAnimationFrame(() => {
+          window.scrollTo({
+            top: this.lastScrollPosition,
+            behavior: 'instant'
+          });
+        });
+      }
+    },
+
+
+
+
     updateField(event, fieldName, value = null) {
       // Prevent the default form behavior
       event.preventDefault();
@@ -941,6 +1117,7 @@ async fetchForms(userid) {
 
   async submitForm() {
   try {
+    const currentPosition = window.pageYOffset;
     if (!this.formId) {
       throw new Error('Form ID is not set');
     }
@@ -991,7 +1168,17 @@ async fetchForms(userid) {
     this.$refs.form.reset();
     this.showConfirmation = true; 
    
+
+    window.scrollTo({
+            top: currentPosition,
+            behavior: 'instant'
+          });
   } catch (error) {
+
+    window.scrollTo({
+            top: currentPosition,
+            behavior: 'instant'
+          });
     console.error('Form submission error:', error);
     alert(error.message || this.$t('greska-prilikom-slanja-prijavnice-pokusajte-ponovo-ili-nas-kontaktirajte'));
   }
@@ -1790,13 +1977,29 @@ body.dropdown-open {
   transform: translateZ(0);
 }
 
+
+
+
+
+
+
+/* Prevent unwanted scrolling behavior */
+.form-container {
+  position: relative;
+  /* Keep natural overflow behavior */
+  overflow: visible !important;
+  /* Prevent unwanted touch behaviors */
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+}
+
 /* Input fixes */
-.form-input,
 input[type="text"],
 input[type="email"],
 input[type="tel"],
 input[type="date"],
-textarea {
+textarea,
+select {
   /* Prevent zoom on iOS */
   font-size: 16px !important;
   /* Prevent layout shifts */
@@ -1809,71 +2012,63 @@ textarea {
   touch-action: manipulation;
 }
 
-/* Date input specific fixes */
-.date-input-group {
+/* Dropdown fixes */
+.dropdown {
   position: relative;
-  transform: translateZ(0);
+  z-index: 2;
+  /* Prevent unwanted touch behaviors */
+  touch-action: none;
 }
 
-.real-date-input {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  opacity: 0;
+.dropdown-select {
+  position: relative;
   z-index: 1;
 }
 
-.display-date-input {
-  position: relative;
-  z-index: 0;
-  background-color: white;
-}
-
-/* Mobile specific fixes */
-@media (max-width: 768px) {
-  .form-input,
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="date"],
-  textarea,
-  .dropdown-select {
-    font-size: 16px !important;
-    line-height: 1.3;
-    padding: 12px 16px;
-  }
-
-  .dropdown-list {
-    max-height: 250px;
-  }
-}
-
-/* Prevent body scroll when dropdown is open */
-:deep(.dropdown-open) {
-  .dropdown-list {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-  }
+.dropdown-list {
+  position: absolute;
+  z-index: 1000;
+  max-height: 300px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  background: white;
+  /* Prevent dropdown from causing page scroll */
+  transform: translateZ(0);
 }
 
 /* iOS specific fixes */
 @supports (-webkit-touch-callout: none) {
-  .form-input,
-  input[type="text"],
-  input[type="email"],
-  input[type="tel"],
-  input[type="date"],
+  .form-container {
+    /* Prevent elastic scrolling on iOS */
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    /* Fix for iOS height issues */
+    min-height: -webkit-fill-available;
+  }
+  
+  input,
+  select,
   textarea {
+    /* Prevent iOS zoom */
     font-size: 16px !important;
   }
-
-  .date-input-group {
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-  }
 }
+
+/* Fix for date input on iOS */
+input[type="date"] {
+  position: relative;
+  /* Prevent zoom */
+  font-size: 16px !important;
+  /* Better touch handling */
+  touch-action: manipulation;
+}
+
+/* Prevent scrolling when dropdown is open */
+body.dropdown-open {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+
 </style>
