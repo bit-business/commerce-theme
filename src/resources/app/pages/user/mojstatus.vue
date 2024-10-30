@@ -189,7 +189,7 @@
           <b class="imeclana">{{ korisnik.name }} {{ korisnik.username }}</b>
          
         </div>
-        <b class="statusclanaaktivan">{{ korisnik.statusAktivan }}</b>
+        <b class="statusclanaaktivan">{{ $t('status.' + korisnik.statusAktivan.toLowerCase()) }}</b>
       </div>
       <div class="framesvekartice">
         <div class="prviframedetalji border-plava-200 border-2">
@@ -200,7 +200,7 @@
           <div class="kvadrat">
             <div class="gradframe">
               <div class="grad-wrapper">
-                <div class="grad">Grad:</div>
+                <div class="grad">{{ $t('grad') }}</div>
               </div>
               <div class="zagreb-wrapper">
                 <div class="osnovne-informacije">{{ korisnik.grad }}</div>
@@ -241,7 +241,7 @@
               </div>
               <div class="licenceframe">
                 <div class="licenca-wrapper">
-                  <div class="grad">Licenca:</div>
+                  <div class="grad">{{ $t('licenca') }}</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
                   <div class="osnovne-informacije">{{ activeLicences }}</div>
@@ -270,7 +270,7 @@
                 <div class="isia-br-7654-ivsi-wrapper">
 
                   <div class="osnovne-informacije">
-    {{ korisnik.carddate === null ? 'Nije izdana' : 'Izdana' }}
+    {{ korisnik.carddate === null ? $t('nije-izdana') : $t('izdana') }}
   </div>
                 </div>
               </div>
@@ -318,7 +318,7 @@
               </div>
               <div class="organizatorframe">
                 <div class="organizator-wrapper">
-                  <div class="grad">Organizator:</div>
+                  <div class="grad">{{ $t('organizator') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="hzuts-i-nik">{{ getEventDetails(korisnik.idevent).eventorganisation }}</div>
@@ -326,10 +326,10 @@
               </div>
               <div class="licencaframe">
                 <div class="licenca-wrapper">
-                  <div class="grad">Licenca:</div>
+                  <div class="grad">{{ $t('licenca') }}</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
-                  <div class="osnovne-informacije">{{ korisnik.statusAktivan === 'Aktivan' ? 'Važeća' : 'Nije važeća' }} </div>
+                  <div class="osnovne-informacije">{{ korisnik.statusAktivan === 'Aktivan' ? $t('vazeca') : $t('nije-vazeca') }} </div>
                 </div>
               </div>
             </div>
@@ -779,8 +779,10 @@ created() {
     if (korisnik.statusString === "Demonstrator skijanja" && endStatusDate < today) {
       return this.$t('demonstrator-skijanja-bez-licence');
     }
-
-    return korisnik.statusString;
+    
+  // Use the exact statusString as the translation key
+  return this.$t(`status.${korisnik.statusString}`) || korisnik.statusString;
+    // return korisnik.statusString;
   },
 
     handleScrollAttempt(event) {

@@ -186,7 +186,7 @@
       <div class="sviframeoviizaduzenje">
         <div class="frameimeistatus">
           <b class="imeclana">{{ selectedUser?.name }} {{ selectedUser?.username }}</b>
-          <b :class="{'red-text': selectedUser?.statusAktivan === 'Istekla licenca'}" class="statusclanaaktivan">{{ selectedUser?.statusAktivan }}</b>
+          <b :class="{'red-text': selectedUser?.statusAktivan === 'Istekla licenca'}" class="statusclanaaktivan"> {{ $t('status.' + selectedUser?.statusAktivan.toLowerCase()) }}</b>
         </div>
       </div>
       <div class="framesvekartice" v-if="!viewingPaymentsList">
@@ -198,7 +198,7 @@
           <div class="kvadrat">
             <div class="gradframe">
               <div class="grad-wrapper">
-                <div class="grad">Grad:</div>
+                <div class="grad">{{ $t('grad') }}</div>
               </div>
               <div class="zagreb-wrapper">
                 <div class="osnovne-informacije">{{ selectedUser?.grad }}</div>
@@ -239,7 +239,7 @@
               </div>
               <div class="licenceframe">
                 <div class="licenca-wrapper">
-                  <div class="grad">Licenca:</div>
+                  <div class="grad">{{ $t('licenca') }}</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
                   <div class="osnovne-informacije">{{ activeLicences }}</div>
@@ -268,7 +268,7 @@
                 <div class="isia-br-7654-ivsi-wrapper">
 
                   <div class="osnovne-informacije">
-    {{ selectedUser?.carddate === null ? 'Nije izdana' : 'Izdana' }}
+    {{ selectedUser?.carddate === null ? $t('nije-izdana') : $t('izdana') }}
   </div>
                 </div>
               </div>
@@ -316,7 +316,7 @@
               </div>
               <div class="organizatorframe">
                 <div class="organizator-wrapper">
-                  <div class="grad">Organizator:</div>
+                  <div class="grad">{{ $t('organizator') }}</div>
                 </div>
                 <div class="seminar-za-potvrivanje-licenc-wrapper">
                   <div class="hzuts-i-nik">{{ getEventDetails(selectedUser?.idevent)?.eventorganisation }}</div>
@@ -324,10 +324,10 @@
               </div>
               <div class="licencaframe">
                 <div class="licenca-wrapper">
-                  <div class="grad">Licenca:</div>
+                  <div class="grad">{{ $t('licenca') }}</div>
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
-                  <div class="osnovne-informacije">{{ selectedUser?.statusAktivan === 'Aktivan' ? 'Važeća' : 'Nije važeća' }} </div>
+                  <div class="osnovne-informacije">{{ selectedUser?.statusAktivan === 'Aktivan' ? $t('vazeca') : $t('nije-vazeca') }} </div>
                 </div>
               </div>
             </div>
@@ -348,10 +348,10 @@
     <!-- Payment status, date, and price on the next line -->
     <div class="payment-info">
       <div class="payment-status">
-  {{ payment.paidstatus === 1 ? 'PODMIRENO' : 'NEPODMIRENO' }}
+  {{ payment.paidstatus === 1 ? $t('podmireno-display') : $t('nepodmireno-display') }}
 </div>
 <span class="payment-date">{{ formatDate(payment.paydate) }}</span>
-      <span class="payment-price">{{ payment.price }} eura</span>
+      <span class="payment-price">{{ payment.price }} {{ $t('eura') }}</span>
     </div>
 
     <!-- Blue line separator -->
@@ -548,7 +548,8 @@ export default {
     if (this.selectedUser?.statusString === "Demonstrator skijanja" && this.selectedUser?.statusAktivan === 'Istekla licenca') {
       return this.$t('demonstrator-skijanja-bez-licence');
     } else {
-      return this.selectedUser?.statusString;
+      // return this.selectedUser?.statusString;
+      return this.$t(`status.${this.selectedUser?.statusString}`) || this.selectedUser?.statusString;
     }
   },
 
@@ -823,7 +824,6 @@ handleCardClick(user) {
         value: item.id, // add this line
       }));
 
-console.log ("TEST EVENTI", response.data);
 
     } else {
       console.error('Unexpected response data:', response.data);
@@ -875,7 +875,7 @@ async getStaraPlacanja() {
 
 
     async ucitajLICENCEPodatke() {
-    console.log("Selected User ID for Licence:", this.selectedUser?.id);
+
     if (!this.selectedUser?.id) {
         console.error('No selected user ID for licence data');
         return;
@@ -884,7 +884,7 @@ async getStaraPlacanja() {
     this.number = Number(this.selectedUser.id);
     try {
         const response = await skijasiLicence.citanjenasiclanovi({ slug: "tbl-licence", idmember: this.number });
-        console.log("Response Data Licence:", response);
+
         if (response.data) {
       // Check if data is an array
       if (Array.isArray(response.data)) {
@@ -936,7 +936,7 @@ async getStaraPlacanja() {
       } else {
         console.error('Unexpected response format:', response);
       }
-      console.log("TEST PODACI", response);
+
   
 
       } catch (error) {
@@ -2592,7 +2592,7 @@ top:6%
 }
 .custom-dropdown3 {
   position: relative;
-  width: 120px; /* Adjust as necessary */
+  width: 160px; /* Adjust as necessary */
   border: 1px solid rgba(3, 169, 244, 0.5); 
   cursor: pointer;
 

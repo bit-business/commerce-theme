@@ -12,14 +12,14 @@
              <div class="frame3">
                <b class="franjo-ml-jardas">{{ user.name }} {{ user.username }} </b>
                <b class="demostrator-skijanja">
-  {{ user.statusString === 'Demonstrator skijanja' && user.statusAktivan === 'Istekla licenca' ? 'Demonstrator skijanja bez licence' : user.statusString }}
+  {{  user.statusString === 'Demonstrator skijanja' && user.statusAktivan === 'Istekla licenca' ? $t('demonstrator-skijanja-bez-licence') : $t(`status.${user.statusString}`) || user.statusString }}
 </b>
                         
                <div class="aktivnaframe">
     <!-- Render this span only if user.statusPlacanja is 'Nije plaćeno' or 'Djelomično plaćeno' -->
     <span v-if="user.statusPlacanja === 'Nije plaćeno' || user.statusPlacanja === 'Djelomično plaćeno'" class="nije-plaena expired-license"><!--NIJE PLAĆENA ČLANARINA--></span>
     <span v-else-if="user.statusAktivan === 'Aktivan'" class="nije-plaena">
-      {{ user.statusAktivan }}
+      {{ $t('status.' + user.statusAktivan.toLowerCase()) }}
     </span>
     <!-- Render this span only if user.statusPlacanja is NOT 'Nije plaćeno' and NOT 'Djelomično plaćeno' and user.statusAktivan is 'Istekla licenca' -->
     <span v-if="user.statusAktivan === 'Istekla licenca'" class="nije-plaena expired-license" style="text-transform: uppercase;">
