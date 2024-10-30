@@ -427,7 +427,7 @@
     <div v-for="(detail, index) in filteredOrderDetails" :key="index" class="order-item">
       <div class="order-price">{{ detail.price }} EUR</div>
       <div class="order-details">
-        <div class="order-name">{{ detail.productDetail.product.name }}</div>
+        <div class="order-name">{{ translateProductName( detail.productDetail.product.name) }}</div>
         <div class="order-date">{{ formatDate(detail.order.orderPayment.createdAt) }}</div>
 
 
@@ -768,7 +768,27 @@ created() {
       console.error("Error fetching user messages:", error);
     });
 },
-
+translateProductName(name) {
+    // First try exact match
+    const exactTranslation = this.$t(`products.${name}`);
+    if (exactTranslation && !exactTranslation.startsWith('products.')) {
+      return exactTranslation;
+    }
+    
+    // If no exact match, try translating individual words
+    const words = name.split(' ');
+    const translatedWords = words.map(word => {
+      const wordTranslation = this.$t(`products.${word}`);
+      return (wordTranslation && !wordTranslation.startsWith('products.')) 
+        ? wordTranslation 
+        : word;
+    });
+    
+    // If any words were translated, return the combined string
+    // otherwise return the original name
+    const combinedTranslation = translatedWords.join(' ');
+    return combinedTranslation !== name ? combinedTranslation : name;
+  },
 
     handleScrollAttempt(event) {
       if (event.deltaY !== 0) { // deltaY is non-zero if there's an attempt to scroll

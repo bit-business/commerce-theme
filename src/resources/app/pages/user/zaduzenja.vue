@@ -223,7 +223,7 @@
 
               </div>
               <div class="flex-1 text-sm">
-                <Link :to="{ name: 'DetailProduct', params: { slug: cart.productDetail.product.slug } }" class="line-clamp-2">{{ cart.productDetail.product.name }}</Link>
+                <Link :to="{ name: 'DetailProduct', params: { slug: cart.productDetail.product.slug } }" class="line-clamp-2">  {{ translateProductName(cart.productDetail.product.name) }}</Link>
                 <div class="text-sm mt-2">
                   <span class="border border-gray-300 px-1.5 py-1 cursor-pointer  rounded-md text-gray-500 text-xs">{{ $voca.titleCase(cart.productDetail.name) }}</span>
                 </div>
@@ -457,7 +457,8 @@
           </div>
           <div class="col-span-8 flex flex-col gap-3">
             <div class="line-clamp-1 text-md font-semibold w-full text-center">
-              {{ cart.productDetail.product.name }}
+              <!-- {{ cart.productDetail.product.name }} -->
+              {{ translateProductName(cart.productDetail.product.name) }}
             </div>
             <!-- <div class="w-full p-2 bg-gray-100 text-sm flex text-gray-600 items-center" @click="openVariationDialog(cart)"> -->
               <div class="w-full rounded-md p-2 bg-gray-100 text-sm flex text-gray-600 items-center">
@@ -1158,6 +1159,28 @@ translatePaymentStatus(status) {
     return status === 1 ? this.$t('podmireno-display') : this.$t('nepodmireno-display');
   },
 
+  translateProductName(name) {
+    // First try exact match
+    const exactTranslation = this.$t(`products.${name}`);
+    if (exactTranslation && !exactTranslation.startsWith('products.')) {
+      return exactTranslation;
+    }
+    
+    // If no exact match, try translating individual words
+    const words = name.split(' ');
+    const translatedWords = words.map(word => {
+      const wordTranslation = this.$t(`products.${word}`);
+      return (wordTranslation && !wordTranslation.startsWith('products.')) 
+        ? wordTranslation 
+        : word;
+    });
+    
+    // If any words were translated, return the combined string
+    // otherwise return the original name
+    const combinedTranslation = translatedWords.join(' ');
+    return combinedTranslation !== name ? combinedTranslation : name;
+  },
+
   translatePaymentTitle(title) {
     if (!title) return '';
     
@@ -1168,6 +1191,9 @@ translatePaymentStatus(status) {
 
     // Handle "ISIA članarina" translation
     translatedTitle = translatedTitle.replace(/ISIA članarina/g, this.$t('isia-clanarina-display'));
+
+    translatedTitle = translatedTitle.replace(/Amblem/g, this.$t('amblem'));
+    translatedTitle = translatedTitle.replace(/Izdavanje iskaznica/g, this.$t('izdavanje-iskaznica'));
 
     return translatedTitle;
   },

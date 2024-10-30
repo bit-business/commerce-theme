@@ -502,7 +502,8 @@ class="bell-icon">
               <div class="col-span-2 flex gap-4 items-center">
                 <img :src="item.productDetail.productImage" class="w-12 h-12" />
                 <div class="line-clamp-3">
-                  {{ item.productDetail.product.name }}
+                  {{ translateProductName(item.productDetail.product.name) }}
+       
                 </div>
               </div>
               <div class="text-xs text-gray-400 pl-2">
@@ -645,7 +646,7 @@ class="bell-icon">
               "
               @click="setPaymentTab(p)"
             >
-              {{ p.name }}
+            {{ translatePaymentName(p.name) }}
               <span
                 v-if="p.slug === payment"
                 class="absolute bottom-0 right-0 text-white"
@@ -1528,7 +1529,40 @@ export default {
     });
 },
 
+translateProductName(name) {
+    // First try exact match
+    const exactTranslation = this.$t(`products.${name}`);
+    if (exactTranslation && !exactTranslation.startsWith('products.')) {
+      return exactTranslation;
+    }
+    
+    // If no exact match, try translating individual words
+    const words = name.split(' ');
+    const translatedWords = words.map(word => {
+      const wordTranslation = this.$t(`products.${word}`);
+      return (wordTranslation && !wordTranslation.startsWith('products.')) 
+        ? wordTranslation 
+        : word;
+    });
+    
+    // If any words were translated, return the combined string
+    // otherwise return the original name
+    const combinedTranslation = translatedWords.join(' ');
+    return combinedTranslation !== name ? combinedTranslation : name;
+  },
 
+  translatePaymentName(name) {
+    // Get the translation key
+    const translatedName = this.$t(`payments.${name}`);
+    
+    // Check if the translation exists and isn't just returning the key
+    if (translatedName && !translatedName.startsWith('payments.')) {
+      return translatedName;
+    }
+    
+    // Return the original name if no translation exists
+    return name;
+  },
 
     handleScrollAttempt(event) {
       if (event.deltaY !== 0) { // deltaY is non-zero if there's an attempt to scroll

@@ -343,7 +343,7 @@
 <div v-if="viewingPaymentsList" class="payments-list">
   <div v-for="payment in staraPlacanjaArray" :key="payment.id" class="payment-item">
     <!-- Payment title on its own line -->
-    <div class="payment-title">{{ payment.paymenttitle }}</div>
+    <div class="payment-title">{{ translatePaymentTitle(payment.paymenttitle) }}</div>
 
     <!-- Payment status, date, and price on the next line -->
     <div class="payment-info">
@@ -672,6 +672,22 @@ await this.ucitajClanove(); // Ensure users are loaded before proceeding
 
 
   methods: {
+    translatePaymentTitle(title) {
+    if (!title) return '';
+    
+    let translatedTitle = title;
+
+    // Handle "Godišnja" translation
+    translatedTitle = translatedTitle.replace(/Godišnja članarina/g, this.$t('godisnja-display'));
+
+    // Handle "ISIA članarina" translation
+    translatedTitle = translatedTitle.replace(/ISIA članarina/g, this.$t('isia-clanarina-display'));
+
+    translatedTitle = translatedTitle.replace(/Amblem/g, this.$t('amblem'));
+    translatedTitle = translatedTitle.replace(/Izdavanje iskaznica/g, this.$t('izdavanje-iskaznica'));
+
+    return translatedTitle;
+  },
 
     handleSearchEnter() {
     this.currentPage = 1; // Reset to first page

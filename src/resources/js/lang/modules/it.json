@@ -186,7 +186,7 @@
   "email-ne-smije-biti-duzi-od-55-znakova": "L'email non deve essere più lunga di 55 caratteri.",
   "email-sa-tokenom-je-poslan": "L'email con il token è stato inviato",
   "engleski": "English",
-  "eura": "",
+  "eura": "euro",
   "events": "Eventi",
   "format-slike-jpeg-png": "Formato immagine: .jpeg, .png",
   "fotografija-u-digitalnom-obliku-po-mogucnosti-u-skijaskom-odijelu-s-vidljivim-licem-bez-naocala-kape-kacige-i-slicno": "Fotografia in formato digitale, preferibilmente in tuta da sci, con il viso visibile (senza occhiali, cappello, casco e simili)",
@@ -289,6 +289,7 @@
   "izaberi-sve-0": "Scegli tutto",
   "izaberiJezik": "Scegli una lingua",
   "izdana": "Rilasciata",
+  "izdavanje-iskaznica": "Emissione di tessere",
   "izdavanje-iskaznice": "Emissione di tessera",
   "izdavanje-iskaznice-0": "Emissione di tessera",
   "izgled-iskaznice": "ASPETTO DELLA CARTA D'IDENTITÀ:",
@@ -713,20 +714,20 @@
   "spremi": "Prepara",
   "spremi-uplatnicu": "Conserva la ricevuta",
   "status": {
+    "Demonstrator skijanja": "Dimostratore di Sci",
+    "ISIA učitelj": "Maestro ISIA",
+    "IVSI učitelj": "Maestro IVSI",
+    "Nije član": "Non Membro",
+    "Podupirući član": "Membro Sostenitore",
+    "Počasni član": "Membro Onorario",
+    "Snowboard Trener": "Allenatore di Snowboard",
+    "Snowboard učitelj": "Maestro di Snowboard",
     "Trener daskanja": "Allenatore di Snowboard",
     "Trener skijanja": "Allenatore di Sci",
     "Učitelj daskanja na snijegu": "Maestro di Snowboard",
     "Učitelj skijanja": "Maestro di Sci",
     "Voditelj skijanja": "Capo Sci",
-    "aktivan": "Attivo",
-    "Demonstrator skijanja": "Dimostratore di Sci",
-    "ISIA učitelj": "Maestro ISIA",
-    "IVSI učitelj": "Maestro IVSI",
-    "Počasni član": "Membro Onorario",
-    "Podupirući član": "Membro Sostenitore",
-    "Snowboard Trener": "Allenatore di Snowboard",
-    "Snowboard učitelj": "Maestro di Snowboard",
-    "Nije član": "Non Membro"
+    "aktivan": "Attivo"
   },
   "status-0": "Stato",
   "status-1": "Stato:",
@@ -916,5 +917,29 @@
   "zavrsio-program-odobren-od-ministarstva-znanosti-i-obrazovanja-u-trajanju-od-minimalno-310-sati": "ha completato un programma approvato dal Ministero dell'Istruzione e della Scienza per una durata minima di 310 ore",
   "zbroj-za-odabrano": "Totale per la selezione:",
   "zensko": "Femminile",
-  "zensko-0": "Femminile"
+  "zensko-0": "Femminile",
+
+"products": {
+  "Godišnja članarina": "Tesseramento annuale",
+  "ISIA članarina": "Tesseramento ISIA",
+  "Amblem": "Distintivo",
+  "Seminar": "Seminario",
+  "DRŽAVNI": "Nazionale",
+  "DRŽAVNI SEMINAR": "Seminario Nazionale",
+  "DRŽAVNI SEMINAR II": "Seminario Nazionale II",
+  "ISIA SEMINAR": "Seminario ISIA",
+  "SEMINAR HZUTS-a": "Seminario HZUTS",
+  "Izdavanje iskaznice": "Carta d'identità",
+  "Potvrda": "Conferma",
+  "PAPUČE": "CIABATTE",
+  "KAPA": "CAPPELLO",
+  "KNJIGA": "LIBRO"
+},
+"payments": {
+  "Bank Transfer": "Bonifico Bancario",
+  "Internet Banking": "Internet Banking",
+  "Credit Card": "Carta di Credito",
+  "Uplatnice/Internet Bankarstvo": "Bollettino/Internet Banking"
+}
+
 }
