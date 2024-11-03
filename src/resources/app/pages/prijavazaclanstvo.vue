@@ -212,7 +212,7 @@
     type="file"
     class="hidden"
     ref="dokument"
-    accept="application/pdf,image/*,.pdf,.doc,.docx"
+    accept="application/pdf,image/jpeg,image/jpg,image/png,.pdf,.doc,.docx"
     @change="onFilePicked"
     multiple
   />
@@ -233,7 +233,7 @@
 
 <!-- Selected Files List -->
 <div v-if="uploadedFilesInfo.length > 0" class="selected-files-list">
-  <h4>{{ $t('odabrani-dokumenti') }}:</h4>
+  <h4>{{ $t('odabrani-dokumenti') }}</h4>
   <ul>
     <li v-for="(fileInfo, index) in uploadedFilesInfo" :key="index" class="file-item">
       <span class="file-name">{{ fileInfo.originalName }}</span>
@@ -580,6 +580,9 @@ export default {
       }, 100);
     },
 
+
+
+    
     handleDateChange(event) {
       // Store current scroll position
       const currentPosition = window.pageYOffset;
@@ -1212,6 +1215,7 @@ console.log("TEST FILES podaci spremni za spremanje: ", data);
 .form-container {
   position: relative;
   background-image: url("/storage/slike/infoclanarine/desktop/logousredininevidljivi.svg");
+
   background-color: #fff;
   padding-left: 24%;
   padding-right: 24%;
@@ -1440,6 +1444,7 @@ padding-bottom: 5px;
   font-weight: 600;
   padding-bottom: 16px;
   z-index: 1000;
+  touch-action: manipulation;
 }
 
 .dropdown-select {
@@ -1447,26 +1452,51 @@ padding-bottom: 5px;
   align-items: center;
   justify-content: space-between;
   padding: 20px 15px;
-  border: 2px solid #00aaff; /* Your border color */
-  border-radius: 25px; /* Adjust as per the design */
-  background-color: #fff; /* Your background color */
+  border: 2px solid #00aaff;
+  border-radius: 25px;
+  background-color: #fff;
   cursor: pointer;
-
   padding-left: 25px;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
 }
 
-.dropdown .dropdown-list {
+
+@media screen and (max-width: 620px) {
+.form-container {
+  padding-left: 4%;
+  padding-right: 4%;
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 94%;
+  margin: 40px auto;
+  margin-top: 5rem;
+
+
+  background-position: center center;
+  /* Ensure it covers the whole container */
+  background-size: cover;
+  /* Do not repeat the image */
+  background-repeat: no-repeat;
+}
+}
+
+
+.dropdown-list {
   position: absolute;
   padding: 10px 20px;
   top: 100%;
   left: 0;
   right: 0;
-  /* Higher z-index and ensure GPU acceleration */
   z-index: 9999;
   transform: translateZ(0);
   background-color: #fff;
   box-shadow: 0 7px 10px rgba(0, 0, 0, 0.22);
   overflow: hidden;
+  touch-action: manipulation;
+  -webkit-overflow-scrolling: touch;
 }
 
 .form-group:has(.dropdown-list) {
@@ -2019,6 +2049,7 @@ text-align: center;
 .upload-button-container {
   position: relative;
   display: inline-block;
+  padding-top: 1rem;
 }
 
 .error-container {
