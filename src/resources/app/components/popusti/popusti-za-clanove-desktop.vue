@@ -117,7 +117,7 @@
             </p>
           </span>
         </b>
-        <div class="popust-se-odobrava9">
+        <div class="popust-se-odobrava999">
         <p>Kontakt: cepelja.d@gmail.com </p>
         <p>Adresa:  Zagrebacka cesta 210, 10000 Zagreb </p>
         </div>
@@ -1823,6 +1823,17 @@
     font-size: 16px;
     line-height: 19.5px;
     font-weight: 500;
+    text-align: center;
+    display: inline-block;
+    max-width: 100%;
+    z-index: 2;
+  }
+  .popust-se-odobrava999 {
+    width: 632px;
+    position: relative;
+    font-size: 22px;
+    line-height: 24px;
+    font-weight: 600;
     text-align: center;
     display: inline-block;
     max-width: 100%;
