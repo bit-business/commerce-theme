@@ -103,7 +103,7 @@
       
       <!-- Product Info -->
       <div class="px-4 pb-4">
-        <h3 class="line-clamp-2 cart-text cursor-pointer">{{ product.name }}</h3>
+        <h3 class="line-clamp-2 cart-text cursor-pointer">{{ localizedProductName  }}</h3>
         <div class="flex items-start justify-between mt-1">
           <div class="cart-price">
             {{ getProductPrice }}
@@ -339,6 +339,18 @@ export default {
   
   },
   computed: {
+    localizedProductName() {
+      const locale = this.$i18n.locale; // Get current locale
+      
+      switch (locale) {
+        case 'en':
+          return this.product.nameEn || this.product.name; // Fallback to default name if English translation is missing
+        case 'it':
+          return this.product.nameIt || this.product.name; // Fallback to default name if Italian translation is missing
+        default:
+          return this.product.name; // Default Croatian name
+      }
+    },
     isInCart() {
       return !!this.cartData.cartId;
     },
