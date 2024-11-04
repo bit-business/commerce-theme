@@ -1132,7 +1132,7 @@ getSkiingTypePrice(type) {
       }));
  
 
-      this.$helper.alert(res.message)
+      // this.$helper.alert(res.message)
     })
     .catch(err => {
       this.$helper.displayErrors(err)

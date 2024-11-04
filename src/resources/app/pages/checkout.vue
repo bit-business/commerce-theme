@@ -548,10 +548,11 @@ class="bell-icon">
                 }}
               </div>
               <div class="text-sm text-right" v-else>
-                {{
-                  $currency(item.productDetail.price * parseInt(item.quantity))
-                }}
-              </div>
+  {{ $currency(item.productDetail.price * parseInt(item.quantity)) }}
+  <div v-if="item.productDetail.product.productCategoryId === 31" class="text-xs text-gray-500">
+    {{ $t('ukljucen-pdv') }}
+  </div>
+</div>
             </div>
           </div>
           <div class="grid grid-cols-5  items-center border-b border-dashed">
