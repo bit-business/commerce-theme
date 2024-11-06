@@ -7,6 +7,14 @@
 
     <div class="slikazvijezda"></div>
 
+       <!-- Add loading overlay -->
+       <div v-if="isSubmitting" class="loading-overlay">
+          <div class="loading-content">
+            <div class="spinner"></div>
+            <p>{{ $t('molimo-pricekajte') }}</p>
+          </div>
+        </div>
+
     <form @submit.prevent="submitForm">
       <!-- Ime -->
       <div class="form-group">
@@ -267,11 +275,20 @@
         
       </div>
 
-      <!-- Submit Button -->
-      <div class="form-group">
-        <button type="submit">{{ $t('posaljite') }}</button>
-      </div>
-    </form>
+ 
+
+
+          <!-- Submit Button -->
+          <div class="form-group">
+            <button 
+              type="submit" 
+              :disabled="isSubmitting"
+              :class="{ 'button-loading': isSubmitting }"
+            >
+              {{ isSubmitting ? $t('slanje-u-tijeku') : $t('posaljite') }}
+            </button>
+          </div>
+        </form>
 
 
 
@@ -332,7 +349,8 @@ export default {
   
   data() {
     return {
-
+      isSubmitting: false,
+      
       lastScrollPosition: 0,
       isInputFocused: false,
 
@@ -997,41 +1015,34 @@ prefillData(user) {
     },
 
 
-    submitForm() {
-  if (this.validateForm()) {
-    const currentPosition = window.pageYOffset;
-    const changedData = this.getChangedData();
+async submitForm() {
+    if (this.validateForm()) {
+      this.isSubmitting = true;
+      const currentPosition = window.pageYOffset;
+      const changedData = this.getChangedData();
 
-    if (Object.keys(changedData).length === 0) {
-      this.$alert(this.$t('nema-promjena'));
-      return;
-    }
+      if (Object.keys(changedData).length === 0) {
+        this.$alert(this.$t('nema-promjena'));
+        this.isSubmitting = false;
+        return;
+      }
 
-    console.log("TEST prije submita changeddata:", changedData)
-
-    this.$api.skijasiUser.prijavnicaedit(changedData)
-      .then(res => {
-        console.log("API response:", res.data);
-        this.$store.dispatch('SET_USER', res.data.user)
-
-        this.dodavanjeFILES();
-        // Remove this line: this.uploadFilesAndAddDatoteke(); 
-
-        this.showConfirmation = true; 
-        window.scrollTo(0, currentPosition);
-      })
-      .catch((error) => {
+      try {
+        const res = await this.$api.skijasiUser.prijavnicaedit(changedData);
+        this.$store.dispatch('SET_USER', res.data.user);
+        await this.dodavanjeFILES();
+        this.showConfirmation = true;
+      } catch (error) {
         console.error("Error submitting form:", error);
         this.$alert(this.$t('neuspjesno-provjerite-da-li-ste-unijeli-sve-dobro-i-da-vam-internet-radi'));
+      } finally {
+        this.isSubmitting = false;
         window.scrollTo(0, currentPosition);
-      });
-      
-  }
-  else {
-    console.error('Validation failed');
-    
-  }
-},
+      }
+    } else {
+      console.error('Validation failed');
+    }
+  },
 
 
     closeConfirmation() {

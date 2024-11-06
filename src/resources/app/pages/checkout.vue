@@ -955,41 +955,37 @@ class="bell-icon">
       </div>
 
       <div class="flex bg-white flex-col justify-center items-start my-3">
-        <div class="p-3 flex flex-col gap-3 border-b">
-          <div
-            class="flex flex-row flex-nowrap gap-3"
-            v-for="(item, index) in items"
-            :key="index"
-          >
-            <div class="w-1/4">
-              <img
-                :src="item.productDetail.productImage"
-                alt=""
-                class="w-full h-full"
-              />
-            </div>
-            <div class="w-3/4 flex flex-col justify-between">
-              <div class="line-clamp-1 text-sm text-gray-600">
-                {{ item.productDetail.product.name }}
-              </div>
-              <div class="text-xs text-gray-500">
-                {{ $t('status-1') }} {{ item.productDetail.name }}
-              </div>
-              <div
-                class="
-                  text-sm text-gray-500
-                  flex
-                  justify-between
-                  w-full
-                  items-center
-                "
-              >
-                <span>{{ $currency(item.productDetail.price) }}</span>
-                <span class="text-xs">x{{ item.quantity }}</span>
-              </div>
-            </div>
-          </div>
+  <div class="p-3 flex flex-col gap-6 border-b w-full">
+    <div
+      class="flex flex-row flex-nowrap gap-3 w-full"
+      v-for="(item, index) in items"
+      :key="index"
+    >
+      <div class="w-1/4">
+        <img
+          :src="item.productDetail.productImage"
+          alt=""
+          class="w-full h-full"
+        />
+      </div>
+      <div class="w-full flex flex-col justify-between">
+        <div class="line-clamp-1 text-sm text-gray-600">
+          {{ item.productDetail.product.name }}
         </div>
+        <div class="text-xs text-gray-500">
+          {{ $t('status-1') }} {{ item.productDetail.name }}
+        </div>
+        <div v-if="item.productDetail.product.productCategoryId === 31" class="text-xs text-gray-500">
+            {{ $t('ukljucen-pdv') }}
+          </div>
+        <div class="flex justify-between items-center w-full">
+          <span class="text-sm text-gray-500">{{ $currency(item.productDetail.price) }}</span>
+          <span class="text-xs">x{{ item.quantity }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
 
         <div class="p-3 flex justify-between w-full text-sm border-b">
           <div>Napomena(opcionalno):</div>
