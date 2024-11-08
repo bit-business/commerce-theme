@@ -283,6 +283,28 @@ class="container hidden md:flex lg:hidden" show="3"
 
 
 
+  <div class="flex items-center gap-2 justify-start mt-4 mb-2">
+  <div class="relative w-5 h-5">
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      viewBox="0 0 24 24" 
+      fill="none" 
+      stroke="currentColor" 
+      class="w-5 h-5 text-primary1"
+    >
+      <circle cx="12" cy="12" r="10" stroke="#03A9F4" stroke-width="2" fill="none"/>
+      <path 
+        d="M12 8v8M12 7h.01" 
+        stroke="#03A9F4" 
+        stroke-width="2" 
+        stroke-linecap="round"
+      />
+    </svg>
+  </div>
+  <span class="text-sm text-gray-600">
+    {{ $t('svi-naruceni-proizvodi-podizu-se-u-uredu-cijena-slanja-na-adresu-nije-ukljucena') }}
+  </span>
+</div>
 
  </div>
 

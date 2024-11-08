@@ -204,7 +204,7 @@
       <Link class="djelatnost-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.djelatnostihzutsa') }" :href="route('skijasi.commerce-theme.djelatnostihzutsa')" @click="closeDropdown">{{ $t('djelatnost-hzuts-a-0') }}</Link>
       <Link class="status-lanova-hzuts-a" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.stranicastatusiclanova') }" :href="route('skijasi.commerce-theme.stranicastatusiclanova')" @click="closeDropdown">{{ $t('status-clanova-hzuts-a-0') }}</Link>
       <Link class="lanarineInfo" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.infoclanarine') }" :href="route('skijasi.commerce-theme.infoclanarine')" @click="closeDropdown">{{ $t('clanarine-0') }}</Link> 
-      <Link class="izrada-lanske-iskaznice" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.izradaiskaznice') }" :href="route('skijasi.commerce-theme.izradaiskaznice')" @click="closeDropdown">{{ $t('izradaclanskeiskaznice') }}</Link>
+      <Link class="izrada-lanske-iskaznice" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.izradaiskaznice') }" :href="route('skijasi.commerce-theme.izradaiskaznice')" @click="closeDropdown">{{ $t('izrada-clanske-iskaznice') }}</Link>
       <Link class="podruni-zboroviMeni" :class="{ 'active-linkmobile': isRouteActive('skijasi.commerce-theme.podrucnizborovi') }" :href="route('skijasi.commerce-theme.podrucnizborovi')" @click="closeDropdown">{{ $t('podrucni-zborovi-0') }}</Link>
       <div class="dokumenti-hzuts-a">{{ $t('dokumenti-hzuts-a') }}</div>
     </div>
