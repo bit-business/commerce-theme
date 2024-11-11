@@ -1,7 +1,7 @@
 <template>
  
   <div class="hzuts-reset-password-desktop">
-    <Head title="$t('zaboravljena-lozinka-0')" />
+    <Head :title="$t('zaboravljena-lozinka-0')" />
     <img
       class="backgroundzaboravljenalozinka-icon"
       alt=""
@@ -14,9 +14,7 @@
       <div class="srednjiframeglavni-child" />
       <div class="srednjiframepodgrupa">
 
-      
-        
-      
+ 
 
 
         <template v-if="!isVerify">
@@ -58,17 +56,17 @@
               <span>{{ $t('provjerite-svoju-e-postu-kako-biste-dobili-kod-tokena') }}</span>
             </alert>
             <pin
-              v-model="token"
-              :length="6"
-              class="mt-4 tokenpozicija"
-              label="$t('upisite-token-dobiven-na-email')"
-              @keypress.enter="verify"
-            />
+  v-model="token"
+  :length="6"
+  class="mt-4 tokenpozicija"
+  :label="$t('upisite-token-dobiven-na-email')"
+  @keypress.enter="verify"
+/>
             <button :class="tokenButtonClasses" @click="verify">
               <commerce-loading v-if="loading" />
               <div v-else class="posaljigumbzaboravljenalozinka2">
           <div class="posaljigumbzaboravljenalozinka-child" />
-          <span class="poalji">{{ $t('posalji-1') }}</span>
+          <span class="poalji">{{ $t('potvrdi') }}</span>
         </div>
               
             </button>
@@ -87,8 +85,9 @@
           src="/storage/slike/ikonasrednjiframetop.svg"
         />
         <div class="natragnaprijavutekst" @click="back">
-          <div class="natrag-na-prijavu cursor-pointer" >{{ $t('natrag-na-prijavu') }}</div>
           <img class="arrow-left-1-icon" alt="" src="/storage/slike/arrowleft-1.svg" />
+          <div class="natrag-na-prijavu cursor-pointer" >{{ $t('natrag-na-prijavu') }}</div>
+    
         </div>
         <div class="e-mail-adresa-nije" v-if="$v.email.$error">
           {{ $t('e-mail-adresa-nije-valjanog-formata') }}
@@ -392,7 +391,7 @@ position: absolute;
     top: 0rem;
     left: 0rem;
     width: 100%;
-    height: 64rem;
+    height: 100%;
     object-fit: cover;
   }
   .x-1-icon {
@@ -404,21 +403,18 @@ position: absolute;
     overflow: hidden;
   }
   .srednjiframeglavni-child {
-    position: absolute;
-    height: 100%;
-    top: 0%;
-    bottom: 0%;
-    left: calc(50% - 248px);
-    border-radius: 20px;
-    background-color: #fff;
-    width: 31rem;
-  }
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  background-color: #fff;
+}
+
   .zaboravljena-lozinka {
     position: absolute;
     top: 21.3%;
-    left: calc(50% - 183px);
     font-size: 2.1rem;
-    text-align: left;
+    text-align: center;
   }
   .zaboravljena-lozinka2 {
     position: absolute;
@@ -468,7 +464,7 @@ position: absolute;
   }
   .email-label {
     position: absolute;
-    height: 67.57%;
+    height: 59%;
     top: 32.43%;
     bottom: 0%;
     left: calc(50% - 200px);
@@ -483,7 +479,7 @@ position: absolute;
   .upisemaila {
     position: absolute;
     height: 15.01%;
-    top: 52.13%;
+    top: 47.13%;
     bottom: 32.86%;
     left: calc(50% - 200px);
     width: 25rem;
@@ -510,26 +506,29 @@ position: absolute;
     width: 25rem;
   }
   .poalji {
-    position: absolute;
-    top: 30%;
-    left: calc(50% - 45px);
-    letter-spacing: -0.17px;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 5.67rem;
-  }
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 600;
+  font-size: 1rem;
+}
   .posaljigumbzaboravljenalozinka {
     position: absolute;
-    height: 10.14%;
-    top: 79.31%;
+    height: 3.5rem;
+    top: 73.31%;
     bottom: 10.55%;
     left: calc(50% - 200px);
     width: 25rem;
     font-size: 1rem;
     color: #fff;
   }
+
+
+
   .posaljigumbzaboravljenalozinka2 {
     position: absolute;
     height: 10.14%;
@@ -541,40 +540,31 @@ position: absolute;
     color: #fff;
   }
   .ikonasrednjiframetop-icon {
-    position: absolute;
-    height: 14.2%;
-    top: 0%;
-    bottom: 85.8%;
-    left: calc(50% - 35px);
-    max-height: 100%;
-    width: 4.38rem;
-  }
-  .natrag-na-prijavu {
-    position: absolute;
-    top: 0%;
-    left: calc(50% - 45px);
-    white-space: nowrap;
-    font-weight: 600;
-  }
+  width: 4.38rem;
+  height: auto;
+  margin-top: 2rem;
+}
+.natrag-na-prijavu {
+  font-weight: 600;
+}
   .arrow-left-1-icon {
-    position: absolute;
-    height: 94.12%;
-    top: 5.88%;
-    bottom: 0%;
-    left: calc(50% - 71px);
-    max-height: 100%;
-    width: 1rem;
-    overflow: hidden;
-  }
+  width: 1rem;
+  height: 1rem;
+}
+
   .natragnaprijavutekst {
-    position: absolute;
-    height: 3.45%;
-    top: 96.55%;
-    bottom: 0%;
-    left: calc(50% - 91px);
-    width: 10rem;
-    color: #21231e;
-  }
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #21231e;
+}
+
+
   .e-mail-adresa-nije {
     position: absolute;
     top: 69.17%;
@@ -584,16 +574,19 @@ position: absolute;
     color: #f88379;
   }
   .srednjiframepodgrupa {
-    position: absolute;
-    height: 86.8%;
-    top: 6.16%;
-    bottom: 7.04%;
-    left: calc(50% - 200px);
-    width: 25rem;
-  }
+  position: relative;
+  width: 25rem;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
   .srednjiframeglavni {
     position: absolute;
-    height: 75.47%;
+    height: 42rem; 
+    max-height: 90vh; 
     top: 10.36%;
     bottom: 22.17%;
     left: calc(50% - 248px);
@@ -708,4 +701,185 @@ z-index: 2;
 }
 
   }
+
+
+
+
+
+  @media screen and (max-width: 460px) {
+.posaljigumbzaboravljenalozinka-child {
+  width: 17rem;
+  left: calc(50% - 8.5rem);
+}
+
+  .hzuts-reset-password-desktop {
+    max-width: 100%;
+    height: 100vh;
+    padding: 0 1rem;
+  }
+
+  .srednjiframeglavni {
+    position: absolute;
+    height: 36rem;
+    max-height: 80vh;
+    top: 12%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    max-width: 26rem;
+  }
+
+  .srednjiframepodgrupa {
+    width: 90%;
+    max-width: 20rem;
+  }
+
+  /* Fixed input container positioning */
+  .upisemaila {
+    position: absolute;
+    height: 15.01%;
+    top: 47.13%;
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .email-label {
+    position: absolute;
+    height: 59%;
+    top: 32.43%;
+    width: 100%;
+    left: 0;
+  }
+
+  .background-container {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 0;
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid #03a9f4;
+  }
+
+  .poljezaupis {
+    position: absolute;
+    height: 100%;
+    top: 0;
+    left: 53px; /* Space for icon */
+    width: calc(100% - 53px);
+    border-radius: 0 20px 20px 0;
+    padding-left: 14px;
+
+  }
+
+  .mail-icon {
+    position: absolute;
+    height: 48%;
+    top: 26%;
+    left: 16px;
+    width: 1.5rem;
+    z-index: 1;
+  }
+
+  .email {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    text-align: left;
+  }
+
+  /* Rest of the styles */
+  .bez-brige-poslat,
+  .posaljigumbzaboravljenalozinka,
+  .posaljigumbzaboravljenalozinka2 {
+    width: 100%;
+    left: 0;
+    right: 0;
+    margin: 0 auto;
+  }
+
+  .zaboravljena-lozinka,
+  .zaboravljena-lozinka2 {
+    font-size: 1.8rem;
+    width: 100%;
+    left: 0;
+    text-align: center;
+  }
+
+  .bez-brige-poslat {
+    font-size: 0.9rem;
+    padding: 0 1rem;
+    width: 100%;
+    text-align: center;
+    left: 0;
+  }
+
+  .natragnaprijavutekst {
+    bottom: 1.5rem;
+    font-size: 0.9rem;
+  }
+
+  .popup2 {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 70%;
+  }
+
+  .tokenpozicija {
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 30%;
+  }
+
+  .x-1-icon {
+    top: 1rem;
+    right: 1rem;
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  .footertext {
+    padding: 0 1rem;
+    font-size: 0.56rem;
+  }
+
+  .ikonasrednjiframetop-icon {
+    width: 3.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .e-mail-adresa-nije {
+    left: 0;
+    width: 100%;
+    text-align: left;
+    font-size: 0.75rem;
+  }
+}
+
+/* Additional optimization for very small screens */
+@media screen and (max-width: 360px) {
+  .srednjiframeglavni {
+    width: 95%;
+    top: 10%;
+  }
+
+  .zaboravljena-lozinka,
+  .zaboravljena-lozinka2 {
+    font-size: 1.6rem;
+  }
+
+  .bez-brige-poslat {
+    font-size: 0.8rem;
+  }
+
+  .poljezaupis {
+    font-size: 0.9rem;
+  }
+}
+  
 </style>

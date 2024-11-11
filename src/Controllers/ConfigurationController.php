@@ -334,6 +334,25 @@ class ConfigurationController extends Controller
             $entry->save();
     
             DB::commit();
+
+            activity('Nova prijavnica ispunjena')
+    ->causedBy(auth()->user() ?? null)
+    ->withProperties([
+        'attributes' => [
+            'form_id' => $formId,
+            'form_data' => $entryData,
+            'submitted_by' => [
+                'name' => $user->name,
+                'username' => $user->username,
+                'id' => $user->id
+            ]
+        ]
+    ])
+    ->performedOn($entry)
+    ->event('created')
+    ->log('Korisnik je ispunio obrazac');
+
+    
     
             return ApiResponse::success(['entry' => $entry, 'message' => 'Form submitted successfully.']);
         } catch (Exception $e) {
