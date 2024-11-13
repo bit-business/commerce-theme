@@ -771,7 +771,7 @@
   "spol": "Sesso",
   "spremi": "Prepara",
   "spremi-uplatnicu": "Conserva la ricevuta",
-  "status": {
+
     "Demonstrator skijanja": "Dimostratore di Sci",
     "ISIA učitelj": "Maestro ISIA",
     "IVSI učitelj": "Maestro IVSI",
@@ -785,8 +785,7 @@
     "Učitelj daskanja na snijegu": "Maestro di Snowboard",
     "Učitelj skijanja": "Maestro di Sci",
     "Voditelj skijanja": "Capo Sci",
-    "aktivan": "Attivo"
-  },
+
   "status-0": "Stato",
   "status-1": "Stato:",
   "status-cart-productdetail-name": "Stato: {0}",

@@ -771,7 +771,7 @@
   "spol": "Gender",
   "spremi": "Prepare",
   "spremi-uplatnicu": "Save payment slip",
-  "status": {
+
     "Demonstrator skijanja": "Ski Demonstrator",
     "ISIA učitelj": "ISIA Instructor",
     "IVSI učitelj": "IVSI Instructor",
@@ -785,8 +785,7 @@
     "Učitelj daskanja na snijegu": "Snowboard Instructor",
     "Učitelj skijanja": "Ski Instructor",
     "Voditelj skijanja": "Ski Leader",
-    "aktivan": "Active"
-  },
+
   "status-0": "Status",
   "status-1": "Status:",
   "status-cart-productdetail-name": "Status: {0}",

@@ -758,7 +758,7 @@
   "spol": "Spol",
   "spremi": "Spremi",
   "spremi-uplatnicu": "Spremi uplatnicu",
-  "status": {
+
     "Demonstrator skijanja": "Demonstrator skijanja",
     "ISIA učitelj": "ISIA učitelj",
     "IVSI učitelj": "IVSI učitelj",
@@ -772,8 +772,8 @@
     "Učitelj daskanja na snijegu": "Učitelj daskanja na snijegu",
     "Učitelj skijanja": "Učitelj skijanja",
     "Voditelj skijanja": "Voditelj skijanja",
-    "aktivan": "Aktivan"
-  },
+  
+
   "status-0": "Status",
   "status-1": "Status:",
   "status-cart-productdetail-name": "Status: {0}",

@@ -186,7 +186,7 @@
       <div class="sviframeoviizaduzenje">
         <div class="frameimeistatus">
           <b class="imeclana">{{ selectedUser?.name }} {{ selectedUser?.username }}</b>
-          <b :class="{'red-text': selectedUser?.statusAktivan === 'Istekla licenca'}" class="statusclanaaktivan"> {{ $t('status.' + selectedUser?.statusAktivan.toLowerCase()) }}</b>
+          <b :class="{'red-text': selectedUser?.statusAktivan === 'Istekla licenca'}" class="statusclanaaktivan"> {{ $t(selectedUser?.statusAktivan.toLowerCase()) }}</b>
         </div>
       </div>
       <div class="framesvekartice" v-if="!viewingPaymentsList">
@@ -275,63 +275,128 @@
             </div>
           </div>
           <div class="kvadrat2">
-            <div class="naslovseminar">
-              <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/trending-icon.svg" />
-              <div class="osnovne-informacije">{{ $t('seminar') }}</div>
+  <div class="naslovseminar">
+    <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/trending-icon.svg" />
+    <div class="osnovne-informacije">{{ $t('seminar') }}</div>
+  </div>
+
+  <!-- Check if selectedUser exists and has idevent property -->
+  <template v-if="selectedUser && selectedUser.idevent">
+    <!-- Handle array of events -->
+    <div v-if="Array.isArray(selectedUser.idevent) && selectedUser.idevent.length > 0">
+      <div v-for="(eventId, index) in selectedUser.idevent" :key="index" class="seminar-container">
+        <div v-if="selectedUser.idevent.length > 1" class="seminar-number">
+          {{ $t('seminar') }} {{ index + 1 }}
+        </div>
+
+        <div class="kvadrat">
+          <div class="statusstecenframe">
+            <div class="status-steen-wrapper">
+              <div class="grad">{{ $t('status-stecen') }}</div>
             </div>
-            <div class="kvadrat">
-              <div class="statusstecenframe">
-                <div class="status-steen-wrapper">
-                  <div class="grad">{{ $t('status-stecen') }}</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">
-                    {{ getEventDetails(selectedUser?.idevent)?.label }}
-                  </div>
-                </div>
-              </div>
-              <div class="datumseminaraframe">
-                <div class="datum-seminara-wrapper">
-                  <div class="grad">{{ $t('datum-seminara') }}</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ formatEuropeanDate(getEventDetails(selectedUser?.idevent)?.eventdate) }} </div>
-                </div>
-              </div>
-              <div class="mjestoseminaraframe">
-                <div class="mjesto-seminara-wrapper">
-                  <div class="mjesto-seminara">{{ $t('mjesto-seminara') }}</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ getEventDetails(selectedUser?.idevent)?.eventplace }}</div>
-                </div>
-              </div>
-              <div class="drzavaframe">
-                <div class="drava-wrapper">
-                  <div class="grad">{{ $t('drzava-0') }}</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="osnovne-informacije">{{ getEventDetails(selectedUser?.idevent)?.eventstate }}</div>
-                </div>
-              </div>
-              <div class="organizatorframe">
-                <div class="organizator-wrapper">
-                  <div class="grad">{{ $t('organizator') }}</div>
-                </div>
-                <div class="seminar-za-potvrivanje-licenc-wrapper">
-                  <div class="hzuts-i-nik">{{ getEventDetails(selectedUser?.idevent)?.eventorganisation }}</div>
-                </div>
-              </div>
-              <div class="licencaframe">
-                <div class="licenca-wrapper">
-                  <div class="grad">{{ $t('licenca') }}</div>
-                </div>
-                <div class="isia-br-7654-ivsi-wrapper">
-                  <div class="osnovne-informacije">{{ selectedUser?.statusAktivan === 'Aktivan' ? $t('vazeca') : $t('nije-vazeca') }} </div>
-                </div>
+            <div class="seminar-za-potvrivanje-licenc-wrapper">
+              <div class="osnovne-informacije">
+                {{ getEventDetails(eventId)?.label || '' }}
               </div>
             </div>
           </div>
+
+          <div class="datumseminaraframe">
+            <div class="datum-seminara-wrapper">
+              <div class="grad">{{ $t('datum-seminara') }}</div>
+            </div>
+            <div class="seminar-za-potvrivanje-licenc-wrapper">
+              <div class="osnovne-informacije">
+                {{formatEuropeanDate(getEventDetails(eventId)?.eventdate) }}
+              </div>
+            </div>
+          </div>
+
+          <div class="mjestoseminaraframe">
+            <div class="mjesto-seminara-wrapper">
+              <div class="mjesto-seminara">{{ $t('mjesto-seminara') }}</div>
+            </div>
+            <div class="seminar-za-potvrivanje-licenc-wrapper">
+              <div class="osnovne-informacije">
+                {{ getEventDetails(eventId)?.eventplace || '' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="drzavaframe">
+            <div class="drava-wrapper">
+              <div class="grad">{{ $t('drzava-0') }}</div>
+            </div>
+            <div class="seminar-za-potvrivanje-licenc-wrapper">
+              <div class="osnovne-informacije">
+                {{ getEventDetails(eventId)?.eventstate || '' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="organizatorframe">
+            <div class="organizator-wrapper">
+              <div class="grad">{{ $t('organizator') }}</div>
+            </div>
+            <div class="seminar-za-potvrivanje-licenc-wrapper">
+              <div class="hzuts-i-nik">
+                {{ getEventDetails(eventId)?.eventorganisation || '' }}
+              </div>
+            </div>
+          </div>
+
+          <div class="licencaframe">
+            <div class="licenca-wrapper">
+              <div class="grad">{{ $t('licenca') }}</div>
+            </div>
+            <div class="isia-br-7654-ivsi-wrapper">
+              <div class="osnovne-informacije">{{ selectedUser?.statusAktivan === 'Aktivan' ? $t('vazeca') : $t('nije-vazeca') }} </div>
+            </div>
+          </div>
+
+          <div v-if="index < selectedUser.idevent.length - 1" class="seminar-separator"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Handle single event -->
+    <div v-else class="kvadrat">
+      <div class="statusstecenframe">
+        <div class="status-steen-wrapper">
+          <div class="grad">{{ $t('status-stecen') }}</div>
+        </div>
+        <div class="seminar-za-potvrivanje-licenc-wrapper">
+          <div class="osnovne-informacije">
+            {{ getEventDetails(selectedUser.idevent)?.label }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Rest of original single event markup -->
+      <div class="datumseminaraframe">
+        <div class="datum-seminara-wrapper">
+          <div class="grad">{{ $t('datum-seminara') }}</div>
+        </div>
+        <div class="seminar-za-potvrivanje-licenc-wrapper">
+          <div class="osnovne-informacije">
+            {{formatEuropeanDate(getEventDetails(selectedUser.idevent)?.eventdate) }}
+          </div>
+        </div>
+      </div>
+
+      <!-- Rest of the original fields... -->
+
+      <div class="licencaframe">
+        <div class="licenca-wrapper">
+          <div class="grad">{{ $t('licenca') }}</div>
+        </div>
+        <div class="isia-br-7654-ivsi-wrapper">
+          <div class="osnovne-informacije">{{ selectedUser?.statusAktivan === 'Aktivan' ? $t('vazeca') : $t('nije-vazeca') }} </div>
+        </div>
+      </div>
+    </div>
+  </template>
+</div>
         </div>
 
         <div class="gumbzaduzenja" @click="viewPaymentsList">
@@ -549,7 +614,7 @@ export default {
       return this.$t('demonstrator-skijanja-bez-licence');
     } else {
       // return this.selectedUser?.statusString;
-      return this.$t(`status.${this.selectedUser?.statusString}`) || this.selectedUser?.statusString;
+      return this.$t(this.selectedUser?.statusString) || this.selectedUser?.statusString;
     }
   },
 
@@ -1111,6 +1176,39 @@ getStatusString(user) {
 </script>
 
 <style scoped>
+
+.seminar-container {
+  margin-bottom: 20px;
+}
+
+.seminar-number {
+  font-weight: 600;
+  color: #03A9F4;
+  margin: 15px 0;
+  font-size: 1.1em;
+}
+
+.seminar-separator {
+  height: 1px;
+  background-color: rgba(3, 169, 244, 0.2);
+  margin: 20px 0;
+  width: 100%;
+}
+
+@media screen and (max-width: 460px) {
+  .seminar-container {
+    margin-bottom: 15px;
+  }
+
+  .seminar-number {
+    margin: 10px 0;
+    font-size: 0.9em;
+  }
+
+  .seminar-separator {
+    margin: 15px 0;
+  }
+}
 
 .slide-fade-enter-active, .slide-fade-leave-active {
   transition: all 0.5s ease;

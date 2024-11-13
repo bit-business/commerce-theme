@@ -378,13 +378,21 @@ export default {
 
 <style scoped>
 
-.popup2{
-top: 74% ;
-position: absolute;
+.popup2 {
+  position: absolute;
+  top: 74%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25rem; /* Match width with other elements */
+  max-width: 90%;
 }
 .tokenpozicija {
-top: 33% ;
-position: absolute;
+  position: absolute;
+  top: 33%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25rem; /* Match width with other elements */
+  max-width: 90%;
 }
   .backgroundzaboravljenalozinka-icon {
     position: absolute;
@@ -417,12 +425,13 @@ position: absolute;
     text-align: center;
   }
   .zaboravljena-lozinka2 {
-    position: absolute;
-    top: 17.3%;
-    left: calc(50% - 83px);
-    font-size: 2.1rem;
-    text-align: left;
-  }
+  position: absolute;
+  top: 17.3%;
+  width: 100%;
+  left: 0;
+  text-align: center;
+  font-size: 2.1rem;
+}
   .background-container {
     position: absolute;
     height: 100%;
@@ -530,15 +539,15 @@ position: absolute;
 
 
   .posaljigumbzaboravljenalozinka2 {
-    position: absolute;
-    height: 10.14%;
-    top: 55%;
-    bottom: 10.55%;
-    left: calc(50% - 200px);
-    width: 25rem;
-    font-size: 1rem;
-    color: #fff;
-  }
+  position: absolute;
+  height: 10.14%;
+  top: 55%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 25rem;
+  font-size: 1rem;
+  color: #fff;
+}
   .ikonasrednjiframetop-icon {
   width: 4.38rem;
   height: auto;
@@ -662,6 +671,8 @@ position: absolute;
     }
   }
   @media screen and (max-width: 960px) {
+
+
     .hzuts-reset-password-desktop {
       max-width: 960px;
     }
@@ -707,6 +718,18 @@ z-index: 2;
 
 
   @media screen and (max-width: 460px) {
+    .popup2,
+  .tokenpozicija,
+  .posaljigumbzaboravljenalozinka2 {
+    width: 17rem;
+  }
+
+  .zaboravljena-lozinka2 {
+    font-size: 1.8rem;
+    margin-top: 0;
+  }
+
+
 .posaljigumbzaboravljenalozinka-child {
   width: 17rem;
   left: calc(50% - 8.5rem);
@@ -793,8 +816,7 @@ z-index: 2;
 
   /* Rest of the styles */
   .bez-brige-poslat,
-  .posaljigumbzaboravljenalozinka,
-  .posaljigumbzaboravljenalozinka2 {
+  .posaljigumbzaboravljenalozinka {
     width: 100%;
     left: 0;
     right: 0;
@@ -863,6 +885,16 @@ z-index: 2;
 
 /* Additional optimization for very small screens */
 @media screen and (max-width: 360px) {
+  .popup2,
+  .tokenpozicija,
+  .posaljigumbzaboravljenalozinka2 {
+    width: 90%;
+  }
+
+  .zaboravljena-lozinka2 {
+    font-size: 1.6rem;
+  }
+
   .srednjiframeglavni {
     width: 95%;
     top: 10%;

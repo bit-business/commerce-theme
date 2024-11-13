@@ -276,11 +276,70 @@
               </div>
             </div>
           </div>
-          <div class="kvadrat2">
-            <div class="naslovseminar">
-              <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/trending-icon.svg" />
-              <div class="osnovne-informacije">{{ $t('seminar') }}</div>
-            </div>
+          
+          <div class="kvadrat2" v-if="Array.isArray(korisnik.idevent)">
+  <!-- If there are multiple events, iterate through them -->
+  <div v-for="(eventId, index) in korisnik.idevent" :key="index" class="seminar-container">
+    <div class="naslovseminar">
+      <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/trending-icon.svg" />
+      <div class="osnovne-informacije">{{ $t('seminar') }} {{ korisnik.idevent.length > 1 ? (index + 1) : '' }}</div>
+    </div>
+    <div class="kvadrat">
+      <div class="statusstecenframe">
+        <div class="status-steen-wrapper">
+          <div class="grad">{{ $t('status-stecen') }}</div>
+        </div>
+        <div class="seminar-za-potvrivanje-licenc-wrapper">
+          <div class="osnovne-informacije">
+            {{ getEventDetails(eventId).label }}
+          </div>
+        </div>
+      </div>
+      <div class="datumseminaraframe">
+        <div class="datum-seminara-wrapper">
+          <div class="grad">{{ $t('datum-seminara') }}</div>
+        </div>
+        <div class="seminar-za-potvrivanje-licenc-wrapper">
+          <div class="osnovne-informacije">{{formatEuropeanDate(getEventDetails(eventId).eventdate) }}</div>
+        </div>
+      </div>
+      <div class="mjestoseminaraframe">
+        <div class="mjesto-seminara-wrapper">
+          <div class="mjesto-seminara">{{ $t('mjesto-seminara') }}</div>
+        </div>
+        <div class="seminar-za-potvrivanje-licenc-wrapper">
+          <div class="osnovne-informacije">{{ getEventDetails(eventId).eventplace }}</div>
+        </div>
+      </div>
+      <div class="drzavaframe">
+        <div class="drava-wrapper">
+          <div class="grad">{{ $t('drzava-0') }}</div>
+        </div>
+        <div class="seminar-za-potvrivanje-licenc-wrapper">
+          <div class="osnovne-informacije">{{ getEventDetails(eventId).eventstate }}</div>
+        </div>
+      </div>
+      <div class="organizatorframe">
+        <div class="organizator-wrapper">
+          <div class="grad">{{ $t('organizator') }}</div>
+        </div>
+        <div class="seminar-za-potvrivanje-licenc-wrapper">
+          <div class="hzuts-i-nik">{{ getEventDetails(eventId).eventorganisation }}</div>
+        </div>
+      </div>
+    </div>
+    <!-- Add separator if not the last event -->
+    <div v-if="index < korisnik.idevent.length - 1" class="seminar-separator"></div>
+  </div>
+</div>
+<!-- Fallback for single event or no events -->
+<div class="kvadrat2" v-else>
+  <!-- Original single event markup -->
+  <div class="naslovseminar">
+    <img class="info-icon" alt="" src="/storage/slike/nasiclanovi/trending-icon.svg" />
+    <div class="osnovne-informacije">{{ $t('seminar') }}</div>
+  </div>
+
             <div class="kvadrat">
               <div class="statusstecenframe">
                 <div class="status-steen-wrapper">
@@ -781,7 +840,7 @@ created() {
     }
     
   // Use the exact statusString as the translation key
-  return this.$t(`status.${korisnik.statusString}`) || korisnik.statusString;
+  return this.$t(korisnik.statusString) || korisnik.statusString;
     // return korisnik.statusString;
   },
 
@@ -1126,6 +1185,28 @@ console.log ("TEST EVENTI", response.data);
 </script>
 
 <style scoped>
+.seminar-container {
+  margin-bottom: 20px;
+  padding: 15px;
+}
+
+.seminar-separator {
+  height: 1px;
+  background-color: rgba(3, 169, 244, 0.2);
+  margin: 20px 0;
+}
+
+/* Add responsive styles */
+@media screen and (max-width: 460px) {
+  .seminar-container {
+    padding: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .seminar-separator {
+    margin: 15px 0;
+  }
+}
 /* fab gumb */
 .fade-enter-active, .fade-leave-active {
   transition: opacity 0.5s;
