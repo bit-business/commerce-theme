@@ -194,9 +194,14 @@
             <div class="adminsadrzajframe">
               <div class="sudionici-seminara-bit-e-smje-parent">
                 <div class="smjetaj-je-u-container">
-                  <div v-if="product.zatvoriprijave == 1" class="no-tailwindcss-base text-center">  <div class="coming-soon-text">{{ $t('prijave-su-zatvorene') }}</div></div>
-             <div  v-else-if="product.desc5" class="content-wrapper">
-              <div v-html="sanitizeHtml(getLocalizedDesc('desc5'), $i18n.locale)" class="custom-html-content"></div></div>
+                  <div v-if="!hasSpecialAccess && product.zatvoriprijave == 1" class="no-tailwindcss-base text-center">
+  <div class="coming-soon-text">{{ $t('prijave-su-zatvorene') }}</div>
+</div>
+<div v-else-if="product.desc5" class="content-wrapper">
+  <div v-html="sanitizeHtml(getLocalizedDesc('desc5'), $i18n.locale)" class="custom-html-content"></div>
+</div>
+
+
                   <div v-else class="coming-soon-container">
                     <div class="coming-soon-text">{{ $t('ubrzo-vise-informacija-provjerite-iducih-dana') }}</div>
                   </div>
@@ -215,21 +220,17 @@
 
 
 </div>
-       <div v-if="product.desc5 && product.zatvoriprijave !== 1" class="framegumbi">
-        <!-- <a class="lijevigumb" @click="buyNow()">  
-          <b class="uplatite-lanarinu-hzuts-u">UPLATITE ČLANARINU HZUTS-U</b>
-        </a> -->
-        <!-- <a class="lijevigumb"  :href="route('skijasi.commerce-theme.prijavanadogadaj', { id:  product.formId })"  @click="handleClick"> -->
-          <a 
+
+
+<div v-if="product.desc5 && (hasSpecialAccess || product.zatvoriprijave !== 1)" class="framegumbi">
+  <a 
     class="lijevigumb" 
     @click.prevent="navigateToPrijava"
   >
-  <b class="prijavnica-za-dogaaj">{{ $t('prijava-i-placanje-0') }}</b>
-</a>
+    <b class="prijavnica-za-dogaaj">{{ $t('prijava-i-placanje-0') }}</b>
+  </a>
+</div>
 
-
-      
-      </div>
 
 
 </div>
@@ -392,6 +393,7 @@ export default {
         prijavnicalink: "",
         sakrij: null,
         zatvoriprijave: null,
+        prijaveposebni: null,
 
 
         reviewAvgRating: 0,
@@ -447,8 +449,24 @@ export default {
   },
 
 
-
-
+  hasSpecialAccess() {
+    // If prijave aren't closed, everyone has access
+    if (!this.product.zatvoriprijave) return true;
+    
+    // If user is not authenticated, no access
+    if (!this.isAuthenticated || !this.user || !this.korisnik?.email) return false;
+    
+    // Check if user's email is in the special access list
+    if (this.product.prijaveposebni) {
+      const allowedEmails = this.product.prijaveposebni
+        .split(',')
+        .map(email => email.trim().toLowerCase());
+      
+      return allowedEmails.includes(this.korisnik.email.toLowerCase());
+    }
+    
+    return false;
+  },
 
 
 
@@ -537,6 +555,24 @@ export default {
     //   }
     // },
 
+    isAuthenticated: {
+    immediate: true,
+    async handler(newVal) {
+      if (newVal && this.user) {
+        await this.ucitajClanove();
+      }
+    }
+  },
+
+  user: {
+    immediate: true,
+    async handler(newVal) {
+      if (this.isAuthenticated && newVal) {
+        await this.ucitajClanove();
+      }
+    }
+  },
+
     'product.productImage': {
     immediate: true,
     handler(newVal) {
@@ -547,10 +583,12 @@ export default {
   },
 
   },
-  mounted() {
-    this.getProduct();
-    this.ucitajClanove();
-  },
+  async mounted() {
+  await this.getProduct();
+  if (this.isAuthenticated && this.user) {
+    await this.ucitajClanove();
+  }
+},
   methods: {
 
     getLocalizedDesc(field) {
