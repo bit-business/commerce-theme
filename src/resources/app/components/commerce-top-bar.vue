@@ -97,7 +97,7 @@
             class="avatar"
             alt=""
         
-            :src="userAvatar"
+         :src="userAvatar ? userAvatar : '/storage/slike/nemaslike.svg'"
             :style="{  borderRadius: '50%', borderColor: '#03a9f4', width: '110%', borderStyle: 'solid' }"
           /></div>
         </button>

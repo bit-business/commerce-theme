@@ -402,7 +402,8 @@
         src="/storage/slike/popusti/rectangle-2971@2x.png"
       />
     </section>
-    <section class="rectangle-parent10">
+
+    <!-- <section class="rectangle-parent10">
       <div class="frame-child22" />
       <div class="rectangle-parent11">
         <div class="frame-child23" />
@@ -425,7 +426,8 @@
           </button>
         </div>
       </div>
-    </section>
+    </section> -->
+
     <section class="rectangle-parent13">
       <div class="frame-child25" />
       <div class="rectangle-parent14">

@@ -412,7 +412,8 @@
         <h1 class="razna-svjetska-skijalita3">{{ $t('razna-svjetska-skijalista') }}</h1>
       </div>
     </section>
-    <section class="desktop-container4">
+
+    <!-- <section class="desktop-container4">
       <div class="rectangle-parent27">
         <div class="frame-child51" />
         <div class="rectangle-parent28">
@@ -441,7 +442,7 @@
           </div>
         </div>
       </div>
-    </section>
+    </section> -->
 
 
     <!-- KOPE-->

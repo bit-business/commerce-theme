@@ -28,7 +28,19 @@
 
             <div v-if="isSidebarExpanded" class="border-plava-200 border-2 rounded-full"> <!-- New container with border -->
             <div class="h-14 w-14 items-center justify-center clip-circle sidebar-item sidebar-icon">
-              <img :src="user.avatar" alt="User's avatar" class="object-cover h-14 w-14">
+              <template v-if="user.avatar">
+                  <img :src="avatar ? avatar : user.avatar" alt="" class="object-cover h-14 w-14">
+ 
+                </template>
+                <template v-else>
+                  <img
+              class="object-contain"
+              loading="lazy"
+              alt=""
+              src="/storage/slike/nemaslike.svg"
+            />
+
+                </template>
             </div>  </div>
             <div class="inline-block flex-wrap pl-2">
               <div v-if="isSidebarExpanded" class="text-sm font-bold w-full line-clamp-2 ">{{ user.name }} {{ user.username }}</div>
@@ -442,7 +454,7 @@
 <div class="mt-4 flex items-center gap-y-3 flex-wrap sidebarClasses ">
 
   <div v-if="!isSidebarExpanded" class="h-10 w-10 items-center justify-center clip-circle sidebar-icon sidebar-avatar">
-    <img :src="user.avatar" alt="User's avatar" class="object-cover h-10 w-10">
+    <img :src="userAvatar ? userAvatar : '/storage/slike/nemaslike.svg'" alt="User's avatar" class="object-cover h-10 w-10">
   </div> 
 
   <Link :href="route('skijasi.commerce-theme.profile')" class="w-full inline-flex items-center group sidebar-item">
@@ -1187,7 +1199,7 @@ console.log ("TEST EVENTI", response.data);
 <style scoped>
 .seminar-container {
   margin-bottom: 20px;
-  padding: 15px;
+
 }
 
 .seminar-separator {
@@ -2498,7 +2510,7 @@ overflow: visible;
     gap: 181px;
   }
   .podruni-zbor-wrapper {
-    width: 110px;
+
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -2513,7 +2525,7 @@ overflow: visible;
     gap: 113px;
   }
   .lanski-broj-wrapper {
-    width: 93px;
+
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -2600,7 +2612,7 @@ overflow: visible;
     gap: 158px;
   }
   .licenca-vrijedi-do-wrapper {
-    width: 137px;
+
     display: flex;
     flex-direction: row;
     align-items: flex-start;
@@ -2630,7 +2642,7 @@ overflow: visible;
     gap: 89px;
   }
   .lanska-iskaznica-wrapper {
-    width: 139px;
+
     display: flex;
     flex-direction: row;
     align-items: flex-start;
