@@ -122,19 +122,15 @@
     <a v-if="slide.link" :href="slide.link" style="text-decoration: none; color: #3498db;">
       <!-- Slide content -->
       <img class="slikeslider" :src="slide.image" :alt="'Image ' + i">
-      <div class="vijestinaslov">
-        {{ slide.title }}
-        <div class="vijestitekst" v-html="slide.content"></div>
-      </div>
+      <div class="vijestinaslov">{{ getLocalizedContent(slide).title }}</div>
+      <div class="vijestitekst" v-html="getLocalizedContent(slide).content"></div>
       <b class="objavljeno-20032023">{{ $moment(slide.datum).format('DD.MM.YYYY') }}</b>
     </a>
     <!-- Render slide content normally if slide.url doesn't exist -->
     <template v-else>
       <img class="slikeslider" :src="slide.image" :alt="'Image ' + i">
-      <div class="vijestinaslov">
-        {{ slide.title }}
-        <div class="vijestitekst" v-html="slide.content"></div>
-      </div>
+      <div class="vijestinaslov">{{ getLocalizedContent(slide).title }}</div>
+      <div class="vijestitekst" v-html="getLocalizedContent(slide).content"></div>
       <b class="objavljeno-20032023">{{ $moment(slide.datum).format('DD.MM.YYYY') }}</b>
     </template>
   </div>
@@ -695,6 +691,29 @@ shuffledSponsors() {
     
   },
   methods: {
+
+    getLocalizedContent(post) {
+    const lang = this.$i18n.locale;
+    switch(lang) {
+      case 'en':
+        return {
+          title: post.titleEn || post.title, 
+          content: post.contentEn || post.content 
+        };
+      case 'it':
+        return {
+          title: post.titleIt || post.title,
+          content: post.contentIt || post.content 
+        };
+      default:
+        return {
+          title: post.title,
+          content: post.content
+        };
+    }
+  },
+
+
     shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -914,14 +933,18 @@ async getThumbnails() {
     return {
       datum: item.publishedAt,
       title: item.title,
-      link: item.link,
+      titleEn: item.titleEn, // Add English title
+      titleIt: item.titleIt, // Add Italian title
       content: item.content,
+      contentEn: item.contentEn, // Add English content
+      contentIt: item.contentIt, // Add Italian content
+      link: item.link,
       slug: item.slug,
       published: item.published,
       image: item.thumbnail 
     };
   }));
-}
+},
 
 
   },
@@ -1088,7 +1111,7 @@ line-height: normal;
   -webkit-line-clamp: 3;      /* Truncate text after 3 lines */
   -webkit-box-orient: vertical; /* Required for line-clamp to work */
   overflow: hidden;           /* Hide any content that exceeds this height */
-  max-height: calc(1.2em * 3);  /* Adjust based on line-height and number of lines */
+  max-height: calc(1.4rem * 3);  /* Adjust based on line-height and number of lines */
 }
 
 
@@ -1098,7 +1121,7 @@ line-height: normal;
 }
 
 .dogadajipodgrupa-child .vijestitekst {
-    height: 5%;           /* Set the height to 20% of parent */
+    height: 25%;           /* Set the height to 20% of parent */
     overflow: hidden;      /* Hide any content that exceeds this height */
     display: block;        /* Ensure it behaves like a block element */
     display: -webkit-box;      /* Important for line-clamp to work */

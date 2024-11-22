@@ -39,16 +39,16 @@
       <a v-if="slide.link" :href="slide.link" class="slide-link">
         <img class="slikeslider" :src="slide.image" :alt="'Image ' + index">
         <div class="content-container">
-          <div class="vijestinaslov">{{ slide.title }}</div>
-          <div class="vijestitekst" v-html="slide.content"></div>
+          <div class="vijestinaslov">{{ getLocalizedContent(slide).title }}</div>
+          <div class="vijestitekst" v-html="getLocalizedContent(slide).content"></div>
         </div>
         <b class="objavljeno-20032023">{{ $moment(slide.datum).format('DD.MM.YYYY') }}</b>
       </a>
       <template v-else>
         <img class="slikeslider" :src="slide.image" :alt="'Image ' + index">
         <div class="content-container">
-          <div class="vijestinaslov">{{ slide.title }}</div>
-          <div class="vijestitekst" v-html="slide.content"></div>
+          <div class="vijestinaslov">{{ getLocalizedContent(slide).title }}</div>
+          <div class="vijestitekst" v-html="getLocalizedContent(slide).content"></div>
         </div>
         <b class="objavljeno-20032023">{{ $moment(slide.datum).format('DD.MM.YYYY') }}</b>
       </template>
@@ -310,12 +310,16 @@ async getThumbnails() {
   this.$set(this, 'slides', this.thumbnails.map(item => {
     return {
       datum: item.publishedAt,
-      title: item.title,
-      link: item.link,
-      content: item.content,
-      slug: item.slug,
-      published: item.published,
-      image: item.thumbnail 
+        title: item.title,
+        titleEn: item.titleEn, // Add translation fields
+        titleIt: item.titleIt,
+        content: item.content,
+        contentEn: item.contentEn, // Add translation fields
+        contentIt: item.contentIt,
+        link: item.link,
+        slug: item.slug,
+        published: item.published,
+        image: item.thumbnail 
     };
   }));
 },
@@ -563,6 +567,27 @@ computeCountdown() {
           this.closeFilter()
         })
     },
+
+    getLocalizedContent(post) {
+    const lang = this.$i18n.locale;
+    switch(lang) {
+      case 'en':
+        return {
+          title: post.titleEn || post.title, 
+          content: post.contentEn || post.content 
+        };
+      case 'it':
+        return {
+          title: post.titleIt || post.title, 
+          content: post.contentIt || post.content 
+        };
+      default:
+        return {
+          title: post.title,
+          content: post.content
+        };
+    }
+  },
 
   }
 }
