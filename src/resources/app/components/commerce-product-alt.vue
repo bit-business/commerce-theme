@@ -1,21 +1,21 @@
 <template>
   <div>
     <div class="w-full h-72 hover:shadow-md rounded-xl transition-transform duration-200 ease-in-out transform hover:-translate-y-1 bg-gray-200 relative group">
-    <!-- Counter Component - Show only for non-slipper products -->
-    <div v-if="(isAdded || cartData.cartId) && !isSlippersProduct" 
-         class="absolute top-2 left-0 right-0 flex items-center justify-center z-10 transition-all duration-300"
-         :class="{'opacity-100 translate-y-0': isAdded || cartData.cartId, 'opacity-0 -translate-y-4': !isAdded && !cartData.cartId}">
-         <counter
-          class="justify-center bg-white rounded-lg shadow-lg transform transition-transform duration-300"
-          @subtract="handleSubtract"
-          :key="`counter-${cartData.cartId}-${cartData.quantity}`"
-          @input="handleQuantityChange"
-          :value="cartData.quantity"
-          :min="1"
-          text-disabled
-          :disabled="loading"
-        />
-    </div>
+<!-- Counter Component - Show only for non-slipper and non-hoodie products -->
+<div v-if="(isAdded || cartData.cartId) && !isSlippersProduct && !isHoodieProduct" 
+     class="absolute top-2 left-0 right-0 flex items-center justify-center z-10 transition-all duration-300"
+     :class="{'opacity-100 translate-y-0': isAdded || cartData.cartId, 'opacity-0 -translate-y-4': !isAdded && !cartData.cartId}">
+  <counter
+    class="justify-center bg-white rounded-lg shadow-lg transform transition-transform duration-300"
+    @subtract="handleSubtract"
+    :key="`counter-${cartData.cartId}-${cartData.quantity}`"
+    @input="handleQuantityChange"
+    :value="cartData.quantity"
+    :min="1"
+    text-disabled
+    :disabled="loading"
+  />
+</div>
 
 
       <!-- "Rasprodano" Label -->
@@ -25,7 +25,7 @@
       </div>
       
       <!-- Product Image Container -->
-      <div class="w-full h-4/5 bg-gray-300 rounded-t-xl flex items-center justify-center overflow-hidden cursor-pointer relative">
+      <div class="w-full h-3/4 bg-gray-300 rounded-t-xl flex items-center justify-center overflow-hidden cursor-pointer relative">
       <img :src="product.productImage" 
            alt="Product Image" 
            class="object-contain w-4/5 h-full transition-transform duration-300 ease-in-out"
@@ -42,7 +42,7 @@
 
       <!-- Add to Cart Button - Modified logic -->
       <button 
-        v-if="(!isAdded && !cartData.cartId) || (isSlippersProduct)"
+        v-if="(!isAdded && !cartData.cartId) || (isSlippersProduct) || (isHoodieProduct)"
         class="bg-blue-500 text-white text-xs font-regular py-2 px-4 rounded-lg hover:bg-blue-600 transition-colors duration-200 flex items-center"
         @click.stop="handleClick"
         :disabled="loading"
@@ -70,27 +70,39 @@
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        {{ isSlippersProduct ? $t('dodaj-papuce') : $t('dodaj-u-kosaricu') }}
+        {{ 
+    isSlippersProduct 
+      ? $t('dodaj-papuce') 
+      : isHoodieProduct 
+        ? $t('dodaj-hoodie') 
+        : $t('dodaj-u-kosaricu') 
+  }}
       </button>
 
    <!-- Remove Button - Modified to handle both cases -->
    <button 
-        v-if="(isAdded || cartData.cartId)"
-        class="bg-red-500 text-white font-regular text-xs py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center gap-2"
-        @click.stop="isSlippersProduct ? handleRemoveAllSizes() : handleRemove()"
-        :disabled="loading"
-      >
-        <svg 
-          class="w-4 h-4" 
-          xmlns="http://www.w3.org/2000/svg" 
-          fill="none" 
-          viewBox="0 0 24 24" 
-          stroke="currentColor"
-        >
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-        </svg>
-        {{ isSlippersProduct ? $t('ukloni-sve-papuce') : '' }}
-      </button>
+  v-if="(isAdded || cartData.cartId)"
+  class="bg-red-500 text-white font-regular text-xs py-2 px-4 rounded-lg hover:bg-red-600 transition-colors duration-200 flex items-center gap-2"
+  @click.stop="isSlippersProduct ? handleRemoveAllSizes() : isHoodieProduct ? handleRemoveAllHoodies() : handleRemove()"
+  :disabled="loading"
+>
+  <svg 
+    class="w-4 h-4" 
+    xmlns="http://www.w3.org/2000/svg" 
+    fill="none" 
+    viewBox="0 0 24 24" 
+    stroke="currentColor"
+  >
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+  </svg>
+  {{ 
+    isSlippersProduct 
+      ? $t('ukloni-sve-papuce') 
+      : isHoodieProduct 
+        ? $t('ukloni-sve-hoodie') 
+        : '' 
+  }}
+</button>
     </div>
 
 
@@ -182,6 +194,21 @@ export default {
 
   
   methods: {
+    async handleRemoveAllHoodies() {
+    if (this.loading) return;
+    
+    try {
+      this.loading = true;
+      // Emit an event to parent to handle the removal of all hoodies
+      this.$emit('remove-all-slippers2');
+    } catch (error) {
+      console.error('Error removing items:', error);
+      this.$helper.alert('Failed to remove items');
+    } finally {
+      this.loading = false;
+    }
+  },
+
     handlePreview() {
       this.$emit('show-preview', this.product);
     },
@@ -375,6 +402,9 @@ export default {
     isSlippersProduct() {
       return this.product.id === 43; // ID for slippers
     },
+    isHoodieProduct() {
+    return this.product.id === 50; // ID for hoodies
+  },
   },
 };
 </script>

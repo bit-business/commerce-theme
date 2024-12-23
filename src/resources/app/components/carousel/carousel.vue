@@ -1,11 +1,17 @@
 <template>
   <div class="relative">
     <div class="w-full overflow-hidden" v-bind="{...$attrs}">
-      <!-- Add responsive class for flex direction and gap -->
       <div 
-        class="flex flex-col md:flex-row m-0 p-0 relative transition-all duration-500 ease-in-out"
-        :class="{ 'gap-4': true, 'gap-8 md:gap-2': true }"
-        :style="{ transform: `translateX(-${currentPosition}px)`}"
+        class="flex flex-col md:flex-row md:flex-wrap m-0 p-0 relative transition-all duration-500 ease-in-out sm:mr-0"
+        :class="{ 
+          'gap-0': true,
+          'items-center justify-center': isMobile,
+          'items-start justify-start': !isMobile
+        }"
+        :style="{ 
+          transform: `translateX(-${currentPosition}px)`,
+          height: { md: '600px' }
+        }"
       >
         <slot
           @quantity-change="handleQuantityChange"
@@ -14,16 +20,13 @@
         />
       </div>
 
-      <!-- Carousel Navigation, hidden on small screens -->
       <template v-if="!hideNavigationData">
         <button v-if="canPrev" @click="prev" class="hidden md:block -left-3 p-1 focus:outline-none hover:scale-150 transition-transform ease shadow-md rounded-full bg-white absolute transform -translate-y-1/2 top-1/2 z-10">
-          <!-- Icon for previous button -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M12.707 5.293a1 1 0 010 1.414L9.414 10l3.293 3.293a1 1 0 01-1.414 1.414l-4-4a1 1 0 010-1.414l4-4a1 1 0 011.414 0z" clip-rule="evenodd" />
           </svg>
         </button>
         <button v-if="canNext" @click="next" class="hidden md:block -right-3 p-1 focus:outline-none hover:scale-150 transition-transform ease shadow-md rounded-full bg-white absolute transform -translate-y-1/2 top-1/2">
-          <!-- Icon for next button -->
           <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
             <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" />
           </svg>
@@ -32,9 +35,6 @@
     </div>
   </div>
 </template>
-
-
-
 
 <script>
 export default {
@@ -46,6 +46,7 @@ export default {
       canPrev: false,
       canNext: true,
       hideNavigationData: false,
+      isMobile: false
     }
   },
   props: {
@@ -55,38 +56,11 @@ export default {
     },
     show: {
       type: Number|String,
-      default: '3',
+      default: '4', 
     },
     hideNavigation: {
       type: Boolean,
       default: false
-    }
-  },
-  watch: {
-    start: {
-      handler(newVal, oldVal) {
-        if (newVal <= 1) {
-          this.canPrev = false
-        } else {
-          this.canPrev = true
-        }
-      }
-    },
-    end: {
-      handler(newVal) {
-        if (newVal >= this.$children.length) {
-          this.canNext = false
-        } else {
-          this.canNext = true
-        }
-      }
-    },
-  },
-  updated() {
-    if (this.$children.length <= this.show) {
-      this.hideNavigationData = true
-    } else {
-      this.hideNavigationData = false
     }
   },
   mounted() {
@@ -94,8 +68,16 @@ export default {
     if (this.$children.length <= this.show) {
       this.hideNavigationData = true
     }
+    this.checkMobile()
+    window.addEventListener('resize', this.checkMobile)
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.checkMobile)
   },
   methods: {
+    checkMobile() {
+      this.isMobile = window.innerWidth < 768
+    },
     handleQuantityChange(payload) {
       this.$emit('quantity-change', payload);
     },
@@ -129,3 +111,27 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+@media (min-width: 768px) {
+  :slotted(*) {
+    width: calc(25% - 1rem) !important;
+    flex: 0 0 calc(25% - 1rem) !important;
+    margin: 0.5rem !important;
+  }
+}
+
+@media (max-width: 767px) {
+  :slotted(*) {
+    width: calc(100% - 2rem) !important;
+    flex: 0 0 calc(100% - 2rem) !important;
+    margin: 0.5rem auto !important; /* Added auto for horizontal centering */
+  }
+  
+  /* Center mobile container */
+  .overflow-hidden {
+    display: flex;
+    justify-content: center;
+  }
+}
+</style>

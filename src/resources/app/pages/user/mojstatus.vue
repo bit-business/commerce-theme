@@ -281,9 +281,7 @@
                 </div>
                 <div class="isia-br-7654-ivsi-wrapper">
 
-                  <div class="osnovne-informacije">
-    {{ korisnik.carddate === null ? $t('nije-izdana') : $t('izdana') }}
-  </div>
+                  <div class="osnovne-informacije">{{ cardStatus }}</div>
                 </div>
               </div>
             </div>
@@ -631,7 +629,7 @@ import skijasitrainersts from '../../../../../../core/src/resources/js/api/modul
 import skijasiLicence from '../../../../../../core/src/resources/js/api/modules/skijasi-licence.js';
 import skijasiTblevents from '../../../../../../core/src/resources/js/api/modules/skijasi-tblevents.js';
 import poruke from  '../../../../../../core/src/resources/js/api/modules/skijasi-poruke.js';
-
+import skijasiStaraplacanja from  '../../../../../../core/src/resources/js/api/modules/skijasi-staraplacanja.js';
 
 export default {
   layout: [appLayout, profileLayout],
@@ -679,6 +677,7 @@ export default {
       tblEvents: []
     },
  
+    staraPlacanjaArray: [], 
     }
   },
   watch: {
@@ -792,7 +791,43 @@ yearDifference() {
       return ''; // Default return value if none of the conditions are met
     },
 
+    
+    hasIssuancePayment() {
+      if (!this.staraPlacanjaArray || !this.staraPlacanjaArray.length) {
+        return false;
+      }
 
+      return this.staraPlacanjaArray.some(payment => {
+        if (!payment || !payment.paymenttitle) return false;
+        
+        const normalizedTitle = payment.paymenttitle.toLowerCase();
+        const isPaid = payment.paidstatus === 1 || payment.paidstatus === '1';
+        const isIssuance = normalizedTitle.includes('izdavanje') && 
+                          normalizedTitle.includes('iskaznic');
+                          
+        console.log('Payment check:', {
+          title: payment.paymenttitle,
+          status: payment.paidstatus,
+          isIssuance,
+          isPaid
+        });
+        
+        return isIssuance && isPaid;
+      });
+    },
+
+    cardStatus() {
+      const hasCard = this.korisnik?.carddate !== null;
+      const hasPayment = this.hasIssuancePayment;
+      
+      console.log('Card status check:', {
+        cardDate: this.korisnik?.carddate,
+        hasCard,
+        hasPayment
+      });
+      
+      return (hasCard || hasPayment) ? this.$t('izdana') : this.$t('nije-izdana');
+    },
 
 },
 created() {
@@ -900,6 +935,9 @@ created() {
         this.korisnik = response.data.user;
     //  await this.loadAllStatusData();
 
+    if (this.korisnik && this.korisnik.idmember) {
+          await this.getStaraPlacanja();
+        }
   
     await   this.ucitajLICENCEPodatke();
 
@@ -910,6 +948,30 @@ created() {
    
   }
 },
+
+async getStaraPlacanja() {
+      try {
+        this.number = Number(this.korisnik.idmember);
+        const response = await skijasiStaraplacanja.citanjenasiclanovi({ 
+          slug: "tbl-payments", 
+          idmember: this.number 
+        });
+        
+        console.log("Payments response:", response);
+        
+        if (response.data) {
+          // Handle both array and single object responses
+          this.staraPlacanjaArray = Array.isArray(response.data) ? response.data : [response.data];
+        } else {
+          this.staraPlacanjaArray = [];
+        }
+        
+        console.log("Final payments array:", this.staraPlacanjaArray);
+      } catch (error) {
+        console.error("Error loading payments:", error);
+        this.staraPlacanjaArray = [];
+      }
+    },
 
     formatDate(dateString) {
     if (!dateString) return ''; // Handle null, undefined, or empty strings

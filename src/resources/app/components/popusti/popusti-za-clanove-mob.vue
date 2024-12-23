@@ -80,7 +80,7 @@
       </div>
       <div class="content-wrapper">
         <div class="putno-osiguranje">{{ $t('putno-osiguranje') }}</div>
-        <div class="osiguranje-od-odgovornosti">{{ $t('osiguranje-od') }}<p>ODGOVORNOSTI</p></div>
+        <div class="osiguranje-od-odgovornosti">{{ $t('osiguranje-od') }}<p>{{ $t('odgovornosti-0') }}</p></div>
         <div class="content-divider"></div>
         <div class="content">
           <div class="left-content">
@@ -89,7 +89,7 @@
           </div>
           <div class="right-content">
             <h3>{{ $t('ponudu-pogledajte-putem-linka') }}</h3>
-            <a href="/storage/slike/popusti/Allianz_ponuda.pdf" class="offer-link">
+            <a href="/storage/slike/popusti/Allianz_ponuda_HZUTS.pdf" class="offer-link">
               <img src="/storage/slike/popusti/vrstva-x0020-1-15.svg" alt="$t('pdf-icon')" class="pdf-icon" />
               <span>{{ $t('osiguranje-izvanugovorne-odgovornosti-za-ucitelje-skijanja') }}</span>
             </a>
@@ -118,16 +118,16 @@
         <div class="uitelji-skijanja-hzuts-a-sa-v-parent-rosi">
           <b class="uitelji-skijanja-hzuts-a-container text-center">
             <p class="uitelji-skijanja-hzuts-a">
-              Rossi pro shop, trgovina sportske opreme odobrava 20 % popusta za članove HZUTS-a. 
+              {{ $t('rossi-pro-shop-trgovina-sportske-opreme-odobrava-20-popusta-za-clanove-hzuts-a') }} 
             </p>
             <p class="blank-line1">&nbsp;</p>
             <p class="demonstratorski-skijanja-hzuts">
-              Popust se odobrava uz predočenje važeće HZUTS iskaznice sa važećom licencom.
+              {{ $t('popust-se-odobrava-uz-predocenje-vazece-hzuts-iskaznice-sa-vazecom-licencom-0') }}
             </p>
           </b>
           <div class="popust-se-odobrava4">
-            <p>Kontakt: cepelja.d@gmail.com </p>
-            <p>Adresa:  Zagrebacka cesta 210, 10000 Zagreb </p>
+            <p>{{ $t('kontakt-cepelja-d-gmail-com') }} </p>
+            <p>{{ $t('adresa-zagrebacka-cesta-210-10000-zagreb') }} </p>
           </div>
         </div>
       </footer>
@@ -278,12 +278,12 @@
           src="/storage/slike/popusti/desktop/orthoplus-logo.png"
         />
         <h2 class="ski-frankie-osigurao">
-          POLIKLINIKA ORTHOPLUS za članove HZUTS-a odobrava 25 % popusta na treninge pripreme za skijanje. 
+          {{ $t('poliklinika-orthoplus-za-clanove-hzuts-a-odobrava-25-popusta-na-treninge-pripreme-za-skijanje') }} 
         </h2>
         <div class="popust-se-odobrava1-ortho">
-          <p>Popust se odobrava uz predočenje važeće HZUTS iskaznice sa važećom licencom.</p><br>
-<p>Kontakt: Dino Krolo, 099 5320-707</p>
-<p>Adresa:  Ulica Petra Hektorovića 2, 10000 Zagreb</p>
+          <p>{{ $t('popust-se-odobrava-uz-predocenje-vazece-hzuts-iskaznice-sa-vazecom-licencom-0') }}</p><br>
+<p>{{ $t('kontakt-dino-krolo-099-5320-707') }}</p>
+<p>{{ $t('adresa-ulica-petra-hektorovica-2-10000-zagreb') }}</p>
         </div>
         <!-- <button class="rectangle-parent2">
           <div class="frame-child6" />

@@ -85,7 +85,7 @@
           </div>
           <div class="right-content">
             <h3>{{ $t('ponudu-pogledajte-putem-linka') }}</h3>
-            <a href="/storage/slike/popusti/Allianz_ponuda.pdf" class="offer-link">
+            <a href="/storage/slike/popusti/Allianz_ponuda_HZUTS.pdf" class="offer-link">
               <img src="/storage/slike/popusti/vrstva-x0020-1-15.svg" alt="PDF icon" class="pdf-icon" />
               <span>{{ $t('osiguranje-izvanugovorne-odgovornosti-za-ucitelje-skijanja') }}</span>
             </a>

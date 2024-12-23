@@ -22,6 +22,7 @@
         <div class="col-span-1 md:px-0 lg:px-20">
           <div class="bg-white rounded-xl p-12 flex flex-wrap gap-2 shadow-md">
             <b class="text-xl w-full zaboravljena-lozinka">{{ $t('verifikacija-0') }}</b>
+            <p class="inline-block text-xs justify-end text-center w-30 rounded-md  p-2">{{ $t('molimo-unesite-token-broj-koji-vam-je-poslan-na-email-adresu') }}</p>
             <input
               type="email"
               class="
@@ -312,7 +313,7 @@ export default {
     top: 0rem;
     left: 0rem;
     width: 100%;
-    height: 64rem;
+
     object-fit: cover;
   }
   .x-1-icon {

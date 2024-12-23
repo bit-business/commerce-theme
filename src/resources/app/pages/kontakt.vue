@@ -42,7 +42,7 @@
             <span class="uredovno-vrijeme-za-container1">
               <span>{{ $t('uredovno-vrijeme-za-clanove') }} </span>
               <span class="utorkom">{{ $t('utorkom') }}</span>
-              <span> i </span>
+              <span> {{ $t('i') }} </span>
               <span class="utorkom">{{ $t('cetvrtkom') }}</span>
               <span> {{ $t('od-11-15h') }}</span>
             </span>

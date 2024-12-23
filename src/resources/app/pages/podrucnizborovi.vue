@@ -46,7 +46,7 @@
               </span>
               <span class="do-01-rujna">{{ $t('do-01-rujna-tekuce') }}</span>
               <span class="span"> </span>
-              <span class="do-01-rujna">godine</span>
+              <span class="do-01-rujna">{{ $t('godine') }}</span>
             </p>
             <p class="javite-se-tajniku">&nbsp;</p>
             <p class="podruni-zbor-je">
@@ -80,7 +80,7 @@
             <b class="predsjednik">{{ zborovi && zborovi[2] ? zborovi[2].tajnik : '' }}</b>
           </div>
           <div class="adresa-parent">
-            <div class="adresa">Adresa:</div>
+            <div class="adresa">{{ $t('adresa') }}:</div>
             <a class="ulica-grada-vukovara"
               >{{ zborovi && zborovi[2] ? zborovi[2].depaddress : '' }}</a
             >
@@ -348,7 +348,7 @@
         </div>
         <div class="adresa2-container">
           <div class="adresa23">
-            <div class="adresa1">Adresa:</div>
+            <div class="adresa1">{{ $t('adresa') }}:</div>
             <a class="ulica-grada-vukovara2"
               >{{ zborovi && zborovi[6] ? zborovi[6].depaddress : '' }}</a
             >
@@ -398,7 +398,7 @@
         </div>
       </div>
       <div class="slika5zbor-parent">
-        <img class="slika5zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor4.jpg" />
+        <img class="slika5zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor6.png" />
         <div class="frame19">
           <b class="predsjednik">5</b>
         </div>
@@ -410,7 +410,7 @@
     </div>
     <div class="podrucnizbor4">
       <div class="slika6zbor-parent">
-        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor6.png" />
+        <img class="slika2zbor-icon" alt="" src="/storage/slike/podrucnizborovi/slikazbor4.jpg" />
         <div class="frame21">
           <b class="predsjednik">6</b>
         </div>
@@ -775,7 +775,7 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 3rem;
   }
   .frame1 {
@@ -784,7 +784,7 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 3.56rem;
   }
   .adresa {
@@ -1073,7 +1073,7 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 4.81rem;
   }
   .frame8 {
@@ -1082,7 +1082,7 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: space-between;
     gap: 4rem;
     
   }
@@ -1182,7 +1182,7 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 3.36rem;
 
   }
@@ -1190,7 +1190,7 @@ align-self: stretch;
     position: absolute;
     top: 0rem;
     left: 0.03rem;
-    width: 14.69rem;
+    width: 16rem;
     height: 1.19rem;
     overflow: hidden;
     display: flex;
@@ -1203,14 +1203,14 @@ align-self: stretch;
     position: absolute;
     top: 1.81rem;
     left: 0.03rem;
-    width: 19.94rem;
+
     height: 1.19rem;
     overflow: hidden;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: flex-start;
-    gap: 2.8rem;
+    gap: 5rem;
   }
   .adresa2-parent {
     position: absolute;
@@ -1347,8 +1347,8 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    gap: 3rem;
+    justify-content: space-between;
+    gap: 4.9rem;
   }
   .frame16 {
     position: absolute;
@@ -1359,8 +1359,8 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    gap: 3rem;
+    justify-content: space-between;
+    gap: 8.7rem;
   }
   .adresa2-group {
     position: absolute;
@@ -1418,7 +1418,7 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: flex-start;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 3.33rem;
   }
   .frame17 {
@@ -1430,8 +1430,8 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    gap: 2.3rem;
+    justify-content: space-between;
+    gap: 3.5rem;
   }
   .frame18 {
     position: absolute;
@@ -1442,8 +1442,8 @@ align-self: stretch;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-start;
-    gap: 3rem;
+    justify-content: space-between;
+    gap: 7.4rem;
   }
   .adresa2-container {
     position: absolute;

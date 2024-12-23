@@ -268,7 +268,7 @@
                 <div class="isia-br-7654-ivsi-wrapper">
 
                   <div class="osnovne-informacije">
-    {{ selectedUser?.carddate === null ? $t('nije-izdana') : $t('izdana') }}
+                    {{ (selectedUser?.carddate !== null || hasCardIssued) ? $t('izdana') : $t('nije-izdana') }}
   </div>
                 </div>
               </div>
@@ -399,18 +399,17 @@
 </div>
         </div>
 
-        <div class="gumbzaduzenja" @click="viewPaymentsList">
+        <!-- <div class="gumbzaduzenja" @click="viewPaymentsList">
   <div class="zaduenja">{{ $t('zaduzenja-0') }}</div>
-</div>
+</div> -->
       </div>
 
-<!-- New payments list view -->
-<div v-if="viewingPaymentsList" class="payments-list">
+<!-- Zaduzenja lista prikaz-maknuta kada i gumb -->
+<!-- <div v-if="viewingPaymentsList" class="payments-list">
   <div v-for="payment in staraPlacanjaArray" :key="payment.id" class="payment-item">
-    <!-- Payment title on its own line -->
     <div class="payment-title">{{ translatePaymentTitle(payment.paymenttitle) }}</div>
 
-    <!-- Payment status, date, and price on the next line -->
+
     <div class="payment-info">
       <div class="payment-status">
   {{ payment.paidstatus === 1 ? $t('podmireno-display') : $t('nepodmireno-display') }}
@@ -419,10 +418,9 @@
       <span class="payment-price">{{ payment.price }} {{ $t('eura') }}</span>
     </div>
 
-    <!-- Blue line separator -->
     <div class="payment-separator"></div>
   </div>
-</div>
+</div> -->
 
 
 
@@ -608,6 +606,14 @@ export default {
     return this.selectedLicence.length;
   },
   
+
+
+  hasCardIssued() {
+    return this.staraPlacanjaArray.some(payment => 
+      payment.paymenttitle?.toLowerCase().includes('izdavanje iskaznic') && 
+      payment.paidstatus === 1
+    );
+  },
 
   displayedStatus() {
     if (this.selectedUser?.statusString === "Demonstrator skijanja" && this.selectedUser?.statusAktivan === 'Istekla licenca') {
@@ -919,7 +925,7 @@ handleCardClick(user) {
 async getStaraPlacanja() {
   
   this.staraPlacanjaArray = [];
-  this.number = Number(this.selectedUser.idmember);
+  this.number = Number(this.selectedUser.id);
  skijasiStaraplacanja
     .citanjenasiclanovi({ slug: "tbl-payments", idmember: this.number })
     .then((response) => {

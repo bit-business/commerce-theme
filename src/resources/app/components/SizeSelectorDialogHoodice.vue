@@ -61,7 +61,7 @@
 
 <script>
 export default {
-  name: 'SizeSelectorDialog',
+  name: 'SizeSelectorDialogHoodice',
   props: {
     show: {
       type: Boolean,
@@ -71,7 +71,10 @@ export default {
   data() {
     return {
       selectedSize: null,
-      sizes: [37, 38, 39, 41, 42, 43, 44, 45, 46, 47]
+      sizes: ['Muške-M', 'Muške-L', 'Muške-XL', 'Muške-XXL', 'Ženske-XS',
+  'Ženske-S',
+  'Ženske-M',
+  'Ženske-L']
     }
   },
   methods: {

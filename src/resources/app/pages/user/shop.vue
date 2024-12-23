@@ -218,6 +218,7 @@
       @subtract="handleSubtract"
       @show-preview="handleShowPreview"
       @remove-all-slippers="handleRemoveAllSlippers"
+        @remove-all-slippers2="handleRemoveAllSlippers2"
     />
   </carousel-item>
 </carousel>
@@ -239,6 +240,7 @@ class="container hidden md:flex lg:hidden" show="3"
             @subtract="handleSubtract"
             @show-preview="handleShowPreview"
               @remove-all-slippers="handleRemoveAllSlippers"
+                @remove-all-slippers2="handleRemoveAllSlippers2"
           />
         </carousel-item>
       </carousel>
@@ -268,30 +270,28 @@ class="container hidden md:flex lg:hidden" show="3"
       </div>
       
 
-
-      <div class="flex items-center justify-end mt-10 ">
-    <button 
-  @click="naplacanjelink"
-  class="checkout-btn bg-primary1 px-8 py-3 text-white rounded-lg font-medium flex items-center justify-center"
->
-<svg 
-         
-            xmlns="http://www.w3.org/2000/svg" 
-            class="h-5 w-5 mr-2" 
-            fill="none" 
-            viewBox="0 0 24 24" 
-            stroke="currentColor"
-          >
-            <path 
-              stroke-linecap="round" 
-              stroke-linejoin="round" 
-              stroke-width="2" 
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" 
-            />
-          </svg>
- {{ $t('na-kosaricu') }}
-</button>
-  </div>
+      <div class="flex items-center justify-center mt-10 w-full px-4 sm:px-0">
+  <button 
+    @click="naplacanjelink"
+    class="checkout-btn bg-primary1 px-8 py-3 text-white rounded-lg font-medium flex items-center justify-center w-full sm:w-auto mx-auto"
+  >
+    <svg 
+      xmlns="http://www.w3.org/2000/svg" 
+      class="h-5 w-5 mr-2" 
+      fill="none" 
+      viewBox="0 0 24 24" 
+      stroke="currentColor"
+    >
+      <path 
+        stroke-linecap="round" 
+        stroke-linejoin="round" 
+        stroke-width="2" 
+        d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" 
+      />
+    </svg>
+    {{ $t('na-kosaricu') }}
+  </button>
+</div>
 
 
 
@@ -545,6 +545,11 @@ class="container hidden md:flex lg:hidden" show="3"
   @close="showSizeSelector = false"
   @select="handleSizeSelection"
 />
+<size-selector-dialog-hoodice
+  :show="showSizeSelector2"
+  @close="showSizeSelector2 = false"
+  @select="handleSizeSelectionhoodice"
+/>
 
     </div>
     
@@ -565,6 +570,7 @@ import CommerceProductAlt from '../../components/commerce-product-alt.vue'
 import CommerceMobileProductAlt from '../../components/commerce-mobile-product-alt.vue'
 
 import SizeSelectorDialog from '../../components/SizeSelectorDialog.vue'
+import SizeSelectorDialogHoodice from '../../components/SizeSelectorDialogHoodice.vue'
 
 import podaciusera from '../../../../../../core/src/resources/js/api/modules/skijasi-user.js';
 
@@ -581,6 +587,7 @@ export default {
     CommerceProductAlt,
     CommerceMobileProductAlt,
     SizeSelectorDialog,
+    SizeSelectorDialogHoodice,
     Link,
     Head
   },
@@ -606,6 +613,7 @@ export default {
       },
       productDetailSelectedIndex: 0,
       selectedVariationId: null,
+      selectedVariationId2: null,
 
       selectedProduct: {
         id: null
@@ -613,6 +621,8 @@ export default {
 
       showSizeSelector: false,
       pendingProductId: null,
+      showSizeSelector2: false,
+      pendingProductId2: null,
   
 
       avatar_approved: 0,
@@ -830,6 +840,28 @@ async handleSizeSelection(size) {
   this.pendingProductId = null;
 },
 
+async handleSizeSelectionhoodice(size) {
+  const product = this.similarProducts.data.find(p => p.id === this.pendingProductId2);
+  if (!product) return;
+
+  // Modified to handle string sizes like "Muške-M" 
+  const productDetail = product.productDetails.find(detail => 
+    detail.name === size // Changed this line to directly match the size
+  );
+
+  if (productDetail) {
+    try {
+      await this.addToCart(productDetail.id);
+    } catch (error) {
+      console.error('Error adding to cart:', error);
+      this.$helper.displayErrors(error);
+    }
+  }
+
+  this.showSizeSelector2 = false;
+  this.pendingProductId2 = null;
+},
+
 // Add this method to your parent component
 // In your parent component
 async handleRemoveAllSlippers() {
@@ -857,6 +889,31 @@ async handleRemoveAllSlippers() {
   }
 },
 
+async handleRemoveAllSlippers2() {
+  try {
+    // Find all cart items that are hoodies (product ID 50)
+    const slipperCarts2 = this.carts.filter(cart => 
+      cart.productDetail.product.id === 50
+    );
+
+    // Delete each slipper cart item
+    for (const cart of slipperCarts2) {
+      await this.$api.skijasiCart.delete({
+        id: cart.id  // Changed from cart.cartId to cart.id
+      });
+    }
+
+    // Refresh carts
+    await this.$store.dispatch('FETCH_CARTS');
+    await this.getCarts();
+
+    this.$helper.alert(this.$t('sve-papuce-su-uklonjene-iz-kosarice'));
+  } catch (error) {
+    console.error('Error removing slippers:', error);
+    this.$helper.alert(this.$t('nije-uspjelo'));
+  }
+},
+
 async setSelectedProduct(proizvod) {
   console.log('Product ID received:', proizvod);
   
@@ -868,6 +925,13 @@ async setSelectedProduct(proizvod) {
     return;
   }
 
+  if (proizvod === 50) {
+    this.pendingProductId2 = proizvod;
+    this.showSizeSelector2 = true;
+    // Don't call handleRegularProduct
+    return;
+  }
+
   // Only call handleRegularProduct for non-slipper products
   await this.handleRegularProduct(proizvod);
 },
@@ -875,7 +939,7 @@ async setSelectedProduct(proizvod) {
 // New method for handling regular products
 async handleRegularProduct(proizvod) {
   // First check if this is a slippers product
-  if (proizvod === 43) {
+  if (proizvod === 43 || proizvod === 50) {
     return; // Exit immediately if it's the slippers product
   }
 
@@ -966,6 +1030,12 @@ handleQuantityChange(payload) {
   if (this.pendingProductId === 43 && this.selectedVariationId) {
     payload.cartId = this.getCartIdForVariation(this.selectedVariationId);
   }
+
+  // Handle hoodies
+  if (this.pendingProductId === 50 && this.selectedVariationId2) {
+    payload.cartId = this.getCartIdForVariation(this.selectedVariationId2);
+  }
+  
   
   if (payload && payload.quantity && payload.cartId) {
     this.loading = true;
@@ -1252,6 +1322,20 @@ getCartDataForProduct(product) {
   if (product.id === 43 && this.selectedVariationId) {
     const cartItem = this.carts.find(cart => 
       cart.productDetail && cart.productDetail.id === this.selectedVariationId
+    );
+    
+    return cartItem ? {
+      cartId: cartItem.id,
+      quantity: parseInt(cartItem.quantity)
+    } : {
+      cartId: null,
+      quantity: 1
+    };
+  }
+
+  if (product.id === 50 && this.selectedVariationId2) {
+    const cartItem = this.carts.find(cart => 
+      cart.productDetail && cart.productDetail.id === this.selectedVariationId2
     );
     
     return cartItem ? {

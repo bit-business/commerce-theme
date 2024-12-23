@@ -1155,12 +1155,12 @@
                   >
                 </span>
               </p>
-              <p class="blank-line56">
+              <!-- <p class="blank-line56">
                 <span>
                   <span class="blank-line57">&nbsp;</span>
                 </span>
-              </p>
-              <p class="voditelji-skijanja-iaess-lice">
+              </p> -->
+              <!-- <p class="voditelji-skijanja-iaess-lice">
                 <span>
                   <b
                     >Voditelji skijanja (IAESS licenca), učitelji
@@ -1212,7 +1212,7 @@
                     seminaru.</span
                   >
                 </span>
-              </p>
+              </p> -->
 
 
               <p class="mukarci-nakon-navrenih-60-g pt-12">
@@ -4153,7 +4153,7 @@ animation: slideUp 0.6s ease-in-out;
     width: 100%;
   }
   .da-bi-osoba-container {
-    height: 925px;
+    height: 100%;
     width: 85%;
     position: relative;
     display: flex;
